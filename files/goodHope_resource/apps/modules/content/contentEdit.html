@@ -1,0 +1,204 @@
+<div ng-controller="contentEditController as showCase">
+    <h3 class="page-title">
+       好望角-{{pageTitle}}
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">好望角-{{pageTitle}}</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                    <a href="#/contentManage" class="btn btn-warning btn-sm">返回</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="editProjecForm">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">标题 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <input name="title" type="text" ng-model="form.title" class="form-control" placeholder="请输入标题" maxlength="70">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">内容分类 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <select name="classId" ng-model="form.classId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.classIdList" ng-selected="item.classId == form.classId">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">内容二级分类 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <select name="childClassId" ng-model="form.childClassId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.childClassIdList" ng-selected="item.classId == form.childClassId">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-show="form.classId!=14 && form.classId!=15">
+                        <label class="col-sm-3 control-label ui_right">内容类型 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <div class="radio-list">
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentType" ng-model="form.contentType" value="1">文章
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="contentType" ng-model="form.contentType" value="2">视频
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">渠道 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <select name="channel" ng-model="form.channel" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">APP</option>
+                                <option value="2">PC</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-3 control-label mt15" style="margin-top: -4px;margin-left: 8px;">标签 <span class="text-red">*</span>：</label>
+                            <div class="col-sm-7 mt15">
+                                <div class="row">
+                                    <div class="col-sm-3 mt15" ng-repeat="item in form.productTagArr track by $index">
+                                        <input name="title" type="text" class="form-control" ng-model="form.productTagArr[$index]" placeholder="请输入标签" maxlength="4">
+                                    </div>
+                                    <div class="col-sm-4 mt15">
+                                        <a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="action.addListLabel()">新增</a> <span class="text-red">建议最多5个</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.classId ==15 || form.contentType==2">
+                        <label class="col-sm-3 control-label">视频URL <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <input name="videoUrl" type="text" ng-model="form.videoUrl" class="form-control" placeholder="请输入视频URL" maxlength="180">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="form.classId ==15 || form.contentType==2">
+                        <label class="col-sm-3 control-label">视频时间 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <input name="videoShowTime" type="text" ng-model="form.videoShowTime" class="form-control" placeholder="请输入视频时间" maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="form.classId ==14 || form.contentType==1">
+                        <label class="col-sm-3 control-label">访问量 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <input name="viewNumber" type="text" ng-model="form.viewNumber" class="form-control js_validator_int" placeholder="请输入访问量" maxlength="9">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.classId ==15 || form.contentType==2">
+                        <div class="row">
+                            <label class="col-sm-3 control-label mt15" style="margin-top: -4px;margin-left: 8px;">视频详情图 <span class="text-red">*</span>：</label>
+                            <div class="col-sm-8 mt15 export-list">
+                                <input name="thumbnail" type="file" onchange="angular.element(this).scope().action.uploadImg(this, 0)" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                <span class="text-red">建议尺寸：750像素*420像素</span>
+                                <div class="export-list" ng-if="form.videoImagePath">
+                                    <span>
+                                        <a href="{{G.imagePath + form.videoImagePath}}" target="_blank" style="display: inline-block"><img style="border:1px solid #ccc" ng-src="{{G.imagePath + form.videoImagePath}}" alt="">
+                                        </a>
+                                        <i ng-click="action.deleteImg(0)"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-3 control-label mt15" style="margin-top: -4px;margin-left: 8px;">封面图片 <span class="text-red">*</span>：</label>
+                            <div class="col-sm-8 mt15 export-list">
+                                <input name="thumbnail" type="file" onchange="angular.element(this).scope().action.uploadImg(this, 1)" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                <span class="text-red">建议尺寸：686像素*384像素</span>
+                                <div class="export-list" ng-if="form.imagePath">
+                                    <span>
+                                        <a href="{{G.imagePath + form.imagePath}}" target="_blank" style="display: inline-block"><img style="border:1px solid #ccc" ng-src="{{G.imagePath + form.imagePath}}" alt="">
+                                        </a>
+                                        <i ng-click="action.deleteImg(1)"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-3 control-label mt15" style="margin-top: -4px;margin-left: 8px;">分享缩略图 <span class="text-red">*</span>：</label>
+                            <div class="col-sm-8 mt15 export-list">
+                                <input name="thumbnail" type="file" onchange="angular.element(this).scope().action.uploadImg(this, 2)" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                <span class="text-red">建议尺寸：160像素*160像素</span>
+                                <div class="export-list" ng-if="form.thumbnail">
+                                    <span>
+                                        <a href="{{G.imagePath + form.thumbnail}}" target="_blank" style="display: inline-block"><img style="border:1px solid #ccc" ng-src="{{G.imagePath + form.thumbnail}}" alt="">
+                                        </a>
+                                        <i ng-click="action.deleteImg(2)"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.classId ==14 || form.contentType==1">
+                        <label class="col-sm-3 control-label">是否主推 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <select name="isRecommend" ng-model="form.isRecommend" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">是否上主页 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <select name="isRecommendIndex" ng-model="form.isRecommendIndex" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label ui_right">状态 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <div class="radio-list">
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" ng-model="form.status" value="1">有效
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" ng-model="form.status" value="0">无效
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">简介 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <textarea name="simpleContent " ng-model="form.simpleContent " id="intro" class="form-control" rows="4" maxlength="300" style="resize: none;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" id="showBox" ng-show="form.classId ==14 || form.contentType==1">
+                        <label class="col-sm-3 control-label">内容 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <div id="summernote" name="content"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="content" value="{{form.content}}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

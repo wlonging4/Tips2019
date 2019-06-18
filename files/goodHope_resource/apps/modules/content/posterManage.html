@@ -1,0 +1,122 @@
+<div ng-controller="posterManageController as showCase">
+    <h3 class="page-title">
+        海报管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">海报管理</span>
+                </div>
+                <div class="col-lg-3 ui_right">
+                    <a href="#/posterEdit" class="btn btn-success btn-sm">发布海报</a>
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>标题：</label>
+                            <input name="title" value="" ng-model="form.title" class="form-control" placeholder="请输入标题">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>分类：</label>
+                            <select name="childClassId" ng-model="form.childClassId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.childClassId">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>发布时间：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startTime" ng-model="form.startTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endTime" ng-model="form.endTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>状态：</label>
+                            <select name="status" ng-model="form.status" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">有效</option>
+                                <option value="0">无效</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right"></div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover" id="dataTables"></table>
+        </div>
+    </div>
+</div>
+<!--海报详情弹窗模板-->
+<script type="text/ng-template" id="posterDetailCtrl.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">海报详情</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <tbody>
+                <tr>
+                    <td style="width: 20%">标题：</td>
+                    <td>{{form.title}}</td>
+                </tr>
+                <tr>
+                    <td>分类：</td>
+                    <td>{{form.className}}</td>
+                </tr>
+                <tr>
+                    <td>二级分类：</td>
+                    <td>{{form.childClassName}}</td>
+                </tr>
+                <tr>
+                    <td>缩略图：</td>
+                    <td><a target="_blank" href="{{G.imagePath+form.thumbnail}}"><img style="border:1px solid #ccc" ng-src="{{G.imagePath+form.thumbnail}}" width="100"
+                                                                                      height="100" alt=""></a></td>
+                </tr>
+                <tr>
+                    <td>封面图：</td>
+                    <td>
+                        <ul style="padding: 0">
+                            <li style="list-style: none;float: left"  ng-repeat="item in form.imagePathObj">
+                                <a style="display: inline-block;margin-right: 10px;" href="{{G.imagePath+item.imagePath}}" target="_blank"><img ng-src="{{G.imagePath+item.imagePath}}" style="display: block;border:1px solid #ccc" width="100" height="100" alt=""></a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>简介：</td>
+                    <td style="word-break: break-all;word-wrap: break-word;">{{form.introduction}}</td>
+                </tr>
+                <tr>
+                    <td>状态：</td>
+                    <td>{{form.status?'有效':'无效'}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

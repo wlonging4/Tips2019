@@ -1,0 +1,97 @@
+<div ng-controller="posterEditController as showCase">
+    <h3 class="page-title">
+        海报管理-{{pageTitle}}
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">海报管理-{{pageTitle}}</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                    <a href="javascript:;" ng-click="action.cancel()" class="btn btn-warning btn-sm">返回</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="editProjecForm">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">标题 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <input name="title" type="text" ng-model="form.title" class="form-control" placeholder="请输入标题" maxlength="70">
+                            <input type="text" style="display: none" name="posterId" ng-model="form.posterId">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">分类 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <select name="childClassId" ng-model="form.childClassId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.childClassId">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-3 control-label mt15" style="margin-top: -4px;margin-left: 8px;">缩略图片 <span class="text-red">*</span>：</label>
+                            <div class="col-sm-8 mt15">
+                                <input name="thumbnail" type="file" onchange="angular.element(this).scope().action.uploadImg(this, 0)" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                <span class="text-red">建议尺寸：160像素*160像素</span>
+                                <div class="export-list" ng-if="form.thumbnail">
+                                    <span>
+                                        <a href="{{G.imagePath + form.thumbnail}}" target="_blank" style="display: inline-block"><img style="border:1px solid #ccc" ng-src="{{G.imagePath + form.thumbnail}}" alt="">
+                                        </a>
+                                        <i ng-click="action.deleteImg(0)"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-3 control-label mt15" style="margin-top: -4px;margin-left: 8px;">封面图片 <span class="text-red">*</span>：</label>
+                            <div class="col-sm-8 mt15">
+                                <input type="text" style="display: none" name="imagePath" ng-model="form.imagePath">
+                                <input name="smallImageFile" onchange="angular.element(this).scope().action.uploadImg(this, 2)"  type="file" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                <span class="text-red">建议尺寸：750像素*1380像素(最多可上传8张)</span>
+                                <div class="export-list">
+                                    <span ng-repeat="item in form.contentImgUrlArr track by $index">
+                                        <a href="{{G.imagePath + item}}" target="_blank" style="display: inline-block">
+                                             <img style="border:1px solid #ccc" ng-src="{{G.imagePath + item}}" alt="">
+                                        </a>
+                                        <i ng-click="action.deleteImg(2, $index)"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">简介 ：</label>
+                        <div class="col-sm-7">
+                            <textarea name="introduction " ng-model="form.introduction " id="introduction" class="form-control" rows="4" maxlength="300" style="resize: none;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label ui_right">状态 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-7">
+                            <div class="radio-list">
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" ng-model="form.status" value="1">有效
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" ng-model="form.status" value="0">无效
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

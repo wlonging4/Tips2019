@@ -1,0 +1,121 @@
+<div ng-controller="intentSignController as showCase">
+    <h3 class="page-title">
+        工作室管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">意向签单管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="reset()">重置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>合同编号</label>
+                            <input name="contractNo" value="" ng-model="form.contractNo" class="form-control" placeholder="请输入合同编号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>合伙人ID</label>
+                            <input name="userId" value="" ng-model="form.userId" class="form-control" placeholder="请输入合伙人ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>客户姓名</label>
+                            <input name="customerChineseName" value="" ng-model="form.customerChineseName" class="form-control" placeholder="请输入客户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>产品名称</label>
+                            <input name="productName" value="" ng-model="form.productName" class="form-control" placeholder="请输入产品名称">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>签单状态</label>
+                            <select name="status" ng-model="form.status" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.SignedContractStatusEnum track by $index">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>签单角色</label>
+                            <select name="signedRole" ng-model="form.signedRole" class="form-control" autocomplete="off">true
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.SignedRoleEnum track by $index">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>提交日期</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startTime" ng-model="form.startTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endTime" ng-model="form.endTime">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover width-100" id="dataTables"></table>
+        </div>
+    </div>
+    <script type="text/ng-template" id="detailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">意向签单详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <table class="table table-bordered table-layout-fixed">
+                <tbody>
+                    <tr>
+                        <td width="50%">合同编号：{{info.contractNo}}</td>
+                        <td>签单角色：{{info.signedRoleStr}}</td>
+                    </tr>
+                    <tr>
+                        <td>产品类型：{{info.productTypeIdStr}}</td>
+                        <td>产品名称：{{info.productName}}</td>
+                    </tr>
+                    <tr>
+                        <td>客户中文名：{{info.customerChineseName}}</td>
+                        <td>客户英文名：{{info.customerEnglishName}}</td>
+                    </tr>
+                    <tr>
+                        <td>签单金额：{{info.signedAmount}}</td>
+                        <td>币种：{{info.currencyStr}}</td>
+                    </tr>
+                    <tr>
+                        <td>备注：{{info.remark}}</td>
+                        <td>签单状态：{{info.statusStr}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">证件类型：{{info.documentTypeStr}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">证件照片：<a href="{{G.imagePath + '/' + item}}" target="_blank" ng-repeat="item in info.documentPathList track by $index"><img ng-src="{{G.imagePath + '/' + item}}" style="margin-right: 20px;width: 50px;" alt="" ></a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">其他证件：<a href="{{G.imagePath + '/' + item}}" target="_blank" ng-repeat="item in info.otherPathList track by $index"><img ng-src="{{G.imagePath + '/' + item}}" style="margin-right: 20px;width: 50px;" alt="" ></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

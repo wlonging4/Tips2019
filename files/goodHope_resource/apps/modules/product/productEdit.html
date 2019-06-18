@@ -1,0 +1,364 @@
+<div ng-controller="productEditController as showCase">
+    <h3 class="page-title">
+        产品管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">产品编辑</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="#/productList" class="btn btn-warning btn-sm">返回</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="tabbable tabbable-tabdrop">
+                <ul class="nav nav-tabs" ng-click="action.tab($event)" id="tabs">
+                    <li ng-class="{active:tab.target === 'basicInfo'}">
+                        <a href="javascript:void(0)" data-target="basicInfo" >基本信息</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'character', disabled:tab.disCharacter}">
+                        <a href="javascript:void(0)" data-target="character">项目亮点</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'apartment', disabled:tab.disApartment}">
+                        <a href="javascript:void(0)" data-target="apartment" >户型</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'environment', disabled:tab.disEnvironment}">
+                        <a href="javascript:void(0)" data-target="environment">周边环境</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'salesData', disabled:tab.disSalesData}">
+                        <a href="javascript:void(0)" data-target="salesData" >销售数据</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'relatedResources', disabled:tab.disRelatedResources }">
+                        <a href="javascript:void(0)" data-target="relatedResources">关联资源</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div ng-class="{active:tab.target === 'basicInfo'}" class="tab-pane" >
+                        <div class="clearfix">
+                            <form class="form-horizontal">
+
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">产品标题<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9">
+                                            <input name="productName" type="text" ng-model="form.productName" class="form-control" placeholder="请输入标题" maxlength="80">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">一级分类<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 ">
+                                            <div class="row">
+                                                <div class="col-sm-3 ">
+                                                    <select name="classId"  ng-model="form.classId" class="form-control" ng-change="action.changeClassId(form.classId)">
+                                                        <option value="">请选择</option>
+                                                        <option value="{{item.classId}}" ng-repeat="item in select.classIdArr track by $index" ng-selected="item.classId == form.classId ">{{item.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">二级分类<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 ">
+                                            <div class="row">
+                                                <div class="col-sm-3 ">
+                                                    <select name="childClassId"  ng-model="form.childClassId" class="form-control">
+                                                        <option value="">请选择</option>
+                                                        <option value="{{item.classId}}" ng-repeat="item in select.childClassIdArr track by $id(item)" ng-selected="item.classId == form.childClassId ">{{item.name}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">是否首页展示<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 ">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <select name="showPosition"  ng-model="form.showPosition" class="form-control">
+                                                        <option value="">请选择</option>
+                                                        <option value="0">否</option>
+                                                        <option value="1">是</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12" ng-if="form.showPosition == 1">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">首页展示顺序<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 mt15">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <input name="priority" type="text" oninput="value = value.replace(/\D/g, '');if(value[0] === '0'){value = value.slice(1)};" class="form-control" ng-model="form.priority" placeholder="请输入首页展示顺序" maxlength="3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">首页标签<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 mt15">
+                                            <div class="row">
+                                                <div class="col-sm-3 mt15" ng-repeat="item in form.productTagArr track by $index">
+                                                    <input name="title" type="text" class="form-control" ng-model="form.productTagArr[$index]" placeholder="请输入标签" maxlength="8">
+                                                </div>
+                                                <div class="col-sm-3 mt15">
+                                                    <a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="action.addListLabel()">新增</a> <span class="text-red">建议最多3个标签</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">详情标签<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 mt15">
+                                            <div class="row">
+                                                <div class="col-sm-3 mt15 " ng-repeat="item in form.contentProductTagArr track by $index">
+                                                    <input name="title" type="text" ng-model="form.contentProductTagArr[$index]" class="form-control" placeholder="请输入标签" maxlength="10">
+                                                </div>
+                                                <div class="col-sm-3 mt15">
+                                                    <a href="javascript:void(0)" class="btn btn-info btn-sm" ng-click="action.addDetailLabel()">新增</a> <span class="text-red">建议最多5个标签</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">首页属性<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 mt15">
+                                            <div class="row">
+                                                <div class="col-sm-3 mt15" ng-repeat="item in form.propertyList1 track by $index">
+                                                    <div class="input-icon right tag-box">
+                                                        <i class="fa fa-times" ng-show="item" ng-click="action.deleteLabel(1, $index)"></i>
+                                                        <input name="title" type="text" value="{{item['propertityName'] + (item['propertityName'] ? '：':'') + item['propertityValue']}}" ng-click="action.selectProperty(1, form.propertyList1[$index], $index)" class="form-control" readonly placeholder="请选择首页属性">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">详情页属性<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-9 mt15">
+                                            <div class="row">
+                                                <div class="col-sm-3 mt15" ng-repeat="item in form.propertyList2 track by $index">
+                                                    <div class="input-icon right tag-box">
+                                                        <i class="fa fa-times" ng-show="item" ng-click="action.deleteLabel(2, $index)"></i>
+                                                        <input name="title" type="text" value="{{item['propertityName'] + (item['propertityName'] ? '：':'') + item['propertityValue']}}" ng-click="action.selectProperty(2, form.propertyList2[$index], $index)" class="form-control" readonly placeholder="请选择详情页属性">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">分享缩略图<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-10 mt15">
+                                            <input name="thumbnail" type="file" onchange="angular.element(this).scope().action.uploadImg(this, 0)" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                            <span class="text-red">建议尺寸：160*160</span> <!--<a href="javascript:void(0)" ng-click="" class="btn btn-info btn-sm">上传</a>-->
+                                            <div class="export-list" ng-if="form.thumbnail">
+                                                <span><a href="{{G.imagePath + form.thumbnail}}" target="_blank"><img ng-src="{{G.imagePath + form.thumbnail}}" alt=""></a><i ng-click="action.deleteImg(0)"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">标题图片<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-10 mt15">
+                                            <input name="titleImg" type="file"  onchange="angular.element(this).scope().action.uploadImg(this, 1)" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                            <span class="text-red">建议尺寸：686*296</span>
+                                            <div class="export-list" ng-if="form.imgUrl">
+                                                <span><a href="{{G.imagePath + form.imgUrl}}" target="_blank"><img ng-src="{{G.imagePath + form.imgUrl}}" alt=""></a><i ng-click="action.deleteImg(1)"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label mt15">详情图片<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-10 mt15">
+                                            <input name="smallImageFile" onchange="angular.element(this).scope().action.uploadImg(this, 2)"  type="file" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                            <span class="text-red">建议尺寸：750*560 最多传6张</span>
+                                            <div class="export-list">
+                                                <span ng-repeat="item in form.contentImgUrlArr track by $index"><a href="{{G.imagePath + item}}" target="_blank"><img ng-src="{{G.imagePath + item}}" alt=""></a><i ng-click="action.deleteImg(2, $index)"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label ui_right">分享简介<span class="text-red">*</span>：</label>
+                                        <div class="col-sm-10">
+                                            <textarea type="text" ng-model="form.simpleContent" name="simpleContent" class="form-control" rows="4" maxlength="300"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 text-center">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-md" ng-click="action.saveBasicInfo()">保存</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'character'}" class="tab-pane">
+                        <div class="clearfix">
+                            <form class="form-horizontal">
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">项目亮点：</label>
+                                        <div class="col-sm-9">
+                                            <div id="characterSummernote" name="characterSummernote"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 text-center">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-md" ng-click="action.saveInfo(form.characterSummernote, 1)">保存</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'apartment'}" class="tab-pane">
+                        <div class="clearfix">
+                            <form class="form-horizontal">
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">户型：</label>
+                                        <div class="col-sm-9">
+                                            <div id="apartmentSummernote" name="apartmentSummernote"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 text-center">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-md" ng-click="action.saveInfo(form.apartmentSummernote, 2)">保存</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'environment'}" class="tab-pane">
+                        <div class="clearfix">
+                            <form class="form-horizontal">
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">周边环境：</label>
+                                        <div class="col-sm-9">
+                                            <div id="environmentSummernote" name="environmentSummernote"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 text-center">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-md" ng-click="action.saveInfo(form.environmentSummernote, 3)">保存</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'salesData'}" class="tab-pane">
+                        <div class="clearfix">
+                            <form class="form-horizontal">
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <label class="col-sm-2 control-label">销售数据：</label>
+                                        <div class="col-sm-9">
+                                            <div id="salesDataSummernote" name="salesDataSummernote"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12 text-center">
+                                    <a href="javascript:void(0)" class="btn btn-danger btn-md" ng-click="action.saveInfo(form.salesDataSummernote, 4)">保存</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'relatedResources'}" class="tab-pane" id="relatedResources">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>分类</label>
+                                <div class="input-group linked-box">
+                                    <select class="form-control" name="classId" ng-model="relatedResourcesForm.classId" ng-change="action.selectClassId(relatedResourcesForm.classId)">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.classId}}" ng-repeat="item in select.classIdArr2 track by $index" ng-selected="relatedResourcesForm.classId == item.classId">{{item.name}}</option>
+                                    </select>
+                                    <select class="form-control" name="childClassId" ng-model="relatedResourcesForm.childClassId">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.classId}}" ng-repeat="item in select.childClassIdRescourceArr track by $index">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>资源标题</label>
+                                <input name="title" value="" ng-model="relatedResourcesForm.title" class="form-control" placeholder="请输入资源标题">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>&nbsp;</label>
+                                <div><a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.search()">查询</a></div>
+                            </div>
+                        </div>
+                        <table dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover width-100" id="dataTables"></table>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="export-list">
+                                    <span>已选文章：</span><span class="txt" ng-repeat="item in form.articleArr track by $index">{{item.title}}<i ng-click="action.deleteResources(item.contentId, 1)"></i></span>
+                                </div>
+                                <div class="export-list">
+                                    <span>已选视频：</span><span class="txt" ng-repeat="item in form.videoArr track by $index">{{item.title}}<i ng-click="action.deleteResources(item.contentId, 2)"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12 text-center">
+                                <a href="javascript:void(0)" class="btn btn-danger btn-md" ng-click="action.saveResources()">保存</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="propertyModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">属性查询</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12" >
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">属性名:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="redeemNo" maxlength="{{form.propertityType === 1 ? 10 : 20}}" ng-model="form.propertityName" placeholder="请输入属性名">
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">属性值:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="amount" maxlength="{{form.propertityType === 1 ? 10 : 20}}" ng-model="form.propertityValue" placeholder="请输入属性值">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="add()" >新增</button>
+        </div>
+    </script>
+</div>

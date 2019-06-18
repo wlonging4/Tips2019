@@ -1,0 +1,151 @@
+<div ng-controller="contentManageController as showCase">
+    <style>
+        .imgBox img{max-width: 100px;}
+        td img{max-width: 600px;}
+    </style>
+    <h3 class="page-title">
+        内容管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">内容管理</span>
+                </div>
+                <div class="col-lg-3 ui_right">
+                    <a href="#/contentEdit" class="btn btn-success btn-sm">发布内容</a>
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>标题：</label>
+                            <input name="title" value="" ng-model="form.title" class="form-control" placeholder="请输入标题">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>分类：</label>
+                            <select name="classId" ng-model="form.classId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.classId">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>发布时间：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startTime" ng-model="form.startTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endTime" ng-model="form.endTime">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right"></div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover" id="dataTables"></table>
+        </div>
+    </div>
+</div>
+<!--内容详情弹窗模板-->
+<script type="text/ng-template" id="contentDetailCtrl.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">内容详情</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <tbody>
+                <tr class="success">
+                    <td colspan="2">详情</td>
+                </tr>
+                <tr>
+                    <td  style="word-break: break-all;word-wrap: break-word;width: 50%">标题：{{form.title}}</td>
+                    <td>内容分类：{{form.className}}</td>
+                </tr>
+                <tr>
+                    <td>内容二级分类：{{form.childClassName}}</td>
+                    <td>渠道：{{form.channel==1?'APP':'PC'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">内容类型：{{form.contentType==1?'文章':'视频'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">标签：{{form.tag}}</td>
+                </tr>
+                <tr ng-if="form.classId ==15 || form.contentType==2">
+                    <td style="word-break: break-all;word-wrap: break-word;">视频URL：<a target="_blank" href="{{form.videoUrl}}">{{form.videoUrl}}</a></td>
+                    <td>视频时间：{{form.videoShowTime}}</td>
+                </tr>
+                <tr ng-if="form.classId ==14 || form.contentType==1">
+                    <td colspan="2">浏览量：{{form.viewNumber}}</td>
+                </tr>
+                <tr ng-if="form.classId ==15 || form.contentType==2">
+                    <td colspan="2" class="imgBox">视频详情图：
+                        <a target="_blank" href="{{G.imagePath+form.videoImagePath}}"><img style="border:1px solid #ccc" ng-src="{{G.imagePath+form.videoImagePath}}" alt=""></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="imgBox">封面图：<a target="_blank" href="{{G.imagePath+form.imagePath}}"><img style="border:1px solid #ccc" ng-src="{{G.imagePath+form.imagePath}}" alt=""></a></td>
+                    <td class="imgBox">分享缩略图：<a target="_blank" href="{{G.imagePath+form.thumbnail}}"><img style="border:1px solid #ccc" ng-src="{{G.imagePath+form.thumbnail}}" alt=""></a></td>
+                </tr>
+                <tr ng-if="form.classId ==14 || form.contentType==1">
+                    <td>是否主推：{{form.isRecommend?'是':'否'}}</td>
+                </tr>
+                <tr>
+                    <td>是否上首页：{{form.isRecommendIndex?'是':'否'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">状态：{{form.status?'有效':'无效'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="word-break: break-all;word-wrap: break-word;">简介：{{form.simpleContent}}</td>
+                </tr>
+                <tr ng-if="form.classId ==14 || form.contentType==1">
+                    <td colspan="2">
+                        <p>内容：</p>
+                        <!--<div style="text-align: center">
+                            <div style="width: 420px;margin: 0 auto;height: 300px;overflow-y: scroll; border: 1px solid #ccc;display: inline-block">
+                                <iframe ng-src="{{form.previewUrl}}" height="100%" style="border: none;" width="100%"></iframe>
+                            </div>
+                        </div>-->
+                        <div ng-bind-html="form.content" style="word-break: break-all;word-wrap: break-word;"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>
+<!--预览URL弹窗模板-->
+<script type="text/ng-template" id="URLDetailCtrl.html" style="width: 360px;height:100%;overflow-y:scroll">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">预览</h4>
+    </div>
+    <div class="modal-body clearfix" style="height: 600px">
+        <div class="col-lg-12" style="height: 100%;border: none">
+            <iframe ng-src="{{form.UrlOpen}}" height="100%" style="border: none;" width="100%"></iframe>
+        </div>
+    </div>
+</script>

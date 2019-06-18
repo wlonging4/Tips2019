@@ -1,0 +1,126 @@
+<div ng-controller="companyController as showCase">
+    <h3 class="page-title">
+        会员管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">会员管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.reset()">重置</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.build($event)">新增会员</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>公司名称</label>
+                            <input name="USERNAME" ng-model="form.USERNAME" class="form-control" placeholder="请输入公司名称">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>税务登记号</label>
+                            <input name="USERID" ng-model="form.USERID" class="form-control" placeholder="请输入税务登记号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>EMAIL</label>
+                            <input name="EMAIL" ng-model="form.EMAIL" class="form-control" placeholder="请输入EMAIL">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>状态</label>
+                            <select name="STATE" ng-model="form.STATE" class="form-control">
+                                <option value="">请选择状态</option>
+                                <option value="0">正常</option>
+                                <option value="1">冻结</option>
+                                <option value="2">过期</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">×</button>
+            <h4 class="modal-title fn-ms">{{title}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form role="form" class="form-horizontal" id="addForm">
+                    <input type="hidden" name="ID" ng-model="form.ID" value="">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">公司名称：</label>
+                        <div class="col-sm-9">
+                            <input name="USERNAME" ng-model="form.USERNAME" type="text" class="form-control" placeholder="公司名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">税务登记号：</label>
+                        <div class="col-sm-9">
+                            <input name="USERID" ng-model="form.USERID" type="text" class="form-control" placeholder="税务登记号">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">绑定邮箱：</label>
+                        <div class="col-sm-9">
+                            <input name="EMAIL" ng-model="form.EMAIL" type="text" class="form-control" placeholder="绑定邮箱">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">初始年份：</label>
+                        <div class="col-sm-9">
+                            <input name="YEAR" ng-model="form.YEAR" type="text" class="form-control" placeholder="初始年份">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">到期日期：</label>
+                        <div class="col-sm-9">
+                            <input class="form-control form-control-inline date-picker" name="ENDDATE" ng-model="form.ENDDATE" placeholder="到期日期" size="16" type="text" value="" data-date-format="yyyy-mm-dd"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">状态：</label>
+                        <div class="col-sm-9 radio-list">
+                            <label class="radio-inline"><input type="radio" name="STATE" ng-model="form.STATE" value="0" /> 正常 </label>
+                            <label class="radio-inline"><input type="radio" name="STATE" ng-model="form.STATE" value="1" /> 冻结 </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">联系人姓名：</label>
+                        <div class="col-sm-9">
+                            <input name="CONNECTNAME" ng-model="form.CONNECTNAME" type="text" class="form-control" placeholder="联系人姓名">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">联系人手机：</label>
+                        <div class="col-sm-9">
+                            <input name="MOBILE" ng-model="form.MOBILE" type="text" class="form-control" placeholder="联系人手机">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms" style="width:25%;" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()">保存</button>
+        </div>
+    </script>
+</div>

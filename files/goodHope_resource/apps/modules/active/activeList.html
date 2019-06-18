@@ -1,0 +1,140 @@
+<div ng-controller="activeListController as showCase">
+    <h3 class="page-title">
+        活动管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">活动管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="reset()">重置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>活动名称</label>
+                            <input name="activityName" value="" ng-model="form.activityName" class="form-control" placeholder="请输入活动名称">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>活动分类</label>
+                            <select name="childClassId" ng-model="form.childClassId" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.childClassIdArr track by $index">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>活动时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="activityStartTimeBegin" ng-model="form.activityStartTimeBegin">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="activityStartTimeEnd" ng-model="form.activityStartTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>活动状态</label>
+                            <select name="status" ng-model="form.status" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.statusList track by $index">{{item.value}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label>活动区域</label>
+                            <select name="activityAreasId" ng-model="form.activityAreasId" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.activityAreasId track by $index">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>产品分类</label>
+                            <select name="activityProductClassId" ng-model="form.activityProductClassId" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.classId}}" ng-repeat="item in select.activityProductClassId track by $index">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否线上活动</label>
+                            <select name="onlineType" ng-model="form.onlineType" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.onlineType track by $index">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+               <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="#/activeAdd" class="btn btn-success btn-sm">发布活动</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover width-100" id="dataTables"></table>
+        </div>
+    </div>
+    <script type="text/ng-template" id="detailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">活动详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <table class="table table-bordered table-layout-fixed">
+                <tbody>
+                <tr>
+                    <td width="50%">活动名称：{{info.activityName}}</td>
+                    <td>活动分类：{{info.childClassName}}</td>
+
+                </tr>
+                <tr>
+                    <td>缩略图片：<a ng-if="info.smallPath" href="{{G.imagePath + info.smallPath }}" target="_blank"><img style="max-width: 100px;max-height: 100px;" ng-src="{{G.imagePath + info.smallPath }}" alt="缩略图片"></a></td>
+                    <td>详情图片：<a ng-if="info.detailPath" href="{{G.imagePath + info.detailPath }}" target="_blank"><img style="max-width: 100px;max-height: 100px;" ng-src="{{G.imagePath + info.detailPath }}" alt="详情图片"></a></td>
+
+                </tr>
+                <tr>
+                    <td>活动时间：{{info.activityStartTime + ' 至 ' + info.activityEndTime }}</td>
+                    <td>活动标签：{{info.tag}}</td>
+                </tr>
+                <tr>
+                    <td>活动地点：{{info.address}}</td>
+                    <td>状态：{{info.statusDesc}}</td>
+                </tr>
+                <tr>
+                    <td>活动区域：{{info.activityAreasName}}</td>
+                    <td>产品分类：{{info.activityProductClassName}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">是否线上活动：{{info.onlineTypeDesc}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">是否主推活动：{{info.isRecommend == 1 ? '是':'否'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">分享活动描述：{{info.simpleContent}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">活动内容：<div ng-bind-html="info.content" style="max-height: 400px;overflow-y: scroll;word-break: break-all;word-wrap: break-word;"></div></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+
+    });
+</script>

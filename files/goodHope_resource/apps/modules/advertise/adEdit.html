@@ -1,0 +1,139 @@
+<div ng-controller="adEditController as showCase">
+    <style>
+        .adImgBox img{
+            max-width: 150px;
+        }
+    </style>
+    <h3 class="page-title">
+        {{pageTitle}}
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageTitle}}</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                    <a href="#/adManage"  class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="editProjecForm">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">广告名称 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-8">
+                            <input name="name" type="text" ng-model="form.name" class="form-control" placeholder="请输入广告名称" maxlength="100">
+                            <input style="display: none" type="text" name="bannerId" ng-model="form.bannerId">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label ">广告图片 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-3 adImgBox">
+                            <input name="image" ng-model="form.image" fileread="form.image" type="file" onchange="angular.element(this).scope().checkSize(this)" style="height: 34px;padding-top:5px;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                            <a ng-if="img.imagePath" href="{{G.imagePath+img.imagePath}}" target="_blank"><img ng-src="{{G.imagePath+img.imagePath}}" style="border:1px solid #ccc" alt="">
+                            </a>
+                        </div>
+                        <div class="col-sm-6" style="padding-top: 8px">
+                            <span class="ui_red">建议尺寸：750像素*320像素</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">版位 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-4">
+                            <select name="layout" ng-model="form.layout" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">首页</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">渠道 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-4">
+                            <select name="channel" ng-model="form.channel" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">APP</option>
+                                <option value="2">PC</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">生效时间 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-4">
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" readonly class="form-control" name="startTime" ng-model="form.startTime">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">截止时间 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-4">
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" readonly class="form-control" name="endTime" ng-model="form.endTime">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">广告URL：</label>
+                        <div class="col-sm-8">
+                            <input name="linkUrl" type="text" ng-model="form.linkUrl" class="form-control" placeholder="请输入广告URL" maxlength="200">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label ui_right">URL类型 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-8">
+                            <div class="radio-list">
+                                <label class="radio-inline">
+                                    <input type="radio" name="linkUrlType" ng-model="form.linkUrlType" value="1">页面
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="linkUrlType" ng-model="form.linkUrlType" value="2">视频
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="linkUrlType" ng-model="form.linkUrlType" value="3">图片
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="linkUrlType" ng-model="form.linkUrlType" value="4">文件
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">显示顺序 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-4">
+                            <input name="priority" type="text" ng-model="form.priority" class="form-control js_validator_int" placeholder="请输入显示顺序" maxlength="8">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label ui_right">状态 <span class="ui_red">*</span>：</label>
+                        <div class="col-sm-8">
+                            <div class="radio-list">
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" ng-model="form.status" value="1">有效
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="status" ng-model="form.status" value="0">无效
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

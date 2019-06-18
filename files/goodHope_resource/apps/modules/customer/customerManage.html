@@ -1,0 +1,151 @@
+<div ng-controller="customerManageController as showCase">
+    <style>
+        td{word-break: break-all;word-wrap: break-word;}
+    </style>
+    <h3 class="page-title">
+        客户管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">客户管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>客户姓名</label>
+                            <input name="customerName" value="" ng-model="form.customerName" class="form-control" placeholder="请输入客户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>手机号</label>
+                            <input name="mobile" value="" ng-model="form.mobile" class="form-control" placeholder="请输入联系电话">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>添加时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="createTimeBegin" ng-model="form.createTimeBegin">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="createTimeEnd" ng-model="form.createTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>签单状态</label>
+                            <select name="signedContract" ng-model="form.signedContract" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.signedContract" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 ui_right">
+                    <form id="js_consumer_form" method="post" enctype="multipart/form-data" style="float:right;">
+                        <a id="js_export" action="/customer/exportCustomerList.json" href="javascript:;" class="btn btn-primary btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover" id="dataTables"></table>
+        </div>
+    </div>
+</div>
+<!--客户详情弹窗模板-->
+<script type="text/ng-template" id="customerDetailCtrl.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">客户详情</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <tbody>
+                <tr class="success">
+                    <td colspan="2">客户详情</td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">客户姓名: {{form.customerName}}</td>
+                    <td>手机号: {{form.mobile}}</td>
+                </tr>
+                <tr>
+                    <td>姓别: {{form.sexDesc}}</td>
+                    <td>生日: {{form.birthday}}</td>
+                </tr>
+                <tr>
+                    <td>所在省: {{form.provinceName}}</td>
+                    <td>所在市: {{form.cityName}}</td>
+                </tr>
+                <tr>
+                    <td>是否有美元账户: {{form.isHasOverseaBankAccountDesc}}</td>
+                    <td>婚姻状况: {{form.maritalStatusDesc}}</td>
+                </tr>
+                <tr>
+                    <td>子女数量: {{form.childNumber}}</td>
+                    <td>意向项目: {{form.purposeProjectName}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">签单状态: {{form.signedContractDesc}}</td>
+                </tr>
+                <tr>
+                    <td>合伙人姓名: {{form.userRealName}}</td>
+                    <td>合伙人id: {{form.userId}}</td>
+                </tr>
+                <tr>
+                    <td>添加时间: {{form.createTime}}</td>
+                    <td>是否VIP: {{form.vipDesc}}</td>
+                </tr>
+                <tr>
+                    <td style="word-break: break-all;word-wrap: break-word">客户备注: {{form.remark}}</td>
+                    <td>微信号: {{form.wechatNo}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">客户头像:<a target="_blank" href="{{G.imagePath  + '/'+ form.headPortrait}}"><img style="border:1px solid #ccc;max-width: 100px" ng-src="{{G.imagePath  + '/'+ form.headPortrait}}" alt=""></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<!--签单状态属性设置模板-->
+<script type="text/ng-template" id="propertyModifyCtrl.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">属性设置</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <label class="col-sm-3 control-label">签单状态 <span class="ui_red">*</span>：</label>
+            <div class="col-sm-8">
+                <select name="signedContract" ng-model="form.signedContract" class="form-control" autocomplete="off">
+                    <option value="">请选择</option>
+                    <option ng-repeat="item in select.signedContract" value="{{item.key}}" ng-selected="item.key==form.signedContract">{{item.value}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-11 ui_right" style="padding-top: 20px">
+            <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="update()">提交</a>
+            <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="close()">取消</a>
+        </div>
+    </div>
+</script>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

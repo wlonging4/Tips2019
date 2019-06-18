@@ -1,0 +1,177 @@
+<div ng-controller="productController as showCase">
+    <h3 class="page-title">
+        产品管理列表
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">产品管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="reset()">重置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>产品名称</label>
+                            <input name="productName" value="" ng-model="form.productName" class="form-control" placeholder="请输入产品名称">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>分类</label>
+                            <div class="input-group linked-box">
+                                <select class="form-control" name="classId" ng-model="form.classId" ng-change="selectClass()">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.classId}}" ng-repeat="item in select.classIdArr track by $index">{{item.name}}</option>
+                                </select>
+                                <select class="form-control" name="childClassId" ng-model="form.childClassId">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.classId}}" ng-repeat="item in select.childClassIdArr track by $index">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>状态</label>
+                            <select name="productStatus" ng-model="form.productStatus" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.ProductStatusEnum track by $index">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>添加时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="createTimeBegin" ng-model="form.createTimeBegin">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="createTimeEnd" ng-model="form.createTimeEnd">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="#/productEdit" class="btn btn-success btn-sm">新增产品</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover width-100" id="dataTables"></table>
+        </div>
+    </div>
+    <script type="text/ng-template" id="detailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">产品详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="tabbable tabbable-tabdrop">
+                <ul class="nav nav-tabs" ng-click="tabAction($event)" id="tabs">
+                    <li ng-class="{active:tab.target === 'basicInfo'}">
+                        <a href="javascript:void(0)" data-target="basicInfo" >基本信息</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'character', disabled:tab.disCharacter}">
+                        <a href="javascript:void(0)" data-target="character">项目亮点</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'apartment', disabled:tab.disApartment}">
+                        <a href="javascript:void(0)" data-target="apartment" >户型</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'environment', disabled:tab.disEnvironment}">
+                        <a href="javascript:void(0)" data-target="environment">周边环境</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'salesData', disabled:tab.disSalesData}">
+                        <a href="javascript:void(0)" data-target="salesData" >销售数据</a>
+                    </li>
+                    <li ng-class="{active:tab.target === 'relatedResources', disabled:tab.disRelatedResources }">
+                        <a href="javascript:void(0)" data-target="relatedResources">关联资源</a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div ng-class="{active:tab.target === 'basicInfo'}" class="tab-pane" >
+                        <table class="table table-bordered table-layout-fixed">
+                            <tbody>
+                            <tr>
+                                <td colspan="2" class="break-word">产品名称：{{info.productName}}</td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="break-word">一级分类：{{info.className}}</td>
+                                <td width="50%" class="break-word">二级分类：{{info.childClassName}}</td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="break-word">是否首页展示：{{info.showPosition == 1 ? '是':'否'}}</td>
+                                <td width="50%" class="break-word">首页显示顺序：{{info.priority}}</td>
+                            </tr>
+                            <tr>
+                                <td class="break-word">首页标签：{{info.productTagArr.join() }}</td>
+                                <td class="break-word">详情标签：{{info.contentProductTags.join()}}</td>
+
+                            </tr>
+                            <tr>
+                                <td class="break-word">首页展示属性：<span style="margin-right: 5px;" ng-repeat="item in info.propertyList1 track by $index">{{item.propertityName}}</span></td>
+                                <td class="break-word">详情页属性：<span style="margin-right: 5px;" ng-repeat="item in info.propertyList2 track by $index">{{item.propertityName}}</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">分享缩略图：<a href="{{G.imagePath + info.thumbnail }}" target="_blank"><img style="max-width: 100px;max-height: 100px;margin-right: 5px;" ng-src="{{G.imagePath + info.thumbnail }}" alt="分享缩略图"></a></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">标题图片：<a href="{{G.imagePath + info.imgUrl }}" target="_blank"><img style="max-width: 100px;max-height: 100px;margin-right: 5px;" ng-src="{{G.imagePath + info.imgUrl }}" alt="标题图片"></a></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2">详情图片：<a ng-repeat="item in info.contentImgUrls track by $index" href="{{G.imagePath + item }}" target="_blank"><img  style="max-width: 100px;max-height: 100px;margin-right: 5px;" ng-src="{{G.imagePath + item }}" alt="详情图片"></a></td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="break-word">分享简介：{{info.simpleContent}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div ng-class="{active:tab.target === 'character'}" class="tab-pane">
+                        <div ng-bind-html="info.character" style="word-break: break-all;word-wrap: break-word;"></div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'apartment'}" class="tab-pane">
+                        <div ng-bind-html="info.apartment" style="word-break: break-all;word-wrap: break-word;"></div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'environment'}" class="tab-pane">
+                        <div ng-bind-html="info.environment" style="word-break: break-all;word-wrap: break-word;"></div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'salesData'}" class="tab-pane">
+                        <div ng-bind-html="info.salesData" style="word-break: break-all;word-wrap: break-word;"></div>
+                    </div>
+                    <div ng-class="{active:tab.target === 'relatedResources'}" class="tab-pane" id="relatedResources">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="export-list">
+                                    <span>已选文章：</span><span class="txt" ng-repeat="item in info.articleArr track by $index">{{item.title}}</span>
+                                </div>
+                                <div class="export-list">
+                                    <span>已选视频：</span><span class="txt" ng-repeat="item in info.videoArr track by $index">{{item.title}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+
+    });
+</script>

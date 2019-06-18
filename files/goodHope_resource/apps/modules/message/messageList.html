@@ -1,0 +1,172 @@
+<div ng-controller="messageListController as showCase">
+    <h3 class="page-title">
+        消息管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">消息管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="search()">查询</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>消息标题</label>
+                            <input name="messageTitle" value="" maxlength="50" ng-model="form.messageTitle" class="form-control" placeholder="请输入消息标题">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>消息类型</label>
+                            <select name="type" ng-model="form.type" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.type" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>创建时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="createTimeBeg" ng-model="form.createTimeBeg">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="createTimeEnd" ng-model="form.createTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>消息行为</label>
+                            <select name="actionType" ng-model="form.actionType" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.signingContract" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-4 ui_right">
+                    <form id="js_consumer_form" method="post" enctype="multipart/form-data" style="float:right;">
+                        <a href="#/messageAdd" class="btn btn-primary btn-sm">发布消息</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" style="font-size: 13px">
+            <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="row-border hover" id="dataTables"></table>
+        </div>
+    </div>
+</div>
+<!--合伙人详情弹窗模板-->
+<script type="text/ng-template" id="partnerDetailCtrl.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">合伙人详情</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td width="50%">合伙人姓名：{{info.realName}}</td>
+                    <td width="50%">合伙人ID：{{info.userId}}</td>
+                </tr>
+                <tr>
+                    <td>手机号：{{info.mobile}}</td>
+                    <td>推荐合伙人ID：{{info.recommUserId}}</td>
+                </tr>
+                <tr>
+                    <td>所在地：{{info.address }}</td>
+                    <td>从事行业：{{info.industry}}</td>
+                </tr>
+                <tr>
+                    <td>证件类型：{{info.documentTypeStr}}</td>
+                    <td>证件号码：{{info.documentNo}}</td>
+                </tr>
+                <tr>
+                    <td>性别：{{info.sexStr}}</td>
+                    <td>出生日期：{{info.birthdayStr}}</td>
+                </tr>
+                <tr>
+                    <td>累计从业年限：{{info.workYears}}</td>
+                    <td>是否开工作室：{{info.studioStatusStr}}</td>
+                </tr>
+                <tr>
+                    <td>常用邮箱：{{info.email}}</td>
+                    <td>邮寄地址：{{info.postAddress}}</td>
+                </tr>
+                <tr>
+                    <td>创建时间：{{info.createTimeStr}}</td>
+                    <td>上次登录时间：{{info.lastLoginTimeStr}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">合伙人头像：<a href="{{G.imagePath + '/' + info.headPortrait}}" ng-if="info.headPortrait" target="_blank"><img ng-src="{{G.imagePath + '/' + info.headPortrait}}" style="margin-right: 20px;width: 50px;" alt="" ></a></td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <td colspan="2">个人专长：{{info.expertise}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">意向：{{info.intentions}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">个人简介：<div ng-bind="info.remark" style="max-height: 400px;overflow-y: scroll;word-break: break-all;word-wrap: break-word;"></div></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<!--消息详情弹窗模板-->
+<script type="text/ng-template" id="infoDetailCtrl.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">消息详情</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered" style="table-layout: fixed">
+                <tbody>
+                <tr>
+                    <td style="width: 20%">消息标题: </td>
+                    <td style="word-break: break-all;word-wrap: break-word">{{form.messageTitle}}</td>
+                </tr>
+                <tr>
+                    <td>消息类型: </td>
+                    <td>{{form.typeStr}}</td>
+                </tr>
+                <tr>
+                    <td>消息范围: </td>
+                    <td ng-if='form.type.toString()=="0"'>{{form.scopeStr}}</td>
+                    <td ng-if='form.type.toString()!="0"'>合伙人--{{form.userName}} (ID:{{form.userId}})</td>
+                </tr>
+                <tr>
+                    <td>是否已读: </td>
+                    <td>{{form.isReadStr}}</td>
+                </tr>
+                <tr>
+                    <td>消息内容: </td>
+                    <td style="word-break: break-all;word-wrap: break-word">{{form.content}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

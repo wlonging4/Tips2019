@@ -1,0 +1,109 @@
+<div ng-controller="couponAddController">
+    <h3 class="page-title">
+        优惠券管理
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">编辑优惠券</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                        <a href="#/couponList" class="btn btn-warning btn-sm">返回</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="panel-body" id="js_add_or_edit_body">
+                    <form class="form-horizontal" id="js_add_huodong_form">
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">优惠券名称<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="form.name" name="name" class="form-control" maxlength="20" placeholder="请输入优惠券名称">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">适用范围<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="form.scope" name="scope" class="form-control" maxlength="30" placeholder="请输入适用范围">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">优惠券类型<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <select name="type" ng-model="form.type" class="form-control" autocomplete="off">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.key}}" ng-repeat="item in select.CouponTypeEnum track by $index" ng-selected="item.key == form.type">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">优惠金额<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9 form-inline">
+                                <input type="text" ng-model="form.amountCaption" name="amountCaption" class="form-control" maxlength="30" placeholder="优惠金额">
+                                <div class="checkbox">
+                                    <label for="isHigh">
+                                        <input id="isHigh" name="pointCaption" type="checkbox" ng-model="form.pointCaption" ng-checked="form.pointCaption == '最高'" value="最高"/>最高
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">优惠提示：</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="form.simpleCaption" name="simpleCaption" class="form-control" maxlength="30" placeholder="优惠提示">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">有效期<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="form.effectiveTimeCaption" maxlength="30" name="effectiveTimeCaption" class="form-control" placeholder="有效期" >
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">活动时间<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <div class="input-group input-daterange">
+                                    <input name="effectiveStartTime" type="text" ng-model="form.effectiveStartTime" readonly class="form-control form_datetimepicker startTime" ng-change="action.setStartTime()">
+                                    <span class="input-group-addon">to </span>
+                                    <input name="effectiveEndTime" ng-model="form.effectiveEndTime" type="text" readonly class="form-control form_datetimepicker endTime" ng-change="action.setEndTime()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">状态<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <div class="radio-list">
+                                    <label class="radio-inline">
+                                        <input type="radio" value="1" ng-model="form.status" name="status" ng-checked="form.status == 1">上架
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" value="0" ng-model="form.status" name="status" ng-checked="form.status == 0">下架
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="action.load()"></div>
+</div>
+<script>
+    $(function(){
+        // ComponentsPickers.init();
+        $(".form_datetimepicker").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN",
+            // startDate: current
+        })
+    });
+</script>
