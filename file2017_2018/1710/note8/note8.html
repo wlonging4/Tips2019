@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>三星Note 8全面解析</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background: #000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #FDE551; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 100px;  padding-top: 35px; background: #363636;   }
+        .zol_foot,.zol_foot a{  color: #999;  }
+        .head_white{  background: #fff;  }
+        .head_white img{  opacity: 0;  }
+        .bar1{  width: 1000px;  height: 2px;  background: #f0f0f0;  }
+
+        .head{  min-width: 1200px; width: 100%; overflow: hidden;  height: 700px;  position: relative;  margin: 0 auto;  }
+        .head-box{  width: 1920px;  height: 700px;  position: absolute;  overflow: hidden;  top:0;  left: 50%;  margin-left: -960px;  }
+        .head-mod{  position: absolute;  top: 0;  left: 0;  height: 700px;  width: 3840px;  }
+        .head-m{  float: left;  width: 1920px;  height: 700px;  }
+        .head-m1{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/head1.jpg") no-repeat 0 0;  }
+        .head-m2{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/head2.jpg") no-repeat 0 0;  }
+        .head-logo{  width: 1200px;  height: 58px;  position: absolute;  top: 25px;  left: 50%;  margin-left: -600px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/head_logo.png") no-repeat 0 0;  }
+        .head-btn{  width: 324px;  height: 54px;  position: absolute;  bottom: 50px;  left: 50%;  margin-left: -162px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/head_btn.png") no-repeat 0 0;  }
+        .head-ul{  height: 17px;  width: 58px;  position: absolute;  bottom: 15px;  left: 50%;  margin-left: -29px;  }
+        .head-ul li{  width: 17px;  height: 17px;  float: left;  margin: 0 6px;  cursor: pointer; /*-webkit-transition: all .3s linear;           transition: all .3s linear;*/  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/head_dots.png") no-repeat -17px 0;  }
+        .head-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/head_dots.png") no-repeat 0 0;  }
+
+        .navBg{  background: #006DD9;  }
+        .nav{  height: 60px;  }
+        .nav-ul{  width: 1200px;  height: 60px;  overflow: hidden;  }
+        .nav-ul li{  width: 150px;  float: left;  overflow: hidden;  height: 60px;  }
+        .nav-ul li.db{  width: 300px;  }
+        .nav-ul li a{  display: block;  width: 149px;  height: 24px;  text-align: center;  color: #fff;  font: 22px/24px 'Hiragino sans GB','microsoft yahei';  margin: 18px auto 0;  border-right: 1px solid #fff;  }
+        .nav-ul li.db a{  width: 299px;  }
+        .nav-ul li.ls a{  width: 148px;  border-right: none;  }
+        .nav-ul li a:hover{  text-decoration: none;  font: 24px/24px 'Hiragino sans GB','microsoft yahei';  }
+
+        .newsBg{  background: #000;  }
+        .news{  height: 450px;  }
+        .news1{  width: 650px;  height: 360px;  position: absolute;  left: 0;  background: #fff;  top: 35px; -webkit-border-radius: 8px;  border-radius: 8px; overflow: hidden;  }
+        .news1{  overflow: visible!important;  }
+        #focus1_677047 { overflow: visible!important; }
+        .news1 .focus1_nav{  width: 100%!important;  bottom: -37px!important;  text-align: center!important;  }
+        .news1 i{  width: 50px!important;  height: 5px!important;  -webkit-border-radius: 50%!important;  border-radius: 50%px!important;  text-indent: 9000px;  background: #fff!important;  }
+        .news1 i.act{  background: #006DD9!important;  }
+        .news1 .bai20{  display: block;  width: 650px;  height: 45px; text-align: center;  margin-top: -45px;  background: rgba(0,0,0,0.6)!important;  position: relative;  font: 22px/45px 'Hiragino sans GB','microsoft yahei';  color: #fff!important;  }
+
+        .news1 .focus1_nav i{  text-indent: 9999px;  -webkit-border-radius: 50%;  border-radius: 50%;  width: 14px!important;  height: 14px!important;  }
+        .news2{  width: 515px;  height: 140px;  position: absolute;  right: 0;  top: 35px;  }
+        .news2 .bai20{  display: inline-block;  height: 40px;  border-radius: 20px;  border: 1px solid #fff;  padding: 0 36px;  margin-bottom: 14px;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .news2 .hui12{  display: block;  color: #777;  font: 12px/22px 'simsun';  text-indent: 24px;  }
+        .news2 .hong12{  color: #006DD9;  }
+        .news3{  width: 295px;  height: 195px;  position: absolute;  right: 220px;  top: 200px;  }
+        .news-pro{  width: 326px;  height: 227px;  position: absolute;  right: -70px;  top: 180px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/news_pro.png") no-repeat 0 0;  }
+
+        .hisBg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his.jpg") no-repeat top center;  }
+        .his{  height: 854px;  }
+        .his-ul{  width: 1200px;  height: 20px;  margin: 530px auto 0;  }
+        .his-ul li{  width: 172px;  height: 20px;  margin: 0 14px; cursor: pointer;  float: left;  display: block;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_btns.png") no-repeat 0 0;  -webkit-transition: all .3s linear;           transition: all .3s linear; }
+        .his-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_btns.png") no-repeat -172px 0;  }
+        .his-li{  position: absolute;  bottom: 35px;  left: 50%;  }
+        .his-li1{  width: 183px;  height: 321px;  margin-left: -91px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_li1.png") no-repeat 0 0;  }
+        .his-li2{  width: 175px;  height: 322px;  margin-left: -88px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_li2.png") no-repeat 0 0;  }
+        .his-li3{  width: 168px;  height: 321px;  margin-left: -84px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_li3.png") no-repeat 0 0;  }
+        .his-li4{  width: 166px;  height: 320px;  margin-left: -83px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_li4.png") no-repeat 0 0;  }
+        .his-li5{  width: 161px;  height: 320px;  margin-left: -81px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_li5.png") no-repeat 0 0;  }
+        .his-li6{  width: 164px;  height: 351px;  margin-left: -82px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/his_li6.png") no-repeat 0 0;  }
+        .his-box{  width: 1100px;  height: 110px;  overflow: hidden;  position: relative;  margin: 60px auto 0;  }
+        .his-mod{  position: absolute; width:6600px;  height: 110px;  left: 0;  top: 0;  }
+        .his-mod .bai20{  display: block;  font: 22px/46px 'Hiragino sans GB','microsoft yahei';  }
+        .his-mod .bai12{  font: 12px/22px 'simsun';  text-indent: 24px; color: #DFE1E9;  }
+        .his-mod .hong12{  color: #DFE1E9;  }
+
+        .confBg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf.jpg") no-repeat top center;  }
+        .conf{  height: 890px;  }
+        .conf-m{  height: 82px;  width: 270px;  position: absolute;  }
+        .conf-m-l{  padding-right: 92px;  text-align: right;  left: 0;  }
+        .conf-m-r{  width: 260px;  padding-left: 92px;  text-align: left;  right: 0;  }
+        .conf-m-l1{  top: 220px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf_li1.png") no-repeat right center;  }
+        .conf-m-l2{  top: 390px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf_li2.png") no-repeat right center;  }
+        .conf-m-l3{  top: 560px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf_li3.png") no-repeat right center;  }
+        .conf-m-r1{  top: 220px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf_li4.png") no-repeat left center;  }
+        .conf-m-r2{  top: 390px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf_li5.png") no-repeat left center;  }
+        .conf-m-r3{  top: 560px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/conf_li6.png") no-repeat left center;  }
+        .confBg{  cursor: url('http://2.zol-img.com.cn/zt/tm_59f/961bc419fc/conf_pen.png'),auto;  }
+        .conf-mod{  width: 750px;  height: 120px;  position: absolute;  bottom: 65px;  left: 275px;  }
+        .conf-m .hui20{  display: block; height: 36px; overflow: hidden; color: #333333;  font: 26px/36px 'Hiragino sans GB','microsoft yahei';  }
+        .conf-m .hui20 i{   font-style: normal;  display: inline-block;  width: 24px;  vertical-align: -2px;  height: 24px;  margin: 2px 8px 0;  background: url(http://2.zol-img.com.cn/zt/tm_59f/96a429f667/conf_dot.png) no-repeat bottom center;  }
+        .conf-m .hui20 em{   font-style: normal; display: inline-block;    }
+        .conf-m .hui16{  display: block; color: #666666;  font: 14px/20px 'simsun';  }
+        .conf-m .hong12,.conf-m .slh,.conf-m span.slh{ display: none; }
+        .conf-m-l .hui16{  text-align: right;  }
+        .conf-m-r .hui16{  text-align: left;  }
+        .conf-m-l .hui20{  text-align: right;  }
+        .conf-m-r .hui20{  text-align: left;  }
+        .conf-mod .hei20{  display: block;  font: 22px/48px 'Hiragino sans GB','microsoft yahei';  }
+        .conf-mod .hui12{  font: 12px/22px 'simsun';  text-indent: 24px; color: #656565;  }
+        .conf-mod .hong12{  color: #006DD9;  }
+
+        .anaBg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/ana.jpg") no-repeat top center;  }
+        .ana{  height: 780px;  }
+        .ana-box1{  width: 660px;  height: 420px;  overflow: hidden;  position: relative;  background: #fff;  margin: 185px auto 0;  }
+        .ana-mod1{  position: absolute;  top: 0;  left: 0;  height: 420px;  }
+        .ana-box2{  width: 1100px;  height: 105px;  overflow: hidden;  position: relative;  margin: 52px auto 0;  }
+        .ana-mod2{  position: absolute;  width:6600px;  top: 0;  left: 0;  height: 105px;  }
+        .ana-side{  position: absolute;  top: 185px;  width: 250px;  height: 425px;  }
+        .ana-side1{  left: 0;  }
+        .ana-side2{  right: 0;  }
+        .ana-side .ln{  height: 29px;  }
+        .ana-side .pic_box_bg{  bottom: 20px!important;  }
+        .ana-side .bai18{  bottom: 20px!important;  }
+        .ana-side .bai18:hover{  color: #fff;  font: 18px/80px 'Hiragino sans GB','microsoft yahei';  text-decoration: none;  }
+        .ana-mod2 .bai20{  display: block;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  text-indent: 10px;  }
+        .ana-mod2 .bai12{  font: 12px/22px 'simsun'; display: block;  text-indent: 24px; color: #f0f0f0; padding: 0 10px;   }
+        .ana-mod2 .hong12{  color: #f0f0f0;  }
+
+        .pic1Bg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic1.jpg") no-repeat top center;  }
+        .pic1{  height: 720px;  }
+        .pic1-mod{  width: 1200px;  height: 435px;  margin: 155px auto 0;  }
+        #carousel-left677062{  width: 48px!important;  height: 100px!important;  bottom: -230px!important;  left: 130px!important;  z-index: 9!important;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic1_btns.png") no-repeat 0 0!important;  }
+        #carousel-right677062{  width: 48px!important;  height: 100px!important;  bottom: -230px!important;  right: 130px!important;  z-index: 9!important;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic1_btns.png") no-repeat -48px 0!important;  }
+
+        .pic2{  min-width: 1200px; width: 100%; overflow: hidden;  height: 700px;  position: relative;  margin: 0 auto;  }
+        .pic2-box{  width: 1920px;  height: 700px;  position: absolute;  overflow: hidden;  top:0;  left: 50%;  margin-left: -960px;  }
+        .pic2-mod{  position: absolute;  top: 0;  left: 0;  height: 700px;   }
+        .pic2-t{  width: 504px;  height: 84px;  position: absolute; z-index: 3;  top: 50px;  left: 50%;  margin-left: -252px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic2_t.png") no-repeat 0 0;  }
+        .pic2-btn{  width: 48px;  height: 100px;  position: absolute; z-index: 3; left: 50%; top: 315px;  cursor: pointer;   }
+        .pic2-btn1{  margin-left: -500px; background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic2_btns.png") no-repeat 0 0;  }
+        .pic2-btn2{  margin-left: 450px; background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic2_btns.png") no-repeat -48px 0;  }
+        .pic2-phone{  position: relative;  width: 841px;  height: 389px;  margin: 175px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/pic2_phone.png") no-repeat top center;  }
+
+        .funBg{  background: #000;  }
+        .fun{  height: 820px;  }
+        .fun-t{  width: 504px;  height: 84px;  margin: 50px auto 35px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/fun_t.png") no-repeat top center;  }
+        .fun-mod1{  width: 1000px;  height: 480px;  background: #000;  margin: 0 auto;  overflow: hidden;  }
+        .fun-mod2{  width: 740px;  height: 120px;  background: #000;  margin: 20px auto 0;  overflow: hidden;  }
+        .fun-mod2 .bai20{  display: block;  font: 22px/42px 'Hiragino sans GB','microsoft yahei'; }
+        .fun-mod2 .bai12{  font: 12px/22px 'simsun'; display: block;  text-indent: 24px; color: #f0f0f0; padding: 0 10px;   }
+        .fun-mod2 .hong12{  color: #f0f0f0;  }
+
+        .moreBg{  background: #f7f7f7;  }
+        .more{  height: 690px;  }
+        .more-t{  width: 504px;  height: 84px;  margin: 50px auto;  background: url("http://2.zol-img.com.cn/zt/tm_59f/9616651dd2/more_t.png") no-repeat 0 0;  }
+        .more-c{  height: 470px;  margin: 0 auto;  background: #000;  }
+        .more-c .bai20{  display: block;  font: 22px/35px 'Hiragino sans GB','microsoft yahei'; margin-bottom: 2px; }
+        .more-c .bai12{  font: 12px/22px 'simsun'; display: block;  text-indent: 24px; color: #f0f0f0;  }
+        .more-c .hong12{  color: #f0f0f0;  }
+
+        .conf-m,.his-li{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .conf-m:hover,.his-li:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+        @-webkit-keyframes rect {
+            0%{  -webkit-transform: rotate(0deg) scale(1);  }
+            25%{  -webkit-transform: rotate(45deg) scale(1.2);  }
+            45%{  -webkit-transform: rotate(90deg) scale(1);  }
+            50%{  -webkit-transform: rotate(90deg) scale(1);  }
+            75%{  -webkit-transform: rotate(135deg) scale(1.2);  }
+            95%{  -webkit-transform: rotate(180deg) scale(1);  }
+            100%{  -webkit-transform: rotate(180deg) scale(1);  }
+        }
+        @keyframes rect {
+            0%{  transform: rotate(0deg) scale(1);  }
+            25%{  transform: rotate(45deg) scale(1.2);  }
+            45%{  transform: rotate(90deg) scale(1);  }
+            50%{  transform: rotate(90deg) scale(1);  }
+            75%{  transform: rotate(135deg) scale(1.2);  }
+            95%{  transform: rotate(180deg) scale(1);  }
+            100%{  transform: rotate(180deg) scale(1);  }
+        }
+        .rectMov{  -webkit-animation: rect 2s ease-in infinite; animation: rect 2s ease-in infinite;  }
+        @-webkit-keyframes rem1 {
+            0%{  opacity: 0.5;  }
+            100%{  opacity: 0;  }
+        }
+        @keyframes rem1 {
+            0%{  opacity: 0.5;  }
+            100%{  opacity: 0;  }
+        }
+        .rem1{  -webkit-animation: rem1 .2s ease-in forwards; animation: rem1 .2s ease-in forwards;  }
+
+        .head-mod .sys_edit_element .sys_btn,.pic2 .sys_edit_element .sys_btn{ left: 20%!important; top: 30px!important; }
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<div class="head">
+    <div class="head-box">
+        <div class="head-mod">
+            <{data[0]}>
+        </div>
+        <div class="head-logo"></div>
+        <div class="head-btn"><{data[1]}></div>
+        <ul class="head-ul">
+            <li class="act"></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<!--导航-->
+<div class="wrap1 navBg">
+    <div class="wrapper1 nav">
+        <ul class="nav-ul">
+            <li><a href="#news" target="_self">最新资讯</a></li>
+            <li class="db"><a href="#his" target="_self">历代三星Note进化史</a></li>
+            <li><a href="#conf" target="_self">配置参数</a></li>
+            <li><a href="#ana" target="_self">真机解析</a></li>
+            <li><a href="#pic1" target="_self">产品图赏</a></li>
+            <li><a href="#pic2" target="_self">样张赏析</a></li>
+            <li class="ls"><a href="#more" target="_self">更多有趣</a></li>
+        </ul>
+    </div>
+</div>
+<!--资讯-->
+<div class="wrap1 newsBg" id="news">
+    <div class="wrapper1 news">
+        <div class="news1"><{data[2]}></div>
+        <div class="news-pro"></div>
+        <div class="news2"><{data[3]}></div>
+        <div class="news3"><{data[4]}></div>
+    </div>
+</div>
+<!--历史-->
+<div class="wrap1 hisBg" id="his">
+    <div class="wrapper1 his">
+        <ul class="his-ul">
+            <li class="act"><div class="his-li his-li1"></div></li>
+            <li><div class="his-li his-li2"></div></li>
+            <li><div class="his-li his-li3"></div></li>
+            <li><div class="his-li his-li4"></div></li>
+            <li><div class="his-li his-li5"></div></li>
+            <li><div class="his-li his-li6"></div></li>
+        </ul>
+        <div class="his-box">
+            <div class="his-mod"><{data[5]}></div>
+        </div>
+    </div>
+</div>
+<!--配置-->
+<div class="wrap1 confBg" id="conf">
+    <div class="wrapper1 conf">
+        <div class="conf-m conf-m-l conf-m-l1"><{data[6]}></div>
+        <div class="conf-m conf-m-l conf-m-l2"><{data[7]}></div>
+        <div class="conf-m conf-m-l conf-m-l3"><{data[8]}></div>
+        <div class="conf-m conf-m-r conf-m-r1"><{data[9]}></div>
+        <div class="conf-m conf-m-r conf-m-r2"><{data[10]}></div>
+        <div class="conf-m conf-m-r conf-m-r3"><{data[11]}></div>
+        <div class="conf-mod"><{data[12]}></div>
+    </div>
+</div>
+<!--解析-->
+<div class="wrap1 anaBg" id="ana">
+    <div class="wrapper1 ana">
+        <div class="ana-box1">
+            <div class="ana-mod1"><{data[13]}></div>
+        </div>
+        <div class="ana-box2">
+            <div class="ana-mod2"><{data[14]}></div>
+        </div>
+        <div class="ana-side ana-side1"><{data[15]}></div>
+        <div class="ana-side ana-side2"><{data[16]}></div>
+    </div>
+</div>
+<!--美图1-->
+<div class="wrap1 pic1Bg" id="pic1">
+    <div class="wrapper1 pic1">
+        <div class="pic1-mod"><{data[17]}></div>
+    </div>
+</div>
+<!--美图2-->
+<div class="pic2" id="pic2">
+    <div class="pic2-box">
+        <div class="pic2-mod">
+            <{data[21]}>
+        </div>
+        <div class="pic2-t"></div>
+        <div class="pic2-btn pic2-btn1"></div>
+        <div class="pic2-btn pic2-btn2"></div>
+        <div class="pic2-phone"></div>
+    </div>
+</div>
+<!--功能-->
+<div class="wrap1 funBg" id="fun">
+    <div class="wrapper1 fun">
+        <div class="fun-t"></div>
+        <div class="fun-mod1"><{data[18]}></div>
+        <div class="fun-mod2"><{data[19]}></div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 moreBg" id="more">
+    <div class="wrapper1 more">
+        <div class="more-t"></div>
+        <div class="more-c">
+            <{data[20]}>
+        </div>
+    </div>
+</div>
+
+
+<script charset="GBK">
+    /*头部*/
+    $('.head-ul li').bind('mouseenter',function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        var nowI=$('.head-ul li').index(this);
+        $('.head-mod').stop().animate({'left':'-'+nowI*1920+'px'},1000);
+    });
+    /*历史*/
+    $('.his-ul li').bind('mouseenter',function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        var nowI=$('.his-ul li').index(this);
+        $('.his-mod').stop().animate({'left':'-'+nowI*1100+'px'},500);
+    });
+    /*配置*/
+    var confDots=$('.conf-m');
+    confDots.bind('mouseenter',function () {$(this).find('.hui20 i').addClass('rectMov');});
+    confDots.bind('mouseleave',function () {$(this).find('.hui20 i').removeClass('rectMov');});
+    /*分析*/
+    var anaLis=$('.ana-side table table');
+    var anaLis1=$('.ana-side table .pic_box_bg');
+    var anaLis2=$('.ana-side table .bai18');
+    var anaDis1=$('.ana-mod1');
+    var anaDis2=$('.ana-mod2');
+    anaLis.bind('mouseenter',function () {
+        var nowI=anaLis.index(this);
+        anaLis1.eq(nowI).addClass('rem1');
+        anaLis2.eq(nowI).addClass('rem1');
+        anaDis1.stop().animate({'left':'-'+nowI*660+'px'},400);
+        anaDis2.stop().animate({'left':'-'+nowI*1100+'px'},400);
+    });
+    anaLis.bind('mouseleave',function () {
+        var nowI=anaLis.index(this);
+
+        anaLis1.eq(nowI).removeClass('rem1');
+        anaLis2.eq(nowI).removeClass('rem1');
+
+    });
+    /*美图2*/
+    var pic2=$('.pic2-mod');
+    var pic2Len=$('.pic2-mod table img').length;
+    var pic2Btn1=$('.pic2-btn1');
+    var pic2Btn2=$('.pic2-btn2');
+    var nowPic2Flag=0;
+    function pic2Mov(i) {
+        pic2.stop().animate({'left':'-'+nowPic2Flag*1920+'px'});
+    }
+    pic2Btn2.bind('click',function () {
+        nowPic2Flag++;
+        if(nowPic2Flag>pic2Len-1){ nowPic2Flag=pic2Len-1 }
+        pic2Mov(nowPic2Flag);
+    });
+    pic2Btn1.bind('click',function () {
+        nowPic2Flag--;
+        if(nowPic2Flag<0){ nowPic2Flag=0 }
+        pic2Mov(nowPic2Flag);
+    });
+
+
+
+</script>
+</body>
+</html>

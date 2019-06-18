@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>computex5</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        html{background: #fff;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#fff;color: #ccc; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*动画*/
+        @-webkit-keyframes float-mm {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-10px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes float-mm {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(0px,-10px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .float-mm{ -webkit-animation: float-mm 1s ease-in-out infinite;  animation: float-mm 1s ease-in-out infinite;  }
+        @-webkit-keyframes btnMove {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-5px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes btnMove {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(0px,-5px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .btnMove{  -webkit-animation: btnMove 1s ease-in infinite; animation: btnMove 1s ease-in infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+
+        /*结构*/
+        .header{  width: 640px;  height: 437px;  overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/head_bg.jpg") no-repeat 0 0;  }
+        .head-art1{  width: 438px;  height: 198px;  margin: 95px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/head_art1.png") no-repeat 0 0;  }
+        .head-art2{  width: 523px;  height: 41px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/head_art2.png") no-repeat 0 0;  }
+        .head-btn{  position: absolute;  height: 58px;  bottom: 20px;  }
+        .head-btn1{  left: 140px;  width: 175px;  }
+        .head-btn2{  right: 140px;  width: 158px;  }
+        .head-dot{  width: 31px;  height: 31px;  position: absolute;  bottom: 62px;  right: 126px;  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/head_dot.png") no-repeat 0 0;  }
+        .nav{  width: 640px;  height: 57px; margin: 0 auto 30px; }
+        .nav1{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/nav1.jpg") no-repeat 0 0;  }
+        .nav2{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/nav2.jpg") no-repeat 0 0;  }
+        .nav3{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/nav3.jpg") no-repeat 0 0;  }
+        .nav4{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/nav4.jpg") no-repeat 0 0;  }
+        .nav5{  background: url("http://2.zol-img.com.cn/zt/tm_592/68ddbb51fa/nav5.jpg") no-repeat 0 0;  }
+        .nav a{  height: 57px;  width: 160px;  display: block;  float: left; background: transparent;  }
+        .t{  width: 620px;  height: 73px;  margin:0 auto 20px;  }
+        .t-chief{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/t_chief.png") no-repeat 0 0;  }
+        .t-best{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/t_best.png") no-repeat 0 0;  }
+        .t-girl{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/t_girl.png") no-repeat 0 0;  }
+        .t-hot{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/t_hot.png") no-repeat 0 0;  }
+        .t-boat{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/t_boat.png") no-repeat 0 0;  }
+        .t-media{  background: url("http://2.zol-img.com.cn/zt/tm_592/68ddbb51fa/t_media.png") no-repeat 0 0;  }
+        .t-boss{  background: url("http://2.zol-img.com.cn/zt/tm_592/68ddbb51fa/t_boss.png") no-repeat 0 0;  }
+        .t-bg{  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/t_bg.png") no-repeat 0 0; width: 190px; height: 50px; padding: 23px 345px 0 85px;  }
+        .more{  width: 620px;  height: 63px; margin: 15px auto 0;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/more_bg.png") no-repeat 0 0;  }
+        .more-btn{  width: 48px;  height: 32px;  margin: 4px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_592/573a08cddd/more.png") no-repeat 0 0;  }
+        .blk{  display: block;!important;  }
+        .non{  display: none!important;  }
+
+        .pics{  width: 620px;  height: 345px;  overflow: hidden; position:relative;  background: #000;  margin: 0 auto 20px;  }
+        .live-c .photo-tab{  width: 620px;  height: 345px;  position: relative;  margin: 0 auto;  overflow: hidden;  }
+        .pics .photo-tab .photo{  width: 620px;  height: 345px;  overflow: hidden;  margin: 0 auto;  }
+        .pics .photo-tab .photo ul{  width: 1000%;  height: 345px;  position: absolute;  }
+        .pics .photo-tab ul li{  float: left;  width: 620px;  margin: 0;  padding: 0;  -webkit-transform: translate3d(0,0,0);  transform: translate3d(0,0,0);  }
+
+        .pre{  width: 620px;  overflow: hidden;  margin: 0 auto 20px;  }
+        .pre-mod{  width: 620px;  min-height: 160px;  overflow: hidden; }
+        .pre-mod img{  padding-bottom: 15px; padding-left: 15px;  }
+        .pre-mod  .hei20{  color: #34495E;  font: bold 23px/34px 'Hiragino sans GB';  }
+        .pre-mod .hui20{  color: #666;  font: 20px/32px 'simsun';  }
+        .pre-mod .hong12{  font-size: 20px;  color: #50C1F8;  }
+
+        .chief{  width: 620px;  overflow: hidden;  margin: 0 auto 20px;  }
+        .chief-mod{  width: 620px;  min-height: 210px;  overflow: hidden;  }
+        .chief-mod img{  padding-bottom: 15px;  }
+        .chief-mod .hui18{  display: block;  padding: 0 10px;  /*text-align: right;*/  color: #666;  font: 18px/22px 'simsun';  }
+        .chief-mod tbody > tr:nth-child(even) td .hui18{text-align:right;}
+        /*.chief-mod tbody > tr:nth-child(even) td .hui20{text-align:right;}*/
+        .chief-mod .hui18 span{  color: #34495E;  font: bold 24px/38px 'Hiragino sans GB';  }
+        .chief-mod .hui20{  color: #666;  font: 20px/28px 'simsun';  padding: 0 10px;  }
+        .chief-mod .hong12{  font-size: 20px;  color: #50C1F8;  }
+
+        .best{  width: 630px;  overflow: hidden;  margin: 0 auto 20px;  }
+        .best-mod{  width: 630px;  height: 620px;  overflow: hidden;  }
+        .best-mod .hui16{  display: block;  color: #666;  font: 16px/42px 'simsun';  }
+
+        .girl{  width: 630px;  overflow: hidden;  margin: 0 auto 40px;  }
+        .girl-mod{  width: 630px;  height: 550px;  overflow: hidden;  }
+        .girl-mod table img{  padding-bottom: 10px;  }
+
+        .vd{  width: 620px;  margin: 0 auto 20px;  }
+        .vd-mod{  width: 620px;  height: 365px;  background: #000;  margin-bottom: 20px;  }
+
+        .vd2{  width: 630px;  overflow: hidden; margin-bottom: 30px;  }
+        .vd2-mod{  width: 630px;  min-height: 360px;  overflow: hidden;  }
+        .vd2-mod .ln{  height: 10px;  }
+        .vd2 .bai12{  color: #fff;  font: 16px/32px 'simsun';  }
+
+        .boat{  width: 620px;  overflow: hidden;  margin: 0 auto 20px;  }
+        .boat-mod{  width: 620px;  height: 365px;  background: #000;  }
+
+        .live1,.live2{  width: 620px;  overflow: hidden;  margin: 0 auto 20px;  }
+        .live1-mod{  height: 195px;  }
+        .live1-mod img{  padding-right: 15px;  }
+        .live1 .hei20{  color: #34495E;  font: bold 23px/32px 'Hiragino sans GB';  }
+        .live1 .hui20{  color: #666;  font: 20px/31px 'simsun';  }
+        .live1 .hong12{  font-size: 20px;  color: #50C1F8;  }
+        .t-bg .hei20{  color: #34495E;  font: bold 36px/50px 'Hiragino sans GB';  }
+
+        .artLeft{  width: 620px;  overflow: hidden;  margin: 0 auto 20px;  }
+        .artLeft-mod{  width: 620px;  min-height: 210px;  overflow: hidden;  }
+        .artLeft-mod img{   padding-right: 15px;  }
+        .artLeft-mod .ln{   height: 15px;  }
+        .artLeft-mod .hei20{  color: #34495E;  font: bold 23px/34px 'Hiragino sans GB';  }
+        .artLeft-mod .hui20{  color: #666;  font: 20px/32px 'simsun';  }
+        .artLeft-mod .hong12{  font-size: 20px;  color: #50C1F8;  }
+
+        .p5-art1{  width: 620px;  height: 150px;  margin: 0 auto 20px;  }
+        .p5-art1 .lan20{  display: block;  margin-top: -15px;  color: #50C2F8;  font: 32px/60px 'Hiragino sans GB';  }
+        .p5-art1 .hui20{  display: block;  color: #34495E;  font: 20px/30px 'simsun'  }
+        .p5-art1 .hong12{  font-size: 20px;  color: #50C1F8;  }
+
+        .p5-pic1{  width: 630px;  height: 160px;  margin: 0 auto 15px;  }
+
+        .p5-art2{  width: 620px;  height: 320px;  margin: 0 auto 15px;  }
+        .p5-art2 .ln{  height: 15px;  }
+
+        .boss,.media{ margin: 0 auto 20px; width: 620px; }
+        .boss .more{ margin-bottom: 30px; }
+        .boss-mod{  width: 620px;  min-height: 160px;  overflow: hidden;  }
+        .media-mod{  width: 620px;  min-height: 160px;  overflow: hidden;  }
+        .boss-mod .ln{height: 15px;}
+        .boss-mod img{ padding-left: 15px; }
+        .media-mod .ln{height: 15px;}
+        .p5-art2 img,.media-mod img{ padding-right: 15px; }
+        .p5-art2 .hei20,.boss-mod .hei20,.media-mod .hei20{  color: #34495E;  font: bold 23px/34px 'Hiragino sans GB';  }
+        .p5-art2 .hui20,.boss-mod .hui20,.media-mod .hui20{  color: #666;  font: 20px/32px 'simsun';  }
+        .p5-art2 .hong12,.boss-mod .hong12,.media-mod .hong12{  font-size: 20px;  color: #50C1F8;  }
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading" style="display: none;"><span class="loading-ring"></span></div>
+<div class="header">
+    <div class="head-art1"></div>
+    <div class="head-art2"></div>
+    <div class="head-btn head-btn1"><{data[0]}></div>
+    <div class="head-btn head-btn2"><{data[1]}></div>
+    <div class="head-dot float-mm"></div>
+</div>
+<div class="nav nav5 clearfix">
+    <a href="http://m.zol.com.cn/topic/6407186.html" target="_blank"></a>
+    <a href="http://m.zol.com.cn/topic/6407970.html" target="_blank"></a>
+    <a href="http://m.zol.com.cn/topic/6408002.html" target="_blank"></a>
+    <a href="http://m.zol.com.cn/topic/6408124.html" target="_blank"></a>
+</div>
+<div class="p5-art1"><{data[2]}></div>
+<div class="p5-pic1"><{data[3]}></div>
+<div class="p5-art2"><{data[4]}></div>
+<div class="boss">
+    <div class="t t-boss"></div>
+    <div class="boss-mod"><{data[5]}></div>
+    <div class="more">
+        <div class="more-btn btnMove"></div>
+    </div>
+</div>
+<div class="media">
+    <div class="t t-media"></div>
+    <div class="media-mod"><{data[6]}></div>
+    <div class="more">
+        <div class="more-btn btnMove"></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    if (/*window.jQuery*/location.hostname == 'article.zol.com.cn') {
+        document.write('<style id="edit-style">html, body, .flipview { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style>');
+    } else {
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t<script src=\"http://icon.zol-img.com.cn/wap/js/z.flipview.js\"></s" + "cript>\n\t<script></s" + "cript>");
+        document.write("<script src=\'http://active.zol.com.cn/17active/0122beiang/swiper.min.js'></s" + "cript>");
+    }
+
+    /*loading处理*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+    });
+
+    var pre_more=document.querySelector('.pre .more');
+    var pre_mod=document.querySelector('.pre-mod');
+
+    var chief_more=document.querySelector('.chief .more');
+    var chief_mod=document.querySelector('.chief-mod');
+
+    var artLeft_more=document.querySelector('.artLeft .more');
+    var artLeft_mod=document.querySelector('.artLeft-mod');
+
+    var boss_more=document.querySelector('.boss .more');
+    var boss_mod=document.querySelector('.boss-mod');
+
+    var media_more=document.querySelector('.media .more');
+    var media_mod=document.querySelector('.media-mod');
+
+    var vd2_more=document.querySelector('.vd2 .more');
+    var vd2_mod=document.querySelector('.vd2-mod');
+
+    function pushDown(btn,box,num,baseHt,flg) {
+        var totalNum=box.querySelectorAll('img').length;
+        console.log(totalNum);
+        if(totalNum>num){
+            if(flg==1){
+                box.style.height=Math.ceil(num/2)*baseHt+'px';
+                btn.addEventListener('click',function () {
+                    box.style.height=Math.ceil(totalNum/2)*baseHt+'px';
+                    btn.classList.add('non');
+                });
+                return false;
+            }
+            box.style.height=num*baseHt+'px';
+            btn.addEventListener('click',function () {
+                box.style.height=totalNum*baseHt+'px';
+                btn.classList.add('non');
+            })
+        }else{
+            btn.classList.add('non');
+        }
+    }
+    //pushDown(pre_more,pre_mod,4,160);
+    //pushDown(chief_more,chief_mod,4,210);
+    //pushDown(artLeft_more,artLeft_mod,3,210);
+    //pushDown(vd2_more,vd2_mod,4,180,1);
+    pushDown(media_more,media_mod,2,160);
+    pushDown(boss_more,boss_mod,4,160);
+
+
+    window.wechatShareData = {
+        "title":"2017台北电脑展开幕，ZOL全程与您分享最新动态",
+        "icon":"http://2.zol-img.com.cn/zt/tm_592/6a1ef82996/share.jpg",
+        "description":" ",
+        "url":"http://m.zol.com.cn/topic/6407186.html"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

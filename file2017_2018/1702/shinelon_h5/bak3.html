@@ -1,0 +1,1340 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gbk">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>炫龙校园行赛车游戏</title>
+    <script type="text/javascript">
+        if (/Android (d+.d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { background:#000; height: 100%; -webkit-tap-highlight-color:rgba(0,0,0,0);  overflow: hidden;}
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei"; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        .logo1{ position: fixed; left:20px; top:20px; width: 80px; height: 80px; z-index:999; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/logo1.png) no-repeat;}
+        .logo2{ position: fixed; right:20px; top:20px; width: 106px; height: 70px; z-index:999; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/logo2.png) no-repeat;}
+        .logo3{ position: fixed; display: none; right:20px; top:55px; width: 84px; height: 100px; z-index:999; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/logo3.png) no-repeat;}
+        .index{display:block; z-index:3; position: relative;  overflow: hidden; width:100%; height:100%; background:#000 url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/index-bg.jpg) no-repeat top center;-webkit-background-size:cover; background-size:cover;}
+        #index-rule{ display: block;  opacity: 1;  z-index:6; position: absolute; left:50%; top:180px; width:502px; height:500px; margin-left:-251px;/* margin-top:-550px;*/}
+        #index-rule .index-rule-close{ width:60px; height:60px; position: absolute; right:5px; top:0;}
+        .p1-art{  width: 500px;  height: 180px;  margin: 110px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/p1_art1.jpg") no-repeat 0 0;  }
+        .p1-box{  width: 640px;  height: 450px;  position: relative;  margin:0 auto 0;  }
+        .p1-logo{  width: 126px; height: 150px;  position: absolute;  top: 20px;  left: 50%;  margin-left: -63px;  background: url("http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/p1_logo.png") no-repeat 0 0;  }
+        .p1-pro1{  width: 370px;  height: 300px;  right: 0;  position: absolute;  top: 210px;  background: url("http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/p1_pro1.png") no-repeat 0 0;  }
+        .p1-pro2{ width: 296px;  height: 400px;  left: 10px;  top: 60px;  position: absolute;  background: url("http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/p1_pro2.png") no-repeat 0 0;  }
+
+        .index .start-go{ display:none; position: absolute; left:50%; bottom:5%; margin-left:-130px; width: 260px; height: 186px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/start-go.png) no-repeat;}
+
+        .index .loading-go{ display:none; position: absolute; left:50%; bottom:150px; margin-left:-291px; width:582px; height:63px; background: url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/loading-bg.png) no-repeat;}
+        .index .loading-go .loading-line{ background:url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/loading.png) no-repeat right top; border:5px solid #333; -webkit-animation: loadingLine 1.5s linear forwards; animation: loadingLine 1.5s linear forwards; border-radius:50px; position: absolute; left:14px; top:9px; width:10%; height:38px; display:inline-block;}
+        .index .loading-go .loading-car{ -webkit-animation: loadingCar 1.5s linear forwards; animation: loadingCar 1.5s linear forwards; position: absolute; left:14px; top:9px; width:195px; height:57px;}
+        .index .loading-go .load-text{ display:block; width:100%; height:40px; font-size:34px; color:#fff; margin-top: 58px; text-align: center; opacity: 0.22;}
+
+        @keyframes loadingLine{
+            from{width:10%;}
+            to{width:90%;}
+        }
+        @-webkit-keyframes loadingLine{
+            from{width:10%;}
+            to{width:90%;}
+        }
+        @keyframes loadingCar{
+            from{left:14px;}
+            to{left:412px;}
+        }
+        @-webkit-keyframes loadingCar{
+            from{left:14px;}
+            to{left:412px;}
+        }
+
+        @-webkit-keyframes sparkle {
+            0% { opacity:1 }
+            100% { opacity:0;}
+        }
+
+        @keyframes sparkle {
+            0% { opacity:1; }
+            100% { opacity:0;}
+        }
+        @-webkit-keyframes sparkle1 {
+            0% { opacity:0.5; }
+            100% { opacity:1;}
+        }
+
+        @keyframes sparkle1 {
+            0% { opacity:0.5; }
+            100% { opacity:1;}
+        }
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        .ltr1{ -webkit-animation: ltr 0.8s ease-in 0s forwards;  animation: ltr 0.8s ease-in 0s forwards;   }
+        .ltr2{ -webkit-animation: ltr 0.8s ease-in 0.2s forwards;  animation: ltr 0.8s ease-in 0.2s forwards;  }
+        .ltr3{ -webkit-animation: ltr 0.8s ease-in 0.4s forwards;  animation: ltr 0.8s ease-in 0.4s forwards;  }
+        .ltr4{ -webkit-animation: ltr 0.8s ease-in 0.6s forwards;  animation: ltr 0.8s ease-in 0.6s forwards;  }
+        .ltr5{ -webkit-animation: ltr 0.8s ease-in 0.8s forwards; animation: ltr 0.8s ease-in 0.8s forwards;  }
+        .ttb1{ -webkit-animation: ttb 0.8s ease-in 0s forwards;  animation: ttb 0.8s ease-in 0s forwards;   }
+        .ttb2{ -webkit-animation: ttb 0.8s ease-in 0.2s forwards;  animation: ttb 0.8s ease-in 0.2s forwards;  }
+        .ttb3{ -webkit-animation: ttb 0.8s ease-in 0.4s forwards;  animation: ttb 0.8s ease-in 0.4s forwards;  }
+        .ttb4{ -webkit-animation: ttb 0.8s ease-in 0.6s forwards;  animation: ttb 0.8s ease-in 0.6s forwards;  }
+        .ttb5{ -webkit-animation: ttb 0.8s ease-in 0.8s forwards; animation: ttb 0.8s ease-in 0.8s forwards;  }
+        .btt1{ -webkit-animation: btt 0.8s ease-in 0s forwards;  animation: btt 0.8s ease-in 0s forwards;   }
+        .btt2{ -webkit-animation: btt 0.8s ease-in 0.2s forwards;  animation: btt 0.8s ease-in 0.2s forwards;  }
+        .btt3{ -webkit-animation: btt 0.8s ease-in 0.4s forwards;  animation: btt 0.8s ease-in 0.4s forwards;  }
+        .btt4{ -webkit-animation: btt 0.8s ease-in 0.6s forwards;  animation: btt 0.8s ease-in 0.6s forwards;  }
+        .btt5{ -webkit-animation: btt 0.8s ease-in 0.7s forwards; animation: btt 0.8s ease-in 0.8s forwards;  }
+        .rtl1{ -webkit-animation: rtl 0.8s ease-in 0s forwards;  animation: rtl 0.8s ease-in 0s forwards;   }
+        .rtl2{ -webkit-animation: rtl 0.8s ease-in 0.2s forwards;  animation: rtl 0.8s ease-in 0.2s forwards;  }
+        .rtl3{ -webkit-animation: rtl 0.8s ease-in 0.4s forwards;  animation: rtl 0.8s ease-in 0.4s forwards;  }
+        .rtl4{ -webkit-animation: rtl 0.8s ease-in 0.6s forwards;  animation: rtl 0.8s ease-in 0.6s forwards;  }
+        .rtl5{ -webkit-animation: rtl 0.8s ease-in 0.8s forwards;  animation: rtl 0.8s ease-in 0.8s forwards;  }
+        .show-rule{ -webkit-animation: sparkle 1.5s ease-in 5.2s forwards;  animation: sparkle 1.5s ease-in 5.2s forwards;  }
+
+        .box{ z-index:1; height:100%; position: relative;}
+        .sky-bg1{z-index:3; position: absolute; left:0; top:0; width:100%; height:100%; background:url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/bg.jpg) no-repeat top center;-webkit-background-size:100% 100%; background-size:100% 100%;}
+        .sky-bg2{z-index:2; position: absolute; left:0; top:0; width:100%; height:100%; background:url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/bg-hh.jpg) no-repeat top center;-webkit-background-size:100% 100%; background-size:100% 100%;}
+        .sky-bg3{z-index:1; position: absolute; left:0; top:0; width:100%; height:100%; background:url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/bg-ws.jpg) no-repeat top center;-webkit-background-size:100% 100%; background-size:100% 100%;}
+        .box canvas{z-index:4; display:block; position: absolute; left:0; top:0; width:100%; height:100%;}
+
+        @-webkit-keyframes opacity1 {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes opacity1 {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .time { opacity: 0; z-index: 6; overflow: hidden; padding: 30px 9px 6px 66px; width: 265px; height: 48px; background: url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/time.png) no-repeat right 0; position: absolute; left: 65px; bottom: 6px; }
+        .time .core { -moz-transform: translateX(340px); -ms-transform: translateX(340px); -o-transform: translateX(340px); -webkit-transform: translateX(340px); transform: translateX(340px); -moz-animation: lage 48s linear forwards; -o-animation: lage 48s linear forwards; animation: lage 48s linear forwards; -webkit-animation: lage 48s linear forwards; position: absolute; right: 6px; top: 30px; width: 340px; background: rgba(0,0,0,0.5); height: 46px; display: block; }
+
+        .rapid {opacity: 0; z-index: 7; position: absolute; left: 10px; bottom: 2px; width: 102px; height: 105px; background: url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/rapid.png) no-repeat; }
+        .rapid span{-moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); -webkit-transform-origin: center 40px; transform-origin: center 40px; -moz-transition: all 1s; -o-transition: all 1s; -webkit-transition: all 1s; transition: all 1s; width: 9px; height: 43px; position: absolute; left: 50%; top: 50%; margin-top: -40px; margin-left: -3px; background: url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/needle.png) no-repeat center top; }
+
+        .statistics { opacity: 0; z-index: 5; position: absolute; left: 37px; top: 40px; width: 405px; height: 80px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/statistics.png) no-repeat; }
+        .statistics span { position: absolute; top: 10px; font-size: 26px; color: #fff; text-shadow: 2px 2px 1px #a54a20; font-family: "Microsoft YaHei"; }
+        .statistics .tortoise { left: 110px; }
+        .statistics .bolt { left: 340px; }
+
+        .pop-box{ z-index: 8; width: 285px; height: 158px; position: absolute; left: 207px; margin-top: -79px; left:207px; top:50%;}
+        .time .core{ -webkit-transform: translateX(290px); transform: translateX(290px); -webkit-animation: lage 46s linear forwards; animation: lage 46s linear forwards; position: absolute; right: 6px; top: 25px; width: 290px; background: rgba(0,0,0,0.5); height: 40px; display: block; }
+        @-webkit-keyframes lage {
+            0% {  -webkit-transform: translateX(290px); transform: translateX(290px); }
+            100% { -webkit-transform: translateX(0); transform: translateX(0); }
+        }
+        @keyframes lage {
+            0% { -webkit-transform: translateX(290px); transform: translateX(290px); }
+            100% { -webkit-transform: translateX(0); transform: translateX(0); }
+        }
+
+        .turnL{ z-index:9; position: absolute; left:0; bottom:75px; width:200px; height:268px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/turnL.png) no-repeat center center;}
+        .turnR{z-index:9;position: absolute;right:0;bottom: 75px;width: 200px;height: 268px;background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/turnR.png) no-repeat center center;}
+
+
+        .countDown{ display:none; z-index:2; width:175px; height:175px; position: absolute; left:50%; top:50%; margin-left:-88px; margin-top:100px;}
+        .countDown.down .one{-webkit-animation: countD 1.1s forwards 2.2s; animation: countD 1.1s forwards 2.2s;-webkit-transform: scale(0); transform: scale(0); width:100%; height:100%; position: absolute; left:0; top:0; }
+        .countDown.down .two{-webkit-animation: countD 1.1s forwards 1.1s; animation: countD 1.1s forwards 1.1s;-webkit-transform: scale(0); transform: scale(0); width:100%; height:100%; position: absolute; left:0; top:0;}
+        .countDown.down .three{-webkit-animation: countD 1.1s forwards; animation: countD 1.1s forwards;-webkit-transform: scale(0); transform: scale(0); width:100%; height:100%; position: absolute; left:0; top:0;}
+        .countDown.down img{ display:block; margin:0 auto;}
+
+        @-webkit-keyframes countD{
+            0% {-webkit-transform: scale(0);transform: scale(0);}
+            50% {-webkit-transform: scale(1);transform: scale(1);}
+            100% {-webkit-transform: scale(0);transform: scale(0);}
+        }
+        @keyframes countD{
+            0% {-webkit-transform: scale(0);transform: scale(0);}
+            50% {-webkit-transform: scale(1);transform: scale(1);}
+            100% {-webkit-transform: scale(0);transform: scale(0);}
+        }
+
+        .audio-icon{ z-index:9; position: fixed; top:105px; right:50px; width:38px; height:38px; background: url(http://2.zol-img.com.cn/zt/tm_579/573da364a4/audio.png) no-repeat;}
+        .audio-icon.chg{  top: 165px;  right: 43px;  }
+        .audio-icon.pase{ background:url(http://2.zol-img.com.cn/zt/tm_579/5a68f188a2/audio-pase.png) no-repeat;}
+        .layer{ display:none; width:100%; height:100%; background: #000; opacity: 0.6;position: absolute; left:0; top:0; z-index:10;}
+        .end-pop1{ display:none; z-index:11; position: absolute; left:50%; top:10%; margin-left:-253px; width:507px; height:505px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-bg.png) no-repeat;}
+        .end-pop1 .statistics{ opacity: 1; top:175px; left:95px;}
+        .end-pop1 .statistics span{ font-size:26px; width:90px; text-align: center;}
+        .end-pop1 .statistics .bolt{ left:225px;}
+        .end-pop1 .statistics .tortoise{ left:56px;}
+        .end-pop1 span.sid{ display:block; text-align: center; width:100%; position: absolute; left:0; top:80px; font-size:38px; color:#fff; }
+        .end-pop1 span.sid b{ font-size:50px; color:#D63A0F;}
+        .end-pop1 input[type=text]{ color:#CCCCCC; padding-left:5px; width:385px; height:52px; background:rgba(238,238,238,0.4);  border:none; position: absolute; left:64px; top:310px; font-size:24px; line-height: 52px;}
+
+        .end-pop2{display:none; z-index:12; position: absolute; left:50%; top:50%; margin-left:-290px; margin-top:-390px; width: 582px; height: 780px; background: url(http://2.zol-img.com.cn/zt/tm_58b/40cbd7e32d/list-bg.png) no-repeat; overflow: hidden;}
+        .end-pop2 a{ opacity: 0.5; -webkit-animation: sparkle1 0.5s infinite alternate .2s;animation: sparkle1 0.5s infinite alternate .2s; width:414px;height:79px;position: absolute;left:100px;bottom:138px;background: url(http://2.zol-img.com.cn/zt/tm_57b/d4484efabe/end-text.png) no-repeat;}
+        .end-pop2 ul{ position: absolute; left:92px; top:461px; height:200px; overflow:hidden; color:#fff;}
+        .end-pop2 ul li{ height:40px; line-height: 38px;}
+        .end-pop2 ul li span{ display:block; float:left; font-size:20px; text-align: center;}
+        .end-pop2 ul .name{width: 142px;}
+        .end-pop2 ul .dis{width: 108px;}
+        .end-pop2 ul .times{width: 212px;}
+        .end-pop2 .success{ padding-top:70px;  font-weight: normal; display:block; text-align: center; font-size:48px; color:#D63A0F;}
+        .end-pop2 .game{ position: absolute; left:50%;    bottom: 40px;  margin-left: 20px; width:170px; height:60px; line-height: 58px; font-size:28px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat; color:#fff; text-align: center;}
+        .end-pop2 .play-again{position: absolute;  left: 108px;  bottom: 40px; width:170px; height:60px; line-height: 60px; font-size:28px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat; color:#fff; text-align: center;}
+        .end-pop2 .share-firend{position: absolute; left:300px; bottom:258px; width:170px; height:60px; line-height: 58px; font-size:28px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat; color:#fff; text-align: center;}
+        .end-pop2 .button{  width: 400px; top: 215px; left: 90px;  height: 80px;  display: block;  background: url("http://2.zol-img.com.cn/zt/tm_58b/3fce19ce6b/list_link.png") no-repeat 0 0; margin: 0 auto;  }
+        .end-pop2 .end-info{  text-align: center;  color: #fff; font: 24px/34px 'microsoft yahei';  }
+        @-webkit-keyframes hand-scale1 {
+            0% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+            50% {-webkit-transform: scale(1); transform: scale(1);left: 54px; bottom:90px}
+            100% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+        }
+        @keyframes hand-scale1 {
+            0% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+            50% {-webkit-transform: scale(1); transform: scale(1);left: 54px; bottom:90px}
+            100% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+        }
+
+
+        .end-pop3{ display:none; z-index:13; position: absolute; left:50%; top:50%; margin-left:-290px; margin-top:-390px; width: 582px; height: 780px; background: url(http://2.zol-img.com.cn/zt/tm_58b/54ef0e4d74/rule-bg.png) no-repeat;}
+        .end-pop3 .close{display:block; width:60px; height:60px; position: absolute; left:0; top:0;}
+
+        .end-pop4{display:none; z-index:12; position: absolute; left:50%; top:50%; margin-left:-280px; margin-top:-400px; width:560px; height:800px; background: url(http://2.zol-img.com.cn/zt/tm_57b/d4484efabe/list-bg.png) no-repeat;}
+        .end-pop4 .close{width: 44px;height: 44px;position: absolute;right:30px;top: 0px;}
+        .end-pop4 a.button{ opacity: 0.5; -webkit-animation: sparkle1 0.5s infinite alternate .2s;animation: sparkle1 0.5s infinite alternate .2s; width:414px;height:79px;position: absolute;left:100px;bottom:138px;background: url(http://2.zol-img.com.cn/zt/tm_57b/d4484efabe/end-text.png) no-repeat;}
+        .end-pop4 ul{ position: absolute; left:78px; top:240px; height:225px; overflow:hidden; color:#fff;}
+        .end-pop4 ul li{ height:45px; line-height: 44px;}
+        .end-pop4 ul li span{ display:block; float:left; font-size:20px; text-align: center;}
+        .end-pop4 ul .name{width: 142px;}
+        .end-pop4 ul .dis{width: 105px;}
+        .end-pop4 ul .times{width: 212px;}
+        .end-pop4 .game{ position: absolute; left:50%; bottom:43px; margin-left:-96px; width:170px; height:60px; line-height: 58px; font-size:28px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat; color:#fff; text-align: center;}
+        .end-pop4 .play-again{position: absolute; left:74px; bottom:258px; width:170px; height:60px; line-height: 58px; font-size:28px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat; color:#fff; text-align: center;}
+        .end-pop4 .share-firend{position: absolute; left:300px; bottom:258px; width:170px; height:60px; line-height: 58px; font-size:28px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat; color:#fff; text-align: center;}
+        .end-pop4 .big-round{opacity: 0.5;position: absolute;left: 42px;bottom: 156px;width: 46px;height: 46px;border:3px solid #FAE2A2;border-radius: 30px;}
+        .end-pop4 .sma-round{opacity: 0.5;position: absolute;left: 50px;bottom: 164px;width: 32px;height: 32px;border:2px solid #FAE2A2;border-radius: 24px;}
+        .end-pop4 .hand{-webkit-animation: 1s hand-scale ease infinite; animation: 1s hand-scale ease infinite; -webkit-transform: scale(1.1); transform: scale(1.1); position: absolute;left: 58px;bottom: 80px;width:64px;height:97px;background: url(http://2.zol-img.com.cn/zt/tm_57b/d4484efabe/hand.png) no-repeat;}
+
+        @-webkit-keyframes hand-scale {
+            0% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+            50% {-webkit-transform: scale(1); transform: scale(1);left: 54px; bottom:90px}
+            100% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+        }
+        @keyframes hand-scale {
+            0% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+            50% {-webkit-transform: scale(1); transform: scale(1);left: 54px; bottom:90px}
+            100% {-webkit-transform: scale(1.1); transform: scale(1.1);left: 58px; bottom:80px}
+        }
+
+
+        .loading { display: block; z-index:10; position: absolute; width: 80px; height: 70px; left: 50%; top: 50%; margin: -35px 0 0 -40px; -webkit-border-radius: 4px; border-radius: 4px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-background-size: 28px 28px; background-size: 28px 28px; }
+        .loading-ring { display: block; position: absolute; width: 48px; height: 48px; left: 50%; top: 50%; margin: -24px 0 0 -24px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-small { display: block; position: relative; padding-left: 20px; min-width: 16px; min-height: 16px; }
+        .loading-small, .loading-more:before { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABwklEQVR42q2VzytEURTH35vBoJQQiUpBjKSaJDslpWDyB1hNkWQlSqlUNrJko5JKkVIaREqxwWYmqYhIpSSgEoSa8T117nQ73blv49Snee/MmfO+58d948ZiMcfDXHGf1G9CoVDqOh6POxmWJNWgD3SCfPa/gi2wDK5MyV1NYQCUgDowAto9lG+CNUCiLsEhJdQV/oBbcE/qWWEb6AFNhoTdDFmlcvoMgb/gGRyDKdAM8kA9ODfEt0PZjUxInzlpSqM+vYM7UCy+WwV7GEamyqUSNoJyS78obhcUab43EOEpl4KgnnDAYwCDXLpuYfChVRFRCWlFenkoJqsAc8K3CA5E38Mo3VUKC9Ik84Md4aNdHDL0uZDE+TxKnQC1wtcFvmzNVk+V1gAmhW+W18l0sl5IqY/lroMsLSBgKPURjKYRRmsTxcSTSuG8CJgBZcLXAb4t7Vlw+BySnYJsvm4BwyJ4HJxYkj3w4qd6mACfIBdsi2Bapw3Da0we14Q8y7QiS9qrShn19gxcgGnQyifGb5uy2nxakSP+sbQaMAb2wRNX0o9lDnJljt5DsihPO8kPqrK8YFfANcdSK5Lqze3+91/AH+qubE2+81VRAAAAAElFTkSuQmCC) no-repeat 3px 50%; -webkit-background-size: 10px 10px; background-size: 10px 10px; }
+        .loading-more:before { content: "z"; display: inline-block; position: absolute; width: 16px; height: 16px; top: 50%; left: 50%; margin: -8px 0 0 -63px; vertical-align: top; color: rgba(0,0,0,0); }
+        .loading-small .loading-ring, .loading-more .loading-ring { display: block; position: absolute; width: 16px; height: 16px; left: 0; top: 50%; margin: -8px 0 0 0; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAyVBMVEX////MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMxqq56nAAAAQnRSTlMAAAECAwQGHgoSGAsluZUjGUPPCZ18kj/TVAWoKyc4PmEgT7IaTDFS6CHBELrgiPt4XvcPeTmmow7ZOyYfYjybMBbD6lo6AAAA90lEQVR4Xn3T1W7FMBRE0RmHGS5DmZmZ/f8f1UZuIsVyPI/ZS/LLCdSoJhzX81xBQt9//ut+GJVB7NMAujlJunXYJ9QXzrZPaOmEWN9XHO4EuJMftUJ90ceNbFMJmgG4mCdthwlA7I2pAMwAhYztQNR504ihcVe6VoAzuY+osABHHmB6ZQE8nmB8agPzKVbnNnBxia/aBuQ1bm6FBaR3KOTIAgh48qGhA50AHzNaAQIZmwA7wNUTzUB14PmlMh9MC/iaBdRS15VY5CX70w6R1eRNA70O8P3jc0R9vVeX37M0FIMdJJc/QRklvue6jtAz0P79XlN7+Re0zA3NrREElAAAAABJRU5ErkJggg==) no-repeat 0 0; -webkit-background-size: contain; background-size: contain; }
+        .loading-more { position: relative; font: 0/100px Arial; color: rgba(0,0,0,0); border-color: transparent; text-align: center; text-indent: 30px; }
+        .loading-more .loading-ring { display: inline-block; position: absolute; left: 50%; vertical-align: top; margin-left: -63px; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .Mount,.Tree,.ball,.backgrounds,.cars{ position: absolute; left:0; top:0; z-index:1; width:0; height:0; overflow: hidden;}
+        .submit-box{ position: absolute;  left:67px; top:390px; width:392px; height:60px; text-align: center;}
+        .submit-box input,.submit-box span{ border: none;  width:170px; height:60px; background: url(http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/submit-btn.png) no-repeat;  color:#fff; line-height: 60px; text-align: center;}
+
+
+        .count-down{width:101px;height:101px;z-index: 5;position:absolute;left: 37px;top: 40px;background: url(http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/countdown.png) no-repeat;padding-left: 32px;padding-top: 34px;}
+        .count-down img{width: 20px;height: 28px;display:block;float:left;}
+
+        .share-box{display:none; width:100%; height:100%; position: fixed; left:0; top:0; background: url("http://icon.zol-img.com.cn/m/images/wechat-tips.png") 100% 0px no-repeat rgba(0, 0, 0, 0.901961); z-index:999;}
+        .share-box span{position: relative;display: block;width: 382px;height: 64px;line-height: 64px;margin: 0 auto;top: 624px;border: 2px solid #fff;color: #fff;font-size: 30px;text-align: center;}
+    </style>
+</head>
+<body>
+<div class="loading loading-visible">
+    <span class="loading-ring"></span>
+</div>
+<div class="logo1"></div>
+<div class="logo2"></div>
+<div class="logo3"></div>
+<div class="audio-icon"></div>
+<div class="index">
+    <div class="timer"><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></div>
+    <div class="p1-art btt1"></div>
+    <div class="p1-box">
+        <div class="p1-logo btt2"></div>
+        <div class="p1-pro1 ltr2"></div>
+        <div class="p1-pro2 rtl2"></div>
+    </div>
+    <div class="start-go"></div>
+    <div class="loading-go">
+        <span class="loading-line">&nbsp;</span>
+        <span class="loading-car">
+			<img src="http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/load-car.png" alt="" />
+		</span>
+        <div class="load-text">loading</div>
+    </div>
+</div>
+<div class="countDown">
+	<span class="three">
+		<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/three.png" alt="" />
+	</span>
+    <span class="two">
+		<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/two.png" alt="" />
+	</span>
+    <span class="one">
+		<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/onw.png" alt="" />
+	</span>
+</div>
+<div class="box">
+    <div class="sky-bg1"></div>
+    <div class="sky-bg2"></div>
+    <div class="sky-bg3"></div>
+    <div class="count-down">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/4.png" alt="" /><img src="http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/5.png" alt="" />
+    </div>
+    <div class="statistics">
+        <span class="bolt">0</span>
+        <span class="tortoise">0</span>
+    </div>
+    <div class="time">
+        <span id="core"></span>
+    </div>
+    <div class="rapid">
+        <span>&nbsp;</span>
+    </div>
+    <div class="pop-box">
+        <img id="pop-img" src="" alt="" />
+    </div>
+    <div class="turnL"></div>
+    <div class="turnR"></div>
+    <div class="cars">
+        <img src="http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/car1.png"/>
+        <img src="http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/car2.png"/>
+        <img src="http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/car3.png"/>
+    </div>
+    <div class="backgrounds">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/bg1.png" alt="" />
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/bg2.png" alt="" />
+    </div>
+    <div class="ball">
+        <img src="http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/ball.png" alt="" />
+    </div>
+    <div class="Tree">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/tree.png" alt="" />
+    </div>
+    <div class="Mount">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/mountain.png" alt="" />
+    </div>
+    <div class="layer"></div>
+    <div class="end-pop1">
+        <span class="sid">恭喜您狂飚 <b>133</b> Km</span>
+        <div class="statistics">
+            <span class="bolt">0</span>
+            <span class="tortoise">0</span>
+        </div>
+        <form>
+            <input type="text" id="tel" maxlength="11" placeholder="请输入您的手机号提交成绩" />
+            <input type="hidden" id="dis" value="0" />
+            <div class="submit-box clearfix">
+                <input type="button" id="submit" value="提交" />
+                <!--<span class="next-list">下一页</span>-->
+            </div>
+        </form>
+    </div>
+    <div class="end-pop2">
+        <b class="success">提交成功</b>
+        <p class="end-info">您当前最好成绩是&nbsp;<span id="end-info">-</span>&nbsp;名</p>
+        <a class="button" target="_blank" href="http://www.shinelon.com/active.php?id=374">&nbsp;</a>
+        <ul class="list"></ul>
+        <a href="javascript:;" class="play-again">重玩游戏</a>
+        <a href="javascript:;" class="game">游戏规则</a>
+    </div>
+    <div class="end-pop4">
+        <b class="big-round">&nbsp;</b>
+        <b class="sma-round">&nbsp;</b>
+        <b class="hand">&nbsp;</b>
+        <a class="button" href="http://m.zol.com.cn/topic/5952709.html">&nbsp;</a>
+        <ul class="list"></ul>
+        <a href="javascript:;" class="play-again">再玩一次</a>
+        <a href="javascript:;" class="share-firend" id="share2">分享好友</a>
+        <a href="javascript:;" class="game">活动规则</a>
+    </div>
+    <div class="end-pop3">
+        <a href="javascript:;" class="close">&nbsp;</a>
+    </div>
+    <div id="index-rule">
+        <span class="index-rule-close"></span>
+        <img src="http://2.zol-img.com.cn/zt/tm_58b/3f6fa279cb/index-rule.png" alt="" />
+    </div>
+    <canvas id="canvas" width="640" height="1008"></canvas>
+</div>
+<div class="share-box">
+    <span role="button" onclick="this.parentNode.style.display='none';" >我知道了 </span>
+</div>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_07.mp3" autoplay="autoplay" loop="loop" id="bgMu"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_09.mp3" id="quick"></audio><!--吃到加速道具-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_10.mp3" id="show"></audio><!--吃到减速道具-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_04.mp3" id="countDown"></audio><!--倒计时-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_05.mp3" id="firing"></audio><!--车启动-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_06.mp3" id="quickCar"></audio><!--加速-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_08.mp3" loop="loop" id="loop"></audio>
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script charset="gbk">
+    !(function(){
+        var speed = 1,
+            distance = 0,
+            objs = [],
+            canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            rapid = document.querySelector('.rapid span'),
+            quick = 0,
+            slow = 0;
+        now = 0,
+            now2 = 0,
+            carChange = 0,
+            carImages = document.querySelectorAll('.cars img'),
+            carIndex = 0,
+            carFlag = 0,
+            car = null,
+            isStart = false,
+            timerStop = null,
+            timerStop1 = null,
+            flag = true,
+            backgroundImages = document.querySelectorAll('.backgrounds img'),//背景图集
+            backgroundIndex = 0,
+            backgroundFlag = 0,
+            endTime = null,
+            playMu = null,
+            popIndex = 0,
+            popImgDom = document.getElementById('pop-img'),
+            popBox= document.querySelector('.pop-box'),
+            musicFlag = true;
+
+
+        function Car(){
+            this.img = carImages[carIndex];
+            this.w = 264;
+            this.h = 229;
+            this.x = 0;
+            this.y = 0;
+            this.dx = (canvas.width-this.w)/2;
+            this.dy = canvas.height-this.w;
+            this.dw = this.w;
+            this.dh = this.h;
+            this.iTack = 7;
+            return this;
+        }
+        Car.prototype = {
+            changeImg : function(){
+                carFlag += 1;
+                var carSp;
+                if(speed > 1){
+                    carSp = 1;
+                }else if(speed < 1){
+                    carSp = 5;
+                }else{
+                    carSp = 3;
+                }
+                if(carFlag % carSp == 0){
+                    carIndex += 1;
+                    carIndex = carIndex > (carImages.length - 1) ? 0 : carIndex;
+                }
+                this.img = carImages[carIndex];
+            },
+            turnLeft:function(){
+                var _this = this;
+                _this.dx -= 110;
+
+                if(_this.dx<=78){
+                    _this.dx = 78;
+                    _this.iTack = 2;
+                }else{
+                    _this.iTack = 7;
+                };
+                return false;
+            },
+            turnRight:function(){
+                var _this = this;
+                _this.dx += 110;
+                if(_this.dx>=298){
+                    _this.dx = 298;
+                    _this.iTack = 4;
+                }else{
+                    _this.iTack = 7;
+                };
+                return false;
+            }
+        }
+
+        function Line(json){
+            oImg = new Image();
+            oImg.src = 'http://2.zol-img.com.cn/zt/tm_579/573da364a4/line.png';
+            if(json){
+                dw = json.dw;
+                dh = json.dh;
+                dy = json.dy;
+                objs.unshift({img:oImg,dw:json.dw,dh:json.dh,dy:json.dy,track:3});
+            }else{
+                objs.unshift({img:oImg,dw:4,dh:6,track:3});
+            }
+        }
+
+        function Ball(json){
+            oImg = document.querySelector('.ball img');
+            !json && (json = {});
+            if(json.quick){
+                quick = json.quick;
+            }else{
+                var quick = Math.random();
+                quick = quick >= 0.3 ? 1 : 2;
+            }
+            if(!json.track){
+                var track = Math.random();
+                track = track >= 0.5 ? 2 : 4;
+            }else{
+                track = json.track;
+            }
+            objs.unshift({img:oImg,w:220,h:220,dw:json.dw,dh:json.dh,track:track,quick:quick,type:json.type});
+
+        }
+
+        function square(){
+            oImg = new Image();
+            oImg.src = 'http://2.zol-img.com.cn/zt/tm_579/573da364a4/start.png';
+            objs.unshift({img:oImg,w:579,h:162,track:6});
+        }
+
+        function Mountain(json){
+            oImg = document.querySelector('.Mount img');
+            var track = Math.random()*10;
+
+            if(track >= 5){
+                track = 1;
+                w = 546;
+                h = 425;
+                if(json){
+                    dw = json.dw;
+                    dh = json.dh;
+                    dy = json.dy;
+                    dx = json.dx;
+                    track = json.track
+                    objs.unshift({img:oImg,w:w,h:h,dw:dw,dh:dh,dx:dx,dy:dy,track:track});
+                }else{
+                    objs.unshift({img:oImg,w:w,h:h,track:track});
+                }
+            }else{
+                track = 5;
+                w = 570;
+                h = 425;
+                if(json){
+                    dw = json.dw;
+                    dh = json.dh;
+                    dy = json.dy;
+                    dx = json.dx;
+                    track = json.track
+                    objs.unshift({img:oImg,w:w,h:h,dw:dw,dh:dh,dx:dx,dy:dy,track:track});
+                }else{
+                    objs.unshift({img:oImg,w:w,h:h,track:track});
+                }
+            }
+
+        };
+        function Tree(json){
+            oImg = document.querySelector('.Tree img');
+
+            var track = Math.random();
+            if(track >= 0.5){
+                track = 1;
+                w = 546;
+                h = 425;
+                if(json){
+                    dw = json.dw;
+                    dh = json.dh;
+                    dy = json.dy;
+                    dx = json.dx
+                    objs.unshift({img:oImg,w:w,h:h,dw:dw,dh:dh,dx:dx,dy:dy,track:track});
+                }else{
+
+
+                    objs.unshift({img:oImg,w:w,h:h,track:track});
+                }
+            }else{
+                track = 5;
+                w = 570;
+                h = 425;
+                if(json){
+                    dw = json.dw;
+                    dh = json.dh;
+                    dy = json.dy;
+                    dx = json.dx
+                    objs.unshift({img:oImg,w:w,h:h,dw:dw,dh:dh,dx:dx,dy:dy,track:track});
+                }else{
+                    objs.unshift({img:oImg,w:w,h:h,track:track});
+                }
+            }
+        };
+        function backgroundMove(){
+            !(function(){
+                background = backgroundImages[backgroundIndex];
+                draw(background,0,0,canvas.width,canvas.height,0,0,canvas.width,canvas.height);
+
+                backgroundFlag += 1;
+                var bTime;
+                if(speed > 1){
+                    bTime = 2;
+                }else if(speed < 1){
+                    bTime = 6;
+                }else{
+                    bTime = 4;
+                }
+                if(backgroundFlag % bTime == 0){
+                    backgroundIndex += 1;
+                    backgroundIndex = backgroundIndex > (backgroundImages.length - 1) ? 0 : backgroundIndex;
+                }
+            })();
+
+            car.changeImg();
+
+        }
+
+        function move(fn){
+            move.timer = setTimeout(function(){
+                objs.forEach(function(ele,index){
+                    if(ele.dx >= canvas.width || ele.dx < -570 || ele.dy >= canvas.height){
+                        objs.splice(index,1)
+                    }
+                });
+                if(isStart){
+                    objs.forEach(function(ele,index){
+                        if(objs[index].dy >= 630 && objs[index].dy <= 700){
+                            if(car.iTack == 4 && objs[index].track == 4 || (car.iTack == 2 && objs[index].track == 2) || (car.iTack == 7 && objs[index].track == 7)){
+                                if(objs[index].disabled) return;
+                                objs[index].disabled = true;
+                                if(objs[index].quick == 1){
+                                    quick += 1;
+                                    document.querySelector('.box > .statistics .bolt').innerHTML = quick;
+                                    document.querySelector('.end-pop1 .statistics .bolt').innerHTML = quick;
+                                    objs[index].y = 500;
+                                    speed = 2;
+                                    rapid.style.WebkitTransform = 'rotate(90deg)';
+                                    rapid.style.transform = 'rotate(90deg)';
+                                    if(timerStop) clearTimeout(timerStop);
+                                    speed = 1;
+                                    timerStop = setTimeout(function(){
+                                        rapid.style.WebkitTransform = 'rotate(0)';
+                                        rapid.style.transform = 'rotate(0)';
+
+                                    },500);
+
+                                    if(playMu) clearTimeout(playMu);
+                                    setTimeout(function(){
+                                        objs.splice(index,1);
+                                    },10);
+                                    if(musicFlag){
+                                        document.getElementById('quick').play();
+                                    }
+                                    playMu = setTimeout(function(){
+                                        document.getElementById('quick').pause();
+                                    },1000);
+                                }else if(objs[index].quick == 2){
+                                    objs[index].y = 500;
+                                    slow += 1;
+                                    document.querySelector('.box > .statistics .tortoise').innerHTML = slow;
+                                    document.querySelector('.end-pop1 .statistics .tortoise').innerHTML = slow;
+                                    rapid.style.WebkitTransform = 'rotate(-90deg)';
+                                    rapid.style.transform = 'rotate(-90deg)';
+
+                                    if(timerStop1) clearTimeout(timerStop1);
+                                    var timerStop1= setTimeout(function(){
+                                        rapid.style.WebkitTransform = 'rotate(0)';
+                                        rapid.style.transform = 'rotate(0)';
+                                        speed = 1;
+                                    },500);
+                                    speed = 0.3;
+
+
+                                    setTimeout(function(){
+                                        objs.splice(index,1);
+                                    },10);
+                                    if(musicFlag){
+                                        document.getElementById('show').play();
+                                    }
+                                    setTimeout(function(){
+                                        document.getElementById('show').pause();
+                                    },1000);
+                                }
+                            }
+                        }
+                    });
+                }
+                context.clearRect(0,0,canvas.width,canvas.height);
+                if(isStart){
+                    backgroundMove();
+                }
+                objs.forEach(function(ele,index){
+                    !ele.speed && (ele.speed = 0.1);
+                    var temp={};
+                    switch(ele.track){
+                        case 1:
+                            ele.x = 0;
+                            ele.y = 0;
+                            if(!ele.dh) ele.dh = ele.h/20;
+                            if(!ele.dw) ele.dw = ele.w/20;
+                            if(!ele.dx) ele.dx = 210;
+                            if(!ele.dy) ele.dy = 410;
+
+                            temp = {
+                                dh:ele.dh+speed*ele.speed,
+                                dw:ele.dw+speed*ele.speed,
+                                dx:ele.dx-speed*ele.speed*1.3,
+                                dy:ele.dy-speed*ele.speed*0.39,
+                            };
+                            break;
+                        case 2:
+                            if(ele.quick == 1){
+                                ele.x = 0;
+                            }else{
+                                ele.x = 280;
+                            }
+                            if(!ele.y) ele.y = 0;
+                            if(!ele.dx) ele.dx = 280;
+                            if(!ele.dy) ele.dy = 410;
+                            if(!ele.dw) ele.dw = ele.w/10;
+                            if(!ele.dh) ele.dh = ele.h/10;
+
+                            temp = {
+                                dw:ele.dw+speed*ele.speed*1.2,
+                                dh:ele.dh+speed*ele.speed*1.2,
+                                dy:ele.dy+speed*ele.speed,
+                                dx:ele.dx-speed*ele.speed*1.1
+                            };
+                            break;
+                        case 3://line
+                            ele.x = 0;
+                            ele.y = 0;
+                            ele.w = 17;
+                            ele.h = 42;
+                            if(!ele.dx) ele.dx = parseInt((canvas.width-ele.dw)/2);
+                            if(!ele.dy) ele.dy = 415;
+
+                            temp = {
+                                dh:ele.dh+speed*ele.speed*10,
+                                dw:ele.dw+speed*ele.speed*0.6,
+                                dy:ele.dy+speed*ele.speed*10,
+                                dx:ele.dx-speed*ele.speed*0.3
+                            };
+                            //console.log(ele.img,ele.x,ele.y,ele.w,ele.h,ele.dx,ele.dy,ele.dw,ele.dh);
+                            break;
+                        case 4://ball
+                            if(ele.quick == 1){
+                                ele.x = 0;
+                            }else{
+                                ele.x = 280;
+                            }
+                            if(!ele.y) ele.y = 0;
+                            if(!ele.dx) ele.dx = 350;
+                            if(!ele.dy) ele.dy = 410;
+                            if(!ele.dw) ele.dw = ele.w/10;
+                            if(!ele.dh) ele.dh = ele.h/10;
+
+                            temp = {
+                                dw:ele.dw+speed*ele.speed*1.2,
+                                dh:ele.dh+speed*ele.speed*1.2,
+                                dy:ele.dy+speed*ele.speed,
+                                dx:ele.dx+speed*ele.speed*0.1
+                            };
+                            break;
+                        case 5:
+                            ele.x = 770;
+                            ele.y = 0;
+                            if(!ele.dh) ele.dh = ele.h/20;
+                            if(!ele.dw) ele.dw = ele.w/20;
+                            if(!ele.dx) ele.dx = 410;
+                            if(!ele.dy) ele.dy = 403;
+                            temp = {
+                                dh:ele.dh+speed*ele.speed,
+                                dw:ele.dw+speed*ele.speed,
+                                dx:ele.dx+speed*ele.speed*0.3,
+                                dy:ele.dy-speed*ele.speed*0.39
+                            };
+                            ele.flag = !0;
+                            break;
+                        case 6:
+                            ele.x = 0;
+                            ele.y = 0;
+                            if(!ele.dh) ele.dh = ele.h/0.98;
+                            if(!ele.dw) ele.dw = ele.w/0.98;
+                            if(!ele.dx) ele.dx = -10;
+                            if(!ele.dy) ele.dy = 750;
+                            if(isStart){
+                                temp = {
+                                    dh:ele.dh+speed*8,
+                                    dw:ele.dw+speed*15,
+                                    dx:ele.dx-speed*8,
+                                    dy:ele.dy+speed*20
+                                };
+                            }
+                            //console.log(ele.img,ele.x,ele.y,ele.w,ele.h,ele.dx,ele.dy,ele.dw,ele.dh);
+                            break;
+                        case 7:
+                            if(ele.quick == 1){
+                                ele.x = 0;
+                            }else{
+                                ele.x = 280;
+                            }
+                            if(!ele.y) ele.y = 0;
+                            if(!ele.dx) ele.dx = 315;
+                            if(!ele.dy) ele.dy = 410;
+                            if(!ele.dw) ele.dw = ele.w/10;
+                            if(!ele.dh) ele.dh = ele.h/10;
+
+                            temp = {
+                                dw:ele.dw+speed*ele.speed*1.2,
+                                dh:ele.dh+speed*ele.speed*1.2,
+                                dy:ele.dy+speed*ele.speed,
+                                dx:ele.dx-speed*ele.speed*0.5
+                            };
+                            break;
+                        default:
+                            break;
+                    }
+                    //console.log(objs);
+                    draw(ele.img,ele.x,ele.y,ele.w,ele.h,ele.dx,ele.dy,ele.dw,ele.dh,ele);
+                    if(temp.dw) ele.dw = temp.dw;
+                    if(temp.dh) ele.dh = temp.dh;
+                    if(temp.dx) ele.dx = temp.dx;
+                    if(temp.dy) ele.dy = temp.dy;
+                    ele.speed = ele.speed * 1.2;
+                });
+                fn();
+                move.timer = setTimeout(arguments.callee,30);
+
+            },30);
+
+        }
+        move.stop = function(){
+            clearTimeout(move.timer);
+        };
+        function draw(img,x,y,w,h,dx,dy,dw,dh){
+            context.drawImage(img,x,y,w,h,dx,dy,dw,dh);
+        }
+        function init(){
+            car = new Car();
+            document.querySelector('.turnL').addEventListener('tap',car.turnLeft.bind(car));
+            document.querySelector('.turnR').addEventListener('tap',car.turnRight.bind(car));
+
+            objs.unshift(car);
+            square();
+            Line({
+                dw:10,dh:50,dy:510
+            });
+
+            Ball({track:2,quick:1});
+            Ball({track:4,quick:1});
+            Ball({track:7,quick:1});
+            Mountain();
+            Mountain({
+                x:0,y:0,w:567/2,h:452/2,dx:-90,dy:430,dw:567/2.5,dh:452/2.5,track:1
+            });
+            Mountain({
+                x:250,y:0,w:570/2,h:452/2,dx:500,dy:430,dw:570/2.5,dh:452/2.5,track:5
+            });
+            Tree();
+            move(function(){
+                distance = distance+speed*30;
+            });
+            gameStart();
+            setTimeout(function(){
+                move.stop();
+            },500);
+            setTimeout(function(){
+                document.querySelector('.index').style.display = 'none';
+                document.querySelector('.countDown').classList.add('down');
+            },2000);
+
+            setTimeout(function(){
+                console.log(111);//显示倒计时
+                document.querySelector('.countDown').style.display = 'none';
+                document.querySelector('.countDown').classList.remove('down');
+            },5000);
+        }
+        //首页 go
+        var countNum = 45;
+        var countImg = document.querySelectorAll('.count-down img');
+        console.log(countImg);
+
+        document.querySelector('.start-go').addEventListener('tap',function(){
+            document.querySelector('.countDown').style.display = 'block';
+            document.querySelector('.loading-go').style.display = 'block';
+            document.querySelector('.start-go').style.display = 'none';
+            document.querySelector('.logo1').style.display = 'none';
+            document.querySelector('.logo2').style.display = 'none';
+            document.querySelector('.logo3').style.display = 'block';
+            //document.querySelector('#index-rule').style.display = 'none';
+            document.querySelector('#index-rule').classList.add('show-rule');
+            timer_rule&&clearTimeout(timer_rule);
+            var timer_rule=setTimeout(function () {
+                document.querySelector('#index-rule').style.display = 'none';
+            },6300);
+
+            document.querySelector('.audio-icon').classList.add('chg');
+            init();
+            setTimeout(function(){
+                countDown();
+            },6100);
+        });
+
+        function gameStart(){
+            if(!flag) return;
+            flag = false;
+            var y = 0;
+            if(musicFlag){
+                document.getElementById('firing').play();
+                setTimeout(function(){
+                    document.getElementById('countDown').play();
+                },2100);
+                setTimeout(function(){
+                    //$('.start-title').css('display','none');
+                    document.getElementById('loop').play();
+                },2500);
+            }
+
+            setTimeout(function(){
+                document.querySelector('.sky-bg1').style.WebkitAnimation = 'opacity1 20s forwards';
+                document.querySelector('.sky-bg1').style.animation = 'opacity1 20s forwards';
+            },17000);
+
+            setTimeout(function(){
+                document.querySelector('.sky-bg1').style.display = 'none';
+                document.querySelector('.sky-bg2').style.WebkitAnimation = 'opacity1 20s forwards';
+                document.querySelector('.sky-bg2').style.animation = 'opacity1 20s forwards';
+            },30000);
+
+            var timer = setInterval(function(){
+                y = y  - 266;
+            },2500);
+
+            setTimeout(function(){
+                isStart = true;
+                clearInterval(timer);
+                document.getElementById('core').classList.add('core');
+                rapid.style.WebkitTransform = 'rotate(0deg)';
+                rapid.style.transform = 'rotate(0deg)';
+
+                move(function(){
+                    distance = distance+speed*30;
+                    now++;
+                    if(now%5 == 0){
+                        Tree();
+                        Mountain();
+                    }
+                    if(now % 15 == 0){
+                        Line();
+                    }
+                    var ballPosition = [];
+
+                    setTimeout(function(){
+                        now2++;
+                        if(now2%18==0){
+                            Ball({type:true,track:2});
+                        }else if(now2%22==0){
+                            Ball({type:true,track:4});
+                        }
+                    },500);
+                });
+            },6300);
+            document.querySelector('#core').addEventListener('animationend',function(){
+                gameEnd();
+                console.log('gameend');
+            });
+            document.querySelector('#core').addEventListener('webkitAnimationEnd',function(){
+                gameEnd();
+                console.log('gameend');
+            });
+        }
+        function gameEnd(){
+            document.querySelector('.loading-go').style.display = 'none';
+            document.querySelector('.end-pop1').style.display = 'block';
+            document.querySelector('.pop-box').style.display = 'none';
+            document.querySelector('.layer').style.display = 'block';
+            document.querySelector('.end-pop1 span b').innerHTML = parseInt(distance/570)+quick*5-slow*4;
+            document.querySelector('input#dis').value = parseInt(distance/570)+quick*5-slow*4;
+
+            rapid.style.WebkitTransform = 'rotate(-130deg)';
+            rapid.style.transform = 'rotate(-130deg)';
+
+            move.stop();
+        }
+        function loading(){
+            var l = document.querySelector('.loading');
+            if(!l) return;
+            l.classList.remove('loading-visible');
+            setTimeout(function(){
+                l.style.display = 'block';
+                l.classList.add('loading-visible');
+            },0)
+        }
+        loading.dismiss = function(){
+            var l = document.querySelector('.loading');
+            if(!l) return;
+            l.classList.remove('loading-visible');
+            setTimeout(function(){
+                l.style.display = 'none';
+            },300)
+        };
+        window.onload = function (){
+            loading.dismiss();
+            document.querySelector('.start-go').style.display = 'block';
+        };
+
+
+        /*背景音乐*/
+        var musicFlag;
+        var musicOn = true;
+        var ado=document.getElementById('bgMu');
+        ado.play();
+        /*document.addEventListener(Event.Touch.down, function () {
+         if(!musicFlag){
+         ado.play();
+         musicFlag = true;
+         musicOn = true;
+         }
+         });
+         ado.addEventListener('ended', function () {
+         setTimeout(function () {
+         ado.play();
+         }, 10);
+         }, false);*/
+        document.querySelector('.audio-icon').addEventListener('tap',function(){
+            if(musicOn){
+                ado.pause();
+                //document.getElementById('bgMu').pause();
+                document.getElementById('quick').pause();
+                document.getElementById('show').pause();
+                document.getElementById('countDown').pause();
+                document.getElementById('firing').pause();
+                //document.getElementById('quickCar').pause();
+                document.getElementById('loop').pause();
+                document.querySelector('.audio-icon').classList.add('pase');
+                musicFlag = false;
+                musicOn = false;
+            }else{
+                ado.play();
+                //document.getElementById('bgMu').play();
+                document.getElementById('loop').play();
+                document.querySelector('.audio-icon').classList.remove('pase');
+                musicFlag = true;
+                musicOn = true;
+            }
+        });
+
+        var oInput = document.querySelector('.end-pop1 input');
+        var epop1 = document.querySelector('.end-pop1');
+        var epop2 = document.querySelector('.end-pop2');
+        var epop3 = document.querySelector('.end-pop3');
+        //var epop4 = document.querySelector('.end-pop4');
+        var epop2Ul = epop2.querySelector('ul');
+        //var epop4Ul = epop4.querySelector('ul');
+        var session='';
+
+        epop2.querySelector('.game').addEventListener('tap',function(){
+            epop3.style.display = 'block';
+        });
+        /*document.querySelector('.end-pop4 .game').addEventListener('tap',function(){
+         epop3.style.display = 'block';
+         });*/
+        epop3.querySelector('.close').addEventListener('tap',function(){
+            epop3.style.display = 'none';
+        });
+
+        document.querySelector('#submit').addEventListener('tap',submitBtn);
+        function submitBtn(){
+            document.getElementById('core').classList.remove('core');
+            v_tel = document.querySelector('#tel').value;
+            if(!/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(v_tel)){
+                alert('\u8bf7\u8f93\u5165\u6b63\u786e\u7684\u624b\u673a\u53f7');
+            }else{
+                getToken(add);
+            }
+        }
+        /*document.querySelector('.next-list').addEventListener('tap',function(){
+         document.getElementById('core').classList.remove('core');
+         epop4.style.display = 'block';
+         getList(epop4Ul);
+         });*/
+
+        function add(){
+            var num = document.querySelector('input#dis').value;
+            $.ajax({
+                url:'http://m.zol.com.cn/topic/services/user.php?callback=?',
+                data:{
+                    'username':'6289196',
+                    'type':'6289196',
+                    'action':'addUser',
+                    'tel':v_tel,
+                    'ext1':num,
+                    'token':session
+                },
+                type:'get',
+                dataType:'json',
+                success:function(data){
+                    //console.log(data);
+                    if(data.result == 1){
+                        getList(epop2Ul);
+                    }
+                }
+            });
+        }
+        function getList(ul){
+            $.ajax({
+                url:'http://m.zol.com.cn/topic/services/user.php?action=getUserListForMaxScore',
+                data:{
+                    'type':'6289196',
+                    'limit':5
+                },
+                type:'get',
+                dataType:'jsonp',
+                success:function(data){
+                    var result = data.result;
+                    var str='';
+                    for(var y=0;y<result.length;y++){
+                        str+='<li><span class="name">'+result[y].tel+'</span><span class="dis">'+result[y].ext1+'km</span><span class="times">'+result[y].ctime+'</span></li>'
+                    }
+                    ul.innerHTML=str;
+                    $.ajax({
+                        url:'http://m.zol.com.cn/topic/services/user.php?action=findUserTop',
+                        data:{
+                            'type':'6289196',
+                            'tel':v_tel
+                        },
+                        type:'get',
+                        dataType:'jsonp',
+                        success:function(data){
+                            var result = data.result.top;
+                            document.getElementById('end-info').innerHTML=result;
+                            epop1.style.display = 'none';
+                            epop2.style.display = 'block';
+                        }
+                    });
+                }
+            });
+        }
+        //token
+        function getToken(fn){
+            $.ajax({
+                url:'http://m.zol.com.cn/topic/services/session.php?callback=?',
+                data:{},
+                type:'get',
+                dataType:'jsonp',
+                success:function(data){
+                    session = data.result;
+                    if(data && data.result){
+                        if(typeof fn === 'function'){
+                            fn(data);
+                        }
+                    }
+                }
+            })
+        }
+
+        //countDown
+        function countDown(){
+            setInterval(function(){
+                countNum--;
+                if(countNum<0) return;
+                var countNumStr = ''+countNum;
+                for(var i=0;i<countImg.length;i++){
+                    if(countNum<10){
+                        countImg[0].src = 'http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/0.png';
+                        countImg[1].src = 'http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/'+countNum+'.png';
+                    }else{
+                        var str = countNumStr.charAt(i);
+                        countImg[i].src = 'http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/'+str+'.png';
+                    }
+                }
+            },1000);
+        }
+        document.querySelectorAll('.play-again').addEventListener('tap',playAgain);
+
+        //再玩一次
+        function playAgain(){
+            //window.location.reload();
+            context.clearRect(0,0,canvas.width,canvas.height);
+            document.querySelector('.index').style.display = 'block';
+            document.querySelector('.loading-go').style.display = 'block';
+            document.querySelector('.countDown').style.display = 'block';
+            epop1.querySelector('.statistics .tortoise').innerHTML = '0';
+            epop1.querySelector('.statistics .bolt').innerHTML = '0';
+            console.log(document.querySelector('#dis').value);
+            document.querySelector('#tel').value='';
+
+            document.querySelector('#index-rule').style.display='block';
+            document.querySelector('#index-rule').classList.add('show-rule');
+            timer_rule&&clearTimeout(timer_rule);
+            var timer_rule=setTimeout(function () {
+                document.querySelector('#index-rule').style.display = 'none';
+            },6300);
+
+            epop1.style.display = 'none';
+            epop2.style.display = 'none';
+            epop3.style.display = 'none';
+            //epop4.style.display = 'none';
+            document.querySelector('.layer').style.display = 'none';
+            speed = 1;
+            distance = 0;
+            objs = [];
+            quick = 0;
+            slow = 0;
+            now = 0;
+            now2 = 0;
+            carChange = 0;
+            carIndex = 0;
+            carFlag = 0;
+            car = null;
+            isStart = false;
+            timerStop = null;
+            timerStop1 = null;
+            flag = true;
+            backgroundIndex = 0;
+            backgroundFlag = 0;
+            endTime = null;
+            playMu = null;
+            popIndex = 0;
+            musicFlag = true;
+            document.querySelector('.sky-bg1').style.display = 'block';
+            document.querySelector('.sky-bg1').style.WebkitAnimation = '';
+            document.querySelector('.sky-bg1').style.animation = '';
+            document.querySelector('.sky-bg2').style.WebkitAnimation = '';
+            document.querySelector('.sky-bg2').style.animation = '';
+
+            init();
+
+            setTimeout(function(){
+                document.querySelector('.index').style.display = 'none';
+                document.querySelector('.countDown').classList.add('down');
+            },3500);
+            setTimeout(function(){
+                document.getElementById('core').classList.add('core');
+                countNum = 46;
+            },4200);
+        };
+
+        /*timer_rule&&clearTimeout(timer_rule);
+        var timer_rule=setTimeout(function () {
+            document.querySelector('#index-rule').style.display = 'block';
+            document.querySelector('#index-rule').classList.add('show-rule');
+        },1300);*/
+        !(function(){
+            document.querySelector('.index-rule-close').addEventListener('tap',function(){
+                document.querySelector('#index-rule').style.display = 'none';
+            });
+        })();
+        /*epop2.querySelector('#share1').addEventListener('click',function(){
+         document.querySelector('.share-box').style.display = 'block';
+         })*/
+        /*epop4.querySelector('#share2').addEventListener('click',function(){
+         document.querySelector('.share-box').style.display = 'block';
+         });*/
+
+
+        var timers = {};
+        document.querySelector('.timer').style.color='rgba(255,255,255,0)';
+        document.querySelector('.timer').style.display='none';
+        timers.timerDom = document.querySelectorAll('.timer span');
+
+        timers.timeArr = [],timers.t = 0;
+        function timerDown(){
+            var ts = (new Date(2017, 3, 7, 0, 0, 0)) - (new Date());
+            //console.log(ts);
+            if(ts < 0){
+                console.log('\u5b8c\u4e86');
+                clearInterval(timers.t);
+                document.querySelector('.end-pop1 input[type=text]').setAttribute('placeholder','\u6b64\u6b21\u6d3b\u52a8\u5df2\u7ed3\u675f\u007e');
+                document.querySelector('.end-pop1 input[type=text]').setAttribute('disabled','true');
+                document.querySelector('#submit').removeEventListener('tap',submitBtn);
+                return false;
+            }
+            //timers.t && clearInterval(timers.t);
+            timers.timeArr[0] = checkTime(parseInt(ts / 1000 / 60 / 60 / 24, 10));
+            timers.timeArr[1] = checkTime(parseInt(ts / 1000 / 60 / 60 % 24, 10));
+            timers.timeArr[2] = checkTime(parseInt(ts / 1000 / 60 % 60, 10));
+            timers.timeArr[3] = checkTime(parseInt(ts / 1000 % 60, 10));
+            timers.timerDom && timers.timerDom.forEach(function (ele,i) {
+                ele.innerText =  timers.timeArr[i];
+            })
+        }
+        function checkTime(i){
+            i = (i < 10) ? "0" + i : i;
+            return i;
+        }
+        timerDown();
+        timers.t  = setInterval(timerDown,1000);
+    })();
+
+</script>
+<script>
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_58b/519649bd9f/weixin.jpg',
+        title: '年轻敢于创新 炫龙笔记本赛车游戏挑战'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

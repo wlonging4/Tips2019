@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>CGU2017</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #006CD8; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 60px;  min-width: 1200px;  padding-top: 20px; background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #9191FF;  }
+        .head_white{  min-width: 1200px;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 611px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/lg_head_c.jpg") no-repeat top center;   }
+
+        .navBg{  height: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/nav.jpg") no-repeat top center;  }
+        .nav-ul{  width: 1200px;  height: 50px;  margin: 0 auto;  }
+        .nav-ul li{  width: 150px;  height: 50px;  float: left;  }
+        .nav-ul li a{  width: 150px; color: #230501; height: 50px;  display: block;   cursor: pointer;  text-align: center;  font: 24px/50px 'Hiragino sans GB','microsoft yahei';  text-shadow:2px 2px 5px #444444;  }
+        .nav-ul li a:hover{  color: #A18853;  text-decoration: none; background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/nav_act.jpg") no-repeat center bottom;
+        }
+        .nav-ul li.act a{ color: #A18853;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/nav_act.jpg") no-repeat center bottom;  }
+
+        .flow{  width: 150px;  height: 312px;  position: fixed;  _position: absolute; bottom: 50px;  left: 50%;  margin-left: 610px;  overflow: hidden;    }
+        .flw{  width: 110px;  height: 147px;  padding: 5px 5px 0;  margin-bottom: 8px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/flow.png") no-repeat 0 0;  }
+        .flw .bai12{  display: block;  margin: 17px auto 0;  font: 12px/18px 'simsum';  }
+
+        .preBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8e78265391/pre2.jpg") no-repeat top center;  }
+        .pre{  height: 563px;  }
+        .pre1{  position: absolute; width: 800px;  height: 440px;  background: #000;  left: 0;  top: 40px;  overflow: hidden;  }
+        .pre2{  position: absolute; width: 365px;  height: 200px;  right: 0;  top: 110px;  overflow: hidden;  }
+        .pre2 .cheng20{  display: block;  color: #B99868;  font: 22px/32px 'Hiragino sans GB','microsoft yahei';  }
+        .pre2 .hui12{  text-indent: 24px; line-height: 24px; display: block; margin-top: 10px;  }
+        .pre3{  position: absolute; width: 365px;  height: 175px;  right: 0;  top: 325px;  overflow: hidden;  }
+        .pre3 .lan12bi{  color: #006CD8; display: block; font: 12px/21px 'simsun';  }
+        .pre3 .hui12{  color: #666;  }
+        .pre3 .ln{  height: 40px;  }
+
+        .talkBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/talk.jpg") no-repeat top center;  }
+        .talk{  height: 940px;  }
+        .talk-mod{  margin: 85px 0 0 -15px;  width: 1230px;  height: 765px;  }
+        .talk-mod td:nth-child(1) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk1.png") no-repeat top center;  }
+        .talk-mod td:nth-child(2) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk2.png") no-repeat top center;  }
+        .talk-mod td:nth-child(3) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk3.png") no-repeat top center;  }
+        .talk-mod td:nth-child(4) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk4.png") no-repeat top center;  }
+        .talk-mod td:nth-child(5) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk5.png") no-repeat top center;  }
+        .talk-mod td:nth-child(6) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk6.png") no-repeat top center;  }
+        .talk-mod td:nth-child(7) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk7.png") no-repeat top center;  }
+        .talk-mod td:nth-child(8) table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/tk8.png") no-repeat top center;  }
+        .talk-mod td img{  -webkit-border-radius: 50%;  border-radius: 50%;  border: 5px solid #B99868;  margin: 42px 50px 20px;  }
+        .talk-mod .cheng20{  display: block;  color: #B99868;  padding-bottom: 80px;  font: 24px/35px 'Hiragino sans GB','microsoft yahei';  }
+        .talk-mod .ln{  height: 30px;  }
+
+        .fightBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/fight.jpg") no-repeat top center;  }
+        .fight{  height: 454px;  }
+        .fight-mod{  margin: 78px 0 0 -15px;  width: 1230px;  height: 300px;  }
+        .fight-mod table table{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8cc071b7ee/fire_bg.png") no-repeat top center;  }
+        .fight-mod table img{  -webkit-border-radius: 50%;  border-radius: 50%;  padding: 28px 29px 28px 27px;  margin-top: 10px;  }
+        .fight-mod .cheng20{  display: block;  color: #B99868;  padding-bottom: 80px;  font: 24px/35px 'Hiragino sans GB','microsoft yahei';  }
+
+        .schBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/schedule.jpg") no-repeat top center;  }
+        .sch{  height: 820px;  }
+        .sch-ul{  width: 960px;  height: 80px;  overflow: hidden;  margin: 175px auto 0;  }
+        .sch-ul li{  float: left;  width: 310px;  height: 80px;  text-align: center;  color: #fff;  margin: 0 5px;  cursor: pointer;  text-shadow:2px 2px 5px #4a121d;  font: 28px/70px 'Hiragino sans GB','microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/sch_btns.png") no-repeat 0 0;  -webkit-transition-duration: .5s;  transition-duration: .5s;  }
+        .sch-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/sch_btns2.png") no-repeat 0 0;  }
+        .sch-box{  width: 1200px;  height: 480px;  overflow: hidden;  position: relative;  background: #000;  margin: 30px auto 0;  }
+        .sch-mod{  height: 480px;  position: absolute;  left: 0;  top: 0;  }
+
+        .adBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/bg.jpg") repeat center;  }
+        .ad{  height: 110px;  }
+        .ad-mod{  height: 60px;  background: #fff;  }
+
+        .equipBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a3/0da58bc038/equip1.jpg") no-repeat top center;  }
+        .equip{  height: 890px;  }
+        .equip-box{  width: 1160px;  height: 585px;  margin: 94px 0 0 19px;  }
+        .photo-tab-elem-spic{ top: 55px!important; width: 1100px!important; left: 30px!important; height: 97px!important; }
+        .photo-tab-elem-spic img{ border: 1px solid #BF9F5F!important;  }
+        #photo-tab-elem680598 .photo-tab-elem-prev{  margin-top: 346px!important;  width: 44px!important;  height: 90px!important;  left: -20px!important;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/equip_btns.png") no-repeat 0 0!important;  }
+        #photo-tab-elem680598 .photo-tab-elem-next{  margin-top: 346px!important;  width: 44px!important;  height: 90px!important;  right: -20px!important;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/equip_btns.png") no-repeat -44px 0!important;  }
+        .equip-box .cheng20{color: #BF9F5F!important;display: block;width: 100%;height: 50px;text-align: center;font: 22px/50px 'Hiragino Sans GB','microsoft yahei';}
+
+        .hisBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/his.jpg") no-repeat top center;  }
+        .his{  height: 586px;  }
+        .his1{  position: absolute;  width: 700px;  height: 400px;  left: 0;  top: 115px;  background: #000;  }
+        .his2{  position: absolute;  width: 475px;  height: 400px;  right: 0;  top: 115px;  }
+        .his2 table img{  border: 1px solid #BF9F5F; margin-right: 10px;  }
+        .his2 .bai16{  display: block;  font: 17px/32px 'microsoft yahei';  }
+        .his2 .hui12{  color: #999;  display: block;  text-indent: 24px;  font: 12px/21px 'simsun';  }
+        .his2 .ln{  height: 17px;  }
+
+        .wboBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/wbo.jpg") no-repeat top center;  }
+        .wbo{  height: 573px;  }
+        .wbo-mod{  width: 1200px;  height: 400px;  background: #000;  margin: 120px auto 0;  }
+
+        .brandBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/bg.jpg") repeat center;  }
+        .brand-t{  width: 294px;  height: 47px;  margin-bottom: 40px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/8af715c085/brand_t.png") no-repeat 0 0;  }
+        .brand-mod{  min-height: 85px;  width: 1200px;  margin-bottom: 80px;  }
+        .brand-mod .ln{  height: 20px;  }
+        .brand-mod table img{    }
+
+        .talk-mod table table,.fight-mod table table,.his2 table img,.flw table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .talk-mod table table:hover,.fight-mod table table:hover,.his2 table img:hover,.flw table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--导航-->
+<div class="wrap1 navBg">
+    <div class="wrapper1 nav">
+        <ul class="nav-ul">
+            <li class="act"><a href="#pre" target="_self">玩家盛典</a></li>
+            <li class=""><a href="#talk" target="_self">明星解说</a></li>
+            <li class=""><a href="#fight" target="_self">明星战队</a></li>
+            <li class=""><a href="#schedule" target="_self">赛制赛程</a></li>
+            <li class=""><a href="#equip" target="_self">电竞装备</a></li>
+            <li class=""><a href="#his" target="_self">辉煌历史</a></li>
+            <li class=""><a href="#wbo" target="_self">微博互动</a></li>
+            <li class=""><a href="#brand" target="_self">赞助厂商</a></li>
+        </ul>
+    </div>
+</div>
+<!--浮动-->
+<div class="flow">
+    <div class="flw"><{data[0]}></div>
+    <div class="flw"><{data[1]}></div>
+</div>
+<!--预热-->
+<div class="wrap1 preBg">
+    <div class="wrapper1 pre" id="pre">
+        <div class="pre1"><{data[2]}></div>
+        <div class="pre2"><{data[3]}></div>
+        <div class="pre3"><{data[4]}></div>
+    </div>
+</div>
+<!--解说-->
+<div class="wrap1 talkBg">
+    <div class="wrapper1 talk" id="talk">
+        <div class="talk-mod"><{data[5]}></div>
+    </div>
+</div>
+<!--战队-->
+<div class="wrap1 fightBg">
+    <div class="wrapper1 fight" id="fight">
+        <div class="fight-mod"><{data[6]}></div>
+    </div>
+</div>
+<!--赛程-->
+<div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div>
+<!--广告-->
+<div class="wrap1 adBg">
+    <div class="wrapper1 ad">
+        <div class="ad-mod"><{data[13]}></div>
+    </div>
+</div>
+<!--装备-->
+<div class="wrap1 equipBg">
+    <div class="wrapper1 equip" id="equip">
+        <div class="equip-box"><{data[8]}></div>
+    </div>
+</div>
+<!--历史-->
+<div class="wrap1 hisBg">
+    <div class="wrapper1 his" id="his">
+        <div class="his1"><{data[9]}></div>
+        <div class="his2"><{data[10]}></div>
+    </div>
+</div>
+<!--微博-->
+<div class="wrap1 wboBg">
+    <div class="wrapper1 wbo" id="wbo">
+        <div class="wbo-mod"><{data[11]}></div>
+    </div>
+</div>
+<!--赞助-->
+<div class="wrap1 brandBg">
+    <div class="wrapper1 brand" id="brand">
+        <div class="brand-t"></div>
+        <div class="brand-mod"><{data[12]}></div>
+    </div>
+</div>
+
+
+
+<script class="gbk">
+    /*导航*/
+    $('.nav-ul li').bind('mouseenter',function () {
+        $(this).addClass('act').siblings().removeClass('act');
+    });
+
+    $('.sch-ul li').bind('mouseenter',function () {
+        var nowI=$('.sch-ul li').index(this);
+        $(this).addClass('act').siblings().removeClass('act');
+        $('.sch-mod').stop().animate({'left':'-'+1200*nowI+'px'});
+    });
+
+    $(document).scroll(function () {
+        //$('.flow').animate({'bottom':'60px'});
+    });
+    $.fn.scrollEnd = function(callback, timeout) {
+        /*$(this).scroll(function(){
+            var $this = $(this);
+            if ($this.data('scrollTimeout')) {
+                clearTimeout($this.data('scrollTimeout'));
+            }
+            $this.data('scrollTimeout', setTimeout(callback,timeout));
+        });*/
+    };
+    //with a 1000ms timeout
+    $(window).scrollEnd(function(){
+        //$('.flow').stop().animate({'bottom':'50px'});
+    }, 300);
+
+
+
+
+</script>
+
+</body></html>

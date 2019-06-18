@@ -1,0 +1,437 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>CESA2017天猫配合-天猫品牌销量排行</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #1796D4; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 800px;  background: #000;  margin: 0 auto; overflow: hidden;  }
+        .zol_foot{  height: 150px;  padding-top: 90px; background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 505px; overflow: hidden;  position: relative;    }
+
+        .video{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_vd.jpg") no-repeat top center;  }
+        .vd{  height: 600px; margin-bottom: 30px;  background: #000;  }
+
+        .news{  height: 400px;  position: relative;  overflow: hidden;  }
+        .newsss{  height: 130px;  position: relative;  overflow: hidden;  }
+        .news1{  width: 600px;  height: 360px;  overflow: hidden;  background: #000;  position: absolute;  top: 0;  left: 0;  }
+        .news2{  width: 375px;  height: 360px;  overflow: hidden;   position: absolute;  top: 0;  right: 0;  }
+        .news3{  width: 1030px;  height: 95px;  overflow: hidden;   position: absolute;  top: 0;  left: -30px;  }
+        .focus-box{float: left; width: 600px; height: 360px; background: #000;  position: relative; overflow: hidden; }
+        .focus-box .pic_660394 .lan20{  color: #BD1B2C;  line-height: 55px;  }
+        .focus-box .control{width: 600px; height: 10px; position: absolute; left: 0; bottom: 15px;}
+        .control{text-align: center; }
+        .control span{display: inline-block; width:64px; height: 10px;  font-size: 0; background: url(http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_pre1_btns.png) no-repeat; background-position:-64px 0; cursor: pointer; margin:0 5px; vertical-align: top;}
+        .control .act{background-position:0 0;}
+        .focus-inner{position: absolute; left: 0; top: 0; height: 380px;}
+        .news2 .hong20{  color: #BD1B2C;  display: block;  font: bold 20px/56px 'Hiragino sans GB','microsoft yahei';  }
+        .news2 .hui12{  color: #878787;  font: 12px/21px 'simsun'; text-indent: 24px;  }
+        .news2 .ln{  height: 20px;  display: block; padding-bottom: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_news_line.png") no-repeat center;  }
+        .news3 .lan12bi{
+            display: block;
+            padding-left: 40px; color: #00a3d9;
+            background: url("http://2.zol-img.com.cn/zt/tm_593/4f792ccbea/dot_lan.jpg") no-repeat 32px 9px;
+        }
+
+        .rank-t{  width: 1000px;  height: 70px;  margin: 30px 0 25px;  background: url("http://2.zol-img.com.cn/zt/tm_593/79d7322fda/lg_t_rank2.jpg") no-repeat 0 0;  }
+        .rank-ul{  width: 1000px;  overflow: hidden;  }
+        .rank-ul .rank-li{  float: left;  width: 480px;  height: 535px;  margin-bottom: 30px;  overflow: hidden;  }
+        .rank-ul .rank-li.even{  margin-left: 40px;  }
+        .non{  display: none;  }
+        .rank-ts{  width: 480px;  height: 47px;  margin-bottom: 10px;  }
+        .rank-ts1{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_rank1.png") no-repeat 0 0;  }
+        .rank-ts2{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_rank2.png") no-repeat 0 0;  }
+        .rank-ts3{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_rank3.png") no-repeat 0 0;  }
+        .rank-ts4{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_rank4.png") no-repeat 0 0;  }
+        .rank-ts5{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_rank6.png") no-repeat 0 0;  }
+        .rank-ts6{  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_rank5.png") no-repeat 0 0;  }
+
+        .r-ul{  width: 480px;  height: 430px;  padding-top: 15px;  background: #fff;  overflow: hidden;  }
+        .r-ul li{  width: 440px;  height: 20px;  overflow: hidden;  background: #fff;  padding: 7px 20px;  border-bottom: 1px solid #f5f5f5;  }
+        .r-ul li a{  display: block;  height: 75px;  }
+        .r-ul li a:hover{  text-decoration: none;  }
+        .r-ul li span{  display: inline-block;  text-align: left;  }
+        .r-ul li .r-li1{  width: 22px;  height: 20px;  color: #fff; margin-right: 12px;  text-align: center;  background: #b9b9b9;  font: 12px/22px 'Hiragino sans GB','microsoft yahei';  }
+        .r-ul li .r-li2{  width: 180px;  height: 22px; overflow: hidden;  color: #2E3F8C;  font: 12px/22px 'simsun';  vertical-align: bottom; }
+        .r-ul li .r-li3{  color: #878787;  width: 85px;  height: 22px;  font: 12px/22px 'simsun';  }
+        .r-ul li .r-li4{  width: 120px;  height: 5px;  overflow: hidden;  margin-top: 6px;  border: 1px solid #8ea62f;  }
+        .r-ul li .r-li5{  vertical-align: top;  height: 5px;  width: 20px;  background: #c0d571;  }
+        .r-ul li .r-li6{  height: 45px;  width: 60px;  margin: 4px 0 0 40px;  }
+        .r-ul li .r-li6 img{  display: inline-block;  vertical-align: top; border: none;  }
+        .r-ul li.act{  height: 75px;  }
+        .r-ul li.act .r-li1{  background: #e92319;  }
+        .r-ul li.act .r-li3{  color: #2E3F8C; }
+
+        @-webkit-keyframes btnMove {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(5px,0px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes btnMove {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(5px,0px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .btnMove1{  -webkit-animation: btnMove 1s ease-in 0.1s infinite; animation: btnMove 1s ease-in 0.1s infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+        .more{  width: 76px;  height: 30px;  margin-left: 404px;  overflow: hidden;  position: relative;  }
+        .more-btn{  width: 12px;  height: 10px;  position: absolute;  top: 10px;  right: 15px;  background: url("http://2.zol-img.com.cn/zt/tm_593/4f3d43071b/lg_more_btn.png") no-repeat 0 0;  }
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c"><{data[0]}></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--视频-->
+<div class="wrap1 video banners">
+    <div class="wrapper1 vd">
+        <{data[1]}>
+    </div>
+</div><div class="wrap1 banners">
+    <div class="wrapper1 news">
+        <div class="news1">
+            <div class="focus-box">
+                <div class="focus-inner" style="width: 1200px; left: 0px;"><{data[2]}></div>
+                <div class="control focus-nav"><span class="act"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div>
+            </div>
+        </div>
+        <div class="news2"><{data[4]}></div>
+
+    </div>
+</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="wrap2 banners">
+    <div class="wrapper1 rank">
+        <div class="rank-t"></div>
+        <ul class="rank-ul">
+            <li class="rank-li">
+                <div class="rank-ts rank-ts1"></div>
+                <ul id="r1" class="r-ul r-ul1"></ul>
+                <div class="more">
+                    <{data[5]}>
+                    <div class="more-btn btnMove1"></div>
+                </div>
+            </li>
+            <li class="even rank-li">
+                <div class="rank-ts rank-ts2"></div>
+                <ul id="r2" class="r-ul r-ul1"></ul>
+                <div class="more">
+                    <{data[6]}>
+                    <div class="more-btn btnMove1"></div>
+                </div>
+            </li>
+            <li class="rank-li">
+                <div class="rank-ts rank-ts3"></div>
+                <ul id="r3" class="r-ul r-ul1"></ul>
+                <div class="more">
+                    <{data[7]}>
+                    <div class="more-btn btnMove1"></div>
+                </div>
+            </li>
+            <li class="even rank-li">
+                <div class="rank-ts rank-ts4"></div>
+                <ul id="r4" class="r-ul r-ul1"></ul>
+                <div class="more">
+                    <{data[8]}>
+                    <div class="more-btn btnMove1"></div>
+                </div>
+            </li>
+            <li class="rank-li">
+                <div class="rank-ts rank-ts5"></div>
+                <ul id="r5" class="r-ul r-ul1"></ul>
+                <div class="more">
+                    <{data[9]}>
+                    <div class="more-btn btnMove1"></div>
+                </div>
+            </li>
+            <li class="even rank-li">
+                <div class="rank-ts rank-ts6"></div>
+                <ul id="r6" class="r-ul r-ul1">-</ul>
+                <div class="more">
+                    <{data[10]}>
+                    <div class="more-btn btnMove1"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!--新闻-->
+
+<!--排行-->
+
+
+
+<script charset="gbk">
+    /*数据*/
+    var d1=null;
+    var d2=null;
+    var d3=null;
+    var d4=null;
+    var d5=null;
+    var subcate = [57,16,314,359,372,345];
+    var dataUrl1='http://detail.zol.com.cn/Api_TMallTop_HotPro_subcateId='+ subcate[0] +'^callback=tmallHotCallback'+ subcate[0] +'.html';
+    var dataUrl2='http://detail.zol.com.cn/Api_TMallTop_HotPro_subcateId='+ subcate[1] +'^callback=tmallHotCallback'+ subcate[1] +'.html';
+    var dataUrl3='http://detail.zol.com.cn/Api_TMallTop_HotPro_subcateId='+ subcate[2] +'^callback=tmallHotCallback'+ subcate[2] +'.html';
+    var dataUrl4='http://detail.zol.com.cn/Api_TMallTop_HotPro_subcateId='+ subcate[3] +'^callback=tmallHotCallback'+ subcate[3] +'.html';
+    var dataUrl5='http://detail.zol.com.cn/Api_TMallTop_HotPro_subcateId='+ subcate[4] +'^callback=tmallHotCallback'+ subcate[4] +'.html';
+    var dataUrl6='http://detail.zol.com.cn/Api_TMallTop_HotPro_subcateId='+ subcate[5] +'^callback=tmallHotCallback'+ subcate[5] +'.html';
+    /*1*/
+    window.tmallHotCallback57 = function(res){
+        d1=res;
+        var str1='';
+        for(var i=0;i<10;i++){
+            console.log(d1);
+            if(i==0){
+                str1+='<li class="act clearfix"> <a href="'+d1[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+1+'</span> <span class="r-li2">'+d1[i].name+'</span> <span class="r-li3">￥:'+d1[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d1[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d1[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }else{
+                str1+='<li class="clearfix"> <a href="'+d1[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+(i+1)+'</span> <span class="r-li2">'+d1[i].name+'</span> <span class="r-li3">￥:'+d1[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d1[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d1[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }
+        }
+        $('#r1').html(str1);
+        var now_lis=$('#r1 li');
+        now_lis.bind('mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+            $(this).stop().animate({'height':'75px'}).siblings().stop().animate({'height':'20px'});
+        });
+        //console.log(res);
+    };
+    var script = document.createElement('script');
+    script.src = dataUrl1;
+    document.body.appendChild(script);
+    /*2*/
+    window.tmallHotCallback16 = function(res){
+        d2=res;
+        var str2='';
+        for(var i=0;i<10;i++){
+            if(i==0){
+                str2+='<li class="act clearfix"> <a href="'+d2[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+1+'</span> <span class="r-li2">'+d2[i].name+'</span> <span class="r-li3">￥:'+d2[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d2[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d2[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }else{
+                str2+='<li class="clearfix"> <a href="'+d2[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+(i+1)+'</span> <span class="r-li2">'+d2[i].name+'</span> <span class="r-li3">￥:'+d2[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d2[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d2[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }
+        }
+        $('#r2').html(str2);
+        var now_lis=$('#r2 li');
+        now_lis.bind('mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+            $(this).stop().animate({'height':'75px'}).siblings().stop().animate({'height':'20px'});
+        });
+        //console.log(res);
+    };
+    var script = document.createElement('script');
+    script.src = dataUrl2;
+    document.body.appendChild(script);
+    /*3*/
+    window.tmallHotCallback314= function(res){
+        d3=res;
+        var str3='';
+        for(var i=0;i<10;i++){
+            if(i==0){
+                str3+='<li class="act clearfix"> <a href="'+d3[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+1+'</span> <span class="r-li2">'+d3[i].name+'</span> <span class="r-li3">￥:'+d3[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d3[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d3[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }else{
+                str3+='<li class="clearfix"> <a href="'+d3[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+(i+1)+'</span> <span class="r-li2">'+d3[i].name+'</span> <span class="r-li3">￥:'+d3[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d3[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d3[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }
+        }
+        $('#r3').html(str3);
+        var now_lis=$('#r3 li');
+        now_lis.bind('mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+            $(this).stop().animate({'height':'75px'}).siblings().stop().animate({'height':'20px'});
+        });
+        //console.log(res);
+    };
+    var script = document.createElement('script');
+    script.src = dataUrl3;
+    document.body.appendChild(script);
+    /*4*/
+    window.tmallHotCallback359= function(res){
+        d4=res;
+        var str4='';
+        for(var i=0;i<10;i++){
+            if(i==0){
+                str4+='<li class="act clearfix"> <a href="'+d4[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+1+'</span> <span class="r-li2">'+d4[i].name+'</span> <span class="r-li3">￥:'+d4[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d4[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d4[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }else{
+                str4+='<li class="clearfix"> <a href="'+d4[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+(i+1)+'</span> <span class="r-li2">'+d4[i].name+'</span> <span class="r-li3">￥:'+d4[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d4[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d4[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }
+        }
+        $('#r4').html(str4);
+        var now_lis=$('#r4 li');
+        now_lis.bind('mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+            $(this).stop().animate({'height':'75px'}).siblings().stop().animate({'height':'20px'});
+        });
+        //console.log(res);
+    };
+    var script = document.createElement('script');
+    script.src = dataUrl4;
+    document.body.appendChild(script);
+    /*5*/
+    window.tmallHotCallback372= function(res){
+        d5=res;
+        var str5='';
+        for(var i=0;i<10;i++){
+            if(i==0){
+                str5+='<li class="act clearfix"> <a href="'+d5[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+1+'</span> <span class="r-li2">'+d5[i].name+'</span> <span class="r-li3">￥:'+d5[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d5[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d5[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }else{
+                str5+='<li class="clearfix"> <a href="'+d5[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+(i+1)+'</span> <span class="r-li2">'+d5[i].name+'</span> <span class="r-li3">￥:'+d5[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d5[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d5[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }
+        }
+        $('#r5').html(str5);
+        var now_lis=$('#r5 li');
+        now_lis.bind('mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+            $(this).stop().animate({'height':'75px'}).siblings().stop().animate({'height':'20px'});
+        });
+        //console.log(res);
+    };
+    var script = document.createElement('script');
+    script.src = dataUrl5;
+    document.body.appendChild(script);
+    /*6*/
+    window.tmallHotCallback345= function(res){
+        d6=res;
+        var str6='';
+        for(var i=0;i<10;i++){
+            if(i==0){
+                str6+='<li class="act clearfix"> <a href="'+d6[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+1+'</span> <span class="r-li2">'+d6[i].name+'</span> <span class="r-li3">￥:'+d6[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d6[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d6[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }else{
+                str6+='<li class="clearfix"> <a href="'+d6[i].tmallUrl+'" target="_blank"> <span class="r-li1">'+(i+1)+'</span> <span class="r-li2">'+d6[i].name+'</span> <span class="r-li3">￥:'+d6[i].tmallPrice+'</span> <span class="r-li4"> <span class="r-li5" style="width:'+d6[i].heat+'%"></span> </span><br> <span class="r-li6"><img src="'+d6[i].picture+'" width="60" height="45" alt=""></span> </a> </li>';
+            }
+        }
+        $('#r6').html(str6);
+        var now_lis=$('#r6 li');
+        now_lis.bind('mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+            $(this).stop().animate({'height':'75px'}).siblings().stop().animate({'height':'20px'});
+        });
+        //console.log(res);
+    };
+    var script = document.createElement('script');
+    script.src = dataUrl6;
+    document.body.appendChild(script);
+
+
+
+
+
+
+
+
+
+
+
+    /*焦点图*/
+    if(location.href.indexOf('article')==-1){
+        /*焦点图*/
+        var focusLen = $('.focus-inner table img').length-1;
+        $('.focus-box .control span:gt('+focusLen+')').hide();
+    }
+    scrolls1(".focus-inner",".focus-box",1,"","","table img",".focus-nav",600,'auto');
+    function scrolls1(div1,div2,num,p,n,tag,snav,width,auto){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var $snav = $(snav);
+        var v_width = width;
+        var len = $v_show.find(tag).length;
+        var page_count = Math.ceil(len/i);
+        var timer;
+        $v_show.css("width",v_width*page_count + "px");
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+                $snav.find("span").eq((page-1)).addClass("act").siblings().removeClass("act");
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+                $snav.find("span").eq((page-1)).addClass("act").siblings().removeClass("act");
+            }
+        });
+
+        $snav.find("span").mouseover(function(){
+            //if(!$v_show.is(":animated")){
+            var _index = $snav.find("span").index($(this));
+            page = _index+1;
+            if(page == 1){
+                $v_show.stop().animate({left:0},"slow");
+            }else{
+                $v_show.stop().animate({left:"-"+v_width*(page-1)},"slow");
+            }
+            $snav.find("span").eq(page-1).addClass("act").siblings().removeClass("act");
+            // }
+        });
+
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+                $snav.find("span").eq((page-1)).addClass("act").siblings().removeClass("act");
+            }
+        }
+
+        if(auto == 'auto'){
+            timer = setInterval(auto_play,5000);
+            $v_content.mouseover(function(){
+                clearInterval(timer)
+            });
+            $v_content.mouseout(function(){
+                timer = setInterval(auto_play,5000);
+            });
+        }
+    }
+
+</script></body></html>

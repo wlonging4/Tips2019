@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>document</title>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="email=no" name="format-detection" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+
+    <style>
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0);background:#fff url(http://2.zol-img.com.cn/zt/tm_599/ff56574a18/bg.jpg) repeat-y center top;color:#666; font:26px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none;}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #666;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        b{font-weight:normal;}
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        .float-left,.float-right,.float-up,.float-up1,.float-up2,.float-down,.float-scale{-webkit-transition:0.6s;transition:0.6s;opacity:0;}
+        .float-left{-webkit-transform:translate(50px,0);transform:translate(50px,0);-webkit-transition:0.8s 0.7s;transition:0.8s 0.7s;}
+        .float-right{-webkit-transform:translate(-50px,0);transform:translate(-50px,0);-webkit-transition:0.8s 0.7s;transition:0.8s 0.7s;}
+        .float-up{-webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-up1{-webkit-transform:translate(0,100px);transform:translate(0,100px);-webkit-transition:0.8s 0.2s;transition:0.8s 0.2s;}
+        .float-up2{-webkit-transform:translate(0,100px);transform:translate(0,100px);-webkit-transition:1s 0.4s;transition:1s 0.4s;}
+        .float-down{-webkit-transform:translate(0,-100px);transform:translate(0,-100px);}
+        .float-scale{-webkit-transform:scale(0.5);transform:translate(0.5);}
+        .current .float-left,.current .float-right,.current .float-up,.current .float-up1,.current .float-up2,.current .float-down,.current .float-scale{-webkit-transform:none;transform:none;opacity:1;}
+
+        #index{width:640px; padding:0 0 90px; margin:0 auto; position:relative;}
+
+        .postinfo input,#postsubmit,.postinfo dt,.postinfo i,.postinfo b{background:url(http://2.zol-img.com.cn/zt/tm_599/ff56574a18/icon.png) no-repeat;color:rgba(0,0,0,0)}
+
+
+        .postinfo{width:570px; margin:0 auto;overflow:hidden}
+        .postinfo dt{float:left;width:150px;height:31px;margin:18px 0 18px;}
+        .postinfo dd{float:left;width:420px;height:65px;margin-bottom:18px;}
+        .postinfo .dt1{background-position:0 -17px}
+        .postinfo .dt2{background-position:0 -102px}
+        .postinfo .dt3{background-position:0 -179px}
+        .postinfo .dt4{background-position:0 -267px}
+        .postinfo .dt5{background-position:0 -340px}
+        .postinfo .dt6{background-position:0 -426px}
+        .postinfo .dt7{background-position:0 -515px}
+
+        .postinfo i{display:inline-block;width:18px;height:29px; margin:0 7px 0 1px;}
+        .postinfo b{display:inline-block;width:99px;height:29px; margin:18px 0 0;}
+
+        .postinfo .word1{background-position:-267px -180px}
+        .postinfo .word2{background-position:-402px -180px}
+        .postinfo .word3{background-position:-539px -180px}
+        .postinfo .word6{background-position:-274px -423px}
+        .postinfo .word7{background-position:-428px -423px}
+
+        .postinfo #word4{background-position:-171px -342px; margin:18px 35px 0 15px;}
+        .postinfo #word5{background-position:-305px -301px}
+
+        .postinfo #word4.select{background-position:-171px -302px;}
+        .postinfo #word5.select{background-position:-305px -341px}
+
+        .postinfo input{width:402px;height:63px;border:0; background-position:-156px 0;color:#000;font-size:26px;line-height:63px; padding:0 5px;box-sizing:border-box;}
+        .postinfo #uprovince,.postinfo #ucity,.postinfo #uplace,.postinfo #uroom,.postinfo #uhall,.postinfo #utype{width:111px;background-position:-156px -165px}
+
+        #postsubmit{width:181px;height:72px; margin:36px auto 0; background-position:-221px -478px}
+
+        .title,.arrow{position:absolute;background:url(http://2.zol-img.com.cn/zt/tm_599/ffa977ff02/icon1.png) no-repeat;}
+        .title{left:18px;top:226px;width:619px;height:282px;}
+        .arrow{left:299px;top:1045px;width:59px;height:32px;background:url(http://2.zol-img.com.cn/zt/tm_599/ffa977ff02/arrow.png) no-repeat;-webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;}
+        .sun{left:299px;top:1045px;width:137px;height:142px; background-position:0 -400px;-webkit-animation: round1 4s linear infinite;animation: round1 4s linear infinite;}
+
+        .pic{position:absolute;left:14px;top:575px;width:613px;height:229px;background:url(http://2.zol-img.com.cn/zt/tm_599/ff56574a18/icon2.png) no-repeat;-webkit-animation: blast4 4s linear infinite;  animation: blast4 4s linear infinite;}
+
+
+        @-webkit-keyframes blast4 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            50%{  -webkit-transform: scale(1.05) rotate(0deg);  }
+            100%{  -webkit-transform: scale(1) rotate(0deg);  }
+        }
+        @keyframes blast4 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            50%{  transform: scale(1.05) rotate(0deg);  }
+            100%{  transform: scale(1) rotate(0deg);  }
+        }
+
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        @-webkit-keyframes round1{
+            0%{-webkit-transform:rotate(0deg)}
+            100%{-webkit-transform:rotate(360deg)}
+        }
+        @keyframes round1{
+            0%{transform:rotate(0deg)}
+            100%{transform:rotate(360deg)}
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="index">
+    <div class="title float-scale"></div>
+    <div class="pic"></div>
+    <div class="arrow"></div>
+    <div class="cloud1"></div>
+    <div class="cloud2"></div>
+    <div class="cloud3"></div>
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ffa977ff02/f-1.jpg" width="640" height="499">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-2.jpg" width="640" height="412">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-3.jpg" width="640" height="224">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-4.jpg" width="640" height="286">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-5.jpg" width="640" height="622">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-6.jpg" width="640" height="232">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-7.jpg" width="640" height="653">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-8.jpg" width="640" height="459">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-9.jpg" width="640" height="847">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-10.jpg" width="640" height="318">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-11.jpg" width="640" height="876">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-12.jpg" width="640" height="272">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-13.jpg" width="640" height="651">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-14.jpg" width="640" height="489">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-15.jpg" width="640" height="493">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-16.jpg" width="640" height="202">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-17.jpg" width="640" height="222">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/ff56574a18/f-18.jpg" width="640" height="288">
+
+    <dl class="postinfo">
+        <dt class="dt1">姓名</dt><dd><input id="uname" type="text" value=""></dd>
+        <dt class="dt2">联系电话</dt><dd><input id="utel" type="text" value="" maxlength="11"></dd>
+        <dt class="dt3">所在城市</dt><dd><input id="uprovince" type="text" value=""><i class="word1">省</i><input id="ucity" type="text" value=""><i class="word2">市</i><input id="uplace" type="text" value=""><i class="word3">区</i></dd>
+        <dt class="dt4">小区名称</dt><dd><input id="ucommunity" type="text" value=""></dd>
+        <dt class="dt5">房屋类型</dt><dd><input id="utype" value="" type="hidden"><b id="word4">别墅</b> <b id="word5">公寓</b></dd>
+        <dt class="dt6">户型</dt><dd><input id="uroom" type="text" value=""><i class="word6">室</i><input id="uhall" type="text" value=""><i class="word7">厅</i></dd>
+        <dt class="dt7">面积</dt><dd><input id="uarea" type="text" value=""></dd>
+    </dl>
+    <div id="postsubmit">提交</div>
+</div>
+
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+
+<script>
+
+    var token_json = 'http://m.zol.com.cn/topic/services/session.php?callback=?';
+    var json = 'http://m.zol.com.cn/topic/services/user.php?callback=?';
+    var utype_ele = document.getElementById('utype');
+    var word4 = document.getElementById('word4');
+    var word5 = document.getElementById('word5');
+
+    document.getElementById('index').className = 'current';
+    word4.addEventListener('click',function(){
+        if(this.className == 'select'){
+            this.className = '';
+            utype_ele.value = '';
+        }else{
+            this.className = 'select';
+            utype_ele.value = '别墅';
+            word5.className = '';
+        }
+    })
+    word5.addEventListener('click',function(){
+        if(this.className == 'select'){
+            this.className = '';
+            utype_ele.value = '';
+        }else{
+            this.className = 'select';
+            utype_ele.value = '公寓';
+            word4.className = '';
+        }
+    })
+
+
+    document.querySelector('#postsubmit').addEventListener('click',function(){
+        var uname = document.querySelector('#uname').value.trim();
+        var utel = document.querySelector('#utel').value.trim();
+        var uprovince = document.querySelector('#uprovince').value.trim();
+        var ucity = document.querySelector('#ucity').value.trim();
+        var uplace = document.querySelector('#uplace').value.trim();
+        var ucommunity = document.querySelector('#ucommunity').value.trim();
+        var utype = document.querySelector('#utype').value.trim();
+        var uroom = document.querySelector('#uroom').value.trim();
+        var uhall = document.querySelector('#uhall').value.trim();
+        var uarea = document.querySelector('#uarea').value.trim();
+
+
+        if(!uname){
+            alert('请输入姓名~');
+            return false;
+        }else if (!utel || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(utel))) {
+            alert('请输入正确的手机号码~');
+            return false;
+        }else if(!uprovince){
+            alert('请输入所在省~');
+            return false;
+        }else if(!ucity){
+            alert('请输入所在市~');
+            return false;
+        }else if(!ucity){
+            alert('请输入所在区~');
+            return false;
+        }else if(!ucommunity){
+            alert('请输入小区名称~');
+            return false;
+        }else if(!utype){
+            alert('请选择房屋类型~');
+            return false;
+        }else if(!uroom){
+            alert('请输入几室~');
+            return false;
+        }else if(!uhall){
+            alert('请输入几厅~');
+            return false;
+        }else if(!uarea){
+            alert('请输入面积~');
+            return false;
+        }else{
+
+            $.getJSON(token_json,{},function(obj){
+                if(obj.result){
+                    $.getJSON(json,{action:'addUser',type:6531719,token:obj.result,username:uname,tel:utel,ext1:uprovince,ext2:ucity,ext3:uplace,ext4:ucommunity,ext5:utype,ext6:uroom,ext7:uhall,ext8:uarea},function(o){
+                        if(o.result == 1){
+                            alert('信息提交成功,审核通过后会联系您~');
+                            var allinput = document.querySelectorAll('.postinfo input');
+                            var len = allinput.length
+                            for(var i=0; i<len; i++){
+                                allinput[i].value='';
+                            }
+                        }
+                    })
+                }
+            })
+
+        }
+    })
+
+    window.wechatShareData = {
+        "title":"激情褪去后，爱情还剩下什么",
+        "icon":"http://2.zol-img.com.cn/zt/tm_599/ff5e8a3cb4/share.jpg",
+        "description":"激情褪去后，爱情还剩下什么",
+    };
+</script>
+
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

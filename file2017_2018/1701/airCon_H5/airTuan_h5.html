@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>净化器团购H5</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        html, body, h1, h2, h3, h4, h5, h6, form, p, ul, li, dl, dt, dd { margin: 0; padding: 0; }
+        body { font: 28px/1.5 Arial; -webkit-text-size-adjust: none; background: #c5dcf7;color:#333;}
+        ul { list-style-type: none; }
+        em, i { font-style: normal; }
+        a { color:#777; text-decoration: none;}
+        a:hover { text-decoration: none;}
+        .clearfix:after {content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0}
+        .clearfix {*zoom:1}
+        img{display:block;margin:0 auto;}
+        @-webkit-keyframes show-finger {
+            0%{  -webkit-transform:translate(0px,0px); opacity: 1;  }
+            30%{  -webkit-transform:translate(50px,-30px); opacity: 1;  }
+            60%{  -webkit-transform:translate(-50px,30px); opacity: 0.6;  }
+            100%{  -webkit-transform:translate(0px,0px); opacity: 1;  }
+        }
+        @keyframes show-finger {
+            0%{  transform:translate(0px,0px); opacity: 1;  }
+            30%{ transform:translate(30px,-40px); opacity: 1;  }
+            60%{  transform:translate(-30px,30px); opacity: 0.6;  }
+            100%{ transform:translate(0px,0px); opacity: 1;  }
+        }
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(1.01) translate(3px,0px);  }
+            75%{  -webkit-transform: scale(1.01) translate(0px,-2px);  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(1.01) translate(3px,0px);  }
+            75%{  transform: scale(1.01) translate(0px,-2px);  }
+            100%{  transform: scale(1) translate(0px,0px);  }
+        }
+        .show-finger{  -webkit-animation: show-finger 3s linear infinite;  animation: show-finger 3s linear infinite;  }
+        .blast{  -webkit-animation: blast 5s linear infinite;  animation: blast 5s linear infinite;  }
+
+        #viewport{width:640px;margin:0 auto; height: 100%; position: relative; overflow: auto; background-color: #000; background-image: url("http://2.zol-img.com.cn/zt/tm_587/371cd64572/bg2.jpg"); background-repeat: repeat-y; background-position: top center;  }
+        .sys_edit_element{height:0px!important;}
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 33; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #p1{  /*display: none;*/  position: fixed;  min-width: 640px;  height: 100%;  z-index: 9; overflow: hidden;  }
+        .hid{ display: none!important; }
+        #p1Mai{  opacity: 0;  z-index: -1;  position: absolute;  pointer-events: none;  }
+        .p1Data{  position: absolute;  top: 30%;  left: 50%;  margin-left: -173px;  width: 346px;  height: 154px;  pointer-events: none;  background: url("http://2.zol-img.com.cn/zt/tm_587/371cd64572/p1_place.png") no-repeat 0 0;  }
+        .p1Num{  position: absolute;  bottom: 0;  right: 0;  width: 112px; height: 55px;  font: 40px/55px 'microsoft yahei';  text-align: center; color: #fff;  }
+        .p1Remind{  width: 300px;  height: 50px;  position: absolute;  top: 70%;  left: 50%;  pointer-events: none;  margin-left: -145px;  background: url("http://2.zol-img.com.cn/zt/tm_587/371cd64572/p1_art.png") no-repeat bottom right;  }
+        .p1Finger{  width: 38px;  height: 48px;  background: url("http://2.zol-img.com.cn/zt/tm_587/371cd64572/p1_finger.png") no-repeat 0 0;  }
+        .sale{  width: 640px;  height: 745px;  overflow: hidden;  }
+        .sale-t{  width: 332px;  padding-right: 12px;  height: 73px;  margin: 35px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_587/df1a8a261c/sale_t.png") no-repeat  0 0;  }
+        .sale-t .bai20{  display: block;  color: #fff;  text-align: center;  font: bold 32px/54px 'microsoft yahei';  }
+        .sale1{  width: 605px;  height: 255px;    margin: 4px auto 0;  }
+        .sale2{  width: 620px;  height: 420px;  margin: 10px auto 0;  }
+        .test{  width: 640px;  margin: 30px auto 0;  overflow: hidden;  }
+        .test-t{  width: 628px;  height: 227px;  margin: 0 auto 5px;  background: url("http://2.zol-img.com.cn/zt/tm_587/df3993a361/test_t.png") no-repeat 0 0;  }
+        .test-m1{  width: 590px;  height: 360px;  overflow: hidden;  background: #006aec;  margin: 0 auto 30px;  padding: 15px 0 15px 15px;  }
+        .test-m11{  background: -webkit-linear-gradient(left bottom ,#006aec,#00a9a7);  background: linear-gradient(left bottom ,#006aec,#00a9a7);  }
+        .test-m12{  background: -webkit-linear-gradient(left bottom ,#006aec,#0087cd);  background: linear-gradient(left bottom ,#006aec,#0087cd);  }
+        .test-m1 .bai20{  display: block;  text-align: center;  padding: 10px 0 0;  color: #fff;  font: 28px/40px 'microsoft yahei';  }
+        .test-m1 .bai12{  display: block;  color: #fff;  padding: 10px;  text-indent: 36px;  font: 18px/25px 'microsoft yahei';  }
+        .test .hong12{  font-size: 18px;  color: #00da72;  }
+        .test-m1-t{  height: 205px;  margin-bottom: 10px;  }
+        .test-m1-b{  height: 145px;     margin-left: -5px;  width: 586px;  }
+        .test-m2{  position: relative;  width: 580px;  height: 300px;  padding: 15px 10px 15px 15px;  margin: 0 auto 80px;  background: #006aec;  }
+        .test-m2 .bai20{  display: block;  text-align: center;  padding: 0 10px;  color: #fff;  font: 28px/40px 'microsoft yahei';  }
+        .test-m2 .bai12{  display: block;  color: #fff;  padding: 0 0 0 12px;  text-indent: 36px;  font: 18px/25px 'microsoft yahei';  }
+        .test-m2 .ln{  height: 12px;  }
+        .footer{  width: 640px;  height: 329px;  margin: -200px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_587/371cd64572/footer.jpg") no-repeat 0 0;  }
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div id="p1">
+    <canvas id="myCanvas" width="640" height="1140"></canvas>
+    <img src="http://2.zol-img.com.cn/zt/tm_587/371cd64572/p1_mai.jpg" width="0"  height="0"  id="p1Mai" alt="">
+    <div class="p1Data blast">
+        <div class="p1Num" id="p1Num">0</div>
+    </div>
+    <div class="p1Remind">
+        <div class="p1Finger show-finger"></div>
+    </div>
+</div>
+<div id="viewport">
+    <header>
+        <img src="http://2.zol-img.com.cn/zt/tm_587/df1a8a261c/header.jpg" alt="" width="640" height="475">
+    </header>
+    <div class="sale">
+        <div class="sale-t"><{data[0]}></div>
+        <div class="sale1"><{data[1]}></div>
+        <div class="sale-t"><{data[10]}></div>
+        <div class="sale1"><{data[11]}></div>
+    </div>
+    <div class="test">
+        <div class="test-t"></div>
+        <div class="test-m1 test-m11">
+            <div class="test-m1-t"><{data[3]}></div>
+            <div class="test-m1-b"><{data[4]}></div>
+        </div>
+        <div class="test-m1 test-m12">
+            <div class="test-m1-t"><{data[5]}></div>
+            <div class="test-m1-b"><{data[6]}></div>
+        </div>
+        <div class="test-m2"><{data[9]}></div>
+        <div class="footer"></div>
+    </div>
+</div>
+<script _ue_org_tagname="script">
+    if (location.hostname != 'article.zol.com.cn') {
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t");
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+    }else{
+        var a=document.querySelector('#p1');a.style.display='none';
+    }
+</script>
+<script charset="gbk">
+    /*load*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        letGo();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        //viewport.querySelector('.container').children[i].classList.add('current');
+    });
+    function letGo() {
+        $.ajax({
+            data:{},
+            type:'get',
+            dataType:'jsonp',
+            url:'http://dynamic.zol.com.cn/channel/index.php?c=Weather_Default&a=GetAqi&isarr=0&ismulti=0&cityid=101010100&callback=?',
+            success:function (obj) {
+                if(obj&&obj.flag==1){
+                    var maiNum_final=parseInt(obj.data.aqi);
+                    //var maiNum_final=343;
+                    var maiNum_sim1=Math.floor(maiNum_final/5);
+                    //console.log(tDuring);
+                    var maiNum_sim2=maiNum_final%5;
+                    var maiNum_sim3=maiNum_sim1*5;
+                    var maiNum_origin=0;
+                    var tDuring=40;
+                    /*计时*/
+                    if(maiNum_final<=180){
+                        tDuring=60;
+                    }else if(maiNum_final<=400){
+                        tDuring=25;
+                    }else if(maiNum_final<=750){
+                        tDuring=20;
+                    }
+                    timeCounter();
+                    function timeCounter() {
+                        //console.log(arg);
+                        if(maiNum_origin*5>=maiNum_sim3){
+                            p1Num.innerHTML=maiNum_sim3+maiNum_sim2;
+                            return false;
+                        }
+                        p1Num.innerHTML=maiNum_origin*5;
+                        maiNum_origin++;
+                        t1&&clearTimeout(t1);
+                        var t1=setTimeout(timeCounter,tDuring);
+                    }
+                    //timeCounter(40);
+                }
+            }
+        });
+    }
+
+
+
+    var mai=document.querySelector('#p1Mai'),
+        p1Num=document.querySelector('#p1Num'),
+        cv=document.querySelector('#myCanvas'),
+        ct=cv.getContext('2d');
+    var slideNum=0;
+
+    //ct.drawImage(mai,0,0,640,1140);
+    var viewWidth = window.innerWidth ,viewHeight  =  window.innerHeight,w,h;
+    var k1 =viewWidth / viewHeight ,k2 = 640/1008;
+    //计算canves和后方cover比例一致，因为设计提不出透明层!
+
+    function nowView(){
+        w = viewWidth,h = viewHeight;
+        if(k1>k2){
+            w = viewWidth;
+            h = w/k2;
+        }else{
+            h = viewHeight;
+            w = h*k2;
+        }
+    }
+    nowView();
+    slideCanvas();
+
+    function slideCanvas(){
+        var c1 = cv;
+        var gc = ct;
+        var img = new Image();
+        var bBtn = true;
+        c1.height = h;
+        img.src = 'http://2.zol-img.com.cn/zt/tm_587/37217715a2/p1_mai.jpg';
+
+        img.onload = function(){
+            img.style.width = w;
+            img.style.height=h;
+            gc.drawImage(img,(640 - w)/2,0,w,h);
+            gc.strokeStyle = 'blue';
+            gc.lineWidth = 300;
+            gc.lineCap = 'round';
+            gc.globalCompositeOperation = 'destination-out';
+            c1.addEventListener(Event.Touch.down,function(ev){
+                var touch = ev.changedTouches[0];
+                var x = touch.pageX - this.offsetLeft ;
+                var y = touch.pageY - this.offsetTop ;
+                /*gc.arc(x,y,100,0,360*Math.PI/180);
+                 gc.fill();*/
+
+                if(bBtn){
+                    bBtn = false;
+                    gc.moveTo(x,y);
+                    gc.lineTo(x+1,y+1);
+                }
+                else{
+                    gc.lineTo(x,y);
+                }
+                gc.stroke();
+
+                c1.addEventListener(Event.Touch.move,function(ev){
+                    ev.preventDefault();
+                    var touch = ev.changedTouches[0];
+                    var x = touch.pageX - this.offsetLeft ;
+                    var y = touch.pageY - this.offsetTop;
+                    gc.lineTo(x,y);
+                    gc.stroke();
+                });
+
+                c1.addEventListener(Event.Touch.up,function(ev){
+                    /*var imgData = gc.getImageData(0,0,640,h);
+                     var allPx = imgData.width * imgData.height;
+                     var num = 0;
+                     for(var i=0;i<allPx;i++){
+                     if( imgData.data[4*i+3] == 0 ){
+                     num++;
+                     }
+                     }*/
+                    slideNum++;
+                    if( slideNum > 1 ){
+                        c1.classList.add('hid');
+                        setTimeout(function(){
+                            c1.remove();
+                            p1.classList.add('hid');
+                        },300)
+                    }
+                    c1.removeEventListener(Event.Touch.down);
+                    //onsole.log(cv);
+                    c1.removeEventListener(Event.Touch.move);
+                    c1.removeEventListener(Event.Touch.up);
+                });
+            });
+        };
+    }
+
+
+
+</script>
+</body>
+</html>

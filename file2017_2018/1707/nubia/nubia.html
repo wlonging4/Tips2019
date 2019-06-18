@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; min-width: 1200px; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #f00; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .wrap1{   width: 100%;  min-width: 1000px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_58f/9a8b0169f6/bg.jpg") repeat-y top center;  }
+        .wrap3{   width: 100%;  overflow: hidden;  background: #f1f1f1;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto; overflow: hidden;  }
+        .zol_foot{  height: 120px;  padding-top: 80px; background: #B72E38;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_597/872111d3b5/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_597/872111d3b5/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 561px;  overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_597/872111d3b5/lg_head_c.jpg") no-repeat 0 0;  }
+
+        .head_white { font-size: 12px; font-family: "SimSun"; color: #000; background:#fff;}
+        .head_white a { color: #000;}
+        .head_white .logo{ background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/logo.png") no-repeat  center; width: 229px;  height: 95px; display: block;  }
+        .head_white .logo img{  display: none;  }
+        #zt_head_login{ padding-right: 20px;}
+
+        .navBg{  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/nav.jpg") no-repeat top center;  }
+        .nav{  height: 72px;  }
+        .nav-ul{  margin-left: 290px;  width: 660px;  height: 71px;  overflow: hidden;  }
+        .nav-ul li{  width: 330px;  height: 71px;  text-align: center;  cursor: pointer;  color: #fff;  float: left;  font: 22px/70px "Hiragino sans GB",'microsoft yahei';  }
+        .nav-ul li.act{  background: #F25C4A;  }
+
+        .box{  display: none;  }
+        .box.blk{  display: block;  }
+        .box1-art1{  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/box1_art1.jpg") no-repeat top center;  }
+        .box1-art1-m{  height: 430px; display: block;  }
+        .box1-art1-mod{  width: 640px;  height: 90px;  position: absolute;  top: 15px;  left: 20px;  }
+        .box1-art1-mod .hei20{  display: block;  color: #272727;  font: 22px/45px 'Hiragino sans GB','microsoft yahei';  }
+        .box1-art1-mod .hei16{  display: block;  color: #272727;  font: 16px/24px 'simsun';  }
+        .box1-art1-mod .hong12{  color: #272727;  font-size: 16px;  }
+
+        .box1-vote{  height: 920px;  }
+        .box1-vote-btn{  position: absolute;  width: 60px;  height: 61px;  cursor: pointer;  top: 400px;  }
+        .box1-vote-btn1{  left: 1px;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/btns.png") no-repeat 0 0;  }
+        .box1-vote-btn2{  right: 1px;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/btns.png") no-repeat -60px 0;  }
+        .box1-vote-box{  width: 880px;  height: 880px;  overflow: hidden;  position: relative;  margin: 25px auto 0;  }
+        .box1-vote-mod{  position: absolute;  top: 0;  left: 0;  height: 880px; width: 5000px;   }
+        .box1-vote-m{  width: 880px;  height: 880px;  float: left;  }
+        .box1-vote-m table img{  padding: 1px;  border: 1px solid #c7c7c7;  }
+        .box1-vote-m table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .box1-vote-m table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+        .box1-vote-m .hei16{  display: block;  color: #555;  font: 18px/45px 'Hiragino sans GB','microsoft yahei';  }
+        .box1-vote-m .vote_num{  display: none;  }
+        .box1-vote-m .vote_btn{  width: 214px;  height: 49px;  cursor: pointer;  margin-left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/vote_btn.jpg") no-repeat top center;  }
+        .box1-vote-m .ln{  height: 15px;  }
+
+        .box1-num{  width: 40px;  height: 20px;  position: absolute;  top: 0;  right: 0; text-indent: 999px; overflow: hidden;  }
+        .box1-comment{  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/box1_comment.jpg") no-repeat top center;  }
+        .box1-com{  height: 496px;  }
+        .box1-com-mod{  width: 608px;  height: 495px;  float: right;  }
+        .box1-com-btn{  display: none;  width: 585px;  height: 50px;  position: absolute;  color: #E73333;  text-align: center;  font: 22px/50px 'Hiragino sans GB','microsoft yahei';  bottom: 10px;  right: 11px;  -webkit-border-radius: 10px;  border-radius: 10px;  background: #EBE3D8 url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/arrow.png") no-repeat 160px 19px; cursor: pointer;  }
+        .box1-art2-box1{  width: 825px;  height: 515px;  background: #000;  margin: 35px auto;  position: relative;  overflow: hidden;  }
+        .box1-art2-mod{  position: absolute;  height: 515px;  top: 0;  left: 0;  }
+        .box1-art2-btn{  position: absolute;  width: 60px;  height: 61px;  cursor: pointer;  top: 265px;  }
+        .box1-art2-btn1{  left: 1px;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/btns.png") no-repeat 0 0;  }
+        .box1-art2-btn2{  right: 1px;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/btns.png") no-repeat -60px 0;  }
+        .box1-art2-art{  width: 980px;  height: 340px;  margin: 0 auto 25px;  }
+        .box1-art2-art .hei20{  display: block;  color: #272727;  font: 22px/100px 'Hiragino sans GB','microsoft yahei'; padding: 0  20px;  }
+        .box1-art2-art .hei14{  display: block;  color: #272727;  padding: 0 43px;  font: 14px/28px 'simsun';  text-indent: 28px;  }
+        .box1-art2-art .hong12{  color: #272727;  font-size: 14px;  }
+
+        .box3-com{  width: 990px;  height: 1360px;  border: 1px solid #c7c7c7;  margin: 45px auto 160px;  }
+        .list{  width: 984px;  min-height: 100px;  overflow: hidden;  margin: 20px auto 35px;  border: 2px solid #c7c7c7;  }
+        .list-t{  width: 984px;  height: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/title.jpg") no-repeat top center;  }
+        .list-ul{  width: 984px;  overflow: hidden;  min-height: 96px;  margin: 5px auto 20px;  }
+        .list-ul li{  display: none;  height: 48px;  width: 969px;  margin: 0 auto;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_597/7029f638cf/list_bg.png") no-repeat bottom center;  }
+        .list1{  float: left;  width: 250px; padding-left: 65px;  height: 48px;  color: #555555;  font: 18px/48px 'Hiragino sans GB','microsoft yahei';  }
+        .list2{  float: left;  width: 75px; text-align: center;  height: 48px;  color: #000;  font: 22px/48px 'Hiragino sans GB','microsoft yahei';  }
+        .list3{  float: left;  width: 100px; text-align: left; overflow: hidden; margin-right: 10px;  height: 48px;  color: #F25C4A;  font: 22px/48px 'Hiragino sans GB','microsoft yahei';  }
+        .list4{  width: 10px;  height: 22px;  margin: 13px 0;  float: left;  -webkit-border-radius: 11px;  -moz-border-radius: 11px;  border-radius: 11px;  background: #F25C4A;  }
+        .list-btn{  width: 80px;  height: 36px; float: right;  background: #F25C4A;  font: 20px/36px 'Hiragino sans GB','microsoft yahei';  text-align: center;  color: #fff;  cursor: pointer;  margin: 6px 10px 6px 0; -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px;  }
+
+        .shelter{  display: none;  position: fixed;  width: 100%;  height: 100%;  top: 0;  z-index: 9;  background: rgba(0,0,0,0.4);  }
+        .sh{  display: none;  position: fixed;  width: 510px;  height: 510px;  z-index: 10;  top: 50%;  left: 50%;  background: #eee;  margin: -260px 0 0 -36px;  -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px; overflow: hidden;  }
+        .sh-box{  width: 490px;  height: 430px;  margin: 10px;  background: #000;  position: relative;  overflow: hidden;  }
+        .sh-mod{  position: absolute;  height: 430px;  top: 0;  left: 0;  }
+        .back{  height: 50px;  width: 230px;  background: #F25C4A;  margin: 0 10px 0 270px;  -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px;  cursor: pointer;  color: #fff;  text-align: center;  font: 22px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .box1-sale{ position: absolute; width: 180px; height: 53px; top: 345px; left: 230px; }
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<div class="head_white">
+    <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+        <tr>
+            <td width="125" height="70">
+                <a href="http://www.zol.com.cn/" target="_blank" class="logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_56e/69ffe7c8a0/logo.jpg" width="220" alt="中关村在线">
+                </a>
+            </td>
+            <td align="center">
+                <a href="http://www.zol.com.cn/" target="_blank">首页</a> |
+                <a href="http://detail.zol.com.cn/" target="_blank">产品报价</a> |
+                <a href="http://bbs.zol.com.cn/" target="_blank">论坛</a> |
+                <a href="http://topic.zol.com.cn/" target="_blank">专题</a> |
+                <a href="http://news.zol.com.cn/" target="_blank">新闻</a> |
+                <a href="http://v.zol.com.cn/" target="_blank">视频</a> |
+                <a href="http://sj.zol.com.cn/" target="_blank">手机软件</a> |
+                <a href="http://xiazai.zol.com.cn/" target="_blank">软件下载</a> |
+                <a href="http://www.zol.com.cn/help/iphone.html" target="_blank">ZOL客户端</a>
+            </td>
+            <td width="145" align="right" id="zt_head_login">
+                <a href="http://service.zol.com.cn/user/login.php" target="_self">登录</a> |
+                <a href="http://service.zol.com.cn/user/register.php" target="_blank">免费注册</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    (function (){
+        var zolid = readCookie('zol_userid');
+        if(!zolid){
+            document.getElementById("zt_head_login").innerHTML = '<a href="http://service.zol.com.cn/user/login.php" target="_self">登录</a> | <a href="http://service.zol.com.cn/user/register.php" target="_blank">免费注册</a>';
+        }else{
+            document.getElementById("zt_head_login").innerHTML = '<a href="http://my.zol.com.cn/"'+zolid+'/ target="_blank">'+zolid+'</a> | <a href="http://service.zol.com.cn/user/login.php?type=quit" target="_self">退出</a>';
+        }
+    })();
+</script>
+<!--头图-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<div class="wrap1 navBg">
+    <div class="wrapper1 nav">
+        <ul class="nav-ul">
+            <li class="nav1 act">选出你眼中最美的showgirl</li>
+            <li class="nav2">最美showgirl人气榜</li>
+        </ul>
+    </div>
+</div>
+<!--盒子-->
+<div class="wrap1 boxes">
+    <div class="wrap1 box box1 blk">
+        <div class="wrap1 box1-art1">
+            <div class="wrapper1 box1-art1-m">
+                <div class="box1-art1-mod"><{data[0]}></div>
+                <div class="box1-sale"><{data[13]}></div>
+            </div>
+        </div>
+        <div class="wrap1 box1-vt">
+            <div class="wrapper1 box1-vote">
+                <div class="box1-num"><{data[1]}></div>
+                <div class="box1-vote-btn box1-vote-btn1"></div>
+                <div class="box1-vote-btn box1-vote-btn2"></div>
+                <div class="box1-vote-box">
+                    <div class="box1-vote-mod">
+                        <div class="box1-vote-m"><{data[2]}></div>
+                        <div class="box1-vote-m"><{data[3]}></div>
+                        <div class="box1-vote-m"><{data[4]}></div>
+                        <div class="box1-vote-m"><{data[5]}></div>
+                        <div class="box1-vote-m"><{data[6]}></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap1 box1-comment">
+            <div class="wrapper1 box1-com">
+                <div class="box1-com-mod"><{data[7]}></div>
+                <div class="box1-com-btn">点击查看更多精彩评论</div>
+            </div>
+        </div>
+        <div class="wrap1 box1-art2">
+            <div class="wrapper1 box1-art2-box">
+                <div class="box1-art2-box1">
+                    <div class="box1-art2-mod"><{data[8]}></div>
+                </div>
+                <div class="box1-art2-btn box1-art2-btn1"></div>
+                <div class="box1-art2-btn box1-art2-btn2"></div>
+                <div class="box1-art2-art"><{data[9]}></div>
+                <div class="box1-art2-art"><{data[10]}></div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap1 box box2">
+        <div class="wrap1 box2-list">
+            <div class="wrapper1 list">
+                <div class="list-t"></div>
+                <ul class="list-ul">
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                    <li>
+                        <div class="list1">-</div>
+                        <div class="list2">人气</div>
+                        <div class="list3">-</div>
+                        <div class="list4"></div>
+                        <div class="list-btn">查看</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="wrap1 box box3">
+        <div class="wrap1 box3-comment">
+            <div class="wrapper1 box3-com"><{data[11]}></div>
+        </div>
+    </div>
+</div>
+<div class="shelter"></div>
+<div class="sh">
+    <div class="sh-box">
+        <div class="sh-mod"><{data[12]}></div>
+    </div>
+    <div class="back">返回</div>
+</div>
+
+
+<script charset="Big5">
+    /*Go*/
+    var arr=Math.ceil(parseInt($('.box1-num .bai12').html()));
+    var arrLen=Math.ceil(parseInt($('.box1-num .bai12').html())/6);
+    console.log(arr);
+    console.log(arrLen);
+    var flg1=0;
+    function goCrook(btn1,btn2,dis,num,wid,flg) {
+        btn1.bind('click',function () {
+            flg--;
+            if(flg<0)flg=0;
+            dis.stop().animate({'left':'-'+flg*wid+'px'});
+        });
+        btn2.bind('click',function () {
+            flg++;
+            if(flg==num)flg=num-1;
+            dis.stop().animate({'left':'-'+flg*wid+'px'});
+        });
+    }
+    goCrook($('.box1-vote-btn1'),$('.box1-vote-btn2'),$('.box1-vote-mod'),arrLen,880,flg1);
+
+    /*切换*/
+    var back=$('.back');
+    var shelter=$('.shelter');
+    var sh=$('.sh');
+    var listBtns=$('.list-btn');
+    var navs=$('.nav-ul li');
+    var boxes=$('.boxes .box');
+    var comBtn=$('.box1-com-btn');
+    var lists=$('.list-ul li');
+
+    var lists1=$('.list1');
+    var lists3=$('.list3');
+    var lists4=$('.list4');
+    var arts=$('.box1-vote-m table .hei16');
+    var nums=$('.box1-vote-m .vote_num');
+    var allBtns=$('.box1-vote-m .vote_btn');
+    var shMod=$('.sh-mod');
+    var allVoteNum=0;
+
+    function loadInit() {
+        for(var i=0;i<arr;i++){
+            allVoteNum+=parseInt(nums.eq(i).html());
+        }
+        console.log(allVoteNum);
+        for (var j = 0; j < arr; j++) {
+            lists1.eq(j).html(arts.eq(j).html());
+            lists3.eq(j).html(parseInt(nums.eq(j).html()));
+            //console.log(nums.eq(j).html());
+            lists4.eq(j).css({'width':10+Math.floor(350*(parseInt(nums.eq(j).html())/allVoteNum))+'px'});
+            lists.eq(j).show();
+        }
+    }
+
+    window.onload=function () {
+        loadInit();
+    };
+
+    listBtns.bind('click',function () {
+        var nowI=listBtns.index(this);
+        if(window.location.href.indexOf('article')>-1){
+            shMod.css({'left':'-'+nowI*0+'px'});
+        }else{
+            shMod.css({'left':'-'+nowI*490+'px'});
+        }
+        shelter.show();
+        sh.show();
+    });
+    back.bind('click',function () {
+        shelter.hide();
+        sh.hide();
+    });
+
+    navs.bind('click',function () {
+        var nowI=navs.index(this);
+        boxes.eq(2).removeClass('blk');
+        $(this).addClass('act').siblings().removeClass('act');
+        boxes.eq(nowI).addClass('blk').siblings().removeClass('blk');
+    });
+    comBtn.bind('click',function () {
+        boxes.eq(2).addClass('blk');
+        boxes.eq(0).removeClass('blk');
+    });
+
+
+    /*左右图片切换*/
+    ~function () {
+        function scrolls(div1,div2,num,p,n){
+            var page = 1;
+            var i = num;
+            var $v_show = $(div1);
+            var $v_content = $(div2);
+            var v_width = $v_content.width();
+            var len = $v_show.find("img").length;
+            var page_count = Math.ceil(len/i);
+            $v_show.css("width",v_width*page_count + "px");
+
+            $v_show.css("left","0px");
+            $(n).click(function(){
+                if(!$v_show.is(":animated")){
+                    if(page == page_count){
+                        $v_show.animate({left:"0px"},"slow");
+                        page = 1;
+                    }else{
+                        $v_show.animate({left:"-="+v_width},"slow");
+                        page++;
+                    }
+                }
+            });
+            $(p).click(function(){
+                if(!$v_show.is(":animated")){
+                    if(page == 1){
+                        $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                        page = page_count;
+                    }else{
+                        $v_show.animate({left:"+="+v_width},"slow");
+                        page--;
+                    }
+                }
+            });
+            function auto_play()
+            {
+                if(!$v_show.is(":animated")){
+                    if(page == page_count){
+                        $v_show.animate({left:"0px"},"slow");
+                        page = 1;
+                    }else{
+                        $v_show.animate({left:"-="+v_width},"slow");
+                        page++;
+                    }
+                }
+            }
+            //setInterval(auto_play,5000);
+        }
+        scrolls(".box1-art2-mod",".box1-art2-box1",1,".box1-art2-btn1",".box1-art2-btn2");
+    }();
+
+</script>
+
+</body>
+</html>

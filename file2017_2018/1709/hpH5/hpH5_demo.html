@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="GBK">
+    <title>又是一年相聚时，看各位大佬产业剖析，看中关村在线如何再创辉煌</title>
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        function getDate(type){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+            week = week[date.getDay()];
+            var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+            var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+            if(type === 'HM'){
+                var timeStr = hour + ':' + minute;
+                return timeStr;
+            } else if(type === 'MDW'){
+                var dateStr = month + "月" + day + '日 ' + week;
+                return dateStr;
+            } else if(type === 'ALL'){
+                var allStr = year + '年' + month + "月" + day + '日 ' + hour + ':' + minute;
+                return allStr;
+            }
+        }
+
+        function setFont(str){
+            var maohaoPattern = /:{1}/ig;
+            str = str.replace(maohaoPattern,'<span class="num num-maohao"></span>');
+            for(var i = 0; i<= 9; i++){
+                str = str.replace(new RegExp(i + '{1}','ig'),'<span class="num num-' + i + '"></span>');
+            }
+            return str;
+        }
+
+        var shareData = window.WeixinShareData = {
+            icon:'http://image.zol.com.cn/article/12/848/lifufP9mWkYY.jpg',
+            title:'又是一年相聚时，看各位大佬产业剖析，看中关村在线如何再创辉煌',
+            url:location.href
+        }
+    </script>
+    <meta name="renderer" content="webkit">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select, figure { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        body, select, input, option { color: #fff; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none;color: #333; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea, select { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #487de3; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        html,body{height: 100%;width: 100%;overflow: hidden;}
+        body{background-color: #ebebeb;}
+
+
+        .wrapper{height: 100%;width: 100%;overflow: hidden;position: relative;}
+        .cover{color: #fff;height: 100%;width: 100%;overflow: hidden;background: #fff url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/background.jpg) no-repeat center top;-webkit-background-size: cover;background-size: cover;position: absolute;top: 0;left: 0;z-index: 1000;}
+        .timebox {padding: 40px 0 0;text-align: center;color: #fff;}
+        .num{display: inline-block;height: 100px;width: 80px;line-height: 0;background-position: center center;-webkit-background-size: contain;background-size: contain;background-repeat: no-repeat;}
+        .num-0{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/0.png);}
+        .num-1{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/1.png);}
+        .num-2{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/2.png);}
+        .num-3{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/3.png);}
+        .num-4{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/4.png);}
+        .num-5{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/5.png);}
+        .num-6{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/6.png);}
+        .num-7{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/7.png);}
+        .num-8{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/8.png);}
+        .num-9{background-image: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/9.png);}
+        .num-maohao{width: 50px;line-height: 60px;}
+        .num-maohao::before,.num-maohao::after{content: "";height: 10px;width: 10px;margin-left: 20px;margin-right: 10px;display: inline-block;vertical-align: middle;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;background-color: #fff;}
+        .date {font-size: 28px;line-height: 70px;}
+        .cover .notice{padding:15px 0 15px 37px;margin-left: 30px;margin-right: 30px;border-top: 1px solid #69564f;border-bottom: 1px solid #69564f;opacity:0;background: url(data:image/png;base64,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) no-repeat 0 20px; -webkit-background-size: 32px 32px; background-size: 32px 32px;}
+        .cover .notice .title{font-size: 24px;line-height: 1.5;}
+        .cover .notice .title .tag{font-size: 20px;color: #967971;margin-left: 10px;}
+        .cover .notice .detail{font-size: 24px;line-height: 1.5;}
+        .cover .notice .tags{font-size: 20px;color: #967971;line-height: 1.5;}
+
+        .slide-handler{background:url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/page-1-2.gif) center center no-repeat;height: 46px;width: 100%;position: absolute;bottom: 150px;left: 0;}
+        .cover footer{ position: absolute;bottom: 50px;width: 100%;height: 33px;}
+        .cover footer::before{content: "";float: right;margin-right: 20px;height: 33px;width: 43px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAhCAYAAABAxlKmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAopJREFUeNrMmM9LVFEUx+8ME4YzExWJG7WiWhmm4E8MF0L9AY3gzghB/AcEIWgVSM0/oLYQXClqi/ZBCxeDBio4q2mIoVZaWOkIoajfG0c4XObNvHveveaBD9zh3XPfd869nHPuixV/HimBpcErcM3S7xgsgU+Sl8aVzPoFQrUlwBC4qYTO3CbA/QrzvoAs+92u5HYFPAULviIbM47AHRXNekBd1MhmQ/i0GeIlVg/6bM9uXLCFA8qNPQFXbRxiyAY6uhnamqS6fHYIcmBFC30GBtXltXrS9y+qvf9ZzDaYp/EIeBgw73HC0dZ/o60qgj1wAFLgBrhHAWkO8NVCf7Px24B5yUREkT/AMtgEp8azX8RX8JFysy4It6qsd+qjgmnLg9dgo9ZL6PkGzc8bz0aoGl4Hz2tlgxmB0C0wDU5Y0egE3eAuFY59iuoa+Mz+kA7QOHhk+1KJ2B2K0F/6rbd1DNyu4lMCs3RsFFWvl6DRdyOzYAidrCFU0fNJdl61/6LvrqvEzlyMIpq2aCvHWKnO03rexK6xcVeIiFaKcFfAes7FFtlYWky4X8Gn2D0jShJrYuNdn2L/sHFKKDZpNCnexPKW7kAotmw0Kd7ENhiZQWLfA9ZzLvYBG+eEYnMB6zkX283G64Lolsiv0nrOxeoM0Mqak3fUA4SxfZp/3iO02mYUSbkdZjdTnXrehIhwiebtst5gOOrtNozp5mOUdV1awBTruloorZXZtq8bXdeobRMTpUVU1J/OsaYmjOmIvgAdLr7I2FgHVaMVEh5mfsY2XbkSe54nx9kdrEDH4pASfgOlp2p3MCuxZQeXxmYXYmpVvniE5H7Rtqoj+54a4l7bWn3BX2Q+nAkwAFVbh0vn4rpHAAAAAElFTkSuQmCC) no-repeat 50% 50%;}
+        .cover footer::after{content: "";margin-top: 10px;display: block;margin-left: auto;margin-right: auto;height: 12px;width: 60px;-webkit-border-radius: 6px;border-radius: 6px;background-color: rgba(221,237,251,0.6);}
+
+        .chat{position: absolute;top: 0;left: 0;height: 100%;width: 100%;overflow: hidden;z-index: 999;background-color: #ebebeb;}
+        .chat footer{position:absolute;bottom:0;left:0;width:100%;height:85px;background:url(http://icon.zol-img.com.cn/products/product2011/channel/reviewActivity/V6/mobile/page-3-1.png) no-repeat;background-size:100% 85px;}
+        .chat .scroller{height: 100%;width: 100%;overflow: hidden;}
+        .chat-list{padding-bottom: 160px;}
+        .chat-list li{margin-top: 16px;padding-left: 34px;padding-right: 34px;opacity: 0;display: block;width: 100%;}
+        .chat-list li .user-pic{height: 74px;width: 74px;float: left;overflow: hidden;-webkit-border-radius: 11px;-moz-border-radius: 11px;border-radius: 11px;overflow: hidden;}
+        .chat-list li .user-pic img{height: 74px;width: 74px;display: block;}
+        .chat-list li .chat-detail{margin-top: 30px;-webkit-border-radius:7px;border-radius:7px;border:1px solid #d0d0d0;padding:15px 20px;max-width: 390px;position: relative;float: left;background-color: #fff;margin-left: 22px;}
+        .chat-list li p{font-size: 24px;text-align: justify;word-break:break-all;}
+        .chat-list li .chat-detail::before{content: "";float:left;height:23px;width:13px;position: absolute;top: 20px;left: -12px;background: url(data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABQAAD/7gAOQWRvYmUAZMAAAAAB/9sAhAACAgICAgICAgICAwICAgMEAwICAwQFBAQEBAQFBgUFBQUFBQYGBwcIBwcGCQkKCgkJDAwMDAwMDAwMDAwMDAwMAQMDAwUEBQkGBgkNCwkLDQ8ODg4ODw8MDAwMDA8PDAwMDAwMDwwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAqABcDAREAAhEBAxEB/8QAZgAAAgMBAQAAAAAAAAAAAAAAAAcDBQYECQEBAAAAAAAAAAAAAAAAAAAAABAAAQMDAwIEBwAAAAAAAAAAAQIDBAARBSExExIGQVEyFGFxgSJCMzURAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/APaygKCokIOSyUKAwC57FSps1adQ2llJKQojYqOlBYvyGYzanX3UtNp3Uo2oIYkPMdw2EBtWOxi/XlHgQtab68KN/qaBgQ+3sZAxsrGRW1NNTW1typHVd5fWkpKis+Njp4CgyHaWGgZhhOcyZ99L5XEtw3NWo/QogDj87C9zQMuwFgBYDYUBQJ4wnY0kz8TKVjpyv2LRq27reziDoaDT4zvFIcag59gY6WshDUtNzGdPwV+HyNBur0CvoIn2GpLS2X0BxpwWWg0EEKdJxvNgpb65OJysd9mG6tR5GHC2r7OrcpOw8qDsoCgpcx68Rv8A0Gtt9lUH/9k=) no-repeat 50% 50%; -webkit-background-size: 13px 23px; background-size: 13px 23px;}
+        .chat-list li.topic{width: 480px;background-color: #cecece;color: #fff;-webkit-border-radius:7px;border-radius:7px;border:1px solid #d0d0d0;padding:10px 20px;margin-left: auto;margin-right: auto;}
+        .chat-list li .chat-detail .title{height: 24px;position: absolute;left: 0;top: -30px;width: 100%;font-size: 22px;color: #727272;overflow: hidden;line-height: 24px;text-overflow: ellipsis;white-space: nowrap;}
+        .chat-list li.hongbao .chat-detail{padding: 0;background: none;border: none;margin-left: 10px;}
+        .chat-list li.hongbao .chat-detail::before{display: none;}
+
+        .sign{position: absolute;height: 100%;width: 100%;background: #e5403c url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/flower.png) 100% -50px no-repeat;}
+        .sign .title{height: 108px;width: 445px;margin-top: 40px;margin-left: 50px;background: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/title.png) center center no-repeat;display:block;}
+
+        .textbox{position: relative;height: 60px;margin-left: auto;margin-right: auto;background-color: #fff;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;padding-left: 50px;margin-top: 10px;}
+        .textbox::before{content: "";height: 60px;width: 60px;-webkit-background-size: 31px 37px;background-size: 31px 37px;background-position: center center;background-repeat: no-repeat;position: absolute;left: 0;}
+        .textbox input{border: none; box-shadow: none; background: none; -webkit-appearance: none; outline: none; -webkit-tap-highlight-color: rgba(0,0,0,0); display: block; width: 100%; height: 60px;padding-top: 10px;padding-bottom: 10px; line-height: 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 0 10px;}
+        .textbox input::-webkit-input-placeholder{color: #333;}
+        .textbox select{border: none; box-shadow: none; background: none; -webkit-appearance: none; outline: none; -webkit-tap-highlight-color: rgba(0,0,0,0); display: block; width: 100%; height: 60px;padding-top: 10px;padding-bottom: 10px; line-height: 40px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        .textbox.location::before{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAlCAYAAAC6TzLyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABONJREFUeNrEWGtIm1cY/pKYxEtSL/UaYV7Qepk6o06dBhSn9TJE55+woctUtjEYjFH8MVo2W9j6o4wK/eGfjDKQgshEixYcnZvSbouTypzZIFjEW4oak3gLMVGz55UGJDtfYjKdBw7ku53nvTzv854Tgcvl4i5qCLkLHEH+vLy/v6/Y3Ny8sru7m+Z6GTKRSHQol8v/jo6Ofo7fprMGly4uLjZOTU2pFxYWyra2tuJtNpvQnS6hUMiFhYU5oqKiXqSnp/9QUlLSHxMTM45HPvMp8JZzk8lUPjY2dnN2dvZNeM0FBQUdg9E8OY6OjrjDw8PjKZPJ7MXFxUPV1dVfhoaGGgICB+C1wcHBbqvVKpNKpZxAIDhVKMkQMjQxMfGFWq3+NCkpacAfcOH09PT1gYGBm/BEQN4GMhwOBwcu2DQazUepqal9p2K7wWBoJWAYFTAwDYlEwoGYoX19fb1I3xs+wff29jKGhoZuHxwcCDzzejKs5JXdbj+e9JvusYZYLOYsFotseHi4B+9EeWX75ORkl9FoVAQHB/OGEoRyZmRkPEZpLSI6wtXV1ez5+XkVPSMwVgT0en0xOKTJz8+/ywSH11kzMzPNrAVoOJ1OLjc392l9fX1XfHz8ryfXQAm+Be/uLC8vp3t+7yaqTqfT5OXlfYeImv8VdtSyCrm5DKFgepydnf1bW1tbswcwjYOUlJThzs7Ot/FsFSljhn9paek1rP8qM+ewXsnymKoB9epsaGj4HATkVTAwW19bW/sVq3TJeyo/GJDDBN/Y2MhjfUjhRqnoEhISJn0xHFz4ns97WgfSrGSCo6bFfOyOjIw00k+fOiyV7iACJj7hwn0xX6kJvKiW6LT1DQCRl2cCJnhERMQSS0JJaFZWVnIRmUu+gCHFqevr66+wSEvrIILPmeDoSD+yFqSFUEJX5ubm3vMFjnL6BAZc8hQoSgO0w4WqmGCCp6WlPUFbtFBnYtXpyMhINwTlKh8whOTDiYmJD0hUWGRLTk7+PS4uTscERzn9WVhY+JDFVAoZZPKyVqsdBMDXZrM5E+9FY8asra29Pjo6+i1pOEBEnqkjrykSKpXqPu1HeLsaNgoFPT09P6MhyFl5o6iQccgdsXqTCIQwJ+zs7EhISFj9gOobyqZrb29vwKWZt7GEh4c/q6qq0rK8d+efejvA5CBhMtKQhOYioXss4Jebi/26urrrnsDMllpWVnYrMzNzliSVb5AR5Cmft+5wkxNQxjsQqPFT9XMsbG1qarpGGwFP8vkzqN1iOzVeWlr6Dd9+jmk2JPJxc3PzDbKer1f72OVS6RqwxscgoNXvfbtSqexFo9BSmfhzsCDg2NjYtdbW1ndCQkIMgR4a7DU1NZ+Vl5cPe8u/Z+vFJsOEfdu7UMxn//XEstvS0vI+cveIPPI2iFwQKVNHR4daoVCMn8lxCWy2NjY2dsEjC18JutOCHHfzMTvgsxpq9S+k4B4f+SjcEJJfcnJy7p/LQRHSew/6r/fMPxkEaXbAuBu4tJ0LOB0CsXm8BWFxnYwAGQPdfoBw/3SuR2S0xIdFRUWjbu+JAyCXsaKi4vb/cT634wD4BVi9Q+pHEcD1XV8HwjP7cwAdbaayslK7vb3NZWVl/VFQUNAbsAZTmfg7UfOJ/f39D7DDuRrI9+4puMj/ZP4RYAC8qM2cjfNxMAAAAABJRU5ErkJggg==);}
+        .textbox.phone::before{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAlCAYAAAC6TzLyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAArRJREFUeNrsmM2LEnEYx38zzliuryktvougIZSLC0t0794p9pSiJ/8DiwhaiqBjBJ282OZdOnWo2x49tKKg+C5zWTI139+dnp8puLM6s5tFEPPAw8zo4/P5/Z7nQeb7I1iWRRwjWq3Wg0Qi4e31ejskSaLfsdlsRigUiqbH43kvl8s/rYshuHCGYULRaPTl2dmZdDqdoslkghNdCYwXTFEUkkgkyGw297xeb0iv17/jhY/HY3c4HP6SzWZ3aZpGsOKJ0+lMqdXqJnyNAwkB7jym0WjcyOVyd/r9PjkajdDe3l4lEAjch0UVVoOp1Yd2u31QqVTmYKVSOfT7/UdWq/UtfDW8Chx8J5/PPz4+Pg7BPV0qlWzQQg+04Ryc29AJQRC4AsjtdscB/Bo+64FPcRsXVz5fxrQdDscLl8uVwrlwTpz7Qns2DAvSarXf0HY2ghw1PDcbZwP9PSMEBxP9QxPhIlyEi3ARLsJFuAj/D+GLN87tXuIEcpA8cmdbNiuUg9wkd2q1mgFuJVvAZfV6fRdLpivBsWJJJpMHhULhCB414NfBry2ufL6M0aXT6VeZTOY2zrXJqE0773a7dCQSeWq32w9VKlWLGwMCkgZBQEul0gH09lx9m82mplgsOlbUyuXh2HC5QOSRqVTqFrd3WLmaTKYfFoslG4/H7w4GA7QqpfE93jG+8vWdC6dWVSteNezswiBqNJpRMBg8BDn0+eTk5EMsFnvEjTs3eb9yUrw9B2X6FXbzfTgc8k4SlJvodDr3IKkF2qPgi8W5bDYbI5PJkoKHA+Vy+Vk0Gn1erVbnVVjXMyz+YA6QTqerMgxzE1eDG7f8rcFgGPp8vidGo/GNIBxXA8T9w9PTUy/sauOxCABJWAQFNgYIu+5YBCrZ3N/fj8BCP17qWOQP//WyC19rPwUYAH6JM/CGKv2PAAAAAElFTkSuQmCC);}
+        .textbox.username::before{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAlCAYAAAC6TzLyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABWtJREFUeNrkWGtIm1cY/hJNjHeN97vRGC14iVaHUalYpvOGrlOnrs5trluhgzJoYdAfnfu3rRsMxv7YOYcMUXHOMm/bKq0iXqmKuqZ4vyReJybeNWr2vKnKqEVyK/7YB8Hk+853nnPe93me9z2y1Go1c14XmznH61zBTfV4h7e6uira2NgQ4vshC5eVlZXUzs5uHL9VrwrcbnBw8IOurq535+bmAtbX160ODw8ZNpvN2NraKjw9PUdiY2N/CAwMrMDYfW0mZGlDuK2tLb/a2tr7fX19l/f3n89rYmLCcLlcZnd3l6FF0GVmZsbExMTUZGRk3MDzZYPBMbl3WVnZA6lUKqZd2tvbb4SGhtb5+fk9sbS0nEUEBCMjI5KhoaF0pIJL80VFRT3My8vLxwL+MQScjR3XtLW1XUFqmaCgoCdZWVm3HB0dW18cOD8/n1ZdXf3N1NRUEM2ZmppakpSUdF1vts/Ozr7R09PzJgELhUJpYWFh5suA6XJzc2soKiq64uHhIaPx7e3t762srETqDT4wMHB1e3ubhdyq09LSvjA3N5efNd7a2vpZSkrK18QHpVJphlS8oxc4SMTDzoOJTAKBYNDHx6dJGwaLRKLfEIUZCv309LSYUqszuEqlMgOB+DSJq6vrM4RyTRtwDocjd3Bw0ICvra054K+JQQ4H4ENdzAPj1QbZq6mp6R6kpCDyLC4uBuCWpTYTwgdc4ICe9B6cbxV/D3QGB2m24VpS0vbk5GSETCZ7XRvwiYmJdLlcLiBwb2/vIdxS6xV2mEklj8djdnZ22I2NjXfBA/5Z46EMn4aGhjvkgmD+fkhISKXeUgPLfw8PD/+TGA+Hi6ioqKiFhC6+bCw0fam8vPzXmZkZAZENPv+Ls7Nzh0H2urm5KYK91o2Ojl6gFMBkVrGgKkiqg3SP575Y2CV4QpZCodAUG7FY3FlQUJAN5s8ZXFgguQuwzp9gGtHHRQSEZJASNZkQhZlyTOYSGRn5V3Z2dhGMSWaUqnZkOra9vb3XYbfvg/1CLIhDCyFAsHoXtvpUIpGUhIWFlVMhNFpJ/e+F8TYAD4aBiOhdpEKNev438vtUW1C9wc+rjWKBUDHw6zBoXoydC9XPV85G7lednJz6oY5h+HonUrFgrJ1zxsbG3uru7v4YjJegeTCnXNPn+F1SAX3AbobaKaihGg1FKTqbKb3BYZNxzc3Nd/v7+xP39vY05Do4ONAwm8yHAI+6HSpEGgUcq8Hd3V2O8novODi4lASjE/j4+HhRVVXVvaWlJT6B0jhUKyW6mUewzW58HwKY6qh6uWGcBHqPRxkOooXQAumTkJBQia7mJr4vawUOw7gNXX+JHZnQcz6fr4iPjy9DOH+GrAbPUIITUpTe2tp6AwuJJHDyAGj/cW5u7tUXTecUOF7+sLS0tARhZh+5VTu60VtoHHt0IKdDR0fHTfJ5bMCUFhAXF9cE88nHM+VJ8SouLj55A74dAn8uRxit6DdCVpOTk1NoYWExqqOKtr28vB4jPfPobBOoMYFCAmxsbFS4/+hUYUEEuPX19d8vLCw4UTSio6P/wI4/AqmW9dVxQEDAj/n5+bfBes1Jpqmp6TMY1OVT4Aj328h1PDEYeh3NzMy8htsKQ40EBagkOTn5uyNicltaWu5QxE/AkVtzkORTYil1qtjx51itzFhOhnx/hWMUNRYMitNlKCL5BBw1OB25uUiri4iIeOjr61tn1KMwm72SmJj4LR2ncPRidXZ2fqK5TSFAtbqGKqU5ayHX94kwxvZxHK8e+Pv7DxPzh4eHk+CUr5HUeDCIJLRKHAq5i4tLC/SpfBWFBDmPhaLcqJ1GDehj/W//LfKvAAMAJpLXD8u6hasAAAAASUVORK5CYII=);}
+
+        .steps{position: absolute;top: 220px;height: 100%;width: 100%;background-color: #e5403c;z-index: 1;opacity: 0;padding-left: 50px;padding-right: 50px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+        .steps .notice{color: #FFA54C;margin-left: auto;margin-right: auto;padding-bottom: 20px;text-align: justify;word-break: break-all;}
+        .steps .notice.goto-login{text-align: center;text-decoration: underline;margin-top: 30px;display: block;padding-bottom: 0;}
+        .steps .notice.error{padding-top: 120px;background: url(http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/error.jpg) top center no-repeat;margin-top: 100px;text-align: center;}
+        .steps .notice.little{font-size: 24px;}
+        .steps .button{margin: 30px auto 0;height: 80px;text-align: center;position: relative;display: block;}
+        .steps .button::after,.steps .button::before{position: absolute;height: 70px;-webkit-border-radius: 10px;border-radius: 10px;overflow: hidden;left: 0;width: 100%;}
+        .steps .button::before{content: '';background-color: #A72F2D;bottom: 0;}
+        .steps .button::after{content: '提    交';background-color: #FFA64D;top: 0;text-align: center;line-height: 70px;font-size: 36px;color: #fff;}
+        .steps .button.retry::after{content: "重    试";}
+        .steps.slideInBottom{z-index: 2;}
+
+        .share{margin-top: 50px;width: 100%;text-align: center;}
+        .share-btn{display: inline-block;height: 80px;width: 80px;-webkit-background-size: 72px 64px;background-size: 72px 64px;background-repeat: no-repeat;background-position: center center;-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;}
+        .share-btn.sina{background-color:#d52b2b;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABACAMAAACOYMEYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAA5UExURUxpceFhYfvp6e6lpdpCQvja2t5TUtg5Odg1NeuVleRzc+eFhfGzs/PCwv3y8f739/bPz//7+////4aRhpMAAAASdFJOUwBJ6p4l2zgHEopfda2/9PrM/rqU93kAAAPbSURBVFgJ3VfZoqsqDBVkdkL+/2NvEggC2u692/N081CrwCLjIkzT/0Cs/SdGiCjjupivwZxOKEdc1Hd6qZ2A4Ed69w2U3RgoJR2+QVJzrEqd/itXWRXm7KmU5q/MA4NciNnE+WOdbAgC1LBu2U/E8h/6yc4pndobWG6yfR96XB1k0o6xV4SkP0uomkcbrBfyN8ap4P1D+gZJrkkpAtKCQPtblcxMu2l0Ri8urJRI52YnSs/zjb+d56TbehR4g3gb8DjIMk0Bn/plMgnOt7vedo6rAJvQ51JNFtPphA9PYhdWB7cbbDO4ELKQvAM2eZzzbJvLeuMElGE3ihogOVRF28mganf7QUHXlPcDEPhHwudAKh1mIn6SD05yW4kugqAMGsFWmD1bVgWyeoU5+2D/gz4JNmWxTNbgn0M5gMO4obOOWyaNdnHUrPFr1FpvHpeYHQMGgcPqwDpZRwqwqGcvsGJyS6z2UmUJjwaLQIqoJdxc1MeLEMGPQaeKA7uzpW+elBu9QkmKQcunCA2YIjNEj3SOH9HW96K4rHuk8e1noLVxxLi6eY/v1Sl13Cx49fe5ri50JV+t7L+/ZzHAu0d+l5CBRa5d9nn24U0LQUV87X1EL5SboChInBI+NuGD4Vex6xSKHrcc0974Sy8gtWUcJzfVswGU2sTjFJinKgGj7uutMGAK8RyOphheweCO5UykmWnGL70Q89Jo1/OAf/p5oFRTMA3D8DRRclE2x6/xW9RxHSubKDZr9EDVxTJ5kZioRKkHijSywDxRdaZpWdPDXj6DVUCDrVwcEUfLc1af1a62vQOg4dgijiWtbodHdtEVhC6pYMmwoPr7VnZ07l70QK+0Zfk5L9+hjdW2agJbTiOVQksn3SL1Kxjo2pqB+mP3ptDobo7E5QsGoi2qweihwxvTdBJ93MpRPBiMYD0QziPUixE607gu7wpNBhObNUIX7bkeSwc8HKScvXciseReBppgeQay3CVBa3YJU2mnJQ9jZtSowUsGql5vi4ST9fnygEtqLcMLJXktqroF7luS9XbaZ52IRrZCVGjo4UMlsdgSGOO039gufFKRMOX1Jy7j4zRVcN5cQCgUjBQkmJrlaJmuZNbxTNe4EzA9VeJWikrlJvuUc1Nlas7nSGx9n1e3v7kFrddLJ5aFbkE8x5QrGlxC2mTg4eZZmmK4+NwnqtLsp3NtVGwW939FLiI8HE2NioKzcSt994Gt+q+Er4Vpl3FGWbWszXu+pP0KB3wu6m2V40bPU894bfyTOGhgddNz7TrOy2Xqn7Amp0wIC1zXIHLqpyj9Dfrn2f8B1Shk/DZ8gUwAAAAASUVORK5CYII=);}
+        .share-btn.qzone{background-color:#3cb035;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABACAMAAACOYMEYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUxpcfi9UfrIbPrOfv3lufvVkPnBW/zfqv/9+f/04f3ryP/68fvanP/36f7w1f///0aOfwsAAAAPdFJOUwANMEyhZhyL+dm27nnjyavZ7VEAAALqSURBVFgJrVdZoqQgDGQREAFz/9tOwGCzKbzu4aMXiWVRJBVkbDr0ZqYxSwEbgFwKnARpB3BOYpamDQDs/4FSJASwLT3zNchHHNjFa9DCpA4JCH7euIsQgNMLT30J4UQIwL9ELUypa2H4aflC+GMItzcQqMeohYkPod+Skp8fQj/VSUkI4FhYwjikJvRDUspyYfj76zqpFEIg92WdtITg2zo5mpUBhK/qpCcEXyWlbhWK/Ow6Ja6FlN5sR/KzbnF2M0pKoZ8LL99v3d7d3V3YXTiPAaTaThsW7u8A0TkTJDm6GAT87RJZDO/3mZ60Ge/VNbw3KNxhw0i7bHol0h7OuHjNx3JyrYXyW61DxsGKxWZKA7cFWSQeUuAYIXJTAu2V48UuOBioZTiRoldC3BRlYZsod4XDWO4WA7TrUq7Ymg64rgerkm4PZ/MW1wkfOhzGXpE2qg1fPy4MjUWOdjZxc6SDaBLFDnEYk3c3rJd2ULxq5p9wGBPVfhDa7q/90p8cuWbOFysQtZTxhpPkbOnAcefDqHV0LrQ90AGaGIGka7xaQCCVZcd0hsNYiUQqNzkYF7x0XMqcdirGgXBrHe46NQJtLm9yMPJZ7CYiZW8WQYbefPeXjS/Uj0eHrDJqFi1IKuwH6GuntTbgGFRYAZB/GthzadGlKmN4gn4ojoyRvg9waD9DR0vsvEHHXdi26/wZ2wO2nM0YdMxo2Li0824246qv6GDB1U4Rd6kbSyfTUc/vkFYkerDvGqsx6mZR19/GvGqA/G9BazbypHz//b1wMBWPhnuj4I8FtXutT+U7lgvvOG2Ds1FXblqe8yLJJnItxBmqz7aBFP1+uGWMVV6Y+0eMrV1y6khkRolP9n16JC/9f/re/dE6qKroI5r+SDX1tvwes2dxiA593VJN35ZJ61KcGiofamZFkgokHz1qCPrHfUqFSZFEM3LUo4cw8aKOR79ZkRyusdkhnDjchBHTK06Dqf45CdKT/gHGM1tsXT2ZFAAAAABJRU5ErkJggg==);}
+        .share-btn.qweibo{background-color:#f7b948;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABACAMAAACOYMEYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUxpcW/K5lzD41LA4X/Q6e75/JLX7KPd7/b8/uH0+tLu9/z+/8Xp9a/h8bjl8////ylQOUAAAAAPdFJOUwA7IhBT62+I9trH/baapt/THuIAAANRSURBVFgJ7VZJoqwgDGxGUUDuf9tfYR7swf69fGwUCEUlqUQfj7/xRQQ4Y1JKxr842h3h2qmAYYM6NtZt3Hvl3hBKGdZ9ByU2YyOGMSoDWi/uUSFrfljC2TfJMaQ+Itgu7yKxGBsnGwVGjlpzE4kr0FF6vJ7tWDS3AiUO8mo5Ihw4qTtK2Ajn4kBEciPPVzNGfi186ESk+nmY4EGY4lPuZYj40TJQlq+fHMaNv0DuO3bk9aeUYGurrSQB2aMSFNDFeU1gXkUc7F4WiUAcVdQn8vCZbxx3bhlIFpxhyTZX4bfW8iLBAKCcZc/E3oCKfuie4ig7YwEE5Rt08QVAyH2+oiNUTxN4IoyyRvTO84R8TcFuOARkMpBuhFqIIY4E5EPITFhd63B6RgNQUQQOebLfgm00kJQ2yWjPXIunk7iJEbMdDsEu5QygkhaSZh0lATmpzmbkHAaXeGY29KCsZZoar2WUwqAiASZXiYE8lItXMDvLi9KStCs7QpU44ka5kKmKpMWXIe6JvfhRSUG7Mf+kmJ06E0ZrTlggcjqlLgrNRra++FGBSD3wTRyWmpJ2++50LQpQiBA6iZY6aa6ZDF1hgIBrAASZJH9ERYERiY/COzCK0VkZPZjfxIOuzonqLiFlxWzlGG2RUczNcWGOk60SOpiInuqHm/Tc9mCj0Fle6M3pHVItCW9bjEKSpeFKxen0iTqv2xTEVBNegTTJoXQ1Gco37lQIorRL9uO5iyrkkEVP0weVYsiIpB4Kpt4NQkmnJWOC+dh6XC4IWKKTqi1OHcIlrjrS4wFCMRReKXdu2jv6yCLxyGYbRFGdWgpujrY6vBVCVHbdWP5rJDRLIlm1mOFwVUwpjxWQoEyqzeFCOKQ9uedzCsddVHagRGAI6Y+dhtctOJN1nPokpmkL8s29hjYEjclinfpwrkaudrb1wNOVLRxz4vBzNPeop8e7DbYHP/qPNtJ51pm+eRU+mAEKZbaW/RuQtM2c6X9YXf2ufXR6MOK6aVYo+0yow5m3E3wmSoW/tX1pgFjnlvPS7P3m97GesJHEWVmTxYdTtJlRVx+em83Q9X8DRKX/E0a/AzK/Y1R/juf43Zrj9+Q3FYL+W/4WbxFYjdnS6Vabv5X/j8A/5Osmr6+7W1MAAAAASUVORK5CYII=);}
+        .share-btn.wechat{background-color:#46bbde;background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABACAMAAACOYMEYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUxpcXPKb1rAVYrThkm4QqvgqZvamNHvz7jmtvT889zz2sfrxuX35fv/++367f///xBfi+cAAAAPdFJOUwBAI2AOj3jBoPLPst776OW2+PkAAAMQSURBVFgJ1ZjpkqQgDIDlVtD2/d92g0gO8KB7q7Zq/TEKk3zmxplp+m8urbS2f2etVn4OcYFrDbNX+jeaNemzi2sJ/nuW9g3lQG6L+w5l/SJsYYuvUCoyze5xNaOx8lunLDfcWBJnqXW1SiOkAc6+h/eYD3GA9GaTv/Lkas89R1y9xZmYj7mzlPfVKL+SWn7aZmXI8/XJOYOaMUdTEzf/wmdvyPcH5yyZUAwnMHBiiQrCP/eZY3rq0BIhSwVEzh0Wls3mZ0LP9gJiZMh4kQ4odJrYQGCpWcMfdWJJCbS3w13G3srbepDCd8FDUNoIDpBgtjleH3cVwF6WkReTZIO9TFqD88aYu2hTGDPn9opOPZUQeNp40pPAmC3lwFhl3JxSmp25gr6C9j1jtBzma+pcfAUtEF3t+th9mknOyqh3C3aitvYCk2UXMTSpjS45MBYV9ZAQgeBFVlRN+oUohMdOj8M8+31euveeYNFOjlaXT9R72Ni9HLT6i+eggzY9iBqrtrM7gp+56Z/Z13Rj8/GulUYl6ug8zxS19wp9YmtP4NS8iwK8SsqS7UdgcCLWqXlnUpj06dc5lSjBJevVuaX2Mb1JuGYoY8V6kisWoauYuXSMCUHZ949F2/c91zCPEZiEMYIBUwdDc3AUYpj4zIuuyZrjZYMFri+6wA3UUHUCa8kCqQaWfllzVnfu7zVvUCS6pgCl1fQ2GFC0njVH19lW7VcQFl99z68gi1VxkkyHrq/o7/M5SvLtzPWGPE/12Gs2O1iRACodl0/IOX5yBsNELdHodUusI6jTXF/1G1grZYyaOm87wLmBlQ0G5f5sjoVpOEg8RA7O/RwqcfEeubMG9nG0ZWXP44W0trauadwgVJUPjydDpeI4krpyRSOoqvV37Fip2qzeG5c1bKMrlmx89bbknYEAncBHm7ZBew6W4QdaY9Y3HGjD+yoYd6z4136hol0P3+8i1LRQToz1LboCH8s9ceDJwv8DUozrGtN8fERaAyPn/MtASA4trK1nGIjDF+FQWQ+QFf9mG5D/hyJ/AAS4jIL7De6sAAAAAElFTkSuQmCC);}
+
+        .qr-code img{display: block;margin-left: auto;margin-right: auto;height: 290px;width: 290px;}
+        .qr-code .notice.little{text-align: center;margin-top: 10px;}
+
+        .meeting-location{font-size: 24px;}
+        .meeting-location p{font-size: 24px;color: #fff;}
+        .meeting-location .nav{padding-left: 25px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAbCAYAAACTHcTmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABQJJREFUeNqcVmtsVEUUPjP37rPtdtFE7UNaS4qkMU0LCtH4xCKmyisYKxKNITHRSIL4CD8oEkBARWwKRoVaBNEKEUpbHgXaggryB1ptSgsIPqAUsNKW3e597N57Zzxzd7eFLTWWs5ns3dmZ757Hd74ZYpz7DVggAEApABCIGgduGACWKR6FyTgY/k3wt2XPOJ1AJDm6hce2WRbIOWNADq4rg/DRn4B4PLgAgSMmcDMCcvY9k5wTJz7lzC98mPpH3YE7GZgWt7o6O8Injh+NnGjebV3ru0y9Ltwn2cA8FIJRa8tApk43EK8XQb0Aigo0M/O+5JdfWeKePGU6SUl2w1Cb4C2Z+5J5/q/F6vfbN6h7aj/BKHUiOwBMhhHLQDlGBRyjUjRwFBQW37b+s0bPjFnPDwM4YHJW9mjfO4tW+kuX1RCH+3YwMVU0mj5qZ1BDwLy8yf6VH26T0jPuhBGYu2jKVH/pkh2E0lTOmJ1jKh6ILznb9/aiL6jfnwK3YK5HHnvcWzJnBYRVCpyDzDUdPMXT5znGjcu92Qbzj9//1A831fJAoEfOzc13F02diUV1JK5LmjP3VbWutgIMs02mXq/HM/nJ2TcD1PbWVQfXly9Eyl0ghAORZdB21z6d+t6KTVJmZtr1a0lyitv14EOzuWm0USkra7w8JndsIqBxqr09WF42j4fDF2hyMpAkzIzLDeGTrfuDZR/N5wZyL8GcEycV4YtdlKb4MmiqX05coDce3MUVJUCdDqASxBhOgCb5INzSXG+eO3t2CCPS7robJOrG6ou4hoZu9V07C4SIvOMgMbpwu7qEWRrr7e1K3MORTGI5BRP7UbTkkLemF4i2E6hccFp4KaEPzALidvul9PQhheWqohELQc2uS81G5/nu+LvifewpfvYFOTOjUHCYIDBjOCwGrD8E7ieKXpOzc7ISQSPHjx/ilhGiVvflzsixYw2DZYx+SRkZab7FSyvlMTmP8kiY8rAO3LL83mdmvJXyxoJSkZobvDQiFmpIDbYsh54Fr0P3c9MeYKGQwm9iOK/pPx/5Ud1dtz1yqv00H8a0+j21XQV5staE/vW9+yZcHp8H/ZsrP+e3aGb3371XS2bdf2lCPghQKqoLTg8o26pKjdMdZ0bcowgQ+rR8kXXp4gnqcoJIC40mUBJa2BP4eM181t+vjwRT+WZLpX6osQKEdNr6LYiFNBUfoadmR3tjcM3qhShj7P8A6g0H9vdXblwgTgFmMwQGpS9qqFZJHtCbGioC5Wvft1n/X4CHmxoDa1a9CBJRsIvQNzJAHSr4TzAPgiHiNCFej6VV71ip1uz8bjhAo631ZPCD5SXEMvuoUHy7zeJ8JHaj3EA5e8rhjChbNy+zrly5OlQLTQh9uWEpU7VeLg4+sR7FQTiGObALR+2Tk0F0xBvK4QD2T/cZ5etNqxMx1X17d4ZbWqqJy4MaQGNCw+xvIY92+OQ6T69/FjKnH6zfGPn1l9aBrPf0XFOrtqwiyBb7SI+LjNAH26FY+CSWD0KjEzze/BgSN8yQ8lXFcrwD2HVVqrauZ10XW4g482MpFAo2sCfGW5lpKnK03744MDYoKMIbsTF85Ic9et2uevnevAnqtm/XEYb3glDQTpdwiAnlxHYX1ecRHQjqL9EO7AOrsxO1To7i8agYEzpYGCktfSxJ8Y3GjmskTtdAuPGU2R6jTOKlA7zTZsK/AgwAX/Chiv/FmUoAAAAASUVORK5CYII=) no-repeat 0 50%;color: #fff;}
+        .meeting-location > li{opacity: 0.5;}
+        .meeting-location > li.on{opacity: 1;}
+
+        /* 公用 - Toast 通知 */
+        .toast { position: fixed; width: 100%; opacity: 0; margin: 10px 0 0 0; border: 2px solid rgba(0,0,0,0); top: 88px; left: 0; z-index: 99; font-size: 24px; margin-top: -60px; border-width: 70px; padding: 10px 20px; text-align: center; color: #333; -webkit-box-sizing: border-box; box-sizing: border-box; -webkit-transition: opacity .5s; transition: opacity .5s; }
+        .toast, .toast a, .toast a:visited { color: #333; }
+        .toast.visible { opacity: 1; }
+        .toast:before { content: ""; display: block; position: absolute; width: 100%; height: 100%; left: 0; top: 0; z-index: -1; background: #fff6d9; border: 1px solid #f4e2a8; -webkit-border-radius: 4px; border-radius: 4px; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+        .slideInBottom{-webkit-animation: slideInBottom 100ms ease-out;animation: slideInBottom 100ms ease-out;-webkit-animation-fill-mode: forwards;animation-fill-mode: forwards;-webkit-animation-delay: 250ms;}
+
+        .loading { z-index: 1002;display: none; position: absolute; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius:8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-background-size: 56px 56px; background-size: 56px 56px; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-small { display: block; position: relative; padding-left: 40px; min-width: 32px; min-height: 32px; }
+        .loading-small, .loading-more:before { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABwklEQVR42q2VzytEURTH35vBoJQQiUpBjKSaJDslpWDyB1hNkWQlSqlUNrJko5JKkVIaREqxwWYmqYhIpSSgEoSa8T117nQ73blv49Snee/MmfO+58d948ZiMcfDXHGf1G9CoVDqOh6POxmWJNWgD3SCfPa/gi2wDK5MyV1NYQCUgDowAto9lG+CNUCiLsEhJdQV/oBbcE/qWWEb6AFNhoTdDFmlcvoMgb/gGRyDKdAM8kA9ODfEt0PZjUxInzlpSqM+vYM7UCy+WwV7GEamyqUSNoJyS78obhcUab43EOEpl4KgnnDAYwCDXLpuYfChVRFRCWlFenkoJqsAc8K3CA5E38Mo3VUKC9Ik84Md4aNdHDL0uZDE+TxKnQC1wtcFvmzNVk+V1gAmhW+W18l0sl5IqY/lroMsLSBgKPURjKYRRmsTxcSTSuG8CJgBZcLXAb4t7Vlw+BySnYJsvm4BwyJ4HJxYkj3w4qd6mACfIBdsi2Bapw3Da0we14Q8y7QiS9qrShn19gxcgGnQyifGb5uy2nxakSP+sbQaMAb2wRNX0o9lDnJljt5DsihPO8kPqrK8YFfANcdSK5Lqze3+91/AH+qubE2+81VRAAAAAElFTkSuQmCC) no-repeat 3px 50%; -webkit-background-size: 10px 10px; background-size: 10px 10px; }
+        .loading-more:before { content: "z"; display: inline-block; position: absolute; width: 32px; height: 32px; top: 50%; left: 50%; margin: -16px 0 0 -126px; vertical-align: top; color: rgba(0,0,0,0); }
+        .loading-small .loading-ring, .loading-more .loading-ring { display: block; position: absolute; width: 32px; height: 32px; left: 0; top: 50%; margin: -16px 0 0 0; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAyVBMVEX////MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMxqq56nAAAAQnRSTlMAAAECAwQGHgoSGAsluZUjGUPPCZ18kj/TVAWoKyc4PmEgT7IaTDFS6CHBELrgiPt4XvcPeTmmow7ZOyYfYjybMBbD6lo6AAAA90lEQVR4Xn3T1W7FMBRE0RmHGS5DmZmZ/f8f1UZuIsVyPI/ZS/LLCdSoJhzX81xBQt9//ut+GJVB7NMAujlJunXYJ9QXzrZPaOmEWN9XHO4EuJMftUJ90ceNbFMJmgG4mCdthwlA7I2pAMwAhYztQNR504ihcVe6VoAzuY+osABHHmB6ZQE8nmB8agPzKVbnNnBxia/aBuQ1bm6FBaR3KOTIAgh48qGhA50AHzNaAQIZmwA7wNUTzUB14PmlMh9MC/iaBdRS15VY5CX70w6R1eRNA70O8P3jc0R9vVeX37M0FIMdJJc/QRklvue6jtAz0P79XlN7+Re0zA3NrREElAAAAABJRU5ErkJggg==) no-repeat 0 0; -webkit-background-size: contain; background-size: contain; }
+        .loading-more { position: relative; font: 0/100px Arial; color: rgba(0,0,0,0); border-color: transparent; text-align: center; text-indent: 60px; }
+        .loading-more .loading-ring { display: inline-block; position: absolute; left: 50%; vertical-align: top; margin-left: -126px; }
+        body.state-loading::after{content: "";position: fixed;top:0;left: 0;bottom: 0;right: 0;background-color: rgba(0,0,0,0.5);z-index: 1001;}
+        body.state-loading .loading{display: block;}
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        @-webkit-keyframes slideInBottom {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 100px, 0);
+                transform: translate3d(0, 100px, 0);
+            }
+            100% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes slideInBottom {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(0, 100px, 0);
+                transform: translate3d(0, 100px, 0);
+            }
+            100% {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+
+
+    </style>
+</head>
+<body class="state-loading">
+<div class="wrapper">
+    <section class="cover">
+        <div class="timebox">
+            <div id="time" class="time">
+                <script>
+                    document.write(setFont(getDate('HM')))
+                </script>
+            </div>
+            <div id="date" class="date">
+                <script>
+                    document.write(getDate('MDW'))
+                </script>
+            </div>
+        </div>
+        <div class="notice">
+            <p class="title">微信<span class="tag">现在</span></p>
+            <p class="detail">中关村在线邀请您加入群聊</p>
+            <p class="tags"><span>滑动来查看</span></p>
+        </div>
+        <div class="slide-handler">
+        </div>
+        <footer></footer>
+    </section>
+
+    <section class="chat">
+        <header></header>
+        <div class="scroller">
+            <ul class="chat-list">
+                <li class="topic">
+                    <p>中关村在线邀请你加入了“2015年中关村在线客户答谢会”群聊，群聊参与人还有：刘小东 中关村在线、郭为 神州数码、郭江 慧聪集团、刘强东 京东、微软 Kevin Turner ......</p>
+                </li>
+            </ul>
+        </div>
+        <footer></footer>
+    </section>
+    <section class="sign">
+        <h1 class="title"></h1>
+        <div class="steps slideInBottom" id="sign">
+            <form action="http://m.zol.com.cn/topic/services/daxieqiandao.php" class="user-form" method="get">
+                <p class="notice">参会请填写信息生成二维码</p>
+                <p class="textbox username">
+                    <input type="text" title="姓名" id="username" data-required="1" name="username" placeholder="请输入姓名" />
+                </p>
+                <p class="textbox phone">
+                    <input type="tel" title="手机号" id="phone" data-required="1" maxlength="11" placeholder="请输入手机号" name="phone" pattern="^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$"/>
+                </p>
+                <p class="textbox location">
+                    <select name="city">
+                        <option>请选择城市</option>
+                        <option value="1">北京</option>
+                        <option value="2">上海</option>
+                        <option value="3">深圳</option>
+                    </select>
+                </p>
+
+                <span class="button"></span>
+                <span class="goto-login notice">如已注册，请直接点击这里登录</span>
+            </form>
+        </div>
+        <div class="steps" id="login">
+            <form action="http://m.zol.com.cn/topic/services/daxieqiandao.php?action=qiandaoLogin" class="user-form" method="get">
+                <p class="notice" style="padding-top: 10px;">您已经注册成功，请输入信息即刻获得入场二维码，期待您莅临现场</p>
+
+                <p class="textbox phone" style="margin-top: 100px;">
+                    <input type="tel" title="手机号" id="loginphone" data-required="1" maxlength="11" placeholder="请输入手机号" name="loginphone" pattern="^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$"/>
+                </p>
+
+                <span class="button" style="margin-top: 100px;"></span>
+                <p class="share">
+                    <a onclick="this.href += '&url=' + shareData.url + '&title=' + shareData.title + '&pic=' + shareData.icon + '&refer=' + shareData.url" href="http://service.weibo.com/share/share.php?&appkey=4028615622&ralateUid=1951621751&&searchPic=false" class="share-btn sina"></a>
+                    <a href="javascript:;" class="share-btn wechat" style="display: none;"></a>
+                    <a onclick="this.href += '&url=' + shareData.url + '&desc=' + shareData.title + '&pics=' + shareData.icon" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary=" class="share-btn qzone"></a>
+                    <a onclick="this.href += '&pic=' + shareData.icon + '&url=' + shareData.url + '&title=' + shareData.title" href="http://share.v.t.qq.com/index.php?c=share&a=index&appkey=99d207b90670adceaaa416b63528d92c" class="share-btn qweibo"></a>
+                </p>
+            </form>
+        </div>
+        <div class="steps" id="error">
+            <p class="notice error"></p>
+            <span class="button retry" style="margin-top: 100px;"></span>
+            <p class="notice little" style="margin-top: 20px;"></p>
+        </div>
+        <div class="steps" id="success">
+            <p class="notice">尊敬的<em></em>，恭喜您注册成功，会议当天凭此二维码扫描入场，ZOL期待您的莅临！</p>
+            <div class="qr-code">
+                <img src="" alt="" />
+                <p class="notice little">长按图片可保存二维码</p>
+            </div>
+            <ul class="meeting-location">
+                <li id="beijing">
+                    <p>12月10日 北京 <a href="http://map.baidu.com/mobile/webapp/index/index/foo=bar/foo=bar/?third_party=wapmap&recall=0&strategy=&dgr=&qq-pf-to=pcqq.c2c#place/detail/qt=ninf&wd=北京北辰洲际酒店&c=131&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&uid=c879fa0194805253c909f001&industry=hotel&qid=10440073750392879163/showall=1&pos=0&da_ref=listclk&da_qrtp=11&da_adtp=&da_log=sampid:10_eno:3_adnum:0_sid:8695526505154571_from:webappmap_exptype:_query:北京北辰洲际酒店_adids:&detail_from=list&third_party=wapmap" class="nav">点击导航</a></p>
+                    <p>北京北辰洲际酒店2F宴会厅 13:30签到</p>
+                </li>
+                <li id="shanghai">
+                    <p>12月17日 上海 <a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=上海虹桥喜来登太平洋大饭店-正门&c=289&b=(13514172.91,3636140.81;13517172.91,3639140.81)/newmap=1#place/detail/qt=ninf&wd=上海虹桥喜来登太平洋大饭店-正门&c=289&b=(13514172.91,3636140.81;13517172.91,3639140.81)&uid=aca9941b49d3493abbbd63eb&industry=life&qid=10893244580305615628/showall=1&pos=0&da_ref=listclk&da_qrtp=11&da_adtp=&da_log=sampid:10_eno:103_adnum:0_sid:8695598845710050_from:webappmap_exptype:_query:上海虹桥喜来登太平洋大饭店-正门_adids:&detail_from=list" class="nav">点击导航</a></p>
+                    <p>虹桥喜来登上海太平洋饭店3F宴会厅 13:30签到</p>
+                </li>
+                <li id="shenzhen">
+                    <p>12月22日 深圳 <a href="http://map.baidu.com/mobile/webapp/place/detail/qt=ninf&wd=马哥孛罗好日子酒店&c=340&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&uid=0523a14106ceb804b23c8142&industry=hotel&qid=8605784761144138141/showall=1&pos=0&da_ref=listclk&da_qrtp=11&da_adtp=&da_log=sampid:10_eno:3_adnum:0_sid:8695454997299501_from:webappmap_exptype:_query:马哥孛罗好日子酒店_adids:&detail_from=list&third_party=wapmap/?third_party=wapmap&recall=0&strategy=&dgr=&qq-pf-to=pcqq.c2c&fromhash=1" class="nav">点击导航</a></p>
+                    <p>深圳马哥孛罗好日子酒店 13:30签到</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<div class="loading"><span class="loading-ring"></span></div>
+<div style="display: none;">
+    <audio id="wechat-audio" src="http://icon.zol-img.com.cn/m/audios/article/5546503.mp3" preload="preload"></audio>
+</div>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://icon.zol-img.com.cn/m/js/topic/juyuan/iscroll-lite.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+    define(function (require, exports) {
+        var toast;
+        exports.toast = function (c, t, s, h) {
+
+            exports.toast.dismiss = function () {
+                if (Function.isFunction(h)) {
+                    h.call(toast);
+                } else {
+                    toast.classList.remove('visible');
+                }
+                c.timeout = setTimeout(function () {
+                    toast.style.display = 'none';
+                }, 400);
+                exports.toast.dismiss = function () { };
+                return toast;
+            }
+            if (typeof c === 'string') {
+                if (!toast) {
+                    toast = document.createElement('div');
+                    toast.className = 'toast';
+                    document.body.appendChild(toast);
+                    toast.addEventListener('tap', exports.toast.dismiss);
+                    toast.lastTop = toast.currentStyle['top'];
+                    toast.moveTo = exports.toast.moveTo;
+                    toast.dismiss = exports.toast.dismiss;
+                }
+                toast.innerHTML = c;
+                c = toast;
+            }
+            if (toast.lastTop) {
+                toast.style.top = toast.lastTop;
+            }
+            if (Function.isFunction(s)) {
+                s.call(c);
+            } else {
+                c.classList.add('visible');
+            }
+            if (c.timeout) {
+                clearTimeout(c.timeout);
+            }
+            toast.style.display = 'block';
+            if (t !== Infinity) {
+                t = parseInt(t) || 0;
+                if (t < 1)
+                    t = 2000;
+                c.timeout = setTimeout(exports.toast.dismiss, t);
+            }
+            return c;
+        };
+        exports.toast.moveTo = function (target) {
+            var y, bounds;
+            if (toast && target && target.getBoundingClientRect && (bounds = target.getBoundingClientRect())) {
+                y = bounds.top - toast.offsetHeight + 55;
+                if (y < 0)
+                    y = bounds.bottom + 10;
+                toast.style.top = y + 'px';
+            }
+            return toast;
+        };
+    });
+    define(function(require, exports) {
+        var wechatAudio = document.getElementById('wechat-audio');
+        if(/micromessenger/gi.test(navigator.userAgent)){
+            document.querySelector('.wechat').style.display = 'inline-block';
+        }
+        var chatarr = [{
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/9.jpg',
+            title: '中关村在线  刘小东',
+            chat: '大家好，2015年中关村在线的客户答谢会，12月10日就要开始了。各位行业大佬，有时间在会上讲几句吗？万分感谢呀~~~'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/8.jpg',
+            title: '神州数码   郭为',
+            chat: '我很高兴参加，小东'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/7.jpg',
+            title: '慧聪集团   郭江',
+            chat: '很高兴今年中关村在线加入到慧聪的大家庭，12月10日，小东，必须可以'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/6.jpg',
+            title: '京东   刘强东',
+            chat: '兄弟，你的事必须支持'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/10.jpg',
+            title: '微软   凯文 特纳',
+            chat: 'Hi, I’m Kevin Turner,Nice to meet you'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/9.jpg',
+            title: '中关村在线  刘小东',
+            chat: '太感动了~~，感谢大家支持'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/9.jpg',
+            title: '中关村在线  刘小东',
+            chat: '@高迎兵 @肖昌兴 这么多人支持我们，你们两位的演讲内容一定要更加精彩~~'
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/2.jpg',
+            title: '中关村在线  高迎兵',
+            chat: '一定精彩。我会与各位分享：中关村在线基于移动互联和用户社交构建的全新内容生态，以及专业营销服务体系，在寒冬之年与各位携手继续前行。',
+            longText: true
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/1.jpg',
+            title: '中关村在线  肖昌兴',
+            chat: '必须精彩。今年我想和大家分享的是移动电商新势力，针对行业的变化和电商的竞争，以及移动互联网飞速发展的浪潮，在线推出了新的秘密武器以及一系列的解决方案。',
+            longText: true
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/9.jpg',
+            title: '中关村在线  刘小东  ',
+            chat: '12月10日北京，12月17，上海，12月22日，深圳，小东会跟大家深度聊聊明年产业大变革，科技新生态，兄弟姐妹一定要来捧场呀，小东给每人都准备了红包，现场还有更多更大的红包等着你们~~~~~<br>2016，越努力，越幸运！',
+            longText: true
+        }, {
+            pic: 'http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/9.jpg',
+            title: '中关村在线  刘小东  ',
+            chat: '<img src="http://2.zol-img.com.cn/zt/tm_565/97aebaeee0/hongbao.jpg"/>',
+            type: 'hongbao'
+        }]
+        var cover = document.querySelector('.cover');
+        (function(cover) {
+            if (!cover) return;
+            var totalDuration = .3,
+                minMovedPx = 2;
+            var notice = cover.querySelector('.notice');
+            setTimeout(function() {
+                notice && notice.classList.add('slideInBottom');
+            }, 500);
+            var touchmove, touched, startX, startY, lastTouch, moved;
+            cover.addEventListener(Event.Touch.down, function(e) {
+                if (!Event.Touch.isMsPrimary(e)) return;
+                cancel();
+                Event.preventDefault(e);
+                touchmove = moved = 0;
+                if (e.touches) e = e.touches[0];
+                if (!e) return;
+                touched = 1;
+                startX = e.pageX;
+                startY = e.pageY;
+                lastTouch = e;
+                removeTransition(this);
+                document.addEventListener(Event.Touch.up, onTouchUp);
+                document.addEventListener(Event.Touch.move, onTouchMove);
+                Event.Touch.cancel && document.addEventListener(Event.Touch.cancel, onTouchCancel);
+            })
+            cover.scrollTo = function(callback) {
+                cover.style[$.transform] = 'translate3d(' + window.innerWidth + 'px,0,0)';
+                callback && callback()
+            }
+            cover.back = function() {
+                cover.style[$.transform] = 'translate3d(0,0,0)';
+            }
+
+            function onTouchMove(e) {
+                if (!Event.Touch.isMsPrimary(e)) return;
+                if (touched) {
+                    var t;
+                    if (t = e.touches) {
+                        t = t[0];
+                    } else {
+                        t = e;
+                    }
+                    lastTouch = t;
+                    if (t.pageX - startX > 0) {
+                        cover.style[$.transform] = 'translate3d(' + (t.pageX - startX) + 'px,0,0)';
+                    }
+                }
+            };
+
+            function onTouchUp(e) {
+                if (!Event.Touch.isMsPrimary(e)) return;
+                var t, x, y, v, w;
+                if (touched) {
+                    if (t = e.touches) {
+                        t = t[0];
+                    } else {
+                        t = e;
+                    }
+                    t = t || lastTouch;
+                    x = t.pageX - startX;
+                    addTransition(cover);
+                    if (x > window.innerWidth / 3) {
+                        cover.scrollTo(chatInit);
+                    } else {
+                        cover.back();
+                    }
+                    touchmove = 1;
+                }
+                touched = 0;
+                moved = 0;
+                if (touchmove)
+                    Event.preventDefault(e);
+                cancel();
+            };
+
+            function onTouchCancel() {
+                cover.back();
+                cancel();
+            }
+
+            function removeTransition(element) {
+                element.style[$.transition] = 'none';
+            }
+
+            function addTransition(element, duration, timefunction) {
+                if (arguments.length === 1 || isNaN(duration) || duration < 0)
+                    duration = totalDuration;
+                duration = Math.round(duration * 100) / 100;
+                duration = Math.max(.01, duration);
+                duration = Math.min(totalDuration, duration);
+                timefunction = timefunction ? (' ' + timefunction) : '';
+                element.style[$.transition] = $.CSSTransform + timefunction + ' ' + duration + 's';
+            }
+
+            function cancel() {
+                document.removeEventListener(Event.Touch.up, onTouchUp);
+                document.removeEventListener(Event.Touch.move, onTouchMove);
+                document.removeEventListener(Event.Touch.cancel, onTouchCancel);
+            }
+
+            function chatInit() {
+                window.delayTime = 0;
+                var str = '';
+                var chatList = document.querySelector('.chat-list');
+                var chatScroll = new iScroll(chatList.parentElement);
+                var topic = chatList.querySelector('.topic');
+                topic && topic.classList.add('slideInBottom');
+                chatarr && chatarr.forEach(function(ele, index) {
+                    if(ele.longText){
+                        window.delayTime += 1000;
+                    }
+                    setTimeout(function() {
+                        var item = document.createElement('li');
+                        item.innerHTML = '<span class="user-pic"><img src="' + ele.pic + '" alt=""></span><div class="chat-detail"><h3 class="title">' + ele.title + '</h3><p>' + ele.chat + '</p></div>';
+                        item.classList.add('clearfix');
+                        if (ele.type === 'hongbao') {
+                            item.classList.add('hongbao');
+                            item.style.height = '186px';
+                            item.addEventListener('tap', signInit);
+                        }
+                        chatList.appendChild(item);
+                        chatScroll.refresh();
+                        if (chatList.clientHeight > chatList.parentElement.clientHeight) {
+                            chatScroll.scrollTo(0, chatScroll.maxScrollY);
+                        }
+                        item.classList.add('slideInBottom');
+                        wechatAudio.pause();
+                        wechatAudio.currentTime = 0.0;
+                        wechatAudio.play();
+                    }, 1000 * (index + 1) + window.delayTime);
+                });
+            }
+
+            function showMsg(ele) {
+                ele.classList.add('slideInBottom');
+            }
+
+            function signInit() {
+                var chat = document.querySelector('.chat');
+                addTransition(chat);
+                chat && (chat.style[$.transform] = 'translate3d(-100%,0,0)');
+            }
+
+        })(cover)
+
+        var signForm = document.querySelector('#sign form');
+        (function(signForm){
+            if(!signForm){return;}
+            signForm.submitBtn = signForm.querySelector('.button');
+            signForm.submitBtn.addEventListener('tap',sign);
+            signForm.onsubmit = sign;
+            var gotoLogin = signForm.querySelector('.goto-login');
+
+            gotoLogin.addEventListener('tap',function(){
+                document.querySelector('#sign').classList.remove('slideInBottom');
+                document.querySelector('#login').classList.add('slideInBottom');
+            });
+
+            function sign(e){
+                Event.preventDefault(e);
+                if(signForm.ajaxFlag){return;}
+                var data = {};
+                var testResult = checkData(signForm);
+                if(!testResult.status){
+                    $.toast(testResult.msg);
+                    return;
+                }
+                data['name'] = signForm.username.value;
+                data['phone'] = signForm.phone.value;
+                data['action'] = 'qiandaoRegister';
+                if(signForm.city.selectedOptions[0].value){
+                    data['city'] = signForm.city.selectedOptions[0].innerText;
+                }
+                signForm.ajaxFlag = 1;
+                document.body.classList.add('state-loading');
+                $.ajax({
+                    type:signForm.method,
+                    url:signForm.action,
+                    data:data,
+                    dataType:'jsonp',
+                    success:function(request){
+                        if(request && request.errCode){
+                            if(parseInt(request.errCode) === 10000){
+                                window.sign.classList.remove('slideInBottom');
+                                window.success.classList.add('slideInBottom');
+                                window.success.querySelector('.notice em').innerText = data.name;
+                                window.success.querySelector('.qr-code img').src = 'http://m.zol.com.cn/topic/services/daxieqiandao.php?action=displayPic&string=' + request.result;
+                            }else{
+                                window.historyPage = '#sign';
+                                window.sign.classList.remove('slideInBottom');
+                                window.error.classList.add('slideInBottom');
+                                if(parseInt(request.errCode) === 10001){
+                                    window.error.querySelector('.notice').innerText = '您已经注册，请直接登录';
+                                }else if(parseInt(request.errCode) === 10003){
+                                    window.error.querySelector('.notice').innerText = '很遗憾，信息有误，请您联系您的销售经理参与此盛会！给您带来的不便敬请谅解';
+                                }
+                            }
+                        }
+                        signForm.ajaxFlag = 0;
+                        document.body.classList.remove('state-loading');
+                    },
+                    error:function(){
+                        signForm.ajaxFlag = 0;
+                        document.body.classList.remove('state-loading');
+                    }
+                });
+
+            }
+
+
+        })(signForm);
+
+        var loginForm = document.querySelector('#login form');
+        (function(loginForm){
+            if(!loginForm){return;}
+            loginForm.submitBtn = loginForm.querySelector('.button');
+            loginForm.submitBtn.addEventListener('tap',login);
+            loginForm.onsubmit = login;
+            function login(e){
+                Event.preventDefault(e);
+                if(loginForm.ajaxFlag){return;}
+                var data = {};
+                var testResult = checkData(loginForm);
+                if(!testResult.status){
+                    $.toast(testResult.msg);
+                    return;
+                }
+                data['phone'] = loginForm.loginphone.value;
+
+                signForm.ajaxFlag = 1;
+                document.body.classList.add('state-loading');
+                $.ajax({
+                    type:loginForm.method,
+                    url:loginForm.action,
+                    async:true,
+                    data:data,
+                    dataType:'jsonp',
+                    success:function(request){
+                        if(request){
+                            if(parseInt(request.errCode) === 10000){
+                                window.success.classList.add('slideInBottom');
+                                window.login.classList.remove('slideInBottom');
+                                window.success.classList.add('slideInBottom');
+                                window.success.querySelector('.notice em').innerText = request.name;
+                                window.success.querySelector('.qr-code img').src = 'http://m.zol.com.cn/topic/services/daxieqiandao.php?action=displayPic&string=' + request.result;
+                            }else{
+                                window.historyPage = '#login';
+                                window.login.classList.remove('slideInBottom');
+                                window.error.classList.add('slideInBottom');
+                                if(parseInt(request.errCode) === 10007){
+                                    window.error.querySelector('.notice').innerText = '您还没有注册，请返回注册';
+                                }else if(parseInt(request.errCode) === 10003){
+                                    window.error.querySelector('.notice').innerText = '很遗憾，信息有误，请您联系您的销售经理参与此盛会！给您带来的不便敬请谅解';
+                                }
+                            }
+                        }
+                        signForm.ajaxFlag = 0;
+                        document.body.classList.remove('state-loading');
+                    },
+                    error:function(){
+                        signForm.ajaxFlag = 0;
+                        document.body.classList.remove('state-loading');
+                    }
+                });
+
+            }
+
+        })(loginForm);
+        var retry = document.querySelector('.button.retry');
+        retry && retry.addEventListener('tap',function(){
+            if(window.historyPage){
+                document.querySelector('#error').classList.remove('slideInBottom');
+                document.querySelector('#sign').classList.add('slideInBottom');
+            }
+        });
+        function checkData(form){
+            var inputs = form.querySelectorAll('.textbox input');
+            var flag = 1;
+            if(inputs.length){
+                for(var i = 0;i < inputs.length;i++){
+                    if(inputs[i].getAttribute('data-required') && !(inputs[i].value.trim().length)){
+                        flag = 0;
+                        return {
+                            status:0,
+                            msg:inputs[i].title + '不能为空'
+                        }
+                    }
+                    var pattern = inputs[i].getAttribute('pattern');
+                    if(pattern){
+                        pattern = new RegExp(pattern,'ig');
+                        if(!pattern.test(inputs[i].value)){
+                            flag = 0;
+                            return {
+                                status:0,
+                                msg:inputs[i].title + '格式不正确'
+                            }
+                        }
+                    }
+                }
+            }
+            if(flag){
+                return {
+                    status:1,
+                    msg:'成功'
+                }
+            }
+        }
+    });
+    window.addEventListener('load',function(){
+        document.body.classList.remove('state-loading');
+        var nowTime = new Date();
+        var beijingTime = new Date(2015,11,11);
+        var shanghaiTime = new Date(2015,11,18);
+        var shenzhenTime = new Date(2015,11,123);
+        var meetingLocation = document.querySelector('.meeting-location');
+        if(beijingTime.getTime() > nowTime.getTime()){
+            meetingLocation.children[0].classList.add('on');
+        }else if(beijingTime.getTime() < nowTime.getTime() && shanghaiTime.getTime() > nowTime.getTime()){
+            meetingLocation.children[2].classList.add('on');
+        }else if(shanghaiTime.getTime() < nowTime.getTime() && shenzhenTime.getTime() > nowTime.getTime()){
+            meetingLocation.children[3].classList.add('on');
+        }
+    })
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

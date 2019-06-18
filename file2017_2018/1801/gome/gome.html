@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>国美手机U9</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #f00; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 110px;  padding-top: 70px; background: #282828;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: #fff; }
+        .head-c{  width: 1200px;  height: 542px;  overflow: hidden;  position: relative; background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/lg_head_c.jpg") no-repeat 0 0;  }
+
+        .head_white { font-size: 12px; font-family: "SimSun"; color: #000; background:#f4f4f4;}
+        .head_white a { color: #000;}
+        .head_white .logo{ background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/logo.png") no-repeat center; width: 233px; height: 110px; display: block;  }
+        .head_white .logo img{  display: none;  }
+        #zt_head_login{ padding-right: 20px;}
+
+        .navBg{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/nav.jpg") no-repeat top center;}
+        .nav{height: 79px;}
+        .nav-ul{margin: 0 0 0 110px;width: 1080px;height: 79px;}
+        .nav-ul li{width: 179px;border-right: 1px solid transparent;height: 79px;float: left;background: transparent;}
+        .nav-ul li.act{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/nav_lis.png") no-repeat top center;}
+        .nav-ul li a{display: block;text-align: center;width: 179px;height: 79px;color: #fff;font: 26px/70px 'Hiragino Sans GB','microsoft yahei';}
+        .nav-ul li a:hover{text-decoration: none;}
+
+        .anaBg{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/ana.jpg") no-repeat top center;}
+        .ana{height: 776px;}
+        .an-m{width: 200px;height: 450px;top: 70px;position: absolute;}
+        .an-m1{left: 10px;}
+        .an-m2{right: 10px;}
+        .an-mod1 table img{-webkit-border-radius: 10px!important;border-radius: 10px!important;}
+        .an-m .pic_box{-webkit-border-radius: 10px!important;border-radius: 10px!important;}
+        .an-m .pic_box img{-webkit-border-radius: 10px!important;border-radius: 10px!important;}
+        .an-m .ln{height: 15px;}
+        .an-m table img{cursor:pointer;
+            -webkit-filter: brightness(0.6);
+            -moz-filter: brightness(0.6);
+            filter: brightness(0.6);
+            -webkit-transition: all .4s linear;transition: all .4s linear;}
+        .an-m table img.act{-webkit-filter: none;-moz-filter: none;-ms-filter: none;-o-filter: none;filter: none;filter: none;-webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);}
+        .an-box1{width: 700px;height: 420px;background: #000;overflow: hidden;margin: 100px auto 0;-webkit-border-radius: 10px;border-radius: 10px;position: relative;}
+        .an-mod1{position: absolute;height: 420px;left: 0;top: 0;}
+        .an-box2{width: 1150px;height: 160px;overflow: hidden;margin: 40px auto 0;position: relative;}
+        .an-mod2{position: absolute;width:6900px;height: 160px;left: 0;top: 0;}
+        .an-mod2 .hei20{display: block;padding: 0 40px;font: 24px/56px 'Hiragino Sans GB','microsoft yahei';}
+        .an-mod2 .hei18{display: block;padding: 0 40px;font: 18px/26px 'Hiragino Sans GB','microsoft yahei';}
+        .an-mod2 .hong12{font-size: 17px;color: #ff424d;}
+
+        .an-dot{width: 50px;height: 50px;position: absolute;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/ana_dot2.png") no-repeat 0 0;}
+        .an-dot.act{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/ana_dot1.png") no-repeat 0 0;-webkit-animation: rect 2s ease-in infinite; animation: rect 2s ease-in infinite;}
+        @-webkit-keyframes rect { 0%{  -webkit-transform: rotate(0deg) scale(1);  } 25%{  -webkit-transform: rotate(45deg) scale(1.2);  } 45%{  -webkit-transform: rotate(90deg) scale(1);  } 50%{  -webkit-transform: rotate(90deg) scale(1);  } 75%{  -webkit-transform: rotate(135deg) scale(1.2);  } 95%{  -webkit-transform: rotate(180deg) scale(1);  } 100%{  -webkit-transform: rotate(180deg) scale(1);  } }
+        @keyframes rect { 0%{  transform: rotate(0deg) scale(1);  } 25%{  transform: rotate(45deg) scale(1.2);  } 45%{  transform: rotate(90deg) scale(1);  } 50%{  transform: rotate(90deg) scale(1);  } 75%{  transform: rotate(135deg) scale(1.2);  } 95%{  transform: rotate(180deg) scale(1);  } 100%{  transform: rotate(180deg) scale(1);  } }
+        .an-dot1{left: 185px;top: 45px;}
+        .an-dot2{left: 185px;top: 200px;}
+        .an-dot3{left: 185px;top: 355px;}
+        .an-dot4{right: 185px;top: 45px;}
+        .an-dot5{right: 185px;top: 200px;}
+        .an-dot6{right: 185px;top: 355px;}
+
+        .funBg{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun.jpg") no-repeat top center;}
+        .fun{height: 844px;}
+        .fun-m{position: absolute;cursor: pointer;}
+        .fun-m1{width: 123px;height: 164px;top: 438px;left: 235px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun_m1.png") no-repeat 0 0;}
+        .fun-m2{width: 158px;height: 162px;top: 438px;left: 526px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun_m2.png") no-repeat 0 0;}
+        .fun-m3{width: 148px;height: 162px;top: 438px;left: 880px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun_m3.png") no-repeat 0 0;}
+        .fun-m4{width: 136px;height: 164px;top: 630px;left: 228px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun_m4.png") no-repeat 0 0;}
+        .fun-m5{width: 122px;height: 163px;top: 630px;left: 546px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun_m5.png") no-repeat 0 0;}
+        .fun-m6{width: 164px;height: 162px;top: 630px;left: 872px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/fun_m6.png") no-repeat 0 0;}
+        .more-m,.fun-m{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .more-m:hover,.fun-m:hover{ -webkit-transform: scale(1) translate(0px,-5px);  -moz-transform: scale(1) translate(0px,-5px); transform: scale(1) translate(0px,-5px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+        .newsBg{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/news.jpg") no-repeat top center;}
+        .news{height: 738px;}
+        .news1{width: 401px;height: 525px;position: absolute; left: 0;top: 162px;}
+        .news1 .hei20{display: block;width: 281px;height: 73px;padding:50px 60px;margin-bottom: 2px;font: 24px/30px 'Hiragino Sans GB','microsoft yahei';}
+        .news1 .hei20:hover{text-decoration: none;}
+        .news1 .hei20.act{background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/news_lis.jpg") no-repeat center;color: #fff;}
+        .news2-box{position: absolute;right:30px;top:180px;background:#000;width: 740px;height: 490px;overflow: hidden;}
+        .news2-mod{width: 705px;height: 1470px;position: absolute;left: 0;top: 0;}
+        .news2-mod .hei20{display: block;font: 24px/50px 'Hiragino Sans GB','microsoft yahei';}
+        .t-news{width: 460px;height: 70px;margin: 60px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a6/6a1f12b25c/t_news.jpg") no-repeat top center;}
+
+        .agoBg{background: #fff;}
+        .ago{height: 890px;}
+        .t-ago{width: 458px;height: 43px;margin: 45px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/t_ago.png") no-repeat 0 0;}
+        .ago-m{position: absolute;background: #000;}
+        .ago-m1{width: 585px;height: 365px;left: 15px;top: 120px;}
+        .ago-m2{width: 585px;height: 365px;right: 15px;top: 120px;}
+        .ago-m3{width: 575px;height: 365px;overflow: hidden;position:absolute;left: 15px;top: 505px;}
+        .ago-m3-mod{position: absolute;height: 365px;left: 0;top: 0;}
+        .ago-btn{z-index:3;position: absolute;width: 60px;height: 60px;top: 172px;}
+        .ago-btn1{left: 10px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/ago_btns1.png") no-repeat 0 0;}
+        .ago-btn2{right: 10px;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/ago_btns1.png") no-repeat -60px 0;}
+        .ago-m4{width: 575px;height: 365px;right: 15px;top: 505px;}
+        .ago-m4 #focus1_687319{  overflow: visible!important;  }
+        .ago-m4 #focus1_687319 .focus1_nav{  width: 100%!important;  bottom: 45px!important;  text-align: center!important;  }
+        .ago-m4 #focus1_687319 i{  width: 50px!important;  height: 6px!important; border-radius: 3px!important; -webkit-border-radius: 3px!important; text-indent: 9000px;  background: #8c8c8c !important;  }
+        .ago-m4 #focus1_687319 i.act{  background: #D10311!important;  }
+        .ago-m4 .bai20{  display: block;  width: 575px;  height: 48px;  margin-top: -48px;  background: rgba(0,0,0,0.7)!important;  position: relative;  font: 22px/48px 'Hiragino sans GB','microsoft yahei';  }
+        .ago-t{position: absolute;height: 40px;opacity: 0;}
+        .ago-t .sys_edit_element{margin-left: 100px!important;}
+        .ago-t1{left: 25px;top: 110px;}
+        .ago-t2{left: 610px;top: 110px;}
+        .ago-t3{left: 25px;top: 495px;}
+        .ago-t4{left: 620px;top: 495px;}
+        .ago-t .bai20{display: inline-block;padding: 0 20px;-webkit-border-radius: 20px;border-radius: 20px;background: rgba(0,0,0,0.5);font: 22px/40px 'Hiragino Sans GB','microsoft yahei';}
+        .ago-t .bai20:hover{text-decoration: none;color: #fff;}
+        .ago-t{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);-webkit-transition: all .4s linear;  -moz-transition: all .4s linear; transition: all .4s linear;  transform-origin: center;  -webkit-transform-origin: center;  }
+        .ago-t.act{ opacity: 1;-webkit-transform: scale(1) translate(30px,0px);  -moz-transform: scale(1) translate(30px,0px); transform: scale(1) translate(30px,0px);    }
+
+        .pic2{  min-width: 1200px; width: 100%; overflow: hidden;  height: 840px;  position: relative;  margin: 0 auto;  }
+        .pic2-box{  width: 1920px; background: #ccc;  height: 840px;  position: absolute;  overflow: hidden;  top:0;  left: 50%;  margin-left: -960px;  }
+        .pic2-mod{  position: absolute;  top: 0;  left: 0;  height: 840px;   }
+        .pic2-btn{  width: 80px;  height: 80px;  position: absolute; z-index: 3; left: 50%; top: 365px;  cursor: pointer;   }
+        .pic2-btn1{  margin-left: -530px; background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/pic_btns1.png") no-repeat 0 0;  }
+        .pic2-btn2{  margin-left: 450px; background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/pic_btns1.png") no-repeat -80px 0;  }
+        .pic2-phone{  position: relative;  width: 876px;  height: 409px;  margin: 200px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/pic_phone.png") no-repeat top center;  }
+        .pic2-mod .sys_edit_element{left: 500px!important;}
+
+        .moreBg{background: #fff;}
+        .more{height: 675px;}
+        .t-more{width: 412px;height: 43px;margin: 55px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/t_more.png") no-repeat 0 0;}
+        .more1{height: 440px;width: 750px;position: absolute;left: 0;top: 150px;background: #000;}
+        .more2{height: 220px;width: 448px;position: absolute;right: 0;top: 150px;background: #000;border: 1px solid #959595;}
+        .more3{height: 218px;width: 450px;position: absolute;right: 0;top: 372px;background: #000;}
+
+
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<div class="head_white">
+    <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+        <tr>
+            <td width="125" height="70">
+                <a href="http://www.zol.com.cn/" target="_blank" class="logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_5a6/5ae282de49/logo.png" width="220" alt="中关村在线">
+                </a>
+            </td>
+            <td align="center">
+                <a href="http://www.zol.com.cn/" target="_blank">首页</a> |
+                <a href="http://detail.zol.com.cn/" target="_blank">产品报价</a> |
+                <a href="http://bbs.zol.com.cn/" target="_blank">论坛</a> |
+                <a href="http://topic.zol.com.cn/" target="_blank">专题</a> |
+                <a href="http://news.zol.com.cn/" target="_blank">新闻</a> |
+                <a href="http://v.zol.com.cn/" target="_blank">视频</a> |
+                <a href="http://sj.zol.com.cn/" target="_blank">手机软件</a> |
+                <a href="http://xiazai.zol.com.cn/" target="_blank">软件下载</a> |
+                <a href="http://www.zol.com.cn/help/iphone.html" target="_blank">ZOL客户端</a>
+            </td>
+            <td width="145" align="right" id="zt_head_login">
+                <a href="http://service.zol.com.cn/user/login.php" target="_self">登录</a> |
+                <a href="http://service.zol.com.cn/user/register.php" target="_blank">免费注册</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    (function (){
+        var zolid = readCookie('zol_userid');
+        if(!zolid){
+            document.getElementById("zt_head_login").innerHTML = '<a href="http://service.zol.com.cn/user/login.php" target="_self">登录</a> | <a href="http://service.zol.com.cn/user/register.php" target="_blank">免费注册</a>';
+        }else{
+            document.getElementById("zt_head_login").innerHTML = '<a href="http://my.zol.com.cn/"'+zolid+'/ target="_blank">'+zolid+'</a> | <a href="http://service.zol.com.cn/user/login.php?type=quit" target="_self">退出</a>';
+        }
+    })();
+</script>
+<!--头图-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--导航-->
+<div class="wrap1 navBg">
+    <div class="wrapper1 nav">
+        <ul class="nav-ul">
+            <li class="act"><a href="#ana" target="_self">真机解析</a></li>
+            <li><a href="#fun" target="_self">配置参数</a></li>
+            <li><a href="#news" target="_self">视频解析</a></li>
+            <li><a href="#ago" target="_self">发布回顾</a></li>
+            <li><a href="#pic" target="_self">样张赏析</a></li>
+            <li><a href="#more" target="_self">更多详情</a></li>
+        </ul>
+    </div>
+</div>
+<!--解析-->
+<div class="wrap1 anaBg" id="ana">
+    <div class="wrapper1 ana">
+        <div class="an-m an-m1"><{data[0]}></div>
+        <div class="an-m an-m2"><{data[1]}></div>
+        <div class="an-dot an-dot1 act"></div>
+        <div class="an-dot an-dot2"></div>
+        <div class="an-dot an-dot3"></div>
+        <div class="an-dot an-dot4"></div>
+        <div class="an-dot an-dot5"></div>
+        <div class="an-dot an-dot6"></div>
+        <div class="an-box1">
+            <div class="an-mod1"><{data[2]}></div>
+        </div>
+        <div class="an-box2">
+            <div class="an-mod2"><{data[3]}></div>
+        </div>
+    </div>
+</div>
+<!--参数-->
+<div class="wrap1 funBg" id="fun">
+    <div class="wrapper1 fun">
+        <div class="fun-m fun-m1"></div>
+        <div class="fun-m fun-m2"></div>
+        <div class="fun-m fun-m3"></div>
+        <div class="fun-m fun-m4"></div>
+        <div class="fun-m fun-m5"></div>
+        <div class="fun-m fun-m6"></div>
+    </div>
+</div>
+<!--资讯-->
+<div class="wrap1 newsBg" id="news">
+    <div class="wrapper1 news">
+        <div class="t-news"></div>
+        <div class="news1"><{data[4]}></div>
+        <div class="news2-box">
+            <iframe id="vd" src='' frameborder='0' scrolling="no" width='100%' height='490' allowfullscreen='true'></iframe>
+        </div>
+    </div>
+</div>
+<!--回顾-->
+<div class="wrap1 agoBg" id="ago">
+    <div class="wrapper1 ago">
+        <div class="t-ago"></div>
+        <div class="ago-m ago-m1"><{data[6]}></div>
+        <div class="ago-m ago-m2"><{data[7]}></div>
+        <div class="ago-m ago-m3">
+            <div class="ago-m3-mod"><{data[8]}></div>
+            <div class="ago-btn ago-btn1"></div>
+            <div class="ago-btn ago-btn2"></div>
+        </div>
+        <div class="ago-m ago-m4"><{data[9]}></div>
+        <div class="ago-t ago-t1"><{data[14]}></div>
+        <div class="ago-t ago-t2"><{data[15]}></div>
+        <div class="ago-t ago-t3"><{data[16]}></div>
+        <div class="ago-t ago-t4"><{data[17]}></div>
+    </div>
+</div>
+<!--美图-->
+<div class="pic2" id="pic">
+    <div class="pic2-box">
+        <div class="pic2-mod">
+            <{data[10]}>
+        </div>
+        <div class="pic2-btn pic2-btn1"></div>
+        <div class="pic2-btn pic2-btn2"></div>
+        <div class="pic2-phone"></div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 moreBg" id="more">
+    <div class="wrapper1 more">
+        <div class="t-more"></div>
+        <div class="more-m more1"><{data[11]}></div>
+        <div class="more-m more2"><{data[12]}></div>
+        <div class="more-m more3"><{data[13]}></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    /*导航*/
+    $('.nav-ul li').bind('mouseenter',function () {$(this).addClass('act').siblings().removeClass('act');});
+
+    /*分析*/
+    var anaLis=$('.an-m table table');
+    var anaDos=$('.an-dot');
+    var anaLis2=$('.an-m table table img');
+    anaLis2.eq(0).addClass('act');
+    var anaDis1=$('.an-mod1');
+    var anaDis2=$('.an-mod2');
+    anaLis.bind('mouseenter',function () {
+        anaLis2.removeClass('act');
+        anaDos.removeClass('act');
+
+        var nowI=anaLis.index(this);
+        anaLis2.eq(nowI).addClass('act');
+        anaDos.eq(nowI).addClass('act');
+        anaDis1.stop().animate({'left':'-'+nowI*700+'px'},400);
+        anaDis2.stop().animate({'left':'-'+nowI*1150+'px'},400);
+    });
+    anaLis.bind('mouseleave',function () {
+        var nowI=anaLis.index(this);
+    });
+
+    $('.ago-m').bind('mouseenter',function () {
+        var nowI=$('.ago-m').index(this);
+        $('.ago-t').removeClass('act');
+        $('.ago-t').eq(nowI).addClass('act');
+    });
+
+    var newsHei=$('.news1 .hei20');
+    var nowSrc=newsHei.eq(0).attr('href');
+    var news2=$('#vd');
+    news2.attr('src',nowSrc);
+    newsHei.eq(0).addClass('act');
+
+    newsHei.bind('click',function () {
+        newsHei.removeClass('act');
+        var nowI=newsHei.index(this);
+        newsHei.eq(nowI).addClass('act');
+
+        news2.attr('src',$(this).attr('href'));
+        //news2.stop().animate({'top':'-'+nowI*490+'px'});
+        return false;
+    });
+
+    //回顾图1
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".ago-m3-mod",".ago-m3",1,".ago-btn1",".ago-btn2");
+
+    /*美图*/
+    var pic2=$('.pic2-mod');
+    var pic2Len=$('.pic2-mod table img').length;
+    var pic2Btn1=$('.pic2-btn1');
+    var pic2Btn2=$('.pic2-btn2');
+    var nowPic2Flag=0;
+    function pic2Mov(i) {
+        pic2.stop().animate({'left':'-'+nowPic2Flag*1920+'px'});
+    }
+    pic2Btn2.bind('click',function () {
+        nowPic2Flag++;
+        if(nowPic2Flag>pic2Len-1){ nowPic2Flag=pic2Len-1 }
+        pic2Mov(nowPic2Flag);
+    });
+    pic2Btn1.bind('click',function () {
+        nowPic2Flag--;
+        if(nowPic2Flag<0){ nowPic2Flag=0 }
+        pic2Mov(nowPic2Flag);
+    });
+
+
+</script>
+</body>
+</html>

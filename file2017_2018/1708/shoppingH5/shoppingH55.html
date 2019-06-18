@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>同城约惠 粽情狂欢</title>
+    <!--<meta name="viewport" content="width=device-width,user-scalable=no">-->
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 320;
+                document.write('<meta name="viewport" content="width=320, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=320, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=320,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <meta content="telephone=no" name="format-detection">
+    <link href="http://active.zol.com.cn/frontend/m/topics20150429.css" rel="stylesheet">
+    <style type="text/css">
+        .wrap1{  width: 320px;  position: relative;  overflow: hidden; margin: 0 auto;  }
+
+        .sw1{  background: #0bb366 url("http://2.zol-img.com.cn/zt/tm_599/aaf408c41b/bg1.jpg") no-repeat top center; height: 420px;  }
+        .sw1-ul{  width: 300px;  height: 35px;  margin: 2px auto 5px;  background: #ffc21c;  border: 2px solid #2a2a2a;  -webkit-border-radius: 5px;  border-radius: 5px;  }
+        .sw1-ul li{  width: 75px;  height: 35px;  float: left;  -webkit-border-radius: 3px;  border-radius: 3px;  text-align: center;  background: transparent;  }
+        .sw1-ul li.act{  background: #e8053a;  }
+        .sw1-ul li .sw1-p1{  font: 14px/16px 'Hiragino sans GB','microsoft yahei';  color: #000; padding-top: 4px;  }
+        .sw1-ul li .sw1-p2{  font: 10px/14px 'Hiragino sans GB','microsoft yahei';  color: #664e0b;  }
+        .sw1-ul li.act .sw1-p1{  color: #fff;  }
+        .sw1-ul li.act .sw1-p2{  color: #f69bb0;  }
+        .sw1-box{  width: 310px;  height: 375px;  overflow: hidden;  margin: 0 auto;  }
+        .sw1-mod{  width: 310px;  height: 375px;  display: none; position: relative;  }
+        .sw1-mod .sys_edit_element{  position: absolute;  }
+        .sw1-mod.blk{  display: block;  }
+        .sw1-mod .ln{  height: 4px;  }
+        .sw1-mod table img{  padding: 8px 8px 0;  }
+        .sw1-mod table td  table:nth-child(1){  width: 150px;  height: 185px;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_599/ba20787043/bgPro1.png") no-repeat top center;  }
+        .sw1-mod table .hui12{  display: block;  height: 14px;  color: #646363;  font: 12px/15px 'Hiragino sans GB','microsoft yahei';  margin-top: -5px;  }
+        .sw1-mod table .bai12{  display: block;  height: 42px;  color: #e8053a;  font: 11px/18px 'Hiragino sans GB','microsoft yahei';  text-align: center;  }
+        .sw1-mod table .bai12 i{  font: 14px/18px 'Hiragino sans GB','microsoft yahei';  }
+        .sw1-mod table .slh{  display: none;  }
+        .sw1-mod table .hong12{  display: block;  width: 80px;  height: 18px;  text-align: center;  color: #fff;  font: 11px/18px 'Hiragino sans GB','microsoft yahei';  margin: 1px auto;  background: #e8053a;  -webkit-border-radius: 7px;  border-radius: 7px;  }
+        .notStart{  width: 73px;  height: 73px;  position: absolute;  left: 50%;  right: 50%;  margin: -96px 0 0 -36px;  background: url("http://2.zol-img.com.cn/zt/tm_599/bc2e6d5da9/notStart.png") no-repeat 0 0;  }
+
+        .sw2{  background: #ffc21c;  }
+        .sw2-c{  width: 300px;  border: 2px solid #000;  overflow: hidden;  margin: 6px auto;  border-radius: 0 0 5px 5px;  }
+        .sw2-ul{  width: 300px;  height: 30px;  overflow: hidden; background: #000;  }
+        .sw2-ul li{  float: left;  position: relative;  width: 59px; border-right: 1px solid #3a2c06;  color: #fff;  text-align: center;  font: 11px/30px "Hiragino sans GB",'microsoft yahei';  }
+        .sw2-ul li.act{  background: #e8053a;  }
+        .sw2-ul li .bai20{  color: #fff;  text-align: center;  font: 11px/28px "Hiragino sans GB",'microsoft yahei';  }
+        .sw2-ul li:last-child{  border-right: 1px solid #000;  }
+        .sw2-ul li .sys_edit_element{  top: -15px!important; position: absolute;  }
+        .sw2-box{  width: 300px;  overflow: hidden;  margin: 4px auto;  }
+        .sw2-mod{  width: 300px;  overflow: hidden;  display: none;  }
+        .sw2-mod.blk{  display: block;  }
+        .sw2-m1{  width: 285px;  height: 230px;  margin: 0 auto;  position: relative;  }
+        .sw2-m2{  width: 120px;  height: 45px;  margin: 5px auto 0;position: relative;  }
+        .sw2-m3{  width: 205px;  height: 53px;  margin: 5px auto 0;position: relative;  }
+        .sw2-m4{  width: 201px;  height: 8px;  margin: 0 auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_599/bd2cf42c71/sw24.jpg") no-repeat top center;  }
+        .sw2-m5{  width: 280px;  min-height: 150px;  overflow: hidden;  margin: 0 auto 0;position: relative;  }
+        .sw2-m5 .ln{  height: 5px;  }
+        .sw2-box .sys_edit_element{  position: absolute;  }
+
+
+
+
+    </style>
+</head>
+
+<body>
+<!--<script src="http://m.zol.com/index.php?c=Shop_Public&a=ZplusHeader"></script>-->
+
+<div class="banners"><section class="introduction-section banners"><{data[1]}></section></div>
+
+<!--切换1-->
+<div class="banners wrap1 sw1">
+    <ul class="sw1-ul">
+        <li class="act">
+            <p class="sw1-p1">8.22-8.23</p>
+            <p class="sw1-p2">10.00-24.00</p>
+        </li>
+        <li>
+            <div class="sw1-p1">8.24-8.25</div>
+            <div class="sw1-p2">10.00-24.00</div>
+        </li>
+        <li>
+            <div class="sw1-p1">8.26-8.27</div>
+            <div class="sw1-p2">10.00-24.00</div>
+        </li>
+        <li>
+            <div class="sw1-p1">8.28</div>
+            <div class="sw1-p2">10.00-24.00</div>
+        </li>
+    </ul>
+    <div class="sw1-box">
+        <div class="sw1-mod blk"><{data[11116]}></div>
+        <div class="sw1-mod"><{data[11117]}></div>
+        <div class="sw1-mod"><{data[11118]}></div>
+        <div class="sw1-mod"><{data[11119]}></div>
+    </div>
+</div>
+
+<div class="banners"><section class="introduction-section banners"><{data[3]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[19]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[4]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[5]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[6]}></section></div>
+
+<!--切换2-->
+<div class="banners wrap1 sw2">
+    <div class="sw2-c">
+        <ul class="sw2-ul">
+            <li class="act"><{data[11140]}></li>
+            <li><{data[11141]}></li>
+            <li><{data[11142]}></li>
+            <li><{data[11143]}></li>
+            <li><{data[11144]}></li>
+        </ul>
+        <div class="sw2-box">
+            <div class="sw2-mod blk">
+                <div class="sw2-m1"><{data[11145]}></div>
+                <div class="sw2-m2"><{data[11146]}></div>
+                <div class="sw2-m3"><{data[11147]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11148]}></div>
+            </div>
+            <div class="sw2-mod">
+                <div class="sw2-m1"><{data[11149]}></div>
+                <div class="sw2-m2"><{data[11150]}></div>
+                <div class="sw2-m3"><{data[11151]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11152]}></div>
+            </div>
+            <div class="sw2-mod">
+                <div class="sw2-m1"><{data[11153]}></div>
+                <div class="sw2-m2"><{data[11154]}></div>
+                <div class="sw2-m3"><{data[11155]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11156]}></div>
+            </div>
+            <div class="sw2-mod">
+                <div class="sw2-m1"><{data[11157]}></div>
+                <div class="sw2-m2"><{data[11158]}></div>
+                <div class="sw2-m3"><{data[11159]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11160]}></div>
+            </div>
+            <div class="sw2-mod">
+                <div class="sw2-m1"><{data[11161]}></div>
+                <div class="sw2-m2"><{data[11162]}></div>
+                <div class="sw2-m3"><{data[11163]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11164]}></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banners"><section class="introduction-section banners"><{data[8]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[900]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[10]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[1100]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[12]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[1300]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[14]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[1500]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[16]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[17]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[18]}></section></div>
+
+<div id="sys_bar_copying"></div>
+<a class="back-to-top" style="display:none;"></a>
+<norunscript src="http://active.zol.com.cn/frontend/m/m_index.js"></norunscript>
+<!--<script src="http://m.zol.com/index.php?c=Shop_Public&a=ZplusFooterNew"></script>-->
+<script src="http://m.zol.com/js/Shop/appUrlChange.js" type="text/javascript"></script>
+<script src="http://www.zol.com/js/topic/topicUrl.js" type="text/javascript"></script>
+
+<script charset="gbk">
+
+    /*场景切换*/
+    var sw1Lis=$('.sw1-ul li');var sw1Dis=$('.sw1-mod');
+    var sw2Lis=$('.sw2-ul li');var sw2Dis=$('.sw2-mod');
+    function chg1(evt,type,origin,response,num1,cls1,cls2) {
+        if(type==0){
+            origin.bind(evt,function () {
+                var nowIndex=origin.index(this);
+                $(this).addClass(cls1).siblings().removeClass(cls1);
+                response.stop().animate({'left':'-'+nowIndex*num1+'px'},300);
+            })
+        }
+        if(type==1){
+            origin.bind(evt,function () {
+                var nowIndex1=origin.index(this);
+                nowPage=nowIndex1;
+                $(this).addClass(cls1).siblings().removeClass(cls1);
+                response.eq(nowIndex1).addClass(cls2).siblings().removeClass(cls2);
+            })
+        }
+        if(type==2){
+            origin.bind(evt,function () {
+                var nowIndex1=origin.index(this);
+                $(this).addClass(cls1).siblings().removeClass(cls1);
+            })
+        }
+        if(type==3){
+            origin.bind(evt,function () {
+                var nowIndex=origin.index(this);
+                //$(this).addClass(cls1).siblings().removeClass(cls1);
+                response.stop().animate({'left':'-'+nowIndex*num1+'px'},300);
+                origin.each(function (i) {
+                    origin.eq(i).removeClass(cls1);
+                });
+                $(this).addClass(cls1);
+            })
+        }
+    }
+    //chg1('mouseenter',0,$('.test-ul li'),$('.test-mod'),815,'act','');
+    //chg1('mouseenter',3,$('.pic2 table img'),$('.pic1-mod'),715,'act','');
+    chg1('click',1,sw1Lis,sw1Dis,null,'act','blk');
+    chg1('click',1,sw2Lis,sw2Dis,null,'act','blk');
+    //chg1('click',2,vd_lis,null,null,'act',null);
+
+    /*switch1_hong12*/
+    $('.sw1-mod .hong12').each(function (i) {
+        $('.sw1-mod .hong12').eq(i).html('立即抢购')
+    });
+
+    /*timerControl_sw1*/
+    function timerShow(i) {
+        for(var k=0;k<4;k++){sw1Lis.eq(k).removeClass('act');sw1Dis.eq(k).removeClass('blk');}
+        sw1Lis.eq(i).addClass('act');sw1Dis.eq(i).addClass('blk');
+        var notStartPics=$('.sw1-mod:gt('+i+')').find('table img');
+        console.log(notStartPics);
+        for(var u=0;u<notStartPics.length;u++){
+            notStartPics.eq(u).after('<div class="notStart"></div>');
+        }
+    }
+    var newDate=new Date();newY=newDate.getFullYear();newM=(newDate.getMonth()+1);newD=newDate.getDate();
+    console.log(newY+' '+newM+' '+newD);
+    if(newY==2017&&newM==8){
+        if(newD==22||newD==23){ timerShow(0) }
+        if(newD==24||newD==25){ timerShow(1) }
+        if(newD==26||newD==26){ timerShow(2) }
+        if(newD>=28){ timerShow(3) }
+    }else{
+        timerShow(0);
+    }
+
+
+
+</script>
+</body></html>

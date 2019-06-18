@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>盼达网大转盘邀您抽奖</title>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="email=no" name="format-detection" />
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style>
+
+
+    </style>
+    <!--<link rel="stylesheet" type="text/css" href="http://active.zol.com.cn/15active/1202pandawap/style.css">-->\
+    <style type="text/css">
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0);background:#262b38 url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/bg2.jpg) repeat-y top center;background-size:cover;color: #fff; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none;}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #viewport{width:640px;height:100%;margin:0 auto;position:relative;}
+        section{position:absolute;left:0;top:0;width:100%;height:100%;overflow:hidden;}
+        .logo,.s1-title,.s2-title,.s3-title,.login-title,.succ-title,.nochance-title,.share a{color:rgba(0,0,0,0);}
+        .s1-title,.s1-dialcolor,.s2-title,.s3-title,.succ-bg{background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/s1-ico.png) no-repeat;}
+        .login-title,.succ-title,.nochance-title,.share a{background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/s4-ico.png) no-repeat;}
+        input::-webkit-input-placeholder{color:#262B38;}
+
+        .logo{position:relative;height:60px;background:#fff url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/logo.png) no-repeat center; }
+        .logo:after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:3px;overflow:hidden;font:0/0 arial;background-color:rgba(193,193,188,0.2);}
+
+        .s1-content{height:430px;padding:20px 0 0;background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/bg1.jpg) repeat-y top center;}
+        .s1-title{position:relative;z-index:2;width:465px;height:150px; margin:0 auto;}
+
+        .s1-dialbg{width:500px;height:500px; margin:10px auto 0; background-color:rgba(0,0,0,0.2);border-radius:250px; position:relative;}
+        .s1-dialbg:before{content:"";position:absolute;left:5px;top:5px;width:490px;height:490px;background-color:#383C48;border-radius:245px;}
+
+        .s1-dialcolor{position:absolute;left:-70px;top:-62px;width:640px;height:640px;background-position:0 -190px;}
+        .s1-dial{position:absolute;left:30px;top:30px; width:440px;height:440px;background:url(http://2.zol-img.com.cn/zt/tm_565/fec9abd29c/s1-dial.png) no-repeat;}
+        .s1-btn{position:relative;z-index:3;width:240px;height:60px;line-height:60px;margin:20px auto 0;background-color:#ED5565;border-radius:5px;font-size:30px;text-align:center;box-shadow:0 5px 0 #B44346;}
+        .s1-btn1{margin-top:25px;background-color:#2abdbc;box-shadow:0 5px 0 #0f4242;}
+
+        .s2-title{width:259px;height:46px;margin:60px auto 0;background-position:0 -849px;}
+        .s2-title1{padding:50px 0;text-align:center; font-size:30px; color:#F9F7ED;}
+        #slide2 p{width:486px;margin:0 auto;font-size:24px;line-height:48px;color:#F9F7ED;}
+        #slide2 .textindent{text-indent:28px;}
+        #slide2 .s1-btn{margin-top:75px;}
+
+
+        #slide3{height:1200px;overflow:visible;}
+        .s3-title{width:264px;height:45px;margin:40px auto 30px;background-position:-290px -850px;}
+        .input{position:relative;margin:0 auto;width:500px;padding:0 0 24px 47px; font-size:28px;color:#ED5565;line-height:50px;}
+        .input input{width:388px;height:60px;line-height:60px; margin:0 20px 0 0;border:0; font-size:26px;padding:0 0 0 8px;color:#262B38;background-color:#FAF7EE;outline:0;}
+        .notnull:before{content:"*";position:absolute;left:20px;top:4px; font-size:40px;}
+        .input select{width:210px;height:60px;line-height:60px;overflow:hidden;font-size:26px;padding:0 0 0 10px;color:#262B38;background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/select.png) no-repeat 0 0;border:0;outline:0; }
+        .input select:first-child{width:130px;background-position:0 -80px;}
+        .input select option{font-size:26px;color:#858594;}
+        .input em{font-size:40px;margin-left:30px;display:inline-block;vertical-align:middle;}
+        #code{float:left;width:190px;margin-right:10px;}
+        .input #codeimage{float:left;border:1px solid #646473;}
+        .regtip{margin:0 auto;width:464px;font-size:20px; line-height:60px;}
+        .input span{display:none;}
+        .usebtn{display:block;margin-top:10px;background:#E74545;box-shadow:0 10px 0 #AA292B;color:#fff;}
+        .phonetip{padding-bottom:0;margin-top:-20px;font-size:20px;color:#fff;}
+
+        .telcode{float:left;margin:0 0 0 18px;width:170px;height:55px;line-height:55px;background-color:#f9cd56;border-radius:5px;font-size:24px;color:#262B38;text-align:center;box-shadow:0 5px 0 #614703;}
+        .telcodeing{font-size:20px;background-color:#808091;box-shadow:0 5px 0 #5f5f6d; color:#fff;}
+
+        .mask{display:none;position:absolute;left:0;top:60px;width:100%;height:100%;background-color:rgba(35,40,52,0.95);}
+        .mask-close{position:absolute;right:0;top:0;width:40px;height:40px;line-height:35px;text-align:center;background-color:#91949a; font-size:40px;color:#010303;}
+
+        .login-box,.succ-box,.nochance-box{width:530px;height:420px;background-color:#232834;border:5px solid #2abdbc; margin:252px auto 0; border-radius:8px;box-shadow:0 -10px 0 #0f4242;}
+        .login-title{width:262px;height:45px;margin:-56px auto 65px;}
+        .login-box input,.succ-box input{display:block;width:480px;height:60px;line-height:60px;padding:0 30px;box-sizing:border-box;margin:0 0 30px 25px;border:1px solid #232323;background-color:#FAF7EE; color:#262B38; font-size:32px;}
+        .login-box #codelogin{float:left;width:280px;}
+        .login-box #codeimagelogin{float:left; margin-left:30px;width:168px;height:58px;border:1px solid #646473;}
+        .login-box .s1-btn{margin-top:0;}
+
+        .s4-content{height:545px;padding:15px 0 0;background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/bg1.jpg) repeat-y top center;}
+        #lottery{width:500px;height:470px;padding:55px 0 0;margin:0 auto;background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/s4-dialbg.png) no-repeat;position:relative;}
+        .s4-dial{width:440px;height:440px;margin:0 auto;background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/s4-dial.png) no-repeat;}
+        .s4-dialbtn{position:absolute;left:175px;top:5px;width:150px;height:345px;background:url(http://2.zol-img.com.cn/zt/tm_565/ec44187761/s4-dialbtn.png) no-repeat;}
+        .s4-dialbtn-nochance{background-position:-160px 0;}
+
+        #lottery.luck1 .lottery-rotate{-webkit-transform: rotate(2220deg);transform: rotate(2220deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck2 .lottery-rotate{-webkit-transform: rotate(2190deg);transform: rotate(2190deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck3 .lottery-rotate{-webkit-transform: rotate(2010deg);transform: rotate(2010deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck4 .lottery-rotate{-webkit-transform: rotate(2160deg);transform: rotate(2160deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck5 .lottery-rotate{-webkit-transform: rotate(2040deg);transform: rotate(2040deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck6 .lottery-rotate{-webkit-transform: rotate(1980deg);transform: rotate(1980deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck7 .lottery-rotate{-webkit-transform: rotate(2130deg);transform: rotate(2130deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck8 .lottery-rotate{-webkit-transform: rotate(1950deg);transform: rotate(1950deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck9 .lottery-rotate{-webkit-transform: rotate(2100deg);transform: rotate(2100deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.luck10 .lottery-rotate{-webkit-transform: rotate(1920deg);transform: rotate(1920deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.default0 .lottery-rotate{-webkit-transform: rotate(2070deg);transform: rotate(2070deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+        #lottery.default1 .lottery-rotate{-webkit-transform: rotate(1890deg);transform: rotate(1890deg);-webkit-transition: -webkit-transform 3s ease-in-out;transition: transform 3s ease-in-out;}
+
+        .userinfo{height:50px;line-height:50px;overflow:hidden;background-color:#262B38; padding:0 50px; font-size:24px;color:#F9F7ED;}
+        .username{float:left;}
+        .usernums{float:right;}
+        .userprize{height:60px;padding:10px 0 0;background-color:#383C48;}
+        .userprize p{width:540px;height:50px; line-height:50px;overflow:hidden;padding:0 20px;margin:0 auto;border:1px solid #535362;background-color:#262B38;font-size:24px;color:#F8F7EC;}
+
+        .succ-bg{position:absolute;z-index:1;left:0;top:42px;width:640px;height:640px;background-position:0 -190px;}
+        .succ-box{position:relative;z-index:2;height:300px;border-color:#F9CD56;box-shadow:0 -10px 0 #614703;}
+        .succ-title{width:321px;height:136px;margin:-145px auto 37px;background-position:0 -60px;}
+        .succ-box input{margin:0 0 0 25px;}
+        .succ-tip1{font-size:32px;color:#F8F7EC; margin:0 0 10px 28px;}
+        .succ-tip1 em{color:#EB5365;}
+        .succ-tip2{font-size:24px;margin:8px 0 0 28px;}
+        .succ-box .s1-btn{margin-top:22px;}
+
+        .nochance-box{height:200px;border-color:#757584;box-shadow:0 -10px 0 #44444d; text-align:center;font-size:40px;color:#F8F7EC;}
+        .nochance-title{width:140px;height:134px;margin:-105px auto 34px;background-position:0 -300px;}
+
+
+        .share-title{padding:30px 0 20px;text-align:center;font-size:34px;color:#FAF7EE;}
+        .share-title-nochance{color:#EC5465;}
+
+        .share{width:520px;margin:0 auto;text-align:center;}
+        .share a{display:inline-block; width:80px; height:85px; margin:0 20px; vertical-align:top; overflow:hidden;color:rgba(0,0,0,0);}
+        .share .wechat { background-position:-84px -210px;}
+        .share .qzone { background-position:-168px -210px; }
+        .share .weibo { background-position:0 -210px;}
+        .share .tencent-weibo { background-position: -252px -210px;}
+
+        section{display:none;}
+        section.current{display:block;}
+
+        .s1-title{opacity:0;-webkit-transform:translate(0,-420px);}
+        .s1-dialcolor{opacity:0;-webkit-transform:scale(0.5);}
+        #savebtn0{opacity:0;-webkit-transform:translate(0,100px);}
+
+        .current .s1-title{-webkit-animation:trans0 .3s forwards .4s;}
+        .current .s1-dialcolor{-webkit-animation:trans0 .3s forwards .3s;}
+        .current #savebtn0{-webkit-animation:trans0 .3s forwards .5s;}
+
+        @-webkit-keyframes trans0{
+            100%{opacity:1;-webkit-transform:none;}
+        }
+
+        @-webkit-keyframes opacity{
+            100%{opacity:1;-webkit-transform:none;}
+        }
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div id="viewport">
+    <section id="slide1">
+        <div class="logo">盼达网 PANDAKOREA.COM</div>
+        <div class="s1-content">
+            <div class="s1-title">疯狂大转盘 好礼等你拿</div>
+            <div class="s1-dialbg">
+                <div class="s1-dialcolor"></div>
+                <div class="s1-dial"></div>
+            </div>
+            <div class="s1-btn" id="savebtn0">大转盘摇起来</div>
+        </div>
+    </section>
+    <section id="slide2">
+        <div class="logo">盼达网 PANDAKOREA.COM</div>
+        <div class="s2-title">活动规则</div>
+        <div class="s2-title1">更多免邮、折扣活动，敬请期待！</div>
+        <p>1.  成功注册盼达网，即可获得一次抽奖机会。</p>
+        <p>2.  已注册过的用户，登录后邀请好友参加，</p>
+        <p class="textindent">每成功注册一位即可获得一次抽奖机会。</p>
+        <p>3.  每位用户邀请好友最多获得4次抽奖机会。</p>
+        <p>4.  本期活动截至于2015年12月14日，</p>
+        <p class="textindent">届时我们将联系获奖用户</p>
+        <p class="textindent">最终解释权归中关村在线所有。</p>
+        <div class="s1-btn" id="savebtn1">大转盘摇起来</div>
+    </section>
+    <section id="slide3">
+        <div class="logo">盼达网 PANDAKOREA.COM</div>
+        <div class="s3-title">注册盼达</div>
+        <div class="input notnull"><input id="userid" type="text" value="" placeholder="请输入用户名（3-15位字母数字）"><span>已存在</span></div>
+        <div class="input notnull"><input id="password" type="password" value="" placeholder="设置密码（6-20位字母或数字）"></div>
+        <div class="input notnull"><input id="passwordconfirm" type="password" value="" placeholder="确认密码"><span>不一致</span></div>
+        <div class="input notnull"><input id="email" type="text" value="" placeholder="电子邮箱"><span>已存在</span></div>
+        <div class="input notnull">
+            <select name="sex" id="sex">
+                <option value="2">女</option>
+                <option value="1">男</option>
+            </select>
+            <em>*</em>
+            <select name="age" id="age">
+                <option value="1950">1950</option>
+                <option value="1951">1951</option>
+                <option value="1952">1952</option>
+                <option value="1953">1953</option>
+                <option value="1954">1954</option>
+                <option value="1955">1955</option>
+                <option value="1956">1956</option>
+                <option value="1957">1957</option>
+                <option value="1958">1958</option>
+                <option value="1959">1959</option>
+                <option value="1960">1960</option>
+                <option value="1961">1961</option>
+                <option value="1962">1962</option>
+                <option value="1963">1963</option>
+                <option value="1964">1964</option>
+                <option value="1965">1965</option>
+                <option value="1966">1966</option>
+                <option value="1967">1967</option>
+                <option value="1968">1968</option>
+                <option value="1969">1969</option>
+                <option value="1970">1970</option>
+                <option value="1971">1971</option>
+                <option value="1972">1972</option>
+                <option value="1973">1973</option>
+                <option value="1974">1974</option>
+                <option value="1975">1975</option>
+                <option value="1976">1976</option>
+                <option value="1977">1977</option>
+                <option value="1978">1978</option>
+                <option value="1979">1979</option>
+                <option value="1980">1980</option>
+                <option value="1981">1981</option>
+                <option value="1982">1982</option>
+                <option value="1983">1983</option>
+                <option value="1984">1984</option>
+                <option value="1985">1985</option>
+                <option value="1986">1986</option>
+                <option value="1987">1987</option>
+                <option value="1988">1988</option>
+                <option value="1989">1989</option>
+                <option value="1990" selected>1990</option>
+                <option value="1991">1991</option>
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <option value="1994">1994</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+            </select>
+        </div>
+
+        <div class="input"><input id="tel" type="tel" value="" placeholder="请输入手机号码"></div>
+        <div class="input notnull clearfix"><input id="code" type="text" value="" placeholder="验证码"> <img width="168" height="58" name="codeimage" id="codeimage" src=""></div>
+        <div class="input phonetip">手机用于中奖后通知 未提供或联系不上视为放弃</div>
+        <div id="regbtn" class="s1-btn">立即注册</div>
+        <div id="loginbtn" class="s1-btn s1-btn1">登录</div>
+
+        <div class="mask" id="loginpop">
+            <div class="mask-close">×</div>
+            <div class="login-box">
+                <div class="login-title">用户登录</div>
+                <input id="useridlogin" type="text" placeholder="请输入用户名" value="">
+                <input id="passwordlogin" type="password" placeholder="请输入密码" value="">
+                <div class="clearfix">
+                    <input id="codelogin" type="text" value="" placeholder="验证码">
+                    <img width="168" height="58" name="codeimage1" id="codeimagelogin" src="">
+                </div>
+                <div id="loginsubmit" class="s1-btn s1-btn1">登录</div>
+            </div>
+
+        </div>
+    </section>
+    <section id="slide4">
+        <div class="logo">盼达网 PANDAKOREA.COM</div>
+        <div class="s4-content">
+            <div id="lottery">
+                <div class="s4-dial lottery-rotate"></div>
+                <div class="s4-dialbtn" id="lotterystart"></div>
+            </div>
+        </div>
+        <div class="userinfo">
+            <div class="username">你好，</div>
+            <div class="usernums">抽奖机会：0次</div>
+        </div>
+        <div class="userprize">
+
+        </div>
+        <p class="share-title">邀请好友注册，增加抽奖机会</p>
+        <div class="share"><a href="#" class="weibo">新浪微博</a><a href="#wechat" class="wechat">微信</a><a href="#" class="qzone">QQ空间</a><a href="#" class="tencent-weibo">腾讯微博</a></div>
+
+        <div class="mask" id="success">
+            <div class="mask-close">×</div>
+            <div class="succ-bg"></div>
+            <div class="succ-box">
+                <div class="succ-title">恭喜您</div>
+                <p class="succ-tip1">中奖了</p>
+                <input id="phonelottery" type="text" placeholder="请输入手机号领奖" value="">
+                <p class="succ-tip2">请输入有效手机号等待我们联系您</p>
+                <div id="phonesubmit" class="s1-btn">提交</div>
+            </div>
+        </div>
+
+        <div class="mask" id="nochance">
+            <div class="mask-close">×</div>
+            <div class="nochance-box">
+                <div class="nochance-title">您的抽奖机会用完了</div>
+                <p>您的抽奖机会用完了</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="wechat-tips1" style="display: none;position: fixed;z-index: 999;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,.9) url(http://icon.zol-img.com.cn/m/images/wechat-tips.png) no-repeat 100% 0;">
+    <span role="button" onclick="this.parentNode.style.display='none';" style="position: relative;display: block;width: 382px;height: 64px;line-height: 64px;margin: 0 auto;top: 624px;border: 2px solid #fff;color: #fff;font-size: 30px;text-align: center;">我知道了</span>
+</div>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://service.zol.com.cn/user/js/login/md5.js"></script>
+<!--<script src="http://active.zol.com.cn/15active/1202pandawap/script.js"></script>-->
+<script charset="gbk">
+    var globaluserid = '';
+    var regbtn = document.querySelector('#regbtn');
+    var input = document.querySelectorAll('input');
+    var t= Math.random()*100;
+    var getjson = "http://active.zol.com.cn/15active/0815pandawang/?callback=?&t="+t;
+    var lotteryjson = "http://m.zol.com.cn/topic/services/pd.php?callback=?&t="+t;
+    var cur=true;
+
+    //var promoteuserid = 'mapp,mapp1,zx11';
+    //var promote = false;
+
+    function loading(){
+        var l = document.querySelector('.loading');
+        if(!l)return;
+        l.classList.remove('loading-visible');
+        setTimeout(function(){
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        },0)
+    }
+    loading.dismiss = function(){
+        var l = document.querySelector('.loading');
+        if(!l)return;
+        l.classList.remove('loading-visible');
+        setTimeout(function(){
+            l.style.display = 'none';
+        },300)
+    }
+
+    window.addEventListener('load',function(){
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        viewport.children[0].classList.add('current');
+
+        //savebtn0.innerHTML = geturlparam('recommenduserid');
+        //if(promoteuserid.indexOf(geturlparam('recommenduserid')) != -1){
+        //alert(geturlparam('recommenduserid'));
+        //	promote = true;
+        //}
+
+        document.querySelector('.username').innerHTML = '你好，'+globaluserid;
+
+        savebtn0.addEventListener('click',function(){
+            slide1.style.display = 'none';
+            slide1.classList.remove('current');
+            slide2.style.display = 'block';
+            slide2.classList.add('current');
+        })
+        document.querySelector('.s1-dial').addEventListener('click',function(){
+            slide1.style.display = 'none';
+            slide1.classList.remove('current');
+            slide2.style.display = 'block';
+            slide2.classList.add('current');
+        })
+        savebtn1.addEventListener('click',function(){
+            slide2.style.display = 'none';
+            slide2.classList.remove('current');
+            checkCode(codeimage);
+            slide3.style.display = 'block';
+            slide3.classList.add('current');
+        })
+        loginbtn.addEventListener('click',function(){
+
+
+            checkCode(codeimagelogin);
+            loginpop.style.display = 'block';
+            checklogin()
+        })
+
+        regbtn.addEventListener('click',function(e){
+
+            var v_userid = userid.value.trim();
+            var v_password = password.value.trim();
+            var v_passwordconfirm = passwordconfirm.value.trim();
+            var v_email = email.value.trim();
+            var v_code = code.value.trim();
+            var v_tel = tel.value.trim();
+            var v_sex = sex.value.trim();
+            var v_age = age.value.trim();
+            var v_recommend = geturlparam('recommenduserid');
+            if(!v_userid || (v_userid.length<3||v_userid.length>15)){
+                alert('请正确输入用户名');
+                userid.value='';
+                userid.placeholder='请输入用户名（3-15位字母数字）';
+                return;
+            }else if(!/(^[_a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)/.test(v_email)){
+                alert('请正确输入邮箱地址');
+                email.value='';
+                email.placeholder='请输入正确邮箱地址';
+                return;
+            }else if(!v_sex){
+                alert('请选择性别')
+                return;
+            }else if(!v_age){
+                alert('请选择年龄')
+                return;
+            }else if(!v_password || (v_password.length<6||v_password.length>20)){
+                alert('请正确输入密码');
+                password.value='';
+                password.placeholder='设置密码（6-20位字母或数字）';
+                return;
+            }else if(!v_passwordconfirm || (v_passwordconfirm.length<6||v_passwordconfirm.length>20)){
+                alert('请正确输入确认密码');
+                passwordconfirm.value='';
+                passwordconfirm.placeholder='请正确输入确认密码';
+                return;
+            }else if(v_password != v_passwordconfirm){
+                alert('两次输入的密码不一致');
+                passwordconfirm.value='';
+                passwordconfirm.placeholder='请正确输入确认密码';
+                return;
+            }else if(v_tel!='' && !/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(v_tel)){
+                alert('请输入正确手机号码');
+                tel.value='';
+                tel.placeholder='请输入正确手机号码';
+                return;
+            } else if(!v_code || (v_code.length<0||v_code.length>4)){
+                alert('请正确输入验证码');
+                code.value='';
+                code.placeholder='验证码错误';
+                return;
+            }else if(v_code){
+                $.getJSON(getjson, {method : 'verifyCode',code:v_code}, function(o) {
+                    if(o.flag){
+
+                    }else{
+                        code.value='';
+                        code.placeholder='验证码错误';
+                        checkCode(codeimage);
+                        return;
+                    }
+                });
+            }
+            birthday = v_age+'-01-01';
+            $.getJSON(getjson, {method : 'register',userid:v_userid,phone:v_tel,email:v_email,passwd:v_password,code:v_code,sex:v_sex,birthday:birthday}, function(o) {
+                if(o.flag){
+                    globaluserid = v_userid;
+                    //location.search='?recommenduserid='+v_userid;
+                    location.hash='&recommenduserid='+v_userid;
+                    share()
+                    getnums()
+                    slide3.style.display = 'none';
+                    slide3.classList.remove('current');
+                    slide4.style.display = 'block';
+                    slide4.classList.add('current');
+                    userid.value=password.value=passwordconfirm.value=email.value=code.value=tel='';
+                }else{
+                    alert(o.info);
+                }
+            });
+        })
+
+        checkinput()
+        function checkinput(){
+            input.addEventListener('blur',function(e){
+                var id = e.target.id;
+                var span = e.target.nextElementSibling;
+                var value = this.value;
+                switch(id){
+                    case 'userid':
+                        if(!/^[\u4e00-\u9fa5\w\d_-]{3,15}$/.test(value)){
+                            value='';
+                            this.placeholder='请输入用户名（3-15位字母数字）';
+                            return;
+                        }
+                        $.getJSON(getjson,{method:'verifyUserName',userid:value},function(o){
+                            if(o.flag){
+                                span.style.display = 'none';
+                            }else{
+                                span.style.display = 'inline';
+                            }
+                        })
+                        break;
+                    case 'password':
+                        if(!/^[a-z0-9`~!@#$^&*()=|{}':;',\\[\\]{6,20}$/.test(value)){
+                            value=''
+                            this.placeholder='设置密码（6-20位字母或数字）';
+                            return;
+                        }
+                        break;
+                    case 'passwordconfirm':
+                        if(password.value != value){
+                            span.style.display = 'inline';
+                            value=''
+                            this.placeholder='请正确输入确认密码';
+                        }else{
+                            span.style.display = 'none';
+                        }
+                        break;
+                    case 'email':
+                        if(!/(^[_a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)/.test(value)){
+                            value='';
+                            this.placeholder='请输入正确邮箱地址';
+                            return;
+                        }
+                        $.getJSON(getjson, {method: 'verifyUserEmail',email:value}, function(o) {
+                            if(o.flag){
+                                span.style.display = 'none';
+                            }else{
+                                span.style.display = 'inline';
+                            }
+                        });
+                        break;
+                    case "tel":
+                        if(!/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(value) && value){
+                            value='';
+                            this.placeholder='请输入正确手机号码';
+                            return;
+                        }
+                        break;
+                    case "code":
+                        $.getJSON(getjson, {method : 'verifyCode',code:value}, function(o) {
+                            if(o.flag){
+
+                            }else{
+                                value='';
+                                this.placeholder='验证码错误';
+                                checkCode(codeimage);
+                            }
+                        });
+                        break;
+                }
+            })
+        }
+
+
+        codeimage.addEventListener('click',function(){
+
+
+            checkCode(codeimage);
+        })
+        codeimagelogin.addEventListener('click',function(){
+
+
+            checkCode(codeimagelogin);
+        })
+
+
+
+    })
+
+    function checkCode(codeimage){
+        $.getJSON('http://active.zol.com.cn/15active/0815pandawang/captcha.php?callback=?', function(o) {
+            if(o){
+                codeimage.setAttribute("src",'http://service.zol.com.cn/captchasrc.php?param='+ o + '&t=' + Math.random());
+            }
+        });
+    }
+
+
+    function checklogin(){
+        codelogin.addEventListener('blur',function(e){
+            var codevalue = codelogin.value;
+            $.getJSON(getjson, {method : 'verifyCode',code:codevalue}, function(o) {
+                if(o.flag){
+
+                }else{
+                    codevalue = '';
+                }
+            });
+        })
+
+        loginsubmit.addEventListener('click',function(e){
+
+
+            var username = useridlogin.value;
+            var password = passwordlogin.value;
+            var codevalue = codelogin.value;
+
+            if(!username || username ===0){
+                alert('用户名不能为空~');
+                return false;
+            }
+            if(!password){
+                alert('密码不能为空~');
+                return false;
+            }
+            if(!codevalue){
+                alert('验证码不能为空~');
+                return false;
+            }
+            var token1 = CryptoJS.MD5(CryptoJS.MD5(password)+username+codevalue);
+            token1 = ''+token1;
+
+
+            $.getJSON(getjson,{method:'login',token:token1,userid:username,code:codevalue,Isauto:0},function(o){
+
+                if(o.flag){
+                    globaluserid = username;
+                    //location.search='?recommenduserid='+username;
+                    location.hash='&recommenduserid='+username;
+                    share()
+                    document.querySelector('.username').innerHTML = '你好，'+globaluserid;
+                    getnums()
+                    slide3.style.display = 'none';
+                    slide3.classList.remove('current');
+                    slide4.style.display = 'block';
+                    slide4.classList.add('current');
+
+                }else{
+                    alert(o.info);
+                    checkCode(codeimagelogin);
+                }
+            })
+
+
+        })
+    }
+
+    lotterystart.addEventListener('click',function(){
+
+
+        if(cur){
+            getnums('showtip','startlottery')
+        }
+    })
+
+
+    function getnums(showtip,start){
+        $.getJSON(lotteryjson,{action:'getUserNum',username:globaluserid},function(o){
+            document.querySelector('.username').innerHTML = '你好，'+globaluserid;
+            document.querySelector('.usernums').innerHTML = '抽奖机会：'+o.result.can+'次';
+
+            //有抽奖次数
+            if(o.result.can>0&&start=='startlottery'){
+                //可以抽奖
+                luckydraw()
+            }else if(o.result.can<=0&&o.result.num<5){
+                //分享后有抽奖机会
+                document.querySelector('.s4-dialbtn').classList.add('s4-dialbtn-nochance');
+                document.querySelector('.share-title').classList.add('share-title-nochance');
+
+            }else if(o.result.can<=0&&o.result.num==5&&showtip=='showtip'){
+                //机会全用完
+                document.querySelector('.s4-dialbtn').classList.add('s4-dialbtn-nochance');
+                document.querySelector('.share-title').classList.add('share-title-nochance');
+                nochance.style.display = 'block';
+            }
+        })
+    }
+
+
+    function luckydraw(){
+        cur=false;
+        lottery.className = '';
+        var token;
+
+        $.getJSON('http://m.zol.com.cn/topic/services/session.php?callback=?',{},function(o){
+            if(o.result){
+                token = o.result;
+
+                $.getJSON(lotteryjson,{action:'getPrize',username:globaluserid,token:token},function(o){
+
+                    if(o.result.prizeId < 1){//没中奖
+                        var r = parseInt(Math.random()*2);
+                        lottery.className = 'default'+r;
+                        clearTimeout(times);
+                        var times = setTimeout(function(){
+                            getnums()
+                            //lottery.className = '';
+                            cur = true;
+                        },3000)
+
+                    }else if(o.result.prizeId > 0){
+
+                        lottery.className='luck'+o.result.prizeId;
+                        clearTimeout(times);
+                        var times = setTimeout(function(){
+
+                            document.querySelector('#success .succ-tip1').innerHTML = '抽中'+o.result.name;
+                            success.style.display = 'block';
+                            //lottery.className='';
+                            cur = true;
+                        },3000)
+
+                    }else{
+                        //没有返回有效信息
+                        cur=true;
+                    }
+                });
+            }
+        })
+    }
+
+
+    phonesubmit.addEventListener('click',function(){
+
+
+        var v_phonelottery = phonelottery.value;
+        var token;
+
+        if(v_phonelottery!='' && !/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(v_phonelottery)){
+            alert('请输入正确手机号码');
+            phonelottery.value='';
+            phonelottery.placeholder='请输入正确手机号码';
+            return;
+        }
+
+        $.getJSON('http://m.zol.com.cn/topic/services/session.php?callback=?',{},function(o){
+            if(o.result){
+                token = o.result;
+
+                $.getJSON(lotteryjson,{action:'addMobile',username:globaluserid,tel:v_phonelottery,token:token},function(o){
+                    if(o.result>0){
+                        //手机号提交成功
+                        getnums()
+                        success.style.display = 'none';
+                    }
+                })
+            }
+        })
+    })
+
+    document.querySelectorAll('.mask-close').addEventListener('click',function(){
+        this.parentNode.style.display = 'none';
+    })
+
+    userlist()
+    function userlist(){
+        var str='';
+        $.getJSON(lotteryjson,{action:'getUserList'},function(o){
+            if(o.result[0]){
+                str+='<p>用户'+o.result[0].username+'抽中'+o.result[0].name+'</p>';
+            }
+            document.querySelector('.userprize').innerHTML = str;
+        })
+    }
+
+    function geturlparam(name){
+        var reg = new RegExp("(^|&|&)"+name+"=([^&]*)(&|$)");
+        var r = window.location.hash.substr(1).match(reg);
+        if(r!=null){
+            return r[2];
+        }else{
+            return null;
+        }
+    }
+    share()
+    function share(){
+        var link = window.location.href;
+        var share_title=encodeURIComponent('疯狂大转盘，盼达好礼等你拿');
+        var share_link=encodeURIComponent(link);
+        var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_565/ec44187761/share.jpg');
+        var share_t=encodeURIComponent('盼达网大转盘邀您抽奖');
+
+        var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+        var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+        var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+        var share_con = '<a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="wechat" style="display:none" href="#wechat">wechat</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a>';
+        document.querySelector('.share').innerHTML = share_con;
+
+        window.wechatShareData = {
+            "title":"疯狂大转盘，盼达好礼等你拿",
+            "icon":"http://2.zol-img.com.cn/zt/tm_565/ec44187761/share1.jpg",
+            "description":"疯狂大转盘，盼达好礼等你拿",
+            "url":link
+        };
+
+        /MicroMessenger/i.test(navigator.userAgent) && function() {
+            document.querySelector('.wechat').style.display = 'inline-block';
+            document.querySelector('.wechat').addEventListener('click',function(){
+                document.querySelector('#wechat-tips1').style.display = 'block';
+            })
+        } ();
+    }
+</script>
+
+
+
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/h5?sId=500000656" charset="UTF-8"></script>
+</body>
+</html>

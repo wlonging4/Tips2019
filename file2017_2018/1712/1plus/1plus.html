@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>不一样的拍照对比 感受时间切割的魅力</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #0085B2; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 160px;  min-width: 1200px;  padding-top: 35px; background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #bbb;  }
+        .head_white{  min-width: 1200px;  }
+        .bar1{  width: 100%;  height: 15px;  background: #BB2631;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 801px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/lg_head_c.jpg") no-repeat top center;   }
+        .head-art1{width: 628px;height: 96px;margin: 70px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/head_art1.png") no-repeat 0 0;}
+        .head-art2{width: 1000px;height: 438px;margin: 22px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/head_art2.png") no-repeat 0 0;}
+        .head-pro4{width: 230px;height: 374px;position: absolute;right: 220px;top: 370px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/head_pro4.png") no-repeat 0 0;}
+        .head-pro3{width: 130px;height: 357px;position: absolute;left: 240px;top: 370px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/head_pro3.png") no-repeat 0 0;}
+        .head-pro2{width: 197px;height: 392px;position: absolute;left: 345px;top: 355px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/head_pro2.png") no-repeat 0 0;}
+        .head-pro1{width: 332px;height: 474px;position: absolute;left: 460px;top: 285px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/head_pro1.png") no-repeat 0 0;}
+        .float-scale{-webkit-transform:scale(2);transform:scale(2); opacity: 0; }
+        @-webkit-keyframes float-scale {
+            0%{  -webkit-transform: scale(2);opacity: 0;  }
+            100%{  -webkit-transform: scale(1);opacity: 1;  }
+        }
+        @keyframes float-scale {
+            0%{  transform: scale(2);opacity: 0;  }
+            100%{  transform: scale(1);opacity: 1;  }
+        }
+        .float-scale{ -webkit-animation: float-scale .5s ease-in .1s forwards;  animation: float-scale .5s ease-in .1s forwards;  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes lift {
+            0%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+            100%{  -webkit-transform: translate(0px,-20px);opacity: 1;  }
+        }
+        @keyframes lift {
+            0%{  transform: translate(0px,0px);opacity: 10;  }
+            100%{  transform: translate(0px,-20px);opacity: 1;  }
+        }
+
+        .ttb1{ -webkit-animation: ttb .6s ease-in 0s forwards;  animation: ttb .6s ease-in 0s forwards;   }
+        .ttb2{ -webkit-animation: ttb .6s ease-in 0.2s forwards;  animation: ttb .6s ease-in 0.2s forwards;  }
+        .ttb3{ -webkit-animation: ttb .6s ease-in 0.4s forwards;  animation: ttb .6s ease-in 0.4s forwards;  }
+        .ttb4{ -webkit-animation: ttb .6s ease-in .6s forwards;  animation: ttb .6s ease-in .6s forwards;  }
+        .ttb5{ -webkit-animation: ttb .6s ease-in .8s forwards; animation: ttb .6s ease-in .8s forwards;  }
+        .btt1{ -webkit-animation: btt .6s ease-in 0s forwards;  animation: btt .6s ease-in 0s forwards;   }
+        .btt2{ -webkit-animation: btt .6s ease-in 0.2s forwards;  animation: btt .6s ease-in 0.2s forwards;  }
+        .btt3{ -webkit-animation: btt .6s ease-in 0.4s forwards;  animation: btt .6s ease-in 0.4s forwards;  }
+        .btt4{ -webkit-animation: btt 1s ease-in 1.2s forwards;  animation: btt 1s ease-in 1.2s forwards;  }
+        .btt5{ -webkit-animation: btt 1s ease-in 1.6s forwards; animation: btt 1s ease-in 1.6s forwards;  }
+        .ltr1{ -webkit-animation: ltr .6s ease-in 0s forwards;  animation: ltr .6s ease-in 0s forwards;   }
+        .ltr2{ -webkit-animation: ltr .6s ease-in 0.3s forwards;  animation: ltr .6s ease-in 0.3s forwards;  }
+        .ltr3{ -webkit-animation: ltr .6s ease-in 0.6s forwards;  animation: ltr .6s ease-in 0.6s forwards;  }
+        .ltr4{ -webkit-animation: ltr .6s ease-in .9s forwards;  animation: ltr .6s ease-in .9s forwards;  }
+        .ltr5{ -webkit-animation: ltr .6s ease-in 1.2s forwards; animation: ltr .6s ease-in 1.2s forwards;  }
+        .rtl1{ -webkit-animation: rtl .6s ease-in 0s forwards;  animation: rtl .6s ease-in 0s forwards;   }
+        .rtl2{ -webkit-animation: rtl .6s ease-in 0.3s forwards;  animation: rtl .6s ease-in 0.3s forwards;  }
+        .rtl3{ -webkit-animation: rtl .6s ease-in .6s forwards;  animation: rtl .6s ease-in .6s forwards;  }
+        .rtl4{ -webkit-animation: rtl .6s ease-in .9s forwards;  animation: rtl .6s ease-in .9s forwards;  }
+        .rtl5{ -webkit-animation: rtl .6s ease-in 1.2s forwards;  animation: rtl .6s ease-in 1.2s forwards;  }
+
+        .lift{ -webkit-animation: lift .3s ease-in .1s forwards;  animation: lift .3s ease-in .1s forwards;  }
+
+        .voteBg{background: #f4f4f4;}
+        .vote-ul1{width: 872px;height: 47px;margin: 50px auto 0;}
+        .vote-ul1 li{width: 200px;height: 45px;margin: 0 8px;float: left;color: #777;font: 26px/45px 'Hiragino Sans GB','microsoft yahei';background: #fff;text-align: center;cursor: pointer;-webkit-transition: all .6s;transition: all .6s;border: 1px solid #ebebeb;}
+        .vote-ul1 li.act{color: #F4F4F4;background: #EB0028;border: 1px solid #EB0028;}
+        .vote-con{width: 1200px;height: 430px;margin: 0 auto;position: relative;overflow: hidden;}
+        .vote-c{display: none;position: relative;width: 1200px;height: 430px;overflow: hidden;}
+        .vote-c.blk{display: block;}
+        .vote-box{width: 1000px;height: 430px;background: #000;margin: 0 auto;overflow: hidden;position: relative;}
+        .vote-mod{position: absolute;top: 0;left: 0;height: 430px;}
+        .vote-btn{position: absolute;width: 67px;height: 67px;top: 180px;cursor: pointer;}
+        .vote-btn1{left: 20px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_btns.png") no-repeat 0 0;}
+        .vote-btn2{right: 20px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_btns.png") no-repeat -67px 0;}
+        .vote-press-box{width: 360px;height: 80px;margin: 18px auto 0;overflow: hidden;position: relative;}
+        .vote-press-mod{width: 1440px;height: 80px;position: absolute;left: 0;top: 0;}
+        .vote-ul2{width: 1120px;height: 30px;margin: 300px auto 50px;}
+        .vote-ul2 li{display: block;position: relative;float: left;width: 180px;height: 30px;margin: 0 50px;text-align: center;background: #fff;color: #EB0027;font: bold 18px/30px 'Hiragino Sans GB','microsoft yahei';}
+        .vote-lis2{width: 195px;height: 255px;position: absolute;top: -270px;left: -8px;}
+        .vote-lis21{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_lis1.jpg") no-repeat top center;}
+        .vote-lis22{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_lis2.jpg") no-repeat top center;}
+        .vote-lis23{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_lis3.jpg") no-repeat top center;}
+        .vote-lis24{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_lis4.jpg") no-repeat top center;}
+        .vote-press-mod .lan16{position:relative;color: #fff;width: 360px;height: 80px;display: block;font: 36px/80px 'Hiragino Sans GB','microsoft yahei';background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_btn1.png") no-repeat 0 0; text-align: center; text-indent: 20px;}
+        .vote-press-mod .lan16:hover{text-decoration: none;}
+        .vote-press-mod .lan16 i{display: block;width: 29px;height: 28px;position: absolute;left: 60px;top: 28px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_heart2.png") no-repeat 0 0;}
+        .vote-press-mod .lan16 i.act{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_heart1.png") no-repeat 0 0;}
+        .vote-press-mod .vote_num{display: none;}
+        .vote-press-mod .vote_btn{width: 360px;cursor:pointer;height: 80px;background: transparent;margin-left: -360px;z-index: 10;position: relative;}
+
+        .liveBg{background: #fff;}
+        .live{height: 880px;}
+        .live1{float: left;width: 740px;height: 790px;margin-top: 30px;padding-bottom: 10px;border: 1px solid #EB0028;}
+        .live2{float: right;width: 440px;height: 800px;margin-top: 30px;border: 1px solid #EB0028;}
+        .live21{width: 300px;height: 90px;background: #EB0028;padding: 10px 130px 10px 10px;}
+        .live22{width: 440px;height:680px;padding-bottom: 10px;}
+        .live21 table img{padding-right: 15px;}
+        .live21 .bai14{display: block;font: 14px/32px 'simsun';}
+        .live21 .bai12{display: block;font: 12px/21px 'simsun';}
+        .live21 .hong12{color: #fff;}
+
+        .videoBg{background: #000;}
+        .video{height: 600px;}
+        .video-mod{width: 1000px;height: 470px;margin: 50px auto 0;background: #000;overflow: hidden;}
+
+        .picBg{background: #2d2d2d;}
+        .pic{height: 740px;}
+        .pic-t{width: 715px;height: 75px;margin: 40px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/pic_t.png") no-repeat 0 0;}
+        .pic-art{width: 1000px;height: 90px;margin: 12px auto 0;}
+        .pic-art .hui18{display: block;color:#B8B8B8;text-indent:36px;font: 16px/30px "Hiragino Sans GB",'microsoft yahei';}
+        .pic-art .hong12{font-size: 16px;color: #00A3D8;}
+        .pic-box{width: 1000px;height: 430px;overflow: hidden;position: relative;margin: 25px auto 0;background: #000;}
+        .pic-mod{position: absolute;top: 0;left: 0;height: 430px;}
+        .pic-btn{position: absolute;width: 67px;height: 67px;top: 415px;cursor: pointer;}
+        .pic-btn1{left: 20px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/vote_btns.png") no-repeat 0 0;}
+        .pic-btn2{right: 20px;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a585a8d826/btn_dark.png") no-repeat 0 0;}
+
+        .art1Bg{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/article1.jpg") no-repeat top center;}
+        .art1{height: 580px;}
+        .art1-mod{width: 524px;height: 220px;position: absolute;left: 0;top: 290px;}
+        .art1-mod .hui18{display: block;color:#545454;font: 16px/30px "Hiragino Sans GB",'microsoft yahei';}
+        .art1-mod .hong12{font-size: 16px;color: #00A3D8;}
+
+        .art2Bg{background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/article2.jpg") no-repeat top center;}
+        .art2{height: 678px;}
+        .art2-mod{width: 1200px;height: 480px;margin: 150px auto 0;}
+        .art2-mod .bai20{display: block;padding-top: 10px;font: 26px/60px "Hiragino Sans GB",'microsoft yahei';}
+        .art2-mod .bai16{display: block;text-indent: 32px;padding: 0 38px;font: 16px/26px "Hiragino Sans GB",'microsoft yahei';}
+        .art2-mod .hong12{font-size: 16px;color: #FFFFBF;}
+
+        .abtBg{background: #000;}
+        .abt{height: 450px;}
+        .abt-t{width: 1135px;height: 402px;margin: 40px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a3/a56a5f2816/abt_t.png") no-repeat 0 0;}
+        .abt1{width: 350px;height: 265px;position: absolute;top: 145px;left: 45px;}
+        .abt3{width: 340px;height: 265px;position: absolute;top: 145px;right: 40px;}
+        .abt2{width: 181px;height: 35px;position: absolute;top: 330px;left: 515px;}
+        .abt3 .lan12bi{display: block;color: #0085B2;font: 12px/21px 'simsun';background: url("http://2.zol-img.com.cn/zt/tm_5a3/b158eb67bd/dot.jpg") no-repeat left center;}
+        .abt1 .hui12{display: block;color: #666;font: 12px/21px 'simsun';padding-top: 25px;}
+
+        .art2-mod table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .art2-mod table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                <div class="head-art1 btt1"></div>
+                <div class="head-art2 btt2"></div>
+                <div class="head-pro4 rtl3"></div>
+                <div class="head-pro3 ltr3"></div>
+                <div class="head-pro2 ltr2"></div>
+                <div class="head-pro1 float-scale"></div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--投票-->
+<div class="wrap1 voteBg">
+    <div class="wrapper1 vote">
+        <ul class="vote-ul1">
+            <li class="act">一加5T</li>
+            <li>iPhone 8</li>
+            <li>iPhone X</li>
+            <li>小米MIX2</li>
+        </ul>
+        <div class="vote-con">
+            <div class="vote-c vote-c1 blk">
+                <div class="vote-box">
+                    <div class="vote-mod"><{data[0]}></div>
+                </div>
+                <div class="vote-btn vote-btn1"></div>
+                <div class="vote-btn vote-btn2"></div>
+            </div>
+            <div class="vote-c vote-c2">
+                <div class="vote-box">
+                    <div class="vote-mod"><{data[1]}></div>
+                </div>
+                <div class="vote-btn vote-btn1"></div>
+                <div class="vote-btn vote-btn2"></div>
+            </div>
+            <div class="vote-c vote-c3">
+                <div class="vote-box">
+                    <div class="vote-mod"><{data[2]}></div>
+                </div>
+                <div class="vote-btn vote-btn1"></div>
+                <div class="vote-btn vote-btn2"></div>
+            </div>
+            <div class="vote-c vote-c4">
+                <div class="vote-box">
+                    <div class="vote-mod"><{data[3]}></div>
+                </div>
+                <div class="vote-btn vote-btn1"></div>
+                <div class="vote-btn vote-btn2"></div>
+            </div>
+        </div>
+        <div class="vote-press-box">
+            <div class="vote-press-mod" id="vote-p"><{data[4]}></div>
+        </div>
+        <ul class="vote-ul2">
+            <li><div class="vote-lis2 animated vote-lis21 lift"></div>得票数：<span>0票</span></li>
+            <li><div class="vote-lis2 animated vote-lis22"></div>得票数：<span>0票</span></li>
+            <li><div class="vote-lis2 animated vote-lis23"></div>得票数：<span>0票</span></li>
+            <li><div class="vote-lis2 animated vote-lis24"></div>得票数：<span>0票</span></li>
+        </ul>
+    </div>
+</div>
+<!--图文-->
+<div class="wrap1 liveBg">
+    <div class="wrapper1 live">
+        <div class="live1"><{data[5]}></div>
+        <div class="live2">
+            <div class="live21"><{data[6]}></div>
+            <div class="live22"><{data[7]}></div>
+        </div>
+    </div>
+</div>
+<!--视频-->
+<div class="wrap1 videoBg">
+    <div class="wrapper1 video">
+        <div class="video-mod"><{data[8]}></div>
+    </div>
+</div>
+<!--组图-->
+<div class="wrap1 picBg">
+    <div class="wrapper1 pic">
+        <div class="pic-t"></div>
+        <div class="pic-art"><{data[9]}></div>
+        <div class="pic-box">
+            <div class="pic-mod"><{data[10]}></div>
+        </div>
+        <div class="pic-btn pic-btn1"></div>
+        <div class="pic-btn pic-btn2"></div>
+    </div>
+</div>
+<!--文章1-->
+<div class="wrap1 art1Bg">
+    <div class="wrapper1 art1">
+        <div class="art1-mod"><{data[11]}></div>
+    </div>
+</div>
+<!--文章2-->
+<div class="wrap1 art2Bg">
+    <div class="wrapper1 art2">
+        <div class="art2-mod"><{data[12]}></div>
+    </div>
+</div>
+<!--关于-->
+<div class="wrap1 abtBg">
+    <div class="wrapper1 abt">
+        <div class="abt-t"></div>
+        <div class="abt1"><{data[13]}></div>
+        <div class="abt2"><{data[14]}></div>
+        <div class="abt3"><{data[15]}></div>
+    </div>
+</div>
+
+
+
+<script charset="gbk">
+    function votes() {
+        var voteSpans=$('.vote-ul2 li span');
+        var voteNums=$('#vote-p .vote_num');
+        voteNums.each(function (i) {
+            console.log(voteNums.eq(i).html());
+            setTimeout(function () {
+                voteSpans.eq(i).html(voteNums.eq(i).html());
+            },1000);
+        });
+    }
+
+    window.onload=function (ev) {
+        votes();
+    };
+
+    var vtUl1=$('.vote-ul1 li');
+    var vtCs=$('.vote-c');
+    var vtPress=$('.vote-press-mod');
+    var vtLis2=$('.vote-lis2');
+    vtUl1.bind('mouseenter',function () {
+        var nowI=vtUl1.index(this);
+        $(this).addClass('act').siblings().removeClass('act');
+        vtCs.each(function (i) {
+            vtCs.eq(i).removeClass('blk');
+            vtLis2.eq(i).removeClass('lift');
+        });
+        vtCs.eq(nowI).addClass('blk');
+        vtLis2.eq(nowI).addClass('lift');
+        vtPress.stop().animate({'left':'-'+nowI*360+'px'},300)
+    });
+
+
+    var voteBtns=$('#vote-p .vote_btn');
+    var voteIs=$("#vote-p .lan16 i");
+    voteBtns.bind('click',function (e) {
+        //alert("1");
+        var nowI=voteBtns.index(this);
+        voteIs.eq(nowI).addClass('act');
+        votes();
+        e.stopPropagation();
+        e.preventDefault();
+    });
+
+    /*组图切换*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".vote-c1 .vote-mod",".vote-c1 .vote-box",1,".vote-c1 .vote-btn1",".vote-c1 .vote-btn2");
+    scrolls(".vote-c2 .vote-mod",".vote-c2 .vote-box",1,".vote-c2 .vote-btn1",".vote-c2 .vote-btn2");
+    scrolls(".vote-c3 .vote-mod",".vote-c3 .vote-box",1,".vote-c3 .vote-btn1",".vote-c3 .vote-btn2");
+    scrolls(".vote-c4 .vote-mod",".vote-c4 .vote-box",1,".vote-c4 .vote-btn1",".vote-c4 .vote-btn2");
+    scrolls(".pic-mod",".pic-box",1,".pic-btn1",".pic-btn2");
+</script>
+</body>
+</html>

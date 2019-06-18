@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="gbk">
+		<!-- 引入 ECharts 文件
+		<script src="echarts.js"></script> -->
+	</head>
+	<body>
+	</body>
+	<script>
+		变量，对象，函数
+
+        abc.ccc();
+		function abc(){
+		   function ccc(){
+
+		   }
+		}
+		(function(a){
+
+		})(this,function(){
+		    return (function(modules){
+				modules[0];
+                function a(){
+                    alert("main func");
+                }
+			})([
+			    function(){
+					b = function(){
+						a();
+						alert("param b");
+					};
+				}
+			])
+		});
+		~(function() {
+		})(this,function(){
+			return (function(modules){
+				function a(){
+					alert("main func");
+				}
+			})(
+			    [
+			function(){
+				b = function(){
+					a();
+					alert("param b");
+				};
+			},
+			function(){
+				alert("param c");
+			},
+			function(){
+				alert("param d");
+			},
+			]
+			)
+		}); 
+		//b();
+	</script>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 750px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1); opacity: 1;  }
+            25%{  -webkit-transform: scale(1.1); opacity: 0.8;  }
+            80%{  -webkit-transform: scale(1); opacity: 1;  }
+            100%{  -webkit-transform: scale(1); opacity: 1;  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1); opacity: 1;  }
+            25%{  transform: scale(1.1); opacity: 0.8;  }
+            80%{  transform: scale(1); opacity: 1;  }
+            100%{  transform: scale(1); opacity: 1;  }
+        }
+        @-webkit-keyframes blast2 { 0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  -webkit-transform: translate(0px,0px) scale(0.95);opacity: 1;  } 86%{  -webkit-transform: translate(0px,-2px) scale(1);  } 100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        @keyframes blast2 { 0%{  transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  transform: translate(0px,0px) scale(0.95);opacity: 1;  } 86%{  transform: translate(0px,-2px) scale(1); } 100%{  transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        .blast{ -webkit-animation: blast 1s linear infinite;  animation: blast 1s linear infinite;  }
+        .blast1{ -webkit-animation: blast2 1s linear 0s infinite;  animation: blast2 1s linear 0s infinite;  }
+        .blast2{ -webkit-animation: blast2 1s linear .25s infinite;  animation: blast2 1s linear .25s infinite;  }
+        .blast3{ -webkit-animation: blast2 1s linear .5s infinite;  animation: blast2 1s linear .5s infinite;  }
+        .blast4{ -webkit-animation: blast2 1s linear .75s infinite;  animation: blast2 1s linear .75s infinite;  }
+        @-webkit-keyframes shakeHand {
+            0%{  -webkit-transform: rotate(0deg);  }
+            5%{  -webkit-transform: rotate(-3deg);  }
+            15%{  -webkit-transform: rotate(3deg);  }
+            20%{  -webkit-transform: rotate(0deg);  }
+            100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shakeHand {
+            0%{  transform: rotate(0deg);  }
+            5%{  transform: rotate(-3deg);  }
+            15%{  transform: rotate(3deg);  }
+            20%{  transform: rotate(0deg);  }
+            100%{  transform: rotate(0deg);  }
+        }
+        .shakeHand1{ -webkit-animation: shakeHand 4s linear 0s infinite;  animation: shakeHand 4s linear 0s infinite;  -webkit-transform-origin: bottom left;  transform-origin: bottom left;  }
+        .shakeHand2{ -webkit-animation: shakeHand 4s linear 1s infinite;  animation: shakeHand 4s linear 1s infinite;  -webkit-transform-origin: bottom right;  transform-origin: bottom right;  }
+        .shakeHand3{ -webkit-animation: shakeHand 4s linear 2s infinite;  animation: shakeHand 4s linear 2s infinite;  -webkit-transform-origin: bottom left;  transform-origin: bottom left;  }
+        .shakeHand4{ -webkit-animation: shakeHand 4s linear 3s infinite;  animation: shakeHand 4s linear 3s infinite;  -webkit-transform-origin: bottom right;  transform-origin: bottom right;  }
+
+        @-webkit-keyframes moveLi {
+            0%{  -webkit-transform: translate(0px,0px);  }
+            100%{  -webkit-transform: translate(-800px,0px);  }
+        }
+        @keyframes moveLi {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(-800px,0px);  }
+        }
+        .moveLi{ -webkit-animation: moveLi 1s linear 0s forwards;  animation: moveLi 1s linear 0s forwards;  -webkit-transform-origin: center;  transform-origin: center;  }
+
+        section{  position: relative;  overflow: hidden;  }
+        .container{  position: relative;  width: 750px;  min-height: 1200px;  overflow: hidden;  }
+        .rule-dark{  display: none;  position: absolute;  width: 750px;  height: 100%;  top: 0;  background: rgba(0,0,0,0.6);  }
+        .rule-dark.blk{  display: block;  }
+        .rule-art{  width: 750px;  height: 1622px;  position: absolute;  top: 270px;  background: url("images/rule-art.png") no-repeat top center;  }
+        .rule-close{  position: absolute;  width: 100px;  height: 104px;  top: 166px;  right: 20px;  background: url("images/rule_close.png") no-repeat  bottom center;  }
+        .head{  height: 570px;  background: url("images/head.jpg") no-repeat top center;  }
+        .head-hand1{  position: absolute;  width: 151px;  height: 246px;  left: 28px;  bottom: -47px;  background: url("images/head_hand1.png") no-repeat  0 0;  }
+        .head-hand2{  position: absolute;  width: 145px;  height: 193px;  left: 175px;  bottom: 30px;  background: url("images/head_hand2.png") no-repeat  0 0;  }
+        .head-hand3{  position: absolute;  width: 201px;  height: 251px;  left: 360px;  bottom: 30px;  background: url("images/head_hand3.png") no-repeat  0 0;  }
+        .head-hand4{  position: absolute;  width: 151px;  height: 299px;  left: 550px;  bottom: -20px;  background: url("images/head_hand4.png") no-repeat  0 0;  }
+        .head-shelter{  width: 512px;  height: 188px;  position: absolute;  bottom: 0;  left: 50%;  margin-left: -256px;  background: url("images/head_shelter.png") no-repeat 0 0;  }
+        .head-bingo{  position: absolute;  width: 351px;  height: 139px;  top: 74px;  left: 78px;  background: url("images/head_bingo.png") no-repeat 0 0;  }
+        .head-rule-btn{  width: 140px;  height: 58px;  position: absolute; top: 35px;  right: 35px;  background: url("images/head_rule_btn.png") no-repeat 0 0;  }
+
+        .pre{  height: 367px;  background: url("images/pre.jpg") no-repeat top center;  }
+        .pre-ul{  width: 730px;  height: 66px;  margin: 110px 0 0 29px;  }
+        .pre-ul li{  float: left;  width: 150px;  height: 66px;  margin: 0 12px 0 11px;  }
+        .pre-li1{  background: url("images/pre_li1.png") no-repeat 0 0;  }
+        .pre-li2{  background: url("images/pre_li2.png") no-repeat 0 0;  }
+        .pre-li3{  background: url("images/pre_li3.png") no-repeat 0 0;  }
+        .pre-li4{  background: url("images/pre_li4.png") no-repeat 0 0;  }
+
+        .pre-a{  display: none;  width: 670px;  height: 110px;  text-align: center;  margin: 30px 0 0 40px;  }
+        .pre-a.blk{  display: block;  }
+        .pre-a1{  width: 425px;  height: 110px;  float: left;  color: #db1b01;  font: 26px/110px 'Hiragino sans GB','microsoft yahei';  margin-right: 15px;  }
+        .pre-a1 span{  font: bold 30px/110px 'Hiragino sans GB','microsoft yahei';  }
+        .pre-a1 em{  color: #008aff; text-decoration: underline;  }
+        .pre-a2{  width: 220px;  height: 110px;  float: left;  color: #fff;  font: 42px/110px 'Hiragino sans GB','microsoft yahei';  }
+
+        .list{  height: 1316px;  background: url("images/list.jpg") no-repeat top center;  }
+        .list-ul{  width: 670px;  min-height: 114px;  margin: 110px auto 0;  overflow: hidden;  }
+        .list-ul li{  width: 620px;  height: 90px;  position: relative;  padding: 12px 25px;  background: #fff;  margin-bottom: 20px;  -webkit-border-radius: 10px;  border-radius: 10px;  }
+        .list-ul li a{  display: block;  position: relative;  width: 620px;  height: 90px ; overflow: hidden; }
+        .list-ul li a:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        .lis-l{  width: 450px;  margin: 5px 0;  /*position: absolute; top: 50%;  -webkit-transform: translate(0,-50%); transform: translate(0,-50%);*/  float: left;  overflow: hidden;  color: #361085;  font: 28px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .lis-r{  width: 150px;  height: 68px;  margin: 11px 0;  background: #ffd700;  color: #ff3000;  text-align: center;  -webkit-border-radius: 10px;  border-radius: 10px;  font: 30px/68px 'Hiragino sans GB','microsoft yahei';  float: right;  }
+        .list-refresh{  width: 670px;  height: 90px;  background: #4dadff;  text-align: center;  text-indent: 64px;  position: relative;  -webkit-border-radius: 10px;  border-radius: 10px;  color: #fff;  font: 30px/90px "Hiragino sans GB",'microsoft yahei';  margin: 10px auto 20px;  }
+        .list-circle{  width: 30px;  height: 30px;  top: 30px;  left: 245px;  position: absolute;  pointer-events: none;  background: url("images/list_circle.png") no-repeat 0 0;  }
+        .list-more{  width: 670px;  height: 90px;  background: #ffd800;  text-align: center;  text-indent: 65px;  position: relative;  -webkit-border-radius: 10px;  border-radius: 10px;  color: #ff3000;  font: 30px/90px "Hiragino sans GB",'microsoft yahei';  margin: 10px auto 20px;  }
+        .list-question{  width: 30px;  height: 30px;  top: 30px;  left: 235px;  position: absolute;  pointer-events: none;  background: url("images/list_question.png") no-repeat 0 0;  }
+        
+        .question{  height: 567px;  background: url("images/ask.jpg") no-repeat top center;  }
+        .qu-box{  width: 670px; position: relative; height: 406px;  overflow: hidden;  margin: 112px auto 0;  }
+        .qu-a{  display: block;  height: 406px;  width: 670px; float: left;  overflow: hidden;  }
+        .qu-ul{  width: 670px;  overflow: hidden;  }
+        .qu-ul li{  width: 670px;  height: 58px;  overflow: hidden;  margin-bottom: 40px;  }
+        .qu-ul li.qu-li1{  width: 550px;  padding: 0 60px;  margin-bottom: 54px;  text-align: center;  color: #ffcff5;  font: 30px/58px 'Hiragino sans GB','microsoft yahei';  }
+        .qu-ul li img{  float: left;  margin-right: 22px;  display: block;  width: 58px;  height: 58px;  -webkit-border-radius: 29px;  -moz-border-radius: 29px;  border-radius: 29px;;  }
+        .qu-ul li span{  width: 470px;  float: left;  display: block;  height: 58px;  color: #fff;  font: 30px/58px 'Hiragino sans GB','microsoft yahei';  text-overflow: ellipsis;  overflow: hidden;  white-space:nowrap;  }
+        .qu-ul li em{  width: 120px;  display: block;  height: 58px;  float: left;  text-align: right;  font: 26px/62px 'Hiragino sans GB','microsoft yahei';  color: #8670b6;  }
+
+        .qu-mod{  position: absolute;  top: 0;  left: 0;  width: 3350px;  -webkit-transform: translate(0px,0px);  transform: translate(0px,0px);  height: 406px; transition: all 1s linear 0s;  -webkit-transition: all 1s linear 0s ;  }
+
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="container">
+    <section class="head">
+        <div class="head-hand1 shakeHand1"></div>
+        <div class="head-hand2 shakeHand3"></div>
+        <div class="head-hand3 shakeHand4"></div>
+        <div class="head-hand4 shakeHand2"></div>
+        <div class="head-shelter">
+            <div class="head-bingo blast"></div>
+        </div>
+        <div class="head-rule-btn"></div>
+    </section>
+    <section class="pre">
+        <ul class="pre-ul">
+            <li class="pre-li1 preLi1 blast1"></li>
+            <li class="pre-li2 preLi2 blast2"></li>
+            <li class="pre-li3 preLi3 blast3"></li>
+            <li class="pre-li4 preLi4 blast4"></li>
+        </ul>
+        <div class="pre-box">
+            <a href="#1" target="_blank" class="pre-a clearfix blk" id="pre1">
+                <div class="pre-a1 clearfix">已回答 <span id="pre-a1-num1">-</span> 题 还可以抽奖 <span id="pre-a1-num2">-</span> 次</div>
+                <div class="pre-a2">去抽奖</div>
+            </a>
+            <a href="#2" target="_blank" class="pre-a clearfix" id="pre2">
+                <div class="pre-a1 clearfix">请 <em>登陆</em> 后参加活动</div>
+                <div class="pre-a2">去登陆</div>
+            </a>
+        </div>
+    </section>
+    <section class="list">
+        <ul class="list-ul">
+            <!--<li>
+                <a href="#" target="_blank">
+                    <div class="lis-l">抢答抢答抢答抢答抢抢答抢答抢答抢答抢抢答</div>
+                    <div class="lis-r">抢答</div>
+                </a>
+            </li>-->
+        </ul>
+        <div class="list-refresh">
+            <div class="list-circle"></div>
+            换一批问题
+        </div>
+        <div class="list-more">
+            <div class="list-question"></div>
+            更多待答问题
+        </div>
+    </section>
+    <section class="question">
+        <div class="qu-box">
+            <div class="qu-mod"></div>
+        </div>
+    </section>
+    <div class="rule-dark">
+        <div class="rule-art"></div>
+        <div class="rule-close"></div>
+    </div>
+</div>
+<script charset="gbk">
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+    });
+
+    /*规则展示*/
+    !function () {
+        var ruleBox=document.querySelector('.rule-dark');
+        var ruleClose=document.querySelector('.rule-close');
+        var ruleBtn=document.querySelector('.head-rule-btn');
+        ruleBtn.addEventListener('click',function () {
+            ruleBox.classList.add('blk');
+        });
+        ruleClose.addEventListener('click',function () {
+            ruleBox.classList.remove('blk');
+        })
+    }();
+
+    /*登陆及抽奖信息显示*/
+    ~function () {
+        var preLinks=document.querySelectorAll('.pre-a');
+        var preNum1=document.querySelector('#pre-a1-num1');
+        var preNum2=document.querySelector('#pre-a1-num2');
+        /*判断登陆 及数据读取*/
+        if(0){
+            preLinks[0].classList.remove('blk');
+
+            preLinks[1].setAttribute('src','#111');
+            preLinks[1].classList.add('blk');
+        }else{
+            preLinks[1].classList.remove('blk');
+
+            preNum1.innerHTML=parseInt('19');
+            preNum2.innerHTML=parseInt('4');
+            preLinks[0].classList.add('blk');
+        }
+    }();
+
+    /*绑定问题列表数据*/
+    !function () {
+        var askJson={
+            'result':[
+                {
+                    'link':'a1',
+                    'text':'内容1内容1内容1内容1内容1内容1内容1内容1内容1'
+                },
+                {
+                    'link':'a2',
+                    'text':'内容2内容2内容2内容2内容2内容2内容2内容2内容2'
+                },
+                {
+                    'link':'a3',
+                    'text':'内容3内容'
+                },
+                {
+                    'link':'a4',
+                    'text':'内容2内容2内容2内容2内容2内容2内容2内容2内容2'
+                },
+                {
+                    'link':'a5',
+                    'text':'内容3内容'
+                },
+                {
+                    'link':'a6',
+                    'text':'内容2内容2内容2内容2内容2内容2内容2内容2内容2'
+                },
+                {
+                    'link':'a7',
+                    'text':'内容3内容'
+                },
+                {
+                    'link':'a8',
+                    'text':'内容3内容'
+                },
+                {
+                    'link':'a9',
+                    'text':'内容2内容2内容2内容2内容2内容2内容2内容2内容2'
+                }
+            ]
+        };
+        var listUl=document.querySelector('.list-ul');
+        var listRefresh=document.querySelector('.list-refresh');
+        bindAskDate();
+        listRefresh.addEventListener('click',function () {
+            var listNow=document.querySelectorAll('.list-ul li');
+            console.log(listNow);
+            var timerI=0;
+            //timer&&clearTimeout(timer);
+            var timer=setInterval(function () {
+                timerI++;
+                console.log(timerI);
+                if(timerI==12){
+                    clearInterval(timer);
+                    setTimeout(function () {
+                        bindAskDate();
+                        console.log('ajax新数据')
+                    },200);
+                    return false;
+                }
+                if(timerI>=8){
+                    return false;
+                }
+                listNow[timerI-1].classList.add('moveLi');
+            },200);
+        });
+
+
+
+        function bindAskDate() {
+            /*ajax 请求一下新数据uccess之后赋值给赋值给askJson*/
+
+
+            var str='';
+            for(var i=0;i<7;i++){
+                str+='<li><a href="'+askJson.result[i].link+'" target="_blank"><div class="lis-l">'+askJson.result[i].text+'</div><div class="lis-r">抢答</div></a></li>'
+            }
+            listUl.innerHTML=str;
+        }
+    }();
+
+    /*绑定问题*/
+    !function () {
+        var questionJson={
+            'result':[
+                {
+                    'link':'a2',
+                    'text':'内容1内容1内容1内容1内容1内容1内容1内容1内容1',
+
+                    'text1':'内容1内容1内容1内容1内容1内容1内容1内容1内容1',
+                    'img1':'images/head.jpg',
+                    'time1':'10分钟前',
+
+                    'text2':'内容122222222222222222222222222222',
+                    'img2':'images/head.jpg',
+                    'time2':'2分钟前',
+
+                    'text3':'内容3',
+                    'img3':'images/head.jpg',
+                    'time3':'14分钟前'
+                }
+            ]
+        };
+        var questionBox=document.querySelector('.qu-mod');
+        bindQuestionDate();
+        var ttt=0;
+        function bindQuestionDate() {
+            /*ajax success之后赋值给赋值给QuestionJson*/
+
+
+            var str='';
+            for(var k=0;k<5;k++){
+                /*for(var i=0;i<1;i++){*/
+                    str+='<a class="qu-a" target="_blank" href="'+questionJson.result[0].link+'"><ul class="qu-ul">';
+                    if(questionJson.result[0].text!==0){
+                        str+='<li class="qu-li1">'+questionJson.result[0].text+'</li>';
+                    }
+                    if(questionJson.result[0].img1!==0){
+                        str+='<li><img src="'+questionJson.result[0].img1+'" width="58" height="58" alt=""><span>'+questionJson.result[0].text1+'</span><em>'+questionJson.result[0].time1+'</em></li>';
+                    }
+                    if(questionJson.result[0].img2!==0){
+                        str+='<li><img src="'+questionJson.result[0].img2+'" width="58" height="58" alt=""><span>'+questionJson.result[0].text2+'</span><em>'+questionJson.result[0].time2+'</em></li>';
+                    }
+                    if(questionJson.result[0].img3!==0){
+                        str+='<li><img src="'+questionJson.result[0].img3+'" width="58" height="58" alt=""><span>'+questionJson.result[0].text3+'</span><em>'+questionJson.result[0].time3+'</em></li>';
+                    }
+                    str+='</ul></a>';
+                /*}*/
+            }
+            console.log(str)
+
+            questionBox.innerHTML=str;
+            var quMod=document.querySelector('.qu-mod');
+            setInterval(function () {
+                ttt++;
+                if(ttt==5){
+                    ttt=0;
+                }
+                quMod.style.webkitTransform='translate(-'+ttt*670+'px,0px)';
+                quMod.style.transform='translate(-'+ttt*670+'px,0px)';
+            },3000)
+        }
+    }();
+
+</script>
+</body>
+</html>

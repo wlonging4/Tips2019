@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+    <title>title</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="http://active.zol.com.cn/15active/0818itgo/index1.css">
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<canvas id="c1" width="640" height="1008" ></canvas>
+
+<div class="wrapper flipview" data-loop="false" id="wrapper">
+    <span class="next-btn" id="next-btn"></span>
+    <span class="prev-btn" id="prev-btn"></span>
+    <i id="control" class="off"></i>
+    <div class="main container" id="main">
+        <div class="section section1">
+            <span class="logo1"></span>
+            <span class="logo2"></span>
+        </div>
+        <div class="section section2 flipview" data-loop="false" id="up1">
+            <span class="logo1"></span>
+            <span class="logo2"></span>
+            <div class="sec2-pic">
+                <span class="prev1" id="prev1"></span>
+                <span class="next1" id="next1"></span>
+                <section class="fliptab fliptab1" dir="left-right">
+                    <ul class="container touching1">
+                        <li><img src="http://2.zol-img.com.cn/zt/tm_55d/2e65056979/pic1.jpg" width="390" height="228"></li>
+                        <li><img src="http://2.zol-img.com.cn/zt/tm_55d/2e65056979/pic2.jpg" width="390" height="228"></li>
+                        <li><img src="http://2.zol-img.com.cn/zt/tm_55d/2e65056979/pic3.jpg" width="390" height="228"></li>
+                        <li><img src="http://2.zol-img.com.cn/zt/tm_55d/2e65056979/pic4.jpg" width="390" height="228"></li>
+                        <li><img src="http://2.zol-img.com.cn/zt/tm_55d/2e65056979/pic5.jpg" width="390" height="228"></li>
+                        <li><img src="http://2.zol-img.com.cn/zt/tm_55d/2e65056979/pic6.jpg" width="390" height="228"></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="sec2-text">
+                <h4>关于《IT Girl&IT Go》</h4>
+                <p>ZOL携手众信旅游打造的结合旅游和潮流科技产品的游记类栏目。每期招募高颜值、爱科技的IT Girl以及热爱旅游的网友，共同开启一场赏美景、品美食、体验IT潮品的时尚之旅！</p>
+            </div>
+        </div>
+        <div class="section section3" >
+            <span class="logo1"></span>
+            <span class="logo2"></span>
+            <span class="enroll-btn" id="enroll-btn"></span>
+        </div>
+        <div class="section section4 flipview" data-loop="false" id="up2" >
+            <span class="logo1"></span>
+            <span class="logo2"></span>
+            <div class="sec4-pic">
+                <span class="prev2" id="prev2"></span>
+                <span class="next2" id="next2"></span>
+                <section class="fliptab fliptab2" dir="left-right">
+                    <ul class="container touching2">
+
+                        <li>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p5.jpg" alt="" width="125" height="126"><span>Lsny囍</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p6.jpg" alt="" width="125" height="126"><span>姣姣_16</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p7.jpg" alt="" width="125" height="126"><span>xiaofang_10</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p8.jpg" alt="" width="125" height="126"><span>美丽新势力</span></div>
+                        </li>
+                        <li>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p9.jpg" alt="" width="125" height="126"><span>Miss.Q_11</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p10.jpg" alt="" width="125" height="126"><span>神秘shuai</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p11.jpg" alt="" width="125" height="126"><span>就是-煮煮慧</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p12.jpg" alt="" width="125" height="126"><span>Liver_Z</span></div>
+                        </li>
+                        <li>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p13.jpg" alt="" width="125" height="126"><span>lss_20</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p14.jpg" alt="" width="125" height="126"><span>静_264</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p15.jpg" alt="" width="125" height="126"><span>Grace_68</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p16.jpg" alt="" width="125" height="126"><span>丹_46</span></div>
+                        </li>
+                        <li>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p17.jpg" alt="" width="125" height="126"><span>喵啦啦</span></div>
+                            <div class="item"><img src="http://2.zol-img.com.cn/zt/tm_55e/55dbd93dbb/p18.jpg" alt="" width="125" height="126"><span>孤独的行者</span></div>
+                        </li>
+
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <div class="section section5" >
+            <span class="logo1"></span>
+            <span class="logo2"></span>
+
+        </div>
+
+    </div>
+</div>
+<div class="enroll-page">
+    <div class="enroll-page-con">
+        <ul class="enroll-detail">
+            <li><span>1</span>专享特价：5980元团费立减200元</li>
+            <li><span>2</span>旅行大片：专业编辑用照片记录精彩瞬间</li>
+            <li><span>3</span>潮品体验：最新科技潮品抢先试用</li>
+            <li><span>4</span>精彩互动：不一样的旅行让你嗨翻巴厘岛</li>
+        </ul>
+        <div class="look-btn-box"><a class="look-btn" href="http://m.zol.com.cn/huodong/d2_26231.html">了解活动详情&gt;&gt;</a></div>
+        <div class="info-box">
+            <!-- 信息输入 -->
+            <div class="info-input-box">
+                <ul class="info-data">
+                    <li><span class="info-label">姓名：</span><input type="text" id="uname" ></li>
+                    <li><span class="info-label">所在地：</span><input type="text" id="ucity" placeholder="请填写您的城市"></li>
+                    <li><span class="info-label">联系方式：</span><input type="tel" maxlength="11" placeholder="请填写手机号码 我们将为您保密" id="mobile"></li>
+                    <li class="passport"><label for="upassport"><input type="checkbox" id="upassport">有护照</label></li>
+                </ul>
+                <input class="registration-btn" type="button">
+                <div class="share-box clearfix">
+                    <div class="share">
+                        <a href="#" class="weibo">新浪微博</a>
+                        <a href="#" class="tencent-weibo">腾讯微博</a>
+                        <a href="#" class="qzone">QQ空间</a>
+                        <a href="#wechat" style="display:none" class="wechat">微信</a>
+                    </div>
+                </div>
+            </div>
+            <!--成功报名-->
+            <div class="secceed-con">
+                <div class="secceed-top"></div>
+                <p class="secceed-tips">
+                    精彩旅行即将开启！2日内ZOL工作人员将与您电话联系确认！
+                </p>
+                <div class="hint-box">
+                    <p>女神提示:出团时间9月14日-9月20日（7天6晚）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<audio src="http://icon.zol-img.com.cn/active/m/id5357624.mp3" preload="auto" id="media">
+</audio>
+
+
+</body>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" data-options="z.flipview"></script>
+<!--<script src="http://active.zol.com.cn/15active/0818itgo/main1.js"></script>-->
+<script type="text/javascript">
+
+
+
+
+    //翻页按钮
+    function getid(id){
+        return document.getElementById(id);
+    }
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function() {
+                oldonload();
+                func();
+            }
+        }
+    }
+    function btnEvent(){
+        document.getElementById('main').addEventListener('changed', function (e) {
+
+            switch (e.currentIndex){
+
+                case 4:
+
+                    getid('next-btn').style.display='none';
+                    getid('prev-btn').style.display='block';
+                    break;
+                default:
+
+                    getid('next-btn').style.display='block';
+                    getid('prev-btn').style.display='none';
+            }
+            if(up1.classList.length == 4 || up2.classList.length == 4 ){
+                document.getElementById('prev-btn').style.display='none';
+                document.getElementById('next-btn').style.display='block';
+            }
+        });
+        [getid("next-btn")].forEach(function (button) {
+            button.addEventListener('tap', function () {
+                document.querySelector('.flipview').next(1);
+            });
+        });
+        getid("prev-btn").addEventListener('tap', function () {
+            document.querySelector('.flipview').previous(1);
+        });
+
+
+        //控制show
+        var container = document.querySelector('#main'),list = container && container.children;
+        function init(){
+            list[0].classList.add('show');
+        }
+        function addClass(){
+            var index = container.index;
+            if(container.querySelector('.show') && container.querySelector('.show')!==list[index]) {
+                container.querySelector('.show').classList.remove('show');
+            }
+            !list[index].classList.contains('show') && list[index].classList.add('show');
+        };
+        container && container.addEventListener('changed',addClass);
+        init();
+    }
+    addLoadEvent(btnEvent);
+
+    function turnPage(i,objs){
+        var third = document.querySelector(objs);
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=6)
+            third.index = parseInt(horizontalIndex) + i;
+    };
+    document.querySelector('#prev1') && document.querySelector('#prev1').addEventListener('click',function(){turnPage(-1,'.section2')})
+    document.querySelector('#next1') && document.querySelector('#next1').addEventListener('click',function(){turnPage(1,'.section2')})
+
+    function turnPage1(i,objs,b){
+        var third = document.querySelector(objs);
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=5)
+            third.index = parseInt(horizontalIndex) + i;
+    };
+    document.querySelector('#prev2') && document.querySelector('#prev2').addEventListener('click',function(){turnPage1(-1,'.section4',1)})
+    document.querySelector('#next2') && document.querySelector('#next2').addEventListener('click',function(){turnPage1(1,'.section4',0)})
+
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+
+    // JavaScript Document
+    define(function (require,exports) {
+        var viewWidth = window.innerWidth ,viewHeight  =  window.innerHeight,w,h;
+        var k1 =viewWidth / viewHeight ,k2 = 640/1008;
+        //计算canves和后方cover比例一致，因为设计提不出透明层!
+        function nowView(){
+
+            w = viewWidth,h = viewHeight;
+            if(k1>k2){
+                w = viewWidth;
+                h = w/k2;
+            }else{
+                h = viewHeight;
+                w = h*k2;
+
+            }
+
+        }
+        nowView();
+
+        slideCanvas();
+        function slideCanvas(){
+            var c1 = document.getElementById('c1');
+            var gc = c1.getContext('2d');
+            var img = new Image();
+            var bBtn = true;
+            c1.height = h;
+            img.src = 'http://m.zol.com.cn/images/bali_island.jpg';
+
+            img.onload = function(){
+                img.style.width = w;
+                img.style.height=h;
+                gc.drawImage(img,(640 - w)/2,0,w,h);
+                gc.strokeStyle = 'blue';
+                gc.lineWidth = 300;
+                gc.lineCap = 'round';
+                gc.globalCompositeOperation = 'destination-out';
+                c1.addEventListener(Event.Touch.down,function(ev){
+
+                    var touch = ev.changedTouches[0];
+                    var x = touch.pageX - this.offsetLeft ;
+                    var y = touch.pageY - this.offsetTop ;
+                    /*gc.arc(x,y,100,0,360*Math.PI/180);
+                     gc.fill();*/
+
+                    if(bBtn){
+                        bBtn = false;
+                        gc.moveTo(x,y);
+                        gc.lineTo(x+1,y+1);
+                    }
+                    else{
+                        gc.lineTo(x,y);
+                    }
+                    gc.stroke();
+                    c1.addEventListener(Event.Touch.move,function(ev){
+                        ev.preventDefault();
+                        var touch = ev.changedTouches[0];
+                        var x = touch.pageX - this.offsetLeft ;
+                        var y = touch.pageY - this.offsetTop;
+                        gc.lineTo(x,y);
+                        gc.stroke();
+
+                    });
+                    c1.addEventListener(Event.Touch.up,function(ev){
+                        var imgData = gc.getImageData(0,0,640,h);
+                        var allPx = imgData.width * imgData.height;
+                        var num = 0;
+                        for(var i=0;i<allPx;i++){
+                            if( imgData.data[4*i+3] == 0 ){
+                                num++;
+                            }
+                        }
+                        if( num > allPx/2 ){
+                            c1.classList.add('hide');
+                            setTimeout(function(){
+                                c1.remove();
+                            },400)
+
+                        }
+                        c1.removeEventListener(Event.Touch.down);
+                        c1.removeEventListener(Event.Touch.move);
+                        c1.removeEventListener(Event.Touch.up);
+                    });
+                });
+            };
+        }
+
+        var enrollBtn = document.getElementById('enroll-btn'),enrollPage = document.querySelector('.enroll-page'),lookBtn = document.querySelector('.look-btn'),sec4= document.querySelector('.section4');
+
+        enrollBtn.addEventListener('tap',function(){
+            var userid = document.cookie.match(/zol_userid=([^;$]+)/);
+            if(userid && userid[1]){
+                enrollPage.style.display = 'block';
+                timer1 && clearTimeout(timer1);
+                var timer1 = setTimeout(function () {
+                    enrollPage.classList.add('visible');
+                }, 10);
+            }else{
+                alert('\u8bf7\u5148\u767b\u5f55');
+                window.location.href='http://m.zol.com.cn/user/login.php?backurl=http://m.zol.com.cn/topic/5357624.html '
+
+            }
+
+        })
+
+
+
+
+
+        var submit = document.querySelector('.registration-btn');
+
+
+        //提交表单
+        submit.addEventListener('click',function(e){
+            //e.preventDefault();
+            var userid = document.cookie.match(/zol_userid=([^;$]+)/);
+            if(userid && userid[1]){
+                var uid = userid[1];
+
+                var nameValue = uname.value.trim(),cityValue = ucity.value.trim();
+                if (!nameValue) {
+                    // 请正确填写姓名
+                    alert('\u8BF7\u6B63\u786E\u586B\u5199\u59D3\u540D');
+                    return;
+                }
+
+                if (!cityValue || cityValue.length<2) {
+                    // 请正确填写城市
+                    alert('\u8BF7\u6B63\u786E\u586B\u5199\u57CE\u5E02');
+                    return;
+                }
+                if (!mobile.value || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobile.value))) {
+                    // 请正确填写您的手机号码
+                    alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+                    return;
+                }
+
+                passportValue = upassport.checked ? 1:0
+                submit.disabled = true;
+
+                $.ajax({
+                    url:'http://bbs.zol.com.cn/index.php?c=Ajax_Active&a=ItGirlBySubject&callback=?',
+                    data:{'userid':uid,'name':uname.value,'address':ucity.value,'phone':mobile.value,'passport':passportValue},
+                    type:'get',
+                    dataType:'jsonp',
+                    success:function(response){
+
+                        if(response.info == 'ok'){
+
+                            document.querySelector('.info-input-box').style.display = 'none';
+                            document.querySelector('.secceed-con').style.display = 'block';
+                        }else{
+                            alert(response.msg);
+                            submit.disabled = true;
+                        }
+
+                    },
+                    error:function(){
+                        alert('\u7F51\u7EDC\u4E0D\u597D'); //网络不好
+                        //submit.disabled = true;
+                    }
+                })
+            }else{
+                alert('\u8bf7\u5148\u767b\u5f55');
+                window.location.href='http://m.zol.com.cn/user/login.php?backurl=http://m.zol.com.cn/topic/5357624.html '
+            }
+
+        });
+    });
+
+
+
+    function checkSighUp(){
+        var userid = document.cookie.match(/zol_userid=([^;$]+)/);
+        if(userid && userid[1]){
+            var userid = userid[1];
+            $.ajax({
+                url:'http://bbs.zol.com.cn/index.php?c=Ajax_Active&a=isSign&callback=?',
+                data:{'userid':userid},
+                type:'get',
+                dataType:'jsonp',
+                success:function(response){
+
+                    if(response.info =='err'){
+
+                        document.querySelector('.info-input-box').style.display = 'none';
+                        document.querySelector('.secceed-tips').innerHTML= '\u60A8\u5DF2\u62A5\u540D\u6210\u529F\uFF0C\u8BF7\u7B49\u5F85\u6211\u4EEC\u8054\u7CFB\u60A8\uFF01' ; //您已报名成功，请等待我们联系您！
+                        document.querySelector('.secceed-con').style.display = 'block';
+                    }else{
+                        document.querySelector('.info-input-box').style.display = 'block';
+                        document.querySelector('.secceed-con').style.display = 'none';
+                    }
+
+
+                }
+            })
+        }
+
+    }
+    checkSighUp();
+
+
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+        //
+        media.pause();
+
+        //控制音乐循环播放
+        media.addEventListener('ended', function () {
+            setTimeout(function () {
+                media.play();
+            }, 10);
+        }, false);
+
+        //控制音乐暂停或开始
+        control && control.addEventListener('click',function(){
+            if(this.className === 'on'){
+                this.className = 'off';
+                media.pause();
+            }else{
+                this.className = 'on';
+                media.play();
+            }
+        });
+
+    });
+
+
+
+    //分享
+    var share_title=encodeURIComponent( '乐享女神陪游巴厘岛 等你一起来嗨');
+    var share_link=encodeURIComponent('http://m.zol.com.cn/topic/5357624.html');
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_55d/303a7ee2ea/weixin.jpg');
+    var share_t=encodeURIComponent('女神陪游巴厘岛 ZOL专属特价报名立减200');
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+    ;
+    var share_con = '<a target="_self" class="wechat" href="#wechat" style="display: none">wechat</a><a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a>';
+    document.querySelector('.share').innerHTML = share_con;
+
+    window.wechatShareData = {
+        "title":"乐享女神陪游巴厘岛 等你一起来嗨",
+        "icon":"http://2.zol-img.com.cn/zt/tm_55d/303a7ee2ea/weixin.jpg",
+        "description":'女神陪游巴厘岛 ZOL专属特价报名立减200',
+        "url":"http://m.zol.com.cn/topic/5357624.html"
+
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

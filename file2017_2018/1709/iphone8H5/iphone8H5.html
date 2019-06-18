@@ -1,0 +1,398 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title></title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 禁用拨号 -->
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script><meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi"><meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi">
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #ccc; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*动画*/
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5,.ltr6{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes cir {
+            0%{  -webkit-transform: rotate(0deg); opacity: 1;  }
+            100%{  -webkit-transform: rotate(-360deg); opacity: 1;  }
+        }
+        @keyframes cir {
+            0%{  transform: rotate(0deg); opacity: 1;  }
+            100%{  transform: rotate(-360deg); opacity: 1;  }
+        }
+        @-webkit-keyframes float-scale {
+            0%{  -webkit-transform: scale(1.2); opacity: 1;  }
+            100%{  -webkit-transform: scale(1); opacity: 1;  }
+        }
+        @keyframes float-scale {
+            0%{  transform: scale(1.2); opacity: 1;  }
+            100%{  transform: scale(1); opacity: 1;  }
+        }
+
+        .float-scale{-webkit-animation: float-scale .6s linear 0s forwards;  animation: float-scale .6s linear 0s forwards;}
+
+        .cir{ -webkit-animation: cir 8s linear 0s infinite;  animation: cir 8s linear 0s infinite;   }
+        .ltr1{ -webkit-animation: ltr 1s ease-in 0s forwards;  animation: ltr 1s ease-in 0s forwards;   }
+        .ltr2{ -webkit-animation: ltr 1s ease-in 0.4s forwards;  animation: ltr 1s ease-in 0.4s forwards;  }
+        .ltr3{ -webkit-animation: ltr 1s ease-in 0.8s forwards;  animation: ltr 1s ease-in 0.8s forwards;  }
+        .ltr4{ -webkit-animation: ltr 1s ease-in 1.2s forwards;  animation: ltr 1s ease-in 1.2s forwards;  }
+        .ltr5{ -webkit-animation: ltr 1s ease-in 1.6s forwards; animation: ltr 1s ease-in 1.6s forwards;  }
+        .ltr6{ -webkit-animation: ltr 1s ease-in 2s forwards; animation: ltr 1s ease-in 2s forwards;  }
+        .ttb1{ -webkit-animation: ttb 1s ease-in 0s forwards;  animation: ttb 1s ease-in 0s forwards;   }
+        .ttb2{ -webkit-animation: ttb 1s ease-in 0.4s forwards;  animation: ttb 1s ease-in 0.4s forwards;  }
+        .ttb3{ -webkit-animation: ttb 1s ease-in 0.8s forwards;  animation: ttb 1s ease-in 0.8s forwards;  }
+        .ttb4{ -webkit-animation: ttb 1s ease-in 1.2s forwards;  animation: ttb 1s ease-in 1.2s forwards;  }
+        .ttb5{ -webkit-animation: ttb 1s ease-in 1.6s forwards; animation: ttb 1s ease-in 1.6s forwards;  }
+        .btt1{ -webkit-animation: btt 1s ease-in 0s forwards;  animation: btt 1s ease-in 0s forwards;   }
+        .btt2{ -webkit-animation: btt 1s ease-in 0.4s forwards;  animation: btt 1s ease-in 0.4s forwards;  }
+        .btt3{ -webkit-animation: btt 1s ease-in 0.8s forwards;  animation: btt 1s ease-in 0.8s forwards;  }
+        .btt4{ -webkit-animation: btt 1s ease-in 1.2s forwards;  animation: btt 1s ease-in 1.2s forwards;  }
+        .btt5{ -webkit-animation: btt 1s ease-in 1.6s forwards; animation: btt 1s ease-in 1.6s forwards;  }
+        .rtl1{ -webkit-animation: rtl 1s ease-in 0s forwards;  animation: rtl 1s ease-in 0s forwards;   }
+        .rtl2{ -webkit-animation: rtl 1s ease-in 0.4s forwards;  animation: rtl 1s ease-in 0.4s forwards;  }
+        .rtl3{ -webkit-animation: rtl 1s ease-in 0.8s forwards;  animation: rtl 1s ease-in 0.8s forwards;  }
+        .rtl4{ -webkit-animation: rtl 1s ease-in 1.2s forwards;  animation: rtl 1s ease-in 1.2s forwards;  }
+        .rtl5{ -webkit-animation: rtl 1s ease-in 1.6s forwards;  animation: rtl 1s ease-in 1.6s forwards;  }
+
+        @keyframes cir1 {
+            0%{   transform: rotate(0deg); opacity: 1;  }
+            100%{   transform: rotate(-360deg); opacity: 1;  }
+        }
+        @-webkit-keyframes cir1 {
+            0%{   -webkit-transform: rotate(0deg); opacity: 1;  }
+            100%{   -webkit-transform: rotate(-360deg); opacity: 1;  }
+        }
+        .cir1{    -webkit-animation: cir1 1s linear 0s forwards; animation: cir1 1s linear 0s forwards;  }
+
+        .tit{  width: 640px;  height: 56px;  color: #121212;  font: 31px/55px 'Hiragino sans GB','microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/title.png") no-repeat center bottom;  text-align: center;  margin-top: 45px;  }
+        .wp{  overflow: hidden;  width: 640px;  }
+        .mainPage{  width:640px;margin:0 auto;background: #fff;  }
+        .header{  width: 640px;  height: 545px;  overflow: hidden;  margin: 0 auto;  position: relative;  }
+        .logo1{  width: 185px;  height: 69px;  position: absolute;  top: 20px;  left: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/logo1.png") no-repeat 0 0;  }
+        .logo2{  width: 125px;  height: 39px;  position: absolute;  top: 30px;  right: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/logo2.png") no-repeat 0 0;  }
+        .logo3{  width: 177px;  height: 218px;  margin: 105px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/logo3.jpg") no-repeat 0 0;  }
+        .head-art1{  width: 473px;  height: 35px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/head_art1.png") no-repeat 0 0;  }
+        .head-art2{  width: 470px;  height: 38px;  margin: 16px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/head_art2.png") no-repeat 0 0;  }
+        .head-art3{  width: 277px; height: 23px;  margin: 16px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/head_art3.png") no-repeat 0 0;  }
+        .head-art4{  width: 275px;  height: 22px;  margin: 12px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/head_art4.png") no-repeat 0 0;  }
+        .brand{  width: 604px;  height: 70px;  margin: 30px auto 0;  background: url("images/brand.png") no-repeat 0 0;  }
+
+        .pre{  height: 400px;  position: relative;  background: #000;  margin: 0 auto; overflow: hidden;  }
+        .pre .photo-tab{position:relative;width:640px; height:400px;margin:0 auto;}
+        .pre .photo-tab .tabs{display:block;position:absolute; z-index:5; width:100%; bottom:-35px; left:0; text-align:center;}
+        .pre .photo-tab .tabs i{display:inline-block; width:10px; height:10px;border-radius:5px; -webkit-border-radius: 5px;  margin:0 5px; background-color:#777;}
+        .pre .photo-tab .tabs .selected{background-color:#333;}
+        .pre .photo{width:640px; height:400px; overflow:hidden; position:relative;}
+        .pre .photo ul{width:2000%; height:640px; position:absolute;}
+        .pre .photo li{float: left;width:640px;height: 400px; margin: 0; padding: 0; -webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
+        .pre .photo li em{  display: block;  height: 60px;  width: 640px;  text-align: center;  opacity: 0.6;  color: #fff;  position: relative;  background: #000!important;  margin-top: -60px;  font: 22px/58px "Hiragino sans GB",'microsoft yahei';  }
+        .pre-btn{  width: 40px;  height: 74px;  position: absolute;  z-index: 9; top: 165px;  }
+        .pre-btn1{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/btns1.jpg") no-repeat 0 0; left: 0;  }
+        .pre-btn2{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/btns1.jpg") no-repeat -40px 0; right: 0;  }
+
+        .focus1-box{  width: 640px;  overflow: hidden;  height: 370px;  margin-top: 40px;  }
+        .focus1-mod{  width: 640px;  min-height: 370px;  overflow: hidden;  }
+        .focus1-mod li img{  padding: 1px;  border: 1px solid #a0a5b1;  }
+        .focus1-mod ul li{  margin-left: 20px;  display: block;  width: 600px;  position: relative;  height: 220px;  background: url("http://2.zol-img.com.cn/zt/tm_599/69ab886b9c/ln.png") no-repeat 0 185px;  }
+        .focus1-mod ul li h4{  width: 380px;  height: 150px;  position: absolute;  top: 0;  right: 0px;  color: #41444E;  font: 25px/40px "Hiragino sans GB",'microsoft yahei';  }
+        .focus1-mod span.slh{  display: none;  }
+        .focus1-mod .play-num{  position: absolute;  right: 10px;  top: 121px;   height: 40px;  font-size: 22px;  color: #41444E;  }
+        .focus1-mod .play-num .time {  display: inline-block;  width: 100px;  height: 30px;  margin-bottom: -7px;  margin-right: 22px;  }
+        .focus1-mod .play-num .comment{  display: inline-block; float: right;  padding-left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_599/6b008bf014/comment.png") no-repeat left center;  }
+        .box-btn{  width: 600px;  position: relative;  height: 60px;  margin: 30px auto 0;  text-align: center;  text-indent: 45px;  color: #333;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/radius_btn.png") no-repeat 0 0;  }
+        .box-btnn{  width: 600px;  position: relative;  height: 60px;  margin: 0 auto;  text-align: center;  text-indent: 42px;  color: #333;  font: 26px/60px "Hiragino sans GB",'microsoft yahei';  }
+        .box-bb{  width: 26px;  height: 26px;  position: absolute;  top: 17px;  left: 235px;  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/cir.png") no-repeat 0 0;  }
+
+        .live-c{  width: 600px;  height: 385px;  margin: 30px auto 0;  }
+        .focus2-ul{  width: 500px;  height: 52px;  margin: 30px auto 0;  }
+        .focus2-ul li{  width: 200px;  height: 52px;  margin: 0 25px;  float: left;  }
+        .focus2-ul li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/btns1.png") no-repeat 0 0;  }
+        .focus2-ul li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/btns1.png") no-repeat -200px 0;  }
+        .focus2-ul li:nth-child(1).act{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/btns2.png") no-repeat 0 0;  }
+        .focus2-ul li:nth-child(2).act{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/btns2.png") no-repeat -200px 0;  }
+        .focus2-box{  width: 640px;  height: 460px;  margin: 25px auto 0;  overflow: hidden;  position: relative;  }
+        .focus2-mod{  position: absolute;  top: 0;  left: 0;  height: 460px;  width: 1280px;  transition-duration: .5s; -webkit-transition-duration: .5s;   }
+
+        .show-box{  width: 620px;  overflow: hidden;  height: 450px;  margin: 40px auto 0;  }
+        .show-mod{  width: 620px;  overflow: hidden;  min-height: 450px;  }
+        .show-mod table img{  padding: 1px;  border: 1px solid #ccc;  }
+        .show-mod .ln{  height: 30px;  }
+
+        .compare-box{  width: 600px;  overflow: hidden;  height: 580px;  margin: 40px auto 0;  }
+        .compare-mod{  width: 600px;  overflow: hidden;  min-height: 580px;  }
+        .compare-mod .ln{  height: 20px;  }
+        .compare-mod table img{  -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;;  }
+
+        .ques-c{  width: 600px;
+            /*height: 470px;*/
+            overflow: hidden;
+            margin: 30px auto 0;  }
+        .ques-c table table{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/ques1.png") no-repeat top center;  }
+        .ques-c table tr:nth-child(4n+3) table{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/ques2.png") no-repeat top center;  }
+        .ques-c .bai20{  display: block;  position: relative;  color: #fff;  padding-left: 110px;  padding-right: 30px;  padding-top: 20px;  font: 24px/33px 'Hiragino sans GB','microsoft yahei';  }
+        .ques-c .bai20 i{  display: block;  position: absolute;  width: 80px;  text-align: right;  height: 60px;  color: #fff;  left: 10px;  top: 0;  font: 40px/60px "Hiragino sans GB",'microsoft yahei';  }
+        .ques-c .hong20{  display: block;  position: relative;  color: #F93827; padding-left: 110px;  padding-right: 30px;  padding-top: 15px;  padding-bottom: 17px; font: 21px/31px 'Hiragino sans GB','microsoft yahei';  }
+        .ques-c .hong20 i{  display: block;  position: absolute;  width: 80px;  text-align: right;  height: 60px;  color: #F93827;  left: 10px;  top: 0;  font: 40px/60px "Hiragino sans GB",'microsoft yahei';  }
+        .ques-c .hong12{  font-size: 21px;  color: #F93827;  }
+        .ques-c .ln{  height: 15px;  }
+
+        .ed-c{  width: 600px;  height: 560px;  margin: 30px auto 0;  }
+        .ed-c table table{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/ed1.png") no-repeat top center;  }
+        .ed-c table tr:nth-child(4n+3) table{  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/ed2.png") no-repeat top center;  }
+        .ed-c .hong20{  display: block;  color: #F83826;  padding-top: 10px;  font: 28px/42px 'Hiragino sans GB','microsoft yahei';  }
+        .ed-c .hui20{  display: block;  color: #777;  padding-right: 20px;  font: 21px/28px 'Hiragino sans GB','microsoft yahei';  }
+        .ed-c .hong12{  font-size: 21px;  color: #777;  }
+        .ed-c table img{  padding: 18px;  }
+        .ed-c .ln{  height: 15px;  }
+
+        .code{  height: 365px;  background: #333;  }
+        .code-mod{  width: 555px;  height: 260px;  margin: 50px auto 0;  }
+        .code-mod .bai20{  width: 230px;  height: 40px;  display: block;  color: #fff;  font: 22px/40px "Hiragino sans GB",'microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_59b/25526f09db/code_art.png") no-repeat top center;  }
+
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading" style="display: none;"><span class="loading-ring"></span></div>
+<!--main-->
+<div class="mainPage">
+    <header class="header">
+        <div class="logo1"></div>
+        <div class="logo2"></div>
+        <div class="logo3 float-scale"></div>
+        <div class="head-art1 btt1"></div>
+        <div class="head-art2 btt2"></div>
+        <div class="head-art3 btt3"></div>
+        <div class="head-art4 btt3"></div>
+        <div class="brand btt4"></div>
+    </header>
+    <div class="wp pre banners">
+        <div class="pre-btn pre-btn1"></div>
+        <div class="pre-btn pre-btn2"></div>
+        <{data[0]}>
+    </div><div class="wp focus1 banners">
+    <div class="tit focus1-t">产品聚焦</div>
+    <div class="focus1-box box-box">
+        <div class="focus1-mod box-mod"><{data[1]}></div>
+    </div>
+    <div class="focus1-btn box-btn"><div class="focus1-btnn box-btnn">加载更多</div><div class="focus1-bb box-bb"></div></div>
+</div><div class="wp live banners">
+    <div class="tit live-t">视频直播</div>
+    <div class="live-c"><{data[2]}></div>
+</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div>
+
+
+
+
+
+
+
+    <div class="wp code">
+        <div class="code-mod"><{data[8]}></div>
+    </div>
+</div>
+
+
+<script charset="GBK">
+    /*处理编辑兼容1*/
+    if (/*window.jQuery*/location.hostname == 'article.zol.com.cn') {
+        document.write('<style id="edit-style"> .test-box{ height: 1000px; } .test-mod{ display: block; } html, body, .flipview { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style>');
+    } else {
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t<script src=\"http://active.zol.com.cn/17active/0122beiang/swiper.min.js\"></s" + "cript>\n\t<script></s" + "cript>");
+        document.write("<script src=\'http://icon.zol-img.com.cn/wap/js/z.flipview.js'></s" + "cript>");
+        //document.write("<script src=\'http://active.zol.com.cn/16active/0524model/live-elem.js'></s" + "cript>");
+
+    }
+
+</script><style id="edit-style"> .test-box{ height: 1000px; } .test-mod{ display: block; } html, body, .flipview { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style><style id="edit-style"> .test-box{ height: 1000px; } .test-mod{ display: block; } html, body, .flipview { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style>
+<script charset="gbk">
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+    });
+
+    var focus1Len=document.querySelectorAll('.focus1-mod li img').length;
+    var focus1Btn=document.querySelector('.focus1-btn');
+    var focus1Btnn=document.querySelector('.focus1-btnn');
+    var focus1Box=document.querySelector('.focus1-box');
+    var focus1Bb=document.querySelector('.focus1-bb');
+    console.log(focus1Len);
+    focus1Btn.addEventListener('click',function () {
+        focus1Bb.classList.add('cir1');
+        focus1Btnn.innerHTML='正在载入';
+        setTimeout(function () {
+            var nowLen=focus1Len*220-70;
+            focus1Box.style.height=nowLen+'px';
+            focus1Btn.style.display='none';
+        },1100);
+    });
+
+    var compareLen=document.querySelectorAll('.compare-mod table img').length;
+    var compareBtn=document.querySelector('.compare-btn');
+    var compareBtnn=document.querySelector('.compare-btnn');
+    var compareBox=document.querySelector('.compare-box');
+    var compareBb=document.querySelector('.compare-bb');
+    console.log(compareLen);
+    compareBtn.addEventListener('click',function () {
+        compareBb.classList.add('cir1');
+        compareBtnn.innerHTML='正在载入';
+        setTimeout(function () {
+            var nowLen=compareLen*300-20;
+            compareBox.style.height=nowLen+'px';
+            compareBtn.style.display='none';
+        },1100);
+    });
+
+    var showLen=Math.ceil(document.querySelectorAll('.show-mod table img').length/2);
+    var showBtn=document.querySelector('.show-btn');
+    var showBtnn=document.querySelector('.show-btnn');
+    var showBox=document.querySelector('.show-box');
+    var showBb=document.querySelector('.show-bb');
+    console.log(showLen);
+    showBtn.addEventListener('click',function () {
+        showBb.classList.add('cir1');
+        showBtnn.innerHTML='正在载入';
+        setTimeout(function () {
+            var nowLen=showLen*240-30;
+            showBox.style.height=nowLen+'px';
+            showBtn.style.display='none';
+        },1100);
+    });
+
+    var focus2Lis=document.querySelectorAll('.focus2-ul li');
+    var focus2Mod=document.querySelector('.focus2-mod');
+    focus2Lis.addEventListener('click',function () {
+        var nowI=focus2Lis.indexOf(this);
+        for(var i=0;i<2;i++){
+            focus2Lis[i].classList.remove('act');
+        }
+        this.classList.add('act');
+        focus2Mod.style.transform='translate(-'+nowI*640+'px,0px)';
+        focus2Mod.style.webkitTransform='translate(-'+nowI*640+'px,0px)';
+    });
+
+    /*左右切换*/
+    function turnPage(i,objs){
+        var third = document.querySelector(objs);
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=3)
+            third.index = parseInt(horizontalIndex) + i;
+    }
+    function chg3(btn1,btn2,event1,res){
+        document.querySelector(btn1) && document.querySelector(btn1).addEventListener(event1,function(){turnPage(-1,res)});
+        document.querySelector(btn2) && document.querySelector(btn2).addEventListener(event1,function(){turnPage(1,res)});
+    }
+    chg3('.pre-btn1','.pre-btn2','click','.photo-tab');
+
+
+
+
+    window.wechatShareData = {
+        "title":"iPhone8秋季新品发布会",
+        "icon":"http://2.zol-img.com.cn/zt/tm_59b/25526f09db/share.jpg",
+        "description":"中关村在线全程报道",
+        "url":"http://m.zol.com.cn/topic/6550203.html"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+
+</body></html>

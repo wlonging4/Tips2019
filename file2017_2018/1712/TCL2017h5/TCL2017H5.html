@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no" />
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /*下滑按钮*/
+        .swipe{  display: block;   position:absolute;z-index:10;left:50%;bottom:40px;  width: 55px;  height: 33px;  margin-left: -28px;  color:rgba(0,0,0,0);}
+        .sw{  width: 36px;  height: 33px;  margin: 0 auto;  -webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/slide.png") no-repeat 0 0;  }
+        .sw1{  position: absolute;  width: 7px;  height: 30px;  left: 0;  top: 2px;  -webkit-animation:swipe-ani2 infinite .5s;animation:swipe-ani2 infinite .5s;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/slide1.png") no-repeat 0 0;  }
+        .sw2{  position: absolute;  width: 7px;  height: 30px;  right: 0;  top: 2px;  -webkit-animation:swipe-ani3 infinite .5s;animation:swipe-ani3 infinite .5s;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/slide2.png") no-repeat 0 0;  }
+        .swipe.last{ display: none;  }
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-3px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-3px);}}
+        @-webkit-keyframes swipe-ani2{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(-6px,0px);}}
+        @keyframes swipe-ani2{0%{transform:translate(0,0);}50%{transform:translate(-6px,0px);}}
+        @-webkit-keyframes swipe-ani3{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(6px,0px);}}
+        @keyframes swipe-ani3{0%{transform:translate(0,0);}50%{transform:translate(6px,0px);}}
+
+        /*动画*/
+        .float-scale{-webkit-transform:scale(2);transform:scale(2); opacity: 0; }
+        .float-scale1{-webkit-transform:scale(4);transform:scale(4); opacity: 0; }
+        .float-scale12,.float-scale13,.float-scale14{-webkit-transform:scale(4);transform:scale(4); opacity: 0; }
+        .float-scale2{-webkit-transform:scale(0.4);transform:scale(0.4); opacity: 0; }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5,.ltr6{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .rtll1,.rtll2,.rtll3,.rtll4,.rtll5,.rtll6,.rtll7,.rtll8{  opacity: 0;  -webkit-transform: translate(80px,30px);  transform: translate(80px,30px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        .bttp1,.bttp2,.bttp3,.bttp4,.bttp5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+        .ltr-rot{  opacity: 0;  -webkit-transform: rotate(-30deg);  transform: rotate(-30deg);  }
+        .rtl-rot{  opacity: 0;  -webkit-transform: rotate(30deg);  transform: rotate(30deg);  }
+        .blast1{  opacity: 0.2;  -webkit-transform: scale(1) translate(0px,0px);  transform: scale(1) translate(0px,0px) ;  }
+
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtll {
+            0%{  -webkit-transform: translate(80px,30px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtll {
+            0%{  transform: translate(80px,30px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes float-scale {
+            0%{  -webkit-transform: scale(4);opacity: 0;  }
+            100%{  -webkit-transform: scale(1);opacity: 1;  }
+        }
+        @keyframes float-scale {
+            0%{  transform: scale(4);opacity: 0;  }
+            100%{  transform: scale(1);opacity: 1;  }
+        }
+        @-webkit-keyframes float-scale2 {
+            0%{  -webkit-transform: scale(0.4);opacity: 0;  }
+            100%{  -webkit-transform: scale(1);opacity: 1;  }
+        }
+        @keyframes float-scale2 {
+            0%{  transform: scale(0.4);opacity: 0;  }
+            100%{  transform: scale(1);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ltr-rot {
+            0%{  opacity: 1; -webkit-transform: rotate(0deg);  }
+            50%{  opacity: 1; -webkit-transform: rotate(180deg);  }
+            100%{  opacity: 1; -webkit-transform: rotate(360deg);  }
+        }
+        @keyframes ltr-rot {
+            0%{  opacity: 1; transform: rotate(0deg);  }
+            50%{  opacity: 1; transform: rotate(180deg);  }
+            100%{  opacity: 1; transform: rotate(360deg);  }
+        }
+        @-webkit-keyframes rtl-rot {
+            0%{  opacity: 0; -webkit-transform: rotate(30deg);  }
+            100%{  opacity: 1; -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes rtl-rot {
+            0%{  opacity: 0; transform: rotate(30deg);  }
+            100%{  opacity: 1; transform: rotate(0deg);  }
+        }
+
+        .vdMov{  -webkit-transform:scaleX(1);transform:scaleX(1); opacity: 1; -webkit-transform-origin: left top;transform-origin: left top;  }
+        @-webkit-keyframes vdMov {
+            0%{  opacity: 1; -webkit-transform: scaleX(1) rotateY(-90deg);  }
+            100%{  opacity: 1; -webkit-transform: scaleX(1) rotateY(0deg);  }
+        }
+        @keyframes vdMov {
+            0%{  opacity: 1; transform: scaleX(1) rotateY(-90deg);  }
+            100%{  opacity: 1; transform: scaleX(1) rotateY(0deg);  }
+        }
+
+        @-webkit-keyframes blast1 {
+            0%{  opacity: 1; -webkit-transform: scale(1)   }
+            60%{  opacity: 0.8; -webkit-transform: scale(1.1) }
+            100%{  opacity: 1; -webkit-transform: scale(1) }
+        }
+        @keyframes blast1 {
+            0%{  opacity: 1; transform: scale(1)   }
+            60%{  opacity: 0.8; transform: scale(1.1) }
+            100%{  opacity: 1; transform: scale(1) }
+        }
+
+        @-webkit-keyframes blast2 {
+            0%{  opacity: 1; -webkit-transform: scale(1) translate(0px,0px)  }
+            30%{  opacity: 0.9; -webkit-transform: scale(1.1) translate(4px,2px)  }
+            60%{  opacity: 1; -webkit-transform: scale(1.05) translate(-2px,0px)  }
+            80%{  opacity: 1; -webkit-transform: scale(0.95) translate(0px,-2px)  }
+            100%{  opacity: 1; -webkit-transform: scale(1) translate(0px,0px)  }
+        }
+        @keyframes blast2 {
+            0%{  opacity: 1;transform: scale(1) translate(0px,0px)  }
+            30%{  opacity: 0.9;transform: scale(1.1) translate(4px,2px)  }
+            60%{  opacity: 1;transform: scale(1.05) translate(-2px,0px)  }
+            80%{  opacity: 1;transform: scale(0.95) translate(0px,-2px)  }
+            100%{  opacity: 1;transform: scale(1) translate(0px,0px)  }
+        }
+
+        @-webkit-keyframes cir {
+            0%{ -webkit-transform: rotate(0deg) }
+            100%{ -webkit-transform: rotate(360deg) }
+        }
+        @keyframes cir {
+            0%{ transform: rotate(0deg) }
+            100%{ transform: rotate(360deg) }
+        }
+        .cir{  -webkit-animation: cir 12s linear 0s infinite;  animation: cir 12s linear 0s infinite;  }
+
+        @-webkit-keyframes outCir {
+            0%{  -webkit-transform: scale(0.2); opacity: 0;  }
+            35%{  -webkit-transform: scale(1.2); opacity: 1;  }
+            100%{  -webkit-transform: scale(1); opacity: 1;  }
+        }
+        @keyframes outCir {
+            0%{  transform: scale(0.2) ;opacity: 0;  }
+            35%{  transform: scale(1.2) ;opacity: 1;  }
+            100%{  transform: scale(1) ;opacity: 1;  }
+        }
+        .current .outCir1{ -webkit-animation: outCir .5s ease-in .1s forwards;  animation: outCir .5s ease-in .1s forwards;   }
+        .current .outCir2{ -webkit-animation: outCir .5s ease-in .2s forwards;  animation: outCir .5s ease-in .2s forwards;   }
+        .current .outCir3{ -webkit-animation: outCir .5s ease-in .3s forwards;  animation: outCir .5s ease-in .3s forwards;   }
+        .current .outCir4{ -webkit-animation: outCir .5s ease-in .4s forwards;  animation: outCir .5s ease-in .4s forwards;   }
+        .current .outCir5{ -webkit-animation: outCir .5s ease-in .5s forwards;  animation: outCir .5s ease-in .5s forwards;   }
+        .current .outCir6{ -webkit-animation: outCir .5s ease-in .6s forwards;  animation: outCir .5s ease-in .6s forwards;   }
+        .current .outCir7{ -webkit-animation: outCir .5s ease-in .7s forwards;  animation: outCir .5s ease-in .7s forwards;   }
+
+        .current .ltr1{ -webkit-animation: ltr .6s ease-in 0s forwards;  animation: ltr .6s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr .6s ease-in 0.4s forwards;  animation: ltr .6s ease-in 0.4s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr .6s ease-in 0.8s forwards;  animation: ltr .6s ease-in 0.8s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr .6s ease-in 1.2s forwards;  animation: ltr .6s ease-in 1.2s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr .6s ease-in 1.6s forwards; animation: ltr .6s ease-in 1.6s forwards;  }
+        .current .ltr6{ -webkit-animation: ltr .6s ease-in 2s forwards; animation: ltr .6s ease-in 2s forwards;  }
+        .current .ttb1{ -webkit-animation: ttb .6s ease-in 0s forwards;  animation: ttb .6s ease-in 0s forwards;   }
+        .current .ttb11{ -webkit-animation: ttb .6s ease-in 0s forwards;  animation: ttb .6s ease-in 0s forwards;   }
+        .current .ttb2{ -webkit-animation: ttb .6s ease-in 0.2s forwards;  animation: ttb .6s ease-in 0.2s forwards;  }
+        .current .ttb3{ -webkit-animation: ttb .6s ease-in 0.4s forwards;  animation: ttb .6s ease-in 0.4s forwards;  }
+        .current .ttb4{ -webkit-animation: ttb .6s ease-in .6s forwards;  animation: ttb .6s ease-in .6s forwards;  }
+        .current .ttb5{ -webkit-animation: ttb .6s ease-in .8s forwards; animation: ttb .6s ease-in .8s forwards;  }
+        .current .btt1{ -webkit-animation: btt .6s ease-in 0s forwards;  animation: btt .6s ease-in 0s forwards;   }
+        .current .btt11{ -webkit-animation: btt 1.2s ease-in 0s forwards;  animation: btt 1.2s ease-in 0s forwards;   }
+        .current .btt2{ -webkit-animation: btt .6s ease-in 0.2s forwards;  animation: btt .6s ease-in 0.2s forwards;  }
+        .current .btt3{ -webkit-animation: btt 0.6s ease-in 0.4s forwards;  animation: btt 0.6s ease-in 0.4s forwards;  }
+        .current .btt4{ -webkit-animation: btt 1s ease-in 1.2s forwards;  animation: btt 1s ease-in 1.2s forwards;  }
+        .current .btt5{ -webkit-animation: btt 1s ease-in 1.6s forwards; animation: btt 1s ease-in 1.6s forwards;  }
+        .current .rtl1{ -webkit-animation: rtl .6s ease-in 0s forwards;  animation: rtl .6s ease-in 0s forwards;   }
+        .current .rtl2{ -webkit-animation: rtl .6s ease-in 0.4s forwards;  animation: rtl .6s ease-in 0.4s forwards;  }
+        .current .rtl3{ -webkit-animation: rtl .6s ease-in .6s forwards;  animation: rtl .6s ease-in .6s forwards;  }
+        .current .rtl4{ -webkit-animation: rtl .6s ease-in .8s forwards;  animation: rtl .6s ease-in .8s forwards;  }
+        .current .rtl5{ -webkit-animation: rtl .6s ease-in 1.6s forwards;  animation: rtl .6s ease-in 1.6s forwards;  }
+
+        .current .rtll1{ -webkit-animation: rtll .6s ease-in 0s forwards;  animation: rtll .6s ease-in 0s forwards;   }
+        .current .rtll2{ -webkit-animation: rtll .6s ease-in 0.1s forwards;  animation: rtll .6s ease-in 0.1s forwards;  }
+        .current .rtll3{ -webkit-animation: rtll .6s ease-in 0.2s forwards;  animation: rtll .6s ease-in 0.2s forwards;  }
+        .current .rtll4{ -webkit-animation: rtll .6s ease-in 0.3s forwards;  animation: rtll .6s ease-in 0.3s forwards;  }
+        .current .rtll5{ -webkit-animation: rtll .6s ease-in 0.4s forwards;  animation: rtll .6s ease-in 0.4s forwards;  }
+        .current .rtll6{ -webkit-animation: rtll .6s ease-in 0.5s forwards;  animation: rtll .6s ease-in 0.5s forwards;  }
+        .current .rtll7{ -webkit-animation: rtll .6s ease-in 0.6s forwards;  animation: rtll .6s ease-in 0.6s forwards;  }
+        .current .rtll8{ -webkit-animation: rtll .6s ease-in 0.7s forwards;  animation: rtll .6s ease-in 0.7s forwards;  }
+
+        .current .float-scale{ -webkit-animation: float-scale .5s ease-in .1s forwards;  animation: float-scale .5s ease-in .1s forwards;  }
+        .current .float-scale1{ -webkit-animation: float-scale .5s ease-in .6s forwards;  animation: float-scale .5s ease-in .6s forwards;  }
+        .current .float-scale12{ -webkit-animation: float-scale .5s ease-in 0.6s forwards;  animation: float-scale .5s ease-in 0.6s forwards;  }
+        .current .float-scale13{ -webkit-animation: float-scale .5s ease-in 1.6s forwards;  animation: float-scale .5s ease-in 1.6s forwards;  }
+        .current .float-scale14{ -webkit-animation: float-scale .5s ease-in 1.9s forwards;  animation: float-scale .5s ease-in 1.9s forwards;  }
+        .current .float-scale2{ -webkit-animation: float-scale2 .4s ease-in .1s forwards;  animation: float-scale2 .4s ease-in .1s forwards;  }
+        .current .float-scale21{ -webkit-animation: float-scale2 .8s ease-in .1s forwards;  animation: float-scale2 .8s ease-in .1s forwards;  }
+        .current .float-scale22{ -webkit-animation: float-scale2 .8s ease-in .4s forwards;  animation: float-scale2 .8s ease-in .4s forwards;  }
+        .current .float-scale23{ -webkit-animation: float-scale2 .8s ease-in .7s forwards;  animation: float-scale2 .8s ease-in .7s forwards;  }
+        .current .float-scale24{ -webkit-animation: float-scale2 .8s ease-in 1s forwards;  animation: float-scale2 .8s ease-in 1s forwards;  }
+        .current .ltr-rot{ -webkit-animation: ltr-rot 6s  0.2s infinite;  animation: ltr-rot 6s linear 0.2s infinite;  }
+        .current .rtl-rot{ -webkit-animation: rtl-rot .4s ease-in 1.1s forwards;  animation: rtl-rot .4s ease-in 1.1s forwards;  }
+        .current .blast1{ -webkit-animation: blast1 8s linear .1s infinite;  animation: blast1 8s linear .1s infinite;  }
+        .current .blast2{ -webkit-animation: blast2 6s linear .2s infinite;  animation: blast2 6s linear .2s infinite;  }
+        .current .vdMov{ -webkit-animation: vdMov 1.8s linear .1s forwards;  animation: vdMov 1.8s linear .1s forwards; -webkit-transform-origin: left bottom;transform-origin: left bottom;  }
+
+
+
+        /*lg_style*/
+        .container{height:1000%;}
+        #viewport{width:640px;height:100%;margin:0 auto;overflow:hidden;}
+        section{height:10%;overflow:hidden;position:relative;background-size:cover;background-repeat: no-repeat;background-position: top center; background-color: #ebebeb; background-image: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/bg2.jpg");  }
+        #slide1{  background-image: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/bg1.jpg");  }
+
+        .p1-logo1{  width: 210px;  height: 120px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_logo1.png") no-repeat 0 0;  }
+        .p1-b{  width: 600px;  height: 600px;  position: relative;  margin: 0 auto;  }
+        .p1-cir{  width: 600px;  height: 600px;  position: absolute;  left: 0;  top: 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_pic2.png") no-repeat 0 0;  }
+        .p1-line{  width: 481px;  height: 400px;  position: absolute;  left: 50px;  top: 100px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_line.png") no-repeat 0 0;  }
+        .p1-art1{  width: 194px;  height: 48px;  position: absolute;  left: 200px;  top: 150px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_art1.png") no-repeat 0 0;  }
+        .p1-art2{  width: 60px;  height: 59px;  position: absolute;  left: 130px;  top: 290px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_art2.png") no-repeat 0 0;  }
+        .p1-art3{  width: 60px;  height: 59px;  position: absolute;  right: 130px;  top: 290px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_art3.png") no-repeat 0 0;  }
+        .p1-art4{  width: 214px;  height: 252px;  position: absolute;  left: 205px;  top: 200px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_art4.png") no-repeat 0 0;  }
+        .p1-dot{  width: 454px;  height: 572px;  position: absolute;  left: 120px;  top: 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_pic1.png") no-repeat 0 0;  }
+        .p1-btn{  width: 478px;  height: 63px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_btn.png") no-repeat 0 0;  }
+        .p1-logo2{  width: 130px;  height: 40px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p1_logo2.png") no-repeat 0 0;  }
+
+        .p2-art1{  width: 510px;  height: 83px;  margin: 165px 0 0 55px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_art1.png") no-repeat 0 0;  }
+        .p2-art2{  position: relative;  width: 538px;  height: 49px;  margin: 120px 0 0 50px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_art2.png") no-repeat 0 0;  }
+        .p2-art22{ position: relative;  width: 276px;  height: 234px;  top: -100px;  left: 215px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_art22.png") no-repeat 0 0;  }
+        .p2-art3{  position: relative;  width: 469px;  height: 67px;  margin: 90px 0 0 50px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_art3.png") no-repeat 0 0;  }
+        .p2-art4{  position: relative;  width: 388px;  height: 129px;  margin: 45px 0 0 50px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_art4.png") no-repeat 0 0;  }
+        .p2-dot1{  width: 270px;  height: 336px;  position: absolute;  top: 330px;  left: 310px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_dots1.png") no-repeat 0 0;  }
+        .p2-dot2{  width: 483px;  height: 850px;  position: absolute;  top: 55px;  left: 130px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p2_dots2.png") no-repeat 0 0;  }
+
+        .p3-art11{  position: absolute;  width: 115px;  height: 482px;  top: 70px;  left: 220px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art11.png") no-repeat 0 0;  }
+        .p3-art12{  position: absolute;  width: 94px;  height: 403px;  top: 300px;  left: 345px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art12.png") no-repeat 0 0;  }
+        .p3-art13{  position: absolute;  width: 350px;  height: 111px;  top: 740px;  left: 135px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art13.png") no-repeat 0 0;  }
+        .p3-art21{  position: absolute;  width: 179px;  height: 112px;  top: 140px;  left: 35px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art21.png") no-repeat 0 0;  }
+        .p3-art22{  position: absolute;  width: 120px;  height: 112px;  top: 105px;  left: 490px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art22.png") no-repeat 0 0;  }
+        .p3-art23{  position: absolute;  width: 149px;  height: 152px;  top: 540px;  left: 35px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art23.png") no-repeat 0 0;  }
+        .p3-art24{  position: absolute;  width: 120px;  height: 112px;  top: 580px;  left: 495px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p3_art24.png") no-repeat 0 0;  }
+
+        .p4-art1{  width: 564px;  height: 58px;  margin: 90px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_art1.png") no-repeat 0 0;  }
+        .p4-art2{  width: 365px;  height: 96px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_art2.png") no-repeat 0 0;  }
+        .p4-art3{  width: 520px;  height: 159px;  margin: 35px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_art3.png") no-repeat 0 0;  }
+        .p4-art4{  width: 640px;  height: 150px;  margin: 20px auto 0;  }
+        .p4-art5{  width: 487px;  height: 153px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_art5.png") no-repeat 0 0;  position: relative;  }
+        .p4-art55{  width: 270px;  height: 336px;  top: -25px; left: 48px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_art55.png") no-repeat 0 0;  position: absolute;  }
+        .p4-pic1{  width: 90px;  height: 86px;  position: absolute;  top: 15px;  left: 65px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_pic1.png") no-repeat right center;  }
+        .p4-pic2{  width: 109px;  height: 90px; position: absolute;  top: 180px;  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p4_pic2.png") no-repeat right center;  }
+        .p4-art4{  display: block;  color: #E50012;  font: 36px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .p4-art4 em{  font-style: normal; display: block;  color: #E50012;  font: 50px/72px 'Hiragino sans GB','microsoft yahei';  }
+
+        .p5-pic{  width: 513px;  height: 417px;  margin: 25px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p5_man.png") no-repeat;  }
+        .p5-art{  width: 578px;  height: 431px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p5_art.png") no-repeat;  }
+
+        .p6-t{  width: 303px;  height: 135px;  margin: 35px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p6_t.png") no-repeat 0 0;  }
+        .p6-b{  width: 582px;  height: 437px;  margin: 5px auto 0;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p6_b.png") no-repeat 0 0;  }
+        .p6-btn{  width: 250px;  height: 64px;  margin:  0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p6_btn.png") no-repeat 0 0;  }
+        .p6-code{  width: 160px;  height: 160px;  border: 5px solid #EA3340;  margin: 20px auto 0;  }
+        .p6-art{  width: 320px;  height: 88px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/p6_art.png") no-repeat 0 0;  }
+
+        .p6-b .inp{  width: 360px;  height: 28px;  display: block; outline: none;  border: none;  position: absolute;  left: 172px;   color: #EA3340;  font: 26px/28px 'Hiragino sans GB','microsoft yahei';  padding: 10px 15px; background: transparent;  }
+        .inp1{  top: 30px;  }
+        .inp2{  top: 93px;  }
+        .inp3{  top: 156px;   }
+        .inp4{  top: 220px;  }
+        .inp5{  top: 283px;  }
+        .inp6{  top: 346px;  }
+
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--content-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container" id="container">
+        <section id="slide1">
+            <div class="p1-logo1"></div>
+            <div class="p1-b">
+                <div class="p1-cir cir"></div>
+                <div class="p1-line float-scale2"></div>
+                <div class="p1-art1 btt1"></div>
+                <div class="p1-art2"></div>
+                <div class="p1-art3"></div>
+                <div class="p1-art4 float-scale1"></div>
+                <div class="p1-dot blast1"></div>
+            </div>
+            <div class="p1-btn btt2"></div>
+            <div class="p1-logo2 btt3"></div>
+        </section>
+        <section id="slide2">
+            <div class="p2-dot1 float-scale12"></div>
+            <div class="p2-art1 btt1"></div>
+            <div class="p2-art2 rtl2">
+                <div class="p2-art22 float-scale2"></div>
+            </div>
+            <div class="p2-art3 btt4"></div>
+            <div class="p2-art4 rtl5"></div>
+            <div class="p2-dot2 blast2"></div>
+        </section>
+        <section id="slide3">
+            <div class="p3-art11 ttb1"></div>
+            <div class="p3-art12 btt1"></div>
+            <div class="p3-art13 float-scale13"></div>
+            <div class="p3-art21 ltr1"></div>
+            <div class="p3-art22 rtl4"></div>
+            <div class="p3-art23 ltr3"></div>
+            <div class="p3-art24 rtl2"></div>
+        </section>
+        <section id="slide4">
+            <div class="p4-art1 ltr1"></div>
+            <div class="p4-art2 rtl2"></div>
+            <div class="p4-art3 ltr3"></div>
+            <div class="p4-art4 rtl4"><{data[0]}></div>
+            <div class="p4-art5 ltr5">
+                <div class="p4-art55 float-scale14"></div>
+            </div>
+            <div class="p4-pic1 cir"></div>
+            <div class="p4-pic2 blast2"></div>
+        </section>
+        <section id="slide5">
+            <div class="p5-pic ttb1"></div>
+            <div class="p5-art btt1"></div>
+        </section>
+        <section id="slide6">
+            <div class="p6-t"></div>
+            <div class="p6-b">
+                <input type="text" class="inp inp1" id="p6-in1" maxlength="10">
+                <input type="text" class="inp inp2" id="p6-in2" maxlength="2">
+                <input type="text" class="inp inp3" id="p6-in3" maxlength="11">
+                <input type="text" class="inp inp4" id="p6-in4" maxlength="20">
+                <input type="text" class="inp inp5" id="p6-in5" maxlength="20">
+                <input type="text" class="inp inp6" id="p6-in6" maxlength="2">
+            </div>
+            <div class="p6-btn"></div>
+            <div class="p6-code"><{data[1]}></div>
+            <div class="p6-art"></div>
+        </section>
+    </div>
+</div>
+<!--slide-->
+<div id="swipe" class="swipe" role="button">
+    <div class="sw"></div>
+    <div class="sw1"></div>
+    <div class="sw2"></div>
+</div>
+<script charset="gbk">
+    if (/*window.jQuery*/location.hostname == 'article.zol.com.cn') {
+        document.write('<style id="edit-style"> html, body, #viewport { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style>');
+        var sls=document.querySelectorAll('#container section');
+        for(var jj=0;jj<sls.length;jj++){
+            sls[jj].classList.add('current');
+        }
+    } else {
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t<script src=\"http://active.zol.com.cn/17active/0122beiang/swiper.min.js\"></s" + "cript>\n\t<script></s" + "cript>");
+        document.write("<script src=\'http://icon.zol-img.com.cn/wap/js/z.flipview.js'></s" + "cript>");
+        //document.write("<script src=\'http://active.zol.com.cn/16active/0524model/live-elem.js'></s" + "cript>");
+    }
+</script>
+
+<script>
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('current');
+    });
+
+    /*滑动*/
+    var swipe=document.getElementById('swipe');
+    viewport.addEventListener('changed', function (e) {
+        if(e.target.tagName=='UL'){return false}
+        var current = this.querySelector('.current');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+        e.current && e.current.classList.add('current');
+        swipe.classList[last ? 'add' : 'remove']('last');
+    });
+
+    swipe.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    /*提交信息*/
+    var submitBtn=document.querySelector('.p6-btn');
+    var activeid= 6699529;
+    var dataUrl = 'http://m.zol.com.cn/topic/services/user.php?callback=?',val1,val2,val3,val4,val5;
+
+    submitBtn.addEventListener('click',function(){
+        val1=document.querySelector('#p6-in1').value;
+        val2=document.querySelector('#p6-in2').value;
+        val3=document.querySelector('#p6-in3').value;
+        val4=document.querySelector('#p6-in4').value;
+        val5=document.querySelector('#p6-in5').value;
+        val6=document.querySelector('#p6-in6').value;
+        if(!val1){alert('请填写您的姓名');return false;}
+        if(!val2){alert('请填写您的年龄');return false;}
+        if(!val4){alert('请填写您的所在地区');return false;}
+        if(!val5){alert('请填写您的洗衣机类型');return false;}
+        if(!val6){alert('请填写您的洗衣机已使用年限');return false;}
+        if(!val3 || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(val3))) {
+            // 请正确填写您的手机号码。
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+            return false;
+        }
+
+        getToken(function(){
+            $.ajax({
+                type:'get',
+                url: dataUrl,
+                data:{token:window.verifyTk,action:'addUser',type:activeid,username:val1,tel:val3,ext2:val2,ext3:val5,ext4:val4,ext5:val6},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.result == 1){
+                        //提交成功
+                        console.log(data.result);
+                        submitBtn.classList.add('act');
+                        alert('提交成功，谢谢您对活动的关注~');
+                        document.querySelector('#p6-in1').value='';
+                        document.querySelector('#p6-in2').value='';
+                        document.querySelector('#p6-in3').value='';
+                        document.querySelector('#p6-in4').value='';
+                        document.querySelector('#p6-in5').value='';
+                        document.querySelector('#p6-in6').value='';
+                    }else {
+                        alert(data.result)
+                    }
+                }
+            });
+        })
+    });
+
+    //获取token
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(request){
+                if(request && request.result){
+                    window.verifyTk = request.result;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+            }
+        });
+    }
+    /*分享*/
+    window.wechatShareData = {
+        "title":"拆过才知道，你的洗衣机有多“脏”",
+        "icon":"http://2.zol-img.com.cn/zt/tm_5a2/a772ad7c14/share.jpg",
+        "description":" ",
+        "url":"http://m.zol.com.cn/topic/6699529.html"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

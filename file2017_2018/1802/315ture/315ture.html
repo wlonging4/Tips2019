@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>315实验室第一期</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #FDE651; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1000px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_5a6/81f9e3fe90/bg.jpg") no-repeat top center;  }
+        .wrapper1{  position: relative;  width: 1000px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .zol_foot{  height: 110px;  padding-top: 110px; background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #6a6a6a;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/head_l.jpg") no-repeat 100% 0;  }
+        .head-r{   background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/head_r.jpg") no-repeat 0 0; }
+        .head-c{  width: 1000px;  height: 639px;  overflow: hidden;  position: relative; background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/head_c.jpg") no-repeat 0 0;  }
+
+        .navBg{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/nav.jpg") no-repeat top center;}
+        .nav{height: 164px;}
+        .nav-ul{width: 360px;height: 164px;margin: 0 auto;overflow: hidden;}
+        .nav-ul li{width: 30px;height: 164px;margin: 0 30px;float: left;-webkit-transition:all linear .4s;transition:all linear .4s;background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/flow.png") 0 152px no-repeat;}
+        .nav-ul li.act{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/flow.png") bottom no-repeat;}
+        .nav-ul li a{display: block;width: 30px;height: 110px;margin-top: 30px;-webkit-transition:all linear .2s;transition:all linear .2s;}
+        .nav-ul li.act a{margin-top: 20px;}
+        .nav-ul .nav1 a{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/nav1.png") no-repeat top center;}
+        .nav-ul .nav2 a{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/nav2.png") no-repeat top center;}
+        .nav-ul .nav3 a{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/nav3.png") no-repeat top center;}
+        .nav-ul .nav4 a{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/nav4.png") no-repeat top center;}
+
+        .vdBg{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/video.jpg") no-repeat top center;}
+        .vd{height: 545px;}
+        .vd-box{width: 960px;height: 505px;background: #000;margin: 20px auto 0;overflow: hidden;}
+
+        .labBg{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/lab.jpg") no-repeat top center;}
+        .lab{height: 440px;}
+        .lab1{position: absolute;left: 20px;top: 275px;width: 415px;height: 165px;}
+        .lab2{position: absolute;right: 0;bottom: 0;width: 530px;height: 400px;}
+        .lab1 .bai20{display:block;font: 22px/52px 'Hiragino Sans GB','microsoft yahei';}
+        .lab1 .hui12{display: block;color: #96969f;font: 12px/22px 'simsun';}
+        .lab2 .bai20{display:block;position:absolute;top:50px;left:0;height:40px;width:240px;overflow:hidden;font: 22px/44px 'Hiragino Sans GB','microsoft yahei';}
+        .lab2 .hui12{display: block;height:95px;width:260px;margin:0 0 0 260px;overflow:hidden;color: #96969f;font: 12px/22px 'simsun';}
+
+        .keyBg{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/key.jpg") no-repeat top center;}
+        .key{height: 349px;}
+        .key-mod{height: 210px;margin: 138px auto 0;width: 960px;}
+        .key-mod table img{padding-right: 12px;margin-right: 18px;background: url("http://2.zol-img.com.cn/zt/tm_5a8/e6b01235c5/intro_bar.png") no-repeat right center;}
+        .key-mod .hei20{display:block;color: #000;width: 220px;height: 38px;margin-bottom: 10px;overflow: hidden;text-align: center;background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/tit.jpg") no-repeat 0 0;font: 22px/38px 'Hiragino Sans GB','microsoft yahei';}
+        .key-mod .hui12{display: block;color: #96969f;font: 12px/22px 'simsun';padding-right: 10px;}
+
+        .introBg{background: #000 url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/intro.jpg") no-repeat bottom center;}
+        .intro{overflow: hidden;}
+        .intro-t{width: 296px;height: 48px;margin: 55px 0 0 18px;background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/intro_t.png") no-repeat 0 0;}
+        .intro1{width: 980px;height: 300px;margin: 12px auto 0;}
+        .intro2{width: 960px;min-height: 160px;margin: 25px auto 0;}
+        .intro2 .ln{height: 30px;}
+        .intro2 table img{padding-right: 17px;margin-right: 20px;background: url("http://2.zol-img.com.cn/zt/tm_5a8/e6b01235c5/intro_bar.png") no-repeat right center;}
+        .intro2 .hei20{display:block;color: #000;width: 220px;height: 38px;margin-bottom: 15px;overflow: hidden;text-align: center;background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/tit.jpg") no-repeat 0 0;font: 22px/38px 'Hiragino Sans GB','microsoft yahei';}
+        .intro2 .hui12{display: block;color: #96969f;font: 12px/21px 'simsun';}
+        .intro-art{height: 24px;margin: 8px 0 0 18px;}
+        .intro-art .bai20{display: block;font: 22px/24px 'Hiragino Sans GB','microsoft yahei';}
+
+        .abtBg{background: url("http://2.zol-img.com.cn/zt/tm_5a8/e668e4adc4/more.jpg") no-repeat top center;}
+        .abt{height: 380px;}
+        .abt1{width: 570px;height: 230px;position: absolute;left: 0px;bottom: 0;}
+        .abt2{width: 180px;height: 230px;position: absolute;left: 600px;bottom: 0;}
+        .abt2 .cheng20{display: block;color: #D9674A;font: 26px/66px 'Hiragino Sans GB','microsoft yahei';}
+        .abt1 .hui12b{display: block;color: #96969F;font: 12px/22px 'simsun';padding-left:20px; }
+        .abt1 .cheng12{color: #FDE651;}
+        .abt1 .ln{line-height: 14px;}
+
+
+        .lab2 table img,.intro1 table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px); -moz-box-shadow:2px 2px 5px transparent; -webkit-box-shadow:2px 2px 5px transparent; box-shadow:2px 2px 5px transparent; }
+        .lab2 table img:hover,.intro1 table img:hover{ -webkit-transform: scale(1) translate(-3px,-5px);  -moz-transform: scale(1) translate(-3px,-5px); transform: scale(1) translate(-3px,-5px);-moz-box-shadow:2px 2px 12px #D9674A; -webkit-box-shadow:2px 2px 12px #D9674A; box-shadow:2px 2px 12px #D9674A;-webkit-transition: all .3s linear;  -moz-transition: all .3s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .3s linear;  }
+        .key-mod table img,.intro2 table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .key-mod table img:hover,.intro2 table img:hover{ -webkit-transform: scale(1) translate(8px,0px);  -moz-transform: scale(1) translate(8px,0px); transform: scale(1) translate(8px,0px);  -webkit-transition: all .4s linear;  -moz-transition: all .4s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .4s linear;  }
+        .pm .pic_box,.pm .pic_box img,.pm2 table img,.pre2 table img,.pre2 table td{-webkit-border-radius: 8px;-webkit-moz-radius: 8px;-webkit-o-radius: 8px;border-radius: 8px;}
+        .pre2 table img{opacity:0.7;webkit-filter: brightness(70%);-moz-filter: brightness(70%);-ms-filter: brightness(70%);-o-filter: brightness(70%);filter: brightness(70%);filter: brightness(0.7);}
+        .pre2 table img.act{opacity:1;webkit-filter: brightness(100%);-moz-filter: brightness(100%);-ms-filter: brightness(100%);-o-filter: brightness(100%);filter: brightness(100%);filter: brightness(1);}
+
+
+
+    </style>
+</head>
+<body>
+<!--head-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody>
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--导航-->
+<div class="wrap1 navBg">
+    <div class="wrapper1 nav">
+        <ul class="nav-ul">
+            <li class="nav1 pass act">
+                <a href="#1" target="_blank"></a>
+            </li>
+            <li class="nav2">
+                <a href="#2" target="_blank"></a>
+            </li>
+            <li class="nav3">
+                <a href="#3" target="_blank"></a>
+            </li>
+            <li class="nav4">
+                <a href="#4" target="_blank"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--视频-->
+<div class="wrap1 vdBg">
+    <div class="wrapper1 vd">
+        <div class="vd-box"><{data[0]}></div>
+    </div>
+</div>
+<!--实验室-->
+<div class="wrap1 labBg">
+    <div class="wrapper1 lab">
+        <div class="lab1"><{data[1]}></div>
+        <div class="lab2"><{data[2]}></div>
+    </div>
+</div>
+<!--关键-->
+<div class="wrap1 keyBg">
+    <div class="wrapper1 key">
+        <div class="key-mod"><{data[3]}></div>
+    </div>
+</div>
+<!--介绍-->
+<div class="wrap1 introBg">
+    <div class="wrapper1 intro">
+        <div class="intro-t"></div>
+        <div class="intro-art"><{data[8]}></div>
+        <div class="intro1"><{data[4]}></div>
+        <div class="intro2"><{data[5]}></div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 abtBg">
+    <div class="wrapper1 abt">
+        <div class="abt1"><{data[6]}></div>
+        <div class="abt2"><{data[7]}></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    ~(function () {
+        $('.nav-ul').delegate('li','mouseenter',function () {
+            $(this).addClass('act').siblings().removeClass('act');
+        })
+    })();
+</script>
+</body>
+</html>

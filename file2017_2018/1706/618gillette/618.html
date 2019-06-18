@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; background: #000;  -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;-webkit-appearance:none; }
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        input:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+        input::-webkit-input-placeholder { color: #999; }
+        input:focus::-moz-placeholder { color: rgba(0,0,0,0); }
+        input::-moz-placeholder { color: #999; }
+        input:focus:-ms-input-placeholder { color: rgba(0,0,0,0); }
+        input:-ms-input-placeholder { color: #999; }
+
+        /* 首页 */
+        @media screen and (max-width:640px) and (max-height: 900px) {
+            .info-form{top: 25%;}
+            .share{bottom:1%;}
+            .rank-list td{line-height: 40px;}
+            .tab-con{height: 554px;}
+        }
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /*animate style*/
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes fscale {
+            0%{  -webkit-transform: scale(0.3);opacity: 0;  }
+            100%{  -webkit-transform:  scale(1);opacity: 1;  }
+        }
+        @keyframes fscale {
+            0%{  transform: scale(0.3);opacity: 0;  }
+            100%{  transform: scale(1);opacity: 1;  }
+        }
+        .float-scale{  opacity: 0;  -webkit-transform: scale(0.3);  transform: scale(0.3);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .current .ltr1{ -webkit-animation: ltr 0.8s ease-in 0s forwards;  animation: ltr 0.8s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr 0.8s ease-in 0.2s forwards;  animation: ltr 0.8s ease-in 0.2s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr 0.8s ease-in 0.4s forwards;  animation: ltr 0.8s ease-in 0.4s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr 0.8s ease-in 0.6s forwards;  animation: ltr 0.8s ease-in 0.6s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr 0.8s ease-in 0.8s forwards; animation: ltr 0.8s ease-in 0.8s forwards;  }
+        .current .rtl1{ -webkit-animation: rtl 0.8s ease-in 0s forwards;  animation: rtl 0.8s ease-in 0s forwards;   }
+        .current .rtl2{ -webkit-animation: rtl 0.8s ease-in 0.2s forwards;  animation: rtl 0.8s ease-in 0.2s forwards;  }
+        .current .rtl3{ -webkit-animation: rtl 0.8s ease-in 0.4s forwards;  animation: rtl 0.8s ease-in 0.4s forwards;  }
+        .current .rtl4{ -webkit-animation: rtl 0.8s ease-in 0.6s forwards;  animation: rtl 0.8s ease-in 0.6s forwards;  }
+        .current .rtl5{ -webkit-animation: rtl 0.8s ease-in 0.8s forwards;  animation: rtl 0.8s ease-in 0.8s forwards;  }
+        .current .float-scale{  -webkit-animation: fscale 0.8s ease-in 0.2s forwards;  animation: fscale 0.8s ease-in 0.2s forwards; }
+
+
+
+
+
+        body {width:640px; margin:0 auto; position: relative;}
+        .section{width:100%; height:100%; position:absolute; overflow:hidden; display: none;}
+        .section.current{  display: block;  }
+        .head{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/bg1.jpg") no-repeat top center;  }
+        .head-logo{  margin: 15px 0 0 20px;  width: 155px;  height: 48px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_logo.png") no-repeat 0 0;  }
+        .head-art1{  width: 512px;  height: 176px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_art1.png") no-repeat 0 0;  }
+        .head-pic{  width: 552px;  height: 347px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_pic1.png") no-repeat 0 0;  }
+        .head-art2{  width: 550px;  height: 52px;  margin: 15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_art2.png") no-repeat 0 0;  }
+        .head-art3{  width: 288px;  height: 45px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_art3.png") no-repeat 0 0;  }
+        .head-btn{  height: 76px;  width: 520px;  margin: 20px auto 0;  }
+        .head-btn1{  width: 221px;  height: 76px;  float: left;  margin-left: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_btn1.png") no-repeat 0 0;  }
+        .head-btn2{  width: 240px;  height: 76px;  float: right;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p1_btn2.png") no-repeat 0 0;  }
+
+        .rule{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/bg2.jpg") no-repeat top center;  }
+        .rule-box{  position: relative;  width: 517px;  height: 688px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p2_rule.png") no-repeat 0 0;  }
+        .rule-know{  width: 286px;  height: 92px;  position: absolute;  bottom: -45px;  left: 110px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p2_know.png") no-repeat 0 0;  }
+        .rank{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/bg2.jpg") no-repeat top center;  }
+        .rank-box{  position: relative;  width: 523px;  height: 732px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p2_rank.png") no-repeat 0 0;  }
+        .rank-close{  width: 286px;  height: 92px;  position: absolute;  bottom: -55px;  left: 115px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p3_know.png") no-repeat 0 0;  }
+        .rank-search{  width: 450px;  height: 65px;  position: absolute;  -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px;  background: #fff;  top: 110px;  left: 37px; overflow: hidden;  }
+        .rank-s1{  float: left;  width: 330px;  height: 65px; overflow: hidden;  }
+        .rank-s2{  float: right;  width: 120px;  height: 65px;  background: #ff3248;  font: bold 28px/65px 'Hiragino sans GB','microsoft yahei'; color: #fff;  text-align: center;  -webkit-border-radius:0 5px 5px 0;  -moz-border-radius:0 5px 5px 0;  border-radius:0 5px 5px 0;  }
+        .rank-s1 input{  display: block;  width: 290px; outline: none;  height: 35px;  margin: 15px 20px;  border: none; font: 25px/35px 'Hiragino sans GB','microsoft yahei';  color: #515151;  }
+        .rank-list{  position: absolute;  left: 90px;  width: 360px;  height: 420px;  top: 248px; line-height: 43px;  color: #fff;  font-size: 20px;   }
+        .rank-list p{  height: 43px;  line-height: 43px;  color: #fff;  font-size: 20px;  }
+        .rank-list p span{  display: block;  height: 43px;  float: left;  }
+        .rank-list p span:nth-child(1){  width: 95px;  }
+        .rank-list p span:nth-child(2){  width: 205px;  }
+        .rank-list p span:nth-child(3){  width: 55px;  }
+        .pointNo{  pointer-events: none;  }
+
+        .game{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/bg2.jpg") no-repeat top center;  }
+        .steps{  width: 60px; padding: 0 59px 0 60px;  height: 54px;  color: #00befe;  text-align: center;  font: bold 26px/50px 'Hiragino sans GB','microsoft yahei';  position: absolute;  top: 60px;  left: 35px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p4_game_lv.png") no-repeat 0 0;  }
+        .time{  padding-left: 89px;  width: 90px;  height: 54px;  color: #00befe;  text-align: left;  font: bold 26px/52px 'Hiragino sans GB','microsoft yahei';  position: absolute;  top: 60px;  right: 35px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/p4_game_time.png") no-repeat 0 0;  }
+        .simg{  width: 170px;  height: 100px;  position: absolute;  top: 40px;  left: 50%;  margin-left: -85px;  border: 1px solid #00befe;  }
+        .game-art1{  height: 90px;  width: 640px;  position: absolute;  top: 160px;  }
+        .game-art2{  height: 30px;  width: 640px;  position: absolute;  top: 250px;  }
+        .game-art1.art1{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_art11.png") no-repeat top center;  }
+        .game-art1.art2{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_art21.png") no-repeat top center;  }
+        .game-art1.art3{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_art31.png") no-repeat top center;  }
+        .game-art2.art1{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_art12.png") no-repeat top center;  }
+        .game-art2.art2{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_art22.png") no-repeat top center;  }
+        .game-art2.art3{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_art32.png") no-repeat top center;  }
+        .gamebg{  width: 540px;  height: 320px;  padding: 12px 6px 8px;  position: absolute;  top: 320px;  left: 40px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_box.png") no-repeat 0 0;  }
+        .layer{  width: 540px;  height: 320px;  position: absolute;  top: 13px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_shelter.png") no-repeat center rgba(0,0,0,0.5); z-index:2;  }
+        .layer2{  display: none;  width: 540px;  height: 320px;  position: absolute;  top: 13px;  background:  rgba(0,190,254,0.4); z-index:8;  }
+        .succeed .layer2{  display: block;  }
+        .layer .hand{ width:79px; height:104px; position: absolute; left:390px; top:205px; background: url(http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/game_finger.png) no-repeat;transform: scale(1.1); opacity: 0; animation: 2s hand 0.5s infinite;-webkit-animation: 2s hand 0.5s infinite;}
+        @-webkit-keyframes hand{
+            0%{opacity: 0;}
+            10% { -webkit-transform: scale(1.1); opacity: 1;}
+            15%{ -webkit-transform: translate(-20px,-15px) scale(1);}
+            55%{ -webkit-transform: translate(-200px,-120px) scale(1.2)}
+            65%{-webkit-transform: translate(-360px,-180px) scale(1); }
+            66%{opacity: 1;}
+            69%{opacity: 0;}
+        }
+        @keyframes hand{
+            0%{opacity: 0;}
+            10% { transform: scale(1.1); opacity: 1;}
+            15%{ transform: translate(-20px,-15px) scale(1); }
+            55%{transform:translate(-200px,-120px)  scale(1.2)}
+            65%{transform: translate(-360px,-180px) scale(1);  }
+            66%{opacity: 1;}
+            69%{opacity: 0;}
+        }
+        .next-btn{  display: none;  width: 320px;  height: 65px;  position: absolute;  top: 400px;  left: 50%;  margin-left: -160px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/slide.png") no-repeat top center;  }
+        .succeed .next-btn{  display: block!important;  }
+        @-webkit-keyframes btnMove {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-10px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes btnMove {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(0px,-10px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .btnMove1{  -webkit-animation: btnMove 0.6s ease-in 0.1s infinite; animation: btnMove 0.6s ease-in 0.1s infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+
+        .submit{  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/bg2.jpg") no-repeat top center;  }
+        .submit-t{  padding-left: 233px;  width: 150px;  height: 89px;  margin: 40px auto 0;  color: #00befe;  text-align: center;  font: bold 50px/89px 'Hiragino sans GB','microsoft yahei';  background: url(http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/lg_submit_time.png) no-repeat 0 0;  }
+        .rank-submit{  width: 450px;  height: 65px; margin: 20px auto 0;  -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px;  background: #fff;  top: 110px;  left: 37px; overflow: hidden;  }
+        .rank-submit .rank-s1{  float: left;  width: 330px;  height: 65px; overflow: hidden;  }
+        .rank-submit .rank-s2{  float: right;  width: 120px;  height: 65px;  background: #00befe;  font: bold 28px/65px 'Hiragino sans GB','microsoft yahei'; color: #fff;  text-align: center;  -webkit-border-radius:0 5px 5px 0;  -moz-border-radius:0 5px 5px 0;  border-radius:0 5px 5px 0;  }
+        .rank-submit .rank-s1 input{  display: block;  width: 290px; outline: none;  height: 35px;  margin: 15px 20px;  border: none; font: 25px/35px 'Hiragino sans GB','microsoft yahei';  color: #515151;  }
+        .submit-art1{  width: 340px;  height: 54px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/lg_sub_art1.png") no-repeat 0 0;  }
+        .submit-pic1{  width: 552px;  height: 347px;  margin: 15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/lg_sub_pic.png") no-repeat 0 0;  }
+        .submit-art2{  width: 263px;  height: 24px;  margin: 20px 0 0 330px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/lg_sub_art2.png") no-repeat 0 0;  }
+        .submit-btn{  height: 76px;  width: 520px;  margin: 30px auto 0;  }
+        .submit-btn1{  width: 221px;  height: 76px;  float: left;  margin-left: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/lg_sub_btn1.png") no-repeat 0 0;  }
+        .submit-btn2{  width: 241px;  height: 76px;  float: right;  background: url("http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/lg_sub_btn2.png") no-repeat 0 0;  }
+
+
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="section head current">
+    <div class="head-logo"></div>
+    <div class="head-art1 ltr1"></div>
+    <div class="head-pic rtl2"></div>
+    <div class="head-art2 ltr3"></div>
+    <div class="head-art3 rtl4"></div>
+    <div class="head-btn clearfix">
+        <div class="head-btn1"></div>
+        <div class="head-btn2"></div>
+    </div>
+</div>
+<div class="section rule">
+    <div class="rule-box float-scale">
+        <div class="rule-know"></div>
+    </div>
+</div>
+<div class="section rank">
+    <div class="rank-box float-scale">
+        <div class="rank-close"></div>
+        <div class="rank-search">
+            <label class="rank-s1">
+                <input type="tel" maxlength="11" id="tel1" placeholder="请输入手机号查询成绩">
+            </label>
+            <div class="rank-s2" id="checkTel1">
+                查 询
+            </div>
+        </div>
+        <div class="rank-list">
+            <p><span>1</span><span>18672787271</span><span>12</span></p>
+        </div>
+    </div>
+</div>
+<div class="section game">
+    <div class="steps"><span><i id="checkpoint">1</i>/3</span></div>
+    <div class="time"><span class="countdown">0</span>S</div>
+    <div class="simg">
+        <img id="smallImg" src="http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/picture1.jpg" width="170" height="100" alt="">
+    </div>
+    <div class="game-art1 art1"></div>
+    <div class="game-art2 art1"></div>
+    <div class="gamebg">
+        <canvas id="myCanvas" width="540" height="320"></canvas>
+        <div class="layer"><span class="hand"></span></div>
+        <div class="layer2"></div>
+        <span class="next-btn btnMove1">&nbsp;</span>
+    </div>
+</div>
+<div class="section submit">
+    <div class="submit-t"><span class="total-time"><i class="">-</i>S</span></div>
+    <div class="rank-submit">
+        <label class="rank-s1">
+            <input type="tel" id="tel2" maxlength="11" placeholder="请输入手机号提交成绩">
+        </label>
+        <div class="rank-s2" id="checkTel2">
+            提 交
+        </div>
+    </div>
+    <div class="submit-art1 ltr1"></div>
+    <div class="submit-pic1 rtl2"></div>
+    <div class="submit-art2 ltr3"></div>
+    <div class="submit-btn clearfix">
+        <div class="submit-btn1"></div>
+        <div class="submit-btn2"></div>
+    </div>
+</div>
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<!--<script src="http://icon.zol-img.com.cn/m/js/topic/puzzle/z.game.pintu.js" ></script>-->
+<script>
+    /*loading*/
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+
+
+
+
+    //
+    //
+    //
+    //拼图修订版__wlg 2017615
+    /**
+     * Created by Moker on 2017/6/15.
+     */
+    !(function (w) {
+        var Pintu = function (opt) {
+            var _this = this;
+            !opt && (opt = {});
+            _this.opt = {};
+            for (var ele in _this.options) {
+                _this.opt[ele] = opt[ele] || _this.options[ele];
+            }
+            _this.init();
+        };
+        Pintu.prototype = {
+            init: function () {
+                var _this = this,
+                    num = _this.opt.num,
+                    img = new Image(),
+                    container = _this.opt.container,
+                    canvas = _this.canvas = _makeCanvas(container),
+                    context = _this.context = canvas.getContext('2d'),
+                    w = canvas.width = _this.opt.width,
+                    h = canvas.height = _this.opt.height,
+                    r = Math.sqrt(num),
+                    width = w / r,
+                    height = h / r,
+                    start;
+                img.src = _this.opt.src;
+                _this._defineStaticProperty('img', img);
+
+                canvas.style.pointerEvents = 'all';
+                img.addEventListener('load', function () {
+                    var splitData = _this._splitImg()//打乱 数组 [2301];
+                    var relResult = _this._init_draw({//正确的对象
+                        game: _this,
+                        splitData: splitData
+                    });
+                    _this._splitData = splitData;
+                    var flag = false;
+                    var flagTap=true;
+                    canvas.addEventListener('tap', function (e) {
+                        if(flagTap){
+                            flagTap=false;
+
+                            var x = parseInt(e.pageX - _this.opt.oLeft);
+                            var y = parseInt(e.pageY - _this.opt.oTop);
+                            var row = Math.floor(y / height);//行
+                            var col = Math.floor(x / width);//列
+                            if (!flag) {
+                                flag = true;
+                                start = row * r + col;
+                                context.strokeStyle = _this.opt.stroke;
+                                context.lineWidth = _this.opt.lineWidth;
+                                context.strokeRect(relResult['part_' + start][0] + (_this.opt.lineWidth - 1), relResult['part_' + start][1] + (_this.opt.lineWidth - 1), Math.ceil(width) - (_this.opt.lineWidth * 2 - 2), Math.ceil(height) - (_this.opt.lineWidth * 2 - 2));
+                                context.stroke();
+                            } else {
+                                end = row * r + col;
+                                //换队形
+                                temp = _this._splitData[end];
+                                _this._splitData[end] = _this._splitData[start]
+                                _this._splitData[start] = temp;
+                                _this.move({
+                                    index: start,
+                                    target_index: end
+                                });
+                                flag = false;
+                            }
+                            setTimeout(function () {
+                                flagTap=true;
+                            },100)
+                        }
+                    });
+                });
+            },
+            _splitImg: function () {
+                var _this = this,
+                    num = _this.opt.num,
+                    data = [],
+                    r = Math.sqrt(num),
+                    w = _this.opt.width,
+                    h = _this.opt.height,
+                    width = w / r,
+                    height = h / r,
+                    splitData,
+                    index = 0,
+                    relResult = {};
+                _this._defineStaticProperty('img_item_w', width);
+                _this._defineStaticProperty('img_item_h', height);
+                _this._defineStaticProperty('canvas_item_w', width);
+                _this._defineStaticProperty('canvas_item_h', height);
+
+                for (var i = 0; i < r; i++) {//列
+                    for (var j = 0; j < r; j++) {//行
+                        relResult['part_' + index] = [j * width, i * height, width, height];
+                        data.push(index);
+                        index++;
+                    }
+                }
+                _this._defineStaticProperty('relResult', relResult);
+                if (_this.opt.testData) {
+                    return _this.opt.testData
+                }
+                splitData = data.sort(function () { return 0.5 - Math.random() });
+                splitData = splitData.reverse();
+                splitData = splitData.sort(function () { return 0.5 - Math.random() });
+                var y = _this.computeResult(splitData);
+                y && (splitData = _this._splitImg());
+                return splitData;
+            },
+            _defineStaticProperty: function (name, property, obj_str) {
+                var _this = this;
+                if (obj_str) {
+                    if (_this[obj_str][name]) return;
+                } else {
+                    if (_this[name]) return;
+                }
+                Object.defineProperty(_this[obj_str] || _this, name, {
+                    value: property,
+                    writable: false,
+                    enumerable: false,
+                    configurable: false
+                });
+            },
+            _draw: function (obj) {
+                var _this = this;
+                _this.context.drawImage(
+                    _this.img,
+                    obj[0],
+                    obj[1],
+                    _this.img_item_w,
+                    _this.img_item_h,
+                    obj[2] + _this.opt.imgMargin,
+                    obj[3] + _this.opt.imgMargin,
+                    _this.canvas_item_w - _this.opt.imgMargin * 2,
+                    _this.canvas_item_h - _this.opt.imgMargin * 2
+                );
+                _this.context.restore();
+            },
+            _init_draw: function (obj) {
+                var _this = this,
+                    splitData = obj.splitData,
+                    num = _this.opt.num,
+                    r = Math.sqrt(num),
+                    w = parseInt(window.getComputedStyle(_this.canvas)['width']),
+                    h = parseInt(window.getComputedStyle(_this.canvas)['height']),
+                    itemW = w / r,
+                    itemH = h / r,
+                    a = 0,
+                    nowResult = [];
+                _this.context.clearRect(0, 0, _this.canvas.width, _this.canvas.height);
+                for (var i = 0; i < r ; i++) {
+                    for (var j = 0; j < r ; j++) {
+                        nowResult.push([
+                            _this.relResult['part_' + splitData[a]][0],
+                            _this.relResult['part_' + splitData[a]][1],
+                            itemW * j,
+                            itemH * i
+                        ]);
+                        _this._draw(nowResult[a]);
+                        a++
+                    }
+                }
+                _this._nowResult = nowResult;
+                return _this.relResult;
+            },
+            move: function (obj) {
+                var _this = this,
+                    w = _this._nowResult[obj.target_index][2] - _this._nowResult[obj.index][2],
+                    h = _this._nowResult[obj.target_index][3] - _this._nowResult[obj.index][3],
+                    step_time = 30,
+                    all_time = _this.opt.switchTime,
+                    step_w = w / (all_time / step_time),
+                    step_h = h / (all_time / step_time);
+                _this.canvas.style.pointerEvents = 'none';
+
+                var _timer = setInterval(function () {
+                    w = (Math.abs(w) - Math.abs(step_w) <= 0) ? 0 : w - step_w;
+                    h = (Math.abs(h) - Math.abs(step_h) <= 0) ? 0 : h - step_h;
+                    _this.context.clearRect(0, 0, _this.canvas.width, _this.canvas.height);
+                    _this._nowResult.forEach(function (ele, i) {
+                        var img_x = _this.relResult['part_' + _this._splitData[i]][0],
+                            img_y = _this.relResult['part_' + _this._splitData[i]][1],
+                            canvas_x = _this._nowResult[i][2],
+                            canvas_y = _this._nowResult[i][3];
+
+                        if (i == obj.index) {
+                            img_x = _this.relResult['part_' + _this._splitData[obj.target_index]][0],
+                                img_y = _this.relResult['part_' + _this._splitData[obj.target_index]][1],
+                                canvas_x = _this._nowResult[obj.target_index][2] - w;
+                            canvas_y = _this._nowResult[obj.target_index][3] - h;
+                        } else if (i == obj.target_index) {
+                            img_x = _this.relResult['part_' + _this._splitData[obj.index]][0],
+                                img_y = _this.relResult['part_' + _this._splitData[obj.index]][1],
+                                canvas_x = _this._nowResult[obj.index][2] + w;
+                            canvas_y = _this._nowResult[obj.index][3] + h;
+                        }
+
+                        _this._draw([
+                            img_x,
+                            img_y,
+                            canvas_x,
+                            canvas_y
+                        ])
+                    });
+                    if (!w && !h) {
+                        clearInterval(_timer);
+                        var y = _this.computeResult(_this._splitData);
+                        if (y) {
+                            //_this.opt.pop.style.opacity = 1;
+                        }
+                        _this.canvas.style.pointerEvents = 'all';
+                    }
+                }, step_time);
+            },
+            computeResult: function (arr) {
+                var flag = true,
+                    _this = this;
+                arr.forEach(function (ele, index) {
+                    if (ele - index != 0) flag = false;
+                });
+                if (flag) {
+                    _this.canvas.style.pointerEvents = 'none';
+                    if (typeof _this.opt.success == 'function') {
+                        setTimeout(function () {
+                            _this.opt.success();
+                        }, 1000);
+                    }
+                }
+                _this.canvas.flag = false;
+                return flag;
+            }
+        };
+        Pintu.prototype.options = {
+            src: 'images/ruleImg1.jpg',//图
+            num: 4,//拆分数量
+            stroke: '#3b3f44',//选中线颜色
+            lineWidth: 5,//选中线宽
+            container: document.getElementById('myCanvas'),//canvas的父级容器元素
+            //canvas:document.getElementById('myCanvas'),//canvas dom
+            testData: null,//固定图片位置
+            imgMargin: 3,//图片间距
+            switchTime: 150,//换位时间
+            success: null,//成功回调
+            width: 540,//宽
+            height: 420,//高
+            oLeft: 52,//canvas 距右边距离
+            oTop: 353//canvas 距顶部距离
+        };
+        function _makeCanvas(container) {
+            var canvas = container.querySelector('canvas');
+            canvas && canvas.remove();
+            canvas = document.createElement('canvas');
+            container.appendChild(canvas);
+            return canvas;
+        }
+        w.Pintu = Pintu;
+    })(window);
+    //
+    //
+    //
+    //
+
+
+
+
+
+    /*switch pages*/
+    var headPage=document.querySelector('.head');
+    var headBtn1=document.querySelector('.head-btn1');
+    var headBtn2=document.querySelector('.head-btn2');
+    var headBtn3=document.querySelector('.head-art3');
+    var rulePage=document.querySelector('.rule');
+    var ruleBtn=document.querySelector('.rule-know');
+    var rankPage=document.querySelector('.rank');
+    var smallImg=document.querySelector('#smallImg');
+    var gamePage=document.querySelector('.game');
+    var gameArt1=document.querySelector('.game-art1');
+    var gameArt2=document.querySelector('.game-art2');
+    var rankBtn=document.querySelector('.rank-close');
+    var layer2=document.querySelector('.layer2');
+    var submitPage=document.querySelector('.submit');
+    var submitBtn1=document.querySelector('.submit-btn1');
+    var submitBtn2=document.querySelector('.submit-btn2');
+    function sw(btn,origin,response,cls,flg) {
+        btn.addEventListener('click',function () {
+            origin.classList.remove(cls);
+            response.classList.add(cls);
+            if(flg==1){
+                rankList('2017-06-14 10:00:00','2017-06-30 10:00:00','.rank-list');
+            }
+        })
+    }
+    sw(headBtn1,headPage,rankPage,'current','1');
+    sw(headBtn3,headPage,rulePage,'current');
+    sw(ruleBtn,rulePage,headPage,'current');
+    sw(rankBtn,rankPage,headPage,'current');
+    //sw(submitBtn1,submitPage,rankPage,'current');
+
+    /*time define*/
+    !(function(w){
+        var Countdown = function(opt){
+            var _this = this;
+            !opt && (opt = {});
+            _this.opt = {};
+            for(var ele in _this.options){
+                _this.opt[ele] = opt[ele] || _this.options[ele];
+            }
+            _this.init();
+        };
+        Countdown.prototype = {
+            init : function(){
+                var _this = this;
+                opt = _this.opt;
+                opt.container.innerHTML = opt.duration;
+                opt.autoCount && _this.start();//如果有autoCount 就执行计时器
+            },
+            start : function(obj){//开始
+                var _this = this,
+                    opt = _this.opt,
+                    time;
+                if(obj && typeof obj.countTime !== 'undefined'){
+                    time = obj.countTime;
+                }else{
+                    time = opt.duration;
+                }
+                _this.timer = setInterval(function(){
+                    time++;
+                    _this.nowTime = time;
+                    opt.container.innerHTML = time;
+                    if(typeof _this.opt.onCounting === 'function'){
+                        _this.opt.onCounting(_this.nowTime,time);
+                    }
+                },opt.interval*1000);
+            },
+            stop : function(){//结束
+                var _this = this;
+                clearInterval(_this.timer);
+            },
+            pause : function(){//暂停
+                var _this = this;
+                _this.stop();
+                if(typeof _this.opt.onPause === 'function'){
+                    _this.opt.onPause();
+                }
+            },
+            goOn : function(){//继续
+                var _this = this;
+                var time = _this.nowTime;
+                _this.start({
+                    countTime : time
+                });
+                if(typeof _this.opt.ongoOn === 'function'){
+                    _this.opt.ongoOn();
+                }
+            }
+        };
+        Countdown.prototype.options = {
+            duration : 0,//开始时间
+            interval : 1,//每次用时
+            container: document.querySelector('.countdown'),
+            autoCount: false,//是否开始计时
+            ontimeover : null,//时间用完回调
+            ongoOn : null,//继续回调
+            onCounting : null,//计时中回调
+            onPause : null//暂停回调
+        };
+        w.Countdown = Countdown;
+    })(window);
+
+    /*game control*/
+    define(function (r, e, m) {
+        var oLayer = document.querySelector('.layer'),
+            pop = document.querySelector('.succeed-pop'),
+            nextBtn = document.querySelector('.next-btn'),
+            gamebg = document.querySelector('.gamebg');
+
+        var gameInfo = [
+            {'imgNum':4,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_594/0d7e673d5a/picture1.jpg'},
+            {'imgNum':9,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_594/0d7e673d5a/picture2.jpg'},
+            {'imgNum':16,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_594/0d7e673d5a/picture3.jpg'}
+        ];
+        var i = 0;
+        var ifFirstPlay=1;
+        //开始挑战
+        headBtn2.addEventListener('tap',function(){
+            if(ifFirstPlay){
+                ifFirstPlay=0;
+                canvastop = parseInt(myCanvas.getBoundingClientRect().top);
+                canvasleft =parseInt(myCanvas.getBoundingClientRect().left);
+                playGame(i);
+            }else{
+                playTime();
+                gameInfo[0].game.timer.start();
+                i=0;
+                playGame(0);
+                gamebg.classList.remove('succeed');
+                checkpoint.innerHTML = 1;
+                check2.classList.remove('pointNo');
+                check1.classList.remove('pointNo');
+            }
+            headPage.classList.remove('current');
+            gamePage.classList.add('current');
+        });
+        //开启
+        oLayer.addEventListener('click',function(){
+            playTime();
+            gameInfo[0].game.timer.start();
+            oLayer.style.display = 'none';
+        });
+        //重玩
+        submitBtn2.addEventListener('tap',function(){
+            submitPage.classList.remove('current');
+            gamePage.classList.add('current');
+            playTime();
+            gameInfo[0].game.timer.start();
+            i=0;
+            playGame(0);
+            gamebg.classList.remove('succeed');
+            checkpoint.innerHTML = 1;
+            check2.classList.remove('pointNo');
+            check1.classList.remove('pointNo');
+        });
+
+        function playTime(){
+            Pintu.prototype.timer = new Countdown({
+                autoCountt : true
+            });
+        }
+        function playGame(i){
+            //gamePage.className = 'step'+(i+1);
+            smallImg.setAttribute('src','http://2.zol-img.com.cn/zt/tm_594/0d7e673d5a/picture'+(i+1)+'.jpg');
+            gameArt1.className='game-art1 art'+(i+1);
+            gameArt2.className='game-art2 art'+(i+1);
+            gameInfo[i].game = new Pintu({
+                //testData:[1,3,2,0],
+                src:gameInfo[i].ImgUrl,
+                num:gameInfo[i].imgNum,
+                stroke:'#00befe',//选中线颜色
+                lineWidth:4,//选中线宽
+                imgMargin:1,//图片间距
+                oLeft:canvasleft,
+                oTop:canvastop,
+                container:gamebg,
+                width:540,//宽
+                height:320,//高
+                success:function(){
+                    gameInfo[i].game.timer.pause();
+                    gamebg.classList.add('succeed');
+                    onoff = true;
+                    if(i>=2){
+                        timer && clearTimeout(timer);
+                        var timer = setTimeout(function(){
+                            nextBtn.style.display='none';
+                            gamePage.classList.remove('current');
+                            submitPage.classList.add('current');
+                            document.querySelector('.total-time i').innerHTML = document.querySelector('.countdown').innerHTML;
+                        },800)
+                    }
+                }
+            });
+        }
+        var onoff = true;
+        gamePage.delegate('.next-btn', 'tap', function() {
+            if(onoff){
+                onoff = false;
+                gameInfo[i].game.timer.goOn();
+                i++;
+                checkpoint.innerHTML = i+1;
+                playGame(i);
+                gamebg.classList.remove('succeed');
+            }
+        });
+    });
+
+    var dataUrl = 'http://m.zol.com.cn/topic/services/user.php?callback=?',
+        mobileVal;
+    var check1=document.querySelector('#checkTel1');
+    var check2=document.querySelector('#checkTel2');
+    //提交成绩
+    check2.addEventListener('tap',function(){
+        if (this.classList.contains('pointNo')) return;
+        var total = document.querySelector('.countdown').innerHTML;
+        mobileVal = document.querySelector('#tel2').value;
+
+        if (!mobileVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+            // 请正确填写您的手机号码。
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+            return false;
+        }
+        this.classList.add('pointNo');
+        getToken(function(){
+            $.ajax({
+                type:'get',
+                url: dataUrl,
+                data:{token:window.verifyTk,action:'addUser',username:'pintu',type:'6433350',tel:mobileVal,ext1:total},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.result == 1){
+                        //提交成功
+                        alert('您已成功提交成绩')
+                    }else {
+                        alert(data.result)
+                    }
+                }
+            });
+        })
+    });
+    //查看排行榜
+    submitBtn1.addEventListener('tap',function(){
+        rankList('2017-06-14 10:00:00','2017-06-30 10:00:00','.rank-list');
+        submitPage.classList.remove('current');
+        rankPage.classList.add('current');
+    });
+    //读取个人成绩
+    check1.addEventListener('tap',function(){
+        if (this.classList.contains('pointNo')) return;
+        var mobileVal1 = document.querySelector('#tel1').value;
+        if (!mobileVal1 || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal1))) {
+            // 请正确填写您的手机号码。
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+            return false;
+        }
+        this.classList.add('pointNo');
+        score(mobileVal1,'2017-06-14 10:00:00','2017-06-30 10:00:00','')
+    });
+    function score(p,s,e,date){
+        $.ajax({
+            type:'get',
+            url: dataUrl,
+            data:{action:'getTopByDayAndUser',type:'6433350',dayStart:s,dayEnd:e,tel:p},
+            dataType: 'json',
+            success:function(res){
+                if(res.result.num){
+                    document.querySelector('.rank-list').innerHTML = p+' 最好成绩: 第'+res.result.num+'名';
+                }else{
+                    document.querySelector('.rank-list').innerHTML = '您还没进行挑战哦!快来参与吧~';
+                }
+            }
+        });
+    }
+    //读取排行榜
+    function rankList(s,e,dom){
+        $.ajax({
+            type:'get',
+            url: dataUrl,
+            data:{action:'getTopByDay',type:'6433350',dayStart:s,dayEnd:e},
+            dataType: 'json',
+            success:function(res){
+                if(res.result){
+                    document.querySelector(dom).innerHTML = fillRank(res.result);
+                }
+            }
+        });
+    }
+    //绑定数据
+    function fillRank(data){
+        var html = '';
+        if(data && Array.isArray(data)){
+            data.forEach(function(item,index){
+                html += '<p><span>' +(index+1) +'</span><span>' + item.tel + '</span><span>' + item.ext1 + '</span></p>'
+            });
+            return html;
+        }
+    }
+    //获取token
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(request){
+                if(request && request.result){
+                    window.verifyTk = request.result;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+            }
+        });
+    }
+
+    window.wechatShareData = {
+        "title":"够“拼”才能赢，拼图赢吉列剃须刀，赶紧来“拼”！",
+        "icon":"http://2.zol-img.com.cn/zt/tm_594/0d7b88ebd1/share.jpg",
+        "description":" ",
+        "url":"http://m.zol.com.cn/topic/6433350.html"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

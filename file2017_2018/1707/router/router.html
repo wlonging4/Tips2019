@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <style type="text/css">
+        /* reset */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#85d4fd; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#6191d3; }
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        /* style */
+        .zol_foot{  height: 60px;  padding-top: 20px; background: #85d4fd;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .wrapper{  width: 1000px;  margin: 0 auto;  }
+        .box{  position:relative; height:765px; overflow:hidden;  }
+        .container{ height: 4552px; width:100%; position: absolute;top: 0;}
+        .tab{  height: 765px;  overflow: hidden;  }
+        .tb-l{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/lg_head_l1.jpg") no-repeat 100% 0;  }
+        .tb-r{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/lg_head_r1.jpg") no-repeat 0 0;  }
+        .tb-c{  position: relative;  overflow: hidden;  height: 765px;width: 1200px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/lg_head_c1.jpg") no-repeat 0 0;  }
+        .tb1-l{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/lg_head_l.jpg") no-repeat 100% 0;  }
+        .tb1-r{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/lg_head_r.jpg") no-repeat 0 0;  }
+        .tb1-c{  height: 765px;width: 1200px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/lg_head_c.jpg") no-repeat 0 0;  }
+        @-webkit-keyframes btnMove {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-5px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes btnMove {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(0px,-5px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @-webkit-keyframes btnMove2 {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.95);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-2px) scale(1.4);opacity: 1;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes btnMove2 {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.95);opacity: 1;  }
+            86%{  transform: translate(0px,-2px) scale(1.4);opacity: 1;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .btnMove{  -webkit-animation: btnMove 1s ease-in infinite; animation: btnMove 1s ease-in infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+        .btn_btm{  width: 36px;  height: 20px;  cursor: pointer;  position: absolute; bottom: 5px;  left: 50%;  margin-left: -18px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/slide.png") no-repeat 0 0;  }
+        .btn_btm.act{  display: none;  }
+        .r-ul{  width: 150px;  height: 449px;  overflow: hidden;  display: block;  position: absolute;  top: 195px;  left: 50%;  margin-left: 600px;  background: #2ed2f3;  }
+        .r-ul li{  width: 150px;  height: 49px;  text-align: center;  cursor: pointer;  color: #fff;  font: 18px/49px 'Hiragino sans GB','microsoft yahei';  border-bottom: 1px solid #fff;  }
+        .r-ul li.u{  padding-top: 3px;  height: 46px;  font: 18px/22px 'Hiragino sans GB','microsoft yahei';  }
+        .r-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/flower.png") no-repeat 8px 8px;  }
+
+        .p91{  width: 546px;  height: 437px;  position: absolute;  top: 155px;  left: 82px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p9_bg1.png") no-repeat 0 0;  }
+        .p91-mod{  width: 335px;  height: 275px;  position: absolute;  left: 105px;  top: 145px;  }
+        .p92{  width: 446px;  height: 281px;  position: absolute;  top: 155px;  right: 45px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p9_bg2.png") no-repeat 0 0;  }
+        .p91-mod .lan12bi{  display: block;  color: #6191d3;  font: 13px/28px 'simsun';  }
+        .p93 .bai12{  display: block;  font: 13px/21px 'simsun';  }
+        .p93{  width: 445px;  height: 120px;  position: absolute;  top: 445px;  right: 45px;  }
+        .p8-t{  width: 419px;  height: 96px;  margin: 30px auto 15px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_t.png") no-repeat 0 0;  }
+        .p8-ul{  width: 950px;  height: 600px;  margin: 0 auto;  overflow: hidden;  }
+        .p8-ul li{  float: left;  margin: 0 10px 20px;  width: 310px;  height: 100px;  padding: 40px 35px 40px 100px;  -webkit-border-radius: 10px;  border-radius: 10px;  }
+        .p8-ul li .lan12{  display: block;  color: #6191d3;  font: 12px/21px 'simsun';  text-indent: 26px;  padding-right: 12px;  }
+        .p81{  background: #fff url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_num1.png") no-repeat 25px 60px;  }
+        .p82{  background: #fff url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_num2.png") no-repeat 25px 60px;  }
+        .p83{  background: #fff url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_num3.png") no-repeat 25px 60px;  }
+        .p84{  background: #fff url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_num4.png") no-repeat 25px 60px;  }
+        .p85{  background: #fff url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_num5.png") no-repeat 25px 60px;  }
+        .p86{  background: #fff url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p8_num6.png") no-repeat 25px 60px;  }
+        .tb7-c{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p7_bg.jpg") no-repeat top center;  }
+        .p7-art{  width: 310px;  height: 190px;  position: absolute;  top: 225px;  }
+        .p7-art1{  left: 290px;  }
+        .p7-art2{  right: 290px;  }
+        .p7-ul{  width: 370px;  height: 148px;  overflow: hidden;  position: absolute;  display: block;  left: 220px;  top: 580px;  }
+        .p7-ul li{  width: 64px;  height: 64px; float: left;  cursor: pointer;  margin: 0 10px 10px 0;  color: #fff;  text-align: center;  -webkit-border-radius: 5px;  border-radius: 5px;  font: 14px/105px 'Hiragino sans GB','microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p7_li2.jpg") no-repeat 0 0;  }
+        .p7-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p7_li1.jpg") no-repeat 0 0;  }
+        .p7-box{  width: 320px;  height: 110px;  overflow: hidden;  position: absolute;  right: 238px;  top: 595px;  }
+        .p7-mod{  width: 3200px;  height: 110px;  position: absolute;  top: 0;  left: 0;  }
+        .p7-mod .lan12{  display: block;  color: #6191d3;  font: 12px/22px 'simsun';  text-indent: 26px;  padding:0 3px;  }
+        .p7-art .lan12{  display: block;  color: #6191d3;  font: 14px/38px 'simsun';  text-indent: 26px;  }
+
+        .p2-t{  width: 324px;  height: 212px;  margin: 55px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p2_t.png") no-repeat 0 0;  }
+        .p2-c{  width: 1080px;  height: 490px;  overflow: hidden;  border: 3px solid #a7e9e5;  margin: -80px auto 0;  background: #000;  }
+        .p2-c .w-model-title{  bottom: 0!important;  }
+        .p2-c .w-model-bg{  background: #6191d3!important;  }
+
+        .p3-t{  width: 369px;  margin: 0 auto;  height: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p3_t.png") no-repeat  center bottom;  }
+        .p4-t{  width: 369px;  margin: 0 auto;  height: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p4_t.png") no-repeat  center bottom;  }
+        .p5-t{  width: 369px;  margin: 0 auto;  height: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p5_t.png") no-repeat  center bottom;  }
+        .p6-t{  width: 369px;  margin: 0 auto;  height: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/p6_t.png") no-repeat  center bottom;  }
+
+        .li{  cursor: pointer;  width: 17px;  height: 25px;  position: absolute;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/dot.png") no-repeat 0 0;  }
+        .li.act{  -webkit-animation: btnMove2 .6s ease-in infinite; animation: btnMove2 .6s ease-in infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+        .p3-ul{  height: 255px;  position: relative;  margin: 30px auto 0;  width: 217px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/home1.png") no-repeat top center;  }
+        .p4-ul{  height: 255px;  position: relative;  margin: 30px auto 0;  width: 482px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/home2.png") no-repeat top center;  }
+        .p5-ul{  height: 255px;  position: relative;  margin: 30px auto 0;  width: 273px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/home3.png") no-repeat top center;  }
+        .p6-ul{  height: 255px;  position: relative;  margin: 30px auto 0;  width: 475px;  background: url("http://2.zol-img.com.cn/zt/tm_597/06e12934dd/home4.png") no-repeat top center;  }
+        .li31{  left: 45px;  top: 140px;  }
+        .li32{  left: 186px;  top: 35px;  }
+        .li33{  left: 186px;  top: 170px;  }
+        .li41{  left: 238px;  top: 110px;  }
+        .li42{  left: 398px;  top: 141px;  }
+        .li43{  left: 328px;  top: 54px;  }
+        .li44{  left: 92px;  top: 54px;  }
+        .li45{  left: 158px;  top: 110px;  }
+        .li51{  left: 123px;  top: 98px;  }
+        .li52{  left: 191px;  top: 8px;  }
+        .li53{  left: 192px;  top: 81px;  }
+        .li54{  left: 251px;  top: 8px;  }
+        .li55{  left: 247px;  top: 154px;  }
+        .li61{  left: 403px;  top: 53px;  }
+        .li62{  left: 80px;  top: 56px;  }
+        .p3-box,.p4-box,.p5-box,.p6-box{  width: 1182px;  height: 262px;  position: absolute;  overflow: hidden;  background: #000;  bottom: 50px;  left: 50%;  margin-left: -591px;  }
+        .p3-mod,.p4-mod,.p5-mod,.p6-mod{  position: absolute;  height: 261px;  top: 0;  left: 0;  }
+
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="container" style="top: 0px;">
+        <!--p1-->
+        <table id="tab1" class="tab tab1" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb1-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb1-c"></div>
+                </td>
+                <td class="tb-r tb1-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p2-->
+        <table id="tab2" class="tab tab2" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb2-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb2-c">
+                        <div class="p2-t"></div>
+                        <div class="p2-c"><{data[0]}></div>
+                    </div>
+                </td>
+                <td class="tb-r tb2-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p3-->
+        <table id="tab3" class="tab tab3" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb3-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb3-c">
+                        <div class="p3-t"></div>
+                        <div class="p3-ul">
+                            <div class="li li31 act"></div>
+                            <div class="li li32"></div>
+                            <div class="li li33"></div>
+                        </div>
+                        <div class="p3-box">
+                            <div class="p3-mod"><{data[1]}></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tb-r tb3-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p4-->
+        <table id="tab4" class="tab tab4" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb4-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb4-c">
+                        <div class="p4-t"></div>
+                        <div class="p4-ul">
+                            <div class="li li41 act"></div>
+                            <div class="li li42"></div>
+                            <div class="li li43"></div>
+                            <div class="li li44"></div>
+                            <div class="li li45"></div>
+                        </div>
+                        <div class="p4-box">
+                            <div class="p4-mod"><{data[2]}></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tb-r tb4-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p5-->
+        <table id="tab5" class="tab tab5" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb5-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb5-c">
+                        <div class="p5-t"></div>
+                        <div class="p5-ul">
+                            <div class="li li51 act"></div>
+                            <div class="li li52"></div>
+                            <div class="li li53"></div>
+                            <div class="li li54"></div>
+                            <div class="li li55"></div>
+                        </div>
+                        <div class="p5-box">
+                            <div class="p5-mod"><{data[3]}></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tb-r tb5-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p6-->
+        <table id="tab6" class="tab tab6" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb6-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb6-c">
+                        <div class="p6-t"></div>
+                        <div class="p6-ul">
+                            <div class="li li61 act"></div>
+                            <div class="li li62"></div>
+                        </div>
+                        <div class="p6-box">
+                            <div class="p6-mod"><{data[4]}></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tb-r tb6-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p7-->
+        <table id="tab7" class="tab tab7" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb7-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb7-c">
+                        <div class="p7-art p7-art1"><{data[5]}></div>
+                        <div class="p7-art p7-art2"><{data[6]}></div>
+                        <ul class="p7-ul">
+                            <li class="act">结论一</li>
+                            <li>结论二</li>
+                            <li>结论三</li>
+                            <li>结论四</li>
+                            <li>结论五</li>
+                            <li>结论六</li>
+                            <li>结论七</li>
+                            <li>结论八</li>
+                            <li>结论九</li>
+                            <li>结论十</li>
+                        </ul>
+                        <div class="p7-box">
+                            <div class="p7-mod"><{data[7]}></div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tb-r tb7-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p8-->
+        <table id="tab8" class="tab tab8" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb8-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb8-c">
+                        <div class="p8-t"></div>
+                        <ul class="p8-ul">
+                            <li class="p81"><{data[8]}></li>
+                            <li class="p82"><{data[9]}></li>
+                            <li class="p83"><{data[10]}></li>
+                            <li class="p84"><{data[11]}></li>
+                            <li class="p85"><{data[12]}></li>
+                            <li class="p86"><{data[13]}></li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="tb-r tb8-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--p9-->
+        <table id="tab9" class="tab tab9" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr>
+                <td class="tb-l tb9-l">&nbsp;</td>
+                <td width="1200" valign="top">
+                    <div class="tb-c tb9-c">
+                        <div class="p91">
+                            <div class="p91-mod"><{data[14]}></div>
+                        </div>
+                        <div class="p92"></div>
+                        <div class="p93"><{data[15]}></div>
+                    </div>
+                </td>
+                <td class="tb-r tb9-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="btn_btm btnMove first"></div>
+    <ul class="r-ul">
+        <li class="act">首页</li>
+        <li>产品介绍</li>
+        <li>50平米场景</li>
+        <li>100平米场景</li>
+        <li>180平米场景</li>
+        <li class="u">2000平米<br/>极限办公场景</li>
+        <li>小红花谁最多</li>
+        <li class="u">想学学怎么<br/>增强无线信号？</li>
+        <li>更多</li>
+    </ul>
+</div>
+
+<script charset="gbk">
+    /*滚动事件*/
+    function addMouseWheel(oDiv, fn)
+    {
+        oDiv.onmousewheel=fnWheel;
+        if(oDiv.addEventListener)
+        {oDiv.addEventListener('DOMMouseScroll', fnWheel, false);}
+        function fnWheel(ev)
+        {
+            var oEvent=ev||event;
+            var bDown=true;
+            if(oEvent.wheelDelta)
+            {
+                if(oEvent.wheelDelta<0)
+                {bDown=true;}
+                else
+                {bDown=false;}
+            }
+            else
+            {
+                if(oEvent.detail>0)
+                {bDown=true;}
+                else
+                {bDown=false;}
+            }
+            fn(bDown);
+            if(!(oDiv.id == 'win')){
+                if(oEvent.preventDefault)
+                {oEvent.preventDefault();}
+                return false;
+            }
+        }
+    }
+    function bor(){
+        var b = window.navigator.userAgent;
+        if(b.indexOf("WebKit")!=-1){
+            return document.body;
+        }
+        else{
+            return document.documentElement;
+        }
+    }
+
+    var v = 0;
+    var ret = false;
+    var s = bor();
+    var btn=$('.btn_btm');
+    function swfn(){
+        $('.container').stop().animate({top:-765*v},600);
+        if(v==8){
+            btn.addClass('act');
+        }else{
+            btn.removeClass('act');
+        }
+        $('.r-ul li').each(function (i) {
+            $('.r-ul li').eq(i).removeClass('act');
+        });
+        $('.r-ul li').eq(v).addClass('act');
+    }
+    addMouseWheel(document,function(wheel){
+        if(wheel){
+            if(ret){return;}
+            ret = true;
+            $(s).stop().animate({scrollTop:0},1000,function(){
+                ret = false;
+            });
+            v++;
+            if(v>=8)v=8;
+            swfn();
+        }
+        else{
+            if(ret || v==0)return;
+            ret = true;
+            $(s).stop().animate({scrollTop:0},1000,function(){
+                ret = false;
+            });
+            v--;
+            swfn();
+        }
+    });
+    /*向下按钮*/
+    $('.btn_btm').click(function(){
+        v++;
+        if(v>8)v=0;
+        v==8? $(this).addClass('act'):$(this).removeClass('act');
+        swfn();
+    });
+    $('.r-ul li').bind('click',function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        v=$('.r-ul li').index(this);
+        swfn();
+    });
+
+    !function () {
+        function chg1(evt,type,origin,response,num1,cls1,cls2) {
+            if(type==0){
+                origin.bind(evt,function () {
+                    var nowIndex=origin.index(this);
+                    $(this).addClass(cls1).siblings().removeClass(cls1);
+                    response.stop().animate({'left':'-'+nowIndex*num1+'px'},300);
+                })
+            }
+            if(type==1){
+                origin.bind(evt,function () {
+                    var nowIndex1=origin.index(this);
+                    $(this).addClass(cls1).siblings().removeClass(cls1);
+                    response.eq(nowIndex1).addClass(cls2).siblings().removeClass(cls2);
+                })
+            }
+            if(type==2){
+                origin.bind(evt,function () {
+                    var nowIndex1=origin.index(this);
+                    $(this).addClass(cls1).siblings().removeClass(cls1);
+                })
+            }
+        }
+        chg1('mouseenter',0,$('.p7-ul li'),$('.p7-mod'),320,'act','');
+        chg1('mouseenter',0,$('.p3-ul .li'),$('.p3-mod'),1182,'act','');
+        chg1('mouseenter',0,$('.p4-ul .li'),$('.p4-mod'),1182,'act','');
+        chg1('mouseenter',0,$('.p5-ul .li'),$('.p5-mod'),1182,'act','');
+        chg1('mouseenter',0,$('.p6-ul .li'),$('.p6-mod'),1182,'act','');
+        //chg1('mouseenter',1,$('.main-ul li'),$('.main-m'),null,'act','blk');
+        //chg1('click',2,vd_lis,null,null,'act',null);
+    }();
+
+</script>
+</body>
+</html>

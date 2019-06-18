@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>判断页面是关闭还是刷新</title>
+</head>
+<body>
+<script language="javascript">
+    window.onbeforeunload = onbeforeunload_handler;
+    //window.onunload = onunload_handler;
+    function onbeforeunload_handler() {
+        var warning = "确认退出?";
+        return warning;
+    }
+
+    function onunload_handler() {
+        var warning = "谢谢光临";
+        alert(warning);
+    }
+</script>
+</body>
+</html>

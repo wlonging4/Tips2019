@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>computex2016展中专题文章页</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#F7F7F7!important; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#890404;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_574/41b8e99f90/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_574/41b8e99f90/lg_head_r.jpg") no-repeat 0 0;  }
+
+        .nav-bg{  background: #000;  }
+        .nav-bar{  background: #3C3B4C;  height: 1px;  width: 100%;  }
+        .nav-ul{  display: block;  width: 1000px;  height: 50px;  overflow: hidden;  }
+        .nav-ul li{  float: left;  _display: inline;  height: 50px;  width: 100px;  }
+        .nav-ul li a{  display: block;  text-align: center;  line-height: 50px;  font-size: 16px; font-family: 'microsoft yahei';  font-weight: bold;  color: #fff;  }
+        .nav-ul li a:hover{  color: #fff;  }
+        .nav-li-act a:hover{  color: #fff;  }
+        .nav-li-act{  background: url("http://2.zol-img.com.cn/zt/tm_574/41b8e99f90/lg_nav_bg.jpg") no-repeat 0 0;  }
+
+        .article-l{  background: url("http://2.zol-img.com.cn/zt/tm_574/c0051d87cf/lg0_article_l4.jpg") no-repeat 100% 0;  }
+        .article-r{  background: url("http://2.zol-img.com.cn/zt/tm_574/c0051d87cf/lg0_article_l4_ro.jpg") no-repeat 0 0;  }
+        .article-c{  width: 1100px;   overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_574/c0051d87cf/lg0_article_c4.jpg") no-repeat 0 0;  }
+        .art-c-l{  float: left;  width: 800px;   background: #fff; margin-bottom: 40px }
+        .art-c-r{  float: right;  margin-left: 10px;  width: 290px;    overflow: hidden;  }
+        .art-c-r-hot-t{  margin-top: 20px;  width: 290px;  height: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_574/50b1c29221/lg0_hot_t.jpg") no-repeat 0 0;  }
+        .art-c-r-live-t{  width: 290px;  height: 30px;  margin-top: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_574/50b1c29221/lg0_live_t.jpg") no-repeat 0 0;  }
+        .art-c-r-live-c{  height: 580px;  width: 270px;  padding: 10px;  background: #fff;  }
+        .art-c-r-sale-t{  width: 290px;  height: 30px;  margin-top: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_574/58bfcd9315/lg0_sale_t_2.jpg") no-repeat 0 0;  }
+        .art-c-r-sale-c{  height: 390px;  width: 270px;  padding: 10px 10px 0;  background: #fff;  }
+        .art-c-r-sale-c .ln{  height: 10px;  }
+        .hot-c3-b{  width: 270px;  height: 350px;  padding: 10px;  background: #fff;  }
+        .hot-c3-b-t{  position: relative;  width: 270px;  height: 30px;  margin-bottom: 10px;  }
+        .hot-c3-b-title{  width: 270px;  height: 30px;  background: #DBDBEA;  }
+        .hot-c3-b-title li{  float: left;  height: 30px;  width: 54px;  text-align: center;  line-height: 30px; font-weight: bold; font-size: 14px;  color: #F7F7F7;  cursor: pointer;  }
+        .hot-c3-b-title li.hot-c3-li-act{  background: #E5007F;  }
+        .hot-c3-b-title-flow{  position: absolute;  bottom: -5px;  left: 20px;  width: 10px;  height: 5px;  background: url("http://2.zol-img.com.cn/zt/tm_574/41b8e99f90/lg_hot_c3_tri.png") no-repeat 0 0;  }
+        .hot-c3-b-con{  width: 270px;  height: 310px;  overflow: hidden;  }
+        .hot-c3-b-con .lan12{  display: block;  color: #4e4e74;  line-height: 18px;  font-weight: bold;  padding-left: 10px;  }
+        .hot-c3-b-con .hui12{  display: block;  color: #858594;  line-height: 18px;  padding-left: 10px; }
+        .hot-c3-b-con .hong12{  color: #858594;  }
+        .hot-c3-b-con .ln{  height: 7px;  }
+        .hot-c3-b-mod{  width: 270px;  height: 310px;  display: none;  }
+        .hot-c3-b-mod.blk{  display: block;  }
+
+        .abt-bar{  height: 10px;  width: 100%;  background: #606060;  }
+        .footer{  height: 130px;  padding-top: 60px;  text-align: center;  margin: 0 auto;  color: #fff; background: #505050 }
+        .footer a{  color: #fff;  }
+        .footer a:hover{  color: #fff;  }
+
+
+    </style>
+    <link href="http://icon.zol-img.com.cn/topic/css/article.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<!--头部-->
+<table id="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img src="http://2.zol-img.com.cn/zt/tm_574/56d1aeabf2/lg_head_c11.jpg" alt="" width="1000" height="259"/>
+            <img src="http://2.zol-img.com.cn/zt/tm_574/41b8e99f90/lg_head_c2.jpg" alt="" width="1000" height="140"/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<table id="nav" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="nav-bg">&nbsp;</td>
+        <td width="1000" valign="top">
+            <ul class="nav-ul nav-bg">
+                <li  class="nav-li-act">
+                    <a href="http://computex.zol.com.cn#first" target="_blank">热点头条</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#front" target="_blank">科技最前沿</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#live" target="_blank">现场直击</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#view" target="_blank">大咖预言</a>
+                </li>
+                <li>
+                    <a href="http://computex.zol.com.cn/#absorb" target="_blank">吃透电脑展</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#new" target="_blank">热点新品</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#choose" target="_blank">BEST OF</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#sale" target="_blank">值得买</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/#pic" target="_blank">展会丽影</a>
+                </li>
+                <li class="">
+                    <a href="http://computex.zol.com.cn/topic/5854399.html" target="_self">走进技嘉</a>
+                </li>
+            </ul>
+        </td>
+        <td class="nav-bg">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<div class="nav-bar"></div>
+<!--文章页-->
+<table id="article" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="article-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="article-c clearfix">
+                <div class="art-c-l">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                        <tr>
+                            <td class="site" height="30"><a href="http://computex.zol.com.cn/">computex2016</a> &gt; {###标题###} </td>
+                        </tr>
+                        <tr>
+                            <td class="A1_1">{###文章主区域###} </td>
+                        </tr>
+                        <tr>
+                            <td height="10"></td>
+                        </tr>
+                        <tr>
+                            <td>{###评论###}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="art-c-r">
+                    <div class="art-c-r-hot-t"></div>
+                    <div class="hot-c3-b">
+                        <div class="hot-c3-b-t">
+                            <ul class="hot-c3-b-title">
+                                <li class="hot-c3-li-act">DAY 1</li>
+                                <li>DAY 2</li>
+                                <li>DAY 3</li>
+                                <li>DAY 4</li>
+                                <li>DAY 5</li>
+                            </ul>
+                            <div class="hot-c3-b-title-flow"></div>
+                        </div>
+                        <div class="hot-c3-b-con">
+                            <div class="hot-c3-b-mod blk"><{data[0]}></div>
+                            <div class="hot-c3-b-mod"><{data[1]}></div>
+                            <div class="hot-c3-b-mod"><{data[2]}></div>
+                            <div class="hot-c3-b-mod"><{data[3]}></div>
+                            <div class="hot-c3-b-mod"><{data[4]}></div>
+                        </div>
+                    </div>
+                    <div class="art-c-r-live-t"></div>
+                    <div class="art-c-r-live-c">
+                        <{data[5]}>
+                    </div>
+                    <div class="art-c-r-sale-t"></div>
+                    <div class="art-c-r-sale-c">
+                        <{data[8]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="article-r">&nbsp;</td>
+    </tr>
+</table>
+<!--尾部-->
+<div class="abt-bar"></div>
+<div class="footer">
+    <{data[7]}>
+</div>
+
+
+<script>
+    /*导航锚点*/
+    var nav_a=$('#nav').find('li>a');
+    nav_a.bind('mouseenter', function () {
+        $(this).parent().addClass('nav-li-act').siblings().removeClass('nav-li-act');
+    });
+
+    /*获取时间戳自动控制显示隐藏*/
+    var show=new Date(),show_y=show.getFullYear(),show_m=show.getMonth()+ 1,show_date=show.getDate();
+    var hot3_li,hot3_dot,hot3_mod;
+    var url_now=window.location.href;
+    if(url_now.indexOf('article')>-1){
+        /*每日热点*/
+        hot3_li=$('.hot-c3-b-title').find('li'),hot3_dot=$('.hot-c3-b-title-flow'),hot3_mod=$('.hot-c3-b-con').find('.hot-c3-b-mod');
+        hot3_li.bind('mouseenter', function () {
+            var $hot3_index=hot3_li.index(this);
+            $(this).addClass('hot-c3-li-act').siblings().removeClass('hot-c3-li-act');
+            hot3_dot.css({'left':$hot3_index*54+20+'px'});
+            hot3_mod.eq($hot3_index).addClass('blk').siblings().removeClass('blk');
+        });
+    }else{
+        if(show_y>=2016&&show_m>=6&&show_date>=4){
+            $('.hot-c3-b-title li:lt(5)').addClass('pass');
+        }else if(show_y>=2016&&show_m>=6&&show_date>=3){
+            $('.hot-c3-b-title li:lt(4)').addClass('pass');
+        }else if(show_y>=2016&&show_m>=6&&show_date>=2){
+            $('.hot-c3-b-title li:lt(3)').addClass('pass');
+        }else if(show_y>=2016&&show_m>=6&&show_date>=1){
+            $('.hot-c3-b-title li:lt(2)').addClass('pass');
+        }else if(show_y>=2016&&show_m>=5&&show_date==31){
+            $('.hot-c3-b-title li:lt(1)').addClass('pass');
+        }else if(show_y>=2016&&show_m>=5){
+            $('.hot-c3-b-title').find('li:eq(0)').addClass('pass');
+        }
+        /*每日热点*/
+        hot3_li=$('.hot-c3-b-title').find('.pass');
+        console.log(hot3_li);
+        hot3_dot=$('.hot-c3-b-title-flow');
+        hot3_mod=$('.hot-c3-b-con').find('.hot-c3-b-mod');
+
+        /*定位当日*/
+        hot3_li.eq(hot3_li.length-1).addClass('hot-c3-li-act').siblings().removeClass('hot-c3-li-act');
+        hot3_dot.css({'left':(hot3_li.length-1)*54+20+'px'});
+        hot3_mod.eq(hot3_li.length-1).addClass('blk').siblings().removeClass('blk');
+
+        hot3_li.bind('mouseenter', function () {
+            var $hot3_index=hot3_li.index(this);
+            $(this).addClass('hot-c3-li-act').siblings().removeClass('hot-c3-li-act');
+            hot3_dot.css({'left':$hot3_index*54+20+'px'});
+            hot3_mod.eq($hot3_index).addClass('blk').siblings().removeClass('blk');
+        });
+    }
+
+
+</script>
+</body>
+</html>

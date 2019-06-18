@@ -1,0 +1,683 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>MWC2017</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#86C100; font-size: 12px; font-weight: bold;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .wrap1{   width: 100%;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%;  overflow: hidden;  background: #000045;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 80px;  padding-top: 30px; background: #fff;   }
+        .zol_foot,.zol_foot a{  color: #9797a6;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 418px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_head_c.jpg") no-repeat 0 0;  }
+
+        .nav-box{  width: 1200px;  height: 40px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_navigator.jpg") no-repeat  0 0;  }
+        .nav{  width: 1010px;  height: 40px;  overflow: hidden;  float: left;  }
+        .nav-link{  width: 188px;  height: 40px;  float: left;  }
+        .nav li{  float: left;  height: 40px; }
+        .nav li a{  display: block;  height: 40px;  width: 100%;  background-repeat: no-repeat; background-position: center; }
+        .nav li a:hover{  background-color: #F651F5;  }
+        .nav-li1{  width: 155px;  }
+        .nav-li2{  width: 180px;  }
+        .nav-li3{  width: 165px;  }
+        .nav-li4{  width: 165px;  }
+        .nav-li5{  width: 185px;  }
+        .nav-li6{  width: 160px;  }
+        .nav-li7{  width: 190px;  }
+        .nav-li1 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav1.png");  }
+        .nav-li2 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav2.png");  }
+        .nav-li3 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav3.png");  }
+        .nav-li4 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav4.png");  }
+        .nav-li5 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav5.png");  }
+        .nav-li6 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav6.png");  }
+        .nav-li7 a{  background-image: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_nav7.png");  }
+
+        .pre{  height: 410px;  }
+        .hideBlk{  display: none!important;  }
+        .pre-l{  float: left;  width: 640px;  height: 370px;  margin: 18px 25px 0 20px;  }
+        .pre-l1{  width: 638px;  height: 338px;  border: 1px solid #4A8CEF;  overflow: hidden;  }
+        .pre-l1-c{  width: 634px;  height: 334px;  margin: 2px;  overflow: hidden;  position: relative;  }
+        .pre-l1-mod{  position: absolute;  height: 334px;  top: 0;  left: 0;  }
+        .pre-l1-mod .bai14{  text-align: left!important;  text-indent: 15px!important;  }
+        .pre-l2{  width: 620px; text-align: center;  height: 8px;  overflow: hidden;  margin: 18px auto 0;  }
+        .pre-l2 li{  display: inline-block;  width: 66px;  height: 16px;  margin: 0 4px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_pre_btns.png") no-repeat 0 0;  cursor: pointer;  }
+        .pre-l2 li.act{  background: url('http://2.zol-img.com.cn/zt/tm_58a/3c2464a7d2/lg_pre_btns.png') no-repeat 0 -8px;  }
+        .pre-r{  width: 480px;  height: 340px;  float: left;  margin: 18px 0 0 ;  }
+        .pre-today{  width: 94px;  height: 24px;  margin-top: 10px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_pre_today.jpg") no-repeat 0 0;  }
+        .pre-rm{  width: 480px;  height: 105px;  }
+        .pre-rm1{  height: 45px;  }
+        .pre-rm1{  display: block;  font: 24px/50px 'Hiragino Sans GB','microsoft yahei';  }
+        .pre-rm2{  height: 55px;  }
+        .pre-rm2 .hui12{  padding-left: 8px; display: block; color: #D0D0FF;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3d141b52ee/dot1.jpg") no-repeat left center;  }
+        .vv{ height: 600px;overflow: hidden; }
+        .vv-mod{width: 1190px;height: 560px;  border: 5px solid #BD029B; background: #000; margin: 0 auto 40px;}
+
+        .ad-mod{width: 1200px;height: 120px;margin: 0 auto 20px;}
+
+        .live{  height: 890px;  overflow: hidden;  }
+        .live-l{  width: 740px;  height: 862px;   float: left; overflow: hidden; }
+        .live-tab{  width: 740px;  height: 36px;  }
+        .live-tab td{vertical-align:top}
+        .live-tab .bai14{display:block;width:140px;height:36px; font:18px/41px "Microsoft Yahei";text-align:center;color:#fff;cursor:pointer;position:relative;text-decoration:none; background: #4A8DF0;}
+        .live-tab .act{ background: url("http://2.zol-img.com.cn/zt/tm_58a/69d0162772/live_btn.png") no-repeat top center; }
+        .live-con{  width: 740px;  height: 802px;  border: 1px solid #544F55;  margin: 12px auto 0; background: #fff;  }
+        .live-r{  height: 840px;  width: 440px;  float: left;  margin-left: 18px;  }
+        .live-ul{  height: 58px;  }
+        .live-r li{  float: left;  height: 58px;  cursor: pointer;  }
+        .live-li1{  width: 174px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_live_btns.png") no-repeat 0 0;  }
+        .live-li1.act{  width: 174px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_live_btns.png") no-repeat 0 -60px;  }
+        .live-li2{  width: 266px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_live_btns.png") no-repeat -174px -60px;  }
+        .live-li2.act{  width: 266px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_live_btns.png") no-repeat -174px 0;  }
+        .live-box{  height: 793px; width: 438px;  background: #fff; border-width:0 1px 1px; border-style:  solid; border-color:  #544F55; }
+        .live-m{  width: 438px;  height: 793px;  display: none;  }
+        .live-m.blk{  display: block;  }
+        .live-m1-t{  width: 320px;  height: 85px;  padding: 8px 103px 7px 15px; background: #1B1B1B  }
+        .live-m1-t .bai14{  display: block;  padding-left: 15px;  font: 16px/32px 'microsoft yahei';  }
+        .live-m1-t .bai12{  display: block;  padding-left: 15px;  font: 12px/22px 'simsun';  }
+        .live-m1-b{  width: 438px;  height: 683px; padding-top: 10px; background: #fff;  }
+        .live-m2{  width: 438px;  height: 673px; padding-top: 10px;  }
+        .live-m2 .hui14{  display: block;  font: 16px/24px 'microsoft yahei';  color: #999999;  width: 230px;  padding-left: 10px;  }
+        .live-m2 .hui12{  display: block;  font: 12px/16px 'simsun';  color: #666;  width: 230px;  padding-left: 10px; }
+        .live-m2 .hong12{  color: #666; font-weight: normal;  }
+        .live-m2 table img{  padding: 1px;  border: 1px solid #cccccc; margin-left: 10px;  }
+        .live-m2 .vote_num{  position: absolute;  right: 24px;  width: 70px;  color: #878787;  text-align: center;  margin-top: -23px;  }
+        .live-m2 .vote_btn{  position: absolute;  width: 80px;  height: 30px;  right: 20px;  margin-top: -58px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3e65456f75/vote_bg.png") no-repeat 0 0;  }
+        .live-m2 .ln{  height: 10px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3e976c08c5/line.png") no-repeat center;  }
+
+        .day-l{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_l.jpg") no-repeat 100% 0;  }
+        .day-r{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_r.jpg") no-repeat 0 0;  }
+        .day-c{  width: 1200px;  height: 820px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_c.jpg") no-repeat 0 0;  }
+        .day-ul{  width: 520px;  height: 46px;  overflow: hidden;  margin: 76px 0 0 370px;  }
+        .day-ul li{  float: left;  width: 120px;  height: 46px;  margin: 0 5px;  color: #fff;  text-align: center;  font: 24px/40px 'Hiragino Sans GB','microsoft yahei';  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_btns.png") no-repeat -120px 0;  }
+        .day-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_btns.png") no-repeat 0 0;  }
+        .day-mod{  width: 1200px;  height: 610px;  overflow: hidden;  margin-top: 40px; }
+        .day-m{  position: relative;  display: none;  width: 1200px;  height: 610px;  overflow: hidden;  }
+        .day-m.blk{  display: block;  }
+        .day-m-l{  float: left;  width: 580px;  height: 560px;  margin-right: 40px;  overflow: hidden;  }
+        .day-m-l1{  width: 580px;  height: 30px;  margin-bottom: 25px;  }
+        .day-m-l1 .bai20{  display: block;  text-indent: 44px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_logo1.png") no-repeat left center;  font: 24px/30px 'Hiragino Sans GB','microsoft yahei';  }
+        .day-m-r1 .bai20{  display: block;  text-indent: 44px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_day_logo2.png") no-repeat left center;  font: 24px/30px 'Hiragino Sans GB','microsoft yahei';  }
+        .day-m-l2{  width: 580px;  height: 500px;  background: #000;  }
+        .day-m-r{  float: left;  width: 580px;  height: 560px;  overflow: hidden;  }
+        .day-m-r1{  width: 580px;  height: 30px;  margin-bottom: 25px;  }
+        .day-m-r2{  width: 580px;  height: 220px;  }
+        .day-m-r3{  width: 580px;  height: 105px;  }
+        .day-m-r3 .bai20{  text-indent: 10px;  display: block;  padding-top: 15px;  font: 23px/28px 'Hiragino Sans GB','microsoft yahei';  }
+        .day-m-r4{  width: 580px;  height: 175px;  }
+        .day-m-r4 .hui12bi{  display: block;  color: #ABCEFC;  line-height: 22px;  padding-left: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3d141b52ee/dot1.jpg") no-repeat 10px 10px;  }
+        .day-m-more{  position: absolute;  bottom: 0;  right: 0;  width: 100px;  height: 22px;  }
+        #day-num{  position: absolute;  width: 100px;  height: 20px;  top: 0;  right: 0;  text-indent: 100px;  overflow: hidden;  }
+
+        .v-l{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_v_l.jpg") no-repeat 100% 0;  }
+        .v-r{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_v_r.jpg") no-repeat 0 0;  }
+        .v-c{  width: 1200px;  /*height: 920px;*/  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_v_c.jpg") no-repeat 0 0;  }
+        .v-box{  width: 1200px;  height: 720px; overflow: auto;  margin-top: 145px; margin-bottom: 20px;  }
+        .v-mod{  width: 1180px;  min-height: 100px;  overflow: hidden;  }
+        .v-mod .ln{  height: 25px;  }
+
+        .new-s{  background: #000045;  }
+        .new-c{  width: 1200px;  height: 541px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_new_c.jpg") no-repeat 0 0;  }
+        .new-box{  position: relative;  width: 1200px;  height: 290px;  overflow: hidden;  margin-top: 145px;  }
+        .new-mod{  position: absolute;  height: 290px;  top: 0;  left: 0; /* width: 4800px;*/  }
+        .new-mod .hui12{  display: block;  line-height: 42px;  color: #969696;  }
+        .new-ul{  width: 640px;  text-align: center;  height: 8px;    margin: 40px auto 0;  }
+        .new-ul li{  display: none;  width: 66px;  height: 8px;  margin: 0 4px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_pre_btns.png") no-repeat 0 0;  cursor: pointer;  }
+        .new-ul li.pass{  display: inline-block;  }
+        .new-ul li.act{  background: url('http://2.zol-img.com.cn/zt/tm_58a/3c2464a7d2/lg_pre_btns.png') no-repeat 0 -8px;  }
+
+        .per-l{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_person_l.jpg") no-repeat 100% 0;  }
+        .per-r{  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_person_r.jpg") no-repeat 0 0;  }
+        .per-c{  width: 1200px;  height: 720px;  overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_person_c.jpg") no-repeat 0 0;  }
+        .per-c1{  position: absolute;  width: 570px;  height: 500px;  top: 145px;  left: 0;}
+        .per-c1 table img{  padding: 4px;  background: #fff;  border: 1px solid #ddd;  }
+        .per-c1 .hui12{  display: block;  line-height: 42px;  color: #969696;  }
+        .per-c2{  position: absolute;  top: 145px;  right: 0;  width: 600px;  height: 520px;  }
+        .per-c2 .ln{  height: 18px;  }
+        .per-c2 .hui12{  display: block;  line-height: 42px;  color: #969696;  }
+
+        .pic-c{  width: 1200px;  height: 640px;  overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_pic_c.jpg");  }
+        .pic-s{  background: #000045;  }
+        .pic-m{  position: relative;  width: 1000px;  height: 420px;  margin: 140px auto 0;  overflow: hidden;  }
+        .pic-mod{  position: absolute;  left: 0;  top: 0; height: 420px  }
+        .pic-btn{  position: absolute;  width: 28px;  height: 56px;  top: 320px;  }
+        .pic-btn1{  left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_btns.png") no-repeat 0 0;  }
+        .pic-btn2{  right: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/3c0b698eae/lg_btns.png") no-repeat -28px 0;  }
+
+        .brand{  height: 613px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/e5701cab65/lg_brand.jpg") no-repeat top center;  }
+
+        .abt-c{  width: 1200px;  height: 425px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_58a/e5a4c0c518/lg_abt_c.jpg") #000144 no-repeat 0 0;  }
+        .abt-c1{  position: absolute;  width: 300px;  height: 305px;  top: 84px;  left: 0;  }
+        .abt-c1 p{  font-size: 12px;  color: #D0D0FF;  height: 19px;  }
+        .abt-c2{  position: absolute;  width: 810px;  height: 305px;  top: 90px;  left: 365px;  }
+        .abt-c2 .hui12bi{  color: #D0D0FF;  padding-left: 85px; background: url("http://2.zol-img.com.cn/zt/tm_58a/3d141b52ee/dot1.jpg") no-repeat 75px 6px;  }
+        .abt-c2 .ln{  height: 10px;  }
+
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1) translate(0px,0px); opacity:1;  }
+            30%{  -webkit-transform: scale(1.02) translate(20px,2px); opacity:1;  }
+            80%{  -webkit-transform: scale(1.01) translate(10px,0px); opacity:1;  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px); opacity:1;  }
+        }
+        @-moz-keyframes blast {
+            0%{  -moz-transform: scale(1) translate(0px,0px); opacity:1;  }
+            30%{  -moz-transform: scale(1.02) translate(20px,2px); opacity:1;  }
+            80%{  -moz-transform: scale(1.01) translate(10px,0px); opacity:1;  }
+            100%{  -moz-transform: scale(1) translate(0px,0px); opacity:1;  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1) translate(0px,0px); opacity:1;  }
+            30%{  transform: scale(1.02) translate(20px,2px); opacity:1;  }
+            80%{  transform: scale(1.01) translate(10px,0px); opacity:1;  }
+            100%{  transform: scale(1) translate(0px,0px); opacity:1;  }
+        }
+
+        .head{  height: 418px;  width: 100%;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_58a/c00f17954f/lg_head_bg.jpg") no-repeat right center;  }
+        .head-color{  width: 1800px;  height: 418px;  position: absolute;  top: 0;  left: 50%;  margin-left: -1100px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/c00f17954f/lg_head_color.png") no-repeat 0 0;  }
+        .head-art1{  width: 131px;  height: 225px;  position: absolute;  top: 25px;  left: 50%;  margin-left: -65px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/c00f17954f/lg_head_art1.png") no-repeat 0 0;  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px); opacity:1 ;  }
+        .head-art2{  width: 523px;  height: 75px;  position: absolute;  top: 260px;  left: 50%;  margin-left: -261px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/c00f17954f/lg_head_art2.png") no-repeat 0 0;   -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px); opacity:1 ;   }
+        .head-art3{  width: 250px;  height: 34px;  position: absolute;  top: 350px;  left: 50%;  margin-left: -125px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/c00f17954f/lg_head_art3.png") no-repeat 0 0;  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px); opacity:1 ;  }
+        .head-logo{  width: 327px;  height: 52px;  position: absolute;  top: 15px;  left: 50%;  margin-left: 270px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/c00f17954f/lg_head_logo.png") no-repeat 0 0;  }
+        .blast{  -webkit-animation: blast 8s linear infinite;  -moz-animation: blast 8s linear infinite;   animation: blast 8s linear infinite;  }
+        .head-art1:hover{
+            -webkit-transform: scale(1.05) translate(0px,-10px);  -moz-transform: scale(1.05) translate(0px,-10px); transform: scale(1.05) translate(0px,-10px);
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            transition: all .2s linear;
+        }
+        .head-art2:hover{
+            -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);
+            -webkit-transition: all .1s linear;
+            -moz-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+        .head-art3:hover{
+            -webkit-transform: scale(1.1) translate(0px,0px);  -moz-transform: scale(1.1) translate(0px,0px); transform: scale(1.1) translate(0px,0px); opacity: 0.9;
+            -webkit-transition: all .1s linear;
+            -moz-transition: all .1s linear;
+            transition: all .1s linear;
+        }
+
+        .day-m-r2 table img,.pre-l1-mod table img,.new-mod table img,.v-c table img,.per-c1 table img,.per-c2 table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .day-m-r2 table img:hover,.pre-l1-mod table img:hover,.v-c table img:hover,.new-mod table img:hover,.per-c1 table img:hover,.per-c2 table img:hover{
+            -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            transition: all .2s linear;
+        }
+        .head-code2{  width: 122px;  height: 164px;  position: absolute;  top: 80px;  left: 50%;  margin-left: 465px;  background: url("http://2.zol-img.com.cn/zt/tm_58a/eb7d8bb2ca/head_code2.png") no-repeat 0 0;  }
+
+
+    </style>
+
+    <script>
+        if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+            try{
+                if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+                    window.location.href="http://m.zol.com.cn/mwc/";
+                }else if(/iPad/i.test(navigator.userAgent)){
+                }else{
+                    window.location.href="http://m.zol.com.cn/mwc/"
+                }
+            }catch(e){}
+        }
+    </script>
+
+</head>
+<body>
+<!--头部-->
+<div class="head">
+    <div class="head-color blast"></div>
+    <div class="head-art1"></div>
+    <div class="head-art2"></div>
+    <div class="head-art3"></div>
+    <div class="head-logo"></div>
+    <div class="head-code2"></div>
+</div>
+<div class="bar1"></div>
+<!--导航-->
+<div class="wrap1">
+    <div class="wrapper1 nav-box clearfix">
+        <ul class="nav">
+            <li class="nav-li nav-li1"><a href="#pre" target="_self"></a></li>
+            <li class="nav-li nav-li2"><a href="#live" target="_self"></a></li>
+            <li class="nav-li nav-li3"><a href="#day" target="_self"></a></li>
+            <li class="nav-li nav-li4"><a href="#v" target="_self"></a></li>
+            <li class="nav-li nav-li5"><a href="#new" target="_self"></a></li>
+            <li class="nav-li nav-li6"><a href="#per" target="_self"></a></li>
+            <!--<li class="nav-li nav-li7"><a href="#pic" target="_self"></a></li>-->
+        </ul>
+        <div class="nav-link"><{data[70]}></div>
+    </div>
+</div>
+<!--预热-->
+<div id="pre" class="wrap2 banners">
+    <div class="wrapper1 pre clearfix">
+        <div class="pre-l">
+            <div class="pre-l1">
+                <div class="pre-l1-c">
+                    <div class="pre-l1-mod" style="left: 0px;"><{data[1]}></div>
+                </div>
+            </div>
+            <ul class="pre-l2 clearfix">
+                <li class="act"></li>
+                <li class=""></li>
+                <li class=""></li>
+                <li class=""></li>
+                <li class="hideBlk"></li>
+                <li class="hideBlk"></li>
+                <li class="hideBlk"></li>
+                <li class="hideBlk"></li>
+            </ul>
+        </div>
+        <div class="pre-r">
+            <div class="pre-today"></div>
+            <div class="pre-rm">
+                <div class="pre-rm1"><{data[2]}></div>
+                <div class="pre-rm2"><{data[3]}></div>
+            </div>
+            <div class="pre-rm">
+                <div class="pre-rm1"><{data[4]}></div>
+                <div class="pre-rm2"><{data[5]}></div>
+            </div>
+            <div class="pre-rm">
+                <div class="pre-rm1"><{data[6]}></div>
+                <div class="pre-rm2"><{data[7]}></div>
+            </div>
+        </div>
+    </div>
+</div><div class="wrap2 banners">
+    <div class="wrapper1 ad-mod"><{data[66]}></div>
+</div><div class="vv wrap2 banners">
+    <div class="wrapper1 vv-mod">
+        <{data[63]}>
+    </div>
+</div><div id="live" class="wrap2 banners">
+    <div class="wrapper1 live clearfix">
+        <div class="live-l">
+            <div class="live-tab"><{data[64]}></div>
+            <div class="live-con"><iframe class="zt_tb" align="center" src="http://dynamic.zol.com.cn/channel/broadcast_iframe_mwc.php?c=contentShell&d=6284796&style=%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6" frameborder="no" width="740" scrolling="yes" height="802"></iframe></div>
+        </div>
+        <div class="live-r">
+            <ul class="live-ul">
+                <li class="live-li1 pass act"></li>
+                <li class="live-li2 pass"></li>
+            </ul>
+            <div class="live-box">
+                <div class="live-m live-m1 blk">
+                    <div class="live-m1-t"><{data[9]}></div>
+                    <div class="live-m1-b"><iframe width="438" scrolling="no" height="683" frameborder="0" src="http://comments.zol.com.cn/iframe_comment_live.php?pagesize=20&kindid=12&articleid=6284796&from=6" id="commentsIframe" name="commentsIframe"></iframe></div>
+                </div>
+                <div class="live-m live-m2"><{data[62]}></div>
+            </div>
+        </div>
+    </div>
+</div><table id="day" class="day banners" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="day-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="day-c">
+                <div id="day-num"><{data[67]}></div>
+                <ul class="day-ul">
+                    <li class="act pass">DAY1</li>
+                    <li class="pass">DAY2</li>
+                    <li class="pass">DAY3</li>
+                    <li class="pass">DAY4</li>
+                </ul>
+                <div class="day-mod">
+                    <div class="day-m clearfix blk">
+                        <div class="day-m-l">
+                            <div class="day-m-l1"><{data[12]}></div>
+                            <div class="day-m-l2"><{data[13]}></div>
+                        </div>
+                        <div class="day-m-r">
+                            <div class="day-m-r1"><{data[14]}></div>
+                            <div class="day-m-r2"><{data[15]}></div>
+                            <div class="day-m-r3"><{data[16]}></div>
+                            <div class="day-m-r4"><{data[17]}></div>
+                        </div>
+                        <div class="day-m-more"><{data[18]}></div>
+                    </div>
+                    <div class="day-m clearfix">
+                        <div class="day-m-l">
+                            <div class="day-m-l1"><{data[19]}></div>
+                            <div class="day-m-l2"><{data[20]}></div>
+                        </div>
+                        <div class="day-m-r">
+                            <div class="day-m-r1"><{data[21]}></div>
+                            <div class="day-m-r2"><{data[22]}></div>
+                            <div class="day-m-r3"><{data[23]}></div>
+                            <div class="day-m-r4"><{data[24]}></div>
+                        </div>
+                        <div class="day-m-more"><{data[25]}></div>
+                    </div>
+                    <div class="day-m clearfix">
+                        <div class="day-m-l">
+                            <div class="day-m-l1"><{data[26]}></div>
+                            <div class="day-m-l2"><{data[27]}></div>
+                        </div>
+                        <div class="day-m-r">
+                            <div class="day-m-r1"><{data[28]}></div>
+                            <div class="day-m-r2"><{data[29]}></div>
+                            <div class="day-m-r3"><{data[30]}></div>
+                            <div class="day-m-r4"><{data[31]}></div>
+                        </div>
+                        <div class="day-m-more"><{data[32]}></div>
+                    </div>
+                    <div class="day-m clearfix">
+                        <div class="day-m-l">
+                            <div class="day-m-l1"><{data[33]}></div>
+                            <div class="day-m-l2"><{data[34]}></div>
+                        </div>
+                        <div class="day-m-r">
+                            <div class="day-m-r1"><{data[35]}></div>
+                            <div class="day-m-r2"><{data[36]}></div>
+                            <div class="day-m-r3"><{data[37]}></div>
+                            <div class="day-m-r4"><{data[38]}></div>
+                        </div>
+                        <div class="day-m-more"><{data[39]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="day-r">&nbsp;</td>
+    </tr>
+    </tbody></table><table id="v" class="v banners" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="v-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="v-c">
+                <div class="v-box">
+                    <div class="v-mod">
+                        <{data[68]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="v-r">&nbsp;</td>
+    </tr>
+    </tbody></table><table id="new" class="new banners" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="new-s">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="new-c">
+                <div class="new-box">
+                    <div class="new-mod"><{data[55]}></div>
+                </div>
+                <ul class="new-ul clearfix">
+                    <li class=" act"></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </td>
+        <td class="new-s">&nbsp;</td>
+    </tr>
+    </tbody></table><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><table class="pic banners" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="pic-s">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="abt-c">
+                <div class="abt-c1">
+                    <{data[59]}>
+                </div>
+                <div class="abt-c2">
+                    <{data[60]}>
+                </div>
+                <div class="abt-c3">
+
+                </div>
+            </div>
+        </td>
+        <td class="pic-s">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--广告-->
+
+<!--视频-->
+
+
+<!--直播-->
+
+<!--每日-->
+
+<!--视频-->
+
+<!--新品-->
+
+<!--人物-->
+
+<!--巴萨-->
+
+<!--更多-->
+
+<!--合作-->
+<div class="wrap1 brand"></div>
+<div class="bar2"></div>
+
+
+
+<script charset="gbk">
+    /*处理跨域*/
+    if (location.href.indexOf('8088')<0){
+        document.domain='zol.com.cn';
+    }
+
+
+    var pre_li=$('.pre-l2 li'),pre_mod=$('.pre-l1-mod'),
+        live_li=$('.live-ul li'),live_m=$('.live-m'),
+        new_li=$('.new-ul li'),new_mod=$('.new-mod'),
+        day_m=$('.day-m'),day_li=$('.day-ul li');
+
+    var day_num=parseInt($('#day-num .lan12').html());
+    console.log(day_num);
+
+    /*初始化预热图片*/
+    var prePicNum=$('.pre-l1-mod table img').length-1;
+    console.log(prePicNum);
+    for(var d=0;d<pre_li.length;d++){
+        pre_li[d].classList.remove('hideBlk');
+        if(d>prePicNum){
+            pre_li[d].classList.add('hideBlk');
+        }
+    }
+
+    /*处理时间及显示*/
+    ~function () {
+        var oDate=new Date();
+        var oY=new Date().getFullYear();
+        var oM=new Date().getMonth()+1;
+        var oD=new Date().getDate();
+        var url_now=window.location.href;
+        console.log(oY+' '+oM+' '+oD);
+        function initTime(lis,dis,num) {
+            for(var j=0;j<4;j++){
+                day_li.eq(j).removeClass('pass');
+            }
+            for(var i=0;i<num+1;i++){
+                day_li.eq(i).addClass('pass');
+            }
+            lis.eq(num).addClass('act').siblings().removeClass('act');
+            dis.eq(num).addClass('blk').siblings().removeClass('blk');
+        }
+        if(url_now.indexOf('article')==(-1)){
+            /*自动*/
+            /*if(oY>2017){
+             initTime(day_li,day_m,3);
+             }else if(oY==2017){
+             if(oM>3){
+             initTime(day_li,day_m,3);
+             }else if(oM==1){
+             initTime(day_li,day_m,0);
+             }else if(oM==2){
+             if(oD<=27){
+             initTime(day_li,day_m,0);
+             }else{
+             initTime(day_li,day_m,1);
+             }
+             }else{
+             if(oD==1){
+             initTime(day_li,day_m,2);
+             }else if(oD>=2){
+             initTime(day_li,day_m,3);
+             }
+             }
+             }else{
+             initTime(day_li,day_m,0);
+             }*/
+            for(var u=0;u<4;u++){
+                day_li.eq(u).removeClass('pass');
+            }
+            $('.day-ul li:lt('+day_num+')').addClass('pass');
+
+        }else{
+            //day_li.addClass('pass');
+            for(var i=0;i<4;i++){
+                day_li.eq(i).addClass('pass');
+            }
+        }
+    }();
+
+    /*处理评论和直播切换*/
+    $('.live-tab .bai14').eq(0).addClass('act');
+    var id0 = $('.live-tab .bai14').eq(0).attr('href');
+    if(id0){
+        $('.live-con').html('<iframe class="zt_tb" align="center" src="http://dynamic.zol.com.cn/channel/broadcast_iframe_mwc.php?c=contentShell&d='+id0+'&style=%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6" frameborder="no" width="740" scrolling="yes" height="802"></iframe>');
+        $('.live-m1-b').html('<iframe width="438" scrolling="no" height="683" frameborder="0" src="http://comments.zol.com.cn/iframe_comment_live.php?pagesize=20&kindid=12&articleid='+id0+'&from=6" id="commentsIframe" name="commentsIframe"></iframe>');
+    }
+    $('.live-tab .bai14').click(function(){
+        var id = $(this).attr('href');
+        if(id){
+            $('.live-tab .bai14').removeClass('act');
+            $(this).addClass('act');
+            $('.live-con').html('<iframe class="zt_tb" align="center" src="http://dynamic.zol.com.cn/channel/broadcast_iframe_mwc.php?c=contentShell&d='+id+'&style=%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6" frameborder="no" width="740" scrolling="yes" height="802"></iframe>');
+            $('.live-m1-b').html('<iframe width="438" scrolling="no" height="683" frameborder="0" src="http://comments.zol.com.cn/iframe_comment_live.php?pagesize=20&kindid=12&articleid='+id+'&from=6" id="commentsIframe" name="commentsIframe"></iframe>');
+        }
+        return false;
+    });
+
+    /*切换内容及位移*/
+    !function () {
+        function chg1(evt,type,origin,response,num1,cls1,cls2) {
+            if(type==0){
+                origin.bind(evt,function () {
+                    var nowIndex=origin.index(this);
+                    $(this).addClass(cls1).siblings().removeClass(cls1);
+                    response.stop().animate({'left':'-'+nowIndex*num1+'px'},300);
+                })
+            }
+            if(type==1){
+                origin.bind(evt,function () {
+                    var nowIndex1=origin.index(this);
+                    $(this).addClass(cls1).siblings().removeClass(cls1);
+                    response.eq(nowIndex1).addClass(cls2).siblings().removeClass(cls2);
+                })
+            }
+        }
+        var day_lis=$('.day-ul li.pass');
+        var live_lis=$('.live-ul li');
+        /*自适应组图切换*/
+        var newsPicsNum=$('.new-mod table img').length;
+        var newsPicsCols=Math.ceil(newsPicsNum/4);
+        new_mod.css({'width': 1200*newsPicsCols+'px'});
+        for(var u=0;u<new_li.length;u++){
+            new_li.eq(u).removeClass('pass');
+        }
+        for(var r=0;r<newsPicsCols;r++){
+            new_li.eq(r).addClass('pass');
+            console.log(newsPicsNum);
+        }
+        var new_lis=$('.new-ul li.pass');
+
+
+
+        chg1('mouseenter',0,pre_li,pre_mod,634,'act',null);
+        chg1('mouseenter',0,new_lis,new_mod,1200,'act',null);
+        chg1('mouseenter',1,live_lis,live_m,null,'act','blk');
+        chg1('click',1,day_lis,day_m,null,'act','blk');
+    }();
+
+    /*切换图片左右*/
+    ~function () {
+        function scrolls(div1,div2,num,p,n){
+            var page = 1;
+            var i = num;
+            var $v_show = $(div1);
+            var $v_content = $(div2);
+            var v_width = $v_content.width();
+            var len = $v_show.find("img").length;
+            var page_count = Math.ceil(len/i);
+            $v_show.css("width",v_width*page_count + "px");
+
+            $v_show.css("left","0px");
+            $(n).click(function(){
+                if(!$v_show.is(":animated")){
+                    if(page == page_count){
+                        $v_show.animate({left:"0px"},"slow");
+                        page = 1;
+                    }else{
+                        $v_show.animate({left:"-="+v_width},"slow");
+                        page++;
+                    }
+                }
+            });
+            $(p).click(function(){
+                if(!$v_show.is(":animated")){
+                    if(page == 1){
+                        $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                        page = page_count;
+                    }else{
+                        $v_show.animate({left:"+="+v_width},"slow");
+                        page--;
+                    }
+                }
+            });
+            function auto_play()
+            {
+                if(!$v_show.is(":animated")){
+                    if(page == page_count){
+                        $v_show.animate({left:"0px"},"slow");
+                        page = 1;
+                    }else{
+                        $v_show.animate({left:"-="+v_width},"slow");
+                        page++;
+                    }
+                }
+            }
+            //setInterval(auto_play,5000);
+        }
+        scrolls(".pic-mod",".pic-m",1,".pic-btn1",".pic-btn2");
+    }();
+
+    /*投票*/
+    var vote_bt=$('.live-m2 table table .vote_btn');
+    var vote_nm=$('.live-m2 table table .vote_num');
+
+
+</script>
+</body></html>

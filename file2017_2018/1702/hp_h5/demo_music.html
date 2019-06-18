@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+
+    <meta name = "format-detection" content = "telephone=no">
+
+    <title>tit</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        input{-webkit-appearance:none;}
+        input:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+        input::-webkit-input-placeholder { color: #999; }
+        input:focus::-moz-placeholder { color: rgba(0,0,0,0); }
+        input::-moz-placeholder { color: #999; }
+        input:focus:-ms-input-placeholder { color: rgba(0,0,0,0); }
+        input:-ms-input-placeholder { color: #999; }
+
+
+        /* 首页 */
+        body {width:640px; margin:0 auto; background-color:#fff; position: relative;}
+
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @font-face{
+            font-family: 'impact';
+            src:
+                    url('http://icon.zol-img.com.cn/m/iconfont/topic/impact/impact.ttf') format('truetype'),
+                    url('http://icon.zol-img.com.cn/m/iconfont/topic/impact/impact.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* home */
+        .section{width: 100%; height: 100%; position: absolute; left:0; top: 0; display: none; background: #000; color: #fff}
+        .section.visible{display: block;}
+
+        .home{background: url(http://2.zol-img.com.cn/zt/tm_587/87987e1124/bg1.jpg) no-repeat 50% 0; -weibkit-background-size:cover; background-size:cover;  }
+
+        .home .rule{position: absolute; left:0;  top: 78%; width: 640px; height: 200px;}
+        .buttons-box .button{width: 170px; height: 57px; display: inline-block; vertical-align: top; margin:8px 20px;  padding-right:5px; text-indent: -9999em; overflow: hidden;}
+        .home .start{ background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/start.png) no-repeat;}
+        .home .rule-btn{ background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/rule-btn.png) no-repeat 50% 50%; margin-top:20px;}
+        .home .start,.home .rule-btn{display: block; margin:0 auto;  width: 227px; height: 76px;}
+        .buttons-box .replay{ background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/replay.png) no-repeat; }
+        .buttons-box .rank-btn{ background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/rank.png) no-repeat 50% 50%; }
+        .home .rule-con{width: 606px; height: 119px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/rule.png) no-repeat; position: absolute; left:50%; bottom: 0;  margin-left: -303px; display: none;}
+        /* main */
+
+
+        .main{/* background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/bg2.jpg) no-repeat 50% 0; -webkit-background-size: cover; background-size: cover;  */ -webkit-transform: translate(-110%,0);transform: translate(-110%,0); -webkit-background-size:cover; background-size:cover; -webkit-transition: -webkit-transform .5s;transition: transform .5s; display: block; overflow: hidden;}
+        .main.visible{-webkit-transform: none; transform: none;}
+
+        .main .footer{width: 640px; height: 50px; position: absolute; left:0; bottom: 22px; text-align: center;   pointer-events: none;}
+
+        .footer .time{float: left; width: 335px; height: 40px; margin-left: 25px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/icon.png) no-repeat; padding-left: 48px; }
+        .footer .time-bg{width: 330px; height: 26px; background: #D01B12; -webkit-border-radius: 13px; border-radius: 13px; margin-top: 8px; position: relative; overflow: hidden; -webkit-transform:rotate(0deg); transform:rotate(0deg);}
+        .time-bg span{font-size: 22px; color: #fff; line-height: 26px; position: absolute; right: 20px; top: 0; }
+        .footer .time-progress{width: 100%; height: 26px;-webkit-border-radius: 13px; border-radius: 13px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/progress.png) 50% 0 repeat-x #FBB13E;}
+        .footer .score{float: right; margin-right: 25px; font-size: 22px; color: #E51F05; line-height: 44px;}
+        .footer .score i{font-size: 39px; }
+
+        .logo{width: 50px; height: 153px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/logo.jpg) no-repeat; position: absolute; top: 0; right: 70px;}
+        /* gameover */
+        .gameover{background:url(http://2.zol-img.com.cn/zt/tm_587/879c1d45ea/bg3.jpg) no-repeat no-repeat 50% 0;  -webkit-background-size: cover; background-size: cover; }
+        .share{height:80px; text-align:center; width:100%;  position: absolute; left: 0; top: 86%;}
+        .gameover-status1 .share,.gameover-status2 .share{top: 92%;}
+        .share label{display: inline-block; width: 94px; height: 60px; vertical-align: top; background:url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/share.png) no-repeat 0 0; }
+        .share a{display:inline-block; width: 61px; height: 61px;  background:url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/share.png) no-repeat 0 0;   margin:0 12px; vertical-align:top; overflow:hidden; color:rgba(0,0,0,0); text-indent: -999em; overflow: hidden;}
+        .share .wechat { background-position:-285px 0;}
+        .share .qzone { background-position: -220px 0; }
+        .share .weibo { background-position: -94px 0; }
+        .share .tencent-weibo { background-position: -156px 0; }
+
+        .buttons-box{width:400px; text-align: center;  margin:20px auto 0;}
+
+        .pop-wrapper{position: absolute; left: 50%; margin-left:-281px; top: 8%;  width: 562px; height: 699px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/pop.png) no-repeat;}
+
+        .info-box{width: 562px; height: 234px;  padding-top: 110px; }
+        .info-box .result-con{height: 124px;  line-height: 58px; text-align: center; font-size: 24px; color: #333;}
+        .info-box .total{font-family: impact; font-size: 82px; display: inline-block; vertical-align: top; color: #E75F5F;}
+        .inp-box{width: 390px; height: 50px; margin:12px auto 0 ;  position:relative;}
+        .inp-box input,.input-box input{line-height: 60px; height: 60px;color: #fff; border: 0 none;}
+        .inp-box .tel,.input-box .phone{width:306px; padding:0 10px;  font-size: 24px; color: #333; float: left; background: none ; border: 1px solid #E4D8A3; -webkit-border-radius: 10px; border-radius:10px; }
+        .inp-box .sub-btn,.input-box .search-btn{width: 90px;  background: #E82E3B; border: 1px solid #E4D8A3; border:0 none; float: right; text-align: center;  font-size: 24px; position:absolute; right:0; top:0; padding:0; color: #fff;}
+        .info-box .tips{ text-align: center; font-size: 20px; color: #333; line-height: 40px; margin-top: 20px; }
+        .gameover .link{position: absolute; left: 50%; bottom: -150px; margin-left:-293px; width: 587px; height: 221px; background: url(http://2.zol-img.com.cn/zt/tm_588/05a6034a1a/link1.png) no-repeat; display: none;}
+        .gameover .gameover-status,.gameover .status{display: none;}
+
+
+
+        .gameover-status1 .link,.gameover-status2 .link,.gameover-status1 .gameover-status,.gameover-status2 .gameover-status{display: block;}
+        .gameover-status1 .info-box,.gameover-status2 .info-box,.gameover-status3 .info-box{display: none;}
+
+        .gameover-status{width: 562px; }
+        .gameover-status1  .status1,.gameover-status2  .status2{display: block;}
+        .status1{width: 562px; height: 216px;  padding-top: 110px;}
+        .status1 p,.status2 p{color: #333; font-size: 24px; line-height: 40px; text-align: center;}
+        .status1 .total-box{font-size: 40px; height: 100px; line-height: 100px;}
+        .total-box .total,.status2 .total{font-size: 82px; font-family: impact; color:#E75F5F;}
+        .status2{width: 562px; height: 340px; padding-top:110px;}
+        .status2 p{line-height: 56px;}
+        .status2 .percent-box {font-size: 24px; color: #333;}
+        .status2 .percent-box .percent{ line-height: 50px; color: #E65F5F; font-size: 43px;}
+        .status2 .gift{display: block;margin: 25px auto; width: 151px; height: 144px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/gift.png) no-repeat;}
+        .status1 p .ranking{color: #E65F5F; font-size: 28px;}
+        .gameover-status2 .buttons-box{width: 470px;}
+        /* rank-section */
+        .rank-section{background: url(http://2.zol-img.com.cn/zt/tm_587/87987e1124/bg4.jpg) no-repeat 50% 0; background-size:cover; background-size:cover; }
+        .rank-box{ width: 494px; height: 580px; margin:0 0 0 40px;}
+        .rank-list{width: 490px; -webkit-border-radius: 10px; border-radius: 10px; height: 476px;  margin:0 auto; overflow: hidden; color: #fff;}
+        .rank-list th,.rank-list td{height: 50px; line-height: 50px; text-align: center; background: #E12017; font-size: 24px; border-right: 1px solid #D6D6D6;}
+        .rank-list th:last-child,.rank-list td:last-child{margin-right: 0;}
+
+
+        .rank-list td{ height: 40px; line-height: 40px; border-top: 1px solid #D6D6D6;}
+
+        .rank-section .hd-box{width: 562px; height: 120px;}
+        .input-box{width: 400px; margin:0 auto ; position:relative;}
+        .search-box{width: 400px; margin:0 auto; padding-top:55px;}
+        .hd-box .tips{font-size: 24px; line-height: 60px; color: #fff; text-align: center; display:none;}
+        .result-rank{padding:30px 20px 0;}
+        .result-rank p{font-size: 28px; color: #333; line-height: 40px; }
+        .result-rank p:nth-child(2){font-size: 24px;}
+        .rank-section .hd-box .item{display: none;}
+        .page-section{z-index: 5;}
+        .page-section .scroll{height: 100%;}
+
+        .rank-bg{position: absolute; left:50%; margin-left: -281px; top: 10%; width: 562px; height: 746px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/rankbg.png) no-repeat;}
+        .rank-tit{font-size: 36px; color: #E72D3A; line-height: 70px; text-align: center;}
+        .result-rank .ranking{color: #E55F5F; font-size: 28px;}
+        .go-home{display: block; width: 170px; height: 57px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/home.png) no-repeat; margin:0 auto;}
+
+        .begin .time-progress {-webkit-animation: 15s progress1 linear 1s; animation: 15s progress1  linear 1s;}
+
+        @-webkit-keyframes progress1{
+            0%{-webkit-transform: translate(0px,0px);}
+            100%{-webkit-transform: translate(-100%,0px); }
+        }
+
+        @keyframes progress1{
+            0%{transform: translate(0px,0px);}
+            100%{transform: translate(-100%,0px); }
+        }
+
+        .egg{position: absolute; left: 0; top: -100px; pointer-events: none; opacity: 0;}
+        .fortune{position: absolute; left:50%; top: 0; margin-left: -185px; pointer-events: none; width: 386px; height: 246px; }
+        .egg.show{opacity:1;}
+
+
+        .home .gift-pic{position: absolute; width: 693px; height: 753px; left: 50%; margin-left:-346px; top: 12%; }
+
+        /* foreword */
+        .foreword{background: url(http://2.zol-img.com.cn/zt/tm_587/87987e1124/bg5.jpg) no-repeat 50% 0; -webkit-background-size: cover;background-size: cover; -webkit-transform: translate(-110%,0);transform: translate(-110%,0); -webkit-background-size:cover; background-size:cover; -webkit-transition: -webkit-transform .5s;transition: transform .5s; display: block;}
+        .foreword.visible{-webkit-transform: none; transform: none;}
+        .conveyer-box{width: 640px; height: 630px; position: absolute; top: 30%;  left: 0;}
+        .conveyer-box .conveyer{position: absolute; right: 0; bottom: 0; }
+        .conveyer-box .conveyer-con{width: 410px; height: 400px; position: absolute ; left: 212px; top: 94px; }
+        .conveyer-box .giftbg{position: absolute; left: 5px; top: 45px; width: 409px; height: 340px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/giftbg.png) no-repeat;}
+        .conveyer-box .fortune2{position: absolute; top: -106px; left:5px; width: 322px; height: 275px; background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/fortune2.png) no-repeat; transform-origin:50% 100%; transform-origin:50% 100%; -webkit-transform: scale(0); transform: scale(0);}
+        .visible .fortune2{-webkit-animation: zoom-in .2s ease-out 0.5s forwards;animation: zoom-in .2s  ease-out 0.5s forwards;}
+        .visible .conveyer-con{-webkit-animation: conveyer 1.2s linear 1s forwards;animation: conveyer 1.2s  linear 1s forwards;}
+
+        @-webkit-keyframes zoom-in {
+            0% { -webkit-transform: scale(0); }
+            100% { -webkit-transform: scale(1);}
+        }
+
+        @keyframes zoom-in {
+            0% { transform: scale(0);}
+            100% { transform: scale(1);}
+        }
+
+        @-webkit-keyframes conveyer {
+            0% { -webkit-transform: translate(0 ,0); }
+            100% {-webkit-transform: translate(120% ,0); }
+        }
+
+        @keyframes conveyer {
+            0% {transform: translate(0 ,0); }
+            100% {transform: translate(120% ,0); }
+        }
+
+
+        .main-bg{position: absolute; left: -130px; top: 0; width: 1000px; height: 1172px;  -webkit-animation: swipe1 4s linear  infinite alternate; animation: swipe1 4s linear  infinite alternate;}
+        .main-bg .img{position: absolute; width: 1000px;height: 1172px;  background: url(http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/big.jpg) }
+        .raiden-bg{position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url(http://2.zol-img.com.cn/zt/tm_587/87a5b67db4/bg6.png) no-repeat 50% 0; -webkit-background-size: cover; background-size: cover; }
+        #raiden{position: absolute; left:0; top: 0;}
+
+        .fortune img{position: absolute; left: 70px; top: 0}
+        .cloud1,.cloud2{position: absolute;  }
+        .cloud1{ width: 177px; height: 76px; background: url(http://2.zol-img.com.cn/zt/tm_587/89b5a458b9/cloud1.png) no-repeat; left: 10px; bottom: -8px;-webkit-animation: swipe 2s linear infinite alternate; animation: swipe 2s linear infinite alternate;}
+        .cloud2{ width: 269px; height: 116px; background: url(http://2.zol-img.com.cn/zt/tm_587/89b5a458b9/cloud2.png) no-repeat; right: 0;bottom: -25px; -webkit-animation: swipe 2.2s linear 0.3s infinite alternate; animation: swipe 2.2s linear  0.3s infinite alternate;}
+
+        @-webkit-keyframes swipe{
+            0%   {-webkit-transform:translate(0,0)}
+            100%  {-webkit-transform:translate(25px,-5px)}
+
+        }
+        @keyframes swipe{
+            0%   {transform:translate(0,0)}
+            100%  {transform:translate(25px,-5px)}
+
+        }
+
+        @-webkit-keyframes swipe1{
+            0%   {-webkit-transform:translate(0,0)}
+            100%  {-webkit-transform:translate(15px,-4px)}
+
+        }
+        @keyframes swipe1{
+            0%   {transform:translate(0,0)}
+            100%  {transform:translate(15px,-4px)}
+
+        }
+
+        /* 音乐开关 */
+
+        #control{position: absolute;right:10px;top:10px;width:48px; height:48px;  z-index: 11; background:no-repeat 50% 50%}
+        #control.on{background-image: url(data:image/png;base64,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);}
+        #control.off{background-image: url(data:image/png;base64,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);}
+
+
+
+
+        @media screen and (max-width:640px) and (max-height: 925px) {
+            .pop-wrapper{top: 3%;}
+            .home .rule{top: 77%}
+
+        }
+
+
+    </style>
+</head>
+<body>
+<img src="http://2.zol-img.com.cn/zt/tm_588/05550976fa/main.png" alt="" style="display:none;opacity:0" id="raiden_props" />
+
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<i id="control" class="on"></i>
+
+<div class="home section visible">
+    <div class="gift-pic">
+        <img src="http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/homegift.png" >
+        <!-- <img src="http://2.zol-img.com.cn/zt/tm_587/c72b634a40/gift.gif" > -->
+    </div>
+    <div class="rule">
+        <span class="start"></span>
+        <span class="rule-btn"></span>
+        <div class="rule-con"></div>
+    </div>
+</div>
+<div class="foreword section">
+    <div class="conveyer-box">
+        <img src="http://2.zol-img.com.cn/zt/tm_587/7512b00458/conveyer.gif" class="conveyer">
+
+        <div class="conveyer-con">
+            <div class="giftbg"></div>
+            <div class="fortune2"></div>
+        </div>
+    </div>
+
+</div>
+<div class="main section ">
+    <div class="main-bg"><div class="img"></div></div>
+    <div class="raiden-bg"></div>
+
+    <span class="logo"></span>
+    <footer class="footer">
+        <div class="time">
+            <div class="time-bg">
+                <div class="time-progress"></div>
+                <span><i id="time">15</i>s</span>
+            </div>
+        </div>
+        <span class="score" ><i id="score">0</i>分</span>
+    </footer>
+    <canvas id="raiden" width="640" height="1136"></canvas>
+    <div class="fortune">
+        <div class="cloud2"></div>
+        <img src="http://2.zol-img.com.cn/zt/tm_587/c7117ec407/fortune.gif">
+        <div class="cloud1"></div>
+    </div>
+    <div class="egg" id="eggbox">
+        <canvas width="640" height="872" id="egg"></canvas>
+        <!-- <img src="http://2.zol-img.com.cn/zt/tm_587/74f8dbad34/egg.gif"> -->
+        <img src="http://active.zol.com.cn/16active/1222lenovo/egg.png"   id="eggimg">
+    </div>
+</div>
+<div class="gameover section " id="gameover">
+    <div class="pop-wrapper">
+        <!-- 提交信息 -->
+        <div class="info-box">
+            <div class="result-con">您此次的游戏成绩为<br/><span class="total"></span>分</div>
+            <div class="inp-box"><input type="tel" class="tel"  placeholder="请输入你的手机号" maxlength="11"><input type="button" value="提交" class="sub-btn"></div>
+            <p class="tips">*用于记录最好成绩 排名及领奖</p>
+        </div>
+        <!-- 状态 -->
+        <div class="gameover-status">
+            <div class="status status1">
+                <p>您此次的游戏成绩为</p>
+                <p class="total-box"><span class="total"></span>分</p>
+                <p>您当前最好成绩是<span class="best"></span>分</p>
+                <p>排名第<span class="ranking"></span>位</p>
+            </div>
+            <div class="status status2">
+                <p>您此次的成绩为<br/><span class="total"></span>分</p>
+                <p class="percent-box">已打败<span class="percent"></span>的玩家</p>
+                <span class="gift"></span>
+            </div>
+        </div>
+        <a class="link" href="http://kuxiongvip.com/huodong/lenovo_yjhx/"></a>
+        <div class="buttons-box">
+            <span class="button replay" id="replay">重新游戏</span>
+            <span class="button rank-btn">排行榜</span>
+        </div>
+
+    </div>
+    <div class="share"></div>
+    <div class="rank-section section ">
+        <div class="rank-bg">
+            <div class="hd-box">
+                <div class="search-box item">
+                    <div class="input-box"><input type="tel" maxlength="11" class="phone"><input type="button" value="查询" class="search-btn"></div>
+                </div>
+                <div class="result-rank item" >
+                    <p>用户<span class="tel"></span></p>
+                    <p>您当前的最好成绩是：<span class="best"></span>分 &nbsp;&nbsp;排名第<span class="ranking"></span></p>
+                </div>
+            </div>
+            <div class="rank-box after">
+                <div class="rank-tit">排行榜</div>
+                <div class="rank-list">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                        <tr><th width="15%">排名</th><th width="35%">用户名</th><th width="20%">日期</th><th width= "30%">成绩</th></tr>
+                    </table>
+                    <table width="100%" cellpadding="0" cellspacing="0" class="rank-con">
+
+                    </table>
+                </div>
+                <span class="go-home"></span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div class="page-section section ">
+    <div class="scroll">
+        <div class="scroll-con">
+            <img src="http://2.zol-img.com.cn/zt/tm_587/c767e3c45c/page.jpg">
+        </div>
+    </div>
+</div>
+
+<audio src="http://icon.zol-img.com.cn/active/m/id6238396_1.mp3" preload="auto" id="bgmedia"></audio>
+
+<audio src="http://icon.zol-img.com.cn/active/m/id6238396_2.mp3" preload="auto" id="media1"></audio>
+
+</body>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/iscroll-lite.min.js"></script>
+<script src="http://active.zol.com.cn/16active/1222lenovo/game.js"></script>
+<script type="text/javascript" >
+
+    //分享
+    var share_title=encodeURIComponent( '你的新春大礼包掉了，赶快捡回来！');
+    var share_link=encodeURIComponent('http://m.zol.com.cn/topic/6238396.html');
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_587/7506348f0f/weixin.jpg');
+    var share_t=encodeURIComponent('还在为过年送礼发愁？联想已经帮你准备好了');
+
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+
+    var share_con = '<label></label><a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="wechat" href="#wechat" style="display: none">wechat</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a>';
+    document.querySelector('.share').innerHTML = share_con;
+
+
+    window.wechatShareData = {
+        "title":"你的新春大礼包掉了，赶快捡回来！",
+        "icon":"http://2.zol-img.com.cn/zt/tm_587/7506348f0f/weixin.jpg",
+        "description":"还在为过年送礼发愁？联想已经帮你准备好了",
+        "url":"http://m.zol.com.cn/topic/6238396.html"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

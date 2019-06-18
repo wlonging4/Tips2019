@@ -1,0 +1,371 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>智无涯、网作舟 锐捷伴你学</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #c22d37; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 110px;  min-width: 1200px;  padding-top: 60px; background: #2eb1c7;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .head_white{  min-width: 1000px;  }
+        .bar1{  width: 100%;  height: 15px;  background: #BB2631;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 598px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/lg_head_c.jpg") no-repeat top center;   }
+
+        .flow{width: 106px;height: 138px;position: fixed;left: 50%;margin-left: 605px;bottom: 100px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/flow.png") no-repeat 0 0;cursor: pointer;}
+
+        .preBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/pre.jpg") no-repeat top center;}
+        .pre{height: 475px;}
+        .pre-mod{position: absolute;left: 100px;top: 130px;width: 550px;height: 310px;background: #000;}
+
+        .mapBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/map.jpg") no-repeat top center;}
+        .map{height: 806px;}
+
+        .roadBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/road.jpg") no-repeat top center;}
+        .road{height: 1102px;}
+
+        .companyBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/company.jpg") no-repeat top center;}
+        .company{height: 449px;}
+
+        .lightBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/light.jpg") no-repeat top center;}
+        .light{height: 681px;}
+        .light-btn{width: 170px;height: 38px;position:absolute;top:265px;left:715px;cursor: pointer;background: #ff7e00;}
+        .light-btn .bai20{display: block;width: 170px;height: 38px;font: 22px/38px 'Hiragino Sans GB','microsoft yahei';}
+        .light-btn .bai20:hover{color: #fff;text-decoration: none;}
+
+        .suggestBg{background: #fff;}
+        .suggest{height: 870px;}
+        .suggest-t{width: 520px;height: 170px;margin: 35px auto 0;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/suggest.jpg") no-repeat 0 0;}
+        .suggest-c{margin: 25px auto 0;width: 775px;height: 615px;overflow-x: hidden;overflow-y: scroll;position: relative;border: 1px solid #cccccc;;}
+
+        .aboutBg{background: #f4f4f4;}
+        .about{height: 270px;}
+        .about-t1{width: 150px;height: 30px;left: 100px;top: 30px;position: absolute;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/abt_t1.jpg") no-repeat 0 0;}
+        .about-t2{width: 150px;height: 30px;left: 540px;top: 30px;position: absolute;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/abt_t2.jpg") no-repeat 0 0;}
+        .about-mod1{width: 360px;height: 170px;left: 110px;top: 75px;position: absolute;}
+        .about-mod2{width: 130px;height: 160px;left: 540px;top: 80px;position: absolute;}
+        .about-mod3{width: 410px;height: 170px;right: 100px;top: 60px;position: absolute;}
+        .about-line{width: 1px;height: 170px;left: 500px;top: 55px;background: #a8a8a8;position: absolute;}
+        .about-mod1 .hui12bi{display: block;color: #565656;font: 12px/22px 'simsun';}
+        .about-mod2 .hui12{display: block;color: #565656;font: 12px/30px 'simsun';}
+        .about-mod3 .hui12{display: block;color: #565656;padding: 20px 15px 0;font: 12px/17px 'simsun';}
+
+        .bk{position: absolute;width: 104px;height: 124px;}
+        .bk1{top: 380px;left: 360px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/blk1.png") no-repeat 0 0;}
+        .bk2{top: 245px;left: 500px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/blk2.png") no-repeat 0 0;}
+        .bk3{top: 380px;left: 600px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/blk3.png") no-repeat 0 0;}
+        .bk4{top: 650px;left: 745px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/blk4.png") no-repeat 0 0;}
+
+        .btns{position: absolute;cursor: pointer;-webkit-transform-origin: bottom;transform-origin: bottom;}
+        .btns11{width: 92px;height: 78px;top: 330px;left: 5px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn11.png") no-repeat 0 0;}
+        .btns12{width: 78px;height: 77px;top: 255px;left: 160px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn12.png") no-repeat 0 0;}
+        .btns13{width: 112px;height: 79px;top: 400px;left: 230px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn13.png") no-repeat 0 0;}
+        .btns14{width: 114px;height: 70px;top: 515px;left: 255px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn14.png") no-repeat 0 0;}
+        .btns21{width: 128px;height: 72px;top: 175px;left: 270px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn21.png") no-repeat 0 0;}
+        .btns22{width: 112px;height: 73px;top: 165px;left: 505px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn22.png") no-repeat 0 0;}
+        .btns31{width: 131px;height: 92px;top: 270px;left: 605px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn31.png") no-repeat 0 0;}
+        .btns32{width: 113px;height: 104px;top: 200px;left: 740px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn32.png") no-repeat 0 0;}
+        .btns33{width: 147px;height: 100px;top: 260px;left: 850px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn33.png") no-repeat 0 0;}
+        .btns34{width: 147px;height: 58px;top: 380px;left: 735px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn34.png") no-repeat 0 0;}
+        .btns35{width: 232px;height: 119px;top: 295px;left: 950px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn35.png") no-repeat 0 0;}
+        .btns36{width: 181px;height: 64px;top: 435px;left: 790px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn36.png") no-repeat 0 0;}
+        .btns37{width: 78px;height: 109px;top: 355px;left: 1100px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn37.png") no-repeat 0 0;}
+        .btns38{width: 260px;height: 104px;top: 515px;left: 935px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn38.png") no-repeat 0 0;}
+        .btns41{width: 95px;height: 84px;top: 580px;left: 605px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/btn41.png") no-repeat 0 0;}
+
+        @-webkit-keyframes bigs {
+            0%{   -webkit-transform: translate(0px,0px) scale(1); opacity: 1;  }
+            88%{   -webkit-transform: translate(0px,0px) scale(0.97); opacity: 1;  }
+            92%{   -webkit-transform: translate(0px,0px) scale(1.1); opacity: 1;  }
+            100%{   -webkit-transform: translate(0px,0px) scale(1); opacity: 1;  }
+        }
+        @keyframes bigs {
+            0%{   transform: translate(0px,0px) scale(1); opacity: 1;  }
+            88%{   transform: translate(0px,0px) scale(0.97); opacity: 1;  }
+            92%{   transform: translate(0px,0px) scale(1.1); opacity: 1;  }
+            100%{   transform: translate(0px,0px) scale(1); opacity: 1;  }
+        }
+
+        .bigs1{  animation: bigs 4s linear 0s infinite;  -webkit-animation: bigs 4s linear 0s infinite;  }
+        .bigs2{  animation: bigs 4s linear 0.4s infinite;  -webkit-animation: bigs 4s linear 0.4s infinite;  }
+        .bigs3{  animation: bigs 4s linear 1s infinite;  -webkit-animation: bigs 4s linear 1s infinite;  }
+        .bigs4{  animation: bigs 4s linear 1.6s infinite;  -webkit-animation: bigs 4s linear 1.6s infinite;  }
+        .bigs5{  animation: bigs 4s linear 2.2s infinite;  -webkit-animation: bigs 4s linear 2.2s infinite;  }
+        .bigs6{  animation: bigs 4s linear 2.8s infinite;  -webkit-animation: bigs 4s linear 2.8s infinite;  }
+        .bigs7{  animation: bigs 4s linear 3.4s infinite;  -webkit-animation: bigs 4s linear 3.4s infinite;  }
+        .bigs8{  animation: bigs 4s linear 3.8s infinite;  -webkit-animation: bigs 4s linear 3.8s infinite;  }
+
+        .bk{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .bk:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+        .shadow{display: none;position: fixed;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,0.5);}
+        .sh{width: 690px;height: 440px;padding: 40px 60px;background: #fff;-webkit-border-radius: 10px;border-radius: 10px;position: absolute;left: 50%;top: 50%;margin: -260px 0 0 -405px;}
+        .sh-close{position: absolute;width: 24px;height: 24px;right: 20px;top: 20px;cursor: pointer;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/close.png") no-repeat 0 0;}
+        .sh-c{width: 690px;height: 440px;overflow: hidden;position: relative;}
+        .sh-c .mod{display: none;}
+        .sh-c .mod.blk{display: block;}
+        .sh-c .mod .md1{width: 690px;height: 30px;margin: 0 auto;}
+        .sh-c .mod .md2{width: 690px;height: 30px;margin: 0 auto;}
+        .sh-c .mod .md3{width: 685px;height: 225px;border: 1px solid #9a9a9a;background:#000;margin: 15px auto 20px;}
+        .sh-c .mod .md4{width: 690px;height: 110px;overflow: hidden;}
+        .sh-c .mod .md4 .md4s{float: left;margin-left: 5px;width: 225px;height: 110px;}
+        .sh-c .mod .md4 .md4s .md4s1{width: 225px;height: 25px;margin-bottom: 5px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/2109039a81/sh_l.png") no-repeat left center;}
+        .sh-c .mod .md4 .md4s .md4s2{width: 210px;height: 80px;margin-left: 15px;}
+        .md1 .hei16{display: block;color: #343434;font:bold 19px/30px 'Hiragino Sans GB','microsoft yahei';}
+        .md2 .lan20{display: block;color: #0cafb9;font: 24px/30px 'Hiragino Sans GB','microsoft yahei';}
+        .md4s1 .hei18{display: block;color: #343434;padding-left: 12px;font:bold 17px/25px 'Hiragino Sans GB','microsoft yahei';}
+        .md4s2 .hui12bi{display: block;color: #565656;font: 12px/21px 'simsun';}
+        .md4 .hei20{color: #000;font-size: 20px;display: block;font-family: "Microsoft YaHei";padding: 5px 56px;font-size: 16px;line-height: 22px;text-indent: 32px;}
+        .md4 .hong12{color: #000;font-size: 16px;}
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--客服-->
+<div class="flow"><{data[83]}></div>
+<!--预热-->
+<div class="wrap1 preBg">
+    <div class="wrapper1 pre">
+        <div class="pre-mod"><{data[0]}></div>
+    </div>
+</div>
+<!--地图-->
+<div class="wrap1 mapBg banners">
+    <div class="wrapper1 map">
+        <div class="bk bk1"></div>
+        <div class="bk bk2"></div>
+        <div class="bk bk3"></div>
+        <div class="bk bk4"></div>
+        <div class="btns btns11 bigs1"></div>
+        <div class="btns btns12 bigs2"></div>
+        <div class="btns btns13 bigs3"></div>
+        <div class="btns btns14 bigs4"></div>
+        <div class="btns btns21 bigs5"></div>
+        <div class="btns btns22 bigs6"></div>
+        <div class="btns btns31 bigs7"></div>
+        <div class="btns btns32 bigs8"></div>
+        <div class="btns btns33 bigs1"></div>
+        <div class="btns btns34 bigs2"></div>
+        <div class="btns btns35 bigs3"></div>
+        <div class="btns btns36 bigs4"></div>
+        <div class="btns btns37 bigs5"></div>
+        <div class="btns btns38 bigs6"></div>
+        <div class="btns btns41 bigs7"></div>
+    </div>
+</div>
+<div class="shadow">
+    <div class="sh">
+        <div class="sh-close"></div>
+        <div class="sh-c">
+            <div class="mod mod11">
+                <div class="md1"><{data[1]}></div>
+                <div class="md2"><{data[2]}></div>
+                <div class="md3"><{data[3]}></div>
+                <div class="md4">
+                    <{data[85]}>
+                </div>
+            </div>
+            <div class="mod mod12">
+                <div class="md1"><{data[6]}></div>
+                <div class="md2"><{data[7]}></div>
+                <div class="md3"><{data[8]}></div>
+                <div class="md4">
+                    <{data[86]}>
+                </div>
+            </div>
+            <div class="mod mod13">
+                <div class="md1"><{data[11]}></div>
+                <div class="md2"><{data[12]}></div>
+                <div class="md3"><{data[13]}></div>
+                <div class="md4">
+                    <{data[87]}>
+                </div>
+            </div>
+            <div class="mod mod14">
+                <div class="md1"><{data[16]}></div>
+                <div class="md2"><{data[17]}></div>
+                <div class="md3"><{data[18]}></div>
+                <div class="md4">
+                    <{data[88]}>
+                </div>
+            </div>
+            <div class="mod mod21">
+                <div class="md1"><{data[21]}></div>
+                <div class="md2"><{data[22]}></div>
+                <div class="md3"><{data[23]}></div>
+                <div class="md4">
+                    <{data[84]}>
+                </div>
+            </div>
+            <div class="mod mod22">
+                <div class="md1"><{data[26]}></div>
+                <div class="md2"><{data[27]}></div>
+                <div class="md3"><{data[28]}></div>
+                <div class="md4">
+                    <{data[89]}>
+                </div>
+            </div>
+            <div class="mod mod31">
+                <div class="md1"><{data[31]}></div>
+                <div class="md2"><{data[32]}></div>
+                <div class="md3"><{data[33]}></div>
+                <div class="md4">
+                    <{data[90]}>
+                </div>
+            </div>
+            <div class="mod mod32">
+                <div class="md1"><{data[36]}></div>
+                <div class="md2"><{data[37]}></div>
+                <div class="md3"><{data[38]}></div>
+                <div class="md4">
+                    <{data[91]}>
+                </div>
+            </div>
+            <div class="mod mod33">
+                <div class="md1"><{data[41]}></div>
+                <div class="md2"><{data[42]}></div>
+                <div class="md3"><{data[43]}></div>
+                <div class="md4">
+                    <{data[92]}>
+                </div>
+            </div>
+            <div class="mod mod34">
+                <div class="md1"><{data[46]}></div>
+                <div class="md2"><{data[47]}></div>
+                <div class="md3"><{data[48]}></div>
+                <div class="md4">
+                    <{data[93]}>
+                </div>
+            </div>
+            <div class="mod mod35">
+                <div class="md1"><{data[51]}></div>
+                <div class="md2"><{data[52]}></div>
+                <div class="md3"><{data[53]}></div>
+                <div class="md4">
+                    <{data[94]}>
+                </div>
+            </div>
+            <div class="mod mod36">
+                <div class="md1"><{data[56]}></div>
+                <div class="md2"><{data[57]}></div>
+                <div class="md3"><{data[58]}></div>
+                <div class="md4">
+                    <{data[95]}>
+                </div>
+            </div>
+            <div class="mod mod37">
+                <div class="md1"><{data[61]}></div>
+                <div class="md2"><{data[62]}></div>
+                <div class="md3"><{data[63]}></div>
+                <div class="md4">
+                    <{data[96]}>
+                </div>
+            </div>
+            <div class="mod mod38">
+                <div class="md1"><{data[66]}></div>
+                <div class="md2"><{data[67]}></div>
+                <div class="md3"><{data[68]}></div>
+                <div class="md4">
+                    <{data[97]}>
+                </div>
+            </div>
+            <div class="mod mod41">
+                <div class="md1"><{data[71]}></div>
+                <div class="md2"><{data[72]}></div>
+                <div class="md3"><{data[73]}></div>
+                <div class="md4">
+                    <{data[98]}>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--道路-->
+<div class="wrap1 roadBg">
+    <div class="wrapper1 road"></div>
+</div>
+<!--相伴-->
+<div class="wrap1 companyBg">
+    <div class="wrapper1 company"></div>
+</div>
+<!--点亮-->
+<div class="wrap1 lightBg">
+    <div class="wrapper1 light">
+        <div class="light-btn"><{data[76]}></div>
+    </div>
+</div>
+<!--调查-->
+<div class="wrap1 suggestBg">
+    <div class="wrapper1 suggest">
+        <div class="suggest-t"></div>
+        <div class="suggest-c">
+            <iframe src="http://survey.zol.com.cn/front/2/1626.html" frameborder="0" scrolling="no" width="100%" height="1200" allowfullscreen="true"></iframe>
+        </div>
+    </div>
+</div>
+<!--关于-->
+<div class="wrap1 aboutBg">
+    <div class="wrapper1 about">
+        <div class="about-t1"></div>
+        <div class="about-t2"></div>
+        <div class="about-line"></div>
+        <div class="about-mod1"><{data[77]}></div>
+        <div class="about-mod2"><{data[78]}></div>
+        <div class="about-mod3"><{data[79]}></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    var shadow=$('.shadow');
+    var shClose=$('.sh-close');
+    var shMods=$('.sh-c .mod');
+    var lis=$('.btns');
+    lis.bind('click',function () {
+        var nowI=lis.index(this);
+        shMods.each(function (i) {
+            shMods.eq(i).removeClass('blk');
+        });
+        shMods.eq(nowI).addClass('blk');
+        shadow.show();
+    });
+    shClose.bind('click',function () {
+        shMods.each(function (i) {
+            shMods.eq(i).removeClass('blk');
+        });
+        shadow.hide();
+    });
+
+</script>
+</body></html>

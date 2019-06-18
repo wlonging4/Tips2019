@@ -1,0 +1,489 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        body{color:#858585;font:12px/22px arial; background:#FFF;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#858585;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#fff; font-size:13px;line-height:24px;}
+        .hong12{color:#FF2626}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+
+        /*背景*/
+        .f-hl{background:url(http://2.zol-img.com.cn/zt/tm_56c/6d2cde3ee4/f-hl.jpg) no-repeat right top;}
+        .f-hr{background:url(http://2.zol-img.com.cn/zt/tm_56c/6d2cde3ee4/f-hr.jpg) no-repeat left top;}
+        .f-1l{background:url(http://2.zol-img.com.cn/zt/tm_56c/6d2cde3ee4/f-1l.jpg) no-repeat right top;}
+        .f-1r{background:url(http://2.zol-img.com.cn/zt/tm_56c/6d2cde3ee4/f-1r.jpg) no-repeat left top;}
+        .f-footl{background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-footl.jpg) no-repeat right top;}
+        .f-footr{background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-footr.jpg) no-repeat left top;}
+
+        .wrapper{width:1200px;margin:20px auto 0;}
+        .wrapper0{margin-top:0;}
+        .nav1{height:45px;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-h4.jpg) no-repeat top center;}
+        .nav1 a{display:inline-block; padding:0 28px; margin:0 30px; font:20px/38px "Microsoft Yahei"; color:#fff}
+        .nav1 img{display:inline-block; vertical-align:top}
+        .nav1 .nav1-logo{padding:0; margin:0;}
+        .nav1 a:hover{color:#fff;background-color:#2183f5; text-decoration:none;}
+        .nav2{height:34px;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-h5.jpg) no-repeat top center;}
+        .nav2 a{display:inline-block;padding:0 17px; font:18px/34px "Microsoft Yahei"; color:#fff}
+        .nav2 a:hover{color:#fff;background-color:#2183f5; text-decoration:none;}
+        .nav2-1{background-color:#2183f5}
+        .nav2-2{background-color:#388df5}
+        .nav2-3{background-color:#4491f5}
+        .nav2-4{background-color:#549cf5}
+        .nav2-5{background-color:#65a6f5}
+        .nav2-6{background-color:#85b9f8}
+        .nav2-7{background-color:#85b9f8}
+
+        .focus-bg{height:366px;background:url(http://2.zol-img.com.cn/zt/tm_56c/6cd90a971e/f-1bg.jpg) no-repeat center bottom}
+        .focus{float:left;width:472px;margin:11px 0 0 10px;display:inline;}
+        .focus-box{position:relative;width:470px;height:305px;overflow:hidden;border:1px solid #ccc;}
+        .focus-list{position:absolute;left:0;top:0;}
+        .focus-nav{text-align:center;font:0/0 arial;padding:13px 0 0;}
+        .focus-nav span{display:inline-block;width:66px;height:8px;background-color:#878787;border-radius:3px;margin:0 3px; cursor:pointer}
+        .focus-nav .act{background-color:#FFC926}
+        .focus-today{float:left;width:387px;height:300px;padding:11px 9px 0 6px;}
+        .focus-today-title{margin-bottom:10px;}
+        .focus-today-title{height:67px;line-height:67px;}
+        .focus-today-title strong{font:24px/67px "Microsoft Yahei"; color:#21202E}
+        .focus-search-title{text-align:center;font:24px/35px "Microsoft Yahei"; color:#21202E}
+        .focus-today-title1{height:36px;}
+        .focus-today-line{border-bottom:1px dotted #bbb;padding-bottom:12px;margin-bottom:20px;}
+        .focus-search{float:left;width:280px;padding:82px 0 0 9px;}
+        .focus-search-num{float:right; font-size:14px;}
+        .focus-search-num em{font-weight:bold; color:#FF4C4C}
+        .focus-search-con{height:167px;padding-left:10px;}
+        .focus-search-con .hei14b{color:#21202E;line-height:30px;}
+        .focus-search-con .hui14{line-height:25px;}
+        .focus-search-btn{display:block;width:180px;height:46px;padding-left:105px;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-1.jpg) no-repeat; font:24px/46px "Microsoft Yahei"; color:#fff;text-align:center;}
+        .focus-search-btn a{display:block;width:181px;height:46px;color:#fff}
+        .focus-search-btn a:hover{color:#fff;}
+
+        .title{width:274px;height:80px;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-2.jpg) no-repeat; font:24px/26px "Microsoft Yahei"; color:#1E2432;margin:0 0 0 20px;}
+        .title strong{display:block; padding:35px 0 0 153px; font-weight:normal}
+        .title-line{margin:4px 0 0 0;height:2px;background-color:#000;font:0/0 arial;}
+        .title-line1{width:88px;height:2px;background-color:#2183f5}
+
+        .live{float:left; width:800px;padding-left:10px;position:relative;}
+        .live-comment{float:right; width:350px;padding-right:5px;}
+        .live-title img{float:right;}
+        .live-tab{width:800px;}
+        .live-tab td{vertical-align:top}
+        .live-tab .bai14{display:block;width:155px;height:32px;padding:29px 0 0; background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-5.jpg) no-repeat; font:18px/32px "Microsoft Yahei";text-align:center;color:#fff;cursor:pointer;position:relative;text-decoration:none;}
+        .live-tab .act{background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-4.jpg) no-repeat;}
+
+        .live-con{height:780px;border:1px solid #eff4f7;border-top:0;margin:10px 0 0;}
+        .live-mask{display:none;position:absolute;left:0;top:200px;width:100%;height:400px;background:#000;}
+
+        .today-guess{height:272px;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-6.jpg) no-repeat;}
+        .today-guess-con{padding:13px 0 0 111px;width:213px;height:205px;}
+        .today-guess-con .bai20{display:block;width:135px;height:34px;line-height:34px;background:url(http://2.zol-img.com.cn/zt/tm_56c/12b67a5325/f-12.jpg) no-repeat; font-size:18px;text-align:center;padding-left:78px;}
+        .yesterday{font:16px/42px "Microsoft Yahei"; color:#fff;padding-left:173px;text-align:center;}
+        .comment{border:1px solid #eff4f7;}
+
+        .wrap-bg{background-color:#eff4f7;padding:15px 0 25px;}
+        .wrap-bg .wrapper{margin-top:0;}
+
+        .photo1 table td{padding: 5px 0 10px 15px;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-7.jpg) no-repeat top center;}
+        .photo1 table td td{background:none;padding:0;}
+        .photo1 img{border:1px solid #ddd; background:#fff;padding:4px;}
+        .photo1-more{height:46px; font:18px/46px "Microsoft Yahei";color:#2183F5;margin:10px 0 0;}
+        .photo1-more a{display:block;color:#2183F5;background:#fff;line-height:46px;}
+
+        .video{float:left;width:545px;height:433px;padding:0 6px 0 17px;}
+        .video .hei18{color:#1E2432;line-height:42px;}
+        .video-list{float:left;width:626px; height:433px;}
+        .video-list img,.photo2 img,.about-con2 img{border:1px solid #ccc;padding:3px;}
+        .video-con{border:1px solid #ddd;padding:3px;}
+
+        .talk-box{height:374px;padding:33px 0 0;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-8.jpg) no-repeat;}
+        .talk-pic{float:left;width:464px; height:340px; display:inline;margin:0 24px 0 7px;}
+        .talk-pic img,.about-con1 img{border:1px solid #ccc;padding:4px;}
+        .talk-info{float:left;width:670px; height:340px;}
+        .talk-info img{border:1px solid #ccc;padding:2px;}
+        .talk-intro{height:137px;}
+
+        .about{float:left;width:581px;height:800px; padding:0 20px 0 5px;}
+        .about-more{float:left;width:581px;height:800px;}
+        .about .title,.about-more .title{width:300px;}
+        .about-con{width:549px;height:671px; padding:14px 16px 0;background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-9.jpg) no-repeat; margin:10px 0 0;}
+        .about-con1{height:450px;}
+
+        .more-list{float:left;width:347px;display:inline;margin:0 23px;}
+        .more-list-title{color:#1E2432;padding:0 0 2px;font:22px/44px "Microsoft Yahei";background:url(http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-10.jpg) no-repeat left top}
+        .more-list-con{padding:12px; 0 0;}
+        .more-list-con img{border:1px solid #ccc; background:#fff;padding:2px;}
+
+        .live-review{padding:20px 0 0;}
+        #live-review-word{float:left;width:392px; height:128px; font-size:14px;color:#aaa;line-height:30px;margin:4px 6px 0 0;}
+        #live-review-word .act{color:#5584CA;}
+        .l1{background:url(http://2.zol-img.com.cn/zt/tm_56c/0526e36909/f-11.jpg) no-repeat left 0;}
+        .l2{background:url(http://2.zol-img.com.cn/zt/tm_56c/0526e36909/f-11.jpg) no-repeat left 30px;}
+        .l3{background:url(http://2.zol-img.com.cn/zt/tm_56c/0526e36909/f-11.jpg) no-repeat left 60px;}
+        .l4{background:url(http://2.zol-img.com.cn/zt/tm_56c/0526e36909/f-11.jpg) no-repeat left 90px;}
+        #live-review-word td{text-indent:10px}
+        .live-review-pic{float:left;width:396px;height:130px;overflow:hidden;}
+        .live-review-pic img{border:1px solid #ddd;padding:4px;}
+
+        .bai16:hover,.bai20:hover{color:#fff}
+        .hei16{color:#333;line-height:45px;}
+        .lan18{color:#3498DB;line-height:50px;}
+
+        .ln{height:20px;line-height:20px;}
+        .hui126,.hei12bi{color:#444;}
+        .morearticle{padding-top:30px;}
+        .timelist{line-height:18px;}
+
+        .about-con1 td{vertical-align:top}
+
+        .fix-code{position:fixed; left:50%;margin-left:-730px; top:300px; width:120px;border:1px solid #ddd;background-color:#fff}
+        .fix-nav{position:fixed; left:50%;margin-left:600px; top:300px; width:120px;height:330px;padding:123px 0 0;text-align:center;background:url(http://2.zol-img.com.cn/zt/tm_56c/42ffd9a004/f-13.png) no-repeat top center;}
+        .fix-nav a{display:block; position:relative; height:32px; font:16px/32px "Microsoft Yahei";color:#2c2c2c;}
+        .fix-nav a:hover{background-color:#564DE9;text-decoration:none;color:#fff}
+        .fix-nav ul{width:104px;margin:0 auto;}
+        .fix-nav li{border-bottom:1px dotted #e5e5e5; padding:9px 0 10px;}
+    </style>
+    <script>
+        if (location.href.indexOf('8088')<0){
+            document.domain='zol.com.cn';
+        }
+
+    </script>
+    <link href="http://icon.zol-img.com.cn/group/css/zLoginDialog.css?1455886389297" rel="stylesheet"><link rel="stylesheet" type="text/css" href="chrome-extension://fidicgekecdkdmkjghdgadgdmcfodfid/themes/default/content.css"><link href="http://icon.zol-img.com.cn/group/css/zLoginDialog.css?1456029826259" rel="stylesheet"><link rel="stylesheet" type="text/css" href="chrome-extension://fidicgekecdkdmkjghdgadgdmcfodfid/themes/default/content.css"><link href="http://icon.zol-img.com.cn/group/css/zLoginDialog.css?1456035816098" rel="stylesheet"><script type="text/javascript">
+    if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+        window.location.href="http://m.zol.com.cn/mwc/";
+    }
+</script><link rel="stylesheet" type="text/css" href="chrome-extension://fidicgekecdkdmkjghdgadgdmcfodfid/themes/default/content.css"><link href="http://icon.zol-img.com.cn/group/css/zLoginDialog.css?1456199544269" rel="stylesheet"><link rel="stylesheet" type="text/css" href="chrome-extension://fidicgekecdkdmkjghdgadgdmcfodfid/themes/default/content.css"><link href="http://icon.zol-img.com.cn/group/css/zLoginDialog.css?1456418418030" rel="stylesheet"><style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+
+<body data-feedly-mini="yes">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="f-hl">&nbsp;</td>
+        <td width="1200">
+            <div class="wrapper wrapper0">
+                <img src="http://2.zol-img.com.cn/zt/tm_56c/a669365351/f-h1.jpg" width="1200" height="150"><img src="http://2.zol-img.com.cn/zt/tm_56c/a669365351/f-h2.jpg" width="1200" height="150"><img src="http://2.zol-img.com.cn/zt/tm_56c/a669365351/f-h3.jpg" width="1200" height="91">
+                <div class="nav1">
+                    <{data[0]}>
+                </div>
+                <div class="nav2">
+                    <{data[1]}>
+                </div>
+            </div>
+        </td>
+        <td class="f-hr">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="f-1l">&nbsp;</td>
+        <td width="1200" height="366" valign="top">
+
+            <div class="wrapper wrapper0 focus-bg clearfix">
+                <div class="focus">
+                    <div class="focus-box">
+                        <div class="focus-list" style="left: -1410px;"><{data[2]}></div>
+                    </div>
+                    <div class="focus-nav"><span class="">&nbsp;</span><span class="">&nbsp;</span><span class="">&nbsp;</span></div>
+                </div>
+                <div class="focus-today">
+                    <div class="focus-today-title"><strong>今日看点</strong></div>
+                    <div class="focus-today-title1"><{data[3]}></div>
+
+                    <div class="focus-today-con focus-today-line"><{data[4]}></div>
+                    <div class="focus-today-title1"><{data[5]}></div>
+                    <div class="focus-today-con"><{data[6]}></div>
+                </div>
+                <div class="focus-search">
+                    <div class="focus-search-title">超级寻宝日</div>
+                    <div class="focus-search-con"><{data[7]}></div>
+                    <div class="focus-search-btn"><{data[36]}></div>
+                </div>
+            </div>
+
+        </td>
+        <td class="f-1r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+<div class="wrapper clearfix banners" id="t1">
+
+    <div class="live">
+        <div class="live-title clearfix">
+            <img src="http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-3.jpg" width="236" height="95">
+            <div class="title"> <strong>发布会直击</strong>
+                <div class="title-line">
+                    <div class="title-line1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="live-tab"><{data[8]}></div>
+        <div class="live-con"><iframe class="zt_tb" align="center" src="http://dynamic.zol.com.cn/channel/broadcast_iframe_mwc.php?c=contentShell&d=5686068&style=%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6" frameborder="no" width="798" scrolling="yes" height="780"></iframe></div>
+        <div class="live-review clearfix">
+            <div class="l1" id="live-review-word"><{data[32]}></div>
+            <div class="live-review-pic"><{data[33]}></div>
+        </div>
+
+    </div>
+    <div class="live-comment">
+        <div class="today-guess">
+            <div class="today-guess-con"><{data[10]}></div>
+            <div class="yesterday"><{data[11]}></div>
+        </div>
+        <div class="comment" id="commentshow"><iframe width="348" scrolling="no" height="816" frameborder="0" src="http://comments.zol.com.cn/iframe_comment_live.php?pagesize=20&kindid=12&articleid=5686068&from=6" id="commentsIframe" name="commentsIframe"></iframe></div>
+    </div>
+
+</div><div class="wrapper banners" id="t2">
+    <div class="title"> <strong>新品速览</strong>
+        <div class="title-line">
+            <div class="title-line1"></div>
+        </div>
+    </div>
+</div><div class="wrap-bg banners">
+    <div class="wrapper">
+        <div class="photo1"><{data[14]}></div>
+        <div class="photo1-more"><{data[13]}></div>
+
+    </div>
+</div><div class="wrapper banners" id="t3">
+    <div class="title"> <strong>视频播报</strong>
+        <div class="title-line">
+            <div class="title-line1"></div>
+        </div>
+    </div>
+    <div class="video-box clearfix">
+        <div class="video"><div class="video-con"><{data[15]}></div><{data[34]}></div>
+        <div class="video-list"><{data[16]}></div>
+    </div>
+</div><div class="wrapper banners" id="t4">
+    <div class="title"> <strong>名人访谈录</strong>
+        <div class="title-line">
+            <div class="title-line1"></div>
+        </div>
+    </div>
+</div><div class="wrapper banners">
+    <div class="talk-box clearfix">
+        <div class="talk-pic"><{data[20]}></div>
+        <div class="talk-info">
+            <div class="talk-intro"><{data[21]}></div>
+            <{data[22]}>
+        </div>
+    </div>
+</div><div class="wrapper banners">
+    <div class="talk-box clearfix">
+        <div class="talk-pic"><{data[17]}></div>
+        <div class="talk-info">
+            <div class="talk-intro"><{data[18]}></div>
+            <{data[19]}>
+        </div>
+    </div>
+</div><div class="wrapper photo2 banners">
+    <{data[23]}>
+</div><div class="wrapper clearfix banners" id="t5">
+    <div class="about">
+        <div class="title"> <strong>发现巴塞罗那</strong>
+            <div class="title-line">
+                <div class="title-line1"></div>
+            </div>
+        </div>
+        <div class="about-con">
+            <div class="about-con1"><{data[24]}></div>
+            <div class="about-con2"><{data[25]}></div>
+        </div>
+    </div>
+
+    <div class="about-more">
+        <div class="title"> <strong>发现好奇新品</strong>
+            <div class="title-line">
+                <div class="title-line1"></div>
+            </div>
+        </div>
+
+        <div class="about-con">
+            <div class="about-con1"><{data[26]}></div>
+            <div class="about-con2"><{data[27]}></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="wrap-bg">
+    <div class="wrapper clearfix">
+        <div class="more-list">
+            <div class="more-list-title">合作伙伴</div>
+            <div class="more-list-con"><{data[28]}></div>
+        </div>
+        <div class="more-list">
+            <div class="more-list-title">更多文章</div>
+            <div class="more-list-con morearticle"><{data[29]}></div>
+        </div>
+        <div class="more-list">
+            <div class="more-list-title">MWC2016发布会安排</div>
+            <div class="more-list-con timelist"><{data[30]}></div>
+        </div>
+    </div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="f-footl">&nbsp;</td>
+        <td width="1200" height="222" align="center" valign="top" background="http://2.zol-img.com.cn/zt/tm_56c/03c26378a0/f-foot.jpg" class="foot"><br>
+            <br>
+            <{data[31]}></td>
+        <td class="f-footr">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+<div class="fix-code">
+    <{data[35]}>
+</div>
+
+<div class="fix-nav">
+    <ul>
+        <li><a href="#t1" target="_self">发布会直击</a></li>
+        <li><a href="#t2" target="_self">新品速览</a></li>
+        <li><a href="#t3" target="_self">视频播报</a></li>
+        <li><a href="#t4" target="_self">名人访谈录</a></li>
+        <li><a href="#t5" target="_self">发现巴塞罗那</a></li>
+        <li><a href="#t5" target="_self">发现好奇产品</a></li>
+    </ul>
+</div>
+
+
+<script>
+
+    slidecon($('.focus-box'),$('.focus-list'),'img','','',470,1,$('.focus-nav'),'span',3000,'act');
+
+    function slidecon(bigpic,bigpiccon,bigpictag,prev,next,w,num,simg,simgtag,time,currentclass){
+        var bigpiclist = bigpic.find(bigpictag);
+        var len = parseInt(bigpiclist.length/num);
+        var now = 0;
+        var timer = null;
+
+        function showcon(){
+            if(simg){
+                simglist.removeClass(currentclass)
+                simglist.eq(now).addClass(currentclass);
+            }
+            bigpiccon.stop().animate({left:-now*w+'px'},'slow')
+        }
+        function autoplay(){
+            clearInterval(timer)
+            timer = setInterval(function(){
+                now++;
+                now = now>len-1?0:now;
+                showcon()
+            },time)
+        }
+        autoplay();
+        bigpic.mouseover(function(){
+            clearInterval(timer);
+
+        })
+        bigpic.mouseout(function(){
+            autoplay();
+
+        })
+        if(simg){
+            var simglist = simg.find(simgtag);
+            simglist.eq(0).addClass(currentclass)
+            simglist.mouseover(function(){
+                now = simglist.index($(this));
+                showcon()
+            })
+
+            simg.mouseover(function(){clearInterval(timer)})
+            simg.mouseout(function(){autoplay();})
+        }
+
+        if(prev){
+            prev.click(function(){
+                now--;
+                now = now<0?len-1:now;
+                showcon();
+            })
+            next.click(function(){
+                now++;
+                now = now>len-1?0:now;
+                showcon()
+            })
+            prev.mouseover(function(){clearInterval(timer)})
+            next.mouseover(function(){clearInterval(timer)})
+            prev.mouseout(function(){autoplay();})
+            next.mouseout(function(){autoplay();})
+        }
+    }
+
+    $('.focus-search-btn').click(function(){
+        if(!zolid){
+            user_login();
+            return false;
+        }
+    })
+
+
+    $('.live-tab .bai14').eq(0).addClass('act');
+    var id0 = $('.live-tab .bai14').eq(0).attr('href');
+    if(id0){
+        $('.live-con').html('<iframe class="zt_tb" align="center" src="http://dynamic.zol.com.cn/channel/broadcast_iframe_mwc.php?c=contentShell&d='+id0+'&style=%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6" frameborder="no" width="798" scrolling="yes" height="780"></iframe>');
+
+        $('#commentshow').html('<iframe width="348" scrolling="no" height="816" frameborder="0" src="http://comments.zol.com.cn/iframe_comment_live.php?pagesize=20&kindid=12&articleid='+id0+'&from=6" id="commentsIframe" name="commentsIframe"></iframe>');
+    }
+    $('.live-tab .bai14').click(function(){
+        var id = $(this).attr('href');
+        if(id){
+            $('.live-tab .bai14').removeClass('act');
+            $(this).addClass('act');
+            $('.live-con').html('<iframe class="zt_tb" align="center" src="http://dynamic.zol.com.cn/channel/broadcast_iframe_mwc.php?c=contentShell&d='+id+'&style=%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6%B9%A4%C4%DA%C8%DD%A1%B1%C0%EF%C3%E6%CC%EE%D0%B4%A3%A1%D5%E2%B2%BF%B7%D6%C4%DA%C8%DD%C7%EB%D4%DA%A1%B0%CA%D6" frameborder="no" width="798" scrolling="yes" height="780"></iframe>');
+            $('#commentshow').html('<iframe width="348" scrolling="no" height="816" frameborder="0" src="http://comments.zol.com.cn/iframe_comment_live.php?pagesize=20&kindid=12&articleid='+id+'&from=6" id="commentsIframe" name="commentsIframe"></iframe>');
+        }
+        return false;
+    })
+
+    $('#live-review-word tr').mouseover(function(){
+        var index = $('#live-review-word tr').index($(this));
+        $('#live-review-word').get(0).className = 'l'+(index+1);
+        $('.live-review-pic tr').hide().eq(index).show();
+    })
+</script>
+
+
+<div id="feedly-mini" title="feedly Mini tookit"></div></body></html>

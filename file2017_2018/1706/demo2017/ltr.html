@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>我们i自己</title>
+    <!--默认不对检测到的电话邮件操作-->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no"/>
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<script type="text/javascript" src="js/full.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="css/1.css">
+    <script>
+        var phoneWidth = parseInt(window.screen.width);
+        var phoneScale = phoneWidth/640;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                // andriod 2.3以上
+                document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+            }else{
+                // andriod 2.3
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+            // 其他系统
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+
+        function parseUA() {
+            var u = navigator.userAgent;
+            var u2 = navigator.userAgent.toLowerCase();
+            return { //移动终端浏览器版本信息
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                iosv: u.substr(u.indexOf('iPhone OS') + 9, 3),
+                weixin: u2.match(/MicroMessenger/i) == "micromessenger",
+                ali: u.indexOf('AliApp') > -1
+            };
+        }
+        var ua = parseUA();
+        if (!ua.mobile) {
+            //location.href = './pc.html';
+        }
+    </script>
+</head>
+<body>
+<div class="main">
+    <div class="main" id="total">
+        <!--BACKGROUND-->
+        <img src="images/bg.jpg" class="bg">
+        <!--INDEX-->
+        <div id="index" class="main">
+            <!--<img src="images/index_total.png" class="index_total">-->
+            <!--INDEX_TEXT-->
+            <img src="images/line_text_bg.png" class="line_text_bg">
+            <!--<img src="images/line_text_bg.gif" class="line_text1">-->
+            <img id="line_text1" src="images/line_text1.png" class="line_text1">
+            <img id="line_text2" src="images/line_text2.png" class="line_text2">
+            <img id="line_text3" src="images/line_text3.png" class="line_text3">
+            <!--<img src="images/index_1.png" class="index_1">
+            <img src="images/index_2.png" class="index_2">
+            <img src="images/index_3.png" class="index_3">
+            <img src="images/index_4.png" class="index_4">
+            <img src="images/index_5.png" class="index_5">
+            <img src="images/index_6.png" class="index_6">
+            <img src="images/index_7.png" class="index_7">
+            <img src="images/index_8.png" class="index_8">
+            <img src="images/index_9.png" class="index_9">
+            <img src="images/index_10.png" class="index_10">
+            <img src="images/index_11.png" class="index_11">
+            <img src="images/index_12.png" class="index_12">
+            <img src="images/index_13.png" class="index_13">
+            <img src="images/index_14.png" class="index_14">-->
+        </div>
+        <div id="ts" class="main hide" style="z-index:999;">
+            <div class="main" style="background:#000;opacity:0.7;"></div>
+            <img src="images/360.png" class="ts360">
+        </div>
+        <div class="test"></div>
+    </div>
+</div>
+<!--MUSIC-->
+<audio id="music1" loop="loop" autoplay="autoplay" ><source src="music/1.mp3" type="audio/mpeg" /></audio>
+<audio id="music2" loop="loop" preload="load" ><source src="music/2.mp3" type="audio/mpeg" /></audio>
+<audio id="music3" loop="loop" preload="load" ><source src="music/3.mp3" type="audio/mpeg" /></audio>
+<audio id="music4" loop="loop" preload="load" ><source src="music/1.mp3" type="audio/mpeg" /></audio>
+<audio id="music5" loop="loop" preload="load" ><source src="music/4.mp3" type="audio/mpeg" /></audio>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+<script type="text/javascript" src="js/index.min.js"></script>
+<!--<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://wx.vivo.com.cn/api/js/weixin.js"></script>
+<script type="text/javascript" charset="utf-8">
+    wx.ready(function() {
+        var share_title   = '音乐还能这样玩？我给满分！', // 分享标题
+            share_desc    = 'i音乐，爱音乐！送你一个海量正版曲库！', // 分享描述
+            share_link    = 'http://act.vivo.com.cn/qqmusic/', // 分享链接
+            share_imgUrl  = 'http://act.vivo.com.cn/qqmusic/images/share.jpg', // 分享图标
+            share_type    = '', // 分享类型,music、video或link，不填默认为link
+            share_dataUrl = ''; // 如果type是music或video，则要提供数据链接，默认为空
+
+        wx.onMenuShareTimeline({
+            title: share_title, // 分享标题
+            link: share_link, // 分享链接
+            imgUrl: share_imgUrl, // 分享图标
+            success: function () {
+                //alert('SUCCESS');
+            },
+            cancel: function () {
+                //alert('CANCEL');
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: share_title, // 分享标题
+            desc: share_desc, // 分享描述
+            link: share_link, // 分享链接
+            imgUrl: share_imgUrl, // 分享图标
+            type: share_type, // 分享类型,music、video或link，不填默认为link
+            dataUrl: share_dataUrl, // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                //alert('SUCCESS');
+            },
+            cancel: function () {
+                //alert('CANCEL');
+            }
+        });
+
+        wx.onMenuShareQQ({
+            title: share_title, // 分享标题
+            desc: share_desc, // 分享描述
+            link: share_link, // 分享链接
+            imgUrl: share_imgUrl, // 分享图标
+            success: function () {
+                //alert('SUCCESS');
+            },
+            cancel: function () {
+                //alert('CANCEL');
+            }
+        });
+
+        $('#onMenuShareWeibo').on('click', function() {
+            wx.onMenuShareWeibo({
+                title: share_title, // 分享标题
+                desc: share_desc, // 分享描述
+                link: share_link, // 分享链接
+                imgUrl: share_imgUrl, // 分享图标
+                success: function () {
+                    //alert('SUCCESS');
+                },
+                cancel: function () {
+                    //alert('CANCEL');
+                }
+            });
+
+            wx.onMenuShareQZone({
+                title: share_title, // 分享标题
+                desc: share_desc, // 分享描述
+                link: share_link, // 分享链接
+                imgUrl: share_imgUrl, // 分享图标
+                success: function () {
+                    //alert('SUCCESS');
+                },
+                cancel: function () {
+                    //alert('CANCEL');
+                }
+            });
+
+            $('#getNetworkType').on('click', function() {
+                wx.getNetworkType({
+                    success: function (res) {
+                        var networkType = res.networkType; // 返回网络类型2g，3g，4g，wifi
+                        //alert(networkType);
+                    }
+                });
+            });
+        });
+
+        wx.error(function(res) {
+            alert(JSON.stringify(res));
+        });
+    });
+</script>-->
+</body>
+</html>

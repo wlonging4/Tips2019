@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>松下AWE</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #FDE651; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1000px;  overflow: hidden;  }
+        .wrapper1{  position: relative;  width: 1000px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .zol_foot{  height: 120px;  padding-top: 90px; background: #000 url("http://2.zol-img.com.cn/zt/tm_5a9/51b161214c/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #6a6a6a;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/lg_head_l.jpg") no-repeat right top;}
+        .head-r{background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/lg_head_r.jpg") no-repeat left  top;}
+        .head-c{height: 450px;background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/lg_head_c.jpg") no-repeat 0 0;}
+
+        .pre{height: 390px;}
+        .pre1 #focus1_689872{  overflow: visible!important;  }
+        .pre1 #focus1_689872 .focus1_nav{  width: 100%!important;  bottom: -30px!important;  text-align: center!important;  }
+        .pre1 #focus1_689872 i{  width: 50px!important;  height: 5px!important; text-indent: 9000px;  background: #cdcdcd!important;  }
+        .pre1 #focus1_689872 i.act{  background: #cc0000!important;  }
+
+        .pre1{width: 540px;height: 300px;position: absolute;left: 0;top: 40px;overflow-y: visible!important;}
+        .pre2{width: 440px;height: 190px;position: absolute;right: 0;top: 40px;}
+        .pre2 .hui12{padding-bottom: 10px;color: #666;display: block;font: 12px/20px 'simsun';}
+        .pre2 .hong12{color: #cd0000;}
+        .pre2 .hong20{display: block;color: #d94040;font: 22px/44px 'Hiragino Sans GB','microsoft yahei';color: #cd0000;}
+        .pre-line{width: 416px;height: 5px;position: absolute;right: 17px;top: 230px;background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/line.jpg") no-repeat 0 0;}
+        .pre3 .hui12bi{color: #666;display: block;font: 12px/24px 'simsun';}
+        .pre3 .hui12{color: #666;}
+        .pre3 .hui12:hover,.more2-c .hui12bi:hover{color: #d94040;}
+        .pre3{width: 440px;height: 100px;position: absolute;right: 0;top: 250px;}
+
+        .vd{height: 390px;}
+        .vd1{width: 500px;height: 350px;float: left;background: #000;}
+        .vd2{width: 500px;height: 350px;float: left;}
+        .vd2 .hei12{width: 240px;display: block;margin-bottom: 5px;text-align: left;text-indent: 30px;line-height: 31px;background: #fff url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/video_bar.png") no-repeat 0 0;}
+        .expBg,.showBg{background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/bg.jpg") repeat-y top center;}
+
+        .t-exp{width: 997px;height: 34px;margin: 50px auto  35px;background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/t_exp.png") no-repeat 0 0;}
+        .t-show{width: 997px;height: 34px;margin: 50px auto  35px;background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/t_show.png") no-repeat 0 0;}
+        .exp-mod{height: 185px;margin: 0 auto 20px;}
+        .show-mod{width: 920px;height: 370px;margin: -20px auto 40px;}
+        #carousel-left689880{bottom: 180px!important;}
+        #carousel-right689880{bottom: 180px!important;}
+
+        .more{height: 370px;}
+        .t-more1{width: 198px;height: 23px;position: absolute;left: 0;top: 30px;background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/t_more1.png") no-repeat 0 0;}
+        .t-more2{width: 198px;height: 23px;position: absolute;left: 540px;top: 30px;background: url("http://2.zol-img.com.cn/zt/tm_5a9/cc535826ae/t_more2.png") no-repeat 0 0;}
+        .more-line{position: absolute;left: 500px;height: 290px;width: 1px;background: #c7c7c7;top: 55px;}
+        .more1-c{width: 450px;height: 160px;top: 65px;left: 0;position: absolute;}
+        .more2-c{width: 450px;height: 110px;top: 240px;left: 0;position: absolute;}
+        .more2-c .hui12bi{color: #666;display: block;font: 12px/24px 'simsun';}
+        .more2-c .hui12{color: #666;}
+        .more2-c .hui12:hover,.more2-c .hui12bi:hover{color: #d94040;}
+        .more3-c{width: 460px;height: 250px;top: 85px;left: 540px;position: absolute;}
+        .more3-c .hui12{display: block;padding-top: 20px;padding-right: 5px;font: 12px/23px 'simsun';color: #666;}
+        .more3-c .hong12{color: #d94040;}
+
+        .more1-c table img,.exp-mod table img,.news-c3 table img,.vd2 table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .more1-c table img:hover,.exp-mod table img:hover,.news-c3 table img:hover,.vd2 table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .4s linear;  -moz-transition: all .4s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .4s linear;  }
+
+
+
+
+    </style>
+</head>
+<body>
+<!--head-->
+<table width="100%" class="head" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td class="" width="1000">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--pre1-->
+<div class="wrap1 preBg">
+    <div class="wrapper1 pre">
+        <div class="pre1"><{data[0]}></div>
+        <div class="pre-line"></div>
+        <div class="pre2"><{data[1]}></div>
+        <div class="pre3"><{data[2]}></div>
+    </div>
+</div>
+<!--vd-->
+<div class="wrap1 vdBg">
+    <div class="wrapper1 vd">
+        <div class="vd1"><{data[3]}></div>
+        <div class="vd2"><{data[4]}></div>
+    </div>
+</div>
+<!--exp-->
+<div class="wrap1 expBg">
+    <div class="wrapper1 exp">
+        <div class="t-exp"></div>
+        <div class="exp-mod"><{data[5]}></div>
+    </div>
+</div>
+<!--show-->
+<div class="wrap1 showBg">
+    <div class="wrapper1 show">
+        <div class="t-show"></div>
+        <div class="show-mod"><{data[6]}></div>
+    </div>
+</div>
+<!--more-->
+<div class="wrap1 moreBg">
+    <div class="wrapper1 more">
+        <div class="t-more1"></div>
+        <div class="t-more2"></div>
+        <div class="more-line"></div>
+        <div class="more1-c"><{data[7]}></div>
+        <div class="more2-c"><{data[8]}></div>
+        <div class="more3-c"><{data[9]}></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>ea3wTcl</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #6c6c6c; font-size: 14px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_5a6/81f9e3fe90/bg.jpg") no-repeat top center;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 90px;  padding-top: 140px; background: #ddd;   }
+        .zol_foot,.zol_foot a{  color: #838391;  }
+        .bar1{  width: 100%;  height: 10px;  background: #f2f2f2;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://img.ea3w.com/zt/tm_5a9/e1145cd907/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{   background: url("http://img.ea3w.com/zt/tm_5a9/e1145cd907/lg_head_r.jpg") no-repeat 0 0; }
+        .head-c{  width: 1200px;  height: 482px;  overflow: hidden;  position: relative; background: url("http://img.ea3w.com/zt/tm_5a9/e1145cd907/lg_head_c.jpg") no-repeat 0 0;  }
+
+        .pre{height: 575px;}
+        .pre1{position: absolute;left: 0;top: 40px;width: 640px;height: 440px;background: #000;}
+        .pre2{position: absolute;right: 0;top: 40px;width: 530px;height: 270px;}
+        .pre2 .lan20{display: block;width:100%;color: #00abe3;font: 26px/40px 'Hiragino Sans GB','microsoft yahei';}
+        .pre2 .hui12{    color: #6c6c6c;font: 14px/28px 'simHei';padding-bottom: 10px;text-indent: -28px!important;}
+        .pre2 .hong12{font-size: 14px;}
+        .pre3{position: absolute;right: 0;top: 330px;width: 540px;height: 150px;}
+
+        .com{height: 845px;}
+        .t-com{width: 391px;height: 57px;margin: 0 0 0 35px;background: url("http://img.ea3w.com/zt/tm_5a9/e1145cd907/t_hot.png") no-repeat 0 0;}
+        .com-line{height: 3px;width: 1200px;margin: 25px auto 0;background: #eee;}
+        .com-art{position: absolute;width: 530px;height: 130px;top: 100px;}
+        .com-art1{left: 30px;}
+        .com-art2{right: 30px;}
+        .com-art .lan20{display: block;width:100%;border-bottom:1px solid #6c6c6c;color: #00abe3;font: 24px/52px 'Hiragino Sans GB','microsoft yahei';}
+        .com-art .hui12{    color: #6c6c6c;font: 16px/28px 'simHei';padding-top: 10px;text-indent: -28px!important;}
+        .com-art .hong12{font-size: 16px;}
+        .com-pic{position: absolute;width: 530px;height: 160px;top: 250px;}
+        .com-pic1{left: 20px;}
+        .com-pic2{right: 20px;}
+        .com-box{height: 260px;width:1200px;top: 495px;left: 0;position: absolute;}
+        .com-box .bai14{display: block;width: 100%;height: 50px;background: #373636;font: 18px/50px 'simHei';}
+
+        .media{height: 640px;}
+        .t-media{width: 234px;height: 55px;margin: 0 0 0 35px;background: url("http://img.ea3w.com/zt/tm_5a9/e1145cd907/t_more.png") no-repeat 0 0;}
+        .media-rect{width: 1200px;height: 310px;top: 180px;left: 0;position: absolute;-webkit-box-sizing: border-box;box-sizing: border-box;border: 3px solid #eee;}
+        .media-pic{width: 570px;height: 400px;position: absolute;top: 135px;left: 30px;background: #000;}
+        .media-art{width: 560px;height: 280px;position: absolute;top: 195px;left: 620px;}
+        .media-art .lan20{display: block;color: #00abe3;font: 22px/45px 'Hiragino Sans GB','microsoft yahei';}
+        .media-art .hui12{    color: #6c6c6c;font: 16px/24px 'simHei';padding-bottom: 34px;padding-right: 10px;text-indent: -28px!important;}
+
+        .scene{height: 490px;}
+        .t-scene{width: 526px;height: 59px;margin: 0 0 0 35px;background: url("http://img.ea3w.com/zt/tm_5a9/e1145cd907/t_scene.png") no-repeat 0 0;}
+        .scene-mod{position: absolute;top: 135px;height: 300px;}
+        .scene-mod1{width: 415px;left: 0;}
+        .scene-mod2{width: 190px;left: 435px;}
+        .scene-mod2 .ln{height: 20px;}
+        .scene-mod3{width: 210px;left: 650px;}
+        .scene-mod4{width: 320px;right: 0;}
+
+        .ad{height: 170px;}
+        .ad-mod{background:#000;height: 105px;}
+        .foot{background:#0D0D13}
+
+        .scene-mod table img,.com-box table table,.com-pic table img,.pre3 table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .scene-mod table img:hover,.com-box table table:hover,.com-pic table img:hover,.pre3 table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .4s linear;  -moz-transition: all .4s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .4s linear;  }
+
+    </style>
+</head>
+<body>
+<!--head-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody>
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--pre-->
+<div class="wrap1 preBg">
+    <div class="wrapper1 pre">
+        <div class="pre1"><{data[0]}></div>
+        <div class="pre2"><{data[1]}></div>
+        <div class="pre3"><{data[2]}></div>
+    </div>
+</div>
+<!--com-->
+<div class="wrap1 comBg">
+    <div class="wrapper1 com">
+        <div class="t-com"></div>
+        <div class="com-line"></div>
+        <div class="com-art com-art1"><{data[3]}></div>
+        <div class="com-art com-art2"><{data[4]}></div>
+        <div class="com-pic com-pic1"><{data[5]}></div>
+        <div class="com-pic com-pic2"><{data[6]}></div>
+        <div class="com-box"><{data[7]}></div>
+    </div>
+</div>
+<!--media-->
+<div class="wrap1 mediaBg">
+    <div class="wrapper1 media">
+        <div class="t-media"></div>
+        <div class="com-line"></div>
+        <div class="media-rect"></div>
+        <div class="media-pic"><{data[8]}></div>
+        <div class="media-art"><{data[9]}></div>
+    </div>
+</div>
+<!--scene-->
+<div class="wrap1 sceneBg">
+    <div class="wrapper1 scene">
+        <div class="t-scene"></div>
+        <div class="com-line"></div>
+        <div class="scene-mod scene-mod1"><{data[10]}></div>
+        <div class="scene-mod scene-mod2"><{data[11]}></div>
+        <div class="scene-mod scene-mod3"><{data[12]}></div>
+        <div class="scene-mod scene-mod4"><{data[13]}></div>
+    </div>
+</div>
+<!--ad-->
+<div class="wrap1 adBg">
+    <div class="wrapper1 ad">
+        <div class="ad-mod">
+            <{data[14]}>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="foot">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1200" height="162" align="center" valign="middle" ><{data[15]}></td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+</body>
+</html>

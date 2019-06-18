@@ -1,0 +1,1 @@
+wx.config({"appId": "wx1860a110b3f0e559", "debug": false, "jsApiList": ["onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareWeibo"], "nonceStr": "WhI1Ly8xOOZpjVnV", "signature": "a12bb3570205a7784b032ceee0a5af6d730cdcdf", "timestamp": "1498534092"});

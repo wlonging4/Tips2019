@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>后台系统</title>
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/cms_admin/css/structured/background.css">
+    <style type="text/css">
+        .form-control{display:inline;width:85%;}
+        h3{  margin-left: 40px;  }
+        .tempTestArt{  width: 60px;  text-align: center!important; margin-left: -44px; }
+        .col-xs-3 input{  text-align: center; width: 80%;  }
+
+    </style>
+    <script>
+        var structuredId="0";
+    </script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="page-header">
+        <h1>结构化评测文章</h1>
+    </div>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation">
+            <a href="./indexList.php">列表页</a>
+        </li>
+        <li role="presentation">
+            <a href="./productMaintain.php">产品维护数据</a>
+        </li>
+        <li role="presentation" class="active">
+            <a href="./fixedData.php">固定数据</a>
+        </li>
+
+
+    </ul>
+    <div id="main-tab-content">
+        <form id="evaForm" class="form-horizontal" role="form" action="index.html" method="post">
+            <div class="form-group row">
+                <div class="col-xs-1">
+                </div>
+                <div class="col-xs-10">
+                    <div class="" id="pro_select_div"></div>
+                </div>
+            </div>
+            <hr>
+
+            <h2>手机性能</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">评测方法</label>
+                <div class="col-xs-10">
+                    <textarea name="testSummary" class="form-control" rows="3" placeholder="编辑评测方法" title="评测方法"></textarea>
+                </div>
+                <label class="control-label col-xs-2">链接</label>
+                <div class="col-xs-10">
+                    <input name="testSummaryLink" class="form-control" rows="1" placeholder="编辑评测方法" title="评测方法">
+                </div>
+            </div>
+
+            <h2>散热效果</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">评测方法</label>
+                <div class="col-xs-10">
+                    <textarea name="release" class="form-control" rows="3" placeholder="编辑评测方法" title="评测方法"></textarea>
+                </div>
+                <label class="control-label col-xs-2">链接</label>
+                <div class="col-xs-10">
+                    <input name="releaseLink" class="form-control" rows="1" placeholder="编辑评测方法" title="评测方法">
+                </div>
+            </div>
+
+            <h2>屏幕效果</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">评测方法</label>
+                <div class="col-xs-10">
+                    <textarea name="screen" class="form-control" rows="3" placeholder="编辑评测方法" title="评测方法"></textarea>
+                </div>
+                <label class="control-label col-xs-2">链接</label>
+                <div class="col-xs-10">
+                    <input name="screenLink" class="form-control" rows="1" placeholder="编辑评测方法" title="评测方法">
+                </div>
+            </div>
+
+            <h2>外观设计</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">评测方法</label>
+                <div class="col-xs-10">
+                    <textarea name="outface" class="form-control" rows="3" placeholder="编辑评测方法" title="评测方法"></textarea>
+                </div>
+                <label class="control-label col-xs-2">链接</label>
+                <div class="col-xs-10">
+                    <input name="outfaceLink" class="form-control" rows="1" placeholder="编辑评测方法" title="评测方法">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="control-label col-xs-2"></label>
+                <div class="col-xs-10">
+                    <input type="submit" class="btn btn-primary btn-lg" value="提交">
+                    <!--<input type="button" class="btn btn-primary btn-lg" id="save-data" value="保存">
+                    <input type="button" class="btn btn-lg" id="remove-data" value="清除缓存">-->
+                </div>
+            </div>
+        </form>
+        <hr>
+    </div>
+</div>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/public/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/cms_admin/js/proSelect.js"></script>
+<script type="text/javascript">proSelect.config.initParam = [,,,];proSelect.initContent('pro_select_div');</script>
+<script src="http://h5x.zol.com.cn/H5-v4.0/js/sea.js"></script>
+<script>
+    seajs.config({
+        base: "http://h5x.zol.com.cn/H5-v4.0/js/",
+        alias: {
+            "jquery": "jquery/jquery/1.10.1/jquery.js"
+        }
+    });
+    var t = new Date();
+    seajs.use('http://icon.zol-img.com.cn/admin/js/m/pingcejiiegouhua/index.js?v=1508390815');
+</script>
+</body>
+</html>

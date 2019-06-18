@@ -1,0 +1,655 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#747474;  font:12px/22px "SimSun",Arial; background: #fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3,h4{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#747474; text-decoration:none}
+        a:hover,td a:hover{color:#c00; text-decoration:underline}
+        .hong12{color:#C12826; }
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        /* 背景 */
+        .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l01.jpg) no-repeat 100% 0;}
+        .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r01.jpg) no-repeat 0 0;}
+
+        .bg2-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l02.jpg) no-repeat 100% 0;}
+        .bg2-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r02.jpg) no-repeat 0 0;}
+        .bg2-c{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_c02.jpg) no-repeat 0 0; height: 191px;}
+
+        .bg3-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l03.jpg) no-repeat 100% 0;}
+        .bg3-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r03.jpg) no-repeat 0 0;}
+
+
+        .bg4-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l04.jpg) no-repeat 100% 0;}
+        .bg4-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r04.jpg) no-repeat 0 0;}
+
+        .bg5-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l05.jpg) no-repeat 100% 0;}
+        .bg5-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r05.jpg) no-repeat 0 0;}
+
+        .bg6-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l06.jpg) no-repeat 100% 0;}
+        .bg6-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r06.jpg) no-repeat 0 0;}
+
+        .bg7-l{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_l07.jpg) no-repeat 100% 0;}
+        .bg7-r{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_r07.jpg) no-repeat 0 0;}
+        .bg7-c{background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_c07.jpg) no-repeat 0 100%;}
+
+        /* 内容 */
+        .wrapper{width:1200px;  position: relative; margin:0 auto;}
+        .zol_foot{padding:26px 0 0; height: 80px; text-align: center; color: #fff; font-size: 12px;  width: 1200px; margin:0 auto; background: #EE0E0E;}
+        .zol_foot a:link,.zol_foot a:visited{color: #fff;}
+
+        .section2 {height: 191px;}
+        .section2 .form-box{width: 556px; height: 45px; position: absolute; left: 622px; bottom: 43px;}
+        .section2  label{float: left;  font:20px/45px "simHei"; color: #FFF;}
+        .section2 .orderid{float: left; width: 287px; height: 43px; text-indent: 10px; font:16px/43px "simHei"; color: #000; margin-left: 10px;}
+        .section2 .orderbtn{float: left; width: 144px; height: 44px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/order1.png) no-repeat; cursor: pointer; margin-left: 25px;}
+
+        .section3{height: 540px;}
+        .section3 .hd{width: 1200px; height: 100px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd1.jpg)no-repeat;}
+        .rank-box{width: 1150px; height: 540px; margin:0 auto; overflow: hidden;}
+        .rank-box .rank-list{float: left; width: 384px;height: 540px; margin-right: -1px;}
+        .rank-list .tit,.list-tit{width: 376px; height: 33px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/arrow.jpg) no-repeat 22px 50% #EE0E0E; font:18px/33px "simHei"; color: #fff; text-indent: 40px; margin-left: 5px;}
+        .list-con{margin-top: 8px; border-right: 1px solid #aaa;  width: 384px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/icon.jpg) no-repeat 8px 12px; overflow: hidden; min-height: 120px;}
+        .list-con .hui14{color: #333; height: 37px; font:14px/42px "simHei"; display: block; position: relative;  padding:0 90px 0 32px;overflow: hidden;}
+        .list-con .hui14 .price,.list-con .hui14 .arrow,.list-con .hui14 .line{font-size: 18px; color: #ED0D0D; line-height: 42px; position: absolute; right: 15px; top: 0;}
+        .list-con .hui14 .arrow{background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/arrow2.png) no-repeat 0 50%; padding-left: 18px;}
+        .list-con .hui14 .line{background: url(http://2.zol-img.com.cn/zt/tm_59f/304195a3f6/line.jpg) no-repeat 0 50%; padding-left: 18px;}
+        .list-con .hui14 .tag{position: absolute; right: 0; top: 0;}
+        .list-con .hui14 i{display: inline-block; padding:0 3px; height: 20px; font-size: 14px; color: #fff; line-height: 20px; border-radius: 2px ;margin:0 2px; font-style:normal}
+
+        .section4{height: 532px;}
+        .section4 .hd{height: 92px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd2.jpg) no-repeat;}
+
+        .section5{height: 533px;}
+        .section5 .hd{height: 90px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd3.jpg) no-repeat;}
+
+        .section6{height: 530px;}
+        .section6 .hd{height: 97px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd4.jpg) no-repeat;}
+
+        .section7{height: 679px;}
+        .section7 .hd{height: 105px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd5.jpg) no-repeat;}
+
+
+        .section8{height: 944px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_c08.jpg) no-repeat;}
+
+        .section9{overflow: hidden; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/m_c09.jpg) no-repeat 0 100%; padding-bottom: 178px;}
+        .section9 .hd{height: 98px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd6.jpg) no-repeat 50% 50%;}
+        .section9 .pro-box{overflow: hidden; min-height: 100px;}
+        .section9 .pro-box .ln{height: 14px; line-height: 14px;}
+        .section9 .pro-box .hui12{color: #666; line-height: 24px; padding:0 15px;}
+        .section9 .pro-box .hei18{color: #000; font:18px/30px "simHei"; padding:0 15px;}
+        .section9 .pro-box  table img{margin:15px;}
+        .section9 .pro-box table table{border: 1px solid #DDDDDD; box-shadow: 2px 2px 2px #000;}
+
+        .section8 .form-box{position: absolute; top: 564px; left: 106px; width:370px;}
+        .section8  label{display: inline-block;  font:20px/45px "simHei"; color: #000;}
+        .section8 .orderid{display: inline-block;width: 287px; height: 43px; text-indent: 10px; font:16px/43px "simHei"; color: #000; margin-left: 10px;}
+        .section8 .orderbtn{display: block; width: 144px; height: 44px; background: url(http://2.zol-img.com.cn/zt/tm_59f/6fdf47cf3a/sub.png) no-repeat; cursor: pointer; margin:20px auto 0;}
+
+
+        .turntable-box{position: absolute; left: 526px; top: 472px; width: 269px ; height: 269px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/game.png) no-repeat;}
+        .lottery-star{position: absolute;  width: 107px; height: 105px; top: 82px; left: 78px;}
+        .lottery-star #lotteryBtn{ position: absolute; }
+        .rotate-btn{position: absolute; top: 26px; left: 27px; cursor: pointer;  width: 54px; height: 53px;}
+        .rotate-btn #startLottery{position: absolute; left: 0;top: 0;}
+
+        .rule-box{position: absolute; width: 504px; height: 144px; left: 36px; bottom: 28px;}
+
+
+        .section9 .pic-box li{width: 352px; height: 286px; float: left; border: 1px solid #DDDDDD; box-shadow: 2px 2px 15px #ddd; padding:15px; margin:0 14px 14px 0 ;}
+        .section9 .pic-box li a:hover{text-decoration: none;}
+        .section9 .pic-box p{color: #666; line-height: 24px; font-size: 12px;  height:48px; word-break:break-all;word-wrap: break-word;overflow:hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+        .section9 .pic-box h4{color: #000; font:18px/30px "simHei"; margin-top: 10px; height:30px; overflow:hidden;}
+        .qr-box{width: 103px; height: 150px; position: absolute; right: 425px; bottom: 32px;}
+        .tips{width: 250px; height: 78px; position: absolute; right: 159px; bottom: 20px;}
+        .headergif{position: absolute; left: 402px; top: 2px;}
+        .hdmask{width: 1106px; height: 151px; position: absolute; left: 48px; top: 186px; background: url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/hd.png) no-repeat;}
+        .stone{position: absolute; left: 365px; top: 20px; }
+
+        .win-list{position: absolute; width: 284px; left: 837px; top: 478px;}
+        .win-list .list-tit{width: 284px;  background-color: #C21E1D; margin-left: 0;}
+        .win-list-con{overflow: auto; height: 223px;}
+        .win-list-con .winlist{border-collapse:collapse;}
+        .win-list-con td,.win-list-con th{text-align: center; line-height: 36px; height: 36px;font-size: 14px; color: #555; border: 1px solid #ccc; background: #fff;}
+
+        .win-box .tit{background-color: #C21E1D; width: 290px; height: 33px; text-indent: 18px; font:24px/33px "simHei"; color: #fff;}
+        .fail-box {position: absolute; width: 296px; height: 77px;left: 516px; top: 567px; background:url(http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/fail.png) no-repeat; display: none;}
+        .section8 .close{position: absolute; right: 0; top: 0; width: 34px; height: 34px; cursor: pointer;}
+
+        .win-box{position: absolute; left: 516px; top: 507px;  background-color: #fff; display: none;}
+        .info-form{padding-top: 10px; width: 288px;height: 160px; border: 1px solid #bbb;}
+        .info-form li{height: 32px; line-height: 32px; margin-bottom: 8px;}
+        .info-form  label{font:14px/32px "simHei"; color: #333; float: left; height: 32px; margin:0 5px 0 10px; }
+        .info-form  input{float: left; width: 216px; height: 32px; background: #fff; border: 1px solid #ddd; line-height: 32px; font-size: 14px; color: #222; text-indent: 12px; }
+        .info-form  .sub-btn{width: 100px;height: 30px; background: #CA161F; border-radius: 3px; text-align: center; font:14px/30px "simHei"; color: #fff ; cursor: pointer; margin:10px auto;  *margin:0 auto;  display: block; float: none; text-indent: 0; overflow:hidden;}
+
+        .list-con .hui14 .red{background: #ED0D0D}
+        .list-con .hui14 .black{background: #000}
+        .list-con .hui14 .gray{background: #333}
+
+        .rule-box .hei20{font:22px/30px "simHei"; color: #000; line-height: 54px;}
+        .rule-box .hei16{font:16px/30px "simHei"; color: #000; }
+
+        .qr-box .hei20{font:22px/50px "simHei"; color: #000;}
+        .tips p{text-align: center;  font:14px/22px "simHei"; color: #000; }
+        .tips2{font-size: 18px;}
+    </style>
+    <script src="http://active.zol.com.cn/11active/0309login/user_login.js"></script>
+
+
+</head>
+<body>
+<!--[if IE 6]>
+<script src=" http://active.zol.com.cn/frontend/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+    DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg1-c">
+            <div class="wrapper">
+                <img src="http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/head.jpg" height="468" width="1200">
+                <img src="http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/header.gif" class="headergif">
+                <div class="hdmask"></div>
+                <img src="http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/stone.png"  class="stone">
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg2-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg2-c">
+            <div class="wrapper section2">
+                <div class="form-box">
+                    <label for="订单号">订单号</label>
+                    <input type="text" placeholder="填写订单号" class="orderid" maxlength="17">
+                    <input type="button" class="orderbtn">
+                </div>
+            </div>
+        </td>
+        <td class="bg2-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg3-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg3-c">
+            <div class="wrapper section3">
+                <div class="hd"></div>
+                <div class="rank-box clearfix">
+                    <div class="rank-list">
+                        <div class="tit">沸点榜</div>
+                        <div class="list-con"><{data[0]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">降价榜</div>
+                        <div class="list-con"><{data[1]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">促销榜</div>
+                        <div class="list-con"><{data[2]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg3-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg4-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg4-c">
+            <div class="wrapper section4 ">
+                <div class="hd"></div>
+                <div class="rank-box clearfix">
+                    <div class="rank-list">
+                        <div class="tit">沸点榜</div>
+                        <div class="list-con"><{data[3]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">降价榜</div>
+                        <div class="list-con"><{data[4]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">促销榜</div>
+                        <div class="list-con"><{data[5]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg4-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg5-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg5-c">
+            <div class="wrapper section5">
+                <div class="hd"></div>
+                <div class="rank-box clearfix">
+                    <div class="rank-list">
+                        <div class="tit">沸点榜</div>
+                        <div class="list-con"><{data[6]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">降价榜</div>
+                        <div class="list-con"><{data[7]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">促销榜</div>
+                        <div class="list-con"><{data[8]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg5-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg6-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg6-c">
+            <div class="wrapper section6">
+                <div class="hd"></div>
+                <div class="rank-box clearfix">
+                    <div class="rank-list">
+                        <div class="tit">沸点榜</div>
+                        <div class="list-con"><{data[9]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">降价榜</div>
+                        <div class="list-con"><{data[10]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">促销榜</div>
+                        <div class="list-con"><{data[11]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg6-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg7-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg7-c">
+            <div class="wrapper section7">
+                <div class="hd"></div>
+                <div class="rank-box clearfix">
+                    <div class="rank-list">
+                        <div class="tit">沸点榜</div>
+                        <div class="list-con"><{data[12]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">降价榜</div>
+                        <div class="list-con"><{data[13]}></div>
+                    </div>
+                    <div class="rank-list">
+                        <div class="tit">促销榜</div>
+                        <div class="list-con"><{data[14]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg7-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners" id="mod1">
+    <tbody><tr>
+        <td class="bg8-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg8-c">
+            <div class="wrapper section8">
+                <div class="form-box">
+                    <label for="订单号">订单号</label>
+                    <input type="text" placeholder="填写订单号" class="orderid" maxlength="17">
+                    <input type="button" class="orderbtn">
+                </div>
+                <div class="turntable-box">
+                    <div class="lottery-star">
+                        <img src="http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/dot.png" id="lotteryBtn">
+                        <div class="rotate-btn"><img src="http://2.zol-img.com.cn/zt/tm_59f/2ff36d8bd6/start.png" width="54" height="53" id="startLottery"></div>
+                    </div>
+                </div>
+                <div class="rule-box"><{data[15]}></div>
+                <div class="qr-box"><{data[16]}></div>
+                <div class="tips">
+                    <p class="tips1">加入11.11电子产品预购<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=0ab30b0ae05f4520fc13fa41eb51554de7dd34cd9d9e34447c6867f128dcd133">624221824</a>QQ群</p>
+                    <p class="tips2">每买一款产品即可100%</p>
+                    <p class="tips3">获得ZOL独享现金返现 最低100元起 </p>
+                </div>
+
+                <div class="win-list">
+                    <div class="list-tit">获奖名单</div>
+                    <div class="win-list-con">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="winlist">
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="win-box">
+                    <div class="tit">恭喜你中奖啦</div>
+                    <ul class="info-form">
+                        <li><label>姓名：</label><input type="text" class="name"></li>
+                        <li><label>手机：</label><input type="text" class="phone" maxlength="11"></li>
+                        <li><label>地址：</label><input type="text" class="address"></li>
+                        <li><input type="button" class="sub-btn" value="提交"></li>
+                    </ul>
+
+
+                </div>
+                <div class="fail-box"><span class="close"></span></div>
+
+            </div>
+        </td>
+        <td class="bg8-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg9-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg9-c">
+            <div class="wrapper section9">
+                <div class="hd"></div>
+                <ul class="pic-box clearfix">
+
+                </ul>
+            </div>
+        </td>
+        <td class="bg9-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="http://active.zol.com.cn/14active/141029Proscenic/j.easing.min.js"></script>
+<script src="http://active.zol.com.cn/14active/141029Proscenic/jRotate.2.2.js"></script>
+
+<script>
+
+    var zolid = readCookie('zol_userid');
+    var dataurl = "http://weixj.comment.test.zol.com.cn/index.php?callback=?&c=Api_NewLottery2&huodong_str=50925313d87d5faca188f4dd4a0d698d"
+
+
+    //抽奖
+    var timeOut = function(){  //超时函数
+        $("#lotteryBtn").rotate({
+            angle:0,
+            duration: 10000,
+            animateTo: 2160,
+            callback:function(){
+                alert('网络超时')
+            }
+        });
+    };
+    var cur=true;
+    var rotateFunc = function(awards,angle){  //awards（1代表中奖，0未中奖），angle(旋转角度)
+        if(cur){
+            cur=false;
+            $('#lotteryBtn').stopRotate();
+            $("#lotteryBtn").rotate({
+                angle:0,
+                duration: 5000,
+                animateTo: angle+1440,
+                callback:function(){
+                    if(awards){//中奖后处理
+                        $(".win-box").show();
+                        rankList();
+                    }else{ //未中奖处理
+                        $(".fail-box").show();
+                    }
+                    cur=true;
+                    sign=true;
+                }
+
+            });
+
+        }
+    };
+
+    var sign=true;
+    //点击抽奖按钮
+    $("#startLottery").rotate({
+        bind:
+            {
+                click: function(){
+                    if(!zolid){
+                        user_login();
+                        return false;
+                    }else{
+                        if(sign == true){
+                            sign=false;
+                            LuckyDraw();
+                        }
+                    }
+                }
+            }
+
+    });
+
+
+    //转盘抽奖函数
+    function LuckyDraw(){
+        var win=[45,225];  //中奖
+        win = win[Math.floor(Math.random()*win.length)];
+        var angle =[135,315] ; //未中奖
+        angle = angle[Math.floor(Math.random()*angle.length)];
+        $.ajax({
+            type:'get',
+            url: dataurl,
+            data:{a:'roll'},
+            dataType: 'jsonp',
+            success: function (data) {
+                if(data){
+                    var code = parseInt(data.status_code);
+
+                    if(code === 10010){//中奖
+                        var  level = parseInt(data.data.lv);
+                        angle = win
+                        awards = 1;
+
+                        rotateFunc(awards,angle)
+                    }else if(code === 10009){//未中奖
+                        angle = angle;
+                        awards = 0;
+                        rotateFunc(awards,angle)
+                    }else if(code === 40023){
+                        alert("您的抽奖机会已用完~~")
+                        sign=true;
+                    }else{
+                        alert(data.msg)
+                        sign=true;
+                    }
+
+
+                }
+            }
+        });
+
+    }
+
+    //填写中奖信息
+    $('.sub-btn').on('click',function(){
+        nameVal = $('.name').val();
+        phoneVal = $('.phone').val();
+        addressVal  = $('.address').val();
+        if (!nameVal) {
+            alert('请正确填写您的姓名');
+            return;
+        }
+        if (!phoneVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(phoneVal))) {
+            // 请正确填写您的手机号码
+            alert('请正确填写您的手机号码');
+            return;
+        }
+        if (!addressVal) {
+            alert('请正确填写您的地址');
+            return;
+        }
+        $('.sub-btn').attr('disabled',true);
+        getToken(function(){
+            $.ajax({
+                url: dataurl,
+                data:{a:'RecordPersonInfo',token:window.verifyTk,signName:nameVal,signTele:phoneVal,address:addressVal},
+                type:"get",
+                dataType:"jsonp",
+                success:function(result){
+                    if(parseInt(result.status_code) === 10005){//提交成功
+                        $('.win-box').hide();
+                        alert("信息提交成功~~")
+                    }else{
+                        alert(result.msg);
+                        $('.sub-btn').attr('disabled',false);
+                    }
+                },
+                error: function () {
+                    alert('提交失败,请稍后重试');
+                    $('.sub-btn').attr('disabled',false);
+                }
+            });
+        });
+    })
+
+    // 获取token
+    function getToken(fn){
+        $.ajax({
+            url: dataurl,
+            data:{a:'UserInfo'},
+            type:"get",
+            dataType:"jsonp",
+            async:true,
+            success:function(request){
+                if(parseInt(request.status_code) === 10010){
+                    window.verifyTk = request.data.token;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+
+            }
+        });
+    }
+
+    rankList();
+    function rankList(){
+
+        $.ajax({
+            type:'get',
+            url: dataurl,
+            data:{a:'WinList'},
+            dataType: 'jsonp',
+            success: function (data) {
+                if(parseInt(data.status_code) === 10010){
+                    var str = '',
+                        obj = data.data;
+                    str+= ' <tr><th width="40%">网友</th><th width="60%">奖品</th></tr>';
+                    for(var i=0; i<obj.length; i++){
+                        str +='<tr><td width="40%">'+obj[i].userid+'</td><td width="60%">'+obj[i].desc+'</td></tr>';
+                    }
+
+                    $('.winlist').html(str);
+                }else if(parseInt(data.status_code) === 40012){
+                    $('.winlist').html('<tr><th width="50%" class="user">用户名</th><th width="50%">奖品</th></tr><tr><td colspan="2"><p>还没有人中奖哦，赶紧去参加活动吧~~</p><td></tr>');
+                }
+
+                $(".rank-box").show();
+            }
+        });
+
+    }
+
+    //提交订单号
+
+    $('.orderbtn').on('click',function(){
+
+        if(!zolid){
+            user_login();
+            return false;
+        }
+
+        var _this = $(this);
+        orderVal = _this.parent().find(".orderid").val();
+        if (!orderVal || !(/^\d{17}$/.test(orderVal))) {
+            alert('请正确填写您的单号');
+            return;
+        }
+
+        _this.attr('disabled',true);
+
+        $.ajax({
+            url: dataurl,
+            data:{a:'ExpChance',express:orderVal},
+            type:"get",
+            dataType:"jsonp",
+            success:function(result){
+                if(parseInt(result.status_code) === 10010){//提交成功
+                    alert("单号提交成功~~");
+                    _this.attr('disabled',false);
+                    if(_this.closest(".section2").length){
+                        location.href = window.location+'#mod1'
+                    }
+                }else{
+                    alert(result.msg);
+                    _this.attr('disabled',false);
+                }
+            },
+            error: function () {
+                alert('提交失败,请稍后重试');
+                _this.attr('disabled',false);
+            }
+        });
+
+    })
+
+    //移动
+    $(document).mousemove(function(e){
+        $('.stone').css({'margin-left':(e.pageX*0.01),'top':(e.pageY*0.02)});
+    });
+
+    $(".fail-box .close").click(function(){
+        $(".fail-box").hide();
+    });
+
+    $.ajax({
+        url:'/router.php?c=Preferred_Ajax&a=ActiveAjax',
+        dataType:'json',
+        success:function(data){
+            if(data){
+                var str = "";
+                $.each(data, function(i,item){
+                    str+='<li><a href="#"><img src='+item.daotupc+' width="350" height="198"><h4 class="tit">'+item.title+'</h4><p>'+item.content+'</p></a></li>'
+                });
+                $('.section9 .pic-box').html(str)
+            }
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

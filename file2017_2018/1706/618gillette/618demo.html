@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>title</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;-webkit-appearance:none; }
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        input:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+        input::-webkit-input-placeholder { color: #999; }
+        input:focus::-moz-placeholder { color: rgba(0,0,0,0); }
+        input::-moz-placeholder { color: #999; }
+        input:focus:-ms-input-placeholder { color: rgba(0,0,0,0); }
+        input:-ms-input-placeholder { color: #999; }
+
+        /* 首页 */
+        body {width:640px; margin:0 auto; position: relative;}
+
+        .section{width:100%; height:100%; position:absolute; overflow:hidden;}
+        .home{background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/bg1.jpg) no-repeat 50% 0; -webkit-background-size: cover; background-size: cover;}
+        .section .logo{position: absolute;left: 0; top: 24px; width: 67px; height: 200px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/logo.jpg) no-repeat;}
+        .button-box{position: absolute; left: 0; bottom: 10%; width: 100%; height: 62px; text-align: center;}
+        .button-box span{display: inline-block; vertical-align: top; margin:0 10px; width: 270px; height: 62px; text-align: center; line-height: 62px; background-color: #DB2001; font-size: 38px; color: #fff;}
+        .button-box span i{font-family: arial}
+        /* rule-page */
+        .rule-page{background:rgba(0,0,0,0.8); display: none;}
+        .close{position: absolute; width: 32px; height: 32px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/close.png) no-repeat; right: 10px; top: 10px; margin:10px;}
+        .rule-con{position: absolute; width: 586px; left: 50%; margin-left: -293px; top: 50%; -webkit-transform:translate(0, -58%); transform:translate(0 ,-58%); background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/card.png) no-repeat 296px 0;  color: #fff; padding-top: 40px;}
+        .rule-con p{font-size: 24px; line-height: 30px; padding:10px 0;}
+        .rule-con .tips{line-height: 40px}
+        .rule-con .tips span{color: #FFD24C;}
+        .rule-con .tips strong{font-size: 50px; color: #FFD24C;}
+        .rule-con .tit{display: block; width: 260px; height: 40px; margin: 10px 0; background:#FFD24D; text-indent: 18px; font-size: 28px; color: #000; line-height: 40px;}
+        /* game-page */
+        .game-page,.info-sub{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/bg2.jpg) no-repeat 50% 0; -webkit-background-size: cover; background-size: cover; display: none;}
+        .game-page .steps,.game-page .time,.info-form .total-time{position: absolute; top: 24px; width: 180px; height: 80px; line-height: 80px; background: #fff; border: 6px solid #7DC4E2; -webkit-border-radius: 10px; border-radius: 10px;  text-align: center;}
+        .game-page .time{right: 26px; font-size: 34px; color: #FF6700; overflow: hidden;}
+        .game-page .steps{left: 84px; font-size: 40px; color: #26C59D;}
+        .game-page .steps span{ color: #FF6800; margin:0 10px; }
+        .game-page .time span {color: #FF6600; font-size: 40px;}
+        .gamebg{position: absolute; left: 50%; margin-left: -302px; top: 32%; width: 603px; height: 444px; background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/gamebg.png) no-repeat;}
+        canvas,.layer{position: absolute; left: 37px; top: 34px;}
+        .layer{width: 530px; height: 370px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/arrow.png) no-repeat 50% 50% rgba(0,0,0,0.5); z-index:2;}
+        .layer .hand{ width:72px; height:66px; position: absolute; left:340px; top:255px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/hand.png) no-repeat;transform: scale(1.5); opacity: 0; animation: 2s hand 0.5s infinite;-webkit-animation: 2s hand 0.5s infinite;}
+
+        @-webkit-keyframes hand{
+            0%{opacity: 0;}
+            10% { -webkit-transform: scale(1.5); opacity: 1;}
+            15%{ -webkit-transform: translate(-20px,-15px) scale(1);}
+            55%{ -webkit-transform: translate(-200px,-160px) scale(1.5)}
+            65%{-webkit-transform: translate(-280px,-200px) scale(1); }
+            66%{opacity: 1;}
+            69%{opacity: 0;}
+        }
+
+        @keyframes hand{
+            0%{opacity: 0;}
+            10% { transform: scale(1.5); opacity: 1;}
+            15%{ transform: translate(-20px,-15px) scale(1); }
+            55%{transform:translate(-200px,-160px)  scale(1.5)}
+            65%{transform: translate(-280px,-200px) scale(1);  }
+            66%{opacity: 1;}
+            69%{opacity: 0;}
+        }
+        .status1{position: absolute; width: 532px; height: 199px; background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/status1.png) no-repeat; left: 27px; bottom:-160px;}
+        .succeed-pop{width: 588px; position: absolute; left: 0; top:0; display: none; z-index:2;}
+        .succeed .succeed-pop{display: block;}
+        .succeed-pop:before,.succeed-pop:after{position: absolute; content: "";}
+        .succeed-pop:before{width: 121px; height: 74px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/left.png) no-repeat; left: 0; top: 184px;}
+        .succeed-pop:after{width: 115px; height: 98px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/right.png) no-repeat; right: 0; top: 226px;}
+        .succeed-pop p {width: 382px;height: 382px;margin:30px auto 0 ; }
+        .step1 .succeed-pop p{background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/s1.png) no-repeat 50% 40px rgba(0,0,0,0.8);}
+        .step2 .succeed-pop p{background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/s2.png) no-repeat 50% 40px rgba(0,0,0,0.8);}
+        .step3 .succeed-pop p{background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/s3.png) no-repeat 50% 40px rgba(0,0,0,0.8);}
+        .step4 .succeed-pop p{background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/s4.png) no-repeat 50% 40px rgba(0,0,0,0.8);}
+        .next-btn{position: absolute;  width: 270px; height: 62px; background: #DB2001; text-align: center; font-size: 38px; color: #fff; line-height: 62px; left: 50%; margin-left: -135px;bottom:-100px; display: none;}
+        .succeed .next-btn{display: block;}
+        .succeed .status1{display: none;}
+        .step4  .succeed .next-btn{display: none;}
+        .info-form{position: absolute; left: 0;  top: 32%; width: 640px; height: 648px; background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/form1.png) no-repeat; display: none;}
+        .info-form .total-time{width: 342px; height: 80px; left: 115px; top: -15px; color: #F86300; font-size:30px; overflow: hidden;}
+        .info-form .total-time i{font-size: 44px; font-weight: 700;}
+        .pro-pic{position: absolute; left: 50%; margin-left: -180px;  width: 360px; height: 269px; background: url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/pro.png) no-repeat;}
+        .info-form .pro-pic{top:210px;}
+        .info-form .button-box{top:458px;}
+        .info-form .info{ width: 540px; height: 50px; position: absolute; left: 57px; top:90px; line-height: 50px;}
+        .info-form .info span{font-size: 24px; color: #26C59D; margin-right: 5px;}
+        .info-form .info input{width: 316px; height: 50px; border: 1px solid #ccc; padding:0 10px; line-height: 50px; font-size: 24px;}
+        .btn-wrap{position: absolute; width: 640px; left: 0; text-align: center; top:170px; height: 47px;}
+        .btn-wrap input{display: inline-block; vertical-align: top; width: 115px; height: 47px; background: #DB2001; text-align: center; line-height: 47px; color: #fff; font-size: 24px; border:0 none; margin:0 10px;}
+        .info-succeed .info,.info-succeed .btn-wrap{display: none;}
+        .info-succeed .pro-pic{top: 135px;}
+        .info-succeed .total-time{width: 260px; left: 290px;}
+        .user-info{position: absolute; left: 56px; top:30px; line-height: 38px; font-size: 24px; color: #F96300; width: 214px; height: 38px; overflow: hidden; display: none;}
+        .info-succeed  .user-info{display: block;}
+        .simg{position: absolute; width: 88px; height: 88px; left:306px; top:26px; }
+        .step1 .simg{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/simg1.jpg);}
+        .step2 .simg{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/simg2.jpg);}
+        .step3 .simg{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/simg3.jpg);}
+        .step4 .simg{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/simg4.jpg);}
+        .hd{position: absolute; left: 0; top: 15%; width: 640px; height: 130px; }
+        .step1 .hd{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/tit1.png) no-repeat 65% 0;}
+        .step2 .hd{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/tit2.png) no-repeat 65% 0;}
+        .step3 .hd{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/tit3.png) no-repeat 65% 0;}
+        .step4 .hd{background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/tit4.png) no-repeat 65% 0;}
+        /* rank-page */
+        .rank-page{background:rgba(0,0,0,0.8); display: none}
+        .rank-box{position: absolute; width: 580px; left: 50%; top: 50%;  -webkit-transform:translate(-50%, -50%); transform:translate(-50% ,-50%); }
+        .tabs-tit{width: 580px; display: -webkit-box; display: -ms-flexbox; display: flex;}
+        .tabs-tit span{display: block; -webkit-box-flex: 1;-ms-flex: 1; flex: 1;  height: 64px; color: #999; line-height: 64px; text-align: center; vertical-align: top; font-size: 28px; color: #000; background: #999; border-right: 1px solid #000}
+        .tabs-tit .act{background:#FED14D }
+        .tab-con{height: 672px;}
+        .tab-con .item{display:none;}
+        .rank-list{border-left:1px solid #333; border-bottom:1px solid #333; background: #000 }
+        .rank-list td{border-top:1px solid #333; border-right:1px solid #333; line-height: 48px; font-size: 30px; color:#FFF; text-align: center;}
+        .rank-list thead td{line-height: 60px; }
+        .rank-list td span{display: inline-block; width: 120px; overflow: hidden;text-overflow: ellipsis;text-overflow: ellipsis;}
+        .rank-box h4{font-size: 36px; color: #fff; text-align: center; display: block;}
+        .rank-box p{font-size: 24px; color: #fff; line-height: 28px; padding:10px 0;}
+        /* share */
+        .share{height:78px; text-align:center; width:100%; position:absolute; bottom:2%; left:0; display: none;}
+        .share a{display:inline-block; width: 78px; height: 78px; display: inline-block;  background:url(http://2.zol-img.com.cn/zt/tm_572/2c7515869a/share.png) no-repeat 0 0; margin:0 15px; vertical-align:top; overflow:hidden; color:rgba(0,0,0,0);}
+        .share .wechat { background-position:-278px 0;}
+        .share .qzone { background-position: -187px 0; }
+        .share .weibo { background-position: 0 0; }
+        .share .tencent-weibo { background-position: -94px 0; }
+
+
+
+
+        @media screen and (max-width:640px) and (max-height: 900px) {
+            .info-form{top: 25%;}
+            .share{bottom:1%;}
+            .rank-list td{line-height: 40px;}
+            .tab-con{height: 554px;}
+        }
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="section home">
+    <span class="logo"></span>
+    <div class="button-box"><span class="rule-btn">活动规则</span><span class="begin-btn"><i>Let’s</i> 拼</span></div>
+</div>
+<div class="section rule-page">
+    <span class="close"></span>
+    <div class="rule-con">
+        <p class="tips"><span>5月4日至7日</span><br/>每日用时最短的前3名用户<br/>可获得<strong>50</strong>元移动充值卡</p>
+        <h3 class="tit">活动规则</h3>
+        <p>1.活动有效期 2016年5月4日10:00-7日10:00</p>
+        <p>2.每24小时内，完成4关拼图总用时最短的前3名用户即可获得50元移动充值卡</p>
+        <p>3.每名用户24时内可重玩游戏,排名取其最好成绩,每24小时（即每天10：00）锁榜清零</p>
+        <p>4.请提交真实、有效手机号,用于记录成绩以及联系发奖</p>
+        <p>5.每个用户仅有一次获奖资格，如有相同用户，获奖名额顺延；请等待活动结束后我们发奖</p>
+        <p>6.发现作弊行为将取消用户获奖资格，本活动最终解释权归中关村在线所有</p>
+    </div>
+</div>
+<div class="section game-page">
+    <div id="game">
+        <span class="logo"></span>
+        <div class="steps">第<span><i id="checkpoint">1</i>/4</span>关</div>
+        <div class="time"><span class="countdown">0</span>'s</div>
+        <div class="simg"></div>
+        <div class="hd"></div>
+        <div class="gamebg">
+            <div class="status1"></div>
+            <canvas id="myCanvas" width="530" height="370" style="pointer-events: all;"></canvas>
+
+            <div class="layer"><span class="hand"></span></div>
+            <div class="succeed-pop"><p class=""></p></div>
+            <span class="next-btn">下一关</span>
+        </div>
+        <form action="">
+            <div class="info-form">
+                <div class="pro-pic"></div>
+                <span class="user-info">用户：</span>
+                <span class="total-time">总用时：<i class=''></i>'s</span>
+                <p class="info"><span>请您输入有效手机号</span><input type="tel" class="mobile" maxlength="11" placeholder="用于记录成绩、领奖"></p>
+                <div class="btn-wrap"><input type="button" value="提交" class="sub-btn"><input type="reset" value="重置"></div>
+                <div class="button-box"><span class="rank-btn">排行榜</span><span class="again-btn">重玩游戏</span></div>
+            </div>
+        </form>
+
+    </div>
+    <div class="share"></div>
+</div>
+
+<div class="section rank-page">
+    <span class="close"></span>
+    <div class="rank-box">
+        <h4>排行榜</h4>
+        <p></p>
+        <div class="tabs-tit"><span class="act">5.3-5.4 10:00</span><span>5.5-5.6 10:00</span><span>5.6-5.7 10:00</span></div>
+        <div class="tab-con">
+            <div class="item item1" style="display:block">
+                <table class="rank-list" width="100%" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>排名</td>
+                        <td>用户</td>
+                        <td>用时</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item item2">
+                <table class="rank-list" width="100%" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>排名</td>
+                        <td>用户</td>
+                        <td>用时</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item item3">
+                <table class="rank-list" width="100%" cellpadding="0" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>排名</td>
+                        <td>用户</td>
+                        <td>用时</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" ></script>
+
+
+<script src="http://icon.zol-img.com.cn/m/js/topic/puzzle/z.game.pintu.js" ></script>
+<!--<script src="http://active.zol.com.cn/16active/0429xiaoxin/z.count.js"></script>-->
+<!--<script src="http://active.zol.com.cn/16active/0429xiaoxin/index.js"></script>-->
+
+
+
+<script type="text/javascript">
+
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+    var h = document.body.offsetHeight;
+
+    document.querySelector('.info-form').style.top =parseInt(h*0.32)+'px';
+
+    document.querySelector('.mobile').addEventListener('focus',function(){
+        document.querySelector('.share').style.display = 'none';
+        document.querySelector('.step4 .hd').style.top =parseInt(h*0.15)+'px';
+    });
+    document.querySelector('.mobile').addEventListener('blur',function(){
+        document.querySelector('.share').style.display = 'block';
+    });
+
+
+    /**/
+    !(function(w){
+        var Countdown = function(opt){
+            var _this = this;
+            !opt && (opt = {});
+            _this.opt = {};
+            for(var ele in _this.options){
+                _this.opt[ele] = opt[ele] || _this.options[ele];
+            }
+            _this.init();
+        };
+        Countdown.prototype = {
+            init : function(){
+                var _this = this;
+                opt = _this.opt;
+                opt.container.innerHTML = opt.duration;
+                opt.autoCount && _this.start();//如果有autoCount 就执行计时器
+            },
+            start : function(obj){//开始
+                var _this = this,
+                    opt = _this.opt,
+                    time;
+                if(obj && typeof obj.countTime !== 'undefined'){
+                    time = obj.countTime;
+                }else{
+                    time = opt.duration;
+                }
+                _this.timer = setInterval(function(){
+                    time++;
+                    _this.nowTime = time;
+                    opt.container.innerHTML = time;
+                    if(typeof _this.opt.onCounting === 'function'){
+                        _this.opt.onCounting(_this.nowTime,time);
+                    }
+                },opt.interval*1000);
+            },
+            stop : function(){//结束
+                var _this = this;
+                clearInterval(_this.timer);
+            },
+            pause : function(){//暂停
+                var _this = this;
+                _this.stop();
+                if(typeof _this.opt.onPause === 'function'){
+                    _this.opt.onPause();
+                }
+            },
+            goOn : function(){//继续
+                var _this = this;
+                var time = _this.nowTime;
+                _this.start({
+                    countTime : time
+                });
+                if(typeof _this.opt.ongoOn === 'function'){
+                    _this.opt.ongoOn();
+                }
+            }
+        };
+        Countdown.prototype.options = {
+            duration : 0,//开始时间
+            interval : 1,//每次用时
+            container: document.querySelector('.countdown'),
+            autoCount: false,//是否开始计时
+            ontimeover : null,//时间用完回调
+            ongoOn : null,//继续回调
+            onCounting : null,//计时中回调
+            onPause : null//暂停回调
+        };
+        w.Countdown = Countdown;
+    })(window);
+
+
+
+
+    /**/
+    define(function (r, e, m) {
+        var oLayer = document.querySelector('.layer'),
+            beginBtn = document.querySelector('.begin-btn'),
+            gamePage = document.querySelector('.game-page'),
+            pop = document.querySelector('.succeed-pop'),
+            nextBtn = document.querySelector('.next-btn'),
+            again  =document.querySelector('.again-btn'),
+            gamebg = document.querySelector('.gamebg'),
+            share = document.querySelector('.share'),
+            infoForm= document.querySelector('.info-form');
+
+
+        var gameInfo = [
+            {'imgNum':4,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/31fa52512b/pic1.jpg'},
+            {'imgNum':9,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/31fa52512b/pic2.jpg'},
+            {'imgNum':9,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/31fa52512b/pic3.jpg'},
+            {'imgNum':16,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/31fa52512b/pic4.jpg'},
+        ];
+        /*var gameInfo = [
+         {'imgNum':4,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/2c7515869a/pic1.png'},
+         {'imgNum':4,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/2c7515869a/pic2.png'},
+         {'imgNum':4,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/2c7515869a/pic3.png'},
+         {'imgNum':4,'ImgUrl':'http://2.zol-img.com.cn/zt/tm_572/2c7515869a/pic4.png'},
+         ];*/
+        var i = 0;
+
+        //查看规则
+        document.querySelector('.rule-btn').addEventListener('tap',function(){
+            document.querySelector('.rule-page').style.display = 'block';
+        })
+        //查看排行
+        document.querySelector('.rank-btn').addEventListener('tap',function(){
+            document.querySelector('.rank-page').style.display = 'block';
+        })
+        //关闭
+        document.querySelectorAll('.close').addEventListener('tap',function(){
+            this.parentNode.style.display = 'none';
+        })
+
+        //开始挑战
+        beginBtn.addEventListener('tap',function(){
+            gamePage.style.display = 'block';
+            canvastop = parseInt(myCanvas.getBoundingClientRect().top);
+            canvasleft =parseInt(myCanvas.getBoundingClientRect().left);
+            playGame(i);
+
+        });
+        //开启
+        oLayer.addEventListener('click',function(){
+            playTime();
+            gameInfo[0].game.timer.start();
+            oLayer.style.display = 'none';
+
+        });
+
+        //重玩
+        again.addEventListener('tap',function(){
+            i=0;
+            gamebg.style.display ='block';
+            infoForm.style.display = 'none';
+            share.style.display = 'none';
+            gamebg.classList.remove('succeed');
+            infoForm.classList.remove('info-succeed');
+            playGame(0);
+            playTime();
+            gameInfo[0].game.timer.start();
+            checkpoint.innerHTML = 1;
+            document.querySelector('.sub-btn').disabled=false;
+        });
+
+        function playTime(){
+            Pintu.prototype.timer = new Countdown({
+                autoCountt : true
+            });
+        }
+
+        function playGame(i){
+
+            game.className = 'step'+(i+1);
+            gameInfo[i].game = new Pintu({
+                //testData:[1,3,2,0],
+                src:gameInfo[i].ImgUrl,
+                num:gameInfo[i].imgNum,
+                stroke:'#FFF171',//选中线颜色
+                lineWidth:5,//选中线宽
+                imgMargin:1,//图片间距
+                oLeft:canvasleft,
+                oTop:canvastop,
+                container:gamebg,
+                width:530,//宽
+                height:370,//高
+                success:function(){
+                    gameInfo[i].game.timer.pause();
+                    gamebg.classList.add('succeed');
+                    onoff = true;
+                    if(i>=3){
+                        timer && clearTimeout(timer);
+                        var timer = setTimeout(function(){
+                            gamebg.style.display ='none';
+                            infoForm.style.display = 'block';
+                            share.style.display = 'block';
+                            document.querySelector('.total-time i').innerHTML = document.querySelector('.countdown').innerHTML;
+
+                        },1000)
+                    }
+                }
+            });
+        }
+        var onoff = true;
+        game.delegate('.next-btn', 'tap', function() {
+            if(onoff){
+                onoff = false;
+                gameInfo[i].game.timer.goOn();
+                i++;
+                checkpoint.innerHTML = i+1;
+                playGame(i);
+                gamebg.classList.remove('succeed');
+            }
+
+        });
+
+
+        var dataUrl = 'http://m.zol.com.cn/topic/services/user.php?callback=?',
+            mobileVal;
+        //提交成绩
+        document.querySelector('.sub-btn').addEventListener('tap',function(){
+            if (this.disabled) return;
+            var total = document.querySelector('.countdown').innerHTML;
+            mobileVal = document.querySelector('.mobile').value;
+
+            if (!mobileVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+                // 请正确填写您的手机号码。
+                alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+                return false;
+            }
+            this.disabled = true;
+            getToken(function(){
+                $.ajax({
+                    type:'get',
+                    url: dataUrl,
+                    data:{token:window.verifyTk,action:'addUser',username:'pintu',type:'5807325',tel:mobileVal,ext1:total},
+                    dataType: 'json',
+                    success: function (data) {
+                        if(data.result == 1){//提交成功
+                            infoForm.classList.add('info-succeed');
+                            document.querySelector('.user-info').innerHTML = '用户:'+mobileVal;
+                        }else {
+                            alert(data.result)
+                        }
+                    }
+
+                });
+            })
+
+        })
+
+        //查看排行榜
+        document.querySelector('.rank-btn').addEventListener('tap',function(){
+
+            if (mobileVal || (/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+                score(mobileVal,'2016-05-04 10:00:00','2016-05-05 10:00:00','5月4日')
+            }else{
+                document.querySelector('.rank-box p').innerHTML = '';
+            }
+
+            rankList('2016-05-04 10:00:00','2016-05-05 10:00:00','.item1 table');
+
+
+            //排行榜切换
+            var aBar = document.querySelectorAll('.tabs-tit span');
+            aBar.addEventListener('tap', function () {
+                var i = aBar.indexOf(this);
+                if (mobileVal || (/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+                    if(i==0){
+                        score(mobileVal,'2016-05-04 10:00:00','2016-05-05 10:00:00','5月4日');
+                        rankList('2016-05-04 10:00:00','2016-05-05 10:00:00','.item1 table');
+                    }else if(i ==1){
+                        score(mobileVal,'2016-05-05 10:00:00','2016-05-06 10:00:00','5月5日');
+                        rankList('2016-05-05 10:00:00','2016-05-06 10:00:00','.item2 table');
+                    }else if(i==2){
+                        score(mobileVal,'2016-05-06 10:00:00','2016-05-07 10:00:00','5月6日');
+                        rankList('2016-05-06 10:00:00','2016-05-07 10:00:00','.item3 table');
+                    }
+                }
+
+                document.querySelectorAll('.tab-con .item').forEach(function (div, index) {
+                    div.style.display = i === index ? 'block' : 'none';
+                });
+                var last = document.querySelector('.tabs-tit .act');
+                last && (last.className = '');
+                this.className = 'act';
+            });
+
+
+        })
+
+        //读取个人成绩
+        function score(p,s,e,date){
+            $.ajax({
+                type:'get',
+                url: dataUrl,
+                data:{action:'getTopByDayAndUser',type:'5807325',dayStart:s,dayEnd:e,tel:p},
+                dataType: 'json',
+                success:function(res){
+                    if(res.result.num){
+                        document.querySelector('.rank-box p').innerHTML = '用户：'+	p+'<br/>'+date+'最好成绩：第'+res.result.num+'名';
+                    }else{
+                        document.querySelector('.rank-box p').innerHTML = '用户：'+	p+'<br/>您'+date+'还没进行挑战哦';
+                    }
+                }
+
+            });
+        }
+
+        //读取排行榜
+        function rankList(s,e,dom){
+            $.ajax({
+                type:'get',
+                url: dataUrl,
+                data:{action:'getTopByDay',type:'5807325',dayStart:s,dayEnd:e},
+                dataType: 'json',
+                success:function(res){
+                    if(res.result){
+                        document.querySelector(dom).tBodies[0].innerHTML = fillRank(res.result);
+                    }
+                }
+
+            });
+        }
+
+        function fillRank(data){
+            var html = '';
+            if(data && Array.isArray(data)){
+                data.forEach(function(item,index){
+                    html += '<tr><td>' +(index+1) +'</td><td>' + item.tel + '</td><td><span>' + item.ext1 + '</span></td></tr>'
+                });
+                return html;
+            }
+        };
+
+        // 获取token
+        function getToken(fn){
+            $.ajax({
+                'type':'get',
+                'dataType':'jsonp',
+                'data':{},
+                'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+                'async':true,
+                'success':function(request){
+                    if(request && request.result){
+                        window.verifyTk = request.result;
+                        if(typeof fn === 'function'){
+                            fn();
+                        }
+                    }
+                }
+            });
+        }
+
+    });
+
+
+
+
+    //分享
+    var share_title=encodeURIComponent( '拼出小新Air 赢取移动话费');
+    var share_link=encodeURIComponent('http://m.zol.com.cn/topic/5807325.html');
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_572/2d18e58cc8/weixin.jpg');
+    var share_t=encodeURIComponent('拼出小新Air新势力');
+
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+
+    var share_con = '<a target="_self" class="wechat" href="#wechat" style="display: none">wechat</a><a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a>';
+    document.querySelector('.share').innerHTML = share_con;
+
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_572/2d18e58cc8/weixin.jpg',
+        title: '拼出小新Air 赢取移动话费'
+    };
+
+
+    /* end 微信分享图片和文字设置 */
+
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+
+</body>
+</html>

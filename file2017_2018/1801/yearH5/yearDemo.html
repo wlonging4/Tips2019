@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>tit</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /* 首页 */
+        body {width:640px; margin:0 auto; background-color:#fff; color:#000; position: relative;}
+        .wrapper {height:100%;  position:relative; z-index:1; margin:0 auto; overflow:hidden}
+        .main {position:absolute; left:0; top:0; z-index:1; width:100%; height:1000%; }
+        .section{width:100%; height:10%; position:relative; overflow:hidden; }
+        .next-btn,.prev-btn{width:27px; height:18px; position:fixed; bottom:3%; left:50%; margin-left:-15px;  z-index:10; -webkit-animation: swipe 1s ease 0s infinite;animation: swipe 1s ease 0s infinite; }
+        .next-btn {background:url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/next.png) no-repeat 50% 50%;}
+        .prev-btn {background:url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/prev.png) no-repeat 50% 50%; display: none;}
+
+
+        @-webkit-keyframes swipe{
+            0%   {-webkit-transform:translate(0,0)}
+            50%  {-webkit-transform:translate(0,10px)}
+            100% {-webkit-transform:translate(0,0)}
+        }
+        @keyframes swipe{
+            0%   {transform:translate(0,0)}
+            50%  {transform:translate(0,10px)}
+            100% {transform:translate(0,0)}
+        }
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* section1 */
+        .section1{background:url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/bg1.jpg) no-repeat; -webkit-background-size:cover;background-size:cover; }
+        .section1 .title{position: absolute; width: 538px; height: 308px; left: 50%; margin-left: -269px; top: 4%; background: url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/title1.png) no-repeat; text-indent: -9999em; overflow: hidden;}
+        .section1 .pic-box{position: absolute; left: 60px; top: 40%; width: 490px; height: 487px; }
+        .section1 .pic-box img{ opacity: 0;  position: absolute; left: 50%; top: 50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%);}
+        .button{width: 119px; height: 52px; background: url(http://2.zol-img.com.cn/zt/tm_582/425fc7b48c/share.png) no-repeat; position: absolute; left:50px; top: 80%;}
+
+
+        /* section2 */
+        .section2{background:url(http://m.zol.com.cn/topic/1109myphone/images/bg2.jpg) no-repeat; -webkit-background-size:cover;background-size:cover; }
+        .section2 .boy{width: 524px; height: 461px; background: url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/boy.png) no-repeat; margin:5px auto 0;}
+        .info-box{width: 537px; height: 169px; background: url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/info.png) no-repeat; margin:20px auto 0;}
+        .make{position: absolute; right: 50px; top: 80%; background: url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/make.png) no-repeat; width: 177px; height: 52px; }
+        .info-box .name,.info-box .phonebrand{width: 272px; height: 60px; margin-left: 258px; border: 0 none; background: none; padding:0 10px; line-height: 60px;}
+        .info-box .name{margin-top: 7px;}
+        .info-box .phonebrand{margin-top:35px;}
+        .canvas-box{position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: none; }
+        .canvaspic{position: absolute; left: 0; top: 0;}
+        .replay{position: absolute; right: 50px; top: 80%; width: 168px; height: 52px; }
+        .save{position: absolute; left:230px; top:8px; width: 168px; height: 56px; background: url(http://2.zol-img.com.cn/zt/tm_582/420fea761a/save.png) no-repeat;}
+        .replay{background: url(http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/replay.png) no-repeat; }
+        #canvasPic{display: none; position: absolute; left: 0; top: 0}
+
+        .share-tips{position: fixed;z-index: 999;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,.85) url(http://2.zol-img.com.cn/zt/tm_582/3f023ca814/tips.png) no-repeat 66px 46px; display: none;}
+        .link{position: absolute; left: 50%; margin-left:-167px; top: 80%; margin-top: 100px;  width: 334px; height: 40px; background: url(http://2.zol-img.com.cn/zt/tm_582/422e4594a3/link.png) no-repeat;}
+        @media screen and (max-width:640px) and (max-height: 900px) {
+            .button,.replay,.make,.link{top: 85%;}
+            .link{ margin-top: 65px;}
+        }
+
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="wrapper flipview" data-loop="false" id="wrapper">
+    <div class="next-btn" id="next-btn"></div>
+    <div class="prev-btn" id="prev-btn"></div>
+    <div class="main container" id="main">
+        <div class="section section1">
+            <h3 class="title">是否还记得最初的她</h3>
+            <div class="pic-box">
+                <img src="http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/pic1.png" style="opacity:1">
+                <img src="http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/pic2.png">
+                <img src="http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/pic3.png">
+                <img src="http://2.zol-img.com.cn/zt/tm_582/2d1a6c6eb3/pic4.png">
+            </div>
+            <a target="_self" class="wechat button" href="#wechat" style="display: none"></a>
+        </div>
+        <div class="section section2">
+            <div class="boy"></div>
+            <div class="info-box">
+                <input type="text" class="name">
+                <input type="text" class="phonebrand">
+            </div>
+            <a target="_self" class="wechat button button1" href="#wechat" style="display: none"></a>
+            <span class="make"></span>
+            <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zol.android" class="link"></a>
+            <div class="canvas-box">
+                <canvas id="mycanvas" width="640" height="1008" ></canvas>
+                <img src="" class="canvasPic" id="canvasPic">
+                <a target="_self" class="wechat button" href="#wechat" style="display: none"></a>
+                <span class="save"></span>
+                <span class="replay"></span>
+                <a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.zol.android" class="link"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="share-tips"></div>
+
+</body>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" data-options="z.flipview"></script>
+<!--<script src="http://active.zol.com.cn/16active/1109myphone/CanvasText-0.4.1.js"></script>-->
+<!--<script src="http://active.zol.com.cn/16active/1109myphone/main.js"></script>-->
+
+<script charset="gbk">
+
+    var contentStr = ['<class="username">闫家润</class>通过<class="userphone">诺基亚</class>约了<class="color1">五次炮</class>--两个女的<class="color1">三个男的 !</class>', '<class="username">闫家润</class>蹲坑时<class="userphone">诺基亚</class>掉了进去 --刚捞出来<class="color1">前女友</class>来电话<class="color1">要分手 !</class>', '<class="username">闫家润</class><class="color1">脸太大，</class>打电话总碰上<class="color1">挂机键 !</class>', '<class="username">闫家润</class>的<class="userphone">诺基亚</class>里有31张他<class="color1">偷拍的素人裸照</class>——<class="color1">他侄儿</class>四岁时候照的 !', '<class="username">闫家润</class><class="color1">吃火锅</class>时候,<class="userphone">诺基亚</class><class="color1">掉进去了,</class>--从此以后<class="color1">接电话辣耳朵 !</class>', '<class="username">闫家润</class>给<class="color1">领导专门</class>设的手机铃声是<class="color1">吉祥三炮 !</class>', '<class="username">闫家润</class>把<class="userphone">诺基亚</class>放兜<class="color1">挤碎了!</class>——不知道是<class="color1">手机碎了!</class>还是<class="color1">蛋碎了，</class>反正麻了 !', '<class="username">闫家润</class>想知道<class="userphone">诺基亚</class>和<class="color1">核桃</class>哪个<class="color1">更容易碎,</class>—事实证明<class="color1">他牙</class>最容易碎 !', '<class="username">闫家润</class>蹲坑时<class="color1">用嘴叼</class>着<class="userphone">诺基亚</class>手机，<class="color1">哈喇子</class>流进按钮里打不了电话了 !', '<class="username">闫家润</class>考试前把<class="userphone">诺基亚</class><class="color1">屏保</class>换成<class="color1">任课老师，</class>结果一个礼拜<class="color1">不敢开机 !</class>', '<class="username">闫家润</class>的第一个<class="color1">手机壳</class>是红色的<class="color1">hello kitty !</class>', '<class="username">闫家润</class>的第一个手机<class="userphone">诺基亚</class>是<class="color1">卖肾</class>买的 !', '<class="username">闫家润</class>蹲坑时<class="color1">嘴没叼住</class><class="userphone">诺基亚</class>手机,溅了<class="color1">一屁屁</class>耙耙 ！', '<class="username">闫家润</class>的<class="userphone">诺基亚</class>和<class="color1">内裤</class>是<class="color1">一个颜色</class>--不要问哪个，他只有<class="color1">一条内裤 !</class>', '<class="username">闫家润</class>用<class="userphone">诺基亚</class>时分手四次，和<class="color1">前女友</class>分了两次和<class="color1">左手</class>分了两次 ！', '换<class="userphone">诺基亚</class>是因为早上 闹铃响的时候，<class="username">闫家润</class>让它手动爆炸了 !', '<class="username">闫家润</class>上厕所忘记<class="color1">带纸，</class>带着的<class="userphone">诺基亚</class>也没电了， 无奈只能用手机<class="color1">擦屁股 !</class>', '<class="userphone">诺基亚</class>手机<class="color1">特别强，</class>有它不用<class="color1">找老王 !</class>', '<class="username">闫家润</class>叫他<class="color1">男朋友</class>起床的<class="color1">"魔法语言"</class>—— 只须冲他耳语一句：<class="color1">"喂，</class>我刚刚看了你的手机"。', '<class="username">闫家润</class>势必要买<class="color1">大一点</class>的手机 不是为了装逼，而是<class="color1">上厕所</class>时，手机不小心掉马桶<class="color1">能卡住 !</class>'];
+
+    //首页图片切换
+    var imgs = document.querySelectorAll('.section1 .pic-box img'),
+        k=0;
+    timer && clearInterval(timer);
+    var timer  = setInterval(function(){
+        if(k>2) k =0
+        k++;
+        imgs.forEach(function(img,i){
+            img.style.opacity = (i == k) ? 1 : 0;
+        })
+    },1500);
+
+    //计算canvas背景
+    var viewWidth = window.innerWidth ,viewHeight  =  window.innerHeight,w,h;
+    var k1 =viewWidth / viewHeight ,k2 = 640/1008;
+    //计算canves和后方cover比例一致
+    !function(){
+        w = viewWidth,h = viewHeight;
+        if(k1>k2){
+            w = viewWidth;
+            h = w/k2;
+        }else{
+            h = viewHeight;
+            w = h*k2;
+        }
+    }();
+
+
+    var Canvas = document.getElementById('mycanvas');
+    var Context = Canvas.getContext('2d');
+
+    function slideCanvas(constr,nameVal,phoneVal){
+        Canvas.height = h;
+        var imgs = ['http://m.zol.com.cn/topic/1109myphone/images/bg2.jpg','http://m.zol.com.cn/topic/1109myphone/images/bg3.png'];
+
+        for (i = 0; i < 2; i++) {
+            (function (i) {
+                var oNewImg = new Image();
+                oNewImg.src = imgs[i];
+                oNewImg.onload = function () {
+                    if(i==0){
+                        Context.drawImage(oNewImg,(640 - w)/2,0,w,h);
+
+                    }else if(i ==1){ //第二张背景绘制完
+                        Context.drawImage(oNewImg,48,40,546,713);
+                        //initCanvasText();
+                        canvasBox.style.display = 'block';
+                        //实现canvas区域存图
+                        var imgData=Context.getImageData(0,0,640,800);
+                        var canvasTemp = document.createElement('canvas');
+                        var ctxTemp = canvasTemp.getContext('2d');
+                        canvasTemp.width  = 640;
+                        canvasTemp.height = 800;
+                        ctxTemp.putImageData(imgData,0,0);
+
+                        console.log(ctxTemp)
+                        $.ajax({ //上传作品
+                            url:'http://m.zol.com.cn/topic/services/uploadpic_base64.php?',
+                            data:{'base64Str':canvasTemp.toDataURL()},
+                            crossDomain:true,
+                            dataType:'json',
+                            type:'post',
+                            success: function(data) {
+
+                                if(data.state){
+                                    canvasPic.src= data.picpath;
+                                    canvasPic.style.display = 'block';
+                                    document.querySelector('.loading').classList.remove('loading-visible');
+                                }else{
+                                    alert(data.messages)
+                                }
+
+                            },
+                            error:function(data){
+                                alert('图片提交失败，请刷新重试')
+                            }
+                        })
+
+
+                    }
+                };
+
+            })(i);
+        };
+
+        function initCanvasText(){
+            var CT = new CanvasText;
+            //初始化
+            CT.config({
+                canvas: Canvas,
+                context: Context,
+                fontFamily: "simSun",
+                fontSize: "28px",
+                fontWeight: "normal",
+                fontColor: "#000",
+                lineHeight: "56"
+
+            });
+            //定义好一些样式
+            CT.defineClass("userphone",{//用户手机名
+                fontSize: "38px",
+                fontWeight: "bold"
+            });
+
+            CT.defineClass("color1",{//大一号的黑字
+                fontWeight: "bold"
+            });
+            CT.defineClass("username",{//用户名字
+                fontSize: "40px",
+                fontColor: "#ffb600",
+                fontWeight: "bold"
+            });
+            CT.defineClass("hid",{//用户名字
+                fontSize: "24px",
+                fontColor: "rgba(0,0,0,0)"
+            });
+
+            /*function firstLineRight(){
+                var text = '<class="userphone">诺基亚</class>';
+                CT.textAlign="end";
+                CT.drawText({
+                    text:text,
+                    x: 520,
+                    y: 240,
+                    boxWidth:408,
+                });
+
+                  var text = '是<class="color1">终极武器！</class>曾两次<class="color1">砸晕</class>追着<class="username">闫家润</class>咬的旺财！';
+                  CT.textAlign="start";
+                CT.drawText({
+                    text:text,
+                    x: 140,
+                    y: 300,
+                    boxWidth:408
+                });
+
+            }*/
+            //版权
+            CT.textAlign="center";
+            CT.drawText({
+                text:'<style="color:#000;font-family:Microsoft Yahei;font-size:22px;">2016 '+nameVal+' 的故事</style>',
+                x: 320,
+                y: 500,
+                boxWidth:390
+            });
+
+            constr = constr.replace(/闫家润/, nameVal);
+            constr = constr.replace(/诺基亚/, phoneVal);
+            var text = constr;
+            CT.textAlign="start";
+            CT.drawText({
+                text:text,
+                x: 140,
+                y: 240,
+                boxWidth:390
+            });
+
+        }
+
+    };
+
+
+    //点击生成
+    var canvasBox = document.querySelector('.canvas-box');
+    var arr1= contentStr.slice(0);
+    document.querySelector('.make').addEventListener('click',function(){
+        var nameVal = document.querySelector('.name').value.trim(),
+            phoneVal = document.querySelector('.phonebrand').value.trim();
+        if (!nameVal || nameVal.length>15) {
+            alert('请填写姓名且不要太长哦');
+            return;
+        }
+        if (!phoneVal || nameVal.length>15) {
+            alert('请填写您的手机型号且不要太长哦');
+            return;
+        }
+        document.querySelector('.loading').classList.add('loading-visible');
+
+
+        //输出不重复
+        if(arr1.length == 0){
+            arr1 = contentStr.slice(0);
+        }
+        var random = Math.floor(Math.random()*arr1.length);
+        var constr = arr1[random];
+        arr1.splice(random,1);
+
+
+        /* var random =Math.floor(Math.random()*contentStr.length);
+         var constr = contentStr[random];*/
+        slideCanvas(constr,nameVal,phoneVal);
+
+
+    })
+
+    //再来一次
+    document.querySelector('.replay').addEventListener('click',function(){
+        Context.clearRect(0,0,w,h);
+        canvasBox.style.display = 'none';
+    });
+
+    //处理安卓机吊起键盘后的问题
+    var nA = navigator.userAgent,
+        zol = /zol/ig.test(nA),
+        ios = /iPhone|iPad|iPod|iTouch/i.test(nA),
+        webkit = /webkit/i.test(nA),
+        android = /android/i.test(nA) || (webkit && !ios);
+
+    if(android){
+
+        var winHeight = window.innerHeight;
+
+        document.querySelector('.make').style.top = document.querySelector('.button1').style.top =document.querySelector('.link').style.top =  winHeight*0.8+'px';
+        /*document.querySelectorAll('.info-box input').addEventListener('focus',function(){
+            document.body.style.height =winHeight+'px';
+        })
+        document.querySelectorAll('.info-box input').addEventListener('blur',function(){
+            document.body.style.height ='';
+        })*/
+    };
+    var buttons = document.querySelectorAll('.button');
+
+    if(zol){
+        document.querySelector('.save').style.display = 'none';
+        buttons.forEach(function(btn,i){
+            btn.style.display = 'block';
+        });
+        buttons.addEventListener('click',function(){
+            document.querySelector('.share-tips').style.display = 'block';
+        })
+        //点击分享弹层
+        document.querySelector('.share-tips').addEventListener('click',function(){
+            this.style.display = 'none';
+        })
+
+    }
+
+
+</script>
+
+<script type="text/javascript" >
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+    //翻页按钮
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function() {
+                oldonload();
+                func();
+            }
+        }
+    }
+    function getid(id){
+        return document.getElementById(id);
+    }
+    function btnEvent(){
+        document.getElementById('main').addEventListener('changed', function (e) {
+            if(e.target == main){
+                switch (e.currentIndex){
+                    case 1:
+                        getid('next-btn').style.display='none';
+                        getid('prev-btn').style.display='none';
+                        break;
+                    default:
+                        getid('next-btn').style.display='block';
+                        getid('prev-btn').style.display='none';
+                }
+            }
+        });
+        [getid("next-btn")].forEach(function (button) {
+            button.addEventListener('tap', function () {
+                document.querySelector('.flipview').next(1);
+            });
+        });
+
+        //控制show
+        var container = document.querySelector('.container'),list = container && container.children;
+        function init(){
+            list[0].classList.add('show');
+
+        }
+        function addClass(){
+            var index = container.index;
+            if(container.querySelector('.show') && container.querySelector('.show')!==list[index]) {
+                container.querySelector('.show').classList.remove('show');
+            }
+            !list[index].classList.contains('show') && list[index].classList.add('show');
+        };
+        container && container.addEventListener('changed',addClass);
+        init();
+
+    }
+    addLoadEvent(btnEvent);
+
+
+
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_582/3d1882cda8/weixin.jpg',
+        title: '你还记得你和你第一个手机的美好回忆吗？'
+    };
+
+
+
+    /* end 微信分享图片和文字设置 */
+
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+
+</body>
+</html>

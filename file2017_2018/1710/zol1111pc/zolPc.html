@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>点亮双·11 共度狂欢节</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background: #c0e5f5; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #FDE551; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 70px;  padding-top: 1px; background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #e2b0be;  }
+        .head_white{  background: #fff;  }
+        .head_white img{  opacity: 0;  }
+        .bar1{  width: 1000px;  height: 2px;  background: #f0f0f0;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 531px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/lg_head_c.jpg") no-repeat top center;   }
+        .head-art{  width: 150px;  height: 46px;  margin: 18px 0 0 0;  }
+
+        .infoBg{  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info.jpg") no-repeat top center;  }
+        .info{  height: 458px;  }
+        .info-t{  width: 176px;  height: 83px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info_t.png") no-repeat 0 0;  }
+        .info-art{  width: 800px;  height: 56px;  margin: 5px auto 0;  }
+        .info-form{  width: 555px;  height: 180px;  margin: 20px auto 0;  overflow: hidden;  }
+        .info-form label{  display: block;  width: 460px;  height: 45px;  margin-bottom: 15px;  overflow: hidden;  }
+        .info-form label span,.info-form label input{  display: inline-block;  }
+        .info-form label span{  color: #ffec6e;  margin-right: 10px;  font: 22px/42px 'Hiragino sans GB','microsoft yahei';  }
+        .info-form label input{  width: 320px;  height: 27px;  padding: 10px;  border: none;  outline: none;  color: rgba(96, 86, 48, 0.91);  font: 22px/27px 'Hiragino sans GB','microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info_bar.png") no-repeat 0 0;  }
+        .info-submit{  width: 182px;  height: 60px;  margin: 5px auto 0;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info_submit.png") no-repeat 0 0;  }
+
+        .giftBg{  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/gift.jpg") no-repeat top center;  }
+        .gift{  height: 359px;  }
+        .gift-t{  width: 176px;  height: 83px;  margin: 0 auto 10px;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/gift_t.png") no-repeat 0 0;  }
+        .gift-c{  height: 210px;  }
+        .gift-c table img{  border: 1px solid #ffec6e;  }
+        .gift-c table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .gift-c table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+        .shadow{  display: none;  width: 100%;  height: 1500px;  background: rgba(0,0,0,0.8); top: 0;  position: absolute;  }
+        .sh{  width: 1200px;  height: 780px;  overflow: hidden; margin: 0 auto;  position: relative;  }
+        .sh-box{  height: 415px;  width: 1200px;  display: none;  overflow: hidden;  }
+        .sh-box.blk{  display: block;  }
+        .sh-box p{  text-align: center;  }
+        .sh-mod{  width: 1200px;  height: 365px;  position: relative;  }
+        .p11{  height: 80px;  margin: 50px auto 0;  color: #ffec6e;  font: 36px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .p12{  height: 70px;  margin: 10px auto 0;  color: #ffec6e;  font: 36px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .p12 span{  color: #cc0913;  font: 55px/70px 'Hiragino sans GB','microsoft yahei';  }
+        .p13{  height: 60px;  margin: 50px auto 0;  color: #fff;  font: 22px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .p14{  height: 60px;  margin: 40px auto 0;  color: #ffec6e;  font: 26px/30px 'Hiragino sans GB','microsoft yahei';  }
+
+        .p21{  height: 100px;  margin: 100px auto 0;  color: #ffec6e;  font: 36px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .p22{  height: 60px;  margin: 40px auto 0;  color: #ffec6e;  font: 26px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .info-g{  position: absolute;  bottom: 40px;  }
+        .info-g1{  width: 58px;  height: 58px;  left: 873px;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info_box1.png") no-repeat 0 0;  }
+        .info-g2{  width: 56px;  height: 82px;  left: 918px;  bottom: 39px;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info_box2.png") no-repeat 0 0;  }
+        .info-g3{  width: 45px;  height: 44px;  left: 960px;  background: url("http://2.zol-img.com.cn/zt/tm_59e/ff99ac31a3/info_box3.png") no-repeat 0 0;  }
+        @-webkit-keyframes xq {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.95);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-5px) scale(1);opacity: 1;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes xq {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.95);opacity: 1;  }
+            86%{  transform: translate(0px,-5px) scale(1);opacity: 1;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .xq1{ -webkit-animation: xq 1.2s ease-in-out 0s infinite;  animation: xq 1.2s ease-in-out 0s infinite;  }
+        .xq2{ -webkit-animation: xq 1.2s ease-in-out 0.2s infinite;  animation: xq 1.2s ease-in-out 0.2s infinite;  }
+        .xq3{ -webkit-animation: xq 1.2s ease-in-out 0.4s infinite;  animation: xq 1.2s ease-in-out 0.4s infinite;  }
+        .hui18{  display: block;  text-align: center;  color: #ffec6e;  font: 18px/25px 'Hiragino sans GB','microsoft yahei'  }
+        .hui18 span{  font: 16px/25px 'Hiragino sans GB','microsoft yahei'  }
+        .gift-c .hui18{  margin-top: 5px;  }
+
+        .sh-mod .bai18{  display: block;  margin-left: 22px;  font: 22px/32px 'Hiragino sans GB','microsoft yahei';  }
+        .sh-mod .bai16{  display: block;  height: 120px;  position: relative;  margin-left: 22px;  margin-top: 8px;  font: 15px/17px 'simsun';  }
+        .sh-mod .bai16 em{  font-style: normal;  font: 17px/34px 'simsun';  }
+        .sh-mod .bai16 em i{  font-style: normal;  color: #cc0913;  font: 22px/34px 'Hiragino sans GB','microsoft yahei';  }
+        .sh-mod .hong12{  display: block;  position: absolute; bottom: 0; left: 0;  width: 180px;  height: 36px;  background: #cc0913;  text-align: center;  font: 18px/36px 'simsun';  color: #fff;  }
+        .sh-mod .hong12:hover{  color: #fff;  text-decoration: none;  }
+        .sh-mod .slh,.sh-mod span.slh{  display: none;  }
+        .sh-mod .ln{ height:35px; }
+        .pointNo{  pointer-events: none;  }
+
+
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody>
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                <div class="head-art"><{data[0]}></div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--信息-->
+<div class="wrap1 infoBg">
+    <div class="wrapper1 info">
+        <div class="info-t"></div>
+        <div class="info-art"><{data[1]}></div>
+        <div class="info-form">
+            <label>
+                <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</span>
+                <input type="text" autofocus class="inp inp1" id="inp1"  maxlength="10">
+            </label>
+            <label>
+                <span>联系电话:</span>
+                <input type="text" class="inp inp1" id="inp2"  maxlength="11">
+            </label>
+            <label>
+                <span>收货地址:</span>
+                <input type="text" class="inp inp1" id="inp3"  maxlength="50">
+            </label>
+        </div>
+        <div class="info-g info-g1 xq1"></div>
+        <div class="info-g info-g3 xq2"></div>
+        <div class="info-g info-g2 xq3"></div>
+        <div class="info-submit" id="info-submit"></div>
+    </div>
+</div>
+<!--礼物-->
+<div class="wrap1 giftBg">
+    <div class="wrapper1 gift">
+        <div class="gift-t"></div>
+        <div class="gift-c"><{data[2]}></div>
+    </div>
+</div>
+<!--遮罩-->
+<div class="shadow">
+    <div class="sh">
+        <div class="sh-box sh-box1">
+            <p class="p11">恭喜您<br/>已成功领取ZOL双·11大礼包！</p>
+            <p class="p12">您是第<span>-</span>个领取大礼包的用户</p>
+            <p class="p13">大礼包将于活动结束后统一发货<br>11月10日，在还有一大波超级优惠券将通过短信形式</p>
+            <p class="p14">我们还为您准备了多款热销产品优惠券，马上领取，购个痛快！</p>
+        </div>
+        <div class="sh-box sh-box2">
+            <p class="p21">来晚了，今天的大礼包已被抢光……<br>明天记得早点来~</p>
+            <p class="p22">我们还为您准备了多款热销产品优惠券，马上领取，购个痛快！</p>
+        </div>
+        <div class="sh-box sh-box3">
+            <p class="p21">每位用户只能领取一份大礼包哦~</p>
+            <p class="p22">我们还为您准备了多款热销产品优惠券，马上领取，购个痛快！</p>
+        </div>
+        <div class="sh-mod">
+            <{data[3]}>
+        </div>
+    </div>
+</div>
+<script src="http://active.zol.com.cn/js/cookie.js"></script>
+<script src="http://active.zol.com.cn/11active/0309login/user_login.js"></script>
+<script charset="gbk">
+    var shadow=$('.shadow');
+    var in1=document.getElementById('inp1');
+    var in2=document.getElementById('inp2');
+    var in3=document.getElementById('inp3');
+    var sh1=$('.sh-box1');
+    var sh2=$('.sh-box2');
+    var sh3=$('.sh-box3');
+    var shNum=$('.sh-box1 .p12 span');
+    var inputSubmit=document.getElementById('info-submit');
+    var huodong_str='d3c5ac826b30916f53637d19e291e276';
+    var zolId = readCookie('zol_userid');
+    var jsonUrl1='http://wangzk.comment.test.zol.com.cn/index.php?c=Api_NewLottery2&a=roll&callback=?';
+    var jsonUrl2='http://wangzk.comment.test.zol.com.cn/index.php?c=Api_NewLottery2&a=LottBeforeRecordUserInfo&callback=?';
+
+
+    if(window.location.href.indexOf('article')>-1){
+        shadow.show().css('position','relative');
+    }
+
+    /* 统计 */
+    var nowHref='http://xiazai.zol.com.cn/topic/6617633.html';
+    function zol_niux_tongji(event,url) {
+        var ip_ck = '';
+        var param = arguments[2] ? arguments[2] : "";
+        if(typeof(readck) != "undefined"){
+            ip_ck = readck("ip_ck");
+        }else if(typeof(get_cookie) != "undefined"){
+            ip_ck = get_cookie("ip_ck");
+        }
+        var pv_stat_src = "http://pvtest.zol.com.cn/images/pvevents.gif?t=" + new Date().getTime() + "&event=" + event + "&ip_ck=" + ip_ck + "&url=" + url+'&'+param;
+        var imgObj = new Image();
+        imgObj.src = pv_stat_src;
+    }
+    $('.sh-mod .hong12').each(function (i) {
+        $('.sh-mod .hong12').eq(i).html('领取京东优惠券');
+        $('.sh-mod .hong12').eq(i).bind('click',function () {
+            zol_niux_tongji('article_6617965_pc_'+(i+1),nowHref);
+        })
+    });
+
+
+    inputSubmit.onclick=function () {
+        if(!zolId){
+            alert('亲，请登录后参与活动~！');
+            user_login();
+            return false;
+        }
+        if (this.classList.contains('pointNo')) return;
+        val1=in1.value;
+        val2=in2.value;
+        val3=in3.value;
+        if(!val1){
+            alert('请填写您的姓名');
+            return false;
+        }
+        if(!val2 || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(val2))) {
+            //请正确填写您的手机号码。
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+            return false;
+        }
+        if(!val3){
+            alert('请填写您的收货地址');
+            proError2.style.display='block';
+            input2.classList.add('act');
+            return false;
+        }
+        $.ajax({
+            url:jsonUrl2,
+            type:'get',
+            data:{'huodong_str':window.huodong_str,'true_name':val1,'phone':val2,'address':val3},
+            dataType:'jsonp',
+            success: function (obj){
+                console.log(obj);
+                if(!obj.status_boolean){
+                    in1.value='';
+                    in2.value='';
+                    in3.value='';
+                    inputSubmit.classList.add('pointNo');
+                    sh3.show();
+                    shadow.show();
+                }else{
+                    $.ajax({
+                        url:jsonUrl1,
+                        type:'get',
+                        data:{'huodong_str':window.huodong_str},
+                        dataType:'jsonp',
+                        success: function (obj){
+                            console.log(obj);
+                            if(obj.status_code==10010&&obj.status_boolean){
+                                shNum.html(obj.data.fafang_num);
+                                in1.value='';
+                                in2.value='';
+                                in3.value='';
+                                inputSubmit.classList.add('pointNo');
+                                sh1.show();
+                                shadow.show();
+                                return false;
+                            } else{
+                                in1.value='';
+                                in2.value='';
+                                in3.value='';
+                                inputSubmit.classList.add('pointNo');
+                                sh2.show();
+                                shadow.show();
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+
+    }
+
+
+
+</script>
+</body>
+</html>

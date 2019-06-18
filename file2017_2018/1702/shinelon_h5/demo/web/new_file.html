@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="GBK">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="browsermode" content="application">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<title></title>
+		<script type="text/javascript">
+		if (/Android (d+.d+)/.test(navigator.userAgent)) {
+			var version = parseFloat(RegExp.$1);
+			if (version > 2.3) {
+				var phoneScale = parseInt(window.screen.width) / 640;
+				document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+			} else {
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+			}
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+		</script>
+	</head>
+	<body>
+		<div style="position: fixed;top: 100%;">
+			
+			<img src="images/car1.png"/>
+			<img src="images/car2.png"/>
+			<img src="images/car3.png"/>
+			<img src="images/ball.png" alt="" />
+		
+		</div>
+		<canvas id="canvas" width="640" height="1008"></canvas>
+		<script>
+			var canvas = document.getElementById('canvas'),
+			context = canvas.getContext('2d');
+			var nw = 0;
+			var imgs = document.querySelectorAll('img');
+
+
+			context.clearRect(0,0,canvas.width,canvas.height);
+				
+			setInterval(function(){
+				context.clearRect(0,0,canvas.width,canvas.height);
+				nw++
+				//context.drawImage(imgs[nw%3],0,0,264,229,188,744,264,229);
+				context.drawImage(imgs[3],280,0,220,220,350,419,33,33);
+			},30);
+			
+			
+		</script>
+	</body>
+</html>

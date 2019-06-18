@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>2017华中国际视听</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #1796D4; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #111;  }
+        .wrap2{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 800px;  background: #000;  margin: 0 auto; overflow: hidden;  }
+        .zol_foot{  height: 120px;  padding-top: 70px; background: #111;   }
+        .zol_foot,.zol_foot a{  color: #8be9bb;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 439px; overflow: hidden;  position: relative;     }
+        .prepare{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_pre.jpg") no-repeat top center;  }
+        .pre{  height: 405px;  }
+        .audio{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_audio.jpg") no-repeat top center;  }
+        .ad{  height: 630px;  }
+        .walkman{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_walk.jpg") no-repeat top center;  }
+        .walk{  height: 600px;  }
+        .picture{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_pic.jpg") no-repeat top center;  }
+        .pic{  height: 600px;  }
+        .moreInfo{  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_more.jpg") no-repeat top center;  }
+        .more{  height: 172px;  }
+
+        .flow{  width: 145px;  height: 175px;  position: fixed;  _position: absolute;  bottom: 100px;  left: 50%;  margin-left: 510px;  }
+        .pre1{  position: absolute;  width: 630px;  height: 380px;  top: 0; left: 0;  border: 1px solid #333;  }
+        .pre2{  position: absolute;  width: 352px;  height: 382px;  top: 0; right: 0;   }
+        .pre2 table img{  border: 1px solid #333;  }
+        .pre2 .ln{  height: 21px;  }
+        .mod1{  width: 1000px;  height: 510px;  margin: 88px auto 0;  }
+        .mod11{  margin: 70px auto 0;  }
+        .pic-mod{  height: 460px;  margin: 50px auto 0;  }
+        .more-mod{  height: 80px;  margin: 45px auto 0;  }
+        .flow .bai12{  display: block; font: 12px/22px 'simsun';  height: 22px;  background: #329FD7;  }
+        .mod1 table img{  border: 1px solid #333;  }
+        .mod1 .lan16{  display: block;  color: #8BE9BB;  height: 30px;  padding-bottom: 6px;  font: 16px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .pre .lan20{  display: block;  color: #8BE9BB;  height: 30px;  font: 24px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .pre .lan18{  display: block;  color: #8BE9BB;  height: 30px;  font: 18px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .pic-mod #carousel-left660691{  height: 27px;  width: 19px;  bottom: 260px;  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_btns.png") no-repeat 0 0;  }
+        .pic-mod #carousel-right660691{  height: 27px;  width: 19px;  bottom: 260px;  background: url("http://2.zol-img.com.cn/zt/tm_593/674f5b44d4/lg_btns.png") no-repeat -20px 0;  }
+        .more-mod .hui12{  color: #ddd;  display: block;  line-height: 22px;  }
+
+
+
+        .pre table img,.mod1 table tabel{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .pre table img:hover,.mod1 table table:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" class="head" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c"><{data[0]}></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--浮动-->
+<div class="flow">
+    <{data[1]}>
+</div>
+<!--预热-->
+<div class="wrap1 prepare">
+    <div class="wrapper1 pre">
+        <div class="pre1"><{data[2]}></div>
+        <div class="pre2"><{data[3]}></div>
+    </div>
+</div>
+<!--音响-->
+<div class="wrap1 audio">
+    <div class="wrapper1 ad">
+        <div class="mod1"><{data[4]}></div>
+    </div>
+</div>
+<!--耳机-->
+<div class="wrap1 walkman">
+    <div class="wrapper1 walk">
+        <div class="mod1 mod11"><{data[5]}></div>
+    </div>
+</div>
+<!--美图-->
+<div class="wrap1 picture">
+    <div class="wrapper1 pic">
+        <div class="pic-mod"><{data[6]}></div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 moreInfo">
+    <div class="wrapper1 more">
+        <div class="more-mod"><{data[7]}></div>
+    </div>
+</div>
+
+
+</body>
+</html>

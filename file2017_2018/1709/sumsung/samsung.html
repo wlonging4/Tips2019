@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>三星显示器</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #d90000; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto;   }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  overflow: hidden;  }
+        .zol_foot{  height: 120px;  min-width: 1200px;  padding-top: 60px; background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .head_white{  min-width: 1200px;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 811px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/lg_head_c.jpg") no-repeat top center;   }
+
+        .vd1{  height: 800px;  background: #ebebeb;  }
+        .vd2{  height: 800px;  background: #d4d4d4;  }
+        .video{  height: 800px;  }
+        .pic1{  position: absolute;  top: 45px;  width: 1075px;  height: 650px;  background: #000;  border: 30px solid #fff;  }
+        .vd1 .pic1{  left: 460px;  }
+        .vd2 .pic1{  right: 460px;  }
+        .art1-box{  width: 120px;  height: 400px;  position: absolute;  top: 85px;  }
+        .vd1 .art1-box{  left: 115px;  }
+        .vd2 .art1-box{  right: 115px;  }
+        .art1-slide{  width: 34px;  height: 44px;  position: absolute;  top: 0;  left: 120px;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/slide.png") no-repeat 0 0;  }
+        .art1-m{  width: 40px;  text-align: center; overflow: hidden;  height: 400px;  float: left;  }
+        .pic1-btn{  width: 150px; height: 35px;  position: absolute;  top: 45px;  text-align: center;  border: 1px solid #4d4d4d;  }
+        .vd1 .pic1-btn{  left: 560px;  }
+        .vd2 .pic1-btn{  right: 560px;  }
+        .pic1-art{  width: 220px;  height: 35px;  position: absolute;  top: 95px;  text-align: center;  }
+        .vd1 .pic1-art{  left: 525px;  }
+        .vd2 .pic1-art{  right: 530px;  }
+        .art2{  width: 410px; height: 120px;  position: absolute;  top: 525px;  }
+        .vd1 .art2{  left: 0;  }
+        .vd2 .art2{  right: 0;  }
+        .btn2{  width: 180px;  height: 35px;  position: absolute;  bottom: 80px;  text-align: center; border: 1px solid #4d4d4d;  }
+        .vd1 .btn2{  left: 0;  }
+        .vd2 .btn2{  right: 0;  }
+        .video .hui16{  display: block;  color: #4d4d4d;  font: bold 18px/35px 'Hiragino sans GB','microsoft yahei';  }
+        .video .hui18{  display: block;  color: #4d4d4d;  font: 20px/35px 'Hiragino sans GB','microsoft yahei';  }
+        .video .hui20{  display: block;  color: #4d4d4d;  font: 23px/23px 'Hiragino sans GB','microsoft yahei';  }
+        .video .hui12{  display: block;  color: #4d4d4d;  font: 14px/28px 'Hiragino sans GB','microsoft yahei';  }
+        .video .hong12{  color: #4d4d4d;  }
+
+
+        .forumBg{  background: #ebebeb;  }
+        .forum{  height: 740px;  }
+        .t-forum{  width: 161px;  height: 65px;  margin: 30px 0 35px 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/t_forum.png") no-repeat 0 0;  }
+        .forum1{  position: absolute;  width: 330px;  height: 540px;  top: 135px;  left: 0;  }
+        .forum1 .ln{  height: 16px;  }
+        .forum2{  position: absolute; width: 867px;  height: 165px;  top: 510px;  right: 0;  }
+        .forum-box{  width: 854px;  height: 361px;  position: absolute;  top: 135px;  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/forum_bg.jpg") no-repeat 0 0;  }
+        .forum-m1{  width: 255px;  height: 170px;  position: absolute;  left: 30px;  top: 48px;  }
+        .forum-m2{  width: 520px; height: 370px;  position: absolute;  right: 25px;  top: -50px;  background: #000;  }
+        .forum-link{  width: 90px;  height: 28px;  position: absolute;  left: 0;  bottom: 22px;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/forum_more.png") no-repeat 0 0;  }
+        .forum-m1 .bai18{  display: block;  margin-bottom: 10px;  font: 22px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .forum-m1 .bai14{  display: block;  font: 14px/28px 'simsun';  }
+        .forum-m1 .hong12{  font-size: 14px;  color: #fff;  }
+
+        .preBg{  background: #d4d4d4;  }
+        .pre{  height: 740px;  }
+        .t-pre{  width: 161px;  height: 65px;  margin: 30px 0 35px 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/t_pre.png") no-repeat 0 0;  }
+        .pre1{  width: 255px;  height: 555px;  position: absolute;  top: 130px;  }
+        .pre11{  left: 0;  }
+        .pre12{  right: 0;  }
+        .pre2{  width: 660px;  height: 555px;  position: absolute;  top: 130px;  left: 270px;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/pre_bg.jpg") no-repeat bottom center;  }
+        .pre1 .ln{  height: 15px;  }
+        .pre2 .bai16{  display: block;  margin: 5px 25px 0;  font: bold 17px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .pre2 .bai14{  display: block;  padding: 0 25px;  font: 14px/27px 'simsun';  }
+        .pre2 .hong12{  font-size: 14px;  color: #fff;  }
+
+        .picBg{  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/pic_bg.jpg") no-repeat top center;  }
+        .pic{  height: 1113px;  }
+        .t-pic{  width: 161px;  height: 65px;  margin: 30px 0 35px 0;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b68255469e/t_pic.png") no-repeat 0 0;  }
+        .pic-mod{  width: 1200px;  height: 910px;  margin: 0 auto;  }
+        .pic-mod .ln{  height: 13px;  }
+
+        .shadow{  display: none;  position: fixed;  _position: absolute;  z-index: 999;  width: 100%;  height: 100%;  top: 0;  background: rgba(0,0,0,0.6);  }
+        .sh-box{  width: 900px; height: 700px;  position: absolute;  top: 50%;  left: 50%;  margin: -350px 0 0  -450px;  background: #000;  border: 5px solid #2a98e7;  }
+        .sh-close{  width: 40px;  height: 38px;  position: absolute;  cursor: pointer;  top: 50%;  left: 50%;  margin: -388px 0 0 460px;  z-index: 1000;  background: url("http://2.zol-img.com.cn/zt/tm_59b/b7d067c71f/close.jpg") no-repeat 0 0;  }
+
+        .pre1 table table,.forum-m2 table img,.forum2 table img,.forum1 table table,.pic-mod table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .pre1 table table:hover,.forum-m2 table img:hover,.forum2 table img:hover,.forum1 table table:hover,.pic-mod table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--视频1-->
+<div class="wrap1 vd1 banners">
+    <div class="wrapper1 video video1">
+        <div class="pic1">
+            <{data[0]}>
+            <div class="pic1-btn"><{data[1]}></div>
+            <div class="pic1-art"><{data[2]}></div>
+        </div>
+        <div class="art1-box">
+            <div class="art1-slide"></div>
+            <div class="art1-m"><{data[3]}></div>
+            <div class="art1-m"><{data[4]}></div>
+            <div class="art1-m"><{data[5]}></div>
+        </div>
+        <div class="art2"><{data[6]}></div>
+        <div class="btn2"><{data[7]}></div>
+    </div>
+</div>
+<!--视频2-->
+<div class="wrap1 vd2 banners">
+    <div class="wrapper1 video video2">
+        <div class="pic1">
+            <{data[8]}>
+            <div class="pic1-btn"><{data[9]}></div>
+            <div class="pic1-art"><{data[10]}></div>
+        </div>
+        <div class="art1-box">
+            <div class="art1-slide"></div>
+            <div class="art1-m"><{data[11]}></div>
+            <div class="art1-m"><{data[12]}></div>
+            <div class="art1-m"><{data[13]}></div>
+        </div>
+        <div class="art2"><{data[14]}></div>
+        <div class="btn2"><{data[15]}></div>
+    </div>
+</div>
+<!--视频3-->
+<div class="wrap1 vd1 banners">
+    <div class="wrapper1 video video3">
+        <div class="pic1">
+            <{data[16]}>
+            <div class="pic1-btn"><{data[17]}></div>
+            <div class="pic1-art"><{data[18]}></div>
+        </div>
+        <div class="art1-box">
+            <div class="art1-slide"></div>
+            <div class="art1-m"><{data[19]}></div>
+            <div class="art1-m"><{data[20]}></div>
+            <div class="art1-m"><{data[21]}></div>
+        </div>
+        <div class="art2"><{data[22]}></div>
+        <div class="btn2"><{data[23]}></div>
+    </div>
+</div>
+<!--视频4-->
+<div class="wrap1 vd2 banners">
+    <div class="wrapper1 video video4">
+        <div class="pic1">
+            <{data[24]}>
+            <div class="pic1-btn"><{data[25]}></div>
+            <div class="pic1-art"><{data[26]}></div>
+        </div>
+        <div class="art1-box">
+            <div class="art1-slide"></div>
+            <div class="art1-m"><{data[27]}></div>
+            <div class="art1-m"><{data[28]}></div>
+            <div class="art1-m"><{data[29]}></div>
+        </div>
+        <div class="art2"><{data[30]}></div>
+        <div class="btn2"><{data[31]}></div>
+    </div>
+</div>
+<!--论坛-->
+<div class="wrap1 forumBg banners">
+    <div class="wrapper2 forum">
+        <div class="t-forum"></div>
+        <div class="forum1"><{data[32]}></div>
+        <div class="forum2"><{data[33]}></div>
+        <div class="forum-box">
+            <div class="forum-m1"><{data[34]}></div>
+            <div class="forum-m2"><{data[35]}></div>
+            <div class="forum-link"><{data[36]}></div>
+        </div>
+    </div>
+</div>
+<!--前瞻-->
+<div class="wrap1 preBg banners">
+    <div class="wrapper2 pre">
+        <div class="t-pre"></div>
+        <div class="pre1 pre11"><{data[37]}></div>
+        <div class="pre1 pre12"><{data[38]}></div>
+        <div class="pre2"><{data[39]}></div>
+    </div>
+</div>
+<!--美图-->
+<div class="wrap1 picBg banners">
+    <div class="wrapper2 pic">
+        <div class="t-pic"></div>
+        <div class="pic-mod"><{data[40]}></div>
+    </div>
+</div>
+<!--阴影-->
+<div class="shadow">
+    <div class="sh-box">
+        <iframe id="sh-v" src='' frameborder='0' scrolling="no" width='100%' height='700' allowfullscreen='true'></iframe>
+    </div>
+    <div class="sh-close"></div>
+</div>
+
+<script charset="gbk">
+    var hui16s=$('.pic1-btn .hui16');
+    var shadow=$('.shadow');
+    var shClose=$('.sh-close');
+    var shVideo=$('#sh-v');
+
+    hui16s.bind('click',function () {
+        var nowHref=$(this).attr('href');
+        shVideo.attr('src',nowHref);
+        shadow.show();
+//        e.stopPropagation();
+//        e.preventDefault();
+        return false;
+    });
+    shClose.bind('click',function () {
+        shadow.hide();
+        shVideo.attr('src','');
+    });
+
+
+</script>
+</body>
+</html>

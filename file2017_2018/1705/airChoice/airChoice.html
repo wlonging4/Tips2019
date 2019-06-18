@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>空调选购直播</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #f4fcff; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%;  min-width:1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%;  min-width:1200px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_video.jpg") no-repeat top center;  }
+        .wrap3{   width: 100%;  min-width:1200px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_art.jpg") no-repeat top center;  }
+        .wrap4{   width: 100%;  min-width:1200px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_comment.jpg") no-repeat top center;  }
+        .wrap5{   width: 100%;  min-width:1200px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_chg.jpg") no-repeat top center;  }
+        .wrap6{   width: 100%;  min-width:1200px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_pic.jpg") no-repeat top center;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1100px;  background: #000;  margin: 0 auto; overflow: hidden;  }
+        .wrapper3{  position: relative;  width: 1080px;  }
+        .wrapper4{  position: relative;  width: 1180px;  background: #000;  }
+        .zol_foot{  height: 120px;  padding-top: 70px; background: #011f2c;   }
+        .zol_foot,.zol_foot a{  color: #727271;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        @-webkit-keyframes btnMove1 { 0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  } 86%{  -webkit-transform: translate(0px,-5px) scale(1);opacity: 0.9;  } 100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        @keyframes btnMove1 { 0%{  transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  } 86%{  transform: translate(0px,-5px) scale(1);opacity: 0.9;  } 100%{  transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        @-webkit-keyframes btnMove2 { 0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  } 86%{  -webkit-transform: translate(5px,0px) scale(1);opacity: 0.9;  } 100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        @keyframes btnMove2 { 0%{  transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  } 86%{  transform: translate(5px,0px) scale(1);opacity: 0.9;  } 100%{  transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        @-webkit-keyframes btnMove3 { 0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  } 86%{  -webkit-transform: translate(-5px,0px) scale(1);opacity: 0.9;  } 100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        @keyframes btnMove3 { 0%{  transform: translate(0px,0px) scale(1);opacity: 1;  } 80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  } 86%{  transform: translate(-5px,0px) scale(1);opacity: 0.9;  } 100%{  transform: translate(0px,0px) scale(1);opacity: 1;  } }
+        .btnMove1{  -webkit-animation: btnMove1 1s ease-in 0.1s infinite; animation: btnMove1 1s ease-in 0.1s infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+        .btnMove2{  -webkit-animation: btnMove2 1s ease-in 0.1s infinite; animation: btnMove2 1s ease-in 0.1s infinite; -webkit-transform-origin: left center;  transform-origin: left center;  }
+        .btnMove3{  -webkit-animation: btnMove3 1s ease-in 0.1s infinite; animation: btnMove3 1s ease-in 0.1s infinite; -webkit-transform-origin: right center;  transform-origin: right center;  }
+        .art table img,.head-mod table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .art table img:hover,.head-mod table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 560px; overflow: hidden;  position: relative;    }
+        .head-remind{   position: absolute;  top: 322px;  right: 12px;  width: 140px;  height: 54px;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_head_remind.png") no-repeat 0 0;  }
+        .head-mod{  width: 155px;  height: 155px;  padding: 3px;  position: absolute;  right: 0;  bottom: 16px; background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_head_bg.png") no-repeat 0 0;  }
+
+        .video{  height: 668px;  }
+        .vd{  width: 1100px;height: 668px; margin: 0 auto; background: #000;  }
+        .com{  height: 714px;  }
+        .com-mod{  height: 550px; margin: 90px auto 74px;  }
+        .art{  height: 350px;  }
+        .art-mod{  height: 320px; margin: 30px auto 0;  }
+        .art #changeword656846 .changebg{  background: #019ae6; opacity: 1;  }
+        .art .bai20{  display: block;  font: 14px/26px 'Hiragino sans GB','microsoft yahei';  color: #ebf6fd;  margin: 0 12px 4px;  border-bottom: 1px solid #0686cc;  }
+        .art .bai20 span{  font: 22px/24px 'Hiragino sans GB','microsoft yahei';  }
+        .art .bai12{  display: block;  padding: 1px 12px 0;  color: #b6e4fd;  }
+        .change{  height: 645px;  }
+        .chg-box{  width: 1150px;  height: 450px;  overflow: hidden;  position: relative;  margin: 115px auto 0;  }
+        .chg-mod{  width: 3450px;  height: 450px;  position: absolute;  top: 0;  left: 0;  }
+        .chg-pic{  float: left;  width: 680px;  height: 450px;  background: #000;  }
+        .chg-art{  float: left;  width: 470px;  height: 390px;  position: relative;  margin: 20px 0 0;  }
+        .chg-art table table{  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_chg_blue.jpg") no-repeat 0 0;  }
+        .chg-art .bai20{  display: block;  color: #e8f4fe;  padding: 15px 35px;  font: 22px/42px 'Hiragino sans GB','microsoft yahei';  }
+        .chg-art .bai12{  color: #6fcafc;  display: block;  padding: 10px 35px 15px;  font: 12px/22px 'simsun';  }
+        .chg-art .ln{  height: 18px;  }
+        .chg-num{  width: 55px;  height: 50px;  position: absolute;  bottom: -6px;  left: 700px;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_chg_slide.png") no-repeat center;  }
+        .chg-num1,.chg-num2{  position: absolute; text-align: center;  width: 30px;  height: 35px;  color: #fff;  font: 26px/34px 'Hiragino sans GB','microsoft yahei';  }
+        .chg-num1{  top: 0;  left: 0;  }
+        .chg-num2{  bottom: 0;  right: -3px;  }
+        .chg-btn{  width: 39px; cursor: pointer;  height: 25px;  position: absolute;  bottom: 10px;  left: 780px;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_chg_btn1.png") no-repeat 0 0;  }
+        .chg-btn.act{  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_chg_btn2.png") no-repeat 0 0;  }
+        .picture{  height: 609px;  }
+        .pic{  width: 1100px;  height: 430px;  margin: 90px auto 0;  }
+        .pic #carousel-right656854{  bottom: 210px; right: -10px;  background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_pic_btns.png") no-repeat -47px 0; width: 47px; height: 83px; }
+        .pic #carousel-left656854{  bottom: 210px; left: -10px; background: url("http://2.zol-img.com.cn/zt/tm_591/958e459ed8/lg_pic_btns.png") no-repeat 0 0; width: 47px; height: 83px; }
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+                <div class="head-remind btnMove1"></div>
+                <div class="head-mod">
+                    <{data[1]}>
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--视频-->
+<div class="wrap2 banners">
+    <div class="wrapper1 video">
+        <div class="vd">
+            <{data[2]}>
+        </div>
+    </div>
+</div>
+<!--文章-->
+<div class="wrap3 banners">
+    <div class="wrapper1 art">
+        <div class="art-mod">
+            <{data[3]}>
+        </div>
+    </div>
+</div>
+<!--评论-->
+<div class="wrap4 banners">
+    <div class="wrapper1 com">
+        <div class="com-mod">
+            <{data[4]}>
+        </div>
+    </div>
+</div>
+<!--切换-->
+<div class="wrap5 banners">
+    <div class="wrapper1 change">
+        <div class="chg-box">
+            <div class="chg-mod clearfix">
+                <div class="chg-pic"><{data[5]}></div>
+                <div class="chg-art"><{data[6]}></div>
+                <div class="chg-pic"><{data[7]}></div>
+                <div class="chg-art"><{data[8]}></div>
+                <div class="chg-pic"><{data[9]}></div>
+                <div class="chg-art"><{data[10]}></div>
+            </div>
+            <div class="chg-num">
+                <div class="chg-num1">1</div>
+                <div class="chg-num2">3</div>
+            </div>
+            <div class="chg-btn btnMove2"></div>
+        </div>
+    </div>
+</div>
+<!--美图-->
+<div class="wrap6 banners">
+    <div class="wrapper1 picture">
+        <div class="pic"><{data[11]}></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    /*切换*/
+    var chg_mod=$('.chg-mod'),chg_num1=$('.chg-num1'),chg_btn=$('.chg-btn');
+    var chg_flg=0;
+    var chg_i=0;
+    chg_btn.bind('click',function () {
+        if(chg_flg==0){
+            chg_i++;
+            if(chg_i>2){
+                chg_btn.removeClass('btnMove2');
+                chg_btn.addClass('btnMove3 act');
+                chg_flg=1;
+                chg_i=1;
+                chgMove(chg_i);
+                return false;
+            }
+            chgMove(chg_i);
+        }
+        if(chg_flg==1){
+            chg_i--;
+            if(chg_i<0){
+                chg_btn.addClass('btnMove2');
+                chg_btn.removeClass('btnMove3 act');
+                chg_flg=0;
+                chg_i=1;
+                chgMove(chg_i);
+                return false;
+            }
+            chgMove(chg_i);
+        }
+    });
+    function chgMove(i) {
+        chg_num1.html(chg_i+1);
+        chg_mod.stop().animate({'left':'-'+i*1150+'px'});
+    }
+
+</script>
+
+</body>
+</html>

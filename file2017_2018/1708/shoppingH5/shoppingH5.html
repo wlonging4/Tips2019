@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>全民学生价 全城到店玩</title>
+    <!--<meta name="viewport" content="width=device-width,user-scalable=no">-->
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <meta content="telephone=no" name="format-detection">
+    <link href="http://active.zol.com.cn/frontend/m/topics20150429.css" rel="stylesheet">
+    <style type="text/css">
+        .wrap1{  width: 640px;  position: relative;  overflow: hidden; margin: 0 auto;  }
+
+        .sw1{  background: #0bb366 url("http://2.zol-img.com.cn/zt/tm_599/e9809bf88d/bg1.jpg") no-repeat top center; height: 840px;  }
+        .sw1-ul{  width: 600px;  height: 70px;  margin: 4px auto 10px;  background: #ffc21c;  border: 4px solid #2a2a2a;  -webkit-border-radius: 10px;  border-radius: 10px;  }
+        .sw1-ul li{  width: 150px;  height: 70px;  float: left;  -webkit-border-radius: 6px;  border-radius: 6px;  text-align: center;  background: transparent;  }
+        .sw1-ul li.act{  background: #e8053a;  }
+        .sw1-ul li .sw1-p1{  font: 26px/32px 'Hiragino sans GB','microsoft yahei';  color: #000; padding-top: 4px;  }
+        .sw1-ul li .sw1-p2{  font: 20px/28px 'Hiragino sans GB','microsoft yahei';  color: #664e0b;  }
+        .sw1-ul li.act .sw1-p1{  color: #fff;  }
+        .sw1-ul li.act .sw1-p2{  color: #f69bb0;  }
+        .sw1-box{  width: 620px;  height: 750px;  overflow: hidden;  margin: 0 auto;  }
+        .sw1-mod{  width: 620px;  height: 750px;  display: none; position: relative;  }
+        .sw1-mod .sys_edit_element{  position: absolute;  }
+        .sw1-mod.blk{  display: block;  }
+        .sw1-mod .ln{  height: 8px;  }
+        .sw1-mod table img{  padding: 16px 16px 0;  }
+        .sw1-mod table td  table:nth-child(1){  width: 300px;  height: 370px;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_599/e9809bf88d/bgPro1.png") no-repeat top center;  }
+        .sw1-mod table .hui12{  display: block;  height: 28px;  color: #646363;  font: 24px/30px 'Hiragino sans GB','microsoft yahei';  margin-top: -5px;  }
+        .sw1-mod table .bai12{  display: block;  height: 84px;  color: #e8053a;  font: 20px/36px 'Hiragino sans GB','microsoft yahei';  text-align: center;  }
+        .sw1-mod table .bai12 i{  font: 24px/36px 'Hiragino sans GB','microsoft yahei';  }
+        .sw1-mod table .slh{  display: none;  }
+        .sw1-mod table .hong12{  display: block;  width: 160px;  height: 36px;  text-align: center;  color: #fff;  font: 22px/36px 'Hiragino sans GB','microsoft yahei';  margin: 1px auto;  background: #e8053a;  -webkit-border-radius: 14px;  border-radius: 14px;  }
+        .notStart{  width: 146px;  height: 146px;  position: absolute;  left: 50%;  right: 50%;  margin: -192px 0 0 -72px;  background: url("http://2.zol-img.com.cn/zt/tm_599/e9809bf88d/notStart.png") no-repeat 0 0;  }
+        .hasPass{  width: 300px;  height: 370px; top: 0;  position: absolute;  background: url("http://2.zol-img.com.cn/zt/tm_599/abbb165cc5/over.png") no-repeat center;  }
+
+        .sw2{  background: #ffc21c;  }
+        .sw2-c{  width: 600px;  border: 4px solid #000;  overflow: hidden;  margin: 12px auto;  border-radius: 0 0 10px 10px;  }
+        .sw2-ul{  width: 600px;  height: 60px;  overflow: hidden; background: #000;  }
+        .sw2-ul li{  float: left;  position: relative;  width: 198px; border-right: 2px solid #3a2c06;  color: #fff;  text-align: center;  font: 22px/60px "Hiragino sans GB",'microsoft yahei';  }
+        .sw2-ul li.act{  background: #e8053a;  }
+        .sw2-ul li .bai20{  color: #fff;  text-align: center;  font: 23px/56px "Hiragino sans GB",'microsoft yahei';  }
+        .sw2-ul li:last-child{  border-right: 2px solid #000;  }
+        .sw2-ul li .sys_edit_element{  top: -30px!important; position: absolute;  }
+        .sw2-box{  width: 600px;  overflow: hidden;  margin: 8px auto;  }
+        .sw2-mod{  width: 600px;  overflow: hidden;  display: none;  }
+        .sw2-mod.blk{  display: block;  }
+        .sw2-m1{  width: 570px;  height: 460px;  margin: 0 auto;  position: relative;  }
+        .sw2-m2{  width: 240px;  height: 90px;  margin: 10px auto 0;position: relative;  }
+        .sw2-m3{  width: 410px;  height: 106px;  margin: 10px auto 0;position: relative;  }
+        .sw2-m4{  width: 402px;  height: 16px;  margin: 0 auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_599/e9809bf88d/sw24.jpg") no-repeat top center;  }
+        .sw2-m5{  width: 560px;  min-height: 300px;  overflow: hidden;  margin: 0 auto 0;position: relative;  }
+        .sw2-m5 .ln{  height: 10px;  }
+        .sw2-box .sys_edit_element{  position: absolute;  }
+
+        /* 转盘 */
+        .draw-turntable{width: 640px;margin: 0 auto;background: #0bb366;}
+        .draw-turntable .draw-turntable-inner { width: 556px; height: 457px; background: url('http://2.zol-img.com.cn/zt/tm_599/e71db790fd/draw.png') no-repeat center; margin-left: 30px; position: relative; }
+        .draw-turntable .draw-turntable-inner .rotate { width: 471px; height: 471px; position: absolute; left: 60px; top: 0; }
+        .draw-turntable .draw-turntable-inner .pointer { width: 109px; height: 135px; position: absolute; left: 242px; top: 155px; z-index: 11; cursor: pointer; }
+        .draw-turntable .draw-tip { font-size:20px; text-align: center; margin:35px 0 20px; padding-left:70px; }
+        /* 抽奖信息 */
+        .draw-infoWrapper{width: 640px;margin:0 auto 0;background-color:#0bb366;}
+        .draw-infoWrapper-inner_box{width:580px;padding: 10px;margin: 0 auto;background-color: #008447;border-radius: 10px;-webkit-border-radius: 10px;}
+        .draw-infoWrapper .draw-infoWrapper-inner {position: relative;border:1px dashed #75b799;border-radius: 10xp;-webkit-border-radius: 10px;}
+        .draw-infoWrapper-inner_tl{position: absolute;top: -55px;left:50%;margin-left: -103px;width:206px;height: 81px;background: url(http://2.zol-img.com.cn/zt/tm_599/f9f704c033/wapRuleTl.png) no-repeat center;}
+        .draw-infoWrapper .draw-infoWrapper-inner .draw-ruleWrapper { color: #FFF; font-size:20px;line-height:26px;padding:45px 0 0 25px;margin-bottom: 35px;}
+        .draw-infoWrapper .draw-infoWrapper-inner .draw-ruleWrapper li{ font-size:20px;}
+        .draw-infoWrapper .draw-infoWrapper-inner .draw-prizeWrapper { color: #FFF; font-size:20px;line-height:26px; padding:40px 0 0 25px;background: url(http://2.zol-img.com.cn/zt/tm_599/fc1c13264d/prizeTl.png) no-repeat 25px top;}
+        .draw-infoWrapper .draw-infoWrapper-inner .draw-prizeWrapper li{font-size:20px;}
+
+        /* 弹层 */
+        .luckLayer{position:fixed;left:50%;top: 50%;}
+        .winningLayer{width: 456px;height: 352px;margin:-176px 0 0 -228px;background: url(http://2.zol-img.com.cn/zt/tm_599/fc9d105a25/winningLayer.png) no-repeat center;z-index: 100;  }
+        .winningLayer .close{position: absolute;right:-18px;top:48px;width:47px;height: 47px;background: url(http://2.zol-img.com.cn/zt/tm_599/fcade810d3/close.png) no-repeat center;cursor: pointer;}
+        .winningLayer .word{height: 54px;margin-top: 185px;line-height: 54px;text-align: center;font-size: 48px;color:#ffc21c;}
+        .noChance{width:465px;height: 206px;margin:-103px 0 0 -232px; z-index: 50;}
+        .noChance .close{position: absolute;right:-6px;top:4px;width:47px;height: 47px;cursor: pointer;}
+    </style>
+</head>
+
+<body>
+<script src="http://m.zol.com/index.php?c=Shop_Public&a=ZplusHeader"></script>
+
+<div class="banners"><section class="introduction-section banners"><{data[1]}></section></div>
+
+<!--切换1-->
+<div class="banners wrap1 sw1">
+    <ul class="sw1-ul">
+        <li class="act">
+            <p class="sw1-p1">8.31-9.2</p>
+            <p class="sw1-p2">10:00-24:00</p>
+        </li>
+        <li>
+            <div class="sw1-p1">9.3-9.5</div>
+            <div class="sw1-p2">10:00-24:00</div>
+        </li>
+        <li>
+            <div class="sw1-p1">9.6-9.8</div>
+            <div class="sw1-p2">10:00-24:00</div>
+        </li>
+        <li>
+            <div class="sw1-p1">9.9-9.10</div>
+            <div class="sw1-p2">10:00-24:00</div>
+        </li>
+    </ul>
+    <div class="sw1-box">
+        <div class="sw1-mod blk"><{data[11116]}></div>
+        <div class="sw1-mod"><{data[11117]}></div>
+        <div class="sw1-mod"><{data[11118]}></div>
+        <div class="sw1-mod"><{data[11119]}></div>
+    </div>
+</div>
+
+<div class="banners"><section class="introduction-section banners"><{data[3]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[211]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[4]}></section></div>
+
+<div class="banners">
+    <section class="introduction-section banners" style="background-color:#0bb366;overflow:hidden;">
+        <!-- 转盘 -->
+        <div class="draw-turntable">
+            <div class="draw-turntable-inner">
+                <div class="rotate">
+                    <img src="http://2.zol-img.com.cn/zt/tm_599/e71db790fd/turntable.png" id="rotate" alt="turntable">
+                </div>
+                <div class="pointer">
+                    <img src="http://2.zol-img.com.cn/zt/tm_599/e71db790fd/pointer.png" alt="">
+                </div>
+            </div>
+
+            <p class="draw-tip">您还有<span>2</span>/2次抽奖机会</p>
+        </div>
+    </section>
+</div>
+
+<div class="banners">
+    <section class="introduction-section banners" style="padding-top:50px;background-color:#0bb366">
+        <!-- 抽奖信息 -->
+        <div class="draw-infoWrapper">
+            <div class="draw-infoWrapper-inner_box">
+                <div class="draw-infoWrapper-inner">
+                    <h5 class="draw-infoWrapper-inner_tl"></h5>
+                    <div class="draw-ruleWrapper">
+                        <ul>
+                            <li>8月31日</li>
+                            <li>转盘抽奖正式开始</li>
+                            <li>1、每天可抽奖1次</li>
+                            <li>2、奖品将于活动结束后统一发放</li>
+                        </ul>
+                    </div>
+                    <div class="draw-prizeWrapper">
+                        <ul>
+                            <li>空气净化器</li>
+                            <li>手机</li>
+                            <li>蓝牙耳机</li>
+                            <li>键盘</li>
+                            <li>优惠券</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="banners"><section class="introduction-section banners"><{data[191]}></section></div>
+</div>
+<div class="banners"><section class="introduction-section banners"><{data[19]}></section></div>
+
+<!--切换2-->
+<div class="banners wrap1 sw2">
+    <div class="sw2-c">
+        <ul class="sw2-ul">
+            <li class="act"><{data[11141]}></li>
+            <li><{data[11142]}></li>
+            <li><{data[11143]}></li>
+        </ul>
+        <div class="sw2-box">
+            <div class="sw2-mod blk">
+                <div class="sw2-m1"><{data[11149]}></div>
+                <div class="sw2-m2"><{data[11150]}></div>
+                <div class="sw2-m3"><{data[11151]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11152]}></div>
+            </div>
+            <div class="sw2-mod">
+                <div class="sw2-m1"><{data[11153]}></div>
+                <div class="sw2-m2"><{data[11154]}></div>
+                <div class="sw2-m3"><{data[11155]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11156]}></div>
+            </div>
+            <div class="sw2-mod">
+                <div class="sw2-m1"><{data[11157]}></div>
+                <div class="sw2-m2"><{data[11158]}></div>
+                <div class="sw2-m3"><{data[11159]}></div>
+                <div class="sw2-m4"></div>
+                <div class="sw2-m5"><{data[11160]}></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banners"><section class="introduction-section banners"><{data[8]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[9]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[10]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[11]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[12]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[13]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[14]}></section></div>
+
+<div class="banners"><section class="rec-section"><{data[15]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[16]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[17]}></section></div>
+
+<div class="banners"><section class="introduction-section banners"><{data[18]}></section></div>
+
+<div id="sys_bar_copying"></div>
+<a class="back-to-top" style="display:none;"></a>
+<norunscript src="http://active.zol.com.cn/frontend/m/m_index.js"></norunscript>
+<script src="http://m.zol.com/index.php?c=Shop_Public&a=ZplusFooterNew"></script>
+<script src="http://m.zol.com/js/Shop/appUrlChange.js" type="text/javascript"></script>
+<script src="http://www.zol.com/js/topic/topicUrl.js" type="text/javascript"></script>
+
+<script charset="gbk">
+
+    /*场景切换*/
+    var sw1Lis=$('.sw1-ul li');var sw1Dis=$('.sw1-mod');
+    var sw2Lis=$('.sw2-ul li');var sw2Dis=$('.sw2-mod');
+    function chg1(evt,type,origin,response,num1,cls1,cls2) {
+        if(type==0){
+            origin.bind(evt,function () {
+                var nowIndex=origin.index(this);
+                $(this).addClass(cls1).siblings().removeClass(cls1);
+                response.stop().animate({'left':'-'+nowIndex*num1+'px'},300);
+            })
+        }
+        if(type==1){
+            origin.bind(evt,function () {
+                var nowIndex1=origin.index(this);
+                nowPage=nowIndex1;
+                $(this).addClass(cls1).siblings().removeClass(cls1);
+                response.eq(nowIndex1).addClass(cls2).siblings().removeClass(cls2);
+            })
+        }
+        if(type==2){
+            origin.bind(evt,function () {
+                var nowIndex1=origin.index(this);
+                $(this).addClass(cls1).siblings().removeClass(cls1);
+            })
+        }
+        if(type==3){
+            origin.bind(evt,function () {
+                var nowIndex=origin.index(this);
+                //$(this).addClass(cls1).siblings().removeClass(cls1);
+                response.stop().animate({'left':'-'+nowIndex*num1+'px'},300);
+                origin.each(function (i) {
+                    origin.eq(i).removeClass(cls1);
+                });
+                $(this).addClass(cls1);
+            })
+        }
+    }
+    //chg1('mouseenter',0,$('.test-ul li'),$('.test-mod'),815,'act','');
+    //chg1('mouseenter',3,$('.pic2 table img'),$('.pic1-mod'),715,'act','');
+    chg1('click',1,sw1Lis,sw1Dis,null,'act','blk');
+    chg1('click',1,sw2Lis,sw2Dis,null,'act','blk');
+    //chg1('click',2,vd_lis,null,null,'act',null);
+
+    /*switch1_hong12*/
+    $('.sw1-mod .hong12').each(function (i) {
+        $('.sw1-mod .hong12').eq(i).html('立即抢购')
+    });
+
+    /*timerControl_sw1*/
+    function timerShow(i,t) {
+        for(var k=0;k<4;k++){sw1Lis.eq(k).removeClass('act');sw1Dis.eq(k).removeClass('blk');}
+        sw1Lis.eq(i).addClass('act');sw1Dis.eq(i).addClass('blk');
+
+
+        var notStartPics=$('.sw1-mod:gt('+i+')').find('table img');
+        var hasPassPics=$('.sw1-mod:lt('+i+')').find('table img');
+        if(t==1){notStartPics=$('.sw1-mod').find('table img');}
+        if(t==2){notStartPics=$('.sw1-mod:gt(4)').find('table img');}
+
+        for(var u=0;u<notStartPics.length;u++){
+            notStartPics.eq(u).after('<div class="notStart"></div>');
+        }
+        for(var w=0;w<hasPassPics.length;w++){
+            hasPassPics.eq(w).closest('a').after('<div class="hasPass"></div>');
+        }
+    }
+    var newDate=new Date();newY=newDate.getFullYear();newM=(newDate.getMonth()+1);newD=newDate.getDate();
+
+    if(newY==2017&&newM==8){
+        if(newD<=31){ timerShow(0,1) }else{ timerShow(0,0) }
+    }
+    if(newY==2017&&newM==9){
+        if(newD==1||newD==2){ timerShow(0,0) }
+        if(newD==3||newD==4||newD==5){ timerShow(1,0) }
+        if(newD==6||newD==7||newD==8){ timerShow(2,0) }
+        if(newD==9||newD==10){ timerShow(3,0) }
+    }
+
+    window.load=function () {
+        var hasPassMods=$('.hasPass');
+        hasPassMods.bind('click',function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+        hasPassMods.bind('tap',function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+        hasPassMods.each(function (i,ele) {
+            ele.closest('a').attr('href','');
+        })
+
+    }
+
+</script>
+<!-- 抽奖 -->
+<!-- 插件 -->
+<script>
+    (function($) {
+        var supportedCSS,styles=document.getElementsByTagName("head")[0].style,toCheck="transformProperty WebkitTransform OTransform msTransform MozTransform".split(" ");
+        for (var a=0;a<toCheck.length;a++) if (styles[toCheck[a]] !== undefined) supportedCSS = toCheck[a];
+        // Bad eval to preven google closure to remove it from code o_O
+        // After compresion replace it back to var IE = 'v' == '\v'
+        var IE = eval('"v"=="\v"');
+
+        jQuery.fn.extend({
+            rotate:function(parameters)
+            {
+                if (this.length===0||typeof parameters=="undefined") return;
+                if (typeof parameters=="number") parameters={angle:parameters};
+                var returned=[];
+                for (var i=0,i0=this.length;i<i0;i++)
+                {
+                    var element=this.get(i);
+                    if (!element.Wilq32 || !element.Wilq32.PhotoEffect) {
+
+                        var paramClone = $.extend(true, {}, parameters);
+                        var newRotObject = new Wilq32.PhotoEffect(element,paramClone)._rootObj;
+
+                        returned.push($(newRotObject));
+                    }
+                    else {
+                        element.Wilq32.PhotoEffect._handleRotation(parameters);
+                    }
+                }
+                return returned;
+            },
+            getRotateAngle: function(){
+                var ret = [];
+                for (var i=0,i0=this.length;i<i0;i++)
+                {
+                    var element=this.get(i);
+                    if (element.Wilq32 && element.Wilq32.PhotoEffect) {
+                        ret[i] = element.Wilq32.PhotoEffect._angle;
+                    }
+                }
+                return ret;
+            },
+            stopRotate: function(){
+                for (var i=0,i0=this.length;i<i0;i++)
+                {
+                    var element=this.get(i);
+                    if (element.Wilq32 && element.Wilq32.PhotoEffect) {
+                        clearTimeout(element.Wilq32.PhotoEffect._timer);
+                    }
+                }
+            }
+        });
+
+        // Library agnostic interface
+
+        Wilq32=window.Wilq32||{};
+        Wilq32.PhotoEffect=(function(){
+
+            if (supportedCSS) {
+                return function(img,parameters){
+                    img.Wilq32 = {
+                        PhotoEffect: this
+                    };
+
+                    this._img = this._rootObj = this._eventObj = img;
+                    this._handleRotation(parameters);
+                }
+            } else {
+                return function(img,parameters) {
+                    // Make sure that class and id are also copied - just in case you would like to refeer to an newly created object
+                    this._img = img;
+
+                    this._rootObj=document.createElement('span');
+                    this._rootObj.style.display="inline-block";
+                    this._rootObj.Wilq32 =
+                        {
+                            PhotoEffect: this
+                        };
+                    img.parentNode.insertBefore(this._rootObj,img);
+
+                    if (img.complete) {
+                        this._Loader(parameters);
+                    } else {
+                        var self=this;
+                        // TODO: Remove jQuery dependency
+                        jQuery(this._img).bind("load", function()
+                        {
+                            self._Loader(parameters);
+                        });
+                    }
+                }
+            }
+        })();
+
+        Wilq32.PhotoEffect.prototype={
+            _setupParameters : function (parameters){
+                this._parameters = this._parameters || {};
+                if (typeof this._angle !== "number") this._angle = 0 ;
+                if (typeof parameters.angle==="number") this._angle = parameters.angle;
+                this._parameters.animateTo = (typeof parameters.animateTo==="number") ? (parameters.animateTo) : (this._angle);
+
+                this._parameters.step = parameters.step || this._parameters.step || null;
+                this._parameters.easing = parameters.easing || this._parameters.easing || function (x, t, b, c, d) { return -c * ((t=t/d-1)*t*t*t - 1) + b; }
+                this._parameters.duration = parameters.duration || this._parameters.duration || 1000;
+                this._parameters.callback = parameters.callback || this._parameters.callback || function(){};
+                if (parameters.bind && parameters.bind != this._parameters.bind) this._BindEvents(parameters.bind);
+            },
+            _handleRotation : function(parameters){
+                this._setupParameters(parameters);
+                if (this._angle==this._parameters.animateTo) {
+                    this._rotate(this._angle);
+                }
+                else {
+                    this._animateStart();
+                }
+            },
+
+            _BindEvents:function(events){
+                if (events && this._eventObj)
+                {
+                    // Unbinding previous Events
+                    if (this._parameters.bind){
+                        var oldEvents = this._parameters.bind;
+                        for (var a in oldEvents) if (oldEvents.hasOwnProperty(a))
+                        // TODO: Remove jQuery dependency
+                            jQuery(this._eventObj).unbind(a,oldEvents[a]);
+                    }
+
+                    this._parameters.bind = events;
+                    for (var a in events) if (events.hasOwnProperty(a))
+                    // TODO: Remove jQuery dependency
+                        jQuery(this._eventObj).bind(a,events[a]);
+                }
+            },
+
+            _Loader:(function()
+            {
+                if (IE)
+                    return function(parameters)
+                    {
+                        var width=this._img.width;
+                        var height=this._img.height;
+                        this._img.parentNode.removeChild(this._img);
+
+                        this._vimage = this.createVMLNode('image');
+                        this._vimage.src=this._img.src;
+                        this._vimage.style.height=height+"px";
+                        this._vimage.style.width=width+"px";
+                        this._vimage.style.position="absolute"; // FIXES IE PROBLEM - its only rendered if its on absolute position!
+                        this._vimage.style.top = "0px";
+                        this._vimage.style.left = "0px";
+
+                        /* Group minifying a small 1px precision problem when rotating object */
+                        this._container =  this.createVMLNode('group');
+                        this._container.style.width=width;
+                        this._container.style.height=height;
+                        this._container.style.position="absolute";
+                        this._container.setAttribute('coordsize',width-1+','+(height-1)); // This -1, -1 trying to fix ugly problem with small displacement on IE
+                        this._container.appendChild(this._vimage);
+
+                        this._rootObj.appendChild(this._container);
+                        this._rootObj.style.position="relative"; // FIXES IE PROBLEM
+                        this._rootObj.style.width=width+"px";
+                        this._rootObj.style.height=height+"px";
+                        this._rootObj.setAttribute('id',this._img.getAttribute('id'));
+                        this._rootObj.className=this._img.className;
+                        this._eventObj = this._rootObj;
+                        this._handleRotation(parameters);
+                    }
+                else
+                    return function (parameters)
+                    {
+                        this._rootObj.setAttribute('id',this._img.getAttribute('id'));
+                        this._rootObj.className=this._img.className;
+
+                        this._width=this._img.width;
+                        this._height=this._img.height;
+                        this._widthHalf=this._width/2; // used for optimisation
+                        this._heightHalf=this._height/2;// used for optimisation
+
+                        var _widthMax=Math.sqrt((this._height)*(this._height) + (this._width) * (this._width));
+
+                        this._widthAdd = _widthMax - this._width;
+                        this._heightAdd = _widthMax - this._height;	// widthMax because maxWidth=maxHeight
+                        this._widthAddHalf=this._widthAdd/2; // used for optimisation
+                        this._heightAddHalf=this._heightAdd/2;// used for optimisation
+
+                        this._img.parentNode.removeChild(this._img);
+
+                        this._aspectW = ((parseInt(this._img.style.width,10)) || this._width)/this._img.width;
+                        this._aspectH = ((parseInt(this._img.style.height,10)) || this._height)/this._img.height;
+
+                        this._canvas=document.createElement('canvas');
+                        this._canvas.setAttribute('width',this._width);
+                        this._canvas.style.position="relative";
+                        this._canvas.style.left = -this._widthAddHalf + "px";
+                        this._canvas.style.top = -this._heightAddHalf + "px";
+                        this._canvas.Wilq32 = this._rootObj.Wilq32;
+
+                        this._rootObj.appendChild(this._canvas);
+                        this._rootObj.style.width=this._width+"px";
+                        this._rootObj.style.height=this._height+"px";
+                        this._eventObj = this._canvas;
+
+                        this._cnv=this._canvas.getContext('2d');
+                        this._handleRotation(parameters);
+                    }
+            })(),
+
+            _animateStart:function()
+            {
+                if (this._timer) {
+                    clearTimeout(this._timer);
+                }
+                this._animateStartTime = +new Date;
+                this._animateStartAngle = this._angle;
+                this._animate();
+            },
+            _animate:function()
+            {
+                var actualTime = +new Date;
+                var checkEnd = actualTime - this._animateStartTime > this._parameters.duration;
+
+                // TODO: Bug for animatedGif for static rotation ? (to test)
+                if (checkEnd && !this._parameters.animatedGif)
+                {
+                    clearTimeout(this._timer);
+                }
+                else
+                {
+                    if (this._canvas||this._vimage||this._img) {
+                        var angle = this._parameters.easing(0, actualTime - this._animateStartTime, this._animateStartAngle, this._parameters.animateTo - this._animateStartAngle, this._parameters.duration);
+                        this._rotate((~~(angle*10))/10);
+                    }
+                    if (this._parameters.step) {
+                        this._parameters.step(this._angle);
+                    }
+                    var self = this;
+                    this._timer = setTimeout(function()
+                    {
+                        self._animate.call(self);
+                    }, 10);
+                }
+
+                // To fix Bug that prevents using recursive function in callback I moved this function to back
+                if (this._parameters.callback && checkEnd){
+                    this._angle = this._parameters.animateTo;
+                    this._rotate(this._angle);
+                    this._parameters.callback.call(this._rootObj);
+                }
+            },
+
+            _rotate : (function()
+            {
+                var rad = Math.PI/180;
+                if (IE)
+                    return function(angle)
+                    {
+                        this._angle = angle;
+                        this._container.style.rotation=(angle%360)+"deg";
+                    }
+                else if (supportedCSS)
+                    return function(angle){
+                        this._angle = angle;
+                        this._img.style[supportedCSS]="rotate("+(angle%360)+"deg)";
+                    }
+                else
+                    return function(angle)
+                    {
+                        this._angle = angle;
+                        angle=(angle%360)* rad;
+                        // clear canvas
+                        this._canvas.width = this._width+this._widthAdd;
+                        this._canvas.height = this._height+this._heightAdd;
+
+                        // REMEMBER: all drawings are read from backwards.. so first function is translate, then rotate, then translate, translate..
+                        this._cnv.translate(this._widthAddHalf,this._heightAddHalf);	// at least center image on screen
+                        this._cnv.translate(this._widthHalf,this._heightHalf);			// we move image back to its orginal
+                        this._cnv.rotate(angle);										// rotate image
+                        this._cnv.translate(-this._widthHalf,-this._heightHalf);		// move image to its center, so we can rotate around its center
+                        this._cnv.scale(this._aspectW,this._aspectH); // SCALE - if needed ;)
+                        this._cnv.drawImage(this._img, 0, 0);							// First - we draw image
+                    }
+
+            })()
+        }
+
+        if (IE)
+        {
+            Wilq32.PhotoEffect.prototype.createVMLNode=(function(){
+                document.createStyleSheet().addRule(".rvml", "behavior:url(#default#VML)");
+                try {
+                    !document.namespaces.rvml && document.namespaces.add("rvml", "urn:schemas-microsoft-com:vml");
+                    return function (tagName) {
+                        return document.createElement('<rvml:' + tagName + ' class="rvml">');
+                    };
+                } catch (e) {
+                    return function (tagName) {
+                        return document.createElement('<' + tagName + ' xmlns="urn:schemas-microsoft.com:vml" class="rvml">');
+                    };
+                }
+            })();
+        }
+
+    })(jQuery);
+
+</script>
+<script>
+    $(function(){
+
+        var cookie = function (name) { // 获取cookie
+            var cookieArray = document.cookie.split("; "); //得到分割的cookie名值对
+            var cookie = new Object();
+            for (var i = 0; i < cookieArray.length; i++) {
+                var arr = cookieArray[i].split("="); //将名和值分开
+                if (arr[0] == name)
+                    return unescape(arr[1]); //如果是指定的cookie，则返回它的值
+            }
+            return false; // 获取cookie
+        }
+
+        var setCookie = function (name, value, seconds) { // 设置cookie
+            seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。
+            var expires = "";
+            if (seconds != 0 ) { //设置cookie生存时间
+                var date = new Date();
+                date.setTime(date.getTime()+(seconds*1000));
+                expires = "; expires="+date.toGMTString();
+            }
+            document.cookie = name+"="+escape(value)+expires+"; path=/"; //转码并赋值
+        }
+
+        var rotateTimeOut = function (){ // 转盘请求超时
+            $('#rotate').rotate({
+                angle: 0,
+                animateTo: 2160,
+                duration: 8000,
+                callback:function (){
+                    alert('网络超时，请检查您的网络设置！')
+                }
+            })
+        }
+
+        var bRotate = false // 防止重复点击
+
+        var rotateFn = function (awards, angles, txt){ // 控制弹窗
+            bRotate = !bRotate
+
+            $('#rotate').stopRotate() // 停止
+
+            $('#rotate').rotate({
+                angle: 0,
+                animateTo: angles + 1800,
+                duration: 8000,
+                callback:function (){
+                    if ( typeof txt === 'undefined' ) {
+                        return
+                    }
+
+                    txt = txt ? parseInt(txt) : txt
+
+                    // 控制弹窗
+                    switch (txt) {
+                        case 1:
+                            break
+                        case 2:
+                            break
+                        case 3:
+                            break
+                        case 4:
+                            break
+                        case 5:
+                            $('.winningLayer').show(300)
+                            $('.winningLayer').find('a').text('50元优惠劵')
+                            break
+                        case 6:
+                            $('.winningLayer').show(300)
+                            $('.winningLayer').find('a').text('10元优惠劵')
+                            break
+                        default:
+                            return
+                    }
+
+                    bRotate = !bRotate;
+                }
+            })
+        }
+
+        var getData = function (userId) { // 请求数据
+            userId = userId ? userId : ''
+            console.log(userId)
+            $.ajax({
+                url: 'http://shop.jy.test.zol.com/index.php?c=Topic_17Year_StartSchool&a=AjaxLottery',
+                type: 'GET',
+                dataType: 'jsonp',
+                async: false,
+                data: {
+                    userId: userId
+                }
+            })
+                .done(function(res) {
+                    var $$data = (typeof res === 'string') ? $.parseJSON(res) : res
+                    console.log($$data)
+
+                    if ( $$data ) {
+                        // 未登录 flag => 1
+                        if ( parseInt($$data.flag) === 1 ) {
+                            var $$gettoken = getToken('zol_sid') // 判断是否登录
+
+                            return
+                        }
+
+                        // 未查询到用户信息 flag => 0
+                        if ( parseInt($$data.flag) === 0 ) {
+                            if ( $$data.msg && $$data.msg === "抽奖次数用尽!" ) {
+                                var noChanceAlert = $('.noChance')
+
+                                if ( noChanceAlert ) {
+                                    noChanceAlert.show(300)
+                                }
+                            } else {
+                                alert($$data.msg)
+                            }
+                        }
+
+                        // 中获奖信息
+                        if ( parseInt($$data.flag) === 2 ) {
+                            var $$postion = $$data.position // 获取中奖位置
+
+                            if ( typeof $$postion === 'undefined' ) {
+                                return
+                            }
+
+                            // 中奖回调转盘方法
+                            dialCallBack( $$postion )
+                        }
+                    }
+                })
+                .fail(function(err) {
+                    alert('数据请求失败，请刷新页面后重试')
+
+                    return false
+                })
+        }
+
+        var getToken = function (text) { // 判断是否登录
+            if ( typeof cookie !== 'function' ) {
+                return
+            }
+
+            text = text ? text : 'zol_sid'
+
+            var isLogin = cookie(text)
+
+            if ( isLogin ) { // 用户已登录
+                return true
+            } else { // 用户未登录
+                var $$myConfirm = myConfirm()
+
+                if ( true ) {
+                    var curUrl = window.location.href
+                    var jumpUrl = "http://m.zol.com/index.php?c=Login_Default"
+
+                    if( curUrl ){
+                        jumpUrl += "&backUrl="+encodeURIComponent(curUrl)
+                    }
+
+                    location.href = jumpUrl
+                } else {
+                    return false
+                }
+            }
+        }
+
+        var myConfirm = function () { // 提示弹窗
+            var $$isLogin
+
+            var $$r = confirm('是否登录ZOL商城？');
+            if ( $$r == true ){ // 按下确定
+                $$isLogin = true
+            } else { // 按下取消
+                $$isLogin = false
+            }
+
+            return $$isLogin
+        }
+
+        $('.pointer').click(function (evt){
+            evt.stopPropagation()
+            evt.preventDefault()
+
+            alert('8月31号开始抽奖活动')
+            return false
+
+            if( bRotate ) {
+                return
+            }
+
+            if ( typeof cookie !== 'function' ) {
+                return
+            }
+
+            var $$useIdCookie = cookie('zol_sid')
+
+            var $$getData = getData($$useIdCookie) // 请求Ajax
+        })
+
+        var dialCallBack = function(pos){
+            if ( typeof pos === 'undefined' ) {
+                return
+            }
+
+            pos = parseInt(pos)
+
+            var item = pos
+
+            switch (item) {
+                case 1:
+                    rotateFn(1, 0, '1')
+                    break;
+                case 2:
+                    rotateFn(2, 300, '2')
+                    break;
+                case 3:
+                    rotateFn(3, 240, '3')
+                    break;
+                case 4:
+                    rotateFn(4, 180, '4')
+                    break;
+                case 5:
+                    rotateFn(5, 120, '5')
+                    break;
+                case 6:
+                    rotateFn(6, 60, '6')
+                    break;
+                default:
+                    rotateFn(0, 0, '0')
+                    return
+            }
+        }
+
+        var rnd = function (n, m) { // 生成随机数
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+
+    })
+</script>
+
+<div class="luckLayer winningLayer" style="display:none;">
+    <span class="close" onclick="$(this).parent().hide()"></span>
+    <p class="word"></p>
+    <a href="#" style=" display: block; width: 100%; height: 100px; cursor: pointer; text-indent: -9999em;">立即查看</a>
+</div>
+<!-- 抽奖机会已经用完 -->
+<div class="luckLayer noChance" style="display:none">
+    <img src="http://2.zol-img.com.cn/zt/tm_599/e71db790fd/noChance.png" alt="">
+    <span class="close" onclick="$(this).parent().hide()"></span>
+</div>
+
+</body>
+
+</html>

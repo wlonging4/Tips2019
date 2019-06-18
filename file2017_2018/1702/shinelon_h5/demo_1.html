@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="GBK">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title></title>
+    <script type="text/javascript">
+        if (/Android (d+.d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+    <link rel="stylesheet" href="http://active.zol.com.cn/16active/0725lenovoh5/style.css" />
+</head>
+<body>
+<div class="loading loading-visible">
+    <span class="loading-ring"></span>
+</div>
+<div class="lenovo-logo"></div>
+<div class="audio-icon"></div>
+<div class="index">
+    <div class="timer"><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></div>
+    <div id="index-rule">
+        <span class="index-rule-close"></span>
+        <img src="http://2.zol-img.com.cn/zt/tm_57b/ebfd33e608/index-rule.png" alt="" />
+    </div>
+    <div class="index-img1">
+        <span>&nbsp;</span>
+    </div>
+    <div class="start-go"></div>
+    <div class="loading-go">
+        <span class="loading-line">&nbsp;</span>
+        <span class="loading-car">
+			<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/load-car.png" alt="" />
+		</span>
+        <div class="load-text">loading</div>
+    </div>
+</div>
+<div class="countDown">
+	<span class="three">
+		<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/three.png" alt="" />
+	</span>
+    <span class="two">
+		<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/two.png" alt="" />
+	</span>
+    <span class="one">
+		<img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/onw.png" alt="" />
+	</span>
+</div>
+<div class="box">
+    <div class="sky-bg1"></div>
+    <div class="sky-bg2"></div>
+    <div class="sky-bg3"></div>
+    <div class="count-down">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/4.png" alt="" /><img src="http://2.zol-img.com.cn/zt/tm_57a/326ca0fec6/5.png" alt="" />
+    </div>
+    <div class="statistics">
+        <span class="bolt">0</span>
+        <span class="tortoise">0</span>
+    </div>
+    <div class="time">
+        <span id="core"></span>
+    </div>
+    <div class="rapid">
+        <span>&nbsp;</span>
+    </div>
+    <div class="pop-box">
+        <img id="pop-img" src="" alt="" />
+    </div>
+    <div class="turnL"></div>
+    <div class="turnR"></div>
+    <div class="cars">
+        <img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/car1.png"/>
+        <img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/car2.png"/>
+        <img src="http://2.zol-img.com.cn/zt/tm_579/573da364a4/car3.png"/>
+    </div>
+    <div class="backgrounds">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/bg1.png" alt="" />
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/bg2.png" alt="" />
+    </div>
+    <div class="ball">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/ball.png" alt="" />
+    </div>
+    <div class="Tree">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/tree.png" alt="" />
+    </div>
+    <div class="Mount">
+        <img src="http://2.zol-img.com.cn/zt/tm_57a/405c9177ff/mountain.png" alt="" />
+    </div>
+    <div class="layer"></div>
+    <div class="end-pop1">
+        <span class="sid">恭喜您狂飚 <b>133</b> Km</span>
+        <div class="statistics">
+            <span class="bolt">0</span>
+            <span class="tortoise">0</span>
+        </div>
+        <form>
+            <input type="text" id="tel" placeholder="请输入您的手机号提交成绩" />
+            <input type="hidden" id="dis" value="0" />
+            <div class="submit-box clearfix">
+                <input type="button" id="submit" value="提交" />
+                <span class="next-list">下一页</span>
+            </div>
+        </form>
+    </div>
+    <div class="end-pop2">
+        <b class="success">提交成功</b>
+        <b class="big-round">&nbsp;</b>
+        <b class="sma-round">&nbsp;</b>
+        <b class="hand">&nbsp;</b>
+        <a class="button" href="http://m.zol.com.cn/topic/5952709.html">&nbsp;</a>
+        <ul class="list"></ul>
+        <a href="javascript:;" class="play-again">再玩一次</a>
+        <a href="javascript:;" class="share-firend" id="share1">分享好友</a>
+        <a href="javascript:;" class="game">活动规则</a>
+    </div>
+    <div class="end-pop4">
+        <b class="big-round">&nbsp;</b>
+        <b class="sma-round">&nbsp;</b>
+        <b class="hand">&nbsp;</b>
+        <a class="button" href="http://m.zol.com.cn/topic/5952709.html">&nbsp;</a>
+        <ul class="list"></ul>
+        <a href="javascript:;" class="play-again">再玩一次</a>
+        <a href="javascript:;" class="share-firend" id="share2">分享好友</a>
+        <a href="javascript:;" class="game">活动规则</a>
+    </div>
+    <div class="end-pop3">
+        <a href="javascript:;" class="close">&nbsp;</a>
+    </div>
+    <canvas id="canvas" width="640" height="1008"></canvas>
+</div>
+<div class="share-box">
+    <span role="button" onclick="this.parentNode.style.display='none';" >我知道了 </span>
+</div>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_07.mp3" autoplay="autoplay" loop="loop" id="bgMu"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_09.mp3" id="quick"></audio><!--吃到加速道具-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_10.mp3" id="show"></audio><!--吃到减速道具-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_04.mp3" id="countDown"></audio><!--倒计时-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_05.mp3" id="firing"></audio><!--车启动-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_06.mp3" id="quickCar"></audio><!--加速-->
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_08.mp3" loop="loop" id="loop"></audio>
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://active.zol.com.cn/16active/0725lenovoh5/game.js"></script>
+<script>
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_579/585ec54495/weixin.jpg',
+        title: '联想神闪电(SSD)极速体验之旅'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

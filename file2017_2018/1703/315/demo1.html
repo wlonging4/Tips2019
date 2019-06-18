@@ -1,0 +1,180 @@
+<!DOCTYPE html><html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>无标题文档</title>
+    <style>
+        /*通用样式*/
+        body{color:#444; font:12px/22px "SimSun",Arial;background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#444; text-decoration:none;}
+        a:hover,td a:hover{color:#0F3;text-decoration:none;}
+        .hong12{color:#DA1D28;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        .fl{float:left;}
+        .foot{width:100%;height:188px;padding-top:36px;text-align:center;color:#B5D3EC;background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_foot.jpg) repeat-x;;}
+        .foot a{color:#B5D3EC;}
+        .fr{float:right;}
+        .head_white{text-align:center;width:100%;}
+        .head_white table{margin:0 auto;}
+        a{display:inline-block;cursor:pointer;}
+        body h2{display:block;}
+        /*背景*/
+        .head .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_headl.jpg) no-repeat 100% 0;}
+        .head .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_headr.jpg) no-repeat 0 0;}
+        .con1 .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_l1.jpg) no-repeat 100% 0;}
+        .con1 .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_r1.jpg) no-repeat 0 0;}
+        .con8 .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_l8.jpg) no-repeat 100% 0;}
+        .con8 .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_r8.jpg) no-repeat 0 0;}
+
+        /*内容*/
+        .head .bg1-c{position:relative;}
+        .top1{width:940px;height:140px;position:absolute;left:45px;bottom:-8px;}
+        .top1 .bai16{font:18px/32px 'Microsoft Yahei';padding:10px 25px 0 20px;}
+        .top1.slh, .top1 .hong12{display:none;}
+        .auto1{height:736px;overflow:hidden;background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_c1.jpg) no-repeat;}
+        .tit1{width:480px;height:40px;margin:22px 0 0 515px;}
+        .tit1 .bai16{font:24px/40px 'Microsoft Yahei';}
+        .vid1{width:1000px;height:600px;margin:20px auto 0;}
+
+        .auto2{height:300px;overflow:hidden;}
+        .tit2{width:1000px;height:42px;border-bottom:1px solid #eee;margin:38px 0 0 0;}
+        .tit2 .hong16{font:34px/40px 'Microsoft Yahei';color:#E43635;margin:0 0 0 5px;border-bottom:3px solid #E43635;}
+        .mod2{width:1000px;height:200px;margin:10px 0 0 0;}
+        .mod2 .hong16{font:24px/34px 'Microsoft Yahei';color:#E43635;}
+        .mod2 .hui16{color:#888;padding:10px 20px 0 3px;line-height:26px;}
+        .mod2 table img{padding:10px;background:#eee;}
+
+        .con3 .tit2 .hong16{color:#0097F8;border-bottom:3px solid #0097F8;}
+        .con3 .mod2 .hong16{color:#3FAFF8;}
+        .con4 .tit2 .hong16{color:#1BAE9C;border-bottom:3px solid #1BAE9C;}
+        .con4 .mod2 .hong16{color:#1BAE9C;}
+        .con5 .tit2 .hong16{color:#FBD204;border-bottom:3px solid #FBD204;}
+        .con5 .mod2 .hong16{color:#FBD204;}
+        .con6 .tit2 .hong16{color:#FFA812;border-bottom:3px solid #FFA812;}
+        .con6 .mod2 .hong16{color:#FFA812;}
+        .con7 .tit2 .hong16{color:#CB48B8;border-bottom:3px solid #CB48B8;}
+        .con7 .mod2 .hong16{color:#CB48B8;}
+        .con11 .tit2 .hong16{color:#04C27C;border-bottom:3px solid #04C27C;}
+        .con11 .mod2 .hong16{color:#04C27C;}
+
+
+        .auto8{height:669px;overflow:hidden;background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_c8.jpg) no-repeat;}
+        .tit8{width:360px;height:40px;margin:38px 0 0 110px;}
+        .tit8 .bai16{font:24px/40px 'Microsoft Yahei';}
+        .vid8{height:500px;overflow-y:auto;}
+
+        .auto9{height:638px;overflow:hidden;}
+        .auto9 h2{width:335px;height:50px;font:30px/50px 'Microsoft Yahei';color:#fff;background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/1.png) no-repeat;text-align:center;margin:32px 0 0 0}
+        .mod9{width:1000px;height:500px;margin:24px 0 0 0;}
+
+        .con10{width:100%;background:#252525;}
+        .auto10{width:1000px;overflow:hidden;margin:0 auto;}
+        .auto10 h2{width:530px;height:50px;font:30px/50px 'Microsoft Yahei';color:#fff;background:url(http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/2.png) no-repeat;text-align:center;margin:44px 0 0 0}
+        .mod10{width:1000px;margin:44px 0 0 0;}
+        .mod10 .hui12{color:#999;margin:15px 0 0 0;}
+        .mod10 .ln{height:20px;}
+
+    </style>
+
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="head">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <img width="1000" height="139" src="http://2.zol-img.com.cn/zt/tm_56d/964f5b342e/j_h1.jpg">
+            <img width="1000" height="140" src="http://2.zol-img.com.cn/zt/tm_56d/964f5b342e/j_h2.jpg">
+            <img width="1000" height="151" src="http://2.zol-img.com.cn/zt/tm_56d/9471ecf8f9/j_h3.jpg">
+            <div class="top1"><{data[0]}></div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="con2 banners">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <div class="auto2">
+                <div class="tit2"><{data[3]}></div>
+                <div class="mod2"><{data[4]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="con3 banners">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <div class="auto2">
+                <div class="tit2"><{data[5]}></div>
+                <div class="mod2"><{data[6]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="con4 banners">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <div class="auto2">
+                <div class="tit2"><{data[7]}></div>
+                <div class="mod2"><{data[8]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="con5 banners">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <div class="auto2">
+                <div class="tit2"><{data[9]}></div>
+                <div class="mod2"><{data[10]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="con7 banners">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <div class="auto2">
+                <div class="tit2"><{data[13]}></div>
+                <div class="mod2"><{data[14]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="con9 banners">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" class="bg1-c" valign="top">
+            <div class="auto9">
+                <h2>3.15杂谈</h2>
+                <div class="mod9"><{data[19]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><div class="con10 banners">
+    <div class="auto10">
+        <h2>2016年3.15系列策划</h2>
+        <div class="mod10"><{data[20]}></div>
+    </div>
+</div>
+<div class="foot"><{data[21]}></div>
+</body></html>

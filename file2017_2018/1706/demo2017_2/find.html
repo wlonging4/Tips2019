@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>find</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        .c{  width: 640px;  position: absolute;  height: 100%;  background: url("http://2.zol-img.com.cn/zt/tm_595/62cb75e695/bg.jpg")no-repeat top center;  background-size: cover;  }
+        .time{  width: 100px;  height: 40px;  position: absolute;  text-align: center;  top: 10px;  left: 20px;  color: #00a9a7;  font: 26px/38px 'Hiragino sans GB','microsoft yahei';  }
+        .score{  width: 100px; height: 40px; position: absolute;  text-align: center;  top: 10px;  right: 20px;  color: #00a9a7;  font: 26px/38px 'Hiragino sans GB','microsoft yahei';  }
+        .box{  width: 640px;  height: 800px; position: absolute;  margin: 60px auto 0;  }
+        .noSee{  display: block;  opacity: 0;  position: absolute;  z-index: -99;  pointer-events: none;  }
+        .rect{  position: absolute; opacity: 0;  /*pointer-events: none;*/  width: 50px;  height: 50px;  top: 50px;  left: 50px;  border-style: solid;  border-color: #009b48;  border-width: 4px;  }
+        .rect.none{  pointer-events: none;  }
+        @-webkit-keyframes rect {
+            0%{  -webkit-transform: rotate(0deg) scale(1);  }
+            25%{  -webkit-transform: rotate(45deg) scale(1.2);  }
+            45%{  -webkit-transform: rotate(90deg) scale(1);  }
+            50%{  -webkit-transform: rotate(90deg) scale(1);  }
+            75%{  -webkit-transform: rotate(135deg) scale(1.2);  }
+            95%{  -webkit-transform: rotate(180deg) scale(1);  }
+            100%{  -webkit-transform: rotate(180deg) scale(1);  }
+        }
+        @keyframes rect {
+            0%{  transform: rotate(0deg) scale(1);  }
+            25%{  transform: rotate(45deg) scale(1.2);  }
+            45%{  transform: rotate(90deg) scale(1);  }
+            50%{  transform: rotate(90deg) scale(1);  }
+            75%{  transform: rotate(135deg) scale(1.2);  }
+            95%{  transform: rotate(180deg) scale(1);  }
+            100%{  transform: rotate(180deg) scale(1);  }
+        }
+        .rectMov{  -webkit-animation: rect 2s ease-in infinite; animation: rect 2s ease-in infinite;  }
+
+    </style>
+</head>
+<body>
+<div class="c">
+    <div class="box">
+        <canvas id="myCanvas" width="640"  height="800"></canvas>
+        <div class="rect rectMov"></div>
+    </div>
+    <div class="time">30</div>
+    <div class="score">0</div>
+    <div id="imgBox"></div>
+</div>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script charset="gbk">
+    var c2=document.querySelector('#myCanvas');
+    var ca2=c2.getContext('2d');
+    var box=document.querySelector('.box');
+    var rect=document.querySelector('.rect');
+    var imgBox=document.querySelector('#imgBox');
+    var score=document.querySelector('.score');
+    var time=document.querySelector('.time');
+    var canWidth=640;
+    var canHeight=800;
+
+    /*制定列数和便宜随机数*/
+    var num=5;
+    var rand=0.2;
+    var per=1;
+    var scoreNum=0;
+    var timeFlag=0;
+    var timeNum=30;
+
+    var imgWidth=0;
+    var imgHeight=0;
+    /*选定图的偏移值*/
+    var offX=0;
+    var offY=0;
+    /*处理下图片集合*/
+    var imgLen=12;
+    var imgArr=[
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/1.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/2.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/3.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/4.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/5.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/6.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/7.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/8.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/9.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/10.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/11.png',
+        'http://2.zol-img.com.cn/zt/tm_595/62cb75e695/12.png'
+    ];
+    for(var i=0;i<imgLen;i++){
+        var imgNow=document.createElement('img');
+        imgNow.classList.add('noSee');
+        imgNow.src=imgArr[i];
+        imgNow.id='img'+i+'';
+        imgBox.appendChild(imgNow);
+    }
+    var imgArr2=[];
+    for(var j=0;j<imgArr.length;j++){
+        imgArr2[imgArr2.length]=document.querySelector('#img'+j+'');
+    }
+    /*构造星座图片*/
+    function Star(p,q,s){
+        this.p=p;
+        this.q=q;
+        this.s=s;
+        this.src=(s!==1)?imgArr2[Math.floor(Math.random()*(imgLen-1))]:imgArr2[11];
+        this.width=imgWidth;
+        this.height=imgHeight;
+        this.originX=this.p*imgWidth;
+        this.originY=this.q*imgHeight;
+        this.randomX=Math.floor((Math.random()-0.5)*imgWidth*rand);
+        this.randomY=Math.floor((Math.random()-0.5)*imgHeight*rand);
+        this.draw=function () {
+            ca2.drawImage(this.src,this.originX+this.randomX,this.originY+this.randomY,this.width,this.height);
+            if(this.s==1){offX=this.originX+this.randomX;offY=this.originY+this.randomY; console.log(offX); console.log(offY); }
+        }
+    }
+
+    /*绘图的宽高和数量*/
+    function show() {
+        imgWidth=Math.floor(canWidth/num);
+        imgHeight=Math.floor(imgWidth/per);
+        var imgColNum=num;
+        var imgRowNum=Math.floor(num*canHeight/canWidth);
+        var areaX=Math.floor(imgColNum*Math.random());
+        var areaY=Math.floor(imgRowNum*Math.random());
+
+        for(var x=0;x<imgColNum;x++){
+            for(var y=0;y<imgRowNum;y++){
+                if(x==areaX&&y==areaY){
+                    new Star(x,y,1).draw();
+                    rect.style.width=imgWidth+'px';
+                    rect.style.height=imgHeight+'px';
+                    rect.style.left=offX+'px';
+                    rect.style.top=offY+'px';
+                }else{
+                    new Star(x,y,0).draw();
+                }
+            }
+        }
+    }
+
+    window.addEventListener('load', function (){
+        var tt1=setInterval(function () {
+            timeNum--;
+            if(timeNum==-1){
+                timeNum=0;
+                timeFlag=1;
+                alert('您通过了第'+scoreNum+'关');
+                clearInterval(tt1);
+            }
+            time.innerHTML=timeNum;
+        },1000);
+
+        show();
+    });
+    rect.addEventListener('click',function () {
+        if(timeFlag==1){
+            return false;
+        }
+        rect.style.opacity=1;
+        rect.classList.add('none');
+        num++;
+        scoreNum++;
+        score.innerHTML=scoreNum;
+
+        timer&&clearTimeout(timer);
+        var timer=setTimeout(function () {
+            ca2.clearRect(0,0,canWidth,canHeight);
+            rect.style.opacity=0;
+            rect.classList.remove('none');
+            show();
+        },1200)
+    });
+    /*for(var k=0;k<allStars.length;k++){
+        allStars[k];
+    }*/
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

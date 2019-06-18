@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>同城约惠 粽情狂欢</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <style>
+        body {
+            color: #999999;
+            font: 16px/21px Arial;
+            background-color: #FFF;
+        }
+
+        body,
+        div,
+        form,
+        img,
+        em {
+            padding: 0;
+            margin: 0;
+            border: 0
+        }
+
+        body {
+            color: #999999;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        img {
+            display: block
+        }
+
+        a {
+            color: #999999;
+            text-decoration: none;
+        }
+
+        a:hover,
+        td a:hover {
+            color: #f60;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .foot {
+            color: #247ACE;
+            font: 12px/22px "宋体";
+        }
+
+        .foot a {
+            color: #247ACE;
+        }
+
+        .hong12 {
+            color: #E71B34;
+        }
+        /*背景*/
+
+        .market-price {
+            display: none;
+        }
+
+        .remain-time {
+            display: none;
+        }
+
+        .z_bj1z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_01.jpg) no-repeat right top;
+        }
+
+        .z_bj1y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_03.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj2z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_04.jpg) no-repeat right top;
+        }
+
+        .z_bj2y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_06.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj3z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_07.jpg) no-repeat right top;
+        }
+
+        .z_bj3y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_09.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj4z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_10.jpg) no-repeat right top;
+        }
+
+        .z_bj4y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_12.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj5z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_13.jpg) no-repeat right top;
+        }
+
+        .z_bj5y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_15.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj6z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/6903200355/kaixue_16.jpg) no-repeat right top;
+        }
+
+        .z_bj6y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/6903200355/kaixue_18.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj7z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_19.jpg) no-repeat right top;
+        }
+
+        .z_bj7y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_21.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj8z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_22.jpg) no-repeat right top;
+        }
+
+        .z_bj8y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_24.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj9z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/6d2dc115e6/kaixue_01.jpg) no-repeat right top;
+        }
+
+        .z_bj9y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/6d2dc115e6/kaixue_03.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj10z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/6d2dc115e6/kaixue_04.jpg) no-repeat right top;
+        }
+
+        .z_bj10y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/6d2dc115e6/kaixue_06.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj13z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_37.jpg) no-repeat right top;
+        }
+
+        .z_bj13y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_39.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj14z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_40.jpg) no-repeat right top;
+        }
+
+        .z_bj14y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_42.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj24z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_43.jpg) no-repeat right top;
+        }
+
+        .z_bj24y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_45.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .z_bj36z {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_46.jpg) no-repeat right top;
+        }
+
+        .z_bj36y {
+            background: url(http://2.zol-img.com.cn/zt/tm_599/68d32b32ee/kaixue_48.jpg) no-repeat left top;
+        }
+        /*图片*/
+
+        .rightlayer {
+            position: fixed;
+            width: 170px;
+            left: 50%;
+            top: 28%;
+            margin-left: 550px;
+            z-index: 500;
+        }
+        /* wen */
+        body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr {margin:0;padding:0;}
+        body {font:12px/1.5 "Microsoft YaHei";color:#333;}
+        select,input,button {vertical-align:middle;font-size:100%;}
+        ul,ol {list-style:none;}
+        fieldset,img {border:0;}
+        em {font-style:normal;}
+        .clearfix:after {content:"."; display: block; visibility: hidden; clear: both; height:0; font-size:0}
+        .clearfix {*zoom:1}
+        a{ color:#134ba0; text-decoration:none;}
+        a:hover{text-decoration:underline;}
+
+        /* 限时区域 */
+        /* 导航 */
+        .limit-region{width: 1108px;margin: 0 auto;background-color: #0bb366;}
+        .limit-region_nav{width: 1100px;height: 72px;margin-bottom: 13px;border:4px solid #2a2a2a;border-radius: 15px;-webkit-border-radius:15px;background-color: #ffc21c;}
+        .limit-region_nav .nav_item{float: left;width: 275px;height: 72px;text-align: center;border-radius: 8px;cursor: pointer;}
+        .limit-region_nav .nav_item.cur{background-color: #e8053a;}
+        .limit-region_nav .date{height: 32px;margin-top: 8px;line-height: 32px;color: #000;font-size: 28px;}
+        .limit-region_nav .time{height: 26px;line-height: 26px;color: #664e0b;font-size: 20px;}
+        .limit-region_nav .nav_item.cur .date{color: #fff;}
+        .limit-region_nav .nav_item.cur .time{color:#f69bb0;}
+        /* 产品区域 */
+        .limit-region_con{margin-left: -4px;}
+        .limit-ware{display:none;}
+        .limit-ware .item{position: relative;;float: left;width: 222px;height: 328px;padding: 0 22px;margin-left: 4px;border: 4px solid #2a2a2a;border-radius: 12px;background-color: #fff;}
+        .limit-ware img{vertical-align: top;}
+        .limit-ware .hei20b{display: inline-block;height: 30px;line-height: 30px;margin-top: 8px;font-size: 22px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;color: #646363;vertical-align: top;}
+        .limit-ware .price{height: 40px;line-height: 40px;font-size: 18px;color:#e8053a;text-align: center;}
+        .limit-ware .price .num{font-size: 30px;}
+        .limit-ware .slh{font-size: 0;line-height: 0;height: 0;display: none;}
+        .limit-ware .hong12{display:block;width: 145px;height: 33px;margin: 5px auto 0;background: url(http://2.zol-img.com.cn/zt/tm_599/a9304e830a/limitBtn.png) no-repeat center;line-height: 0;font-size: 0;}
+        .limit-ware.cur{display:block;}
+        /* 遮罩 */
+        .limit-ware .mask{display:none;position:absolute;left: 0;top: 0;width: 266px;height: 328px;}
+        .limit-ware .mask .mask_mask{position:absolute;left: 0;top: 0;width: 266px;height: 328px;background-color: #000;opacity: 0;}
+        .limit-ware .mask_icon{position:absolute;left:50%;top:50%;width:145px;height:145px;margin: -72px 0 0 -72px;}
+        .limit-ware .mask.over,.limit-ware .mask.notbegin{display: block;}
+        .limit-ware .mask.over .mask_icon{background: url(http://2.zol-img.com.cn/zt/tm_599/abbb165cc5/over.png) no-repeat center;}
+        .limit-ware .mask.notbegin .mask_icon{background: url(http://2.zol-img.com.cn/zt/tm_599/abbb165cc5/notbegin.png) no-repeat center;}
+
+        /* 到店玩 */
+        .toshop{width: 1048px;margin: 0 auto;padding: 20px 24px;border:4px solid #000;border-radius: 8px;-webkit-border-radius:8px;}
+        /* 导航 */
+        .toshop_nav{width: 890px;margin: 0 auto;}
+        .toshop_nav .item{width: 170px;height:84px;float: left;margin: 0 4px;line-height: 84px;text-align: center;font-size: 30px;color: #fff;background-color: #000;border-radius: 10px;-webkit-border-radius:10px;cursor: pointer;}
+        .toshop_nav .item.cur{background-color: #e8053a;}
+        /* 模块 */
+        .topshop_moudle{display:none;}
+        .topshop_moudle.cur{display: block;}
+        /* 立刻报名 */
+        .topshop_moudle .sign_up{display: block;width: 180px;height: 54px;margin:10px auto 46px;line-height: 54px;text-align: center;font-size: 30px;color: #000;background-color: #ffef1d;border: 4px solid #000;border-radius: 8px;-webkit-border-radius:8px;}
+        /* 保障 */
+        .topshop-ware_ensure{width: 358px;height: 94px;margin:0 auto;padding-bottom: 22px;background: url(http://2.zol-img.com.cn/zt/tm_599/a9304e830a/topshopEnsure.png) no-repeat center bottom;}
+        /* 产品列表 */
+        .toshop-ware_list{margin-left:-24px;}
+        .toshop-ware_list .item{float: left;width: 512px;height: 265px;margin:0 0 20px 24px;}
+        /* 活动详情 */
+        .toshop-ware_detail{width: 1048px;height: 220px;}
+        /* wen end */
+    </style>
+
+</head>
+
+<body screen_capture_injected="true" chromeextension:video-tape="true">
+<div style="background-color:#fff;">
+    <{data[0]}>
+</div>
+
+
+<div>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj1z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[1]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj1y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj2z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="30" width="">
+                            <{data[2]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj2y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj3z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="30" width="">
+                            <!-- 限时产品区域 -->
+                            <div class="limit-region">
+                                <ul class="limit-region_nav">
+                                    <li class="nav_item cur">
+                                        <p class="date">8.22-8.23</p>
+                                        <p class="time">10:00-24:00</p>
+                                    </li>
+                                    <li class="nav_item">
+                                        <p class="date">8.24-8.25</p>
+                                        <p class="time">10:00-24:00</p>
+                                    </li>
+                                    <li class="nav_item">
+                                        <p class="date">8.26-8.27</p>
+                                        <p class="time">10:00-24:00</p>
+                                    </li>
+                                    <li class="nav_item">
+                                        <p class="date">8.28</p>
+                                        <p class="time">10:00-24:00</p>
+                                    </li>
+                                </ul>
+                                <div class="limit-region_con">
+                                    <ul class="limit-ware clearfix cur" dataTime="2017-08-22-10#2017-08-23-24">
+                                        <li class="item"><{data[41]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[42]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[43]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[44]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="limit-ware clearfix" dataTime="2017-08-24-10#2017-08-25-24">
+                                        <li class="item"><{data[45]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[46]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[47]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[48]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="limit-ware clearfix" dataTime="2017-08-26-10#2017-08-27-24">
+                                        <li class="item"><{data[49]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[50]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[51]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[52]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="limit-ware clearfix" dataTime="2017-08-28-10#2017-08-28-24">
+                                        <li class="item"><{data[53]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[54]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[55]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                        <li class="item"><{data[56]}>
+                                            <div class="mask">
+                                                <span class="mask_mask"></span>
+                                                <span class="mask_icon"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 限时产品区域 end -->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td class="z_bj3y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj4z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100px" width="">
+                            <{data[4]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj4y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj5z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="30" width="">
+                            <{data[5]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj5y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj6z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[6]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj6y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj7z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[7]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj7y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj8z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[8]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj8y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj9z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[9]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj9y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj10z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <!-- 到店玩 -->
+
+                            <div class="toshop">
+                                <ul class="toshop_nav clearfix">
+                                    <li class="item cur">北京</li>
+                                    <li class="item">河南</li>
+                                    <li class="item">河北</li>
+                                    <li class="item">陕西</li>
+                                    <li class="item">辽宁</li>
+                                </ul>
+
+                                <div class="topshop-con">
+                                    <div class="topshop_moudle cur">
+                                        <div class="topshop_explain"><{data[101]}></div>
+                                        <a href="#" class="sign_up">立刻报名</a>
+                                        <div class="toshop-ware">
+                                            <div class="topshop-ware_ensure"><{data[102]}></div>
+                                            <ul class="toshop-ware_list clearfix">
+                                                <li class="item"><{data[103]}></li>
+                                                <li class="item"><{data[104]}></li>
+                                                <li class="item"><{data[105]}></li>
+                                                <li class="item"><{data[106]}></li>
+                                                <li class="item"><{data[107]}></li>
+                                                <li class="item"><{data[108]}></li>
+                                            </ul>
+                                        </div>
+                                        <div class="toshop-ware_detail"><{data[109]}></div>
+                                    </div>
+                                    <div class="topshop_moudle">
+                                        <div class="topshop_explain"><{data[111]}></div>
+                                        <a href="#" class="sign_up">立刻报名</a>
+                                        <div class="toshop-ware">
+                                            <div class="topshop-ware_ensure"><{data[112]}></div>
+                                            <ul class="toshop-ware_list clearfix">
+                                                <li class="item"><{data[113]}></li>
+                                                <li class="item"><{data[114]}></li>
+                                                <li class="item"><{data[115]}></li>
+                                                <li class="item"><{data[116]}></li>
+                                                <li class="item"><{data[117]}></li>
+                                                <li class="item"><{data[118]}></li>
+                                            </ul>
+                                        </div>
+                                        <div class="toshop-ware_detail"><{data[119]}></div>
+                                    </div>
+                                    <div class="topshop_moudle">
+                                        <div class="topshop_explain"><{data[121]}></div>
+                                        <a href="#" class="sign_up">立刻报名</a>
+                                        <div class="toshop-ware">
+                                            <div class="topshop-ware_ensure"><{data[122]}></div>
+                                            <ul class="toshop-ware_list clearfix">
+                                                <li class="item"><{data[123]}></li>
+                                                <li class="item"><{data[124]}></li>
+                                                <li class="item"><{data[125]}></li>
+                                                <li class="item"><{data[126]}></li>
+                                                <li class="item"><{data[127]}></li>
+                                                <li class="item"><{data[128]}></li>
+                                            </ul>
+                                        </div>
+                                        <div class="toshop-ware_detail"><{data[129]}></div>
+                                    </div>
+                                    <div class="topshop_moudle">
+                                        <div class="topshop_explain"><{data[131]}></div>
+                                        <a href="#" class="sign_up">立刻报名</a>
+                                        <div class="toshop-ware">
+                                            <div class="topshop-ware_ensure"><{data[132]}></div>
+                                            <ul class="toshop-ware_list clearfix">
+                                                <li class="item"><{data[133]}></li>
+                                                <li class="item"><{data[134]}></li>
+                                                <li class="item"><{data[135]}></li>
+                                                <li class="item"><{data[136]}></li>
+                                                <li class="item"><{data[137]}></li>
+                                                <li class="item"><{data[138]}></li>
+                                            </ul>
+                                        </div>
+                                        <div class="toshop-ware_detail"><{data[139]}></div>
+                                    </div>
+                                    <div class="topshop_moudle">
+                                        <div class="topshop_explain"><{data[141]}></div>
+                                        <a href="#" class="sign_up">立刻报名</a>
+                                        <div class="toshop-ware">
+                                            <div class="topshop-ware_ensure"><{data[142]}></div>
+                                            <ul class="toshop-ware_list clearfix">
+                                                <li class="item"><{data[143]}></li>
+                                                <li class="item"><{data[144]}></li>
+                                                <li class="item"><{data[145]}></li>
+                                                <li class="item"><{data[146]}></li>
+                                                <li class="item"><{data[147]}></li>
+                                                <li class="item"><{data[148]}></li>
+                                            </ul>
+                                        </div>
+                                        <div class="toshop-ware_detail"><{data[149]}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 到店玩 end -->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj10y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj13z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[13]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj13y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj14z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[14]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj14y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj24z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[24]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj24y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="z_bj36z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td height="100" width="">
+                            <{data[36]}>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+
+            <td class="z_bj36y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="rightlayer">
+        <img src="http://2.zol-img.com.cn/zt/tm_599/7a7335e85f/m_DH.png" usemap="#m_DH">
+        <map name="m_DH" id="m_DH">
+            <area shape="rect" coords="23,107,138,134" href="#mq" target="_self">
+            <area shape="rect" coords="23,135,136,165" href="#bp" target="_self">
+            <area shape="rect" coords="25,167,137,196" href="#zp" target="_self">
+            <area shape="rect" coords="24,198,135,224" href="#wz" target="_self">
+            <area shape="rect" coords="22,227,136,256" href="#dp" target="_self">
+            <area shape="rect" coords="24,257,136,287" href="#hd" target="_self">
+        </map>
+    </div>
+
+
+    <script type="text/javascript">
+        if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (
+                /MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/
+                    .test(navigator.userAgent))) {
+            if (window.location.href.indexOf("?via=") < 0) {
+                try {
+                    if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                        var tmp = location.href.match(/[0-9]+\/(.*)/i);
+                        window.location.href = "http://m.zol.com.cn/topic/6521510.html";
+                    }
+                } catch (e) {}
+            }
+        }
+    </script>
+
+</div>
+
+<div style="background-color:#fff;">
+    <{data[100]}>
+</div>
+
+<script src="http://www.zol.com/js/spm.js" type="text/javascript"></script>
+
+<script src="http://www.zol.com/js/topic/topicUrl.js" type="text/javascript"></script>
+</body>
+<script>
+    // 限时产品
+    $('.limit-region_nav .nav_item').on('click',function (){
+        $(this).addClass('cur').siblings().removeClass('cur');
+        var oIndex = $(this).index();
+        $('.limit-region_con .limit-ware').eq(oIndex).addClass('cur').siblings().removeClass('cur');
+    });
+
+
+    // 到店玩
+    $('.toshop_nav .item').on('click',function (){
+        $(this).addClass('cur').siblings().removeClass('cur');
+        var oIndex = $(this).index();
+        $('.topshop-con .topshop_moudle').eq(oIndex).addClass('cur').siblings().removeClass('cur');
+    });
+
+
+    (function (){
+
+        $('.limit-ware').each(function (index,cur){
+            var _this = $(this);
+            var timeStr=$(this).attr('datatime');
+            var timeArr = timeStr.split('#');
+
+            // 开始时间
+            var startTime = timeArr[0];
+            var startNum=startTime.split('-');
+            // 结束时间
+            var endTime = timeArr[1];
+            var endNum=endTime.split('-');
+
+            // 开始时间戳
+            var startDate=new Date();
+            startDate.setFullYear(startNum[0],(startNum[1])-1,startNum[2]);
+            startDate.setHours(startNum[3],0,0,0);
+            var startTotal=startDate.getTime();
+            // 结束时间戳
+            var endDate=new Date();
+            endDate.setFullYear(endNum[0],(endNum[1])-1,endNum[2]);
+            endDate.setHours(endNum[3],0,0,0);
+            var endTotal=endDate.getTime();
+
+            var nowTime = null;
+            var nowTotal = null;
+            // console.log(startTotal,endTotal);
+            // console.log(cur);
+            setInterval(function (){
+                nowTime=new Date();
+                nowTotal=nowTime.getTime();
+                if(nowTotal<startTotal){
+                    _this.find('.mask').each(function (){
+                        $(this).addClass('notbegin');
+                        $(this).show();
+                    })
+
+
+                }else if(nowTotal>endTotal){
+                    _this.find('.mask').each(function (){
+                        $(this).addClass('over');
+                        $(this).show();
+                    })
+                }else{
+
+                    _this.find('.mask').each(function (){
+                        $(this).removeClass('notbegin');
+                        $(this).hide();
+                    })
+
+                }
+
+            },1000);
+
+        });
+
+    })();
+
+
+</script>
+</html>

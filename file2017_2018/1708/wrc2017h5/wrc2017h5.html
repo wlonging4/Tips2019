@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>WRC2017各种新奇酷玩尽在中关村在线</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 禁用拨号 -->
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #ccc; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*动画*/
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5,.ltr6{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes cir {
+            0%{  -webkit-transform: rotate(0deg); opacity: 1;  }
+            100%{  -webkit-transform: rotate(-360deg); opacity: 1;  }
+        }
+        @keyframes cir {
+            0%{  transform: rotate(0deg); opacity: 1;  }
+            100%{  transform: rotate(-360deg); opacity: 1;  }
+        }
+
+        .cir{ -webkit-animation: cir 8s linear 0s infinite;  animation: cir 8s linear 0s infinite;   }
+        .ltr1{ -webkit-animation: ltr 1s ease-in 0s forwards;  animation: ltr 1s ease-in 0s forwards;   }
+        .ltr2{ -webkit-animation: ltr 1s ease-in 0.4s forwards;  animation: ltr 1s ease-in 0.4s forwards;  }
+        .ltr3{ -webkit-animation: ltr 1s ease-in 0.8s forwards;  animation: ltr 1s ease-in 0.8s forwards;  }
+        .ltr4{ -webkit-animation: ltr 1s ease-in 1.2s forwards;  animation: ltr 1s ease-in 1.2s forwards;  }
+        .ltr5{ -webkit-animation: ltr 1s ease-in 1.6s forwards; animation: ltr 1s ease-in 1.6s forwards;  }
+        .ltr6{ -webkit-animation: ltr 1s ease-in 2s forwards; animation: ltr 1s ease-in 2s forwards;  }
+        .ttb1{ -webkit-animation: ttb 1s ease-in 0s forwards;  animation: ttb 1s ease-in 0s forwards;   }
+        .ttb2{ -webkit-animation: ttb 1s ease-in 0.4s forwards;  animation: ttb 1s ease-in 0.4s forwards;  }
+        .ttb3{ -webkit-animation: ttb 1s ease-in 0.8s forwards;  animation: ttb 1s ease-in 0.8s forwards;  }
+        .ttb4{ -webkit-animation: ttb 1s ease-in 1.2s forwards;  animation: ttb 1s ease-in 1.2s forwards;  }
+        .ttb5{ -webkit-animation: ttb 1s ease-in 1.6s forwards; animation: ttb 1s ease-in 1.6s forwards;  }
+        .btt1{ -webkit-animation: btt 1s ease-in 0s forwards;  animation: btt 1s ease-in 0s forwards;   }
+        .btt2{ -webkit-animation: btt 1s ease-in 0.4s forwards;  animation: btt 1s ease-in 0.4s forwards;  }
+        .btt3{ -webkit-animation: btt 1s ease-in 0.8s forwards;  animation: btt 1s ease-in 0.8s forwards;  }
+        .btt4{ -webkit-animation: btt 1s ease-in 1.2s forwards;  animation: btt 1s ease-in 1.2s forwards;  }
+        .btt5{ -webkit-animation: btt 1s ease-in 1.6s forwards; animation: btt 1s ease-in 1.6s forwards;  }
+        .rtl1{ -webkit-animation: rtl 1s ease-in 0s forwards;  animation: rtl 1s ease-in 0s forwards;   }
+        .rtl2{ -webkit-animation: rtl 1s ease-in 0.4s forwards;  animation: rtl 1s ease-in 0.4s forwards;  }
+        .rtl3{ -webkit-animation: rtl 1s ease-in 0.8s forwards;  animation: rtl 1s ease-in 0.8s forwards;  }
+        .rtl4{ -webkit-animation: rtl 1s ease-in 1.2s forwards;  animation: rtl 1s ease-in 1.2s forwards;  }
+        .rtl5{ -webkit-animation: rtl 1s ease-in 1.6s forwards;  animation: rtl 1s ease-in 1.6s forwards;  }
+
+        @-webkit-keyframes rob-big1 {
+            0%{   -webkit-transform: translate(0px,0px) scale(1); opacity: 1;  }
+            85%{   -webkit-transform: translate(0px,0px) scale(0.99); opacity: 1;  }
+            92%{   -webkit-transform: translate(0px,0px) scale(1.02); opacity: 1;  }
+            100%{   -webkit-transform: translate(0px,0px) scale(1); opacity: 1;  }
+        }
+        @keyframes rob-big1 {
+            0%{   transform: translate(0px,0px) scale(1); opacity: 1;  }
+            85%{   transform: translate(0px,0px) scale(0.99); opacity: 1;  }
+            92%{   transform: translate(0px,0px) scale(1.02); opacity: 1;  }
+            100%{   transform: translate(0px,0px) scale(1); opacity: 1;  }
+        }
+        @keyframes light1 {
+            0%{   transform: translate(0px,0px) scale(1); opacity: 1;  }
+            80%{   transform: translate(0px,0px) scale(1.02); opacity: 1;  }
+            90%{   transform: translate(0px,0px) scale(1.02); opacity: 0;  }
+        }
+        @-webkit-keyframes light1 {
+            0%{   -webkit-transform: translate(0px,0px) scale(1); opacity: 1;  }
+            80%{   -webkit-transform: translate(0px,0px) scale(1.02); opacity: 1;  }
+            90%{   -webkit-transform: translate(0px,0px) scale(1.02); opacity: 0;  }
+        }
+        .rob-big1{  animation: rob-big1 1.5s linear 0.5s infinite;  -webkit-animation: rob-big1 1.5s linear 0s infinite;  }
+        .light1{  animation: light1 1.5s linear 0s infinite;  -webkit-animation: light1 1.5s linear 0s infinite;  }
+
+        .mainPage{  width:640px;margin:0 auto;background: #fff;  }
+        .header{  width: 640px;  height: 577px;  overflow: hidden;  margin: 0 auto;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/head.jpg") no-repeat top center;  }
+        .head-light{  width: 640px;  height: 207px;  margin: 205px auto 0;  position: relative;  z-index: 1;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/light.png") no-repeat 0 0;  }
+        .head-rob1{  width: 250px;  height: 378px;  position: absolute;  left: 20px;  top: 125px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/rob_big.png") no-repeat 0 0;  }
+        .head-rob2{  width: 124px;  height: 119px;  position: absolute;  right: 60px;  bottom: 40px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/rob_small.png") no-repeat 0 0;  }
+
+        .wp{  background: #fff;  overflow: hidden;  width: 640px;  }
+        .t-hot{  height: 86px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/hot_t.jpg") no-repeat 0 0;  }
+        .hot-c{  width: 620px;  height: 350px;  margin: 0 auto 0; background: #000;  }
+        .hot-c .photo-tab{position:relative;width:620px; height:350px;margin:0 auto;}
+        .hot-c .photo-tab .tabs{display:block;position:absolute; z-index:5; width:100%; bottom:-3px; left:0; text-align:center;}
+        .hot-c .photo-tab .tabs i{display:inline-block; width:40px; height:4px;border-radius:2px; margin:0 5px; background-color:#fff;}
+        .hot-c .photo-tab .tabs .selected{background-color:#00a6ff;}
+        .hot-c .photo{width:620px; height:350px; overflow:hidden; position:relative;}
+        .hot-c .photo ul{width:2000%; height:620px; position:absolute;}
+        .hot-c .photo li{float: left;width:620px;height: 350px; margin: 0; padding: 0; -webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
+        .hot-c .photo li em{  display: block;  height: 50px;  width: 620px;  text-align: center;  opacity: 0.7;  color: #fff;  position: relative;  background: #000!important;  margin-top: -50px;  font: 21px/35px "Hiragino sans GB",'microsoft yahei';  }
+
+        .t-vd{  height: 111px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/vd_t.jpg") no-repeat 0 0;  }
+        .vd1{  width: 620px;  height: 350px;overflow: hidden;position: relative;background: #000; margin: 0 auto 10px;  }
+        .vd2{  width: 635px;  height: 180px;margin: 0 auto;  }
+        .vd2 .hui20{  display: block!important;  color: #ebebeb !important;    height: 40px!important;  font: 21px/40px 'Hiragino sans GB','microsoft yahei'!important;  }
+        .vd2 .pic_box_bg{ height: 40px!important; }
+
+        .t-brand{  height: 104px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/brand_t.jpg") no-repeat 0 0;  }
+        .brand-c{  width: 620px;  height: 485px;  position: relative; margin: 0 auto;  overflow: hidden;  }
+        .brand-c1{  position: absolute;  left: 10px;  top: 0;  width: 120px;  height: 40px;  padding-right: 150px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/brand_title.png") no-repeat 0 0;  }
+        .brand-c2{  position: absolute;  left: 0px;  top: 55px;  width: 340px;  height: 220px;  background: #000;  }
+        .brand-c3{  position: absolute;  right: 0px;  top: 55px;  width: 265px;  height: 125px;  }
+        .brand-c4{  position: absolute;  right: 0px;  top: 186px;  width: 265px;  height: 85px;  }
+        .brand-c5{  position: absolute;  left: -5px;  top: 285px;  width: 630px;  height: 180px;  }
+        .brand-c2 .hui20,.brand-c5 .hui20{  display: block!important;  color: #ebebeb !important;    height: 40px!important;  font: 21px/40px 'Hiragino sans GB','microsoft yahei'!important;  }
+        .brand-c2 .pic_box_bg,.brand-c5 .pic_box_bg{ height: 40px!important; }
+        .brand-c1 .bai20{  display: block;  color: #fff;  font: 21px/35px 'Hiragino sans GB','microsoft yahei';  text-align: center;  }
+        .brand-c3 .lan20{  display: block;   color: #009af5;  font: 25px/38px 'Hiragino sans GB','microsoft yahei';  }
+        .brand-c3 .hui20{   color: #666;  display: block;  font: 20px/28px 'Hiragino sans GB','microsoft yahei';  }
+        .brand-c3 .hong12{  font-size: 20px;  color: #228be4;  }
+        .brand-c4 .hui12bi{  display: block;   color: #000;   font: 20px/30px 'Hiragino sans GB','microsoft yahei'; padding-left: 10px; background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/dot.png") no-repeat left center;  }
+
+        .t-top{  height: 150px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/top_t.jpg") no-repeat 0 0;  }
+        .top-c{  overflow: hidden;  min-height: 380px;  width: 620px; margin: 0 auto;  }
+        .top-c .ln{  height: 10px;  }
+        .top-c .lan20{  display: block;  margin-left: 15px;  color: #009af5;  font: 23px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .top-c .lan20 span{  color: #666;  display: block;  border-bottom: 1px solid #a19f9f;  font: 20px/36px 'Hiragino sans GB','microsoft yahei';  }
+        .top-c .lan20 i{  color: #666;  display: block;  font-style: normal;  margin-top: 5px;  font: bold 20px/35px 'Hiragino sans GB','microsoft yahei';  }
+        .top-c .hui20{  margin-left: 15px;  color: #666;  display: block;  font: 20px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .top-c .hong12{  font-size: 20px;  color: #228be4;  }
+
+        .t-pro{  height: 135px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/pro_t.jpg") no-repeat 0 0;  }
+        .pro1{  width: 620px; height: 350px;  margin: 0 auto;  }
+        .pro1 .hui20{  display: block!important;  color: #ebebeb !important;    height: 50px!important;  font: 21px/50px 'Hiragino sans GB','microsoft yahei'!important;  }
+        .pro1 .pic_box_bg{ height: 50px!important; }
+        .test-ul{  width: 640px;  height: 40px;  margin: 15px auto 10px;  overflow: hidden;  }
+        .test-ul li{  width: 160px;  height: 40px;  float: left;  margin: 0 26px;  text-align: center;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/pro_btns.png") no-repeat 0 0;   }
+        .test-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/pro_btns.png") no-repeat -160px 0;  }
+        .test-box{  width: 630px;  height: 330px;  margin: 0 auto;  overflow: hidden;  }
+        .test-mod{  display: none;  position: relative;  width: 630px;  height: 330px;  overflow: hidden;  }
+        .test-mod.blk{  display: block;  }
+        .test-ul li .bai20{  display: block;  color: #474747;  font: 20px/36px 'Hiragino sans GB','microsoft yahei';  text-align: center;  }
+        .test-ul li.act .bai20{  color: #fff;  }
+        .test-mod .hui20{  display: block;  color: #9c9c9c;  width: 200px;  opacity: 0.7;  background: #000;  height: 40px;  margin-top: -40px;  font: 20px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .test-mod .hui18{  display: block;  color: #474747;  margin-top: 10px;  text-align: center;  font: 18px/26px 'Hiragino sans GB','microsoft yahei';  }
+        .test-mod .hui18 i{  display: block;  color: #ff0000;  font: 24px/42px 'Hiragino sans GB','microsoft yahei';  }
+        .test-mod .slh,.test-mod span.slh{  display: none;  }
+        .test-mod .hong12{  display: block;  width: 180px;  height: 40px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/pro_sale.jpg") no-repeat 0 0;  }
+
+        .t-pic{  height: 116px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/pic_t.jpg") no-repeat 0 0;  }
+        .pic-c{  height: 450px;  width: 630px;  margin:  0 auto 35px;  }
+        .pic-c .hui18{  display: block;  color: #474747;  font: 20px/50px "Hiragino sans GB",'microsoft yahei';  }
+
+        .bottom{  height: 21px;  background: url("http://2.zol-img.com.cn/zt/tm_599/3f680e407b/bottom.jpg") no-repeat 0 0;  }
+
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--main-->
+<div class="mainPage">
+    <header CLASS="header">
+        <div class="head-rob1 rob-big1"></div>
+        <div class="head-rob2 btt2"></div>
+        <div class="head-light light1"></div>
+    </header>
+    <div class="wp hot">
+        <div class="t-hot"></div>
+        <div class="hot-c"><{data[0]}></div>
+    </div>
+    <div class="wp vd">
+        <div class="t-vd"></div>
+        <div class="vd1">
+            <iframe id="video1" src='' frameborder='0' scrolling="no" width='100%' height='350' allowfullscreen='true'></iframe>
+        </div>
+        <div class="vd2"><{data[1]}></div>
+    </div>
+    <div class="wp brand">
+        <div class="t-brand"></div>
+        <div class="brand-c">
+            <div class="brand-c1"><{data[2]}></div>
+            <div class="brand-c2"><{data[3]}></div>
+            <div class="brand-c3"><{data[4]}></div>
+            <div class="brand-c4"><{data[5]}></div>
+            <div class="brand-c5"><{data[6]}></div>
+        </div>
+        <div class="brand-c">
+            <div class="brand-c1"><{data[7]}></div>
+            <div class="brand-c2"><{data[8]}></div>
+            <div class="brand-c3"><{data[9]}></div>
+            <div class="brand-c4"><{data[10]}></div>
+            <div class="brand-c5"><{data[11]}></div>
+        </div>
+    </div>
+    <div class="wp top">
+        <div class="t-top"></div>
+        <div class="top-c"><{data[12]}></div>
+    </div>
+    <div class="wp pro">
+        <div class="t-pro"></div>
+        <div class="pro1"><{data[13]}></div>
+        <ul class="test-ul">
+            <li class="act"><{data[14]}></li>
+            <li><{data[15]}></li>
+            <li><{data[16]}></li>
+        </ul>
+        <div class="test-box">
+            <div class="test-mod blk">
+                <{data[17]}>
+            </div>
+            <div class="test-mod">
+                <{data[18]}>
+            </div>
+            <div class="test-mod">
+                <{data[19]}>
+            </div>
+        </div>
+    </div>
+    <div class="wp pic">
+        <div class="t-pic"></div>
+        <div class="pic-c"><{data[20]}></div>
+    </div>
+    <div class="bottom"></div>
+</div>
+
+
+<script charset="GBK">
+    /*处理编辑兼容1*/
+    if (/*window.jQuery*/location.hostname == 'article.zol.com.cn') {
+        document.write('<style id="edit-style"> .test-box{ height: 1000px; } .test-mod{ display: block; } html, body, .flipview { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style>');
+    } else {
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t<script src=\"http://active.zol.com.cn/17active/0122beiang/swiper.min.js\"></s" + "cript>\n\t<script></s" + "cript>");
+        document.write("<script src=\'http://icon.zol-img.com.cn/wap/js/z.flipview.js'></s" + "cript>");
+        //document.write("<script src=\'http://active.zol.com.cn/16active/0524model/live-elem.js'></s" + "cript>");
+
+    }
+
+</script>
+<script charset="gbk">
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+    });
+
+    var testLis=document.querySelectorAll('.test-ul li');
+    var testDis=document.querySelectorAll('.test-mod');
+    testLis.addEventListener('tap',function () {
+        for(var i=0;i<3;i++){
+            testLis[i].ind=i;
+            testLis[i].classList.remove('act');
+            testDis[i].classList.remove('blk');
+        }
+        this.classList.add('act');
+        testDis[this.ind].classList.add('blk');
+    });
+
+    var proHong12=document.querySelectorAll('.test-mod .hong12');
+    for(var j=0;j<proHong12.length;j++){
+        proHong12[j].innerHTML=' ';
+    }
+
+    var vdLinks=document.querySelectorAll('.vd2 table a');
+    var vdLink=document.querySelectorAll('.vd2 table img');
+    var nowHrefInit=vdLinks[0].getAttribute('href');
+
+    video1.setAttribute('src',nowHrefInit);
+    vdLink.addEventListener('click',function (e) {
+        var nowIndex=vdLink.indexOf(this);
+        console.log(nowIndex);
+            var nowHref=vdLinks[nowIndex*2].getAttribute('href');
+            video1.setAttribute('src',nowHref);
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    });
+    vdLinks.addEventListener('click',function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    });
+
+
+
+    window.wechatShareData = {
+        "title":"WRC2017各种新奇酷玩尽在中关村在线",
+        "icon":"images/share.jpg",
+        "description":" ",
+        "url":"http://m.zol.com.cn/topic/6517828.html"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background: #000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #D90000; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #f8f6f7;  }
+        .wrap2{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .zol_foot{  height: 80px;  padding-top: 40px; background: #f7f7f7; color: #464646;   }
+        .zol_foot,.zol_foot a{  color: #464646;  }
+        .head_white{  background: #fff;  }
+        .head_white img{  opacity: 1;  }
+        .bar1{  width: 1000px;  height: 2px;  background: #f0f0f0;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/lg_head_l.jpg") no-repeat right top;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/lg_head_r.jpg") no-repeat left top;  }
+        .head-c{  width: 1000px; height: 497px;  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/lg_head_c.jpg") no-repeat top center;  }
+
+        .preBg{  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/pre.jpg") no-repeat top center;  }
+        .pre{  height: 612px;  }
+        .pre1{  position: absolute;  width: 750px;  height: 465px;  left: 0;  top: 0;  background: #000; overflow: hidden;  }
+        .pre2{  position: absolute;  width: 710px;  height: 80px;  left: 22px;  top: 480px;  }
+        .pre2 .cheng20{  display: block;  color: #D90000;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .pre2 .hui12{  display: block;  color: #333333;  font: 12px/22px 'simsun';  }
+        .art-m1 table tablem.pre3 table table{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .art-m1 table table:hover,.pre3 table table:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+        .pre3{  position: absolute;  width: 237px;  height: 580px;  right: 0;  top: 0;  }
+        .pre3 .ln{  height: 12px;  }
+        .pre3 .pic_box{  width: 232px!important;  height: 182px!important;  }
+        .pre3 table img{  border: 1px solid #f6f7fc;  }
+
+        .colorBg{  height: 16px;  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/color.jpg") repeat-x top center;  }
+
+        .artBg{  background: #fff;  }
+        .art{  height: 520px;  }
+        .art-m1{  position: absolute;  width: 745px;  height: 180px;  left: 0;  top: 40px;  }
+        .art-m2 .cheng18{  display: block;  color: #D90000;  font: bold 18px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .art-m2 .hui12{  display: block;  color: #333333;  font: 12px/20px 'simsun';  }
+        .art-m2{  position: absolute;  width: 240px;  height: 180px;  right: 0;  top: 40px;  }
+        .art-m3 .cheng20{  display: block;  color: #D90000;  font: 26px/58px 'Hiragino sans GB','microsoft yahei';  }
+        .art-m3 .hui14{  display: block;  color: #333333;  font: 14px/26px 'simsun';  }
+        .art-m3 .hong12{ font-size: 14px; }
+        .art-m3{  position: absolute;  width: 578px;  height: 190px;  left: 0;  top: 255px;  }
+        .art-m4{  position: absolute;  width: 380px;  height: 190px;  right: 0;  top: 255px;  }
+
+        .picBg{  background: #f6f7fc;  }
+        .pic{  height: 780px;  }
+        .pic-t{  height: 56px;  margin: 40px auto 20px;  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/pic_t.png") no-repeat top center;  }
+        .pic-c{  width: 855px;  height: 585px;  margin: 0 auto;  }
+        .pic-c #photo-tab-elem678546-prev{  left: -60px!important;  margin-top: 267px!important;  width: 28px!important;  height: 50px!important;  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/pic_btns.png") no-repeat 0 0!important;  }
+        .pic-c #photo-tab-elem678546-next{  right: -60px!important;  margin-top: 267px!important;  width: 28px!important;  height: 50px!important;  background: url("http://2.zol-img.com.cn/zt/tm_5a1/4f736b9d9a/pic_btns.png") no-repeat -28px 0!important;  }
+        #photo-tab-elem678546 .photo-tab-elem-bpic p{  text-align: center!important;  line-height: 40px!important;  }
+        #photo-tab-elem678546 .photo-tab-elem-spic{ left:5px!important; }
+
+        .liveBg{  background: #f6f7fc;  }
+        .live{  height: 765px;  }
+        .live1{  float: left;  width: 690px;  height: 740px;  background: #fff;  border: 1px solid #e9eaef;  }
+        .live2{  float: right;  width: 300px;  height: 740px;  background: #fff;  border: 1px solid #e9eaef;  }
+        .live21{  text-align: center;  height: 45px;  color: #fff;  font: 22px/45px 'Hiragino sans GB','microsoft yahei';  background: #D51F0E; overflow: hidden;  }
+        .live21 span{  color: #ff0;  font: 25px/45px 'Hiragino sans GB','microsoft yahei';  }
+        .live22{  width: 250px;  height: 90px;  background: #eee;  padding: 10px 25px;  }
+        .live23{  width: 300px;  height: 575px;  padding-bottom: 10px;  }
+        .live22 table img{  padding-right: 12px;  }
+        .live22 .cheng14{  display: block;  color: #D51F0E;  font: bold 14px/28px 'simsun';  }
+        .live22 .cheng12{  display: block;  color: #D51F0E;  font: 12px/22px 'simsun';  }
+
+
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" cellpadding="0" cellspacing="0" border="0" class="head">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--预热-->
+<div class="wrap1 preBg banners">
+    <div class="wrapper1 pre">
+        <div class="pre1"><{data[0]}></div>
+        <div class="pre2"><{data[1]}></div>
+        <div class="pre3"><{data[2]}></div>
+    </div>
+</div>
+<!--文章-->
+<div class="wrap1 artBg banners">
+    <div class="wrapper1 art">
+        <div class="art-m art-m1"><{data[3]}></div>
+        <div class="art-m art-m2"><{data[4]}></div>
+        <div class="art-m art-m3"><{data[5]}></div>
+        <div class="art-m art-m4"><{data[6]}></div>
+    </div>
+</div>
+<!--图赏-->
+<div class="wrap1 picBg banners">
+    <div class="wrapper1 pic">
+        <div class="pic-t"></div>
+        <div class="pic-c"><{data[7]}></div>
+    </div>
+</div>
+<!--直播-->
+<div class="wrap1 liveBg banners">
+    <div class="wrapper1 live">
+        <div class="live1"><{data[8]}></div>
+        <div class="live2">
+            <div class="live21">
+                已有<span id="live-count">-</span>位网友陪您看直播
+            </div>
+            <div class="live22"><{data[9]}></div>
+            <div class="live23"><{data[10]}></div>
+        </div>
+    </div>
+</div>
+<!--彩栏-->
+<div class="wrap1 colorBg banners"></div>
+
+<script class="gbk">
+    /*评论计数*/
+    $.getJSON("http://dynamic.zol.com.cn/channel/get_broadcast_attention.php?docId=5758673&callback=?",{},function(obj){
+        $("#live-count").html(obj);
+    });
+</script>
+</body>
+</html>

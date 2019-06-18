@@ -1,0 +1,290 @@
+<!DOCTYPE html><html><HEAD><TITLE>开源Linux系统性能比拼</TITLE>
+    <META content="text/html; charset=gb2312" http-equiv=Content-Type>
+    <STYLE>
+        /*全局样式*/
+        body {
+            background:#031C3C;
+            margin:0;
+            font-size:12px;
+            line-height:22px;
+            font-family:"宋体", Tahoma, Geneva, sans-serif;
+            color:#333;
+        }
+        a {
+            color:#333;
+            text-decoration:none
+        }
+        a:hover {
+            color:#f60 !important;
+            text-decoration:underline
+        }
+        h1, h2, div, img, form, ul, li, p {
+            padding:0;
+            margin:0;
+            border:0
+        }
+        ul, li {
+            list-style:none
+        }
+        /*表格样式*/
+        .head, .head a {
+            color:#333
+        }
+        .main{
+            border:1px solid #ccc;
+        }
+        /*文字样式*/
+        .bai12 , .bai12 a{
+            font-size:12px;
+            color:#fff;
+        }
+        .lan12 {
+            font-size:12px;
+            color:#031C3C;
+        }
+        .lan14b {
+            font-size:14px;
+            color:#031C3C;
+            font-weight:bold;
+        }
+        .lan18 {
+            font-size:18px;
+            color:#031C3C;
+            font:18px/30px "微软雅黑", Arial;
+            text-shadow:1px 1px 3px rgba(50, 50, 50, 0.3);
+        }
+        .lan18b {
+            font-size:18px;
+            color:#031C3C;
+            font:bold 18px/30px "微软雅黑", Arial;
+            text-shadow:1px 1px 3px rgba(50, 50, 50, 0.3);
+        }
+        .huang14 {
+            color:#AE7F00;
+            font:14px/24px "微软雅黑", Arial;
+            text-shadow:1px 1px 3px rgba(50, 50, 50, 0.1);
+        }
+        .bai18 {
+            font-size:18px;
+            color:#fff;
+            font:18px/30px "微软雅黑", Arial;
+            text-shadow:1px 1px 3px rgba(50, 50, 50, 0.3);
+        }
+        /*图片样式*/
+        .ir img{
+            margin-right:10px;
+        }
+        .img1 img {
+            border:1px solid #ccc;
+            padding:1px;
+        }
+        .img2 img {
+            border:1px solid #ccc;
+        }/*其它样式*/
+        #focus1_672177{  overflow: visible!important;  }
+        #focus1_672177 .focus1_nav{  width: 100%!important;  bottom: -30px!important;  text-align: center!important;  }
+        #focus1_672177 i{  width: 40px!important;  height: 6px!important;  -webkit-border-radius: 3px!important;  border-radius: 3px!important;  text-indent: 9000px;  background: #a0a0a0!important;  }
+        #focus1_672177 i.act{  background: #db170c!important;  }
+        #focus1_672177 .bai18{  display: block;  width: 450px;  height: 35px;  margin-top: -35px;  background: rgba(0,0,0,0.6)!important;  position: relative;  font: 20px/35px 'Hiragino sans GB','microsoft yahei';  }
+        .final{
+            width: 980px;
+            height: 400px;
+            position: relative;
+        }
+        .f1{
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 400px;
+            height: 380px;
+            background: #000;
+        }
+        .f4{
+            position: absolute;
+            right: 20px;
+            top: 0;
+            width: 300px;
+            height: 380px;
+        }
+        .f4 .hui12{
+
+        }
+        .f4 .ln{  line-height: 15px; background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/line_1px.png") center no-repeat; }
+        .f4 .hui12{  font: 12px/23px 'simsun'; color: #333;  }
+
+        .f2{
+            position: absolute;
+            left: 440px;
+            top: 0;
+            width: 200px;
+            height: 100px;
+        }
+        .f2 .ln{
+            height: 15px;
+        }
+        .f3{
+            position: absolute;
+            left: 440px;
+            top: 180px;
+            width: 200px;
+            height: 200px;
+        }
+        .f2 table img,.f3 table img{
+            border: 1px solid #888888;
+        }
+
+
+    </STYLE>
+</HEAD>
+<BODY>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+    <TBODY>
+    <TR>
+        <TD style="BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_59b/f87ffce97a/0101001) no-repeat right top">&nbsp;</TD>
+        <TD width=980>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width=980 align=center>
+                <TBODY>
+                <TR>
+                    <TD><IMG src="http://2.zol-img.com.cn/zt/tm_59b/f90d37cfd1/head_c.jpg" width=980 height=260></TD></TR></TBODY></TABLE></TD>
+        <TD style="BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g13.jpg) no-repeat">&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+    <TBODY>
+    <TR>
+        <TD style="BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g14.jpg) right top">&nbsp;</TD>
+        <TD bgColor=#ffffff width=980>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width=980 align=center>
+                <TBODY>
+                <TR>
+                    <TD height=280 width=480 align="center"><{data[0]}></TD>
+                    <TD width=500 align="center"><{data[1]}></TD></TR></TBODY></TABLE></TD>
+        <TD style="BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g15.jpg)">&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+    <TBODY>
+    <TR>
+        <TD style="BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g16.jpg) no-repeat right top">&nbsp;</TD>
+        <TD bgColor=#ffffff valign="middle" width=980>
+            <DIV style="POSITION: relative; WIDTH: 980px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4f2/a281075f32/789.jpg) no-repeat 51% 50%; HEIGHT: 675px">
+                <DIV style="POSITION: absolute; WIDTH: 544px; HEIGHT: 675px; TOP: 0px; LEFT: 20px">
+                    <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                        <TBODY>
+                        <TR>
+                            <TD height=225 vAlign=top>
+                                <TABLE border=0 cellSpacing=0 cellPadding=0 width=544 align=left>
+                                    <TBODY>
+                                    <TR>
+                                        <TD style="PADDING-BOTTOM: 0px; PADDING-LEFT: 30px; PADDING-RIGHT: 16px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g3.jpg) no-repeat 0px 80%; PADDING-TOP: 0px" height=50 vAlign=top>
+                                            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                                <TBODY>
+                                                <TR>
+                                                    <TD class=lan18 height=42 valign="middle" width="50%">Linux实验室：企业最爱关机秘诀</TD></TR></TBODY></TABLE></TD></TR>
+                                    <TR>
+                                        <TD class="lan12 img1 ir" height=150><{data[3]}></TD></TR></TBODY></TABLE></TD></TR>
+                        <TR>
+                            <TD height=225 vAlign=top>
+                                <TABLE border=0 cellSpacing=0 cellPadding=0 width=390 align=left>
+                                    <TBODY>
+                                    <TR>
+                                        <TD style="PADDING-BOTTOM: 0px; PADDING-LEFT: 30px; PADDING-RIGHT: 16px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g4.jpg) no-repeat 0px 80%; PADDING-TOP: 0px" height=50 vAlign=top>
+                                            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                                <TBODY>
+                                                <TR>
+                                                    <TD class=lan18 height=42 valign="middle" width="50%">Linux实验室：企业最爱虚机系统</TD></TR></TBODY></TABLE></TD></TR>
+                                    <TR>
+                                        <TD class="lan12 img1 ir" height=150><{data[5]}></TD></TR></TBODY></TABLE></TD></TR>
+                        <TR>
+                            <TD height=225 vAlign=top>
+                                <TABLE border=0 cellSpacing=0 cellPadding=0 width=390 align=left>
+                                    <TBODY>
+                                    <TR>
+                                        <TD style="PADDING-BOTTOM: 0px; PADDING-LEFT: 30px; PADDING-RIGHT: 16px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g4.jpg) no-repeat 0px 80%; PADDING-TOP: 0px" height=50 vAlign=top>
+                                            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                                <TBODY>
+                                                <TR>
+                                                    <TD class=lan18 height=42 valign="middle" width="50%">Linux实验室：企业最爱远程布控</TD></TR></TBODY></TABLE></TD></TR>
+                                    <TR>
+                                        <TD class="lan12 img1 ir" height=150><{data[7]}></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+                <DIV style="POSITION: absolute; WIDTH: 544px; HEIGHT: 675px; TOP: 0px; RIGHT: 20px">
+                    <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                        <TBODY>
+                        <TR>
+                            <TD height=225 vAlign=bottom>
+                                <TABLE border=0 cellSpacing=0 cellPadding=0 width=386 align=right>
+                                    <TBODY>
+                                    <TR>
+                                        <TD style="PADDING-BOTTOM: 0px; PADDING-LEFT: 16px; PADDING-RIGHT: 30px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g5.jpg) no-repeat 0px 80%; PADDING-TOP: 0px" height=50 vAlign=top>
+                                            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                                <TBODY>
+                                                <TR>
+                                                    <TD class=lan18 height=80 valign="middle" width="50%" align=right>Linux实验室：内存最重要</TD></TR></TBODY></TABLE></TD></TR>
+                                    <TR>
+                                        <TD class="lan12 img1 ir" height=150><{data[9]}></TD></TR></TBODY></TABLE></TD></TR>
+                        <TR>
+                            <TD height=225 vAlign=bottom>
+                                <TABLE border=0 cellSpacing=0 cellPadding=0 width=386 align=right>
+                                    <TBODY>
+                                    <TR>
+                                        <TD style="PADDING-BOTTOM: 0px; PADDING-LEFT: 16px; PADDING-RIGHT: 30px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g5.jpg) no-repeat 0px 80%; PADDING-TOP: 0px" height=50 vAlign=top>
+                                            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                                <TBODY>
+                                                <TR>
+                                                    <TD class=lan18 height=42 valign="middle" width="50%" align=right>Linux实验室：命令是关键</TD></TR></TBODY></TABLE></TD></TR>
+                                    <TR>
+                                        <TD class="lan12 img1 ir" height=150><{data[11]}></TD></TR></TBODY></TABLE></TD></TR>
+                        <TR>
+                            <TD height=225 vAlign=bottom>
+                                <TABLE border=0 cellSpacing=0 cellPadding=0 width=544 align=left>
+                                    <TBODY>
+                                    <TR>
+                                        <TD style="PADDING-BOTTOM: 0px; PADDING-LEFT: 16px; PADDING-RIGHT: 30px; BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g6.jpg) no-repeat 0px 80%; PADDING-TOP: 0px" height=50 vAlign=top>
+                                            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                                <TBODY>
+                                                <TR>
+                                                    <TD class=lan18 height=42 valign="middle" width="50%" align=right>Linux实验室：ATP包</TD></TR></TBODY></TABLE></TD></TR>
+                                    <TR>
+                                        <TD class="lan12 img1 ir" height=150><{data[13]}></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV></DIV></TD>
+        <TD style="BACKGROUND: url(http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g17.jpg) no-repeat">&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+    <TBODY>
+    <TR>
+        <TD>&nbsp;</TD>
+        <TD bgColor=#ffffff width=980>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width=980 align=center>
+                <TBODY>
+                <TR>
+                    <TD b>
+                        <P>&nbsp;</P>
+                        <TABLE border=0 cellSpacing=0 cellPadding=0 width=953 align=center>
+                            <TBODY>
+                            <TR>
+                                <TD height=37 background=http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g8.jpg>
+                                    <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                                        <TBODY>
+                                        <TR>
+                                            <TD width=20>&nbsp;</TD>
+                                            <TD width=30><IMG src="http://2.zol-img.com.cn/zt/tm_4c6/a2ebeef2fc/g7.jpg" width=16 height=15></TD>
+                                            <TD class=bai18 width=903>细数Linux系统明星产品</TD></TR></TBODY></TABLE></TD></TR>
+                            <TR>
+                                <TD class=img2 height=200 align="center"><{data[14]}></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+        <TD>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+    <TBODY>
+    <TR>
+        <TD>&nbsp;</TD>
+        <TD bgColor=#ffffff width=980>
+            <div class="final">
+                <div class="f1"><{data[19]}></div>
+                <div class="f2"><{data[20]}></div>
+                <div class="f3"><{data[21]}></div>
+                <div class="f4"><{data[22]}></div>
+            </div>
+        <TD>&nbsp;</TD></TR></TBODY></TABLE>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+    <TBODY>
+    <TR>
+        <TD>&nbsp;</TD>
+        <TD width=980>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width=980 align=center>
+                <TBODY>
+                <TR>
+                    <TD class=bai12 height=160 align="center"><{data[18]}></TD></TR></TBODY></TABLE></TD>
+        <TD>&nbsp;</TD></TR></TBODY></TABLE></BODY></html>

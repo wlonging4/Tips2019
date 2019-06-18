@@ -1,0 +1,571 @@
+<!DOCTYPE html><html>
+<head>
+    <meta charset="gb2312">
+    <title>title</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+        var share_description=encodeURIComponent( "人前荣耀  人后吃鸡");
+        var share_pic=encodeURIComponent("http://2.zol-img.com.cn/zt/tm_5a7/d7cd62c2df/weixin.jpg");
+
+        document.write('<meta name="share_info" content={"description":"'+share_description+'","icon":"'+share_pic+'"} />');
+
+
+
+        if(document.referrer.indexOf('6780571.html')==-1 && location.href.indexOf("article") == -1 && location.href.indexOf(":8088") == -1){
+
+            location.href="http://m.zol.com.cn/topic/6780571.html";
+        }
+
+
+
+    </script>
+
+    <style>
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400;}
+        html, body {-webkit-tap-highlight-color:rgba(0,0,0,0); min-height: 100%;}
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #777; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /* 首页 */
+        body {width:640px; margin:0 auto;  color:#666; background:#eee; }
+        .wrapper{width: 640px; overflow: hidden;position: relative; min-height: 100%;}
+
+
+
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        .mycanvas,.pageitem{width: 100%; height: 100%;}
+        .header,.mycanvas,.pageitem{ position: fixed; left: 0; top: 0;}
+
+        .mycanvas{/* background: url(http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/bg1.jpg) no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%; */}
+        .pageitem{/*background: rgba(0,0,0,0.4); */color: #fff; display: none;}
+        .pageitem h2{position: absolute; left: 52px; top: 158px;width: 584px; font-size: 28px; color: #fff; line-height: 46px;}
+        .pageitem h2:before{position: absolute; content: ""; width: 8px; height: 30px; background: #d8b975; left: -20px; top: 5px;}
+        .pageitem p{position: absolute; width: 600px;left: 20px; bottom: 100px; font-size: 24px; line-height: 28px; color: #fff; }
+        .pageitem p:before{position: absolute; content: ""; width: 39px; height: 6px; background: #ffffff; left:0; top:-20px;}
+        .header{height: 88px; background: #d8b975; width: 100%; font-size: 16px; color: #fff; z-index: 10}
+        .header p{ line-height: 88px; text-align: center;}
+
+        .menu{position:absolute;width:100px; left:4%;top:29%;-webkit-transform-origin:0% 0%; transform-origin:0% 0%; height:40px; z-index:2}
+        .menu div {position:absolute; width:40px; height:5px; background:#fff; }
+        .menu div:after{width: 5px ; height: 5px; background: #d8b975; position: absolute; content: "" ; left:5px; top:0;}
+        .menu .menuLine1 {top:5px; -webkit-transform-origin:0% 50%; transform-origin:0% 50%; -webkit-transition:0.6s ease-in; transition:0.6s ease-in;}
+        .menu .menuLine2 {top:19px;-webkit-transition:0.6s ease-in; transition:0.6s ease-in;}
+        .menu .menuLine3 { top:33px; -webkit-transform-origin:0% 50%; transform-origin:0% 50%; -webkit-transition:0.6s ease-in; transition:0.6s ease-in;}
+
+        .menuActive div:after{opacity: 0; -webkit-transition:0.6s ease-in; transition:0.6s ease-in;}
+        .menuActive .menuLine1 { -webkit-transform:rotate(45deg);transform:rotate(45deg)}
+        .menuActive .menuLine2 { opacity:0 !important}
+        .menuActive .menuLine3 {-webkit-transform:rotate(-45deg); transform:rotate(-45deg)}
+
+
+        .navlist{min-height: 100%; padding-top: 105px; background: #fff;}
+        .navlist li{border-bottom: 1px solid #e6e6e6; height: 200px;  position: relative; width: 350px; margin:0 auto 10px; padding-left:250px;}
+        .navlist li .img{position: absolute; left: 0; top: 15px;}
+        .navlist li  p{font-size: 26px;line-height: 36px; color: #000; padding-top: 24px;}
+
+        .pageitem .item{width: 100%; height: 100%; position: absolute;  left: 0; top: 0;}
+
+
+        .slide-wrapper,.scene-nav{display: none;}
+
+        .mycanvas canvas {display: block;position: absolute;left: 0;top: 0; background:#000;}
+
+        .article{width:640px; position: relative ; min-height: 100%; display: none; }
+
+        .mycanvas{-webkit-transform:scale(1);  transform:scale(1);  -webkit-transition:0.5s; transition:0.5s;   /*   -webkit-transform-origin:20% 80%; transform-origin:20% 80%;  */ }
+        .mycanvas.hidden{ -webkit-transform:scale(0);  transform:scale(0); }
+
+        .view-btn{position: absolute; left: 20px; bottom: 25px; width: 173px; height: 44px; border: 3px solid rgba(255,255,255,0.7); text-align: center; font-size: 22px; color: #fff; line-height: 44px; background: url(http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/next.png) no-repeat 160px 50%; -webkit-border-radius: 44px; border-radius: 44px; padding-right: 10px;}
+        .article .inner-box{ background: #f3f3f3;  padding: 20px ;width:600px;color: #1d100d; }
+        .article .inner{background: #fff; padding:25px;  font-size: 24px;}
+        .article .inner p{padding:8px 0; font-size: 24px; }
+        /* .article .tit{position: relative; font-size: 26px;}
+        .article .tit:before{content: ""; position: absolute; width: 5px; height: 28px; left: -20px; top: 6px; background: #d8b975;} */
+
+        .article .tit{position: absolute; left: 52px; top: -680px;width: 584px; font-size: 28px; color: #fff; line-height: 46px; -webkit-transform:translate(0,0) ;transform:translate(0,0) ;}
+        .article .tit:before{position: absolute; content: ""; width: 8px; height: 38px; background: #d8b975; left: -20px; top: 0;}
+        .article.visible{display: block;}
+        .article.visible .tit{-webkit-transform:translate(0,580px) ;transform:translate(0,580px) ; -webkit-transition:transform 1.8s; transition:transform 1.8s;}
+        .article p span,.article p span strong,.article p strong strong{
+            font-size:24px!important;
+        }
+
+
+        .pageitem.visible{display: block}
+
+        .pageitem .item h2,.pageitem .item p{-webkit-transform:translate(-60px,-20px) ;transform:translate(-60px,-20px) ; opacity:0 ;}
+        .pageitem .act h2,.pageitem .act p{-webkit-transform:translate(0,0) ;transform:translate(0,0) ; opacity:1 ;-webkit-transition:all 0.8s; transition:all 0.8s;}
+
+
+        .article .inner img{display: block; max-width: 550px; width: 550px}
+        @media screen and (max-width:640px) and (max-height: 950px) {
+
+        }
+
+
+
+    </style>
+
+</head>
+<body >
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+
+<div class="wrapper">
+    <div class="navlist">
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic1.jpg" width="220" height="160"></span>
+            <p>低成本也“吃鸡” 宅在家也天天“大吉大利”</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/fabd56500c/pic2.jpg" width="220" height="160"></span>
+            <p>2248元吃不起鸡? 你至少有一个王者梦!</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic3.jpg" width="220" height="160"></span>
+            <p>8298元王者/吃鸡清单 每一分钱献给配置</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic4.jpg" width="220" height="160"></span>
+            <p>中规中矩好搭配 畅玩游戏“吃好鸡”</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic5.jpg" width="220" height="160"></span>
+            <p>4017元这款手机让你一面吃鸡一面超神</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic6.jpg" width="220" height="160"></span>
+            <p>吃鸡农药聊天全不误 13833助你一心三用</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic7.jpg" width="220" height="160"></span>
+            <p>8代全新CPU+GTX 1080Ti 全高特效玩转“吃鸡”</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic8.jpg" width="220" height="160"></span>
+            <p>拳打绝命岛腿扫王者峡谷 神装只要5117元</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic9.jpg" width="220" height="160"></span>
+            <p>36888吃鸡上王者设备 双屏堪比开挂体验</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic10.jpg" width="220" height="160"></span>
+            <p>42888的配置 再吃不到鸡你该戒游戏了</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/fabd56500c/pic11.jpg" width="220" height="160"></span>
+            <p>有钱就该这么任性 土豪专属13577元手游装备</p>
+        </li>
+        <li>
+            <span class="img"><img src="http://2.zol-img.com.cn/zt/tm_5a7/d7c7e23862/pic12.jpg" width="220" height="160"></span>
+            <p>土豪的世界你不懂 46599元笑傲王者吃鸡</p>
+        </li>
+    </div>
+    <div class="mycanvas">
+
+        <main class="site-wrapper">
+            <div class="content">
+                <div class="slide-wrapper">
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg1.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg2.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg3.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg4.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg5.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg6.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg7.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg8.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg9.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg10.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg11.jpg" class="slide-item__image">
+                    </div>
+                    <div class="slide-item">
+                        <img src="http://m.zol.com.cn/topic/images/chiji/bg12.jpg" class="slide-item__image">
+                    </div>
+                </div>
+                <button class="scene-nav scene-nav--prev" data-nav="previous"></button>
+                <button class="scene-nav scene-nav--next" data-nav="next"></button>
+            </div>
+        </main>
+
+    </div>
+    <div class="pageitem visible">
+        <div class="item">
+            <h2>低成本也“吃鸡” 宅在家也天天“大吉大利”</h2>
+            <p>现在，满世界的游戏爱好者都围绕着“吃鸡”所展开所有茶余饭后的话题，随着国服“吃鸡”开启的日益临近，趁着新春之时打造出一套完美的游戏主机是非常有必要的。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>2248元吃不起鸡? 你至少有一个王者梦!</h2>
+            <p>要说现在最火的手游是什么？相信很多人最先想到的自然是《王者荣耀》和“吃鸡”类游戏了。是的，现在不论是在公司、学校还是地铁里，“王者”和“吃鸡”已经成为人们手机上最常出现的画面。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>8298元王者/吃鸡清单 每一分钱献给配置</h2>
+            <p>时下最火的游戏是什么？手机不离手的玩家们或许会异口同声的说“王者荣耀”；而PC电竞死忠粉却力挺“吃鸡”。而这其中也不乏一些游戏的深度痴迷爱好者，“王者”、“吃鸡”两不误才是“正道”。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>中规中矩好搭配 畅玩游戏“吃好鸡”</h2>
+            <p>中端的配置运行“吃鸡”是很多用户所能接受的，很多用户对于超过万元的预算组装一台游戏PC还是“囊中羞涩”的，所以现在我们就给玩家们推荐一套中特效畅玩“吃鸡”的配置。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>4017元这款手机让你一面吃鸡一面超神</h2>
+            <p>你还在抱怨手机屏幕太小而买平板吗？你还在嫌弃手游吃鸡操控别扭不够爽吗？现在我告诉你，或许一款折叠屏手机便可以改变你对手机+手游的认知。现在，你可以“花少钱，吃好鸡”！</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>吃鸡农药聊天全不误 13833助你一心三用</h2>
+            <p>既然你喜欢没事在手机上打两把“农药”，又会在休息时勇闯绝命岛，享受一下“大吉大利，今晚吃鸡”的乐趣，那么这份配置单一定非常适合你。在吃鸡、农药之余，我们还准备了额外的惊喜在这张配置单里。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>8代全新CPU+GTX 1080Ti 全高特效玩转“吃鸡”</h2>
+            <p>“吃鸡”国服马上降临到我们身边，现在也正值新春佳节的疯狂大促，为了全特效酣畅的“吃鸡”，一套过万的“游戏机”能够让用户身临其中，充分的感受游戏的特有魅力，今日我们就针对吃鸡用户，推荐一款售价过万的发烧级吃鸡游戏主机。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>拳打绝命岛腿扫王者峡谷 神装只要5117元</h2>
+            <p>没放假时老盼着过年，过年回家了才发现无事可做，大冷天儿又不能出去嗨，还跟不上上学上班......这时候，除了绝命岛和王者峡谷几日游，貌似还真没什么正经事可做。那还废啥话？游呗！</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>36888吃鸡上王者设备 双屏堪比开挂体验</h2>
+            <p>现在电子竞技的影响越来越深，往往一款游戏的推出将会引起全国范围的疯狂追捧。就拿最近最热的两款游戏来说吧，王者荣耀和吃鸡类游戏。这是大家所熟知并且基本上都有所了解的，想要“吃鸡”“上王者”我们有时候不能单纯的靠运气、实力、操作。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>42888的配置 再吃不到鸡你该戒游戏了</h2>
+            <p>2017年最火的PC游戏是什么？估计玩家们会异口同声说：“吃鸡！”没错，《绝地求生》这款游戏已然成为了一款现象级的游戏，在很短的时间内掀起了一股全民“吃鸡”的热潮，不仅在PC端风生水起，在手机端也有大量山寨吃鸡游戏蹭热度。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>有钱就该这么任性 土豪专属13577元手游装备</h2>
+            <p>近年来，随着手游市场的日渐火爆，快速推动了手机厂商、游戏厂商和耳机厂商的发展和产品的更新迭代。如今，手游已经成为了一种新的潮流，甚至可以说是一种文化现象，逐渐渗入到电竞圈、音频圈、娱乐圈等等领域。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+        <div class="item">
+            <h2>土豪的世界你不懂 46599元笑傲王者吃鸡</h2>
+            <p>对游戏设备的追求有终点吗？这个问题的答案因人而异，谁都想要更好的游戏硬件，但最后决定的关键在于口袋里的钱。对于不差钱的土豪们来说， 这或许不算个问题，买什么东西照着自己的喜好挨个儿下单就行了。</p>
+            <span class="view-btn">点击查看文章</span>
+        </div>
+    </div>
+    <div class="header">
+        <p>产品推荐清单</p>
+        <div class="menu" ><div class="menuLine1"></div> <div class="menuLine2"></div> <div class="menuLine3"></div></div>
+    </div>
+
+    <div class="article">
+        <div class="inner-box">
+            <div class="inner">
+                <h4 class="tit"></h4>
+                <div class="content-box"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" ></script>
+<script src="http://active.zol.com.cn/18active/0209chicken/pixi.min.js"></script>
+<script src="http://active.zol.com.cn/18active/0209chicken/TweenMax.min.js"></script>
+<script src="http://active.zol.com.cn/18active/0209chicken/main.js"></script>
+
+<script>
+    var articleid = [6779115,6779163,6779116,6779117,6776909,6777874,6779118,6778055,6778533,6771189,6779630,6779672];
+
+    if (location.hash && (hashval = location.hash.match(/^#(\d+)$/))) {
+        window.pageindex = parseInt(hashval[1])-1;
+    } else {
+        window.pageindex =0;
+    }
+
+
+
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+
+
+    var slide  = document.querySelector('.slide-wrapper');
+    var winWidth = window.innerWidth;
+    var winHeight = window.innerHeight;
+
+
+
+    var mycanvas = document.querySelector(".mycanvas"),
+        pageitem = document.querySelector(".pageitem"),
+        navlist = document.querySelector(".navlist"),
+        listLi = navlist.querySelectorAll(" li"),
+        menu = document.querySelector(".menu"),
+        article =document.querySelector(".article");
+
+    //初始化计算
+    var currentk = navlist.querySelector("li:nth-child("+(window.pageindex +1)+")");
+    mycanvas.style.webkitTransformOrigin = mycanvas.style.transformOrigin = "20.31% "+getObjTop(currentk);
+
+    article.style[$.CSSTransform]= 'translate(0,'+winHeight+'px)';
+    article.style.paddingBottom  = winHeight-300+'px';
+    document.documentElement.scrollTop= 0;
+
+
+    //菜单关闭、打开
+    menu.addEventListener("tap",function(){
+
+        if(this.classList.contains('menuDetail')){
+            closedetail()
+        }else{
+            if(this.classList.contains('menuActive')){
+                open()
+            }else{
+
+
+                close()
+
+            }
+        }
+
+    })
+
+
+    function open(){
+
+        menu.classList.remove("menuActive")
+        mycanvas.classList.remove("hidden")
+
+        setTimeout(function(){
+            pageitem.classList.add("visible");
+        },500)
+        document.addEventListener(Event.Touch.down,downFn);
+        document.addEventListener(Event.Touch.move,moveFn);
+        document.addEventListener(Event.Touch.up,upFn);
+    }
+    function close(){
+        var ele = navlist.querySelector("li:nth-child("+(window.pageindex +1)+")");
+
+        if(ele.offsetTop-winHeight-document.documentElement.scrollTop>=0){
+            document.documentElement.scrollTop= (ele.offsetTop-winHeight)+210
+
+
+        }
+        mycanvas.style.webkitTransformOrigin = mycanvas.style.transformOrigin = "20.31% "+getObjTop(ele);
+
+
+        menu.classList.add("menuActive");
+        mycanvas.classList.add("hidden")
+        pageitem.classList.remove("visible");
+
+        document.removeEventListener(Event.Touch.down,downFn);
+        document.removeEventListener(Event.Touch.move,moveFn);
+        document.removeEventListener(Event.Touch.up,upFn);
+    }
+    function closedetail(){
+        menu.classList.remove("menuActive");
+        menu.classList.remove("menuDetail");
+
+        document.addEventListener(Event.Touch.down,downFn);
+        document.addEventListener(Event.Touch.move,moveFn);
+        document.addEventListener(Event.Touch.up,upFn);
+        article.style[$.CSSTransform] = 'translate(0,'+(winHeight)+'px)';
+        article.style[$.transition] = $.CSSTransform + ' linear 0.8s';
+        setTimeout(function(){
+            article.classList.remove("visible");
+            navlist.style.display ="block";
+            pageitem.classList.add("visible");
+        },800)
+        document.documentElement.scrollTop= 0
+
+    }
+
+    //获取left位置 百分比形式 20.31%
+    /*function getObjLeft(ele){
+         var num = (ele.getBoundingClientRect().left+110)/winWidth;  //宽度一半 保持中心点
+         return (Math.round(num * 10000) / 100.00 + "%");// 小数点后两位百分比
+    }*/
+    //获取top位置
+    function getObjTop(ele){
+        var num = (ele.getBoundingClientRect().top+80)/winHeight;  //高度一半 保持中心点
+        return (Math.round(num * 10000) / 100.00 + "%");// 小数点后两位百分比
+    }
+
+
+    //切换图片
+
+    var spriteImages 	= document.querySelectorAll( '.slide-item__image' );
+    var spriteImagesSrc = [];
+
+    for ( var i = 0; i < spriteImages.length; i++ ) {
+        var img = spriteImages[i];
+        spriteImagesSrc.push( img.getAttribute('src' ) );
+    }
+    var initCanvasSlideshow = new CanvasSlideshow({
+        sprites: spriteImagesSrc,
+        displacementImage: 'http://m.zol.com.cn/topic/images/chiji/clouds.jpg',
+        autoPlay: false,
+        autoPlaySpeed: [2, 1],
+        displaceScale: [300, 80],
+    });
+
+    document.addEventListener(Event.Touch.down,downFn);
+    document.addEventListener(Event.Touch.move,moveFn);
+    document.addEventListener(Event.Touch.up,upFn);
+
+
+
+
+    function downFn(e){
+        var touches = e.touches[0];
+        window.oW = touches.clientX;
+    }
+    function moveFn(e){
+        e.stopPropagation();
+        e.preventDefault();
+        var touches = e.touches[0];
+        window.oLeft = touches.clientX - window.oW;
+    }
+    function upFn(e){
+        if(!window.oLeft || Math.abs(window.oLeft)<50) return;
+
+        if(window.oLeft>0){
+            document.querySelector(".scene-nav--next").trigger('click')
+        }else{
+            document.querySelector(".scene-nav--prev").trigger('click')
+        }
+
+        window.oLeft=0;
+    }
+
+
+    //默认打开第几页
+    initCanvasSlideshow.moveSlider(window.pageindex);
+
+    //点击列表
+    listLi.addEventListener("tap",function(){
+        var _this = this;
+        window.pageindex = listLi.indexOf(this);
+        initCanvasSlideshow.moveSlider(window.pageindex);
+
+        mycanvas.style.webkitTransformOrigin = mycanvas.style.transformOrigin = "20.31% "+getObjTop(_this);
+
+
+        open();
+
+
+
+    })
+
+    //查看文章
+    document.querySelectorAll(".view-btn").addEventListener("tap",function(){
+        article.classList.add("visible");
+        navlist.style.display ="none";
+        menu.classList.add("menuDetail");
+        menu.classList.add("menuActive");
+        pageitem.classList.remove("visible");
+        document.removeEventListener(Event.Touch.down,downFn);
+        document.removeEventListener(Event.Touch.move,moveFn);
+        document.removeEventListener(Event.Touch.up,upFn);
+        document.querySelector('.loading').classList.add('loading-visible');
+        $.ajax({
+            type:'get',
+            url: "http://active.zol.com.cn/14active/0109pad/article.php",
+            data:{id:articleid[window.pageindex]},
+            dataType: 'jsonp',
+            success: function (data) {
+                var content = data.content;
+                var reg = /<embed[^>]*>/gi;
+                var vd = content.match(reg) && content.match(reg)[0];
+
+                var vid = vd &&  vd.match(/movieId=(\d{6})/)[1]
+                content= content.replace(reg,"")
+
+                content = content.replace(/([a-z]+)="[\s\S]+?"/ig,function(a,b,c,d){
+                    if(b === 'height'){
+                        return '';
+                    }else if(b === 'width'){
+                        return '';
+                    }
+                    return a;
+                });
+
+
+                article.style[$.CSSTransform] = 'translate(0,'+(winHeight-300)+'px)';
+                article.style[$.transition] = $.CSSTransform + ' linear 0.8s';
+
+
+                document.querySelector(".inner .tit").innerHTML = data.title;
+                document.querySelector(".content-box").innerHTML = content;
+                document.querySelector('.loading').classList.remove('loading-visible');
+
+            }
+        });
+    });
+
+
+    window.wechatShareData = {
+        "title":"吃不吃得到鸡 点击测试你就知道了！",
+        "icon":"http://2.zol-img.com.cn/zt/tm_5a7/fb0eb889b5/share.jpg",
+        "description":" ",
+        "url":"http://m.zol.com.cn/topic/6781575.html"
+    }
+
+    /* end 微信分享图片和文字设置 */
+
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+
+</body></html>
+

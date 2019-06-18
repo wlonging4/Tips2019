@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>惠普暗影 震撼再临</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background: #000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #FDE551; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f8f6f7;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 80px;  padding-top: 40px; background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #c10202;  }
+        .head_white{  background: #fff;  }
+        .head_white img{  opacity: 0;  }
+        .bar1{  width: 1000px;  height: 2px;  background: #f0f0f0;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/lg_head_l.jpg") no-repeat right top;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/lg_head_r.jpg") no-repeat left top;  }
+        .head-c{  width: 1200px; height: 546px;  }
+
+        .video1Bg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/video.jpg") no-repeat top center;  }
+        .video1{  height: 903px;  }
+        .v1-mod{  width: 1192px;  height: 662px;  background: #000;  margin: 163px 0 0 3px;  }
+
+        .gameBg-t{  height: 80px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/game_t.jpg") no-repeat top center;  }
+        .gameBg1{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/game1.jpg") no-repeat top center;  }
+        .game1{  height: 670px;  }
+        .gameBg2{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/game2.jpg") no-repeat top center;  }
+        .game2{  height: 640px;  }
+        .gameBg3{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/game3.jpg") no-repeat top center;  }
+        .game3{  height: 630px;  }
+        .gameBg4{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/game4.jpg") no-repeat top center;  }
+        .game4{  height: 690px;  }
+        .game-art{  position: absolute;  right: 0;  width: 360px;  height: 100px;  top: 124px;  }
+        .game-art .hong12{  color: #820307;  }
+        .game-sale{  width: 158px;  height: 48px;  position: absolute;  top: 492px;  cursor: pointer;  right: 95px; }
+        .game-art .hong18{  display: block;  color: #bc0107;  font: bold 18px/36px 'microsoft yahei';  }
+
+        .moreBg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/more.jpg") no-repeat top center;  }
+        .more{  height: 641px;  }
+        .more-mod{  width: 1200px;  height: 365px;  margin: 190px auto 0;  }
+        .more-mod table table{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d//more_bg.png") no-repeat top center;  }
+        .more-mod table img{  padding: 1px 2px 1px 1px;  }
+        .more-mod .bai18{  display: block;  text-align: center;  margin: 30px 15px 5px;  font: 18px/24px 'microsoft yahei';  }
+        .more-mod .bai20{  position: relative;  text-indent: 15px;  display: block;  height: 90px;  font: 36px/55px 'Hiragino sans GB','microsoft yahei';  }
+        .more-mod .bai20 span{  font: 18px/70px 'Hiragino sans GB','microsoft yahei';  }
+        .more-mod .hong12{  position: absolute;  display: block;  width: 102px;  height: 39px;  right: 15px;  top: 8px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/more_btn.png") no-repeat 0 0; }
+        .more-mod .slh,.more-mod span.slh{  display: none;  }
+
+
+
+        .picBg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/pic.jpg") no-repeat top center;  }
+        .pic{  height: 883px;  }
+        .pic-box{  width: 730px;  height: 550px;  position: relative;  margin: 200px auto 0;  border: 1px solid #820307;  overflow: hidden;  background: #000;  }
+        .pic-mod{  position: absolute;  height: 550px;  top: 0;  left: 0;  }
+        .pic-ul{  margin: 25px auto 0;  width: 1200px;  height: 30px;  text-align: center;  overflow: hidden;  }
+        .pic-ul li{  display: inline-block;  width: 32px; margin: 0 -3px;  height: 14px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/pic_lis.png") no-repeat 0 0; }
+        .pic-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/pic_lis.png") -32px 0;  }
+        .pic-btn{  position: absolute;top: 410px;  width: 62px;  height: 122px;  cursor: pointer;  }
+        .pic-btn1{  left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/pic_btns.png") no-repeat 0 0;  }
+        .pic-btn2{  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/pic_btns.png") no-repeat -62px 0;  }
+
+        .vd2-mod{  width: 1200px;  height: 305px;  margin: 125px auto 0;  }
+        .vd2-mod table img{  border: 1px solid #820307;  }
+        .vd2-mod .hong20{  display: block;  color: #820307;  font: 24px/58px 'Hiragino sans GB','microsoft yahei';  }
+
+        .video2Bg{  background: url("http://2.zol-img.com.cn/zt/tm_59f/fcc74c123d/video2.jpg") no-repeat top center;  }
+        .video2{  height: 507px;  }
+
+        .more-mod table table,.vd2-mod table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .more-mod table table:hover,.vd2-mod table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+        .hhh{
+            display: block;
+            width: 100%;
+            height: 546px;
+        }
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<a href="https://sale.jd.com/act/PCfoBKVUiI04rsF7.html?jd_pop=7d321b4f-5a21-48fa-9ede-4309a0b2980b&ad_od=1&mtm_source=kepler-open&mtm_subsource=d391e66cee144a13819a5421cd834e6f&utm_source=kong&utm_medium=zssc&utm_campaign=t_1000202205_&utm_term=7d321b4f-5a21-48fa-9ede-4309a0b2980b-p_2796" target="_blank" class="hhh">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="head">
+        <tr>
+            <td class="head-l">&nbsp;</td>
+            <td width="1000">
+                <div class="head-c"><{data[0]}></div>
+            </td>
+            <td class="head-r">&nbsp;</td>
+        </tr>
+    </table>
+</a>
+<!--视频1-->
+<div class="wrap1 video1Bg">
+    <div class="wrapper1 video1">
+        <div class="v1-mod"><{data[1]}></div>
+    </div>
+</div>
+<!--游戏-->
+<div class="wrap1 gameBg">
+    <div class="wrap1 gameBg-t"></div>
+    <div class="wrap1 gameBg1">
+        <div class="wrapper1 game1">
+            <div class="game-art game-art1"><{data[2]}></div>
+            <div class="game-sale game-sale1"><{data[3]}></div>
+        </div>
+    </div>
+    <div class="wrap1 gameBg2">
+        <div class="wrapper1 game2">
+            <div class="game-art game-art2"><{data[4]}></div>
+            <div class="game-sale game-sale2"><{data[5]}></div>
+        </div>
+    </div>
+    <div class="wrap1 gameBg3">
+        <div class="wrapper1 game3">
+            <div class="game-art game-art3"><{data[6]}></div>
+            <div class="game-sale game-sale3"><{data[7]}></div>
+        </div>
+    </div>
+    <div class="wrap1 gameBg4">
+        <div class="wrapper1 game4">
+            <div class="game-art game-art4"><{data[8]}></div>
+            <div class="game-sale game-sale4"><{data[9]}></div>
+        </div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 moreBg">
+    <div class="wrapper1 more">
+        <div class="more-mod"><{data[10]}></div>
+    </div>
+</div>
+<!--图赏-->
+<div class="wrap1 picBg">
+    <div class="wrapper1 pic">
+        <div class="pic-box">
+            <div class="pic-mod"><{data[12]}></div>
+        </div>
+        <ul class="pic-ul">
+            <li class="act"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="pic-btn pic-btn1"></div>
+        <div class="pic-btn pic-btn2"></div>
+    </div>
+</div>
+<!--视频2-->
+<div class="wrap1 video2Bg">
+    <div class="wrapper1 video2">
+        <div class="vd2-mod"><{data[11]}></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    var pic_mod=$('.pic-mod');
+    var pic_mod_len=$('.pic-mod table img').length;
+    var flg=0;
+    var pic_btn1=$('.pic-btn1');
+    var pic_btn2=$('.pic-btn2');
+    var pic_lis=$('.pic-ul li');
+    pic_lis.each(function (i) {
+        if(i>=pic_mod_len){
+            pic_lis.eq(i).hide();
+        }else{
+            pic_lis.eq(i).show();
+        }
+    });
+    pic_btn1.bind('click',function () {
+        flg--;
+        if(flg<0)flg=0;
+        pic_mod.stop().animate({'left':'-'+flg*730+'px'});
+        mov(flg);
+    });
+    pic_btn2.bind('click',function () {
+        flg++;
+        if(flg>pic_mod_len-1){ flg=pic_mod_len-1 }
+        mov(flg);
+    });
+
+    function mov(i) {
+        pic_mod.stop().animate({'left':'-'+i*730+'px'});
+        pic_lis.each(function (p) {
+            pic_lis.eq(p).removeClass('act');
+            if(p==i){
+                pic_lis.eq(p).addClass('act');
+            }
+        })
+    }
+    pic_lis.bind('mouseenter',function () {
+        nowI=pic_lis.index(this);
+        flg=nowI;
+        mov(flg);
+    });
+
+    $('.more-mod .hong12').each(function (i) {
+        $('.more-mod .hong12').eq(i).html(' ');
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #5a5a5a; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1000px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .zol_foot{  height: 100px;  padding-top: 50px; background: #ebebeb;   }
+        .zol_foot,.zol_foot a{  color: #202020;  }
+        .bar1{  width: 1000px;  height: 2px;  background: #f0f0f0;  }
+
+        .head{  height: 172px;  background: url("http://2.zol-img.com.cn/zt/tm_598/c1c439c470/head.jpg") no-repeat top left;  }
+        .tit{  height: 30px;  margin: 30px 0 18px 0;  }
+        .tit1{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t1.jpg") no-repeat left center;  }
+        .tit2{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t2.jpg") no-repeat left center;  }
+        .tit3{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t3.jpg") no-repeat left center;  }
+        .tit4{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t4.jpg") no-repeat left center;  }
+        .tit5{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t5.jpg") no-repeat left center;  }
+        .tit6{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t6.jpg") no-repeat left center;  }
+        .tit7{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t7.jpg") no-repeat left center;  }
+        .tit8{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t8.jpg") no-repeat left center;  }
+        .tit9{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/t9.jpg") no-repeat left center;  }
+
+        .box{  width: 1000px;  height: 400px;  background: #000;  overflow: hidden;  position: relative;  }
+        .mod{  position: absolute;  top: 0;  left: 0;  height: 400px; cursor: pointer;  }
+        .mod1{  width: 4050px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic1.png") repeat-x left center;  }
+        .mod2{  width: 4300px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic2.png") repeat-x left center;  }
+        .mod3{  width: 4952px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic3.png") repeat-x left center;  }
+        .mod4{  width: 4450px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic4.png") repeat-x left center;  }
+        .mod5{  width: 4052px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic5.png") repeat-x left center;  }
+        .mod6{  width: 4052px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic6.png") repeat-x left center;  }
+        .mod7{  width: 4050px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic7.png") repeat-x left center;  }
+        .mod8{  width: 4450px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic8.png") repeat-x left center;  }
+        .mod9{  width: 4450px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/pic9.png") repeat-x left center;  }
+
+        .code{  position: absolute;  bottom: 0;  right: 0;  width: 80px;  height: 80px;  background: #000;  }
+        .code img{  display: block;  position: absolute;  bottom: 0;  right: 0;  cursor: pointer;  }
+        .art1{  height: 173px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art1.jpg") no-repeat 0 0;  }
+        .art2{  height: 173px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art2.jpg") no-repeat 0 0;  }
+        .art3{  height: 173px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art3.jpg") no-repeat 0 0;  }
+        .art4{  height: 228px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art4.jpg") no-repeat 0 0;  }
+        .art5{  height: 285px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art5.jpg") no-repeat 0 0;  }
+        .art6{  height: 228px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art6.jpg") no-repeat 0 0;  }
+        .art7{  height: 286px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art7.jpg") no-repeat 0 0;  }
+        .art8{  height: 201px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art8.jpg") no-repeat 0 0;  }
+        .art9{  height: 229px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art9.jpg") no-repeat 0 0;  }
+
+        .vote{  height: 22px;  margin: 18px 0 28px 0; overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/help.png") no-repeat left center;  }
+        .vote ul{  width: 140px;  height: 22px;  margin-left: 75px;  }
+        .vote ul li{  width: 22px;  height: 22px;  float: left;  margin-right: 6px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/stars.png") no-repeat 0 0;  }
+        .vote ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/stars.png") no-repeat -22px 0;  }
+
+        .art10{  height: 135px;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/art10.jpg") no-repeat top center;  }
+        .sug{  height: 80px;  width: 960px;  overflow: hidden;  padding: 9px 19px;  border: 1px solid #e1e1e1;  }
+        .sub{  width: 90px;  height: 36px;  margin: 20px 0 40px 910px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/submits.png") no-repeat 0 0;  }
+        .sub.act{  cursor: auto;  background: url("http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/submits.png") no-repeat -90px 0;  }
+        #input{  outline: none;  border: none;  height: 80px;  width: 960px;  font: 14px/27px 'Hiragino sans GB','microsoft yahei';  color: #a6a6a6;  }
+        /* WebKit browsers */
+        #input:focus::-webkit-input-placeholder { color:transparent; }
+
+        /* Mozilla Firefox 4 to 18 */
+        #input:focus:-moz-placeholder { color:transparent; }
+
+        /* Mozilla Firefox 19+ */
+        #input:focus::-moz-placeholder { color:transparent; }
+
+        /* Internet Explorer 10+ */
+        #input:focus:-ms-input-placeholder { color:transparent; }
+
+
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<div class="wrap1">
+    <div class="wrapper1 head"></div>
+</div>
+<!--t1-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit1"></div>
+        <div class="box">
+            <div class="mod mod1"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code1.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art1"></div>
+        <div class="vote">
+            <ul class="vote1"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t2-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit2"></div>
+        <div class="box">
+            <div class="mod mod2"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code2.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art2"></div>
+        <div class="vote">
+            <ul class="vote2"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t3-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit3"></div>
+        <div class="box">
+            <div class="mod mod3"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code3.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art3"></div>
+        <div class="vote">
+            <ul class="vote3"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t4-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit4"></div>
+        <div class="box">
+            <div class="mod mod4"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code4.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art4"></div>
+        <div class="vote">
+            <ul class="vote4"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t5-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit5"></div>
+        <div class="box">
+            <div class="mod mod5"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code5.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art5"></div>
+        <div class="vote">
+            <ul class="vote5"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t6-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit6"></div>
+        <div class="box">
+            <div class="mod mod6"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code6.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art6"></div>
+        <div class="vote">
+            <ul class="vote6"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t7-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit7"></div>
+        <div class="box">
+            <div class="mod mod7"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code7.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art7"></div>
+        <div class="vote">
+            <ul class="vote7"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t8-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit8"></div>
+        <div class="box">
+            <div class="mod mod8"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code8.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art8"></div>
+        <div class="vote">
+            <ul class="vote8"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--t9-->
+<div class="wrap1">
+    <div class="wrapper1">
+        <div class="bar1"></div>
+        <div class="tit tit9"></div>
+        <div class="box">
+            <div class="mod mod9"></div>
+            <div class="code"><img src="http://2.zol-img.com.cn/zt/tm_598/bf644adb2a/code9.jpg" width="80px" height="80px" alt=""></div>
+        </div>
+        <div class="art9"></div>
+        <div class="vote">
+            <ul class="vote9"><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+    </div>
+</div>
+<!--建议-->
+<div class="wrap1">
+    <div class="wrapper1 suggest">
+        <div class="art10"></div>
+        <div class="sug">
+            <label class="">
+                <文本框 id="input" placeholder="快来说说你的关注点，或者你的问题建议吧"></文本框>
+            </label>
+        </div>
+        <div class="sub"></div>
+    </div>
+</div>
+
+
+
+
+<script charset="gbk">
+
+    /*滚动*/
+    var rollFlag1=0;
+    var rollFlag2=0;
+    var rollFlag3=0;
+    var rollFlag4=0;
+    var rollFlag5=0;
+    var rollFlag6=0;
+    var rollFlag7=0;
+    var rollFlag8=0;
+    var rollFlag9=0;
+    var lenlen1=0;
+    var lenlen2=0;
+    var lenlen3=0;
+    var lenlen4=0;
+    var lenlen5=0;
+    var lenlen6=0;
+    var lenlen7=0;
+    var lenlen8=0;
+    var lenlen9=0;
+    var aa1;
+    var aa2;
+    var aa3;
+    var aa4;
+    var aa5;
+    var aa6;
+    var aa7;
+    var aa8;
+    var aa9;
+
+    function rolling(mod,wid,timer,flg,len,iden) {
+        mod.bind('mouseenter mouseleave',function (event) {
+            if(event.type=='mouseenter'){flg=0;}
+            else{
+                flg=1;
+                clearInterval(aa1);
+                clearInterval(aa2);
+                clearInterval(aa3);
+                clearInterval(aa4);
+                clearInterval(aa5);
+                clearInterval(aa6);
+                clearInterval(aa7);
+                clearInterval(aa8);
+                clearInterval(aa9);
+            }
+            roll(mod,wid,timer,flg,len,iden);
+        });
+        function roll(mod,wid,timer,flg,len,ide) {
+            console.log(ide);
+            if(ide==1){
+                aa1=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen1+=4;
+                        if(lenlen1>wid){  lenlen1=0;   }
+                        mod.css({'left':"-"+lenlen1+'px'});
+                    }else{
+                        clearInterval(aa1);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==2){
+                aa2=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen2+=4;
+                        if(lenlen2>wid){  lenlen2=0;   }
+                        mod.css({'left':"-"+lenlen2+'px'});
+                    }else{
+                        clearInterval(aa2);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==3){
+                aa3=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen3+=4;
+                        if(lenlen3>wid){  lenlen3=0;   }
+                        mod.css({'left':"-"+lenlen3+'px'});
+                    }else{
+                        clearInterval(aa3);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==4){
+                aa4=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen4+=4;
+                        if(lenlen4>wid){  lenlen4=0;   }
+                        mod.css({'left':"-"+lenlen4+'px'});
+                    }else{
+                        clearInterval(aa4);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==5){
+                aa5=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen5+=4;
+                        if(lenlen5>wid){  lenlen5=0;   }
+                        mod.css({'left':"-"+lenlen5+'px'});
+                    }else{
+                        clearInterval(aa5);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==6){
+                aa6=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen6+=4;
+                        if(lenlen6>wid){  lenlen6=0;   }
+                        mod.css({'left':"-"+lenlen6+'px'});
+                    }else{
+                        clearInterval(aa6);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==7){
+                aa7=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen7+=4;
+                        if(lenlen7>wid){  lenlen7=0;   }
+                        mod.css({'left':"-"+lenlen7+'px'});
+                    }else{
+                        clearInterval(aa7);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==8){
+                aa8=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen8+=4;
+                        if(lenlen8>wid){  lenlen8=0;   }
+                        mod.css({'left':"-"+lenlen8+'px'});
+                    }else{
+                        clearInterval(aa8);
+                        return false;
+                    }
+                },timer);
+            }
+            if(ide==9){
+                aa9=window.setInterval(function () {
+                    if(flg==0){
+                        lenlen9+=4;
+                        if(lenlen9>wid){  lenlen9=0;   }
+                        mod.css({'left':"-"+lenlen9+'px'});
+                    }else{
+                        clearInterval(aa9);
+                        return false;
+                    }
+                },timer);
+            }
+        }
+    }
+    rolling($('.mod1'),2025,20,rollFlag1,lenlen1,1);
+    rolling($('.mod2'),2250,20,rollFlag2,lenlen2,2);
+    rolling($('.mod3'),2476,20,rollFlag3,lenlen3,3);
+    rolling($('.mod4'),2250,20,rollFlag4,lenlen4,4);
+    rolling($('.mod5'),2026,20,rollFlag5,lenlen5,5);
+    rolling($('.mod6'),2026,20,rollFlag6,lenlen6,6);
+    rolling($('.mod7'),2025,20,rollFlag7,lenlen7,7);
+    rolling($('.mod8'),2250,20,rollFlag8,lenlen8,8);
+    rolling($('.mod9'),2250,20,rollFlag9,lenlen9,9);
+
+
+
+    /*图片*/
+    var codePic=$('.code img');
+    codePic.each(function (i) {
+        codePic.eq(i).bind('mouseenter mouseleave',function (event) {
+            if(event.type=='mouseenter'){
+                $(this).stop().animate({'width':'172px','height':'172px'},400);
+            } else{
+                $(this).stop().animate({'width':'80px','height':'80px'},400);
+            }
+        })
+    });
+
+    /*投票*/
+    var dataUrl = 'http://m.zol.com.cn/topic/services/user.php?callback=?';
+    var activeid= 6508638;
+    //ext1 案例序号
+    //ext2 案例评分
+    //ext3 建议内容
+    //ext4 移动/PC
+
+    var vote1=$('.vote1');var vFlag1=0;
+    var vote2=$('.vote2');var vFlag2=0;
+    var vote3=$('.vote3');var vFlag3=0;
+    var vote4=$('.vote4');var vFlag4=0;
+    var vote5=$('.vote5');var vFlag5=0;
+    var vote6=$('.vote6');var vFlag6=0;
+    var vote7=$('.vote7');var vFlag7=0;
+    var vote8=$('.vote8');var vFlag8=0;
+    var vote9=$('.vote9');var vFlag9=0;
+    function voteFunc(mod,flg,i) {
+        mod.find('li').bind(
+            'mouseenter',function () {
+                if(flg==0){
+                    mod.find('li').each(function (i) {
+                        mod.find('li').eq(i).removeClass('act');
+                    });
+                    var nowI=mod.find('li').index(this);
+                    mod.find('li:lt('+(nowI+1)+')').addClass('act');
+                }else{
+                    return false;
+                }
+            }
+        );
+        mod.find('li').bind(
+            'click',function () {
+                if(flg==0){
+                    /*分数*/
+                    var nowI=mod.find('li').index(this)+1;
+                    flg=nowI;
+                    /*ajax i是序列*/
+
+                    getToken(function(){
+                        $.ajax({
+                            type:'get',
+                            url: dataUrl,
+                            data:{token:window.verifyTk,action:'addUser',type:activeid,username:"monthly",tel:"18888888888",ext1:i,ext2:flg,ext4:"pc"},
+                            dataType: 'json',
+                            success: function (data) {
+                                if(data.result == 1){
+                                    console.log(nowI+'分 第'+i+'个 提交成功');
+                                }else {
+                                    alert(data.result)
+                                }
+                            }
+                        });
+                    })
+                }else{
+                    return false;
+                }
+            }
+        );
+    }
+    voteFunc(vote1,vFlag1,1);
+    voteFunc(vote2,vFlag2,2);
+    voteFunc(vote3,vFlag3,3);
+    voteFunc(vote4,vFlag4,4);
+    voteFunc(vote5,vFlag5,5);
+    voteFunc(vote6,vFlag6,6);
+    voteFunc(vote7,vFlag7,7);
+    voteFunc(vote8,vFlag8,8);
+    voteFunc(vote9,vFlag9,9);
+
+    /*建议*/
+
+
+    var submitBtn=document.querySelector('.sub');
+    var dataUrl = 'http://m.zol.com.cn/topic/services/user.php?callback=?',val1,val2,val3,val4,val5,val6;
+    /*提交建议*/
+    submitBtn.addEventListener('click',function(){
+        val6=document.querySelector('#input').value;
+        if(!val6){alert('请填写您的建议~');return false;}
+
+        getToken(function(){
+            $.ajax({
+                type:'get',
+                url: dataUrl,
+                data:{token:window.verifyTk,action:'addUser',type:activeid,username:"monthly",tel:"18888888888",ext3:val6,ext4:"pc"},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.result == 1){
+                        //提交成功
+                        submitBtn.classList.add('act');
+                        alert('谢谢您的建议~~');
+                    }else {
+                        alert(data.result)
+                    }
+                }
+            });
+        })
+    });
+    //获取token
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(request){
+                if(request && request.result){
+                    window.verifyTk = request.result;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

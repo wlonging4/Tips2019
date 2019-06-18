@@ -1,0 +1,263 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>无线端</title>
+
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style>
+        html, body, h1, h2, h3, h4, h5, h6, form, p, ul, li, dl, dt, dd { margin: 0; padding: 0; }
+        body { font: 18px/26px Arial; -webkit-text-size-adjust: none; background: #f8f8f8;color:#A5A5B7;}
+        ul { list-style-type: none; }
+        em, i { font-style: normal; }
+        a { color:#A5A5B7; text-decoration: none;}
+        a:hover { text-decoration: none;}
+        .clearfix:after {content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0}
+        .clearfix {*zoom:1}
+        img{display:block;max-width: 100%;margin:0 auto;}
+
+        #viewport{position:relative;width:640px;margin:0 auto;padding-bottom:60px;}
+
+        .sys_edit_element{height:30px!important;}
+        nav .sys_edit_element .sys_btn img{width:auto}
+
+        .nav{ position: relative; height:108px;background:url(http://2.zol-img.com.cn/zt/tm_590/98464227a6/head2.jpg) no-repeat; color:#fff;overflow:hidden;}
+        .nav a{  display: block; width: 210px;  height: 50px;  position: absolute;  }
+        .nav-a1{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav01.png") no-repeat 0 0; top: 0; left: 100px;  }
+        .nav-a2{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav02.png") no-repeat 0 0; top: 0; right: 100px;  }
+        .nav-a3{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav03.png") no-repeat 0 0; bottom: 0; left: 100px; }
+        .nav-a4{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav04.png") no-repeat 0 0; bottom: 0; right: 100px; }
+        .nav1 a{float:left;width:149px;height:62px;margin-right:4px;}
+        .nav1 .nav11{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav011.png") no-repeat 0 0;  }
+        .nav1 .nav22{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav022.png") no-repeat 0 0;  }
+        .nav1 .nav33{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav033.png") no-repeat 0 0;  }
+        .nav1 .nav44{  background: url("http://2.zol-img.com.cn/zt/tm_590/c2944252aa/nav044.png") no-repeat 0 0;  }
+
+        .title{  padding-bottom: 50px  }
+        .title1{height:50px; padding: 15px 0;}
+        .title1 .lan20{  display: block;  color:#64A70A; font-size:30px;line-height:45px ; font-family: 'Hiragino sans GB'; }
+
+        .white{padding:10px 0 0;}
+        .white1{padding:50px 0 0;}
+
+        .con1 .hui12{  display: block;  color: #A5A5B7;  padding: 0 35px;  font: 18px/26px 'Hiragino sans GB';  }
+        .con0 .hui18{  display: block;  color: #A5A5B7;  padding: 0 15px;  font: 18px/26px 'Hiragino sans GB';  }
+        .con1 img{margin:10px 0 0;}
+
+        .con2{width:620px;height:350px;margin:0 auto;overflow:hidden;}
+        .con2 li{float:left;width:220px;}
+        .con2 li:nth-child(2){width:180px;text-align:center;}
+        .con2 li:nth-child(2) .hui18{text-align:center;}
+
+        .hei20{color:#555;font-size:22px;line-height:40px}
+        .con2 .hei20{display:block;padding:5px 20px 0;}
+        .con2 .hui18{height:104px;padding:0 20px;}
+
+        .black{}
+        .black1{padding:10px 0 35px;}
+        .black0{padding:10px 0 35px;}
+
+        .bai18{color:#eee;}
+
+        .con3{width:628px;height:340px; margin:0 auto;overflow:hidden;}
+        .con3 li{float:left;width:306px;padding:0 4px;}
+        .con3 li:nth-child(1) img{padding-bottom:12px;margin-bottom:10px;background:url(http://2.zol-img.com.cn/zt/tm_58f/f10f2330a7/f-a1.png) no-repeat center bottom;}
+        .con3 li:nth-child(2) img{padding-top:12px;margin-top:10px;background:url(http://2.zol-img.com.cn/zt/tm_58f/f10f2330a7/f-a2.png) no-repeat center top;}
+        .con3 .hui12,.con4 .hui12{  display: block;  color: #A5A5B7;  padding: 0 10px;  font: 18px/26px 'Hiragino sans GB';  }
+        .con3 .lan18,.con4 .lan18{  display: block;  color: #64A70A;  padding: 0 10px;  font: 22px/32px 'Hiragino sans GB';  }
+        .con6 .hui12{  display: block;  color: #A5A5B7;  padding: 10px 10px 0;  font: 18px/26px 'Hiragino sans GB';  }
+        .con6 .lan18{  display: block;  color: #64A70A;  padding: 0 10px;  font: 22px/32px 'Hiragino sans GB';  }
+        .con7 .lan18{
+            display: block;  color: #64A70A;  padding: 0 10px;  font: 22px/32px 'Hiragino sans GB';
+        }
+        .con7 .hui18{
+            display: block;  color: #A5A5B7;  padding: 10px 10px 0;  font: 18px/26px 'Hiragino sans GB';
+        }
+
+        .con55{width: 622px; height: 560px; overflow: hidden; margin: 0 auto;}
+        .con555{ height: 595px; }
+        .con55 .hui12{  display: block;  position: absolute;  color: #A5A5B7;  text-indent: 36px;  padding: 0 10px;  font: 18px/28px 'Hiragino sans GB';  }
+        .con55 .lan18{  display: block;  color: #64A70A;  padding: 20px 10px;  font: 30px/32px 'Hiragino sans GB';  }
+        .con55 span.slh,.con55 .slh{  display: none;  }
+        .con55 .hong12{  display: block;  position: absolute;  width: 210px;  height: 60px;  top: 130px;  left: 210px;  background: url("http://2.zol-img.com.cn/zt/tm_590/99d449b8e4/sale.png") no-repeat 0 0;  }
+        .con555 .hong12{ top: 155px; }
+
+        .black1 .con3{height:354px;}
+        #n3 .con3{height:350px;}
+
+        .lan18{color:#64A70A; font-size:30px;line-height:45px;}
+
+        .whiteblack{}
+        .title44{  padding-bottom: 20px;  }
+
+        #n3{padding-bottom:30px;}
+        #n3 .line{padding:30px 0 10px;}
+        #n2{margin:40px 0 0;}
+        #n2 .con2 .hei20{color:#64A70A}
+        #n2 .con2 .hui18{color:#fff}
+        #n2 .hong12{color:#fff}
+        #n2{color:#fff}
+
+        #n4 .hui18,#n4 .hui18 .hong12{color:#666;}
+        #n4 td:nth-child(2) .hui18,#n4 td:nth-child(2) .hui18 .hong12{color:#fff;}
+
+        .con4 i{display:none;width:275px;height:40px;margin:5px 0 0;padding-left:5px;overflow:hidden;font-size:22px;line-height:40px;background:url(http://2.zol-img.com.cn/zt/tm_58f/ef5b211e3d/f-9.jpg) no-repeat;color:#272727}
+        .con4 b{width:158px;display:none;color:#fff;font-weight:normal;text-align:center;}
+        .con4 .elem-date,.con4 .slh,.con4 .hong12{display:none;}
+        .con4 img,.con1 img,.con55 img,.con6 img{  border: 1px solid #64A70A;  }
+
+        .con4 tbody > tr:nth-child(1) td,.con4 tbody > tr:nth-child(5) td{text-align:left;}
+        .con4 tbody > tr:nth-child(3) td,.con4 tbody > tr:nth-child(7) td{text-align:right;}
+        .con4 tbody > tr:nth-child(3) td i,.con4 tbody > tr:nth-child(7) td i{float:right}
+
+        .ln{height:15px;line-height:15px;}
+
+        .con6{padding:20px 0;}
+        .line-green{  width: 640px;  height: 4px;  background: url("http://2.zol-img.com.cn/zt/tm_590/9a36181fd3/line.png") no-repeat center bottom;  }
+        .line-green1{  padding-top: 25px;  }
+        .line-green2{  padding-top: 40px; margin-bottom: 10px; }
+        .line-green3{  padding-top: 20px; }
+
+        .con0 img{padding:1px 1px 13px 1px;background:url(http://2.zol-img.com.cn/zt/tm_590/194d4b78e2/f-g.jpg) no-repeat;}
+        .con11{ display: none; }
+
+        .nav1{display:none;position:fixed;left:0;top:0;width:612px;height:62px;padding:29px 12px 16px 16px;background:url(http://2.zol-img.com.cn/zt/tm_590/98a9e53ff0/nav1.jpg) no-repeat;}
+        .title6{  width: 640px;  height: 53px;  padding-bottom: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_590/9b8cdef4a5/tit5.png") no-repeat 0 0;  }
+        .title3{  width: 640px;  height: 52px;  padding-bottom: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_590/9bb8e0daa8/tit3.png") no-repeat 0 0;  }
+        .title2222{  width: 640px;  height: 52px;  padding-bottom: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_590/9bd17ccf89/tit2.png") no-repeat 0 0;  }
+        .title1111{  width: 640px;  height: 52px;  overflow: hidden;  padding-bottom: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_590/a995d783d5/tit1.png") no-repeat 0 0;  }
+        .title6 .lan20{  display: block;  color: #64A70A;  padding: 30px 0 0 200px;  font: 22px/32px 'Hiragino sans GB';  }
+        .title3 .lan20{  display: block;  color: #64A70A;  padding: 27px 0 0 207px;  font: 22px/32px 'Hiragino sans GB';  }
+        .title2222 .lan20{  display: block;  color: #64A70A;  padding: 27px 0 0 200px;  font: 22px/32px 'Hiragino sans GB';  }
+        .title1111 .lan20{  display: block;  width: 250px;  color: #64A70A;  margin: 27px 0 0 0;  font: 22px/32px 'Hiragino sans GB';  }
+
+    </style>
+
+</head>
+<body>
+<div id="viewport">
+
+    <header class="float-down">
+        <img src="http://2.zol-img.com.cn/zt/tm_590/98464227a6/head1.jpg" width="640" height="210">
+        <div class="nav">
+            <a class="nav-a1" href="#n1" target="_self"></a>
+            <a class="nav-a2" href="#n2" target="_self"></a>
+            <a class="nav-a3" href="#n3" target="_self"></a>
+            <a class="nav-a4" href="#n4" target="_self"></a></div>
+        <img src="http://2.zol-img.com.cn/zt/tm_590/98464227a6/head3.jpg" width="640" height="475">
+    </header>
+
+    <section class="banners white white1" id="n1">
+        <div class="title title1111"><{data[43]}></div>
+        <div class="con1 con11"><{data[0]}></div>
+        <div class="title1"><{data[1]}></div>
+        <div class="con0">
+            <{data[2]}>
+        </div>
+        <div class="line-green line-green3"></div>
+    </section>
+
+    <section class="banners black" id="n2">
+        <div class="black0">
+            <div class="title title2222"><{data[44]}></div>
+            <ul class="con3">
+                <li><{data[6]}></li>
+                <li><{data[7]}></li>
+            </ul>
+        </div>
+        <div class="black1">
+            <div class="title1"><{data[8]}></div>
+            <div class="con4"><{data[9]}></div>
+        </div>
+        <div class="black0">
+            <div class="title1"><{data[10]}></div>
+            <div class="con4"><{data[11]}></div>
+        </div>
+        <div class="line-green"></div>
+        <div class="black1 n2end">
+            <div class="title1"><{data[19]}></div>
+            <div class="con55 con555"><{data[20]}></div>
+        </div>
+    </section>
+
+    <section class="banners white" id="n3">
+        <div class="title title3"><{data[40]}></div>
+        <ul class="con3">
+            <li><{data[22]}></li>
+            <li><{data[23]}></li>
+        </ul>
+        <div class="title1"><{data[24]}></div>
+        <ul class="con3">
+            <li><{data[25]}></li>
+            <li><{data[26]}></li>
+        </ul>
+        <div class="line-green line-green1"></div>
+        <div class="title1"><{data[27]}></div>
+        <div class="con55"><{data[28]}></div>
+        <div class="line-green line-green2"></div>
+    </section>
+
+    <section class="banners whiteblack" id="n4">
+        <div class="title title44"><img src="http://2.zol-img.com.cn/zt/tm_590/9a81d961ba/tit4.jpg" width="640" height="50"></div>
+        <div class="con6"><{data[36]}></div>
+    </section>
+
+    <section class="banners white">
+        <div class="title title6"><{data[39]}></div>
+        <div class="title1"><{data[37]}></div>
+        <div class="con7"><{data[38]}></div>
+    </section>
+
+    <div class="nav1">
+        <a class="nav11" href="#n1" target="_self"></a>
+        <a class="nav22" href="#n2" target="_self"></a>
+        <a class="nav33" href="#n3" target="_self"></a>
+        <a class="nav44" href="#n4" target="_self"></a>
+    </div>
+
+</div>
+<script>
+
+    if (location.hostname != 'article.zol.com.cn') {
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t<script src=\"http://icon.zol-img.com.cn/wap/js/z.flipview.js\"></s" + "cript>\n\t<script></s" + "cript>");
+    }
+
+    window.onscroll = function(){
+        if(document.body.scrollTop>400){
+            document.querySelector('.nav1').style.display = 'block';
+        }else{
+            document.querySelector('.nav1').style.display = 'none';
+        }
+    };
+
+    var hong_12=document.querySelectorAll('.con55 .hong12');
+    for(var i=0;i<hong_12.length;i++){
+        hong_12[i].innerHTML=' ';
+    }
+
+    window.wechatShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_590/9caf9ca560/share.jpg',
+        title: '带你认识 智能扫地/擦地机器人',
+        description:"智能清洁机器人的科普小常识"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+
+</body></html>

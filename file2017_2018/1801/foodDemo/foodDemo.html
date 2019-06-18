@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <style type="text/css">
+        .clearfix:after,.cl:after{content:'\20';display:block;height:0;clear:both;}.clearfix{*zoom:1;}.clear{clear:both;}
+        .p5{padding:5px;}.p10{padding:10px;}.p15{padding:15px;}.p20{padding:20px;}.p25{padding:25px;}.p30{padding:30px;}.p40{padding:40px;}.p50{padding:50px;}
+        .pl5{padding-left:5px;}.pl10{padding-left:10px;}.pl15{padding-left:15px;}.pl20{padding-left:20px;}.pl30{padding-left:30px;}.pl40{padding-left:40px;}.pl50{padding-left:50px;}
+        .pt5{padding-top:5px;}.pt10{padding-top:10px;}.pt15{padding-top:15px;}.pt20{padding-top:20px;}.pt30{padding-top:30px;}.pt40{padding-top:40px;}.pt50{padding-top:50px;}
+        .pb5{padding-bottom:5px;}.pb10{padding-bottom:10px;}.pb15{padding-bottom:15px;}.pb20{padding-bottom:20px;}.pb30{padding-bottom:30px;}.pb40{padding-bottom:40px;}.pb50{padding-bottom:50px;}
+        .pr5{padding-right:5px;}.pr10{padding-right:10px;}.pr15{padding-right:15px;}.pr20{padding-right:20px;}.pr30{padding-right:30px;}.pr40{padding-right:40px;}.pr50{padding-right:50px;}
+
+        .ml5{margin-left:5px;}.ml10{margin-left:10px;}.ml15{margin-left:15px;}.ml20{margin-left:20px;}.ml30{margin-left:30px;}.ml40{margin-left:40px;}.ml50{margin-left:50px;}
+        .mr5{margin-right:5px;}.mr10{margin-right:10px;}.mr15{margin-right:15px;}.mr20{margin-right:20px;}.mr30{margin-right:30px;}.mr40{margin-right:40px;}.mr50{margin-right:50px;}
+        .mt5{margin-top:5px;}.mt10{margin-top:10px;}.mt15{margin-top:15px;}.mt20{margin-top:20px;}.mt30{margin-top:30px;}.mt40{margin-top:40px;}.mt50{margin-top:50px;}
+        .mb5{margin-bottom:5px;}.mb10{margin-bottom:10px;}.mb15{margin-bottom:15px;}.mb20{margin-bottom:20px;}.mb30{margin-bottom:30px;}.mb40{margin-bottom:40px;}.mb50{margin-bottom:50px;}
+
+        .mt60{margin-top:60px;}.mt70{margin-top:70px;}.mt80{margin-top:80px;}.mt90{margin-top:90px;}.mt100{margin-top:100px;}
+        .mb60{margin-bottom:60px;}.mb70{margin-bottom:70px;}.mb80{margin-bottom:80px;}.mb90{margin-bottom:90px;}.mb100{margin-bottom:100px;}
+        .pt60{padding-top:60px;}.pt70{padding-top:70px;}.pt80{padding-top:80px;}.pt90{padding-top:90px;}.pt100{padding-top:100px;}
+        .pb60{padding-bottom:60px;}.pb70{padding-bottom:70px;}.pb80{padding-bottom:80px;}.pb90{padding-bottom:90px;}.pb100{padding-bottom:100px;}
+
+        .f12{font-size:12px;}.f14{font-size:14px;}.f16{font-size:16px;}.f18{font-size:18px;}.f20{font-size:20px;}.f22{font-size:22px;}.f24{font-size:24px;}.f26{font-size:26px;}.f28{font-size:28px;}.f30{font-size:30px;}.f32{font-size:32px;}.f34{font-size:34px;}.f36{font-size:36px;}
+
+        .cf00{color:#f00;}a.cf00:link,a.cf00:visited{color:#f00;}a.cf00:hover,a.cf00:active{color:#f00;}
+        .cf30{color:#f30;}a.cf30:link,a.cf30:visited{color:#f30;}a.cf30:hover,a.cf30:active{color:#f30;}
+        .cf60{color:#f60;}a.cf60:link,a.cf60:visited{color:#f60;}a.cf60:hover,a.cf60:active{color:#f60;}
+        .cf90{color:#f90;}a.cf90:link,a.cf90:visited{color:#f90;}a.cf90:hover,a.cf90:active{color:#f90;}
+        .cfc0{color:#fc0;}a.cfc0:link,a.cfc0:visited{color:#fc0;}a.cfc0:hover,a.cfc0:active{color:#fc0;}
+
+        .c000{color:#000;}a.c000:link,a.c000:visited{color:#000;}a.c000:hover,a.c000:active{color:#000;}
+        .c333{color:#333;}a.c333:link,a.c333:visited{color:#333;}a.c333:hover,a.c333:active{color:#333;}
+        .c666{color:#666;}a.c666:link,a.c666:visited{color:#666;}a.c666:hover,a.c666:active{color:#666;}
+        .c999{color:#999;}a.c999:link,a.c999:visited{color:#999;}a.c999:hover,a.c999:active{color:#999;}
+        .cccc{color:#ccc;}a.cccc:link,a.cccc:visited{color:#ccc;}a.cccc:hover,a.cccc:active{color:#ccc;}
+        .cfff{color:#fff;}a.cfff:link,a.cfff:visited{color:#fff;}a.cfff:hover,a.cfff:active{color:#fff;}
+
+        .relative{position:relative;}.absolute{position:absolute;}.fixed{position:fixed;}
+
+        a:link,a:visited{ text-decoration:none;}a:hover,a:active{ text-decoration:none;}
+
+        .bold{font-weight:bold;}.normal{font-weight:normal;}
+
+        .left{text-align:left;}.center{text-align:center;}.right{text-align:right;}
+        .hide{display:none;}.block{display:block;}.inline-block{display:inline-block;}
+        .fl{float:left;}.fr{float:right;}
+
+        .ofhidden{overflow:hidden;}
+        .vm > *{display:inline-block;vertical-align:middle;}
+        .op0{opacity: 0;}.op1{opacity: 0.1;}.op2{opacity: 0.2;}.op3{opacity: 0.3;}.op4{opacity: 0.4;}.op5{opacity: 0.5;}.op6{opacity: 0.6;}.op7{opacity: 0.7;}.op8{opacity: 0.8;}.op9{opacity: 0.9;}.op10{opacity: 1;}
+        img{line-height: 0;padding: 0;margin: 0;}
+
+        body,html{height:auto;overflow-x:hidden;}
+
+
+        /*****************start****************/
+        .box{background: #000;}
+
+
+        html, body {
+            height: 100%; }
+
+        .parallux.not-full {
+            overflow: hidden; }
+        .parallux.not-full .parallux-bg {
+            height: 100%;
+            bottom: initial; }
+
+        .parallux.no-parallax {
+            overflow: hidden; }
+        .parallux.no-parallax .parallux-bg {
+            position: relative; }
+        .parallux.no-parallax .parallux-bg, .parallux.no-parallax .parallux-inner {
+            background-attachment: initial; }
+
+        .parallux {
+            position: relative; }
+        .parallux.bg-fixed .parallux-inner {
+            background-attachment: fixed; }
+        .parallux .parallux-bg {
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            overflow: hidden;
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+            position: fixed; }
+        .parallux .parallux-bg .parallux-inner {
+            top: 0px;
+            left: 0px;
+            position: relative;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+            background-image: url();
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000; }
+        .parallux .parallux-bg .parallux-inner img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none; }
+        .parallux .parallux-bg .parallux-inner.dark-1 {
+            background-color: #084550; }
+        .parallux .parallux-bg .parallux-inner.dark-2 {
+            background-color: #292A31; }
+        .parallux .parallux-bg .parallux-inner.dark-3 {
+            background-color: #2B443B; }
+        .parallux .parallux-bg .parallux-inner.light-1 {
+            background-color: #E2EAD9; }
+        .parallux .parallux-bg .parallux-inner.light-2 {
+            background-color: #E4DFF3; }
+        .parallux .parallux-bg .parallux-inner.light-3 {
+            background-color: #F9E2D4; }
+
+
+
+
+        #bg-1, #bg-2, #bg-3, #bg-4, #bg-5, #bg-6 {
+            background-size: auto 100vh;height:800px;
+            background-position:50% 0;
+            background-color: #fff;
+        }
+        #bg-1 {background-image: url("images/1.jpg");}
+        #bg-2 {background-image: url("images/1.jpg");}
+        #bg-3 {background-image: url("images/1.jpg");}
+        #bg-4 {background-image: url("images/1.jpg");}
+        #bg-5 {background-image: url("images/1.jpg");}
+        #bg-6 {background-image: url("images/1.jpg");}
+
+
+        .parallux .parallux-bg .parallux-inner img{display: block;width:auto;height:auto;}
+        .parallux .parallux-bg .parallux-inner > div{position: absolute;left:0;right:0;top:0;bottom:0;z-index:222;}
+        .bg1{position: relative;}
+        #bg-1 .bg1 img{position: absolute;height:81.75vh;left:50%;top:7.125vh;margin:0 0 0 -75vh;}
+
+        .bg2{position: relative;}
+        #bg-2 .bg2 img{position: absolute;height:57.375vh;left:50%;top:13.25vh;margin:0 0 0 -70vh;}
+        .bg2 a{position: absolute;left:50%;top:75.0vh;margin:0 0 0 -64vh;}
+
+        .bg3{position: relative;}
+        #bg-3 .bg3 img{position: absolute;height:70.625vh;left:50%;top:11.75vh;margin:0 0 0 37.5vh;}
+        .bg3 a{position: absolute;left:50%;top:69vh;margin:0 0 0 43.75vh;}
+
+        .bg4{position: relative;}
+        #bg-4 .bg4 img{position: absolute;height:82.875vh;   left:50%;top:7.375vh;margin:0 0 0 -68.75vh;}
+        .bg4 a{position: absolute;left:50%;top:76.0vh;margin:0 0 0 -58.75vh;}
+
+        .bg5{position: relative;}
+        #bg-5 .bg5 img{position: absolute;height:75.75vh;left:50%;top:5.25vh;margin:0 0 0 -87.5vh;}
+        .bg5 a{position: absolute;left:50%;top:58.75vh;margin:0 0 0 1.25vh;}
+
+        .bg6{position: relative;}
+        #bg-6 .bg6 img{position: absolute;height:67.125vh;left:50%;top:12vh;margin:0 0 0 -12.5vh;}
+        .bg6 a{position: absolute;left:50%;top:76vh;margin:0 0 0 54vh;}
+
+
+        .clearfix:after,.cl:after{content:'\20';display:block;height:0;clear:both;}.clearfix{*zoom:1;}.clear{clear:both;}
+        .p5{padding:5px;}.p10{padding:10px;}.p15{padding:15px;}.p20{padding:20px;}.p25{padding:25px;}.p30{padding:30px;}.p40{padding:40px;}.p50{padding:50px;}
+        .pl5{padding-left:5px;}.pl10{padding-left:10px;}.pl15{padding-left:15px;}.pl20{padding-left:20px;}.pl30{padding-left:30px;}.pl40{padding-left:40px;}.pl50{padding-left:50px;}
+        .pt5{padding-top:5px;}.pt10{padding-top:10px;}.pt15{padding-top:15px;}.pt20{padding-top:20px;}.pt30{padding-top:30px;}.pt40{padding-top:40px;}.pt50{padding-top:50px;}
+        .pb5{padding-bottom:5px;}.pb10{padding-bottom:10px;}.pb15{padding-bottom:15px;}.pb20{padding-bottom:20px;}.pb30{padding-bottom:30px;}.pb40{padding-bottom:40px;}.pb50{padding-bottom:50px;}
+        .pr5{padding-right:5px;}.pr10{padding-right:10px;}.pr15{padding-right:15px;}.pr20{padding-right:20px;}.pr30{padding-right:30px;}.pr40{padding-right:40px;}.pr50{padding-right:50px;}
+
+        .ml5{margin-left:5px;}.ml10{margin-left:10px;}.ml15{margin-left:15px;}.ml20{margin-left:20px;}.ml30{margin-left:30px;}.ml40{margin-left:40px;}.ml50{margin-left:50px;}
+        .mr5{margin-right:5px;}.mr10{margin-right:10px;}.mr15{margin-right:15px;}.mr20{margin-right:20px;}.mr30{margin-right:30px;}.mr40{margin-right:40px;}.mr50{margin-right:50px;}
+        .mt5{margin-top:5px;}.mt10{margin-top:10px;}.mt15{margin-top:15px;}.mt20{margin-top:20px;}.mt30{margin-top:30px;}.mt40{margin-top:40px;}.mt50{margin-top:50px;}
+        .mb5{margin-bottom:5px;}.mb10{margin-bottom:10px;}.mb15{margin-bottom:15px;}.mb20{margin-bottom:20px;}.mb30{margin-bottom:30px;}.mb40{margin-bottom:40px;}.mb50{margin-bottom:50px;}
+
+        .mt60{margin-top:60px;}.mt70{margin-top:70px;}.mt80{margin-top:80px;}.mt90{margin-top:90px;}.mt100{margin-top:100px;}
+        .mb60{margin-bottom:60px;}.mb70{margin-bottom:70px;}.mb80{margin-bottom:80px;}.mb90{margin-bottom:90px;}.mb100{margin-bottom:100px;}
+        .pt60{padding-top:60px;}.pt70{padding-top:70px;}.pt80{padding-top:80px;}.pt90{padding-top:90px;}.pt100{padding-top:100px;}
+        .pb60{padding-bottom:60px;}.pb70{padding-bottom:70px;}.pb80{padding-bottom:80px;}.pb90{padding-bottom:90px;}.pb100{padding-bottom:100px;}
+
+        .f12{font-size:12px;}.f14{font-size:14px;}.f16{font-size:16px;}.f18{font-size:18px;}.f20{font-size:20px;}.f22{font-size:22px;}.f24{font-size:24px;}.f26{font-size:26px;}.f28{font-size:28px;}.f30{font-size:30px;}.f32{font-size:32px;}.f34{font-size:34px;}.f36{font-size:36px;}
+
+        .cf00{color:#f00;}a.cf00:link,a.cf00:visited{color:#f00;}a.cf00:hover,a.cf00:active{color:#f00;}
+        .cf30{color:#f30;}a.cf30:link,a.cf30:visited{color:#f30;}a.cf30:hover,a.cf30:active{color:#f30;}
+        .cf60{color:#f60;}a.cf60:link,a.cf60:visited{color:#f60;}a.cf60:hover,a.cf60:active{color:#f60;}
+        .cf90{color:#f90;}a.cf90:link,a.cf90:visited{color:#f90;}a.cf90:hover,a.cf90:active{color:#f90;}
+        .cfc0{color:#fc0;}a.cfc0:link,a.cfc0:visited{color:#fc0;}a.cfc0:hover,a.cfc0:active{color:#fc0;}
+
+        .c000{color:#000;}a.c000:link,a.c000:visited{color:#000;}a.c000:hover,a.c000:active{color:#000;}
+        .c333{color:#333;}a.c333:link,a.c333:visited{color:#333;}a.c333:hover,a.c333:active{color:#333;}
+        .c666{color:#666;}a.c666:link,a.c666:visited{color:#666;}a.c666:hover,a.c666:active{color:#666;}
+        .c999{color:#999;}a.c999:link,a.c999:visited{color:#999;}a.c999:hover,a.c999:active{color:#999;}
+        .cccc{color:#ccc;}a.cccc:link,a.cccc:visited{color:#ccc;}a.cccc:hover,a.cccc:active{color:#ccc;}
+        .cfff{color:#fff;}a.cfff:link,a.cfff:visited{color:#fff;}a.cfff:hover,a.cfff:active{color:#fff;}
+
+        .relative{position:relative;}.absolute{position:absolute;}.fixed{position:fixed;}
+
+        a:link,a:visited{ text-decoration:none;}a:hover,a:active{ text-decoration:none;}
+
+        .bold{font-weight:bold;}.normal{font-weight:normal;}
+
+        .left{text-align:left;}.center{text-align:center;}.right{text-align:right;}
+        .hide{display:none;}.block{display:block;}.inline-block{display:inline-block;}
+        .fl{float:left;}.fr{float:right;}
+
+        .ofhidden{overflow:hidden;}
+        .vm > *{display:inline-block;vertical-align:middle;}
+        .op0{opacity: 0;}.op1{opacity: 0.1;}.op2{opacity: 0.2;}.op3{opacity: 0.3;}.op4{opacity: 0.4;}.op5{opacity: 0.5;}.op6{opacity: 0.6;}.op7{opacity: 0.7;}.op8{opacity: 0.8;}.op9{opacity: 0.9;}.op10{opacity: 1;}
+        img{line-height: 0;padding: 0;margin: 0;}
+
+        body,html{height:auto;overflow-x:hidden;}
+
+
+        /*****************start****************/
+        .box{background: #000;}
+
+
+
+
+        #bg-1, #bg-2, #bg-3, #bg-4, #bg-5, #bg-6 {
+            background-size: auto 100vh;height:800px;
+            background-position:50% 0;
+            background-color: #fff;
+        }
+        #bg-1 {background-image: url("images/1.jpg");}
+        #bg-2 {background-image: url("images/2.jpg");}
+        #bg-3 {background-image: url("images/3.jpg");}
+        #bg-4 {background-image: url("images/4.jpg");}
+        #bg-5 {background-image: url("images/5.jpg");}
+        #bg-6 {background-image: url("images/6.jpg");}
+
+
+        .parallux .parallux-bg .parallux-inner img{display: block;width:auto;height:auto;}
+        .parallux .parallux-bg .parallux-inner > div{position: absolute;left:0;right:0;top:0;bottom:0;z-index:222;}
+        .bg1{position: relative;}
+        #bg-1 .bg1 img{position: absolute;height:81.75vh;left:50%;top:7.125vh;margin:0 0 0 -75vh;}
+
+        .bg2{position: relative;}
+        #bg-2 .bg2 img{position: absolute;height:57.375vh;left:50%;top:13.25vh;margin:0 0 0 -70vh;}
+        .bg2 a{position: absolute;left:50%;top:75.0vh;margin:0 0 0 -64vh;}
+
+        .bg3{position: relative;}
+        #bg-3 .bg3 img{position: absolute;height:70.625vh;left:50%;top:11.75vh;margin:0 0 0 37.5vh;}
+        .bg3 a{position: absolute;left:50%;top:69vh;margin:0 0 0 43.75vh;}
+
+        .bg4{position: relative;}
+        #bg-4 .bg4 img{position: absolute;height:82.875vh;   left:50%;top:7.375vh;margin:0 0 0 -68.75vh;}
+        .bg4 a{position: absolute;left:50%;top:76.0vh;margin:0 0 0 -58.75vh;}
+
+        .bg5{position: relative;}
+        #bg-5 .bg5 img{position: absolute;height:75.75vh;left:50%;top:5.25vh;margin:0 0 0 -87.5vh;}
+        .bg5 a{position: absolute;left:50%;top:58.75vh;margin:0 0 0 1.25vh;}
+
+        .bg6{position: relative;}
+        #bg-6 .bg6 img{position: absolute;height:67.125vh;left:50%;top:12vh;margin:0 0 0 -12.5vh;}
+        .bg6 a{position: absolute;left:50%;top:76vh;margin:0 0 0 54vh;}
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+
+    <div class="parallux">
+        <div class="parallux-bg fixed">
+            <div class="parallux-inner" id="bg-1">
+
+                <div class="bg1">
+                    <img src="http://static.zcool.cn/v45.01.29.1-v17-12-01-10/special-resource/festival-food/assets/img/11.svg" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="parallux">
+        <div class="parallux-bg fixed">
+            <div class="parallux-inner" id="bg-2">
+
+                <div class="bg2">
+                    <img src="http://static.zcool.cn/v45.01.29.1-v17-12-01-10/special-resource/festival-food/assets/img/22.svg" alt="">
+                    <a href="http://www.hellorf.com/image/search/饺子?image_type=&utm_source=festival-food" target="_blank" class="button buttonRed">浏览更多</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="parallux">
+        <div class="parallux-bg fixed">
+            <div class="parallux-inner" id="bg-3">
+
+                <div class="bg3">
+                    <img src="http://static.zcool.cn/v45.01.29.1-v17-12-01-10/special-resource/festival-food/assets/img/33.svg" alt="">
+                    <a href="http://www.hellorf.com/image/search/元宵?utm_source=festival-food" target="_blank" class="button buttonWhite">浏览更多</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="parallux">
+        <div class="parallux-bg fixed">
+            <div class="parallux-inner" id="bg-4">
+
+                <div class="bg4">
+                    <img src="http://static.zcool.cn/v45.01.29.1-v17-12-01-10/special-resource/festival-food/assets/img/44.svg" alt="">
+                    <a href="http://www.hellorf.com/image/search/年糕?image_type=&utm_source=festival-food" target="_blank" class="button buttonRed">浏览更多</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="parallux">
+        <div class="parallux-bg fixed">
+            <div class="parallux-inner" id="bg-5">
+
+                <div class="bg5">
+                    <img src="http://static.zcool.cn/v45.01.29.1-v17-12-01-10/special-resource/festival-food/assets/img/55.svg" alt="">
+                    <a href="http://www.hellorf.com/image/search/火锅?image_type=&utm_source=festival-food" target="_blank" class="button buttonRed">浏览更多</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="parallux">
+        <div class="parallux-bg fixed">
+            <div class="parallux-inner" id="bg-6">
+
+                <div class="bg6">
+                    <img src="http://static.zcool.cn/v45.01.29.1-v17-12-01-10/special-resource/festival-food/assets/img/66.svg" alt="">
+                    <a href="http://www.hellorf.com/image/search/seafood?utm_source=festival-food " target="_blank" class="button buttonRed">浏览更多</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../jquery-1.9.1.js"></script>
+<script>
+    /* Modernizr 2.8.3 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-csstransforms-csstransforms3d-csstransitions-shiv-mq-cssclasses-addtest-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+    ;window.Modernizr=function(a,b,c){function A(a){j.cssText=a}function B(a,b){return A(m.join(a+";")+(b||""))}function C(a,b){return typeof a===b}function D(a,b){return!!~(""+a).indexOf(b)}function E(a,b){for(var d in a){var e=a[d];if(!D(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function F(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:C(f,"function")?f.bind(d||b):f}return!1}function G(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+o.join(d+" ")+d).split(" ");return C(b,"string")||C(b,"undefined")?E(e,b):(e=(a+" "+p.join(d+" ")+d).split(" "),F(e,b,c))}var d="2.8.3",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m=" -webkit- -moz- -o- -ms- ".split(" "),n="Webkit Moz O ms",o=n.split(" "),p=n.toLowerCase().split(" "),q={},r={},s={},t=[],u=t.slice,v,w=function(a,c,d,e){var f,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:h+(d+1),l.appendChild(j);return f=["&#173;",'<style id="s',h,'">',a,"</style>"].join(""),l.id=h,(m?l:n).innerHTML+=f,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=g.style.overflow,g.style.overflow="hidden",g.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),g.style.overflow=k),!!i},x=function(b){var c=a.matchMedia||a.msMatchMedia;if(c)return c(b)&&c(b).matches||!1;var d;return w("@media "+b+" { #"+h+" { position: absolute; } }",function(b){d=(a.getComputedStyle?getComputedStyle(b,null):b.currentStyle)["position"]=="absolute"}),d},y={}.hasOwnProperty,z;!C(y,"undefined")&&!C(y.call,"undefined")?z=function(a,b){return y.call(a,b)}:z=function(a,b){return b in a&&C(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=u.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(u.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(u.call(arguments)))};return e}),q.csstransforms=function(){return!!G("transform")},q.csstransforms3d=function(){var a=!!G("perspective");return a&&"webkitPerspective"in g.style&&w("@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}",function(b,c){a=b.offsetLeft===9&&b.offsetHeight===3}),a},q.csstransitions=function(){return G("transition")};for(var H in q)z(q,H)&&(v=H.toLowerCase(),e[v]=q[H](),t.push((e[v]?"":"no-")+v));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)z(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},A(""),i=k=null,function(a,b){function l(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function m(){var a=s.elements;return typeof a=="string"?a.split(" "):a}function n(a){var b=j[a[h]];return b||(b={},i++,a[h]=i,j[i]=b),b}function o(a,c,d){c||(c=b);if(k)return c.createElement(a);d||(d=n(c));var g;return d.cache[a]?g=d.cache[a].cloneNode():f.test(a)?g=(d.cache[a]=d.createElem(a)).cloneNode():g=d.createElem(a),g.canHaveChildren&&!e.test(a)&&!g.tagUrn?d.frag.appendChild(g):g}function p(a,c){a||(a=b);if(k)return a.createDocumentFragment();c=c||n(a);var d=c.frag.cloneNode(),e=0,f=m(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function q(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return s.shivMethods?o(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+m().join().replace(/[\w\-]+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(s,b.frag)}function r(a){a||(a=b);var c=n(a);return s.shivCSS&&!g&&!c.hasCSS&&(c.hasCSS=!!l(a,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),k||q(a,c),a}var c="3.7.0",d=a.html5||{},e=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,f=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,g,h="_html5shiv",i=0,j={},k;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",g="hidden"in a,k=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){g=!0,k=!0}})();var s={elements:d.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",version:c,shivCSS:d.shivCSS!==!1,supportsUnknownElements:k,shivMethods:d.shivMethods!==!1,type:"default",shivDocument:r,createElement:o,createDocumentFragment:p};a.html5=s,r(b)}(this,b),e._version=d,e._prefixes=m,e._domPrefixes=p,e._cssomPrefixes=o,e.mq=x,e.testProp=function(a){return E([a])},e.testAllProps=G,e.testStyles=w,g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+t.join(" "):""),e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
+
+    /*!
+ * Responsive jQuery Parallax plugin
+ * Original author: @tomsarduy
+ * Licensed under the MIT license
+ */
+
+    // the semi-colon before the function invocation is a safety
+    // net against concatenated scripts and/or other plugins
+    // that are not closed properly.
+    ;(function ( $, window, document, undefined ) {
+
+        // undefined is used here as the undefined global
+        // variable in ECMAScript 3 and is mutable (i.e. it can
+        // be changed by someone else). undefined isn't really
+        // being passed in so we can ensure that its value is
+        // truly undefined. In ES5, undefined can no longer be
+        // modified.
+
+        // window and document are passed through as local
+        // variables rather than as globals, because this (slightly)
+        // quickens the resolution process and can be more
+        // efficiently minified (especially when both are
+        // regularly referenced in your plugin).
+
+        // Create the defaults once
+        'use strict';
+
+        var pluginName = "parallux",
+            $window = $(window),
+            interval,
+            bgset = false,
+            animate3d=false,
+            is_mobile = false,
+            defaults   = {
+                fullHeight: true,
+                onMobile: 'fixed', //can be 'scroll' or 'parallax'
+                onImageLoad: 'fadeIn'
+            };
+
+        window.mobilecheck = function() {
+            var check = false;
+            (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
+            return check;
+        };
+
+        //window.requestAnimationFrame Polyfill for Old Browsers
+        function animationFramePolyfill() {
+            var lastTime = 0;
+            var vendors = ['ms', 'moz', 'webkit', 'o'];
+
+            for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+                window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+            }
+
+            if (!window.requestAnimationFrame){
+                window.requestAnimationFrame = function(callback) {
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                    var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                        timeToCall);
+                    lastTime = currTime + timeToCall;
+                    return id;
+                };
+            }
+
+            if (!window.cancelAnimationFrame){
+                window.cancelAnimationFrame = function(id) {
+                    clearTimeout(id);
+                };
+            }
+        }
+        animationFramePolyfill();
+
+
+        //Check for translate3d support
+        function support3d() {
+
+            //If modernizr is initialized, we don't need to use our test
+            if (typeof Modernizr === 'object' && Modernizr.csstransforms3d) {
+                return true;
+            }
+
+            if (!window.getComputedStyle) {
+                return false;
+            }
+
+            var el = document.createElement('p'),
+                has3d,
+                transforms = {
+                    'webkitTransform':'-webkit-transform',
+                    'OTransform':'-o-transform',
+                    'msTransform':'-ms-transform',
+                    'MozTransform':'-moz-transform',
+                    'transform':'transform'
+                };
+
+            // Add it to the body to get the computed style.
+            document.body.insertBefore(el, null);
+
+            for (var t in transforms) {
+                if (el.style[t] !== undefined) {
+                    el.style[t] = "translate3d(1px,1px,1px)";
+                    has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+                }
+            }
+
+            document.body.removeChild(el);
+
+            return (has3d !== undefined && has3d.length > 0 && has3d !== "none");
+        }
+        animate3d = support3d();
+
+        /**
+         * detect IE
+         * returns version of IE or false, if browser is not Internet Explorer
+         */
+        function detectIE() {
+            var ua = window.navigator.userAgent;
+
+            var msie = ua.indexOf('MSIE ');
+            if (msie > 0) {
+                // IE 10 or older => return version number
+                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+            }
+
+            var trident = ua.indexOf('Trident/');
+            if (trident > 0) {
+                // IE 11 => return version number
+                var rv = ua.indexOf('rv:');
+                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+            }
+
+            var edge = ua.indexOf('Edge/');
+            if (edge > 0) {
+                // IE 12 (aka Edge) => return version number
+                return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+            }
+
+            // other browser
+            return false;
+        }
+
+        // The actual plugin constructor
+        function Plugin( element, options ) {
+            this.element = element;
+            bgset=false;
+
+            // jQuery has an extend method that merges the
+            // contents of two or more objects, storing the
+            // result in the first object. The first object
+            // is generally empty because we don't want to alter
+            // the default options for future instances of the plugin
+            this.options = $.extend( {}, defaults, options) ;
+
+            this._defaults = defaults;
+            this._name = pluginName;
+
+            this.init(element);
+        }
+
+        Plugin.prototype = {
+
+            init: function(element) {
+
+                //If not fullHeight option is set
+                if(this.options.fullHeight===false){
+                    $(element).addClass('not-full');
+                }
+
+                //Checking if device is mobile
+                is_mobile = window.mobilecheck();
+
+                //Recalculate Height of parallax items
+                this.updateHeight();
+
+                //Updating `this` context so we use it with jQuery
+                var self = this,
+                    $cover = $(element).find("img.cover, video.cover");
+                self.simulateCover();
+
+                //Onload image event
+                $cover.one("load", function() {
+                    self.simulateCover();
+                    $(this).fadeIn();
+                });
+
+                //Firefox onload issue
+                if($cover.complete){
+                    $cover.load();
+                }
+
+
+                //On ResizeOrientationChange update parallax items
+                $window.bind('orientationchange, resize', function() {
+                    if(!is_mobile){
+                        self.updateHeight();
+                        self.simulateCover();
+                        $(this).trigger('scroll');
+                    }
+                });
+
+                var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                var is_ipad = navigator.userAgent.match(/iPad/i) != null;
+
+                //Issue with Safari iPad and iPhones
+                if(!is_mobile && !is_safari){
+                    //Not supporting background-attachment fixed
+                    $(element).addClass('bg-fixed');
+                }
+
+                if(is_mobile || is_ipad){
+
+                    $(element).css('overflow','hidden');
+
+                    //If mobile and is fixed enabled hack z-indexs and overflow hidden
+                    if(this.options.onMobile === 'fixed'){
+
+                        $window.scroll(function () {
+                            self.updateIndex();
+                        });
+                        $window.scroll();
+                    }
+
+                    else if(this.options.onMobile === 'parallax' && animate3d){
+                        var mobileRender = self.render.bind(self);
+                        interval = setInterval(function () {
+                            window.requestAnimationFrame(mobileRender);
+                        }, 10);
+                    }
+
+                    else{
+                        //By default this.options.onMobile = 'scroll'
+                        $(element).find('.parallux-bg').css('position', 'absolute');
+                    }
+                }
+
+
+
+                else{
+
+                    if(animate3d){
+
+                        //If is Desktop is better to throw it directly in scroll
+                        $window.scroll(function () {
+                            self.render();
+                        });
+
+
+                        //IE Fix
+                        if(detectIE()) { // if IE
+
+                            if(detectIE()>=11){
+                                $('body').on("mousewheel", function () {
+                                    // remove default behavior
+                                    event.preventDefault();
+
+                                    //scroll without smoothing
+                                    var wheelDelta = event.wheelDelta;
+                                    var currentScrollPosition = window.pageYOffset;
+                                    window.scrollTo(0, currentScrollPosition - wheelDelta/4);
+                                });
+                                $window.scroll();
+                            }
+                            else{
+                                $(window).off('scroll');
+                                this.disableParallax();
+                            }
+                        }
+                        else{
+                            $window.scroll();
+                        }
+                    }
+                    else{
+                        this.disableParallax();
+                    }
+
+                }
+            },
+
+            disableParallax: function(){
+                $(this.element).removeClass('bg-fixed').addClass('no-parallax');
+            },
+
+            mobileHandler: function () {
+
+            },
+
+            //The Parallax rendering, magic happens here
+            updateIndex: function() {
+
+                // assigning the object front and back
+                var $front = $(this.element);
+
+                //offset top of the front layer
+                var $offsetTop = $front.offset().top;
+                var $winST = $window.scrollTop();
+
+
+                if(($winST+$window.height() >= $offsetTop) && $winST <= $offsetTop + $front.height()){
+
+                    $front.css('z-index', 5);
+
+                }
+                else{
+                    $front.css('z-index', 1);
+                }
+            },
+
+            //Since we are using <img> tags, we may want to simulate background-size: cover
+            simulateCover: function (){
+
+                var $winH = $window.height(),
+                    $winW = $window.width(),
+                    $img =  $(this.element).find('img.cover, video.cover');
+
+                $img.css({
+                    'width': 'auto',
+                    'height': '100%',
+                });
+
+                if($img.width()<$winW){
+                    $img.css({
+                        'width': '100%',
+                        'max-height': 'initial',
+                        'height': 'auto'
+                    });
+                }
+
+                $img.css({
+                    'width': '100%',
+                    'height': 'auto',
+                });
+
+                if($img.height()<$winH){
+                    $img.css({
+                        'height': $winH+'px',
+                        'max-width': 'initial',
+                        'width': 'auto'
+                    });
+                }
+
+                var diffX = -($img.width()- $winW)/2;
+                var diffY = -($img.height()- $winH)/2;
+                $img.css('transform', 'translate('+diffX+'px,'+diffY+'px)');
+            },
+
+            //Update height of parallax sections
+            updateHeight: function () {
+                var $el = $(this.element),
+                    $inner = $el.find('.parallux-inner'),
+                    $rand = 1+ Math.floor(Math.random() * 3);
+
+                if(this.options.fullHeight){
+                    var extra = 0;
+                    if(is_mobile || Modernizr.mq('only screen and (max-width: 1024px)')){
+                        extra = 70;
+                    }
+                    $el.height($window.height() + extra);
+                    $el.find('.parallux-bg').height($window.height() + extra);
+                }
+                else{
+                    $el.find('.parallux-bg').height($el.height());
+                }
+                if(!bgset){
+                    if($inner.hasClass('dark')){
+                        $inner.addClass('dark-'+ $rand);
+                    }
+                    if($inner.hasClass('light')){
+                        $inner.addClass('light-'+ $rand);
+                    }
+                    bgset=true;
+                }
+            },
+
+            //The Parallax rendering, magic happens here
+            render: function() {
+
+                // assigning the object front and back
+                var $front = $(this.element);
+                var $back  = $front.find('.parallux-bg');
+                var $backinner = $back.find('.parallux-inner');
+
+                //offset top of the front layer
+                var $offsetTop = $front.offset().top;
+                var $scrollY = window.scrollY || window.pageYOffset || 0;
+                var $winST = $window.scrollTop();
+
+                /*
+                    If user is scrolling and the windows is between one of the front parallax layers,
+                    then we bring the corresponding background layer to that position and parallax is applied
+                */
+
+                if(($winST+$window.height() >= $offsetTop) && $winST <= $offsetTop + $front.height()){
+
+                    //Calculating the speed of the parallax
+                    var $diffElem = (($scrollY-$offsetTop)/1.3).toFixed(0)+ 'px';
+
+                    /*
+                        This is where the magic happens, applying transform3d to the background layer
+                        and the container, to simulate the parallax effect
+                    */
+
+                    $back.css('transform','translate3d(0,'+($offsetTop-$scrollY)+'px,0)');
+                    $backinner.css('transform', 'translate3d(0,'+($diffElem)+',0)');
+
+                }
+                else{
+
+                    /*
+                        If the layer is not inside the windows, we set the background
+                        layer outside the viewport to get a better performance, so we
+                        only do parallax in one or two layers at the same time.
+                    */
+
+                    $back.css('transform', 'translate3d(0,100%,0)');
+                }
+            }
+        };
+
+        // A really lightweight plugin wrapper around the constructor,
+        // preventing against multiple instantiations
+        $.fn[pluginName] = function ( options ) {
+            return this.each(function () {
+                if (!$.data(this, "plugin_" + pluginName)) {
+                    $.data(this, "plugin_" + pluginName,
+                        new Plugin( this, options ));
+                }
+            });
+        };
+
+    })( jQuery, window, document );
+
+    $(function(){
+        $(".parallux").parallux({
+            onMobile: 'fixed',
+            fullHeight: true
+        });
+    })
+
+
+
+</script>
+</body>
+</html>

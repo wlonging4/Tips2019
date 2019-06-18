@@ -1,0 +1,649 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#202020; font:12px/22px "SimSun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#202020; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#5474B3;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* 背景 */
+        .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_l01.jpg) no-repeat 100% 0;}
+        .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_r01.jpg) no-repeat 0 0;}
+        .moudle-box1,.video-list,.sound-wrapper,.all-news{background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/bg1.jpg);}
+        .bg2-l{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_l02.jpg) no-repeat 100% 0;}
+        .bg2-r{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_r02.jpg) no-repeat 0 0;}
+        .bg2-c{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_c02.jpg) no-repeat 0 0; height: 662px;}
+        .bg3-l{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_l03.jpg) no-repeat 100% 0;}
+        .bg3-r{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_r03.jpg) no-repeat 0 0;}
+        .bg3-c{background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/m_c03.jpg) no-repeat 0 0; height: 672px;}
+
+        /* 内容 */
+        .wrapper .hui12{color:#868686;}
+        .wrapper{width: 1200px; margin: 0 auto ; position: relative; overflow:hidden;}
+        .header-nav{width: 1020px; height: 34px; position: absolute; right: 0; bottom: 0; background: #151515;}
+        .header-nav a{float: left; width: 170px; height: 34px; line-height: 34px; text-align: center; font-size: 18px; color: #fff;}
+        .header-nav .odd{background: #282828;}
+        .header-nav a:hover{color: #fff;}
+        .moudle-box1 .wrapper{height: 455px; padding-top: 45px;}
+        .focus-box{float: left; width: 680px; height: 380px; position: relative; overflow: hidden; }
+        .focus-box .control{width: 680px; height: 8px; position: absolute; left: 0; bottom: 10px;}
+        .control{text-align: center; }
+        .control span{display: inline-block; width:60px; height: 8px;  font-size: 0; background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/dot.png) no-repeat; background-position:-70px 0; cursor: pointer; margin:0 5px; vertical-align: top;}
+        .control .act{background-position:0 0;}
+        .focus-inner{position: absolute; left: 0; top: 0; height: 380px;}
+        .focus-side{width: 506px; height: 380px; float: right ;}
+        .focus-side .ln{height: 20px; line-height: 20px;}
+        .moudle-box2 .wrapper{height: 566px; padding-top: 45px;}
+        .title-box{background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/title_bg.png) no-repeat 100% 60%; height: 64px; border-bottom: 3px solid #00B7D1;}
+        .title-box .title{background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/title_icon.png) no-repeat; padding-top: 20px;  height: 44px; line-height: 44px; font-size: 32px; color: #00B7D1; float: left;}
+        .hot-news{float: left; width: 824px;}
+        .hot-news .pic-list .hui12{word-wrap: break-word; word-break: break-all;}
+        .best-product{float: right; width: 330px;}
+        .best-product .title-box{background: none;}
+        .hot-nav{width: 90px;height: 430px; float: left; position: relative; background-color: #F5F5F5;}
+        .hot-nav li{width: 90px; height: 110px;}
+        .hot-nav .arrow{position: absolute; right: -7px; top: 50px; width: 7px; height: 11px; background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/arrow.png) no-repeat;}
+        .hot-con{width: 720px;height: 410px; float: right; padding-top: 20px;}
+        .hot-con .item{width: 720px;height: 430px; display: none;}
+        .hot-con .active{ display: block;}
+        .hot-nav li{cursor: pointer; width: 90px; height: 40px; padding-top: 70px; font-size: 18px; text-align: center; color: #00B7D1; font-family: "simHei";}
+        .hot-nav .n1{ background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/n1.png) no-repeat 0 20px; }
+        .hot-nav .n2{ background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/n2.png) no-repeat 0 20px; }
+        .hot-nav .n3{ background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/n3.png) no-repeat 0 20px; }
+        .hot-nav .n4{ background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/n4.png) no-repeat 0 20px; }
+        .hot-nav .active{background-position: -90px 20px; background-color: #00B7D1; color: #fff;}
+        .hot-con .pic{width: 360px; height: 270px; float: left;}
+        .hot-con .list{width: 340px; height: 270px; float: right;}
+        .hot-con .list .lan18{color: #5575B4; line-height: 28px; }
+        .hot-con .list .ln{height: 26px; line-height: 26px;}
+        .hot-con .pic-list{margin: 16px 0 0 -10px;}
+        .hot-con .pic-list img{margin:0 10px;}
+        .hot-con .pic-list .hui16{ color: #020202; line-height: 24px;}
+        .best-product .pic{width: 330px; height: 410px; margin-top: 20px;}
+        .video-wrapper{padding-top: 48px;}
+        .video-box{width: 680px; height: 480px; float: left; margin-top: 30px; background:#000;}
+        .video-list-box{width: 500px; height: 480px; float: right; margin-top: 30px;}
+        .video-list-box .hd,.daily-news .main .hd{width: 300px; height: 30px; background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/icon1.jpg) no-repeat 10px 50% #E70000; font:20px/30px "simHei"; color: #fff; padding-left: 40px;}
+        .date-nav{margin-top: 10px;}
+        .date-nav span{float: left; position: relative;  width: 166px; height: 40px; background-color: #5575B4; text-align: center;  font:18px/40px "simHei"; color: #005966; cursor: pointer;}
+        .date-nav .even{background:#00B7D1;}
+        .date-nav .arrow{width: 14px; height: 6px; position: absolute; background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/arrow1.png) no-repeat; left: 50%; margin-left: -7px; bottom:-6px; display: none;}
+        .date-nav .even .arrow{background-position: 0 -7px;}
+        .date-nav .active {color: #fff;}
+        .date-nav .active .arrow{display: block;}
+        .video-list{width: 500px; height: 370px; overflow: hidden; padding:12px 0 10px}
+        .video-list .item{ overflow: auto; height: 370px; display: none; padding-left: 12px;}
+        .video-list .active{display: block;}
+        .video-list .hui16{color: #130C10; display:block; height: 52px; line-height: 52px; border-bottom: 1px dashed #C3C3C3; background:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/icon2.png) no-repeat 0 50%; padding-left: 30px; }
+        .video-list .haslink{background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/icon3.png) no-repeat 0 50%;}
+        .video-pic{width: 1200px; height: 500px; overflow: hidden; position: relative;}
+        .video-pic .video-pic-con{width: 1200px;  position: absolute; left: 0; top: 0;}
+        .video-pic .ln{height: 20px; line-height: 20px;}
+        .video-pic .lan18{color: #00B7D1; line-height: 40px !important;height: 40px !important;bottom:24px !important; background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/line.jpg) no-repeat 50% 100%; padding-top:160px !important;}
+        .video-pic-wrapper .control span,.cool-experience .control span,.sound-wrapper .control span,.daily-news .control span,.news-tab .control span{width: 60px; height: 10px; background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/dot2.png) no-repeat; background-position:-70px 0;}
+        .video-pic-wrapper .control .act,.cool-experience .control .act,.sound-wrapper .control .act,.daily-news .control .act,.news-tab .control .act{ background-position:0 0;}
+        .video-pic-wrapper .control{margin-top:60px;}
+        .news-tab .control{margin-top:40px;}
+        .cool-experience{padding-top: 54px; height: 460px;}
+        .cool-text,.sound-text{margin-top: 35px; width: 1200px; height: 280px; overflow: hidden; position: relative;}
+        .cool-con,.sound-con{position: absolute; left: 0; top: 0;}
+        .cool-con li{background: #F5F5F5;}
+        .cool-con li table img{margin-right: 35px;}
+        .cool-con li .lan20{color: #00B7D1; font-size: 34px; line-height: 44px;}
+        .cool-con li .lan20 span{display: block; background: url(http://2.zol-img.com.cn/zt/tm_571/5de4ad7a5b/span.png) no-repeat; width: 150px; height: 50px; line-height: 40px; font-size: 24px; text-indent: 32px; color: #fff;}
+        .cool-con li .hui18{color: #777777; vertical-align: top;}
+        .cool-con li .hui18 p{padding:5px 0 5px 45px; line-height: 30px;}
+        .cool-con li .n1{background: url(http://2.zol-img.com.cn/zt/tm_571/5de4ad7a5b/n_1.png) no-repeat 0 5px;}
+        .cool-con li .n2{background: url(http://2.zol-img.com.cn/zt/tm_571/5de4ad7a5b/n_2.png) no-repeat 0 5px;}
+        .cool-con li .n3{background: url(http://2.zol-img.com.cn/zt/tm_571/5de4ad7a5b/n_3.png) no-repeat 0 5px;}
+        .cool-con li,.sound-con li{width: 1200px; height: 280px; float: left;}
+        .cool-experience .control,.sound-wrapper .control{margin-top: 26px;}
+        .cool-product,.sound-info{width:1200px; height: 790px; overflow: hidden; position:relative;}
+        .cool-product .bai18{color:#fff}
+        .cool-product .ln{height: 30px; line-height: 30px;}
+
+        .sound-info img{margin-right:10px;}
+        .sound-info .hui16,.sound-info .hui12{padding:0 15px 0 0;}
+        .sound-info .hui16{display:block; background: url(http://2.zol-img.com.cn/zt/tm_571/5d7a0f1dc8/line2.jpg) no-repeat 0 20px; padding: 15px 0 0 10px}
+
+        .sound-info .hui16 span{display: block; font-size: 30px; color: #00B7D1; line-height: 36px;}
+        .sound-info .hui12{vertical-align:top;}
+        .sound-info .hui16:hover{text-decoration:none;}
+        .wrapper .more{display: block; margin:45px auto 60px; width: 150px; height: 54px; text-align: center; background: url(http://2.zol-img.com.cn/zt/tm_571/5cb6c29511/more.png) no-repeat 50% 100%; line-height: 44px; font:30px/44px "simHei"; color: #00B7D1; cursor: pointer;}
+        .sound-wrapper{padding-top: 50px; overflow: hidden;}
+        .daily-news{padding: 63px 0 60px; overflow: hidden;}
+        .daily-news .main,.daily-news .aside{margin-top: 22px; height: 680px;}
+        .daily-news .main{width: 780px;  float: left; }
+        .daily-news .main .hd{width: 740px; background-image:url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/icon2.jpg); }
+        .daily-news .aside{width: 400px; float: right;}
+        .daily-news .aside .ln{height: 20px; line-height: 20px;}
+        .daily-news .pic-list{height: 640px; overflow: hidden; position: relative;}
+        .daily-news .pic-con{width: 400px; position: absolute; left: 0; top: 0;}
+        .daily-news .pic-con .bai18{color:#fff;}
+        .daily-news .control{margin-top: 28px;}
+        .all-news .wrapper{padding: 63px 0 ; overflow: hidden;}
+        .all-news .main{width: 840px; float: left; margin-top: 20px;}
+        .news-title{background: #282828; height: 34px; width: 840px; position: relative;}
+        .news-title .arrow{position: absolute; width: 14px; height: 6px; bottom:-6px; left: 93px; background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/arrow2.png) no-repeat;}
+        .news-title .bai18{line-height: 34px; text-align: center; display: block; width: 140px; height: 34px; cursor:pointer}
+        .news-title .odd{background: #151515;}
+        .news-tab .news-item{ display: none; padding-top:8px;}
+        .news-tab .active{display: block;}
+        .news-item-con{width: 840px; height: 840px;  position: relative;  overflow: hidden;}
+        .news-dw{position: absolute; left: 0;top: 0; width: 840px;}
+        .all-news .aside{float:right;width:340px;height:896px;margin:72px 0 0;}
+        .news-info1 .hui126{display:block;height:40px;line-height:40px;background-color:#dadada;margin-bottom:30px;}
+        .news-info1{height:560px;}
+
+        .footer{width: 100%; min-width: 1200px; padding-top: 30px; height: 110px; text-align: center; background: #595959; color: #888;}
+        .footer a:link,.footer a:visited{color: #888;}
+        .fixed{position: fixed; _position: absolute; width: 154px; height: 591px; background: url(http://2.zol-img.com.cn/zt/tm_571/5a0b8559f5/fixed.png) no-repeat; left: 50%; bottom: 10px; margin-left: 610px; z-index: 10;}
+        .fixed-con{padding:152px 30px 0 34px;}
+        .fixed-con .qr-code{width: 90px; height: 100px; background: #fff; padding-top:4px;}
+        .fixed-con .qr-code .lan12b{color: #4CBFEE; line-height: 22px;}
+        .fixed-con .nav-box{padding-top: 5px; height:240px;}
+        .fixed-con .nav-box .bai18{line-height: 40px; color:#fff;}
+        .fixed-con .gotop{width: 90px; height: 50px; display: block;}
+        .focus-box .lan20{color: #00B7D1; line-height: 40px !important;}
+        .main .live{border:1px solid #ccc;}
+        .news-item-con .lan20{color:#00B9C9;line-height:36px;}
+        .news-item-con table{background-color:#f2f2f2}
+        .news-item-con table table{background:none}
+        .news-item-con img{margin:0 13px;}
+        .news-item-con em{display:block;color:#ccc;line-height:35px;}
+        .news-item-con .hong12{color:#868686;}
+        .news-item-con .comment,.news-item-con #bdshare{display:none!important}
+        .sound-con li{background:#F5F5F5;}
+        .sound-con .pic{width:600px; height:280px; float:left;}
+        .sound-con .sound-detail{width:570px; height:280px; float:right;}
+        .sound-con .hd{display:block; margin-top:10px; height:40px; }
+        .sound-con .hd .lan20{color:#00B7D1; font-size:32px;}
+        .sound-con .n1 .hd{background:url(http://2.zol-img.com.cn/zt/tm_571/5ea6ec6614/n1_1.png) no-repeat 0 50%;}
+        .sound-con .n2 .hd{background:url(http://2.zol-img.com.cn/zt/tm_571/5ea6ec6614/n1_2.png) no-repeat 0 50%;}
+        .sound-con .n3 .hd{background:url(http://2.zol-img.com.cn/zt/tm_571/5ea6ec6614/n1_3.png) no-repeat 0 50%;}
+        .sound-con .hd{color:#00B7D1; font-size:34px; line-height:40px; padding-left:45px;}
+        .sound-con .bai20{font-size:22px; background:#00B7D1; color:#fff; padding:0 20px; display:inline-block; height:34px; line-height:34px; margin-top:20px;}
+        .sound-con .hui12{padding-top:10px;}
+
+        .cool-product img,.video-pic img,.focus-side img,.daily-news .pic-list img{-webkit-transition:transform 300ms linear; -ms-transition:transform 300ms linear; transition:transform 300ms linear; }
+        .cool-product img:hover,.video-pic img:hover,.focus-side img:hover,.daily-news .pic-list img:hover{-webkit-transform:scale(1.02);  -ms-transform:scale(1.02); transform:scale(1.02); opacity:0.9}
+
+        html .pic_566456 .pic_box_bg{background: url(http://2.zol-img.com.cn/zt/tm_573/006a136c08/v.png) no-repeat; width: 280px; height: 240px; filter: alpha(opacity=100); opacity: 1; }
+        .ezon{position: absolute; right:0; top: 25px; width:467px; height:31px; background: url(http://2.zol-img.com.cn/zt/tm_573/0590cb337d/logo1.png) no-repeat;}
+        .cool-experience .title-box{background: none; position: relative;}
+        .hot-tit{background:url(http://2.zol-img.com.cn/zt/tm_572/2c6ec1691a/logo.png) no-repeat 100% 0;}
+        .ad-box{width:1200px; height:80px; margin:0 auto 10px;}
+
+
+
+    </style>
+
+    <script src="http://bdimg.share.baidu.com/static/js/logger.js?cdnversion=406396"></script></head>
+<body>
+<!--[if IE 6]>
+<script src=" http://active.zol.com.cn/frontend/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+    DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+<div class="fixed">
+    <div class="fixed-con">
+        <div class="qr-code"><{data[0]}></div>
+        <div class="nav-box"><{data[1]}></div>
+        <a href="#" class="gotop" target="_self"></a>
+    </div>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg1-c">
+            <div class="wrapper">
+                <img src="http://2.zol-img.com.cn/zt/tm_58c/a6253cde6e/f-h.jpg" width="1200" height="450">
+                <div class="header-nav">
+                    <a href="#mod1" target="_self" class="odd">热点必读</a>
+                    <a href="#mod2" target="_self">视频直播</a>
+                    <a href="#mod3" target="_self" class="odd">酷品体验</a>
+                    <a href="#mod4" target="_self">产业声音</a>
+                    <a href="#mod5" target="_self" class="odd">每日新鲜事</a>
+                    <a href="#mod6" target="_self">全部新闻 </a>
+                </div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+<div class="moudle-box1 banners">
+    <div class="wrapper clearfix">
+        <div class="focus-box">
+            <div class="focus-inner"><{data[2]}></div>
+            <div class="control focus-nav"><span class="act"></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span><span class=""></span></div>
+        </div>
+        <div class="focus-side"><{data[3]}></div>
+    </div>
+</div><div class="moudle-box2 banners" id="mod1">
+    <div class="wrapper clearfix">
+        <div class="hot-news">
+            <div class="title-box hot-tit"><h3 class="title">热点必读</h3></div>
+            <div class="clearfix">
+                <div class="hot-nav">
+                    <ul>
+                        <li class="n1 active">智能穿戴</li>
+                        <li class="n2">智能出行</li>
+                        <li class="n3">智能家居</li>
+                        <li class="n4">智能影音</li>
+                    </ul>
+                    <span class="arrow"></span>
+                </div>
+                <div class="hot-con">
+                    <div class="item active">
+                        <div class="clearfix">
+                            <div class="pic"><{data[4]}></div>
+                            <div class="list"><{data[5]}></div>
+                        </div>
+                        <div class="pic-list"><{data[6]}></div>
+                    </div>
+                    <div class="item">
+                        <div class="clearfix">
+                            <div class="pic"><{data[7]}></div>
+                            <div class="list"><{data[8]}></div>
+                        </div>
+                        <div class="pic-list"><{data[9]}></div>
+                    </div>
+                    <div class="item">
+                        <div class="clearfix">
+                            <div class="pic"><{data[10]}></div>
+                            <div class="list"><{data[11]}></div>
+                        </div>
+                        <div class="pic-list"><{data[12]}></div>
+                    </div>
+                    <div class="item">
+                        <div class="clearfix">
+                            <div class="pic"><{data[13]}></div>
+                            <div class="list"><{data[14]}></div>
+                        </div>
+                        <div class="pic-list"><{data[15]}></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="best-product">
+            <div class="title-box"><h3 class="title">最佳产品奖</h3></div>
+            <div class="pic"><{data[16]}></div>
+        </div>
+    </div>
+</div><div class="ad-box banners"><{data[52]}></div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners" id="mod2">
+    <tbody><tr>
+        <td class="bg2-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg2-c">
+            <div class="wrapper video-wrapper">
+                <div class="title-box"><h3 class="title">视频直播</h3></div>
+                <div class="clearfix">
+                    <div class="video-box"><{data[17]}>
+                    </div>
+                    <div class="video-list-box">
+                        <div class="hd">CES Asia 2016现场直播节目单 </div>
+                        <div class="date-nav"><span class="active">5月11日<i class="arrow"></i></span><span class="even">5月12日<i class="arrow"></i></span><span>5月13日<i class="arrow"></i></span></div>
+                        <div class="video-list">
+                            <div class="item active"><{data[18]}></div>
+                            <div class="item"><{data[19]}></div>
+                            <div class="item"><{data[20]}></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg2-r">&nbsp;</td>
+    </tr>
+    </tbody></table><table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg3-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg3-c">
+            <div class="wrapper video-pic-wrapper">
+                <div class="video-pic">
+                    <div class="video-pic-con"><{data[21]}></div>
+                </div>
+                <div class="control"><span class="act"></span><span class=""></span><span class=""></span></div>
+            </div>
+        </td>
+        <td class="bg3-r">&nbsp;</td>
+    </tr>
+    </tbody></table><div class="banners wrapper cool-experience" id="mod3">
+    <div class="title-box"><h3 class="title">酷品体验</h3><a class="ezon" href="http://www.ezon.cn/guanggao/"></a></div>
+    <div class="cool-text">
+        <ul class="cool-con" style="width: 7200px; left: -2400px;">
+            <li><{data[22]}></li>
+            <li><{data[23]}></li>
+            <li><{data[24]}></li>
+        </ul>
+    </div>
+    <div class="control"><span class=""></span><span class=""></span><span class="act"></span></div>
+</div><div class="banners wrapper">
+    <div class="cool-product"><{data[25]}></div>
+    <span class="more cool-more">更多酷品</span>
+</div><div class="ad-box banners"><{data[55]}></div><div class="sound-wrapper banners" id="mod4">
+    <div class="wrapper ">
+        <div class="title-box"><h3 class="title">产业声音</h3></div>
+        <div class="sound-text">
+            <ul class="sound-con" style="width: 14400px; left: -2400px;">
+                <li class="clearfix n1">
+                    <div class="pic"><{data[43]}></div>
+                    <div class="sound-detail">
+                        <div class="hd"><{data[44]}></div>
+                        <div class="detail"><{data[45]}></div>
+                    </div>
+                </li>
+                <li class="clearfix n2">
+                    <div class="pic"><{data[46]}></div>
+                    <div class="sound-detail">
+                        <div class="hd"><{data[47]}></div>
+                        <div class="detail"><{data[48]}></div>
+                    </div>
+                </li>
+                <li class="clearfix n3">
+                    <div class="pic"><{data[49]}></div>
+                    <div class="sound-detail">
+                        <div class="hd"><{data[50]}></div>
+                        <div class="detail"><{data[51]}></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="control"><span class=""></span><span class=""></span><span class="act"></span></div>
+    </div>
+</div><div class="sound-wrapper banners">
+    <div class="wrapper">
+        <div class="sound-info"><{data[29]}></div>
+        <span class="more sound-more">更多声音</span>
+    </div>
+</div><div class="banners daily-news wrapper" id="mod5">
+    <div class="title-box"><h3 class="title">每日新鲜事</h3></div>
+    <div class="clearfix">
+        <div class="main">
+            <div class="hd">记者发现——有趣的都在这里</div>
+            <div class="live"><{data[30]}></div>
+        </div>
+        <div class="aside">
+            <div class="pic-list">
+                <div class="pic-con"><{data[31]}></div>
+            </div>
+            <div class="control"><span class="act"></span></div>
+        </div>
+    </div>
+</div><div class="banners all-news" id="mod6">
+    <div class="wrapper">
+        <div class="title-box"><h3 class="title">全部新闻</h3></div>
+        <div class="clearfix">
+            <div class="main">
+                <div class="news-title">
+                    <{data[32]}>
+                    <span class="arrow"></span>
+                </div>
+                <div class="news-tab">
+                    <div class="news-item news-item1 active">
+                        <div class="news-item-con">
+                            <div class="news-dw news-dw1"><{data[33]}></div>
+                        </div>
+                        <div class="control"><span class="act"></span><span class=""></span></div>
+                    </div>
+                    <div class="news-item news-item2">
+                        <div class="news-item-con">
+                            <div class="news-dw news-dw2"><{data[34]}></div>
+                        </div>
+                        <div class="control"><span class="act"></span><span class=""></span></div>
+                    </div>
+                    <div class="news-item news-item3">
+                        <div class="news-item-con">
+                            <div class="news-dw news-dw3"><{data[35]}></div>
+                        </div>
+                        <div class="control"><span class="act"></span><span class=""></span></div>
+                    </div>
+                    <div class="news-item news-item4">
+                        <div class="news-item-con">
+                            <div class="news-dw news-dw4"><{data[36]}></div>
+                        </div>
+                        <div class="control"><span class="act"></span><span class=""></span></div>
+                    </div>
+                    <div class="news-item news-item5">
+                        <div class="news-item-con">
+                            <div class="news-dw news-dw5"><{data[37]}></div>
+                        </div>
+                        <div class="control"><span class="act"></span><span class=""></span></div>
+                    </div>
+                    <div class="news-item news-item6">
+                        <div class="news-item-con">
+                            <div class="news-dw news-dw6"><{data[38]}></div>
+                        </div>
+                        <div class="control"><span class="act"></span><span class=""></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="aside">
+                <div class="news-info1"><{data[39]}></div>
+                <div class="news-info2"><{data[40]}></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footer"><{data[41]}></div>
+
+
+<script>
+    if(location.href.indexOf("article") == -1){
+        //焦点图
+        var focusLen = $('.focus-inner table img').length-1;
+        $('.focus-box .control span:gt('+focusLen+')').hide();
+        //酷品体验
+        function dotDel(img,span,l){
+            var coolPic = $(img),
+                coolLen = 1;
+            coolPic.each(function(i,ele){
+                if($(ele).attr('src') == 'http://2.zol-img.com.cn/zt/tm_4aa6/5df3f0662/tu.jpg'){
+                    coolLen++;
+                    $(ele).closest('li').remove();
+                }
+            });
+            if(coolLen==(l+1)){
+                $(span).remove();
+            }else{
+                $(span+':gt('+(l-coolLen)+')').remove();
+            }
+        }
+        dotDel('.cool-con table img','.cool-experience .control span',3)
+        dotDel('.sound-con table img','.sound-wrapper .control span',3)
+    }
+
+    //热点必读
+    $('.hot-nav li').bind('mouseover',function(){
+        var n =$('.hot-nav li').index(this);
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.hot-con .item:eq('+ n +')').addClass('active').siblings().removeClass('active');
+        $('.hot-nav .arrow').css('top',n*110+50)
+    });
+
+    //全部新闻
+    var len =$('.news-title .bai18').length;
+    var widthLi = 840/len;
+    $('.news-title .bai18').css('width',widthLi);
+    $('.news-title .bai18').bind('click',function(){
+        var n =$('.news-title .bai18').index(this);
+        $('.news-tab .news-item:eq('+ n +')').addClass('active').siblings().removeClass('active');
+        $('.news-title .arrow').css('left',n*widthLi+(widthLi/2-3));
+        return false;
+    });
+
+
+    fnTab('click','.date-nav span','.video-list .item');
+    //tab切换
+    function fnTab(eventType,obj1,obj2){
+        $(obj1).bind(eventType,function(){
+            var n = $(obj1).index(this);
+            $(this).addClass('active').siblings().removeClass('active');
+            $(obj2+':eq('+ n +')').addClass('active').siblings().removeClass('active');
+        });
+    }
+
+    scrolls1(".focus-inner",".focus-box",1,"","","table img",".focus-nav",680,'auto');
+    scrolls1(".cool-con",".cool-text",1,"","","img",".cool-experience .control",1200);
+    scrolls1(".sound-con",".sound-text",1,"","","img",".sound-wrapper .control",1200);
+
+    fnTab('mouseover','.game-title span','.game-con li');
+    //根据内容来计算圆点数
+    function autoPage(nav,con,box,h,n){
+        $(nav).html('');
+        var dotNum = $(con).length;
+        var pageNum =Math.ceil(dotNum/n);
+        var str = '';
+        for(var i=0; i<pageNum; i++){
+            str += '<span class=""></span>';
+        }
+        $(nav).html(str);
+        $(nav).find('span:first').addClass('act').siblings().removeClass('act');
+
+        $(nav).find('span').bind('mouseover',function(){
+            var n = $(nav).find('span').index(this);
+            $(this).addClass('act').siblings().removeClass('act');
+            $(box).css('top',n*-h);
+        });
+    }
+
+    autoPage('.video-pic-wrapper .control','.video-pic table img','.video-pic-con',520,8);
+    autoPage('.daily-news .control','.daily-news .pic-con table img','.daily-news .pic-con',660,3);
+    autoPage('.news-item1  .control','.news-dw1 table img','.news-dw1',840,6);
+    autoPage('.news-item2  .control','.news-dw2 table img','.news-dw2',840,6);
+    autoPage('.news-item3  .control','.news-dw3 table img','.news-dw3',840,6);
+    autoPage('.news-item4  .control','.news-dw4 table img','.news-dw4',840,6);
+    autoPage('.news-item5  .control','.news-dw5 table img','.news-dw5',840,6);
+    autoPage('.news-item6  .control','.news-dw6 table img','.news-dw6',840,6);
+
+    function scrolls1(div1,div2,num,p,n,tag,snav,width,auto){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var $snav = $(snav);
+        var v_width = width;
+        var len = $v_show.find(tag).length;
+        var page_count = Math.ceil(len/i);
+        var timer;
+        $v_show.css("width",v_width*page_count + "px");
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+                $snav.find("span").eq((page-1)).addClass("act").siblings().removeClass("act");
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+                $snav.find("span").eq((page-1)).addClass("act").siblings().removeClass("act");
+            }
+        });
+
+        $snav.find("span").mouseover(function(){
+            //if(!$v_show.is(":animated")){
+            var _index = $snav.find("span").index($(this));
+            page = _index+1;
+            if(page == 1){
+                $v_show.stop().animate({left:0},"slow");
+            }else{
+                $v_show.stop().animate({left:"-"+v_width*(page-1)},"slow");
+            }
+            $snav.find("span").eq(page-1).addClass("act").siblings().removeClass("act");
+            // }
+        });
+
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+                $snav.find("span").eq((page-1)).addClass("act").siblings().removeClass("act");
+            }
+        }
+
+        if(auto == 'auto'){
+            timer = setInterval(auto_play,5000);
+            $v_content.mouseover(function(){
+                clearInterval(timer)
+            });
+            $v_content.mouseout(function(){
+                timer = setInterval(auto_play,5000);
+            });
+        }
+    }
+
+    //视频列表样式处理
+    var videoLink = $('.video-list .hui16');
+    videoLink.each(function(i,ele){
+        if($(ele).attr('href') && $(ele).attr('href') != 'javascript:;'){
+            $(ele).addClass('haslink');
+        }
+    });
+
+    //更多展开
+    function more(btn,box,n){
+        $(btn).click(function(){
+            var len = $(box+' table img').length;
+            if(len<=n*3) return;
+            $(box).css('height',Math.ceil(len/n)*270-30);
+        })
+    }
+    more('.cool-more','.cool-product',4);
+    more('.sound-more','.sound-info',3);
+
+    //更多声音样式
+    $('.sound-info table table:even').css('background','#E7E7E7');
+    $('.sound-info table table:odd').css('background','#FDFDFD');
+    $('.news-title .bai18:odd').addClass('odd');
+
+
+    $('.cool-con li .hui18 p:nth-child(1),.sound-con li:nth-child(1)').addClass('n1');
+    $('.cool-con li .hui18 p:nth-child(2),.sound-con li:nth-child(2)').addClass('n2');
+    $('.cool-con li .hui18 p:nth-child(3),.sound-con li:nth-child(3)').addClass('n3');
+    $('.fixed-con .nav-box .bai18,.news-title .bai18').attr('target','_self')
+</script>
+</body></html>

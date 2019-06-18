@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title></title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 禁用拨号 -->
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        * {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /*下滑按钮*/
+        .swipe{position:absolute;z-index:10;left:50%;bottom:20px;  width: 60px; height: 32px;   margin-left: -30px;  overflow:hidden;color:rgba(0,0,0,0);background:url(http://2.zol-img.com.cn/zt/tm_599/ffa977ff02/arrow.png) no-repeat;-webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;}
+        .swipe.last{  display: none;  }
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        /*动画*/
+        .float-left,.float-right,.float-up,.float-down,.float-scale,.float-scale2{-webkit-transition:.8s;transition:.8s;opacity:0;}
+        .float-left{-webkit-transform:translate(100px,0);transform:translate(100px,0);}
+        .float-right{-webkit-transform:translate(-100px,0);transform:translate(-100px,0);}
+        .float-up{-webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-down{-webkit-transform:translate(0,-100px);transform:translate(0,-100px);}
+        .float-scale{-webkit-transform:scale(1.2);transform:scale(1.2);}
+        .float-scale2{-webkit-transform:scale(1.6);transform:scale(1.6);}
+        .float-show1{  opacity: 0; -webkit-transform:scale(0.5);transform:translate(0.5); }
+        .float-show2{  opacity: 0; -webkit-transform:rotate(60deg);transform:rotate(60deg); }
+        .current .float-left,.current .float-right,.current .float-up,.current .float-down,.current .float-scale,.current .float-scale2{-webkit-transform:none;transform:none;opacity:1;}
+        .show-fly-down1,.show-fly-down2,.show-fly-down3{  opacity: 0;  -webkit-transform: translate(0px,-20px);  transform: translate(0px,-40px);  }
+        .show-fly-up1,.show-fly-up2,.show-fly-up3{  opacity: 0;  -webkit-transform: translate(0px,20px);  transform: translate(0px,20px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5,.ltr6{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        .bttp1,.bttp2,.bttp3,.bttp4,.bttp5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+
+        @-webkit-keyframes show-hide2 {
+            0%{  opacity: 0; -webkit-transform:rotate(60deg);  }
+            100%{  opacity: 1; -webkit-transform:rotate(0deg);  }
+        }
+        @keyframes show-hide2 {
+            0%{  opacity: 0; transform:rotate(60deg);  }
+            100%{  opacity: 1; transform:rotate(0deg);  }
+        }
+
+
+        @-webkit-keyframes show-fly-down {
+            0%{  -webkit-transform: translate(0px,-20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-down {
+            0%{  transform: translate(0px,-20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0%{  -webkit-transform: translate(0px,20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-up {
+            0%{  transform: translate(0px,20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-down {
+            0%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+            100%{  -webkit-transform: translate(0px,194px);opacity: 1;  }
+        }
+        @keyframes flow-down {
+            0%{  transform: translate(0px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,194px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle1 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(360deg);opacity: 1;  }
+        }
+        @keyframes circle1 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(100deg);opacity: 1;  }
+            66%{  transform: rotate(240deg);opacity: 1;  }
+            100%{  transform: rotate(360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle2 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(-100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(-240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(-360deg);opacity: 1;  }
+        }
+        @keyframes circle2 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(-100deg);opacity: 1;  }
+            66%{  transform: rotate(-240deg);opacity: 1;  }
+            100%{  transform: rotate(-360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-none {
+            0%{  -webkit-transform: scale(1);opacity: 1;  }
+            100%{  -webkit-transform: scale(1.6);opacity: 0;  }
+        }
+        @keyframes flow-none {
+            0%{  transform: scale(1);opacity: 1;  }
+            100%{  transform: scale(1.6);opacity: 0;  }
+        }
+
+        @-webkit-keyframes shake-lr {
+            0%{  -webkit-transform: rotate(0deg);  }
+            25%{  -webkit-transform: rotate(-3deg);  }
+            50%{  -webkit-transform: rotate(0deg);  }
+            75%{  -webkit-transform: rotate(3deg);  }
+            100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr {
+            0%{  transform: rotate(0deg);  }
+            25%{  transform: rotate(-3deg);  }
+            50%{  transform: rotate(0deg);  }
+            75%{  transform: rotate(3deg);  }
+            100%{  transform: rotate(0deg);  }
+        }
+
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            40%{  -webkit-transform: scale(1.1) translate(0px,0px);  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            40%{  transform: scale(1.1) translate(0px,0px);  }
+            100%{  transform: scale(1) translate(0px,0px);  }
+        }
+        @-webkit-keyframes blast3 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(1.05) translate(0px,0px);  }
+            75%{  -webkit-transform: scale(1.05) translate(0px,-5px);  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes blast3 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(1.02) translate(0px,0px);  }
+            75%{  transform: scale(1.02) translate(0px,-2px);  }
+            100%{  transform: scale(1) translate(0px,0px);  }
+        }
+        @-webkit-keyframes blast2 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(0.96) rotate(1deg);  }
+            50%{  -webkit-transform: scale(1) rotate(0deg);  }
+            75%{  -webkit-transform: scale(0.96) rotate(-1deg);  }
+            100%{  -webkit-transform: scale(1) rotate(0deg);  }
+        }
+        @keyframes blast2 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(0.96) rotate(1deg);  }
+            50%{  transform: scale(1) rotate(0deg);  }
+            75%{  transform: scale(0.96) rotate(-1deg);  }
+            100%{  transform: scale(1) rotate(0deg);  }
+        }
+        @-webkit-keyframes blast4 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            50%{  -webkit-transform: scale(1.1) rotate(0deg);  }
+            100%{  -webkit-transform: scale(1) rotate(0deg);  }
+        }
+        @keyframes blast4 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            50%{  transform: scale(1.1) rotate(0deg);  }
+            100%{  transform: scale(1) rotate(0deg);  }
+        }
+
+        @-webkit-keyframes show-dot {
+            0%{  -webkit-transform: scale(1);  }
+            90%{  -webkit-transform: scale(0.9);  }
+            100%{  -webkit-transform: scale(1); }
+        }
+        @keyframes show-dot {
+            0%{  transform: scale(1);  }
+            90%{  transform: scale(0.9);  }
+            100%{  transform: scale(1); }
+        }
+        @-webkit-keyframes move-rtl {
+            0%{  -webkit-transform:translate(0px,0px);  }
+            100%{  -webkit-transform:translate(100px,0px);  }
+        }
+        @keyframes move-rtl {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(100px,0px);  }
+        }
+        @-webkit-keyframes move-ltr {
+            0%{  -webkit-transform:translate(0px,0px);  }
+            100%{  -webkit-transform:translate(-100px,0px);  }
+        }
+        @keyframes move-ltr {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(-100px,0px);  }
+        }
+        @-webkit-keyframes move-ltr2 {
+            0%{  -webkit-transform:translate(0px,0px); opacity: 1;  }
+            100%{  -webkit-transform:translate(-300px,0px); opacity: 1;  }
+        }
+        @keyframes move-ltr2 {
+            0%{  transform: translate(0px,0px); opacity: 1;  }
+            100%{  transform: translate(-300px,0px); opacity: 1;  }
+        }
+        @-webkit-keyframes show-star {
+            0%{  opacity: 1; -webkit-transform: translate(0px,0px);  }
+            70%{  opacity: 0; -webkit-transform: translate(400px,360px); }
+            75%{  opacity: 0; -webkit-transform: translate(0px,0px); }
+            100%{  opacity: 1; -webkit-transform: translate(0px,0px);  }
+        }
+        @keyframes show-star {
+            0%{  opacity: 1; transform: translate(0px,0px);  }
+            70%{  opacity: 0; transform: translate(400px,360px); }
+            75%{  opacity: 0; transform: translate(0px,0px); }
+            100%{  opacity: 1; transform: translate(0px,0px);  }
+        }
+
+        .current .float-show2{  -webkit-animation: show-hide2 0.5s ease-in 0.4s forwards; animation: show-hide2 0.5s ease-in 0.4s forwards;  }
+        .current .show-fly-down1{  -webkit-animation: show-fly-down 0.3s ease-in 0s forwards;  animation: show-fly-down 0.3s ease-in 0s forwards;  }
+        .current .show-fly-down2{  -webkit-animation: show-fly-down 0.3s ease-in 0.2s forwards;  animation: show-fly-down 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-down3{  -webkit-animation: show-fly-down 0.3s ease-in 0.5s forwards;  animation: show-fly-down 0.3s ease-in 0.5s forwards;  }
+        .current .show-fly-up1{  -webkit-animation: show-fly-up 0.3s ease-in 0s forwards;  animation: show-fly-up 0.3s ease-in 0s forwards;  }
+        .current .show-fly-up2{  -webkit-animation: show-fly-up 0.3s ease-in 0.2s forwards;  animation: show-fly-up 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-up3{  -webkit-animation: show-fly-up 0.3s ease-in 0.5s forwards;  animation: show-fly-up 0.3s ease-in 0.5s forwards;  }
+        .current .ltr1{ -webkit-animation: ltr 1s ease-in 0s forwards;  animation: ltr 1s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr 1s ease-in 0.4s forwards;  animation: ltr 1s ease-in 0.4s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr 1s ease-in 0.8s forwards;  animation: ltr 1s ease-in 0.8s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr 1s ease-in 1.2s forwards;  animation: ltr 1s ease-in 1.2s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr 1s ease-in 1.6s forwards; animation: ltr 1s ease-in 1.6s forwards;  }
+        .current .ltr6{ -webkit-animation: ltr 1s ease-in 2s forwards; animation: ltr 1s ease-in 2s forwards;  }
+        .current .ttb1{ -webkit-animation: ttb 1s ease-in 0s forwards;  animation: ttb 1s ease-in 0s forwards;   }
+        .current .ttb2{ -webkit-animation: ttb 1s ease-in 0.4s forwards;  animation: ttb 1s ease-in 0.4s forwards;  }
+        .current .ttb3{ -webkit-animation: ttb 1s ease-in 0.8s forwards;  animation: ttb 1s ease-in 0.8s forwards;  }
+        .current .ttb4{ -webkit-animation: ttb 1s ease-in 1.2s forwards;  animation: ttb 1s ease-in 1.2s forwards;  }
+        .current .ttb5{ -webkit-animation: ttb 1s ease-in 1.6s forwards; animation: ttb 1s ease-in 1.6s forwards;  }
+        .current .btt1{ -webkit-animation: btt 1s ease-in 0s forwards;  animation: btt 1s ease-in 0s forwards;   }
+        .current .btt2{ -webkit-animation: btt 1s ease-in 0.4s forwards;  animation: btt 1s ease-in 0.4s forwards;  }
+        .current .btt3{ -webkit-animation: btt 1s ease-in 0.8s forwards;  animation: btt 1s ease-in 0.8s forwards;  }
+        .current .btt4{ -webkit-animation: btt 1s ease-in 1.2s forwards;  animation: btt 1s ease-in 1.2s forwards;  }
+        .current .btt5{ -webkit-animation: btt 1s ease-in 1.6s forwards; animation: btt 1s ease-in 1.6s forwards;  }
+        .current .rtl1{ -webkit-animation: rtl 1s ease-in 0s forwards;  animation: rtl 1s ease-in 0s forwards;   }
+        .current .rtl2{ -webkit-animation: rtl 1s ease-in 0.4s forwards;  animation: rtl 1s ease-in 0.4s forwards;  }
+        .current .rtl3{ -webkit-animation: rtl 1s ease-in 0.8s forwards;  animation: rtl 1s ease-in 0.8s forwards;  }
+        .current .rtl4{ -webkit-animation: rtl 1s ease-in 1.2s forwards;  animation: rtl 1s ease-in 1.2s forwards;  }
+        .current .rtl5{ -webkit-animation: rtl 1s ease-in 1.6s forwards;  animation: rtl 1s ease-in 1.6s forwards;  }
+        .current .flow-down{ -webkit-animation: flow-down 1.6s ease-in 0.4s infinite;  animation: flow-down 1.6s ease-in 0.4s infinite;  }
+        .current .flow-none{ -webkit-animation: flow-none 1s ease-in 0s forwards;  animation: flow-none 1s ease-in 0s forwards;  }
+        .current .shake-lr{ -webkit-animation: shake-lr 1s linear 0s infinite;  animation: shake-lr 1s linear 0s infinite;  }
+        .current .circle1{ -webkit-animation: circle1 3s linear infinite;  animation: circle1 3s linear infinite;  }
+        .current .circle2{ -webkit-animation: circle2 3s linear infinite;  animation: circle2 3s linear infinite;  }
+        .current .circle3{ -webkit-animation: circle2 10s linear infinite;  animation: circle2 10s linear infinite;  }
+        .current .show-star{ -webkit-animation: show-star 4s ease-out 0s infinite;  animation: show-star 4s ease-out 0s infinite;  }
+        .current .show-star2{ -webkit-animation: show-star 4s ease-out 1.5s infinite;  animation: show-star 4s ease-out 1.5s infinite;  }
+        .current .blast{ -webkit-animation: blast 5s linear infinite;  animation: blast 5s linear infinite;  }
+        .current .blast3{ -webkit-animation: blast3 5s linear infinite;  animation: blast3 5s linear infinite;  }
+        .current .blast4{ -webkit-animation: blast4 5s linear infinite;  animation: blast4 5s linear infinite;  }
+        .current .blast2{ -webkit-animation: blast2 6s linear infinite;  animation: blast2 6s linear infinite;  }
+        .current .move-rtl{ -webkit-animation: move-rtl 10s linear infinite;  animation: move-rtl 10s linear infinite;  }
+        .current .move-ltr{ -webkit-animation: move-ltr 10s linear infinite;  animation: move-ltr 10s linear infinite;  }
+        .current .move-ltr2{ -webkit-animation: move-ltr2 10s linear forwards;  animation: move-ltr2 10s linear forwards;  }
+        .current .show-dot{ -webkit-animation: show-dot 1.4s linear infinite;  animation: show-dot 1.4s linear infinite;  }
+
+
+
+        /*lg_style*/
+        .container{height:1000%;}
+        section{height:10%;overflow:hidden;position:relative;background-size:cover;background-repeat: no-repeat;background-position: top center;background-color: #e5e5e5;  ; }
+        #viewport{width:640px;height:100%;margin:0 auto;overflow:hidden;}
+        #slide1{  background-image: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg1.jpg");  }
+        #slide2{  background-image: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg2.jpg");  }
+        #slide3{  background-image: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg3.jpg");  }
+        #slide4{  background-image: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg4.jpg");  }
+        #slide5{  background-image: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg5.jpg");  }
+        #slide6{  background-image: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg6.jpg");  }
+        #slide7{  background:#fff url(http://2.zol-img.com.cn/zt/tm_599/ff56574a18/bg.jpg) repeat-y center top;;  }
+
+        .p1-logo{ width: 409px;  height: 43px;  margin: 100px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p1_logo.png") no-repeat top center;  }
+        .p1-art{  width: 660px;  height: 289px;  margin: 60px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p1_art.png") no-repeat 0 0;  }
+        .p1-pic{  width: 613px;  height: 231px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p1_pic.png") no-repeat 0 0;  }
+        .p1-air{  width: 640px;  height: 337px;  position: absolute;  bottom: -240px;  left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p1_air.png") no-repeat 0 0; -webkit-transform-origin: center bottom;  transform-origin: center bottom;  }
+        .p2-art{  width: 601px;  height: 76px;  position: absolute;  bottom: 65px;  left: 50%;  margin-left: -300px;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p2_art.png") no-repeat 0 0;  }
+        .p3-art{  width: 553px;  height: 116px;  position: absolute;  bottom: 65px;  left: 50%;  margin-left: -275px;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p3_art.png") no-repeat 0 0;  }
+        .p4-art{  width: 540px;  height: 117px;  position: absolute;  bottom: 65px;  left: 50%;  margin-left: -270px;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p4_art.png") no-repeat 0 0;  }
+        .p5-art{  width: 579px;  height: 157px;  position: absolute;  bottom: 65px;  left: 50%;  margin-left: -290px;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p5_art.png") no-repeat 0 0;  }
+        .p6-art{  width: 572px;  height: 76px;  position: absolute;  bottom: 65px;  left: 50%;  margin-left: -286px;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p6_art.png") no-repeat 0 0;  }
+
+        .p7-box{  display: none;  width: 640px;  height: 1206px;  position: relative;  overflow: hidden;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/bg7.jpg") no-repeat top center;  }
+        .p7-art1{  width: 608px;  height: 124px;  margin: 375px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p7_art1.png") no-repeat 0 0;  }
+        .p7-art2{  width: 528px;  height: 210px;  margin: 205px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_59a/0061593542/p7_art2.png") no-repeat 0 0;  }
+
+        #slide7 .iscroll{ width:100%;  overflow: hidden; height: 100%; position: relative;}
+        #slide7 .iscroll > div{ height:1960px; }
+
+        .postinfo input,#postsubmit,.postinfo dt,.postinfo i,.postinfo b{background:url(http://2.zol-img.com.cn/zt/tm_599/ff56574a18/icon.png) no-repeat;color:rgba(0,0,0,0)}
+
+
+        .postinfo{width:570px;  margin:0 auto;overflow:hidden}
+        .postinfo dt{float:left;width:150px;height:31px;margin:18px 0 18px;}
+        .postinfo dd{float:left;width:420px;height:65px;margin-bottom:18px;}
+        .postinfo .dt1{background-position:0 -17px}
+        .postinfo .dt2{background-position:0 -102px}
+        .postinfo .dt3{background-position:0 -179px}
+        .postinfo .dt4{background-position:0 -267px}
+        .postinfo .dt5{background-position:0 -340px}
+        .postinfo .dt6{background-position:0 -426px}
+        .postinfo .dt7{background-position:0 -515px}
+
+        .postinfo i{display:inline-block;width:18px;height:29px; margin:0 7px 0 1px;}
+        .postinfo b{display:inline-block;width:99px;height:29px; margin:18px 0 0;}
+
+        .postinfo .word1{background-position:-267px -180px}
+        .postinfo .word2{background-position:-402px -180px}
+        .postinfo .word3{background-position:-539px -180px}
+        .postinfo .word6{background-position:-274px -423px}
+        .postinfo .word7{background-position:-428px -423px}
+
+        .postinfo #word4{background-position:-171px -342px; margin:18px 35px 0 15px;}
+        .postinfo #word5{background-position:-305px -301px}
+
+        .postinfo #word4.select{background-position:-171px -302px;}
+        .postinfo #word5.select{background-position:-305px -341px}
+
+        .postinfo input{width:402px;height:63px;border:0; background-position:-156px 0;color:#000;font-size:26px;line-height:63px; padding:0 5px;box-sizing:border-box;}
+        .postinfo #uprovince,.postinfo #ucity,.postinfo #uplace,.postinfo #uroom,.postinfo #uhall,.postinfo #utype{width:111px;background-position:-156px -165px}
+        #postsubmit {  width: 181px;  height: 72px;  margin: 36px auto 0;  background-position: -221px -478px;  }
+
+
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--BGM-->
+<!--<audio id="audio" autoplay loop src="http://icon.zol-img.com.cn/active/m/id6216475.mp3" preload="auto"></audio>
+<div id="btn-music">
+    <p id="off"></p>
+    <p id="on"></p>
+</div>-->
+<!--content-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container" id="container">
+        <section id="slide1">
+            <div class="p1-logo"></div>
+            <div class="p1-art btt1"></div>
+            <div class="p1-pic ttb1"></div>
+            <div class="p1-air blast"></div>
+        </section>
+        <section id="slide2">
+            <div class="p2-art"></div>
+        </section>
+        <section id="slide3">
+            <div class="p3-art"></div>
+        </section>
+        <section id="slide4">
+            <div class="p4-art"></div>
+        </section>
+        <section id="slide5">
+            <div class="p5-art"></div>
+        </section>
+        <section id="slide6">
+            <div class="p6-art"></div>
+        </section>
+        <section id="slide7">
+            <div class="">
+                <div>
+                    <div class="p7-box">
+                        <div class="p7-art1 ltr1"></div>
+                        <div class="p7-art2 rtl1"></div>
+                    </div>
+                    <dl class="postinfo">
+                        <dt class="dt1">姓名</dt><dd><input id="uname" type="text" value=""></dd>
+                        <dt class="dt2">联系电话</dt><dd><input id="utel" type="text" value="" maxlength="11"></dd>
+                        <dt class="dt3">所在城市</dt><dd><input id="uprovince" type="text" value=""><i class="word1">省</i><input id="ucity" type="text" value=""><i class="word2">市</i><input id="uplace" type="text" value=""><i class="word3">区</i></dd>
+                        <dt class="dt4">小区名称</dt><dd><input id="ucommunity" type="text" value=""></dd>
+                        <dt class="dt5">房屋类型</dt><dd><input id="utype" value="" type="hidden"><b id="word4">别墅</b> <b id="word5">公寓</b></dd>
+                        <dt class="dt6">户型</dt><dd><input id="uroom" type="text" value=""><i class="word6">室</i><input id="uhall" type="text" value=""><i class="word7">厅</i></dd>
+                        <dt class="dt7">面积</dt><dd><input id="uarea" type="text" value=""></dd>
+                    </dl>
+                    <div id="postsubmit">提交</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!--slide-->
+<div id="swipe" class="swipe" role="button">向上滑动</div>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<!--<script src="http://icon.zol-img.com.cn/wap/js/iscroll-lite.min.js"></script>-->
+<script charset="gbk">
+
+        /*var iScroll = document.createElement('script'),
+            zMin = document.createElement('script'),
+            zJs = document.createElement('script');
+
+        iScroll.src = 'http://icon.zol-img.com.cn/wap/js/iscroll-lite.min.js';
+        zMin.src = 'http://icon.zol-img.com.cn/wap/js/z.min.js';
+        zJs.src = 'http://icon.zol-img.com.cn/wap/js/z.flipview.js';
+
+        document.body.appendChild(zMin);
+        document.body.appendChild(iScroll );
+        document.body.appendChild(zJs);*/
+
+
+        /*载入loading*/
+        function loading() {
+            var l = document.querySelector('.loading');
+            if (!l) return;
+            l.classList.remove('loading-visible');
+            setTimeout(function () {
+                l.style.display = 'block';
+                l.classList.add('loading-visible');
+            }, 0);
+        }
+        loading.dismiss = function () {
+            var l = document.querySelector('.loading');
+            if (!l) return;
+            l.classList.remove('loading-visible');
+            setTimeout(function () {
+                l.style.display = 'none';
+            }, 300);
+        };
+        window.addEventListener('load', function () {
+            loading.dismiss();
+            viewport.style.pointerEvents = 'all';
+            var i;
+            if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+                i = parseInt(i[1]);
+                viewport.go(i);
+            } else {
+                i = viewport.index;
+            }
+            viewport.querySelector('.container').children[i].classList.add('current');
+        });
+
+        /*滑动*/
+        viewport.addEventListener('changed', function (e) {
+            if (e.target.tagName == 'UL') {
+                return false
+            }
+            var current = this.querySelector('.current');
+            var last = this.index === viewport.querySelectorAll('section').length - 1;
+            current && current.classList.remove('current');
+            e.current && e.current.classList.add('current');
+            swipe.classList[last ? 'add' : 'remove']('last');
+          /*  var list = document.querySelector('.iscroll');*/
+            var cont = document.querySelector('.container');
+
+
+           /* function iScrollClick(){
+                if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) return false;
+                if (/Chrome/i.test(navigator.userAgent)) return (/Android/i.test(navigator.userAgent));
+                if (/Silk/i.test(navigator.userAgent)) return false;
+                if (/Android/i.test(navigator.userAgent)) {
+                    var s=navigator.userAgent.substr(navigator.userAgent.indexOf('Android')+8,3);
+                    return parseFloat(s[0]+s[3]) < 44 ? false : true
+                }
+            }
+
+            var iScrollBrand = new iScroll(list, {
+                //click:true,
+                taps:true,
+                bounce: false,
+                onScrollMove: function (e) {
+
+                    var langH = document.querySelector('#slide7 .iscroll > div').offsetHeight;
+                    var overH = document.querySelector('#slide7 .iscroll').offsetHeight;
+                    //console.log(langH-overH,iScrollBrand.y);
+                    if ((overH - langH) == iScrollBrand.y || iScrollBrand.y == 0) {
+                        cont.denyFlag = 0;
+                        //console.log(0);
+                    } else {
+                        cont.denyFlag = 1;
+                        //console.log(1);
+                    }
+                }
+            });*/
+        })
+        swipe.addEventListener('tap', function () {
+            var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+            viewport[last ? 'previous' : 'next'](1);
+        });
+
+
+        /*wrapper.addEventListener(Event.Touch.move,function(){
+            document.querySelector('input:focus') && document.querySelector('input:focus').blur();
+        });*/
+
+
+        var token_json = 'http://m.zol.com.cn/topic/services/session.php?callback=?';
+        var json = 'http://m.zol.com.cn/topic/services/user.php?callback=?';
+        var utype_ele = document.getElementById('utype');
+        var word4 = document.getElementById('word4');
+        var word5 = document.getElementById('word5');
+
+        document.getElementById('index').className = 'current';
+        word4.addEventListener('click',function(){
+            if(this.className == 'select'){
+                this.className = '';
+                utype_ele.value = '';
+            }else{
+                this.className = 'select';
+                utype_ele.value = '别墅';
+                word5.className = '';
+            }
+        })
+        word5.addEventListener('click',function(){
+            if(this.className == 'select'){
+                this.className = '';
+                utype_ele.value = '';
+            }else{
+                this.className = 'select';
+                utype_ele.value = '公寓';
+                word4.className = '';
+            }
+        })
+
+
+        document.querySelector('#postsubmit').addEventListener('click',function(){
+            var uname = document.querySelector('#uname').value.trim();
+            var utel = document.querySelector('#utel').value.trim();
+            var uprovince = document.querySelector('#uprovince').value.trim();
+            var ucity = document.querySelector('#ucity').value.trim();
+            var uplace = document.querySelector('#uplace').value.trim();
+            var ucommunity = document.querySelector('#ucommunity').value.trim();
+            var utype = document.querySelector('#utype').value.trim();
+            var uroom = document.querySelector('#uroom').value.trim();
+            var uhall = document.querySelector('#uhall').value.trim();
+            var uarea = document.querySelector('#uarea').value.trim();
+
+
+            if(!uname){
+                alert('请输入姓名~');
+                return false;
+            }else if (!utel || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(utel))) {
+                alert('请输入正确的手机号码~');
+                return false;
+            }else if(!uprovince){
+                alert('请输入所在省~');
+                return false;
+            }else if(!ucity){
+                alert('请输入所在市~');
+                return false;
+            }else if(!ucity){
+                alert('请输入所在区~');
+                return false;
+            }else if(!ucommunity){
+                alert('请输入小区名称~');
+                return false;
+            }else if(!utype){
+                alert('请选择房屋类型~');
+                return false;
+            }else if(!uroom){
+                alert('请输入几室~');
+                return false;
+            }else if(!uhall){
+                alert('请输入几厅~');
+                return false;
+            }else if(!uarea){
+                alert('请输入面积~');
+                return false;
+            }else{
+
+                $.getJSON(token_json,{},function(obj){
+                    if(obj.result){
+                        $.getJSON(json,{action:'addUser',type:6531719,token:obj.result,username:uname,tel:utel,ext1:uprovince,ext2:ucity,ext3:uplace,ext4:ucommunity,ext5:utype,ext6:uroom,ext7:uhall,ext8:uarea},function(o){
+                            if(o.result == 1){
+                                alert('信息提交成功,审核通过后会联系您~');
+                                var allinput = document.querySelectorAll('.postinfo input');
+                                var len = allinput.length
+                                for(var i=0; i<len; i++){
+                                    allinput[i].value='';
+                                }
+                            }
+                        })
+                    }
+                })
+
+            }
+        })
+
+
+
+
+
+
+
+    window.wechatShareData = {
+        "title":"激情褪去后，爱情还剩下什么",
+        "icon":"http://2.zol-img.com.cn/zt/tm_599/ff5e8a3cb4/share.jpg",
+        "description":"激情褪去后，爱情还剩下什么"
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body>
+</html>

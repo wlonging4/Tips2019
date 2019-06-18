@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>后台系统</title>
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/cms_admin/css/structured/background.css">
+    <script type="text/javascript">
+        var pro_line_id="57";
+    </script>
+    <style type="text/css">
+       #phone-tags label{  text-align: right;  }
+    </style>
+</head>
+
+<body>
+<div id="features-edit-box" class="modal fade" role="dialog" tabindex="-1"></div>
+<div class="container-fluid">
+    <div class="page-header">
+        <h1>结构化评测文章</h1>
+    </div>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation">
+            <a href="./indexList.php">列表页</a>
+        </li>
+        <li role="presentation" class="active">
+            <a href="javascript:;">产品维护数据</a>
+        </li>
+        <li role="presentation">
+            <a href="./fixedData.php">固定数据</a>
+        </li>
+    </ul>
+
+    <div id="main-tab-content">
+        <hr>
+        <h2>综合性能</h2>
+        <hr>
+        <div class="form-group row" id="phone-tags">
+            <label class="control-label col-xs-2">专业点评(优点)</label>
+            <div class="col-xs-10 form-inline">
+                <div class="form-group">
+                    <span class="btn btn-default phone-features" data-id="41">后置双摄</span>
+                    <span class="btn btn-default phone-features" data-id="40">8GB运存</span>
+                    <span class="btn btn-default phone-features" data-id="11">双摄</span>
+                    <span class="btn btn-default phone-features" data-id="21">支持快充</span>
+                    <span class="btn btn-default phone-features" data-id="20">多色机身</span>
+                    <span class="btn btn-default phone-features" data-id="19">光学防抖</span>
+                    <span class="btn btn-default phone-features" data-id="18">双4G</span>
+                    <span class="btn btn-default phone-features" data-id="17">性能强劲</span>
+                    <span class="btn btn-default phone-features" data-id="16">6GB内存</span>
+                    <span class="btn btn-default phone-features" data-id="14">指纹识别</span>
+                    <span class="btn btn-default phone-features" data-id="13">千元机</span>
+                    <span class="btn btn-default phone-features" data-id="12">超薄机身</span>
+                    <span class="btn btn-default phone-features" data-id="10">双卡双待</span>
+                    <span class="btn btn-default phone-features" data-id="9">2K屏</span>
+                    <span class="btn btn-default phone-features" data-id="8">全网通</span>
+                    <span class="btn btn-default phone-features" data-id="7">HIFI音乐</span>
+                    <span class="btn btn-default phone-features" data-id="6">三防</span>
+                    <span class="btn btn-default phone-features" data-id="5">女性手机</span>
+                    <span class="btn btn-default phone-features" data-id="4">超高屏占比</span>
+                    <span class="btn btn-default phone-features" data-id="3">持久待机</span>
+                    <span class="btn btn-default phone-features" data-id="2">大电池</span>
+                    <span class="btn btn-default phone-features" data-id="1">自拍神器</span>
+                    <span data-toggle="modal" data-target="#features-edit-box" class="btn btn-primary" id="add-tag-btn"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span></span >
+                </div>
+            </div>
+
+            <label class="control-label col-xs-2" style="margin-top: 20px;">专业点评(缺点)</label>
+            <div class="col-xs-10 form-inline" style="margin-top: 20px;">
+                <div class="form-group">
+                    <span class="btn btn-default phone-features" data-id="41">后置双摄</span>
+                    <span class="btn btn-default phone-features" data-id="40">8GB运存</span>
+                    <span class="btn btn-default phone-features" data-id="11">双摄</span>
+                    <span class="btn btn-default phone-features" data-id="21">支持快充</span>
+                    <span class="btn btn-default phone-features" data-id="20">多色机身</span>
+                    <span class="btn btn-default phone-features" data-id="19">光学防抖</span>
+                    <span class="btn btn-default phone-features" data-id="18">双4G</span>
+                    <span class="btn btn-default phone-features" data-id="17">性能强劲</span>
+                    <span class="btn btn-default phone-features" data-id="16">6GB内存</span>
+                    <span class="btn btn-default phone-features" data-id="14">指纹识别</span>
+                    <span class="btn btn-default phone-features" data-id="13">千元机</span>
+                    <span class="btn btn-default phone-features" data-id="12">超薄机身</span>
+                    <span class="btn btn-default phone-features" data-id="10">双卡双待</span>
+                    <span class="btn btn-default phone-features" data-id="9">2K屏</span>
+                    <span class="btn btn-default phone-features" data-id="8">全网通</span>
+                    <span class="btn btn-default phone-features" data-id="7">HIFI音乐</span>
+                    <span class="btn btn-default phone-features" data-id="6">三防</span>
+                    <span class="btn btn-default phone-features" data-id="5">女性手机</span>
+                    <span class="btn btn-default phone-features" data-id="4">超高屏占比</span>
+                    <span class="btn btn-default phone-features" data-id="3">持久待机</span>
+                    <span class="btn btn-default phone-features" data-id="2">大电池</span>
+                    <span class="btn btn-default phone-features" data-id="1">自拍神器</span>
+                    <span data-toggle="modal" data-target="#features-edit-box" class="btn btn-primary" id="add-tag-btn2"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span></span >
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <h2>性能评估</h2>
+    <hr>
+    <table id="gameList" class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>产品型号</th>
+            <th>CINEBENCH R15跑分得分</th>
+            <th>3DMAEK FireStrike EX跑分</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-id="24">
+            <td>地铁跑酷</td>
+            <td>40000</td>
+            <td>20000</td>
+            <td>
+                <div class="form-inline">
+                    <button type="button" class="btn btn-primary btn-sm edit">修改</button>
+                    <button type="button" class="btn btn-danger btn-sm del">删除</button>
+                </div>
+            </td>
+        </tr>
+        <tr data-id="23">
+            <td>NBA2K17</td>
+            <td>90000</td>
+            <td>90000</td>
+            <td>
+                <div class="form-inline">
+                    <button type="button" class="btn btn-primary btn-sm edit">修改</button>
+                    <button type="button" class="btn btn-danger btn-sm del">删除</button>
+                </div>
+            </td>
+        </tr>
+        <tr data-id="22">
+            <td>王者荣耀</td>
+            <td>60000</td>
+            <td>60000</td>
+            <td>
+                <div class="form-inline">
+                    <button type="button" class="btn btn-primary btn-sm edit">修改</button>
+                    <button type="button" class="btn btn-danger btn-sm del">删除</button>
+                </div>
+            </td>
+        </tr>
+        <tr data-id="22">
+            <td>测试的地</td>
+            <td>60000</td>
+            <td>60000</td>
+            <td>
+                <div class="form-inline">
+                    <button type="button" class="btn btn-primary btn-sm edit">修改</button>
+                    <button type="button" class="btn btn-danger btn-sm del">删除</button>
+                </div>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+    <form id="gameForm">
+        <div class="form-group row">
+            <label class="control-label col-xs-2">产品型号</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" placeholder="产品型号" name="gameName" title="产品型号">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-xs-3">CINEBENCH R15跑分得分</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" placeholder="CINEBENCH R15跑分得分" name="runDemand" title="CINEBENCH R15跑分得分">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-xs-3">3DMAEK FireStrike EX跑分</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" placeholder="3DMAEK FireStrike EX跑分" name="runDemand" title="3DMAEK FireStrike EX跑分">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-xs-3"></label>
+            <div class="col-xs-9">
+                <input type="submit" class="btn btn-primary btn-lg" value="提交">
+            </div>
+        </div>
+    </form>
+</div>
+
+</div>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/admin/js/lib/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/admin/js/lib/bootstrap/3.3.0/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/admin/app5.0-subject/js/cropper.js"></script>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/admin/js/m/pingcejiiegouhua/productMaintain.1.0.js"></script>
+</body>
+</html>

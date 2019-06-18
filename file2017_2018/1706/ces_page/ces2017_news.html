@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>ces2017 新闻页</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #1796D4; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 800px;  background: #000;  margin: 0 auto; overflow: hidden;  }
+        .zol_foot{  height: 150px;  padding-top: 90px; background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 693px; overflow: hidden;  position: relative;    }
+
+        .navigator{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_nav.jpg") repeat-x top center;  }
+        .nav{  height: 88px;  }
+        .nav li{  float: left;  width: 200px;  height: 80px;  }
+        .nav li a{  display: block;  width: 200px;  height: 80px;  }
+        .nav-li1{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav1.jpg") no-repeat 0 0;  }
+        .nav-li2{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav1.jpg") no-repeat -200px 0;  }
+        .nav-li3{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav1.jpg") no-repeat -400px 0;  }
+        .nav-li4{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav1.jpg") no-repeat -600px 0;  }
+        .nav-li5{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav1.jpg") no-repeat -800px 0;  }
+        .nav-li6{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav1.jpg") no-repeat -1000px 0;  }
+        .nav-li1.act{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav2.jpg") no-repeat 0 0;  }
+        .nav-li2.act{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav2.jpg") no-repeat -200px 0;  }
+        .nav-li3.act{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav2.jpg") no-repeat -400px 0;  }
+        .nav-li4.act{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav2.jpg") no-repeat -600px 0;  }
+        .nav-li5.act{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav2.jpg") no-repeat -800px 0;  }
+        .nav-li6.act{  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/nav2.jpg") no-repeat -1000px 0;  }
+
+        .news{  margin: 0 auto 30px;  }
+        .news-t{  margin: 55px 0  20px 0;  width: 820px;  height: 54px;  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_t_news.png") no-repeat 0 0;  }
+        .news-ul{  width: 820px;  height: 42px;  overflow: hidden;  margin-bottom: 20px;  }
+        .news-ul li{  width: 164px;  height: 42px;  float: left;  cursor: pointer;  color: #fff;  background: url("http://2.zol-img.com.cn/zt/tm_593/0fc80d5547/lg_news_btns.png") no-repeat 0 0;  }
+        .news-ul li.even{  background: url("http://2.zol-img.com.cn/zt/tm_593/0fc80d5547/lg_news_btns.png") no-repeat -164px 0;  }
+        .news-ul li.last{  background: url("http://2.zol-img.com.cn/zt/tm_593/0fc80d5547/lg_news_btns.png") no-repeat -328px 0;  }
+        .news-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/0fc80d5547/lg_news_btns.png") no-repeat 0 -42px;  }
+        .news-ul li.even.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/0fc80d5547/lg_news_btns.png") no-repeat -164px -42px;  }
+        .news-ul li.last.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/0fc80d5547/lg_news_btns.png") no-repeat -328px -42px;  }
+        .news-box{  width: 820px;  min-height: 1400px;  overflow: hidden;  }
+        .news-mod{  display: none;  width: 820px;  min-height: 1400px;  overflow: hidden;  }
+        .news-mod.blk{  display: block;  }
+        .news-more{  margin: 15px 0 10px 300px;  }
+        .news-side{  width: 330px;  height: 620px;  position: absolute;  right: 0;  top: 49px;  }
+        .news-side .ln{  height: 15px;  }
+        .news-ul li .bai20{  display: block;  font: 20px/36px 'Hiragino sans GB','microsoft yahei';  }
+        .news-ul li .bai20:hover{  text-decoration: none; color: #fff;  }
+        .news-mod table img{  padding: 10px 25px 10px 10px;  }
+        .news-mod .lan20{  color: #45BC96;  display: block;  font: 21px/50px 'Hiragino sans GB','microsoft yahei';  }
+        .news-mod .hui12{      color: #868686;  padding-right: 20px;  display: block;  position: relative;  margin-bottom: 20px;  font: 12px/21px 'simsun';  }
+        .news-mod .hui12 em{  position: absolute;  top: 50px;  display: block; /* background: #000; */  left: 0;  }
+        .news-mod #bdshare,.news-mod .comment{  display: none!important;  }
+        .news-s1{  width: 330px;  height: 540px;  margin-bottom: 35px;  background: #000;  }
+        .news-s2{  width: 330px;  height: 400px; background: #000;  }
+
+        .more{  width: 220px;  height: 40px;  overflow: hidden;  cursor: pointer;  margin: 15px auto 45px;  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_show_more.png") no-repeat 0 0;  }
+        .more-btn{  width: 16px;  height: 14px;  margin: 15px 0 0 155px;  background: url("http://2.zol-img.com.cn/zt/tm_592/fba8f90cca/lg_show_more_btn.png") no-repeat 0 0;  }
+        .news-more{  margin: 15px 0 10px 300px;  }
+
+        @-webkit-keyframes btnMove {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-5px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes btnMove {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(0px,-5px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .btnMove1{  -webkit-animation: btnMove 1s ease-in 0.1s infinite; animation: btnMove 1s ease-in 0.1s infinite; -webkit-transform-origin: bottom center;  transform-origin: bottom center;  }
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"><{data[0]}></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<div class="wrap1 navigator">
+    <ul class="wrapper1 nav clearfix">
+        <li class="nav-li1"><a href="#" target="_self"></a></li>
+        <li class="nav-li2"><a href="#" target="_self"></a></li>
+        <li class="nav-li3"><a href="#" target="_self"></a></li>
+        <li class="nav-li4"><a href="#" target="_self"></a></li>
+        <li class="nav-li5"><a href="#" target="_self"></a></li>
+        <li class="nav-li6 act"><a href="#" target="_self"></a></li>
+    </ul>
+</div>
+<!--新闻-->
+<div id="news" class="wrap1">
+    <div class="wrapper1 news">
+        <div class="news-t"></div>
+        <div class="news-side">
+            <div class="news-s1"><{data[1]}></div>
+            <div class="news-s2"><{data[2]}></div>
+        </div>
+        <ul class="news-ul">
+            <li class="act"><{data[3]}></li>
+            <li class="even"><{data[4]}></li>
+            <li class=""><{data[5]}></li>
+            <li class="even"><{data[6]}></li>
+            <li class="last"><{data[7]}></li>
+        </ul>
+        <div class="news-box">
+            <div class="news-mod blk"><{data[8]}></div>
+            <div class="news-mod"><{data[9]}></div>
+            <div class="news-mod"><{data[10]}></div>
+            <div class="news-mod"><{data[11]}></div>
+            <div class="news-mod"><{data[12]}></div>
+        </div>
+        <div class="more news-more">
+            <div class="more-btn btnMove1"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script charset="gbk">
+    /*导航*/
+    $('.nav li').bind('mouseenter',function () {
+        $(this).addClass('act').siblings().removeClass('act');
+    });
+
+    /*新闻下拉*/
+    var news_more=$('.news-more');
+    var news_lens=[];
+    var news_mods=$('.news-mod');
+    var news_mod_now=0;
+    for(var j=0;j<5;j++){
+        news_lens[j]=news_mods.eq(j).find('table img').length;
+    }
+    console.log(news_lens);
+    if(news_lens[0]<11){
+        news_more.hide();
+        news_mods.css({'height':news_lens[0]*140+'px'})
+    }else{
+        news_more.show();
+        news_mods.css({'height':1400+'px'})
+    }
+    $('.news-ul li').bind('mouseover',function(){
+        var n =$('.news-ul li').index(this);
+        news_mod_now=n;
+        $(this).addClass('act').siblings().removeClass('act');
+        $('.news-mod').eq(n).addClass('blk').siblings().removeClass('blk');
+        if(news_lens[n]<7){
+            news_more.hide();
+            news_mods.css({'height':news_lens[n]*140+'px'})
+        }else{
+            news_more.show();
+            news_mods.css({'height':1400+'px'})
+        }
+    });
+    news_more.bind('click',function () {
+        news_mods.eq(news_mod_now).stop().animate({'height':news_lens[news_mod_now]*140+'px'});
+        news_more.hide();
+    });
+
+    /*新闻*/
+    var new_tables=news_mods.find('table table');
+    for(var q=0; q<new_tables.length; q++){
+        if(q%2==0){
+            new_tables.eq(q).css({'background':'#f5f5f5'})
+        }
+    }
+
+</script>
+
+</body>
+</html>

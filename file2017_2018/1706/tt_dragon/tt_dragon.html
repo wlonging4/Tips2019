@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>Tt best Medder 七城寻龙记</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#111; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #fde020; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px;  margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 800px;  background: #000;  margin: 0 auto; overflow: hidden;  }
+        .zol_foot{  height: 110px;  padding-top: 70px; background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .bar1{  width: 100%;  height: 4px;  background: #F651F5;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 726px;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_head_c.jpg") no-repeat 0 0;  }
+        .head-dragon{  width: 1860px;  height: 750px;  position: absolute;  top: -60px;  left: -320px; background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_head_dragon.png") no-repeat 0 0;  }
+
+        .vdBg{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_video.jpg") no-repeat top center;  }
+        .vd{  height: 760px;  }
+        .vd-mod{  width: 1085px;  height: 592px;  margin: 83px 0 0 59px;  background: #000;  }
+
+        .ballBg{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_ball.jpg") no-repeat top center;  position: relative;  }
+        .ball{  height: 781px;  }
+        .ball-a{  position: absolute;  width: 60px;  height: 35px;  color: #939393;  text-align: center;  font: 22px/35px 'Hiragino sans GB','microsoft yahei';  }
+        .ball-a1{  top: 165px;  left: 485px;  }
+        .ball-a2{  top: 700px;  left: 610px;  }
+        .ball-a3{  top: 130px;  left: 765px;  }
+        .ball-a4{  top: 380px;  left: 945px;  }
+        .ball-a5{  top: 400px;  left: 460px;  }
+        .ball-a6{  top: 245px;  left: 330px;  }
+        .ball-a7{  top: 555px;  left: 290px;  }
+        .ball-a.act{  color: #f36f1e;  }
+        .ball-b{  position: absolute;  width: 80px;  height: 110px; cursor: pointer;  }
+        .ball-b1{  top: 245px; left: 610px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball12.png") no-repeat top center;  }
+        .ball-b2{  top: 590px; left: 600px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball21.png") no-repeat top center;  }
+        .ball-b3{  top: 215px; left: 835px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball31.png") no-repeat top center;  }
+        .ball-b4{  top: 415px; left: 790px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball41.png") no-repeat top center;  }
+        .ball-b5{  top: 450px; left: 450px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball51.png") no-repeat top center;  }
+        .ball-b6{  top: 290px; left: 320px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball61.png") no-repeat top center;  }
+        .ball-b7{  top: 445px; left: 160px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball71.png") no-repeat top center;  }
+        .ball-b1.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball12.png") no-repeat top center;  }
+        .ball-b2.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball22.png") no-repeat top center;  }
+        .ball-b3.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball32.png") no-repeat top center;  }
+        .ball-b4.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball42.png") no-repeat top center;  }
+        .ball-b5.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball52.png") no-repeat top center;  }
+        .ball-b6.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball62.png") no-repeat top center;  }
+        .ball-b7.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/ball72.png") no-repeat top center;  }
+        @-webkit-keyframes xq {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            85%{  -webkit-transform: translate(0px,0px) scale(0.95);opacity: 1;  }
+            91%{  -webkit-transform: translate(0px,-6px) scale(1);opacity: 1;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes xq {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            95%{  transform: translate(0px,0px) scale(0.95);opacity: 1;  }
+            91%{  transform: translate(0px,-6px) scale(1);opacity: 1;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        .xq1{ -webkit-animation: xq 1.2s ease-in-out 0s infinite;  animation: xq 1.2s ease-in-out 0s infinite;  }
+        .ball-bg{  display: none;  position: absolute;  top: 0;  width: 100%;  height: 781px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_ball_bg.png") repeat 0 0;  }
+        .ball-bg-box{  width: 1000px;  height: 781px;  overflow: hidden;  margin: 0 auto 0;  position: relative;  }
+        .ball-bottom{  width: 725px;  height: 402px;  position: absolute;  top: 470px;  left: 180px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_ball_bottom.png") no-repeat 0 0;  }
+        .ball-dragon{  width: 408px;  height: 662px;  position: absolute;  top: -50px;  left: 335px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_ball_dragon.png") no-repeat 0 0;  }
+        .ball-btn{  display: none;  width: 134px;  height: 62px;  position: absolute; cursor: pointer;  top: 620px;  left: 720px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_ball_btn.png") no-repeat 0 0;  }
+
+        .city1Bg{  background: url("http://2.zol-img.com.cn/zt/tm_5a0/1212cef009/lg_city1.jpg") no-repeat top center;  position: relative;  }
+        .city1{  height: 601px;  }
+        .city1-ul{  width: 960px;  height: 53px;  overflow: hidden;  margin: 49px 0 0 24px;  }
+        .city1-ul li{  height: 53px;  margin-left: -4px;  float: left;  cursor: pointer;  color: #939393;  text-align: center;  font: 22px/52px 'Hiragino sans GB','microsoft yahei';  margin-right: 0;  }
+        .city1-ul li{  width: 134px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city121.png") no-repeat 0 0;  }
+        .city1-ul li.act{  width: 134px;  color: #111;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city122.png") no-repeat 0 0;  }
+        .city1-ul li.first{  width: 149px;  margin-left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city111.png") no-repeat 0 0;  }
+        .city1-ul li.first.act{  width: 149px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city112.png") no-repeat 0 0;  }
+        .city1-box{  width: 1200px;  height: 415px;  overflow: hidden;  }
+        .city1-mod{  display: none;  width: 1200px;  height: 415px;  position: relative;  }
+        .city1-mod.blk{  display: block;  }
+        .city1-m1{  position: absolute;  width: 245px;  height: 335px;  top: 46px;  left: 54px;  }
+        .city1-m1 table img{  border-radius: 50%; -webkit-border-radius: 50%;  }
+        .city1-m2{  position: absolute;  width: 200px;  height: 335px;  top: 69px;  left: 447px;  }
+        .city1-m4{  position: absolute;  width: 290px;  height: 50px;  top: 352px;  left: 805px;  }
+        .city1-btn{  position: absolute;  width: 76px;  height: 76px;  top: 185px;  cursor: pointer;  }
+        .city1-btn1{  left: 362px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_city1_btns.png") no-repeat 0 0;  }
+        .city1-btn2{  right: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_city1_btns.png") no-repeat -76px 0;  }
+        .city1-m3-box{  position: absolute;  width: 430px;  height: 285px;  top: 69px;  left: 664px; overflow: hidden;  }
+        .city1-m3-mod{  position: absolute;  top: 0;  left: 0;  }
+        .city1-m1 .hui20{  display: block;  color: #939393;  padding-top: 45px;  font:bold 19px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .city1-m2 .hui18{  display: block;  color: #b7b7b7;  padding-left: 95px;  padding-top: 12px; font: 18px/30px 'Hiragino sans GB','microsoft yahei';  }
+        .city1-m4 .hui18{  display: block;  color: #b7b7b7;  padding-top: 12px; font: 18px/30px 'Hiragino sans GB','microsoft yahei';  }
+
+        .city2Bg{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_city2.jpg") no-repeat top center;  }
+        .city2{  height: 990px;  }
+        .city2-box{  position: absolute;  width: 657px;  height: 433px; overflow: hidden;  top: 255px;  left: 456px;  }
+        .city2-mod{  position: absolute;  height: 433px;  top: 0;  left: 0;  }
+        .city2-ul{  width: 350px;  height: 635px;  position: absolute;  top: 156px;  left: 35px;  }
+        .city2-ul li{  position: absolute;  left: 0;  width: 354px; cursor: pointer;  }
+        .city2-ul .li1{  height: 181px;  top: 0;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city211.png") no-repeat 0 0;  }
+        .city2-ul .li2{  height: 143px;  top: 90px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city221.png") no-repeat 0 0;  }
+        .city2-ul .li3{  height: 102px;  top: 180px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city231.png") no-repeat 0 0;  }
+        .city2-ul .li4{  height: 88px;  top: 270px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city241.png") no-repeat 0 0;  }
+        .city2-ul .li5{  height: 107px;  top: 345px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city251.png") no-repeat 0 0;  }
+        .city2-ul .li6{  height: 146px;  top: 398px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city261.png") no-repeat 0 0;  }
+        .city2-ul .li7{  height: 185px;  top: 450px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city271.png") no-repeat 0 0;  }
+        .city2-ul .li1.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city212.png") no-repeat 0 0;  }
+        .city2-ul .li2.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city222.png") no-repeat 0 0;  }
+        .city2-ul .li3.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city232.png") no-repeat 0 0;  }
+        .city2-ul .li4.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city242.png") no-repeat 0 0;  }
+        .city2-ul .li5.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city252.png") no-repeat 0 0;  }
+        .city2-ul .li6.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city262.png") no-repeat 0 0;  }
+        .city2-ul .li7.act{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/city272.png") no-repeat 0 0;  }
+
+        .pic1Bg{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_pic1.jpg") no-repeat top center;  }
+        .pic1{  height: 491px;  }
+        .pic1-mod{  height: 280px;  margin: 140px auto 0;  }
+        .pic1-mod table img{  border: 1px solid #111;  }
+        .pic1-mod #m107-661080 .prev661080{  width: 76px; top: 40%;  height: 76px;  left: -78px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_pic1_btns.png") no-repeat 0 0;  }
+        .pic1-mod #m107-661080 .next661080{  width: 76px; top: 40%;  height: 76px;  left: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_pic1_btns.png") no-repeat -76px 0;  }
+
+
+        .pic2Bg{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_pic2.jpg") no-repeat top center;  }
+        .pic2{  height: 909px;  }
+        .pic2-mod{  height: 580px;  margin: 230px auto 0;  }
+        .pic2-mod table img{  border: 2px solid #fd711b;  }
+        .pic2-mod #m107-661081 .prev661081{  left: -85px;  width: 88px;  height: 88px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_pic2_btns.png") no-repeat 0 0;  }
+        .pic2-mod #m107-661081 .next661081{  left: 1000px;  width: 88px;  height: 88px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_pic2_btns.png") no-repeat -88px 0;  }
+
+        .moreBg{  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_more.jpg") no-repeat top center;  }
+        .more{  height: 425px;  }
+        .more1{  width: 680px;  height: 190px;  margin-top: 170px;  }
+        .more2{  width: 445px;  height: 165px;  position: absolute;  top: 175px;  right: 20px;  }
+        .more2 .hui12{  display: block;  padding-left: 22px; font: 14px/28px 'simsun';  color: #e2e2e2;  }
+        .more1 .hui12bi{  display: block;  font: 14px/30px 'simsun';  color: #e2e2e2;  }
+        .more2 .hong12{  font-size: 14px;  }
+
+        .brandBg{  height: 895px;  background: url("http://2.zol-img.com.cn/zt/tm_593/a401a15575/lg_brand.jpg") no-repeat top center;  }
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" border="0" class="head" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                <div class="head-dragon"></div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--视频-->
+<div class="wrap1 vdBg banners">
+    <div class="wrapper1 vd">
+        <div class="vd-mod"><{data[0]}></div>
+    </div>
+</div>
+<!--龙珠-->
+<div class="wrap1 ballBg banners">
+    <div class="wrapper1 ball">
+        <div class="ball-a ball-a1 act">北京</div>
+        <div class="ball-a ball-a2">深圳</div>
+        <div class="ball-a ball-a3">大连</div>
+        <div class="ball-a ball-a4">上海</div>
+        <div class="ball-a ball-a5">武汉</div>
+        <div class="ball-a ball-a6">西安</div>
+        <div class="ball-a ball-a7">成都</div>
+        <div class="ball-b ball-b1 xq1 act"></div>
+        <div class="ball-b ball-b2"></div>
+        <div class="ball-b ball-b3"></div>
+        <div class="ball-b ball-b4"></div>
+        <div class="ball-b ball-b5"></div>
+        <div class="ball-b ball-b6"></div>
+        <div class="ball-b ball-b7"></div>
+    </div>
+    <div class="ball-bg">
+        <div class="ball-bg-box">
+            <div class="ball-bottom"></div>
+            <div class="ball-dragon"></div>
+            <div class="ball-btn"></div>
+        </div>
+    </div>
+</div>
+<!--城市1-->
+<div class="wrap1 city1Bg banners">
+    <div class="wrapper1 city1">
+        <ul class="city1-ul">
+            <li class="first act">北京</li>
+            <li class="">深圳</li>
+            <li class="">大连</li>
+            <li class="">上海</li>
+            <li class="">武汉</li>
+            <li class="">西安</li>
+            <li class="">成都</li>
+        </ul>
+        <a target="_blank" href="http://zol.iqiyi.com.cn/video189259.html" style="display:block;background:transparent;width:220px;height:52px;position:absolute;top: 50px;right:22px;" class="city1-link"></a>
+        <div class="city1-box">
+            <div class="city1-mod city1-mod1 blk">
+                <div class="city1-m1"><{data[1]}></div>
+                <div class="city1-m2"><{data[2]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[3]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[4]}></div>
+            </div>
+            <div class="city1-mod city1-mod2">
+                <div class="city1-m1"><{data[5]}></div>
+                <div class="city1-m2"><{data[6]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[7]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[8]}></div>
+            </div>
+            <div class="city1-mod city1-mod3">
+                <div class="city1-m1"><{data[9]}></div>
+                <div class="city1-m2"><{data[10]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[11]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[12]}></div>
+            </div>
+            <div class="city1-mod city1-mod4">
+                <div class="city1-m1"><{data[13]}></div>
+                <div class="city1-m2"><{data[14]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[15]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[16]}></div>
+            </div>
+            <div class="city1-mod city1-mod5">
+                <div class="city1-m1"><{data[17]}></div>
+                <div class="city1-m2"><{data[18]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[19]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[20]}></div>
+            </div>
+            <div class="city1-mod city1-mod6">
+                <div class="city1-m1"><{data[21]}></div>
+                <div class="city1-m2"><{data[22]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[23]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[24]}></div>
+            </div>
+            <div class="city1-mod city1-mod7">
+                <div class="city1-m1"><{data[25]}></div>
+                <div class="city1-m2"><{data[26]}></div>
+                <div class="city1-m3-box">
+                    <div class="city1-m3-mod"><{data[27]}></div>
+                </div>
+                <div class="city1-btn city1-btn1"></div>
+                <div class="city1-btn city1-btn2"></div>
+                <div class="city1-m4"><{data[28]}></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--城市2-->
+<div class="wrap1 city2Bg banners">
+    <div class="wrapper1 city2">
+        <ul class="city2-ul">
+            <li class="li1 act"></li>
+            <li class="li2"></li>
+            <li class="li3"></li>
+            <li class="li4"></li>
+            <li class="li5"></li>
+            <li class="li6"></li>
+            <li class="li7"></li>
+        </ul>
+        <div class="city2-box">
+            <div class="city2-mod"><{data[29]}></div>
+        </div>
+    </div>
+</div>
+<!--图片1-->
+<div class="wrap1 pic1Bg banners">
+    <div class="wrapper1 pic1">
+        <div class="pic1-mod"><{data[30]}></div>
+    </div>
+</div>
+<!--图片2-->
+<div class="wrap1 pic2Bg banners">
+    <div class="wrapper1 pic2">
+        <div class="pic2-mod"><{data[31]}></div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 moreBg banners">
+    <div class="wrapper1 more">
+        <div class="more1"><{data[32]}></div>
+        <div class="more2"><{data[33]}></div>
+    </div>
+</div>
+<!--合作-->
+<div class="wrap1 brandBg banners">
+    <div class="wrapper1 brand"></div>
+</div>
+
+
+<script charset="gbk">
+    /*龙珠*/
+    var b_as=$('.ball-a'),b_bs=$('.ball-b');
+    var b_btn=$('.ball-btn'),b_dragon=$('.ball-dragon'),b_bottom=$('.ball-bottom'),b_box=$('.ball-bg');
+    var city1_mod=$('.city1-mod'),city1_lis=$('.city1-ul li');
+
+    b_bs.bind('mouseenter',function () {
+        var nowInd=b_bs.index(this);
+        $(this).addClass('xq1 act');
+        b_as.eq(nowInd).addClass('act');
+        ballSw(nowInd);
+        if($('.ball-b.act').length==7){
+            console.log('a');
+            b_box.show();
+            b_bottom.stop().animate({'top':'370px'},500);
+            b_btn.stop().animate({'top':'520px'},500);
+            b_dragon.stop().animate({'top':'75px'},600);
+        }
+    });
+    city1_lis.bind('mouseenter',function () {
+        var nowI=city1_lis.index(this);
+        ballSw(nowI)
+    });
+    function ballSw(i) {
+        city1_lis.eq(i).addClass('act').siblings().removeClass('act');
+        city1_mod.eq(i).addClass('blk').siblings().removeClass('blk');
+    }
+
+    /*城市2*/
+    var city2_lis=$('.city2-ul li'),city2_mod=$('.city2-mod');
+    city2_lis.bind('mouseenter',function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        var nowI=city2_lis.index(this);
+        city2_mod.stop().animate({'left':'-'+nowI*657+'px'});
+    });
+
+    /*左右切换*/
+    ~function () {
+        function scrolls(div1,div2,num,p,n){
+            var page = 1;
+            var i = num;
+            var $v_show = $(div1);
+            var $v_content = $(div2);
+            var v_width = $v_content.width();
+            var len = $v_show.find("img").length;
+            var page_count = Math.ceil(len/i);
+            $v_show.css("width",v_width*page_count + "px");
+
+            $v_show.css("left","0px");
+            $(n).click(function(){
+                if(!$v_show.is(":animated")){
+                    if(page == page_count){
+                        $v_show.animate({left:"0px"},"slow");
+                        page = 1;
+                    }else{
+                        $v_show.animate({left:"-="+v_width},"slow");
+                        page++;
+                    }
+                }
+            });
+            $(p).click(function(){
+                if(!$v_show.is(":animated")){
+                    if(page == 1){
+                        $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                        page = page_count;
+                    }else{
+                        $v_show.animate({left:"+="+v_width},"slow");
+                        page--;
+                    }
+                }
+            });
+            function auto_play()
+            {
+                if(!$v_show.is(":animated")){
+                    if(page == page_count){
+                        $v_show.animate({left:"0px"},"slow");
+                        page = 1;
+                    }else{
+                        $v_show.animate({left:"-="+v_width},"slow");
+                        page++;
+                    }
+                }
+            }
+            //setInterval(auto_play,5000);
+        }
+        scrolls(".city1-mod1 .city1-m3-mod",".city1-mod1 .city1-m3-box",1,".city1-mod1 .city1-btn1",".city1-mod1 .city1-btn2");
+        scrolls(".city1-mod2 .city1-m3-mod",".city1-mod2 .city1-m3-box",1,".city1-mod2 .city1-btn1",".city1-mod2 .city1-btn2");
+        scrolls(".city1-mod3 .city1-m3-mod",".city1-mod3 .city1-m3-box",1,".city1-mod3 .city1-btn1",".city1-mod3 .city1-btn2");
+        scrolls(".city1-mod4 .city1-m3-mod",".city1-mod4 .city1-m3-box",1,".city1-mod4 .city1-btn1",".city1-mod4 .city1-btn2");
+        scrolls(".city1-mod5 .city1-m3-mod",".city1-mod5 .city1-m3-box",1,".city1-mod5 .city1-btn1",".city1-mod5 .city1-btn2");
+        scrolls(".city1-mod6 .city1-m3-mod",".city1-mod6 .city1-m3-box",1,".city1-mod6 .city1-btn1",".city1-mod6 .city1-btn2");
+        scrolls(".city1-mod7 .city1-m3-mod",".city1-mod7 .city1-m3-box",1,".city1-mod7 .city1-btn1",".city1-mod7 .city1-btn2");
+    }();
+
+
+    /*头部动动*/
+    var index_div_pro = [{
+        sx: -20,
+        sy: 5,
+        mw: 3,
+        mh: 1,
+        bx: 8.4,
+        by: 10.4,
+        rx: -0.4
+    },
+        {
+            sx: 0,
+            sy: 155,
+            mw: 3,
+            mh: 0.5,
+            bx: 6.4,
+            by: 8.4,
+            rx: -0.1
+        }];
+
+    var ePageX = null;
+    var ePageY = null;
+
+    function getMousePos(expression) {
+        if (ePageX == null || ePageY == null) return null;
+        var _x = $(expression).position().left;
+        _x += ePageX - $(expression).parent().position().left;
+        var _y = $(expression).position().top;
+        _y += ePageY - $(expression).parent().position().top;
+        return {
+            x: _x,
+            y: _y
+        }
+    };
+
+    var index_xh = setInterval(function () {
+            var mousepos = getMousePos(".head-dragon");
+            if (mousepos != null) {
+                var left = parseInt($(".head-dragon").css('left'));
+                var l = left- 200 + (index_div_pro[0].sx + index_div_pro[0].mw - (mousepos.x - 100) / index_div_pro[0].bx * index_div_pro[0].rx - left) * 0.7;
+                var top = parseInt($(".head-dragon").css('top'));
+                var t = top  + (index_div_pro[0].sy + index_div_pro[0].mh - (mousepos.y - 100) / index_div_pro[0].by - top) * 0.05;
+                $(".head-dragon").css({
+                    left: l, top: t
+                })
+            }
+        },
+        20);
+
+    $(".head-dragon").mousemove(function (event) {
+        event = event || window.event;
+        ePageX = event.pageX;
+        ePageY = event.pageY;
+    });
+
+
+</script>
+
+</body>
+</html>

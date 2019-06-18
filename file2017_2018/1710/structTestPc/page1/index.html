@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>后台系统</title>
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/cms_admin/css/structured/background.css">
+    <style type="text/css">
+        .form-control{display:inline;width:85%;}
+        .characters .character{  overflow: hidden;  margin-bottom: 5px;  }
+        .characters .character .control-label{  text-align: left;  }
+        h3{  margin-left: 20px;  }
+        .game-radio{  margin-right: 10px;  }
+    </style>
+    <script>
+        var structuredId="0";
+    </script>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="page-header">
+        <h1>结构化评测文章</h1>
+    </div>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation">
+            <a href="./indexList.php">列表页</a>
+        </li>
+        <li role="presentation">
+            <a href="./productMaintain.php">产品维护数据</a>
+        </li>
+        <li role="presentation">
+            <a href="./fixedData.php">固定数据</a>
+        </li>
+
+
+    </ul>
+    <div id="main-tab-content">
+        <form id="evaForm" class="form-horizontal" role="form" action="index.html" method="post">
+            <div class="form-group row">
+                <div class="col-xs-1">
+                </div>
+                <div class="col-xs-10">
+                    <div class="" id="pro_select_div">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2>视频上传</h2>
+            <hr>
+            <div class="form-group row">
+                <label for="f_a_title" class="control-label col-xs-2">视频ID</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="v_link" name="v_link" placeholder="视频ID" title="视频ID" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+
+                    <input type="hidden" name="v_picure" value="" title="视频图片" placeholder="视频图片" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button" class="btn btn-primary"   value="选择图片">   <span style="margin-left: 10px">尺寸391*446</span>
+                    <input type="file" data-name="v_picure" data-picwidth="391" data-picheight="446" value="" >
+                </div>
+            </div>
+            <hr>
+            <h2>综合性能</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">综合评分:</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="comScore" maxlength="44" class="form-control" placeholder="综合评分" title="综合评分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">性价比描述:</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control" name="percentDes" maxlength="100" rows="3" placeholder="性价比描述" title="性价比描述"></textarea>
+                    <p class="text-muted pull-right"><i>50</i>字以内</p>
+                </div>
+            </div>
+
+            <div class="form-group row" id="phonetd">
+                <label class="control-label col-xs-2">专业点评</label>
+                <div class="col-xs-10 characters">
+                    <div class="character">
+                        <label class="control-label col-xs-1">优点</label>
+                        <div class="col-xs-9">
+
+                        </div>
+                    </div>
+                    <div class="character">
+                        <label class="control-label col-xs-1">缺点</label>
+                        <div class="col-xs-9">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <h2>性能评估</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">综合性能评分:</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="comScore" maxlength="44" class="form-control" placeholder="综合性能评分" title="综合性能评分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+            <h3>CPU性能</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">CPU性能得分</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="cpuScore1" maxlength="44" class="form-control" placeholder="CPU性能得分" title="CPU性能得分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">CPU型号</label>
+                <div class="col-xs-6">
+                    <input type="text" name="cpuType" maxlength="44" class="form-control" placeholder="CPU型号" title="CPU型号" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">第几代处理器</label>
+                <div class="col-xs-6">
+                    <input type="text" name="cpuGen" maxlength="44" class="form-control" placeholder="第几代处理器" title="第几代处理器" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-3">CINEBENCH R15 多和模式跑分:</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="cpuScore2" maxlength="44" class="form-control" placeholder="CINEBENCH R15 多和模式跑分" title="CINEBENCH R15 多和模式跑分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+            <h3>显卡性能</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">显卡性能得分</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="gpuScore1" maxlength="44" class="form-control" placeholder="显卡性能得分" title="显卡性能得分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">显卡型号</label>
+                <div class="col-xs-6">
+                    <input type="text" name="gpuType" maxlength="44" class="form-control" placeholder="显卡型号" title="显卡型号" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-3">3DMark FireStrikeEX跑分:</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="gpuScore2" maxlength="44" class="form-control" placeholder="3DMark FireStrikeEX跑分" title="3DMark FireStrikeEX跑分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-3">大型游戏最低要求:</label>
+                <div class="col-xs-5">
+                    <input type="text" name="gpuScore3" maxlength="44" class="form-control" placeholder="大型游戏最低要求" title="大型游戏最低要求" value="">
+                </div>
+            </div>
+            <br>
+
+            <h3>硬盘性能</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">硬盘性能得分</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="diskScore1" maxlength="44" class="form-control" placeholder="硬盘性能得分" title="硬盘性能得分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">硬盘型号</label>
+                <div class="col-xs-6">
+                    <input type="text" name="diskType" maxlength="44" class="form-control" placeholder="显卡型号" title="显卡型号" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">测试软件</label>
+                <div class="col-xs-6">
+                    <input type="text" name="diskTestSoft" maxlength="44" class="form-control" placeholder="测试软件" title="测试软件" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">读取速度</label>
+                <div class="col-xs-6">
+                    <input type="text" name="diskSpeedRead" maxlength="44" class="form-control" placeholder="读取速度" title="读取速度" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">写入速度</label>
+                <div class="col-xs-6">
+                    <input type="text" name="diskSpeedWirte" maxlength="44" class="form-control" placeholder="写入速度" title="写入速度" value="">
+                </div>
+            </div>
+            <br>
+
+            <h3>续航</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">续航得分</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="sustainScore1" maxlength="44" class="form-control" placeholder="续航得分" title="续航得分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">PCMARK测试续航时长:</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="sustainTime1" maxlength="44" class="form-control" placeholder="PCMARK测试续航时长" title="PCMARK测试续航时长" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">亮度:</label>
+                <div class="col-xs-2">
+                    <input type="text" name="sustainLight1" maxlength="44" class="form-control" placeholder="亮度" title="亮度" value="">
+                </div>
+                <label class="control-label col-xs-1">音量:</label>
+                <div class="col-xs-2">
+                    <input type="text" name="sustainSound1" maxlength="44" class="form-control" placeholder="亮度" title="亮度" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" value="" name="sustainPicture1" title="续航理论图片" placeholder="续航理论图片" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button" class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸300*225</span>
+                    <input data-name="sustainPicture1" type="file" data-picwidth="300" data-picheight="225" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">实际使用续航时长:</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="sustainTime2" maxlength="44" class="form-control" placeholder="实际使用续航时长" title="实际使用续航时长" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">亮度:</label>
+                <div class="col-xs-2">
+                    <input type="text" name="sustainLight2" maxlength="44" class="form-control" placeholder="亮度" title="亮度" value="">
+                </div>
+                <label class="control-label col-xs-1">音量:</label>
+                <div class="col-xs-2">
+                    <input type="text" name="sustainSound2" maxlength="44" class="form-control" placeholder="亮度" title="亮度" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-3">视频3小时剩余电量:</label>
+                <div class="col-xs-2">
+                    <input type="text" name="sustainVideo" maxlength="44" class="form-control" placeholder="亮度" title="亮度" value=""> %
+                </div>
+                <label class="control-label col-xs-2">游戏4小时剩余电量:</label>
+                <div class="col-xs-2">
+                    <input type="text" name="sustainGame" maxlength="44" class="form-control" placeholder="亮度" title="亮度" value=""> %
+                </div>
+            </div>
+            <br/>
+
+            <h3>散热效果</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">散热得分</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="releaseScore1" maxlength="44" class="form-control" placeholder="散热得分" title="散热得分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">拷机满载时CPU温度</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="releaseTemFull" maxlength="44" class="form-control" placeholder="拷机满载时CPU温度" title="拷机满载时CPU温度" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">游戏散热</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="releaseGame" maxlength="44" class="form-control" placeholder="游戏散热" title="游戏散热" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">办公软件使用</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="releaseDoc" maxlength="44" class="form-control" placeholder="办公软件使用" title="办公软件使用" value="">
+                    </div>
+                </div>
+            </div>
+        <div class="form-group row">
+            <label class="control-label col-xs-2">拷机温度</label>
+            <div class="col-xs-6">
+                <div class="input-group">
+                    <input type="text" name="releaseCopy" maxlength="44" class="form-control" placeholder="拷机温度" title="拷机温度" value="">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-xs-2">待机温度</label>
+            <div class="col-xs-6">
+                <div class="input-group">
+                    <input type="text" name="releaseStay" maxlength="44" class="form-control" placeholder="待机温度" title="待机温度" value="">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-xs-2">Geeks3D FurMark:</label>
+            <div class="col-xs-6">
+                <div class="input-group">
+                    <input type="text" name="releaseGeeks1" maxlength="44" class="form-control" placeholder="Geeks3D FurMark" title="Geeks3D FurMark" value="">
+                </div>
+            </div>
+        </div><br/>
+
+            <h3>屏幕效果</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">屏幕效果得分</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="screenScore1" maxlength="44" class="form-control" placeholder="屏幕效果得分" title="屏幕效果得分" value=""><p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">
+                    亮度:
+                </label>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">最大亮度</label>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <input type="text" name="screenLight" maxlength="44" class="form-control" placeholder="最大亮度" title="最大亮度" value=""><p class="input-group-addon">nits</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">
+                    效果图:
+                </label>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-5">
+                    <div class="col-xs-3 flex-pic">
+                        <p>0-100nits</p>
+                        <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                        <input type="hidden" value="" name="screenPic1" title="屏幕效果图" placeholder="屏幕效果图" />
+                    </div>
+                    <div class="col-xs-3 pic-selector">
+                        <input type="button" class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸300*225</span>
+                        <input data-name="screenPic1" type="file" data-picwidth="300" data-picheight="225" value="">
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="col-xs-3 flex-pic">
+                        <p>100nits-200nits</p>
+                        <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                        <input type="hidden" value="" name="screenPic2" title="屏幕效果图" placeholder="屏幕效果图" />
+                    </div>
+                    <div class="col-xs-3 pic-selector">
+                        <input type="button" class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸300*225</span>
+                        <input data-name="screenPic2" type="file" data-picwidth="300" data-picheight="225" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-5">
+                    <div class="col-xs-3 flex-pic">
+                        <p>200nits-100nits</p>
+                        <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                        <input type="hidden" value="" name="screenPic3" title="屏幕效果图" placeholder="屏幕效果图" />
+                    </div>
+                    <div class="col-xs-3 pic-selector">
+                        <input type="button" class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸300*225</span>
+                        <input data-name="screenPic3" type="file" data-picwidth="300" data-picheight="225" value="">
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="col-xs-3 flex-pic">
+                        <p>300nits-400nits</p>
+                        <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                        <input type="hidden" value="" name="screenPic4" title="屏幕效果图" placeholder="屏幕效果图" />
+                    </div>
+                    <div class="col-xs-3 pic-selector">
+                        <input type="button" class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸300*225</span>
+                        <input data-name="screenPic4" type="file" data-picwidth="300" data-picheight="225" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-5">
+                    <div class="col-xs-3 flex-pic">
+                        <p>400nits-500nits</p>
+                        <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                        <input type="hidden" value="" name="screenPic5" title="屏幕效果图" placeholder="屏幕效果图" />
+                    </div>
+                    <div class="col-xs-3 pic-selector">
+                        <input type="button" class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸300*225</span>
+                        <input data-name="screenPic5" type="file" data-picwidth="300" data-picheight="225" value="">
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <h3>色域</h3>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">SRGB色域覆盖</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="colorZone1" maxlength="44" class="form-control" placeholder="SRGB色域覆盖" title="SRGB色域覆盖" value=""></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" name="colorZonePic1" value=""  title="SRGB色域图片" placeholder="SRGB色域图片" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button"  class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸500*660</span>
+                    <input type="file" data-picwidth="250" data-picheight="330" data-name="colorZonePic1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">描述</label>
+                <div class="col-xs-10">
+                    <textarea name="colorZoneDes1" class="form-control" rows="3" placeholder="SRGB色域描述" title="SRGB色域描述"></textarea>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">NTSC色域覆盖</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="colorZone2" maxlength="44" class="form-control" placeholder="NTSC色域覆盖" title="NTSC色域覆盖" value=""></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" name="colorZonePic2" value=""  title="NTSC色域图片" placeholder="NTSC色域图片" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button"  class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸500*660</span>
+                    <input type="file" data-picwidth="250" data-picheight="330" data-name="colorZonePic2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">描述</label>
+                <div class="col-xs-10">
+                    <textarea name="colorZoneDes2" class="form-control" rows="3" placeholder="NTSC色域描述" title="NTSC色域描述"></textarea>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">AdobeRGB色域覆盖</label>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" name="colorZone3" maxlength="44" class="form-control" placeholder="AdobeRGB色域覆盖" title="AdobeRGB色域覆盖" value=""></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" name="colorZonePic3" value=""  title="AdobeRGB色域图片" placeholder="AdobeRGB色域图片" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button"  class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸500*660</span>
+                    <input type="file" data-picwidth="250" data-picheight="330" data-name="colorZonePic3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">描述</label>
+                <div class="col-xs-10">
+                    <textarea name="colorZoneDes3" class="form-control" rows="3" placeholder="AdobeRGB色域描述" title="AdobeRGB色域描述"></textarea>
+                </div>
+            </div>
+
+            <hr>
+            <h2>游戏表现</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">游戏性能表现:</label>
+                <div class="col-xs-6">
+                    <label class="radio-inline game-radio">
+                        <input type="radio" name="gameRadioOptions" id="gameRadio1" value="option1"> 超高性能
+                    </label>
+                    <label class="radio-inline game-radio">
+                        <input type="radio" name="gameRadioOptions" id="gameRadio2" value="option2"> 高性能
+                    </label>
+                    <label class="radio-inline game-radio">
+                        <input type="radio" name="gameRadioOptions" id="gameRadio3" value="option3"> 中级性能
+                    </label>
+                    <label class="radio-inline game-radio">
+                        <input type="radio" name="gameRadioOptions" id="gameRadio4" value="option4"> 入门性能
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <hr>
+                <label class="control-label col-xs-2"></label>
+                <div class="col-xs-10">
+                    <div class="input-group">
+                        <input type="text" style="width: 100%" name="gameInfo11" value="" class="form-control" placeholder="手工信息1" title="手工信息1">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">游戏卡顿情况</label>
+                <div class="col-xs-10">
+                    <input type="text" name="gameInfo12" value="" class="form-control" placeholder="游戏卡顿情况1" title="游戏卡顿情况">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" name="gamePic1" value=""  title="游戏视频导图1" placeholder="游戏视频导图1" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button"  class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸500*660</span>
+                    <input type="file" data-picwidth="250" data-picheight="330" data-name="gamePic1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-xs-2">视频ID</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" id="gameVideoId1" name="gameVideoId1" placeholder="视频ID" title="视频ID" value="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <hr>
+                <label class="control-label col-xs-2"></label>
+                <div class="col-xs-10">
+                    <div class="input-group">
+                        <input type="text" style="width: 100%" name="gameInfo21" value="" class="form-control" placeholder="手工信息2" title="手工信息2">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">游戏卡顿情况</label>
+                <div class="col-xs-10">
+                    <input type="text" name="gameInfo22" value="" class="form-control" placeholder="游戏卡顿情况2" title="游戏卡顿情况">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" name="gamePic2" value=""  title="游戏视频导图2" placeholder="游戏视频导图2" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button"  class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸500*660</span>
+                    <input type="file" data-picwidth="250" data-picheight="330" data-name="gamePic2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-xs-2">视频ID</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" id="gameVideoId2" name="gameVideoId2" placeholder="视频ID" title="视频ID" value="">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <hr>
+                <label class="control-label col-xs-2"></label>
+                <div class="col-xs-10">
+                    <div class="input-group">
+                        <input type="text" style="width: 100%" name="gameInfo31" value="" class="form-control" placeholder="手工信息3" title="手工信息3">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">游戏卡顿情况</label>
+                <div class="col-xs-10">
+                    <input type="text" name="gameInfo32" value="" class="form-control" placeholder="游戏卡顿情况3" title="游戏卡顿情况">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 flex-pic">
+                    <img src="" alt="..." height="150" width="200" class="img-thumbnail">
+                    <input type="hidden" name="gamePic3" value=""  title="游戏视频导图3" placeholder="游戏视频导图3" />
+                </div>
+                <div class="col-xs-2 pic-selector">
+                    <input type="button"  class="btn btn-primary" value="选择图片"> <span style="margin-left: 10px">尺寸500*660</span>
+                    <input type="file" data-picwidth="250" data-picheight="330" data-name="gamePic3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="control-label col-xs-2">视频ID</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" id="gameVideoId3" name="gameVideoId3" placeholder="视频ID" title="视频ID" value="">
+                </div>
+            </div>
+
+            <hr>
+            <h2>拆机详解</h2>
+            <hr>
+            <div class="form-group row">
+                <label for="" class="control-label col-xs-2">文章ID</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" id="chaiJiArticle" name="chaiJiArticle" placeholder="拆机文章ID" title="拆机文章ID" value="">
+                </div>
+            </div>
+
+            <hr>
+            <h2>外观细节</h2>
+            <hr>
+            <div class="form-group row">
+                <label class="control-label col-xs-2">外观得分</label>
+                <div class="col-xs-10">
+                    <div class="input-group">
+                        <input name="waiguanScore"  type="text" value="" class="form-control" placeholder="外观得分" title="外观得分">
+                        <p class="input-group-addon">分</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default pic-list">
+                <div class="panel-heading">
+                    <input type="button" class="btn btn-primary" value="上传图片"><span style="margin-left: 10px">尺寸800*601</span>
+                    <input type="file" multiple="wxs" data-picwidth="800" data-picheight="601" >
+                </div>
+                <div id="waiguan" class="panel-body">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="control-label col-xs-2"></label>
+                <div class="col-xs-10">
+                    <input type="submit" class="btn btn-primary btn-lg" value="提交">
+                    <input type="button" class="btn btn-primary btn-lg" id="save-data" value="保存">
+                    <input type="button" class="btn btn-lg" id="remove-data" value="清除缓存">
+                </div>
+            </div>
+        </form>
+        <hr>
+    </div>
+</div>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/public/js/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/cms_admin/js/proSelect.js"></script>
+<script type="text/javascript">proSelect.config.initParam = [,,,];proSelect.initContent('pro_select_div');</script>
+<script src="http://h5x.zol.com.cn/H5-v4.0/js/sea.js"></script>
+<script>
+    seajs.config({
+        base: "http://h5x.zol.com.cn/H5-v4.0/js/",
+        alias: {
+            "jquery": "jquery/jquery/1.10.1/jquery.js"
+        }
+    });
+    var t = new Date();
+    seajs.use('http://icon.zol-img.com.cn/admin/js/m/pingcejiiegouhua/index.js?v=1508486907');
+</script>
+<!-- 	 <script type="text/javascript" src="http://icon.zol-img.com.cn/admin/js/lib/jquery/1.11.1/jquery.min.js"></script> -->
+<!--     <script type="text/javascript" src="http://icon.zol-img.com.cn/admin/js/lib/bootstrap/3.3.0/bootstrap.min.js"></script> -->
+<!--   <script type="text/javascript" src="http://icon.zol-img.com.cn/admin/app5.0-subject/js/cropper.js"></</script> -->
+<!--      <script type="text/javascript" src="http://icon.zol-img.com.cn/admin/js/m/pingcejiiegouhua/index.js"></</script>-->
+</body>
+</html>

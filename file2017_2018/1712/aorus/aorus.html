@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>技嘉AORUS DAY直播</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color: #c22d37; font-size: 13px; font-weight: normal;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-mod  .sys_btn img{  position: absolute;  top: 10px;  }
+        .wrap1{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #fff;  }
+        .wrap2{   width: 100%; min-width: 1200px;  overflow: hidden;  background: #f5f5f5;  }
+        .wrapper1{  position: relative;  width: 1200px; margin: 0 auto; overflow: hidden;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 160px;  min-width: 1200px;  padding-top: 98px; background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/footer.jpg") no-repeat top center;   }
+        .zol_foot,.zol_foot a{  color: #ff6400;  }
+        .head_white{  min-width: 1200px;  }
+        .bar1{  width: 100%;  height: 15px;  background: #BB2631;  }
+        .bar2{  width: 100%;  height: 4px;  background: #E30613;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 541px; overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/lg_head_c.jpg") no-repeat top center;   }
+
+        .liveBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/live.png") no-repeat top center;}
+        .live{height: 987px;}
+        .live1{position: absolute;top: 130px;left: 0;width: 770px;height: 440px;background: #000;overflow: hidden;border: 2px solid #e7a23f;}
+        .live2{position: absolute;top: 680px;left: 35px;width: 700px;height: 230px;overflow: hidden;}
+        .live2-tit{position: absolute;left: 0;border: 1px solid #fff;text-align: center;width: 125px;height: 30px;-webkit-border-radius: 15px;border-radius: 15px;color: #fff;font: bold 16px/30px 'simsun';}
+        .live2-tit1{top: 80px;}
+        .live2-tit2{top: 120px;}
+        .live2-tit3{top: 0px;}
+        .live2-art{position: absolute;left: 150px;width: 555px;color: #fff;font: 14px/22px 'simsun';}
+        .live2-art1{top: 86px;height: 30px;}
+        .live2-art2{top: 121px;height: 150px;}
+        .live2-art3{top: 6px;height: 30px;}
+        .live3{height: 775px;background: #fff;right: 0;width: 400px;border: 1px solid #e7a23f;top: 130px;position: absolute;}
+        .live31{width: 400px;height: 60px;text-align: center;color: #fff;background: #1d1d1d;font: 22px/60px 'Hiragino Sans GB','microsoft yahei';}
+        .live31 span{color: #ff6400;font: bold 26px/60px 'Hiragino Sans GB','microsoft yahei';}
+        .live32{background: #fff;height: 710px;padding-bottom: 5px;}
+
+        .sceneBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/scene.png") no-repeat top center;}
+        .scene{height: 757px;}
+        .scene1{width: 715px;overflow:hidden;height: 535px;position: relative;background: #000;margin-top: 135px;float: left;border: 1px solid #ff6400;}
+        .scene1-box{position: absolute;top: 0;left: 0;height: 535px;}
+        .scene2{width: 480px;height: 535px;position: relative;margin-top: 135px;float: right;}
+        .scene2 table img{-webkit-filter: grayscale(100%);-moz-filter: grayscale(100%);-ms-filter: grayscale(100%);-o-filter: grayscale(100%);filter: grayscale(100%);filter: gray;-webkit-transition: all .4s linear;transition: all .4s linear;}
+        .scene2 table img.act{-webkit-filter: none;-moz-filter: none;-ms-filter: none;-o-filter: none;filter: none;filter: none;}
+        .scene2 .ln{height: 14px;}
+
+        .proBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/pro.png") no-repeat top center;}
+        .pro{height: 713px;}
+        .pros{margin: 125px auto 0;width: 1200px;height: 290px;}
+        .news{  margin: 115px 0 0 -40px;width: 1230px;height: 115px;}
+        .news .hei14bi{color: #000;background: url(http://2.zol-img.com.cn/zt/tm_4f7/3dd8390b38/dothei.png) no-repeat 52px 14px;padding-left: 60px;display: block;font-size: 14px;line-height: 28px;}
+        .news .hei14bi:hover{color: #000;text-decoration: underline;}
+
+        .abtBg{background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/abt.png") no-repeat top center;}
+        .abt{height: 547px;}
+        .abt1{height: 206px;margin: 135px auto 0;}
+        .abt1-m{position: relative; /*height: 206px;width: 593px;*/width: 315px;height: 120px;padding: 43px 35px 43px 243px;}
+        .abt1-m .bai14{color: #fff;font: 14px/32px 'simsun';display: block;}
+        .abt1-m .hong12{color: #fff;font-size: 14px;}
+        .abt1-m1{float: left;background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/abt11.png") no-repeat 0 0;}
+        .abt1-m2{float: right;background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/abt12.png") no-repeat 0 0;}
+        .abt2{width: 975px;height: 106px;margin: 16px 0 0 0;}
+        .abt3{width: 223px;height: 106px;position: absolute;right: 0;top: 357px;background: url("http://2.zol-img.com.cn/zt/tm_5a4/3384d77471/abt24.png") no-repeat 0 0;}
+
+        .pros table img{  -webkit-transform: scale(1) translate(0px,0px);  -moz-transform: scale(1) translate(0px,0px); transform: scale(1) translate(0px,0px);  }
+        .pros table img:hover{ -webkit-transform: scale(1.02) translate(0px,0px);  -moz-transform: scale(1.02) translate(0px,0px); transform: scale(1.02) translate(0px,0px);  -webkit-transition: all .2s linear;  -moz-transition: all .2s linear; transform-origin: center;  -webkit-transform-origin: center;  transition: all .2s linear;  }
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" border="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c"></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<!--直播-->
+<div class="wrap1 liveBg">
+    <div class="wrapper1 live">
+        <div class="live1"><{data[0]}></div>
+        <div class="live2">
+            <div class="live2-tit live2-tit1">获奖楼层</div>
+            <div class="live2-tit live2-tit2">详细规则</div>
+            <div class="live2-tit live2-tit3">获奖名单</div>
+            <div class="live2-art live2-art1">截至12月28日18：00分，总评论数的30%、60%和90%楼层获奖（遇小数则四舍五入取整）。</div>
+            <div class="live2-art live2-art2">在本页面评论区留言即可参加活动，同一ID可多次参与互动，但连续评论数量不得超过五条，发表无意义评论、恶意刷楼、多次粘贴同一评论以及其它恶意干扰活动正常进行的网友会被取消获奖资格。本活动同一ID仅能获奖一次，如多次获奖，以第一次获奖楼层为准其余获奖机会向下顺延给其他符合活动要求的网友。
+            </div>
+            <div class="live2-art live2-art3">截止12月28日 18:00整，评论楼层为169层，根据算法最终中奖楼层如下:<br/>
+                51楼：sina_413062xy15；101楼：49890360w017o1z；152楼：快乐小雪梨；<br/>
+                请将账号资料页截图及姓名电话地址发送至lang.menghua@zol.com.cn领奖。</div>
+        </div>
+        <div class="live3">
+            <div class="live31">已有<span id="live-count">--</span>位网友陪您看直播</div>
+            <div class="live32"><{data[1]}></div>
+        </div>
+    </div>
+</div>
+<!--现场-->
+<div class="wrap1 sceneBg">
+    <div class="wrapper1 scene">
+        <div class="scene1">
+            <div class="scene1-box"><{data[2]}></div>
+        </div>
+        <div class="scene2"><{data[3]}></div>
+    </div>
+</div>
+<!--产品-->
+<div class="wrap1 proBg">
+    <div class="wrapper1 pro">
+        <div class="pros"><{data[4]}></div>
+        <div class="news"><{data[5]}></div>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap1 abtBg">
+    <div class="wrapper1 abt">
+        <div class="abt1">
+            <div class="abt1-m abt1-m1"><{data[6]}></div>
+            <div class="abt1-m abt1-m2"><{data[7]}></div>
+        </div>
+        <div class="abt2">
+            <{data[8]}>
+        </div>
+        <div class="abt3"></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    /*直播*/
+    $.getJSON("http://dynamic.zol.com.cn/channel/get_broadcast_attention.php?docId=4580871&callback=?",{},function(obj){
+        $("#live-count").html(obj);
+    });
+
+    /*图赏*/
+    var sc2=$('.scene2 table img');
+    var sc1=$('.scene1 .scene1-box');
+    sc2.each(function (i) {
+        sc2.eq(i).removeClass('act')
+    });
+    sc2.eq(0).addClass('act');
+    sc1.css('left',0);
+    sc2.bind('mouseenter',function () {
+        var nowI=sc2.index(this);
+        sc2.each(function (i) {
+            sc2.eq(i).removeClass('act')
+        });
+        sc2.eq(nowI).addClass('act');
+        sc1.stop().animate({'left':'-'+nowI*715+'px'});
+    })
+
+
+
+
+
+</script>
+</body>
+</html>

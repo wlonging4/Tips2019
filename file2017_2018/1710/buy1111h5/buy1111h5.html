@@ -1,0 +1,766 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title></title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 禁用拨号 -->
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="http://1111.zol.com.cn" >
+    <meta name="applicable-device" content="mobile">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #ccc; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*动画*/
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5,.ltr6{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .rtl1,.rtl2,.rtl3,.rtl4,.rtl5{  opacity: 0;  -webkit-transform: translate(160px,0px);  transform: translate(160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+        @-webkit-keyframes rtl {
+            0%{  -webkit-transform: translate(160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes rtl {
+            0%{  transform: translate(160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        .cir{ -webkit-animation: cir 8s linear 0s infinite;  animation: cir 8s linear 0s infinite;   }
+        .ltr1{ -webkit-animation: ltr 1s ease-in 0s forwards;  animation: ltr 1s ease-in 0s forwards;   }
+        .ltr2{ -webkit-animation: ltr 1s ease-in 0.4s forwards;  animation: ltr 1s ease-in 0.4s forwards;  }
+        .ltr3{ -webkit-animation: ltr 1s ease-in 0.8s forwards;  animation: ltr 1s ease-in 0.8s forwards;  }
+        .ltr4{ -webkit-animation: ltr 1s ease-in 1.2s forwards;  animation: ltr 1s ease-in 1.2s forwards;  }
+        .ltr5{ -webkit-animation: ltr 1s ease-in 1.6s forwards; animation: ltr 1s ease-in 1.6s forwards;  }
+        .ltr6{ -webkit-animation: ltr 1s ease-in 2s forwards; animation: ltr 1s ease-in 2s forwards;  }
+        .ttb1{ -webkit-animation: ttb 1s ease-in 0s forwards;  animation: ttb 1s ease-in 0s forwards;   }
+        .ttb2{ -webkit-animation: ttb 1s ease-in 0.4s forwards;  animation: ttb 1s ease-in 0.4s forwards;  }
+        .ttb3{ -webkit-animation: ttb 1s ease-in 0.8s forwards;  animation: ttb 1s ease-in 0.8s forwards;  }
+        .ttb4{ -webkit-animation: ttb 1s ease-in 1.2s forwards;  animation: ttb 1s ease-in 1.2s forwards;  }
+        .ttb5{ -webkit-animation: ttb 1s ease-in 1.6s forwards; animation: ttb 1s ease-in 1.6s forwards;  }
+        .btt1{ -webkit-animation: btt 1s ease-in 0s forwards;  animation: btt 1s ease-in 0s forwards;   }
+        .btt2{ -webkit-animation: btt 1s ease-in 0.4s forwards;  animation: btt 1s ease-in 0.4s forwards;  }
+        .btt3{ -webkit-animation: btt 1s ease-in 0.8s forwards;  animation: btt 1s ease-in 0.8s forwards;  }
+        .btt4{ -webkit-animation: btt 1s ease-in 1.2s forwards;  animation: btt 1s ease-in 1.2s forwards;  }
+        .btt5{ -webkit-animation: btt 1s ease-in 1.6s forwards; animation: btt 1s ease-in 1.6s forwards;  }
+        .rtl1{ -webkit-animation: rtl 1s ease-in 0s forwards;  animation: rtl 1s ease-in 0s forwards;   }
+        .rtl2{ -webkit-animation: rtl 1s ease-in 0.4s forwards;  animation: rtl 1s ease-in 0.4s forwards;  }
+        .rtl3{ -webkit-animation: rtl 1s ease-in 0.8s forwards;  animation: rtl 1s ease-in 0.8s forwards;  }
+        .rtl4{ -webkit-animation: rtl 1s ease-in 1.2s forwards;  animation: rtl 1s ease-in 1.2s forwards;  }
+        .rtl5{ -webkit-animation: rtl 1s ease-in 1.6s forwards;  animation: rtl 1s ease-in 1.6s forwards;  }
+
+        .mainPage{  width:640px;margin:0 auto;background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/bg.jpg") repeat-y top center;  }
+        .wp{ overflow: hidden;  width: 640px;  position: relative;  }
+        header{  height: 436px;  overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/head_bg.jpg") no-repeat top center;  }
+        .head-red1{ width: 586px;  height: 217px;  position: absolute;  top: 165px;  left: 27px;  background: #EE0E0E;  }
+        .head-img{  display: block;  position: absolute;  left: 150px;  top: 24px;  }
+        .header p{  position: absolute;  width: 400px;  height: 15px;  right: 30px;  color: #B0B0B0;  font: 12px/15px 'Hiragino sans GB','microsoft yahei';  text-align: right;  }
+        .head-p1{  top: 40px;  }
+        .head-p2{  top: 135px;  }
+        .head-logo{  width: 151px;  height: 94px;  position: absolute;  left: 45px;  top: 71px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/head_logo.png") no-repeat 0 0 ;  }
+        .head-red2{  width: 586px;  height: 217px;  position: absolute;  top: 165px;  left: 27px;  background: #EE0E0E;  opacity: 0.4;  }
+        .head-art1{  width: 443px; height: 93px;  position: absolute;  left: 98px;  top: 185px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/head_art1.png") no-repeat 0 0;  }
+        .head-art2{  width: 447px;  height: 77px;  position: absolute;  left: 98px;  top: 290px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/head_art2.png") no-repeat 0 0;  }
+        .head-art3{  width: 541px;  height: 14px;  position: absolute;  left: 45px;  top: 395px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/head_art3.png") no-repeat 0 0;  }
+
+        .pre{  height: 194px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/pre_bg.jpg") no-repeat top center;  }
+        .pre-art1{  position: absolute; height: 35px;  width: 385px;  color: #fff;  left: 215px;  top: 17px;  font: 24px/35px "Hiragino sans GB",'microsoft yahei';  }
+        .pre-art2{  position: absolute;  height: 50px;  width: 385px; color: #fff;  left: 215px;  top: 56px;  font: 18px/28px "Hiragino sans GB",'microsoft yahei';  }
+        .pre label{  display: block;  height: 38px;  width: 385px;  left: 215px;  top: 130px;  position: absolute;  overflow: hidden;  }
+        .pre label span{  display: inline-block;  width: 65px;  height: 38px;  color: #ccc;  float: left;  margin-right: 2px;  font: 20px/38px "Hiragino sans GB",'microsoft yahei';  }
+        .pre label input{  display: inline-block;  width: 165px;  height: 28px;  border: none;  outline: none;  padding: 5px 15px;  color: #EE0E0E;  float: left;  font: 22px/28px "Hiragino sans GB",'microsoft yahei';  }
+        .pre-btn{  width: 120px;  height: 38px;  -webkit-border-radius: 19px;  border-radius: 19px;  background: #EE0E0E;  position: absolute;  right: 36px;  text-align: center;  color: #fff;  bottom: 26px;  font: 22px/38px "Hiragino sans GB",'microsoft yahei';  }
+
+        .bar{  height: 40px;  color: #fff;  text-indent: 70px;  font: 20px/40px "Hiragino sans GB",'microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/t_red.jpg") no-repeat 0 0;  }
+        .list-bg{  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/list_bg.jpg") repeat-y top center;  }
+        .list-box{  width: 540px;  height: 250px;  margin: 10px auto;  overflow: hidden; -webkit-transition: all .4s linear;  transition: all .4s linear;  }
+        .list-mod{  width: 540px;  min-height: 250px;  }
+        .list-btn{  width: 580px;  height: 40px;  color: #fff;  text-align: center;  margin: 0 auto;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  background: #646464;  }
+        .list-btn5{  margin-bottom: 20px;  }
+        .list-mod .hei20{  color: #151515;  display: block;  height: 50px;  overflow: hidden;  position: relative;  }
+        .list-mod .hei20 em{  float: left;  display: block;  font-style: normal;  width: 24px;  height: 24px;  overflow: hidden;  -webkit-border-radius: 50%;  border-radius: 50%;  margin: 13px 4px 0 0;  text-align: center;  border: 1px solid #151515;  font: 18px/24px 'Hiragino sans GB';  }
+        .list-mod .hei20 span{  float: left;  display: block;  overflow: hidden;  font-style: normal;  width: 270px;  height: 50px;  font: 22px/50px 'Hiragino sans GB';  }
+        .list-mod .hei20>i{  float: left;  display: block;  overflow: hidden;  font-style: normal;  width: 92px;  height: 50px;  color: #ED0D0D;  padding-left: 18px;  font: 20px/50px 'Hiragino sans GB';  background: url("http://2.zol-img.com.cn/zt/tm_59f/6f26b21f66/lis_dot2.png") no-repeat left center;  }
+        .list-mod .hei20>i.no{  background: url("http://2.zol-img.com.cn/zt/tm_59f/304195a3f6/line.jpg") no-repeat left center;  }
+        .list-mod .hei20 p{  float: left;  display: block; text-align: right;  font-style: normal;  width: 121px;  height: 50px;  overflow: hidden;  color: #fff;  font: 16px/50px 'Hiragino sans GB'; }
+        .list-mod .hei20 p i:nth-child(1){  display: inline-block; text-align: center;  font-style: normal; border-radius: 4px; -webkit-border-radius: 4px;  width: 63px;  height: 50px; overflow: hidden; background: url("http://2.zol-img.com.cn/zt/tm_59f/92c12dee0f/lis_dot11.png") no-repeat center;  }
+        .list-mod .hei20 p i:nth-child(2){  display: inline-block; text-align: center;   font-style: normal;  height: 50px; overflow: hidden;width: 58px; background: url("http://2.zol-img.com.cn/zt/tm_59f/92c12dee0f/lis_dot22.png") no-repeat center;  }
+
+
+
+
+        .tit-phone{  height: 120px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/phone_t.jpg") no-repeat top center;  }
+        .tit-pc{  height: 121px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/pc_t.jpg") no-repeat top center; margin-left: 1px;  }
+        .tit-tv{  height: 120px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/tv_t.jpg") no-repeat top center;margin-left: 1px;  }
+        .tit-wash{  height: 130px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/wash_t.jpg") no-repeat top center; margin-left: 3px;  }
+        .tit-fri{  height: 130px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/fri_t.jpg") no-repeat top center;margin-left: 3px;  }
+
+        .tit-hot{  height: 300px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/hot_t.jpg") no-repeat top center;  }
+        .lot{  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_bg.jpg") repeat top center;  }
+        .lot-step{  height: 198px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_step_bg.jpg") no-repeat top center;  }
+        .lot-c{  position: relative;  height: 304px;  }
+        .lot-art{  height: 355px;  position: relative;  }
+        .lot-p1{  position: absolute;  width: 560px;  height: 40px;  left: 40px;  top: 25px;  color: #000;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .lot-p2{  position: absolute;  width: 560px;  height: 100px;  left: 40px;  top: 65px;  color: #000;  font: 18px/32px 'Hiragino sans GB','microsoft yahei';  }
+        .lot-art1{  position: absolute;  width: 560px;  height: 40px;  left: 40px;  top: 185px;  color: #000;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .lot-art2{  position: absolute;  width: 425px;  height: 104px;  left: 40px;  top: 230px;  color: #000;  font: 22px/40px 'Hiragino sans GB','microsoft yahei';  }
+        .lot-art2 .hei18{  display: block;  color: #000;  font: 18px/22px 'Hiragino sans GB';  }
+        .lot-art2 .hei18 span{  display: block ; padding-top: 10px;  font: 22px/24px 'Hiragino sans GB';  }
+        .lot-art2 .slh,.lot-art2 span.slh,.lot-art2 .hong12{ display: none }
+        .lot-rank{  width: 280px;  height: 245px;  border: 1px solid #ccc;  position: absolute;  top: 40px;  right: 25px;  }
+        .lot-rank-t{  height: 45px;  color: #fff;  text-indent: 40px;  font: 24px/45px 'Hiragino sans GB','microsoft yahei';  background: #C12826 url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_tri.png") no-repeat 15px 20px;  }
+        .lot-rank-con{  width: 280px;  height: 200px;  overflow-y: auto;  background: #fff;  overflow-x: hidden;  }
+        .lot-rank-ul{  width: 280px;  overflow: hidden;  }
+        .lot-rank-ul li{  height: 34px;  overflow: hidden;  border-bottom: 1px solid #ccc;  }
+        .lot-rank-ul li span{  display: block;  float: left;  height: 34px;  overflow: hidden;  color: #555;  }
+        .lot-rank-ul li span.sp11,.lot-rank-ul li span.sp21{  width: 120px;  text-indent: 10px;  border-right: 1px solid #ccc;  }
+        .lot-rank-ul li span.sp12,.lot-rank-ul li span.sp22{  width: 150px;  text-indent: 10px;  }
+        .lot-rank-ul li span.sp11,.lot-rank-ul li span.sp12{  font: 16px/35px "Hiragino sans GB","microsoft yahei";  }
+        .lot-rank-ul li span.sp21,.lot-rank-ul li span.sp22{  font: 14px/35px "Hiragino sans GB","microsoft yahei";  }
+
+
+        .more{  background: #fff;  }
+        .more-t{  height: 110px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/more_t.jpg") no-repeat top center;  }
+        .more-c{  overflow: hidden;  min-height: 300px;  margin: 0 auto 100px;  }
+        .more-ul{  width: 630px; overflow: hidden;  margin: 0 auto;  }
+        .more-ul li{  float: left;  width: 200px; height: 260px;  overflow: hidden;  border: 1px solid #ccc;  #box-shadow: 3px 3px #ccc;  margin: 0 4px 10px;  box-shadow: 3px 3px 10px #ccc;  }
+        .more-ul li a{  display: block;  width: 200px;  height: 260px;  overflow: hidden;  }
+        .more-ul li img{  display: block;  margin: 8px auto 0;  }
+        .more-ul li .more-p1{  height: 35px;  width: 185px; overflow: hidden;  color: #000;  text-align: center;  font: 20px/35px 'Hiragino sans GB','microsoft yahei';  margin: 4px auto 0;  }
+        .more-ul li .more-p2{  height: 86px;  color: #616161;  width: 185px;  overflow: hidden;  text-align: left;  font: 15px/28px 'Hiragino sans GB','microsoft yahei';  margin: 4px auto 0;  }
+        .more-ul li .more-p2 span{  color: #C12826;  }
+
+        .last{  background: #fff;  height: 265px;  overflow: hidden;  }
+        .last-mod{  height: 117px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/last_mod.jpg") no-repeat top center;  }
+        .lot-b{  position: absolute;  width: 304px;  height: 304px;  left: 15px;  top: 0;  }
+        .lot-box{  position: absolute;  width: 308px;  height: 308px;  left: 0;  top: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_box.png") no-repeat 0 0; -webkit-transition: all 3s ease-out;transition: all 3s ease-out;-webkit-transform: rotate(0deg);transform: rotate(0deg);  }
+        .lot-start{  position: absolute; cursor: pointer;  width: 118px;  height: 118px;  left: 95px;  top: 95px;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_mod.png") no-repeat 0 0;  }
+
+        .lot-box.ok{  transition: none;-webkit-transition: none;  }
+        .lot-box.a0{  -webkit-transform: rotate(1080deg);  transform: rotate(1080deg);    }
+        .lot-box.a0-ok{  -webkit-transform: rotate(0deg);  transform: rotate(0deg); }
+        .lot-box.a1{  -webkit-transform: rotate(1350deg);  transform: rotate(1350deg);  }
+        .lot-box.a1-ok{   -webkit-transform: rotate(270deg);  transform: rotate(270deg); }
+        .lot-box.a2{  -webkit-transform: rotate(1260deg);  transform: rotate(1260deg);    }
+        .lot-box.a2-ok{   -webkit-transform: rotate(180deg);  transform: rotate(180deg); }
+        .lot-box.a3{   -webkit-transform: rotate(1170deg);  transform: rotate(1170deg);  }
+        .lot-box.a3-ok{  -webkit-transform: rotate(90deg);transform: rotate(90deg);  }
+
+        .lot-info1{  display: none;  position: absolute; width: 295px;  height: 230px;  top: 45px;  left: 20px;  background: #fff;  border: 1px solid #ccc;  }
+        .lot-info1-t{  height: 38px;  background: #CA161F;  color: #fff;text-indent: 15px;  font: 22px/38px "Hiragino sans GB",'microsoft yahei';  }
+        .lot-info1 label{  display: block; overflow: hidden;  width: 280px;  height: 38px;  margin: 5px auto 0;  }
+        .lot-info1 label span{  display: inline-block;  float: left;  width: 45px; height: 38px;  color: #000;  font: 14px/38px 'simsun';  }
+        .lot-info1 label input{  display: block;  width: 210px;  height: 24px;  padding: 5px 10px; outline: none;  color: #980406;  font: 22px/24px 'Hiragino sans GB','microsoft yahei';  border: 1px solid #ccc;  }
+        .lot-submit{  width: 100px;  height: 38px;  margin: 10px auto 0;  background: #CA161F;  -webkit-border-radius: 8px;  border-radius: 8px;  text-align: center;  color: #fff;  font: 22px/38px 'Hiragino sans GB','microsoft yahei';  }
+        .pointNo{  pointer-events: none;  }
+        .lot-info1-close{  width: 38px;  height: 38px;  position: absolute;  top: 0;  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_close.png") no-repeat center;  }
+
+        .lot-info2{  display: none;  position: absolute; width: 295px;  height: 76px;  top: 115px;  left: 20px;  background: #555;  border: 1px solid #ccc; color: #fff; font: 22px/38px 'Hiragino sans GB','microsoft yahei'; text-align: center;  }
+        .lot-info2-close{  width: 38px;  height: 38px;  position: absolute;  top: 0;  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/lot_close.png") no-repeat center;  }
+
+
+
+    </style>
+</head><body>
+
+<!--loading-->
+<div class="loading" style="display: none;"><span class="loading-ring"></span></div>
+<!--main-->
+<div class="mainPage">
+    <header class="header">
+        <div class="head-red1"></div>
+        <img class="head-img" src="http://2.zol-img.com.cn/zt/tm_59f/6d690d6352/head_gif.gif" alt="" width="335" height="355">
+        <p class="head-p1">*兑换项目和活动与设备生产商Apple.Inc.无关</p>
+        <p class="head-p2">www.zol.com.cn</p>
+        <div class="head-logo"></div>
+        <div class="head-red2"></div>
+        <div class="head-art1 btt1"></div>
+        <div class="head-art2 ttb1"></div>
+        <div class="head-art3 btt1"></div>
+    </header>
+    <div class="wp pre" id="pre">
+        <div class="pre-art1">499元天猫精灵填订单免费抽</div>
+        <div class="pre-art2">点击下方沸点榜中产品，购买并将订单号填入右<br>侧，即可机会获得价值499天猫精灵一台。</div>
+        <label>
+            <span>订单号</span>
+            <input type="text" id="pre-num" placeholder="填写订单号" maxlength="17" autofocus>
+        </label>
+        <a class="pre-btn" href="javascript:;" target="_self">去抽奖</a>
+    </div>
+    <div class="wp phone">
+        <div class="tit tit-phone"></div>
+        <div class="bar">沸点榜</div>
+        <div class="list-bg">
+            <div class="list-box list-box1">
+                <div class="list-mod list-mod1"><{data[0]}></div>
+            </div>
+            <div class="list-btn list-btn1">加载更多</div>
+        </div>
+    </div>
+    <div class="wp pc">
+        <div class="tit tit-pc"></div>
+        <div class="bar">沸点榜</div>
+        <div class="list-bg">
+            <div class="list-box list-box2">
+                <div class="list-mod list-mod2"><{data[1]}></div>
+            </div>
+            <div class="list-btn list-btn2">加载更多</div>
+        </div>
+    </div>
+    <div class="wp tv">
+        <div class="tit tit-tv"></div>
+        <div class="bar">沸点榜</div>
+        <div class="list-bg">
+            <div class="list-box list-box3">
+                <div class="list-mod list-mod3"><{data[2]}></div>
+            </div>
+            <div class="list-btn list-btn3">加载更多</div>
+        </div>
+    </div>
+    <div class="wp wash">
+        <div class="tit tit-wash"></div>
+        <div class="bar">沸点榜</div>
+        <div class="list-bg">
+            <div class="list-box list-box4">
+                <div class="list-mod list-mod4"><{data[3]}></div>
+            </div>
+            <div class="list-btn list-btn4">加载更多</div>
+        </div>
+    </div>
+    <div class="wp fri">
+        <div class="tit tit-fri"></div>
+        <div class="bar">沸点榜</div>
+        <div class="list-bg">
+            <div class="list-box list-box5">
+                <div class="list-mod list-mod5"><{data[4]}></div>
+            </div>
+            <div class="list-btn list-btn5">加载更多</div>
+        </div>
+    </div>
+    <div class="wp hot">
+        <div class="tit-hot"></div>
+    </div>
+    <div class="wp lot" id="lot">
+        <div class="lot-step">
+            <div class="lot-step-finger"></div>
+            <div class="lot-step-rect1"></div>
+            <div class="lot-step-rect2"></div>
+        </div>
+        <div class="lot-c">
+            <div class="lot-rank">
+                <div class="lot-rank-t">获奖名单</div>
+                <div class="lot-rank-con">
+                    <ul class="lot-rank-ul">
+                        <li>
+                            <span class="sp11">网友</span>
+                            <span class="sp12">奖品</span>
+                        </li>
+                        <li>
+                            <span class="sp21">暂无数据</span>
+                            <span class="sp22">暂无数据</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lot-b">
+                <div class="lot-box"></div>
+                <div class="lot-start"></div>
+            </div>
+            <div class="lot-info1">
+                <div class="lot-info1-t">恭喜您中奖啦！</div>
+                <div class="lot-info1-close"></div>
+                <label>
+                    <span>姓名:</span>
+                    <input type="text" class="sub sub1" id="sub1" maxlength="10" autofocus>
+                </label>
+                <label>
+                    <span>电话:</span>
+                    <input type="text" class="sub sub1" id="sub2" maxlength="11">
+                </label>
+                <label>
+                    <span>地址:</span>
+                    <input type="text" class="sub sub1" id="sub3" maxlength="30">
+                </label>
+                <div class="lot-submit">提交</div>
+            </div>
+            <div class="lot-info2">
+                很遗憾 没抽中<br/>别灰心 你可以
+                <div class="lot-info2-close"></div>
+            </div>
+        </div>
+        <div class="lot-art">
+            <div class="lot-p1">活动规则再简单不过</div>
+            <div class="lot-p2">1.请务必填写真实信息，获奖后将有工作人员与您联系<br>2.订单号必须通过本页面“沸点榜”中产品获得，无效订单将被筛除<br>3.所有奖品将统一在11月11日之后发出</div>
+            <div class="lot-art1">小秘密</div>
+            <div class="lot-art2"><{data[5]}></div>
+        </div>
+    </div>
+    <div class="wp more">
+        <div class="more-t"></div>
+        <div class="more-c">
+            <ul class="more-ul"></ul>
+        </div>
+    </div>
+    <div class="wp last">
+        <div class="last-mod"></div>
+    </div>
+
+
+</div>
+<script src="http://icon.zol-img.com.cn/active/js/cookie.js"></script>
+<script charset="GBK">
+    /*处理编辑兼容1*/
+    if (/*window.jQuery*/location.hostname == 'article.zol.com.cn') {
+        document.write('<style id="edit-style"> .tend-box{ height: 3000px; } .tend-mod{ display: block; } .app-box{ height: 4270px; } .app-mod{ display: block; } html, body, .flipview { overflow: visible; pointer-events: all!important; }.loading { display: none; }</style>');
+    } else {
+        var ts = document.querySelector('link[href="http://icon.zol-img.com.cn/topic/css/topic_css.css"]');
+        ts && ts.parentNode.removeChild(ts);
+        document.addEventListener('DOMContentLoaded', function () {
+            var es = document.getElementById('edit-style');
+            es && es.parentNode.removeChild(es);
+        });
+        document.write("<script src=\"http://icon.zol-img.com.cn/wap/js/z.min.js\"></s" + "cript>\n\t<script src=\"http://active.zol.com.cn/17active/0122beiang/swiper.min.js\"></s" + "cript>\n\t<script></s" + "cript>");
+        document.write("<script src=\'http://icon.zol-img.com.cn/wap/js/z.flipview.js'></s" + "cript>");
+        document.write("<script src=\'http://icon.zol-img.com.cn/active/js/cookie.js'></s" + "cript>");
+    }
+
+</script>
+<script charset="gbk">
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+    });
+
+
+    var listBox1=document.querySelector('.list-box1');
+    var listBox2=document.querySelector('.list-box2');
+    var listBox3=document.querySelector('.list-box3');
+    var listBox4=document.querySelector('.list-box4');
+    var listBox5=document.querySelector('.list-box5');
+    var listBtn1=document.querySelector('.list-btn1');
+    var listBtn2=document.querySelector('.list-btn2');
+    var listBtn3=document.querySelector('.list-btn3');
+    var listBtn4=document.querySelector('.list-btn4');
+    var listBtn5=document.querySelector('.list-btn5');
+
+    var lot_start=document.querySelector('.lot-start');
+    var lot_box=document.querySelector('.lot-box');
+    var lot_sign=true;
+    var b_time=new Date();
+    //var D_time= b_time.toLocaleDateString().substring(7,9);
+    M_time=b_time.getMonth()+1;
+    Y_time=b_time.getFullYear();
+    D_time=b_time.getDate();
+    H_time=b_time.getHours();
+
+    console.log(M_time);
+    console.log(Y_time);
+    console.log(D_time);
+    console.log(H_time);
+    var orderNumFlag=0;
+    var pre_btn=document.querySelector('.pre-btn');
+    var lot_rank_ul=document.querySelector('.lot-rank-ul');
+    var lot_info1=document.querySelector('.lot-info1');
+    var lot_info1_close=document.querySelector('.lot-info1-close');
+    var lot_info2=document.querySelector('.lot-info2');
+    var lot_info2_close=document.querySelector('.lot-info2-close');
+    var lot_submit=document.querySelector('.lot-submit');
+
+
+    function openList(btn,mod) {
+        btn.addEventListener('click',function () {
+            btn.innerText='正在载入...';
+            setTimeout(function () {
+                btn.style.display='none';
+                mod.style.height='500px';
+            },400);
+        })
+    }
+    openList(listBtn1,listBox1);
+    openList(listBtn2,listBox2);
+    openList(listBtn3,listBox3);
+    openList(listBtn4,listBox4);
+    openList(listBtn5,listBox5);
+
+    var
+        lottery_json = 'http://weixj.comment.test.zol.com.cn/index.php?callback=?&c=Api_NewLottery2&huodong_str=50925313d87d5faca188f4dd4a0d698d',
+        arr_no=['a1','a3'],
+        arr_yes=['a2','a4'];
+    /*登陆*/
+    function init(){
+        var userid = document.cookie && document.cookie.match(/zol_userid=([^;$]+)/);
+        var backurl = encodeURIComponent(location.href), signinUrl = 'http://service.zol.com.cn/user/mlogin.php?backurl=' + backurl;
+        if (userid && userid[1]) {
+            window.userid = userid[1];
+            console.log(window.userid);
+            try { Object.defineProperty(window, 'userid', { value: userid[1], writable: false }); } catch (error) { }
+            userid_test=1;
+        }else {
+            userid_test=0;
+        }
+        console.log(userid_test);
+        console.log(window.userid);
+    }
+    init();
+
+    lot_start.addEventListener('click',function () {
+        if(!userid_test){
+            alert('请先登陆后再来参与活动吧~');
+            window.location.href='http://service.zol.com.cn/user/mlogin.php?backurl='+'http://m.zol.com.cn/1111/';
+            return false;
+        }
+        init();
+        if(!orderNumFlag){
+            alert('需要提交订单号才能参与活动哦~');
+            location.href='#pre';
+            return;
+        }
+        if(lot_sign == true){
+            lot_sign=false;
+            LuckyDraw();
+        }
+
+        function LuckyDraw() {
+            /*init();*/
+            var win0 = arr_no;
+            var win1 = arr_yes;
+
+            win00 = win0[Math.floor(Math.random() * win0.length)];
+            win11 = win1[Math.floor(Math.random() * win1.length)];
+            $.ajax({
+                type: 'get',
+                url: lottery_json,
+                data: {a: 'Roll'},
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if(data){
+                        var code = parseInt(data.status_code);
+                        if(code === 10010){//中奖
+                            var  level = parseInt(data.data.lv);
+                            angle = win11;
+                            awards = 1;
+                            rotateFunc(awards,angle)
+                        }else if(code === 10009){//未中奖
+                            angle = win00;
+                            awards = 0;
+                            rotateFunc(awards,angle)
+                        }else if(code === 40023){
+                            alert("您的抽奖机会已用完~~")
+                            lot_sign=true;
+                        }else{
+                            alert(data.msg)
+                            lot_sign=true;
+                        }
+                    }
+                    setTimeout(function () {
+                        init();
+                    }, 3200)
+                }
+            });
+        }
+
+        var cur=true;
+        var rotateFunc = function(awards,angle){
+            if(cur){
+                cur=false;
+                lot_box.className='lot-box';
+                lot_box.classList.add(angle);
+                var angle_after=angle+'-ok ok lot-box';
+                setTimeout(function () {
+                    lot_box.classList.remove(angle);
+                    lot_box.className=angle_after;
+                    if(awards == 0){
+                        lot_info2.style.display='block';
+                        lot_box.className='lot-box';
+                    }else if(awards==1){
+                        rankList();
+                        lot_info1.style.display='block';
+                    }
+                    cur=true;
+                    lot_sign=true;
+                },3200);
+            }
+        };
+    });
+
+    /*提示信息及表单提交*/
+    lot_info1_close.addEventListener('click',function () {lot_info1.style.display='none';});
+    lot_info2_close.addEventListener('click',function () {lot_info2.style.display='none';});
+    lot_submit.addEventListener('click',function(){
+        nameVal = document.querySelector('#sub1').value;
+        phoneVal = document.querySelector('#sub2').value;
+        addressVal = document.querySelector('#sub3').value;
+        if (!nameVal) {
+            alert('请正确填写您的姓名');
+            return;
+        }
+        if (!phoneVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(phoneVal))) {
+            // 请正确填写您的手机号码
+            alert('请正确填写您的手机号码');
+            return;
+        }
+        if (!addressVal) {
+            alert('请正确填写您的地址');
+            return;
+        }
+        lot_submit.classList.add('pointNo');
+        getToken(function(){
+            $.ajax({
+                url: lottery_json,
+                data:{a:'RecordPersonInfo',token:window.verifyTk,signName:nameVal,signTele:phoneVal,address:addressVal},
+                type:"get",
+                dataType:"jsonp",
+                success:function(result){
+                    if(parseInt(result.status_code) === 10005){//提交成功
+                        lot_info1.style.display='none';
+                        document.querySelector('#sub1').value='';
+                        document.querySelector('#sub2').value='';
+                        document.querySelector('#sub3').value='';
+                        alert("信息提交成功~~")
+                    }else{
+                        alert(result.msg);
+                        lot_submit.classList.remove('pointNo');
+                    }
+                },
+                error: function () {
+                    alert('提交失败,请稍后重试');
+                    lot_submit.classList.remove('pointNo');
+                }
+            });
+        });
+    });
+    // 获取token
+    function getToken(fn){
+        $.ajax({
+            url: lottery_json,
+            data:{a:'UserInfo'},
+            type:"get",
+            dataType:"jsonp",
+            async:true,
+            success:function(request){
+                if(parseInt(request.status_code) === 10010){
+                    window.verifyTk = request.data.token;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+
+            }
+        });
+    }
+
+    /*中奖榜单*/
+    rankList();
+    function rankList(){
+        $.ajax({
+            type:'get',
+            url: lottery_json,
+            data:{a:'WinList'},
+            dataType: 'jsonp',
+            success: function (data) {
+                if(parseInt(data.status_code) === 10010){
+                    var str = '',
+                        obj = data.data;
+                    str+= '<li><span class="sp11">网友</span><span class="sp12">奖品</span></li>';
+                    for(var i=0; i<obj.length; i++){
+                        str +='<li><span class="sp21">'+obj[i].userid+'</span><span class="sp22">'+obj[i].desc+'</span></li>';
+                    }
+
+                    lot_rank_ul.innerHTML=str;
+                }else if(parseInt(data.status_code) === 40012){
+                    lot_rank_ul.innerHTML='<li><span class="sp11">网友</span><span class="sp12">奖品</span></li><li><span class="sp21">暂无数据</span><span class="sp22">暂无数据</span></li>';
+                }
+            }
+        });
+    }
+
+    /*提交订单号*/
+    pre_btn.addEventListener('click',function(){
+        pre_num=document.querySelector('#pre-num').value;
+        console.log(pre_num);
+        if (!pre_num || !(/^\d{17}$/.test(pre_num))) {
+            alert('请正确填写您的单号');
+            return;
+        }
+        if(!window.userid){
+            alert('请登陆后参与活动');
+            window.location.href='http://service.zol.com.cn/user/mlogin.php?backurl='+'http://m.zol.com.cn/1111/';
+            return;
+        }
+        var _this=this;
+        _this.classList.add('pointNo');
+        $.ajax({
+            url: lottery_json,
+            data:{a:'ExpChance',express:pre_num},
+            type:"get",
+            dataType:"jsonp",
+            success:function(result){
+                if(parseInt(result.status_code) === 10010){//提交成功
+                    alert("单号提交成功~~");
+                    location.href='#lot';
+                    orderNumFlag=1;
+                }else{
+                    alert(result.msg);
+                    _this.classList.remove('pointNo');
+                }
+            },
+            error: function () {
+                alert('提交失败,请稍后重试');
+                _this.classList.remove('pointNo');
+            }
+        });
+    });
+
+    /*绑定产品信息列表*/
+    var str_pic=[];
+    var str_a=[];
+    var str_tit=[];
+    var str_des=[];
+    var more_ul=document.querySelector('.more-ul');
+    function splitFun(str,str1,str2,arr) {
+        var nowStr1=str.split(str1);
+        for(var j=0;j<nowStr1.length;j++){
+            if(j>0){
+                arr[arr.length]=nowStr1[j].split(str2)[0];
+            }
+        }
+        console.log(arr);
+    }
+    var dataUrl='http://m.zol.com.cn/preferred/activeAjax.php';
+    $.ajax({
+        url:dataUrl,
+        type:'get',
+        data:{},
+        /*dataType:'jsonp',*/
+        success: function (obj){
+            console.log(obj);
+            //console.log(typeof obj);
+            var str='';
+            splitFun(obj,'document_id":"','","class_id',str_a);
+            splitFun(obj,'title":"','","like_hits',str_tit);
+            splitFun(obj,'content30":"','","daotupc',str_des);
+            splitFun(obj,'daotum":"','","url',str_pic);
+            for(var k=0;k<str_a.length;k++){
+                str+='<li><a href="http://m.zol.com.cn/article/'+str_a[k]+'.html"><img src="'+str_pic[k]+'" width="190" height="110" alt=""><p class="more-p1">'+unescape(str_tit[k].replace(/\\u/g, '%u'))+'</p><p class="more-p2">'+unescape(str_des[k].replace(/\\u/g, '%u'))+' <span>【详情】</span></p></a></li>'
+            }
+            more_ul.innerHTML=str;
+        }
+    });
+
+    /*统计数据*/
+    var shModHong=document.querySelectorAll('.list-mod .hei20');
+    console.log(shModHong.length+'_hei_length');
+    var nowHref='http://m.zol.com.cn/1111/';
+    function zol_niux_tongji(event,url) {
+        var ip_ck = '';
+        var param = arguments[2] ? arguments[2] : "";
+        if(typeof(readck) != "undefined"){
+            ip_ck = readck("ip_ck");
+        }else if(typeof(get_cookie) != "undefined"){
+            ip_ck = get_cookie("ip_ck");
+        }
+        var pv_stat_src = "http://pvtest.zol.com.cn/images/pvevents.gif?t=" + new Date().getTime() + "&event=" + event + "&ip_ck=" + ip_ck + "&url=" + url+'&'+param;
+        var imgObj = new Image();
+        imgObj.src = pv_stat_src;
+    }
+    shModHong.forEach(function (val,key,array) {
+        shModHong[key].addEventListener('click',function(){
+            console.log(key);
+            zol_niux_tongji('double11wap2017',nowHref);
+        });
+    });
+
+
+
+    window.wechatShareData = {
+        "title":'等等！iPhone X便宜？现货？11.11省钱买对的看这就够了',
+        "icon":'http://2.zol-img.com.cn/zt/tm_59f/82fdba0460/share.png',
+        "description":' ',
+        "url":'http://m.zol.com.cn/1111/'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.2.js"></script>
+</body></html>

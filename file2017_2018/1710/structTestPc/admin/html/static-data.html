@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>后台系统</title>
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/bootstrap/3.3.0/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui.min.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/admin/css/lib/jquery-ui/1.11.4/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" href="http://icon.zol-img.com.cn/cms_admin/css/structured/background.css">
+    <style type="text/css">
+    .form-control{display:inline;width:85%;}
+   </style>
+    <script>
+	var structuredId="0";
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>结构化评测文章</h1>
+        </div>
+        <ul class="nav nav-tabs nav-justified">
+            <li role="presentation">
+                <a href="./indexList.php">列表页</a>
+            </li>
+            <li role="presentation">
+                <a href="./productMaintain.php">产品维护数据</a>
+            </li>
+            <li role="presentation">
+                <a href="./fixedData.php">固定数据</a>
+            </li>
+             
+            
+        </ul> 
+        <div id="main-tab-content">
+            <form id="evaForm" class="form-horizontal" role="form" action="index.html" method="post">
+                <div class="form-group row">
+                    <div class="col-xs-1">
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="" id="pro_select_div">
+                           
+                    	</div>
+                    </div>
+                    
+                    
+                  
+                </div>
+                <hr>
+  
+                <h2>解析力</h2>
+                <hr>
+                <div class="form-group row">
+                    <label class="control-label col-xs-2">解析力说明</label>
+                    <div class="col-xs-10">
+                        <textarea name="jiexiDes" class="form-control" rows="3" placeholder="解析力说明" title="解析力说明"></textarea>
+                    </div>
+                </div>
+                <h2>色彩还原</h2>
+                <hr>
+                <div class="form-group row">
+                    <label class="control-label col-xs-2">色彩还原说明</label>
+                    <div class="col-xs-10">
+                        <textarea class="form-control" name="caColorRe" rows="3" placeholder="色彩还原说明" title="色彩还原说明"></textarea>
+                    </div>
+                </div>
+                <h2>白平衡</h2>
+                <hr>
+                <div class="form-group row">
+                    <label class="control-label col-xs-2">白平衡说明</label>
+                    <div class="col-xs-10">
+                        <textarea class="form-control" rows="3" name="caWhiteBa" placeholder="白平衡说明" title="白平衡说明"></textarea>
+                    </div>
+                </div>
+                <h2>宽容度</h2>
+                <hr>
+                <div class="form-group row">
+                    <label class="control-label col-xs-2">宽容度说明</label>
+                    <div class="col-xs-10">
+                        <textarea class="form-control" name="caToler" rows="3" placeholder="宽容度说明" title="宽容度说明"></textarea>
+                    </div>
+                </div>
+                <h2>主观评价</h2>
+                <hr>
+                <div class="form-group row">
+                    <label class="control-label col-xs-2">主观评价说明</label>
+                    <div class="col-xs-10">
+                        <textarea class="form-control" name="caMainEva" rows="3" placeholder="主观评价说明" title="主观评价说明"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="control-label col-xs-2"></label>
+                    <div class="col-xs-10">
+                        <input type="submit" class="btn btn-primary btn-lg" value="提交">
+                        <input type="button" class="btn btn-primary btn-lg" id="save-data" value="保存">
+                        <input type="button" class="btn btn-lg" id="remove-data" value="清除缓存"> 
+                    </div>
+                </div>
+            </form>
+            <hr>
+        </div>
+    </div>
+     <script type="text/javascript" src="http://icon.zol-img.com.cn/public/js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="http://icon.zol-img.com.cn/cms_admin/js/proSelect.js"></script>
+	<script type="text/javascript">proSelect.config.initParam = [,,,];proSelect.initContent('pro_select_div');</script> 
+	<script src="http://h5x.zol.com.cn/H5-v4.0/js/sea.js"></script>
+    <script>
+        seajs.config({
+            base: "http://h5x.zol.com.cn/H5-v4.0/js/",
+            alias: {
+                "jquery": "jquery/jquery/1.10.1/jquery.js"
+            }
+        });  
+        var t = new Date();
+        seajs.use('http://icon.zol-img.com.cn/admin/js/m/pingcejiiegouhua/index.js?v=1508390815'); 
+    </script>
+</body>
+
+</html>
