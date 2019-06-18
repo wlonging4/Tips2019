@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+<div data-ng-app="app1" ng-init="" ng-controller="cto1">
+    {{mes}}<br/>{{mes2}}
+
+    <table>
+        <tr>
+            <!--<td>{{name.Name}}</td>
+            <td>{{name.Country}}</td>
+            <td>{{name.City}}</td>-->
+            <td>{{names}}</td>
+        </tr>
+    </table>
+</div>
+<script>
+    document.domin='https://www.runoob.com';
+    angular.module('app1',[]).controller('cto1',function ($scope,$http) {
+        $scope.mes='123';
+        $scope.mes2='111';
+        console.log($scope);
+
+        $http.get(
+            'http://m.zol.com.cn/topic/services/session.php'
+        ).then(function (res) {
+            console.log(res.data);
+
+            $scope.names=res.data;
+        },function (err) {
+            console.log(err);
+        })
+    })
+</script>
+</body>
+</html>

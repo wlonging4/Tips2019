@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,html{margin:0;padding:0;}
+        #canvas{position: fixed;top: 0;z-index: -100;}
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+    !function (window,document) {
+        /*
+        * 1，按钮画在画布上，然后点击加在canvas承载的box上，需要嵌套一个盒子；直接加在canvas上，API没法判断触发区域
+        * 2，上面思路比点击html元素操作还复杂
+        * 3，只能在效果上优化了
+        *
+        * */
+        var canvas=document.getElementById('canvas');
+        canvas.width=canvas.height=window.innerWidth;
+        var cvs=canvas.getContext('2d');
+
+        function CanBtn(window,document){
+            return this.init.apply(this,arguments);
+        }
+
+        CanBtn.prototype={
+            init:function () {
+
+            },
+
+        };
+        new CanBtn(window,document);
+    }(window,document)
+</script>
+</body>
+</html>

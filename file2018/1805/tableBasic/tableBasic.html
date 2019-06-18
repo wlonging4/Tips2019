@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        .p1{font-weight: bolder;color: #0000ff;font: 24px/26px 'Arial Unicode MS';}
+        #select label,#add label{float: left;text-align: center;width: 240px;display: block;}
+        #result{overflow: hidden;width: 400px;padding: 0;}
+        #result li{text-align: left;height: 30px;list-style: none;}
+        #result li span{width: 100px;float: left;}
+        #result li span:nth-child(4),#result li span:nth-child(5),.res span,#addBtn{background: #ccc;width: 40px;text-align: center;border-radius: 10px;margin-right: 10px;cursor: pointer;}
+        #show{display: none}
+        #show.act{display: block;}
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<!--select-->
+<p class="p1">查找</p>
+<div id="select" class="clearfix">
+    <label>姓名：
+        <input type="text" id="selectName">
+    </label>
+    <label>性别：
+        <select name="" id="selectSex">
+            <option value="male">男</option>
+            <option value="female">女</option>
+        </select>
+    </label>
+    <label>年龄：
+        <input type="text" id="selectAge">
+    </label>
+</div>
+<!--result-->
+<p class="p1">结果</p>
+<div class="res">
+    <span id="resAdd">添加</span><span id="resSubmit">提交</span>
+</div>
+<ul id="result">
+    <li><span></span><span></span><span></span><span data-mod=""></span><span data-del=""></span></li>
+</ul>
+<!--add-->
+<div id="show">
+    <p class="p1" id="addTitle">添加</p>
+    <div id="add" class="clearfix">
+        <label>姓名：
+            <input type="text" id="addName">
+        </label>
+        <label>性别：
+            <select name="" id="addSex">
+                <option value="male">男</option>
+                <option value="female">女</option>
+            </select>
+        </label>
+        <label>年龄：
+            <input type="text" id="addAge">
+        </label>
+    </div>
+    <div id="addBtn">确定</div>
+</div>
+
+
+
+<script>
+    var modifyFlag=0;
+    var modifyNow=null;
+
+    /*data*/
+    var arr1=[
+        {name:'一一',sex:'female',age:'21'},
+        {name:'二二',sex:'male',age:'22'},
+        {name:'三三',sex:'male',age:'23'},
+    ];
+    var arr2=[
+        {name:'一一',sex:'female',age:'21'},
+        {name:'二二',sex:'male',age:'22'},
+        {name:'三三',sex:'male',age:'23'},];
+
+    /*绑定数据*/
+    function bindData(arr) {
+        var str='';
+        for(var i=0;i<arr.length;i++){
+            str+='<li><span>'+arr[i].name+'</span>'+'<span>'+arr[i].sex+'</span>'+'<span>'+arr[i].age+'</span>'+'<span data-mod="'+i+'">修改</span>'+'<span data-del="'+i+'">删除</span></li>';
+        }
+        result.innerHTML=str;
+    }
+    bindData(arr2);
+
+    /*添加内容*/
+    resAdd.addEventListener('click',function () {
+        show.classList.add('act');
+        modifyFlag=0;
+        modifyNow=null;
+        addTitle.innerHTML='添加';
+        addName.value=addSex.value=addAge.value='';
+        result.style.pointerEvents='all';
+        result.style.opacity=1;
+    });
+    /*确定添加+确定修改*/
+    addBtn.addEventListener('click',function () {
+        //console.log(addName.value);
+        //console.log(addSex.value);
+        //console.log(addAge.value);
+        if(!modifyFlag){
+            if(addName.value&&addSex.value&&addAge.value){
+                arr2[arr2.length]={
+                    name:addName.value,
+                    sex:addSex.value,
+                    age:addAge.value
+                };
+            }else{
+                alert('清完整填写数据')
+            }
+        }else{
+            if(addName.value&&addSex.value&&addAge.value){
+                arr2[modifyNow].name=addName.value;
+                arr2[modifyNow].sex=addSex.value;
+                arr2[modifyNow].age=addAge.value;
+                result.style.pointerEvents='all';
+                result.style.opacity=1;
+                modifyFlag=0;
+                modifyNow=null;
+                addTitle.innerHTML='添加';
+            }else{
+                alert('清完整填写数据')
+            }
+        }
+        bindData(arr2);
+        addName.value=addSex.value=addAge.value='';
+        resDelete();
+        resModify();
+    });
+    /*删除内容*/
+    resBtns=result.getElementsByTagName('span');
+    function resDelete() {
+        for(var j=0;j<resBtns.length;j++){
+            resBtns[j].addEventListener('click',function () {
+                //console.log(this);
+                if(this.getAttribute('data-del')){
+                    arr2.splice(this.getAttribute('data-del'),1);
+                    bindData(arr2);
+                    resBtns=result.getElementsByTagName('span');
+                    resDelete();
+                    resModify();
+                }
+            })
+        }
+    }
+    resDelete();
+
+    /*修改已有数据*/
+    function resModify() {
+        for(var u=0;u<resBtns.length;u++){
+            resBtns[u].addEventListener('click',function () {
+                //console.log(this);
+                if(this.getAttribute('data-mod')){
+                    //arr2.splice(this.getAttribute('data-mod'),1);
+                    //bindData(arr2);
+                    addTitle.innerHTML='修改';
+                    modifyFlag=1;
+                    result.style.pointerEvents='none';
+                    result.style.opacity=0.6;
+                    modifyNow=this.getAttribute('data-mod');
+                    show.classList.add('act');
+                    addName.value=arr2[modifyNow].name;
+                    addSex.value=arr2[modifyNow].sex;
+                    addAge.value=arr2[modifyNow].age;
+
+                    resBtns=result.getElementsByTagName('span');
+                    resModify();
+                }
+            })
+        }
+    }
+    resModify();
+
+    resSubmit.addEventListener('click',function () {
+        alert(arr2);
+    });
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

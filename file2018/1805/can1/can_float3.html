@@ -1,0 +1,103 @@
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<style type="text/css">
+    html,body{padding: 0;margin: 0;}
+    #canvas{position: fixed;top: 0;z-index: -100;}
+</style>
+<script>
+    var canvas = document.querySelector("#canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext("2d");
+
+    var mouse = {
+        x: undefined,
+        y: undefined
+    };
+    window.addEventListener("mousemove",function (event) {
+        mouse.x = event.x;
+        mouse.y = event.y;
+        //console.log(mouse);
+    });
+    window.addEventListener("resize",function () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        init();
+    });
+    var maxRadius = 20;
+    var imgWidth=30;
+    var maxNum=100;
+    var snowArray = [
+        'images/sn1.png',
+        'images/sn2.png'
+    ];
+
+    function Circle(x, y, dx, dy) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        //this.radius = radius;
+        //this.minRadius = radius;
+        this.bg = snowArray[Math.floor(Math.random()*snowArray.length)];
+
+        this.draw = function() {
+            var img=new Image();
+            img.src=this.bg;
+            ctx.drawImage(img,this.x,this.y,30,30);
+        };
+        this.update = function() {
+            /*collide test*/
+            if (this.x + imgWidth > innerWidth || this.x < 0 ) {
+                this.dx = -this.dx;
+            }
+            if (this.y + imgWidth > innerHeight || this.y< 0 ) {
+                this.dy = -this.dy;
+            }
+            /*playing*/
+            this.x += this.dx;
+            this.y += this.dy;
+            /*swipe test*/
+            if (Math.abs(mouse.x - this.x) < 50 && Math.abs(mouse.y - this.y) < 50 ) {
+                if(mouse.x - this.x>0){this.x -= 1;}
+                if(mouse.x - this.x<0){this.x += 1;}
+                if(mouse.y - this.y>0){this.y -= 1;}
+                if(mouse.y - this.y<0){this.y += 1;}
+            }
+            this.draw();
+        }
+    }
+    // var c = new Circle(x, y, dx, dy, radius);
+
+    var circleArray = [];
+    function init() {
+        circleArray = [];
+        for (var i = 0; i < maxNum; i++) {
+            var x = Math.random()*(window.innerWidth-30);
+            var y = Math.random()*(window.innerHeight-30);
+            var dx = (Math.random()-0.5);
+            var dy = (Math.random()-0.5);
+            //var radius = Math.random()*3 +1;//(1-4 radius)
+            circleArray.push(new Circle(x, y, dx, dy));
+        }
+    }
+    init();
+    document.addEventListener('mouseout',function () {
+        mouse={x:-100,y:-100};
+    });
+    function animate() {
+        ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+        for (var i = 0; i < circleArray.length; i++) {
+            circleArray[i].update();
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+</body></html>

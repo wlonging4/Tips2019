@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset2.css">
+    <link rel="stylesheet" href="css/can11.css">
+</head>
+<body>
+<div class="box">
+    <canvas id="canvas"></canvas>
+</div>
+<script>
+    ~function (window,document) {
+        function CanvasFunc() {
+            return this.init.apply(this,arguments);
+        }
+        box=document.querySelector('.box');
+        can=document.querySelector('#canvas');
+        window.requestAnimationFrame = (function(){
+            return  window.requestAnimationFrame||window.webkitRequestAnimationFrame ||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function (callback) { window.setTimeout(callback, 1000 / 60); };
+        })();
+
+        /*(function() {
+            var lastTime = 0;
+            var vendors = ['webkit', 'moz'];
+            for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+                window.cancelAnimationFrame =
+                    window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
+            }
+
+            if (!window.requestAnimationFrame)
+                window.requestAnimationFrame = function(callback, element) {
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                    var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                        timeToCall);
+                    lastTime = currTime + timeToCall;
+                    return id;
+                };
+
+            if (!window.cancelAnimationFrame)
+                window.cancelAnimationFrame = function(id) {
+                    clearTimeout(id);
+                };
+        }());*/
+
+        can.width=600;
+        can.height=300;
+        var closeRow=0,closeCol=0;
+        var nowStamp;
+        CanvasFunc.prototype={
+            ca:can.getContext('2d'),
+            init:function () {
+                var _this=this;
+                //console.log(_this.ca);
+                _this.drawBg(_this);
+                _this.moveMouse();
+            },
+            drawBg:function () {
+
+                var _this=this;
+                _this.ca.clearRect(0,0,600,300);
+                var oImg=new Image();
+                oImg.src='images/star.png';
+                oImg.onload=function () {
+                    var nowWidthNum=Math.floor(600/33);
+                    var nowHeightNum=Math.floor(300/33);
+                    for(var i=0;i<nowWidthNum;i++){
+                        for(var j=0;j<nowHeightNum;j++){
+                            var nowDistance=Math.sqrt(Math.pow(Math.abs(j+1-closeRow),2)+Math.pow(Math.abs(i+1-closeCol),2));
+                            if((j+1==closeRow)&&(i+1==closeCol)){
+                                _this.ca.drawImage(oImg,i*33-8,j*33-8,33+16,33+16);
+                            }else{
+                            if(nowDistance<=Math.sqrt(1)){
+                                _this.ca.drawImage(oImg,i*33-6,j*33-6,33+12,33+12);
+                            }else
+                            if(nowDistance<=Math.sqrt(4)){
+                                _this.ca.drawImage(oImg,i*33-2,j*33-2,33+4,33+4);
+                            }else
+                            if(nowDistance<=Math.sqrt(9)){
+                                _this.ca.drawImage(oImg,i*33-1,j*33-1,33+2,33+2);
+                            }else
+                                _this.ca.drawImage(oImg,i*33,j*33,33,33);
+                            }
+                        }
+                    }
+                }
+            },
+            moveMouse:function(){
+                var _this=this;
+                box.addEventListener('mousemove',function (e) {
+                    //nowStamp=Number(new Date());
+                    var nowPoint1=e.clientX-box.offsetLeft;
+                    var nowPoint2=e.clientY-box.offsetTop;
+                    closeCol=Math.floor(nowPoint1/33)+1;
+                    closeRow=Math.floor(nowPoint2/33)+1;
+                    //console.log(closeRow);
+                    //console.log(closeCol);
+                    //console.log(_this.drawBg(_this));
+                    _this.drawBg();
+                });
+            }
+        };
+
+        new CanvasFunc(window,document);
+
+    }(window,document);
+</script>
+</body>
+</html>
