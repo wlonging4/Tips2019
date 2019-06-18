@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function sortAry(ary,type){
+        var newAry=ary.slice();
+        var temp=null;
+        for(var i=0;i<newAry.length-1;i++){
+            for(var j=0;j<newAry.length-1-i;j++){
+                if(newAry[j]>newAry[j+1]){
+                    temp=newAry[j];
+                    newAry[j]=newAry[j+1];
+                    newAry[j+1]=temp;
+                }
+            }
+        }
+        //判断是否传type值
+        typeof type!=="undefined"?newAry.reverse():null;
+        return newAry;
+    }
+    var newAry=[3,2,6,4,1,9,0];
+    alert(sortAry(newAry));
+    alert(sortAry(newAry,1));
+</script>
+</body>
+</html>

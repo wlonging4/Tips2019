@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="GBK">
+    <title>竞游新生 ZOL 2016网友嘉年华</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#01002b; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+
+        .flow{  position: fixed;  _position: absolute;  top: 200px;  left: 50%;  margin-left: 570px;  height: 460px;  width: 120px;  background: #7B09AC;  }
+        .flow-title{  position: absolute;  top: -75px;  left: -28px;  height: 112px;  width: 173px;  background: url("images/lg_flow.png") no-repeat 0 0;  }
+        .flow ul{  width: 104px;  padding: 50px 8px 0;  }
+        .flow ul li{  _display:inline;  width: 104px;  height: 36px;  margin-bottom: 8px;  }
+        .flow ul li a{  display: block;  width: 104px;  height: 36px;  line-height: 36px;  color: #fff;  font-size: 18px;  text-align: center;  background: #30008C;  }
+        .flow ul li a:hover{  background: #B308EB;  }
+        .flow ul li a.a-act{  background: #B308EB;  }
+        .flow-code{  width: 105px;  height: 100px;  padding: 0 8px 10px;  }
+        .flow-scan{  width: 120px;  height: 26px;  background: url("images/lg_scan.jpg") no-repeat 0 0;  }
+        .flow-back{  position: absolute;  bottom: 15px;  left: 44px;  width: 35px;  height: 31px;  cursor: pointer;  background: url("images/lg_backtop.png") no-repeat 0 0;  }
+        .flow-bar{  position: absolute;  left: 0;  bottom: 1px;  width: 120px;  height: 7px;  background: #000;  }
+
+        .act-l{  background: url("images/lg_act_l.jpg") no-repeat 100% 0;  }
+        .act-r{  background: url("images/lg_act_r.jpg") no-repeat 0 0;  }
+
+        .act-pre{  height: 405px;  width: 1000px;  position: relative;  background: url("images/lg_act_pre.jpg") no-repeat 0 0;  }
+        .act-pre-video{  position: absolute;  width: 575px;  height: 323px;  top: 8px;  left: 23px;  background: #000;  }
+        .act-pre-txt{  position: absolute;  width: 345px;  height: 340px;  top: 8px;  left: 640px;  }
+
+        .act-list{  height: 278px;  width: 1000px;  padding: 34px 0 70px 0;  }
+        .act-list li{  position: relative;  float: left;  display: block;  _display: inline;  width: 225px;  height: 270px;  margin: 0 12px 0 13px;  }
+        .act-list .act-flow{  position: absolute;  top: 155px;  width: 200px;  height: 170px;  }
+        .act-l1{  background: #7400c2;  border-top: 8px solid #30008C;  }
+        .act-l1 .act-flow{  left: 15px;  background: url("images/lg_spirit1.png") no-repeat 0 0;  }
+        .act-l2{  background: #78AA1F;  border-top: 8px solid #336708;  }
+        .act-l2 .act-flow{  left: 10px;  top: 145px; background: url("images/lg_spirit1.png") no-repeat -200px 0;  }
+        .act-l3{  background: #FD7100;  border-top: 8px solid #FB2E00;  }
+        .act-l3 .act-flow{  left: 10px;  top: 145px; background: url("images/lg_spirit1.png") no-repeat -400px 0;  }
+        .act-l4{  background: #DA199D;  border-top: 8px solid #B80654;  }
+        .act-l4 .act-flow{  left: 25px;  top: 145px; background: url("images/lg_spirit1.png") no-repeat -600px 0;  }
+
+        .act-in{  height: 180px;  width: 970px;  margin: 0 auto;  }
+        .act-in-title{  height: 50px;  width: 970px;  line-height: 50px;  font-size: 26px; color: #FFC700;  text-align: center;  background: #844B00;  }
+        .act-in-con{  position: relative;  height: 130px;  width: 970px;  background: url("images/lg_baoming.jpg") no-repeat 0 0;  }
+        .act-in-mod{  position: absolute;  height: 52px;  width: 165px;  left: 658px;  top: 40px;  }
+
+        .live-title{  width: 1000px;  height: 98px;  background: url("images/lg_live_title.jpg");  }
+        .live-con{  width: 970px;  height: 600px; margin-left: 15px; }
+        .live-c-l{  position: relative; float: left; background: url("images/lg_live_l.jpg") no-repeat 0 0;  height: 600px;  width: 342px;    }
+        .live-c-ln{  position: absolute;  width: 300px;  left: 30px;  }
+        .live-c-l1{  top: 28px;  height: 30px;  }
+        .live-c-l2{  top: 64px;  height: 30px;  }
+        .live-c-l3{  top: 100px;  height: 30px;  }
+        .live-c-l4{  top: 138px;  height: 142px;  }
+        .live-c-l5{  top: 288px;  height: 30px;  }
+        .live-c-l6{  top: 324px;  height: 30px;  }
+        .live-c-l7{  top: 360px;  height: 30px;  }
+        .live-c-l-img{  position: absolute;  width: 314px;  height: 155px;  top: 410px;  left: 13px;  }
+        .live-c-r{  float: right;  width: 610px; margin-left: 18px;  height: 592px;  border-top: 8px solid #7B09AC; background: #fff }
+
+        .ferris-l{  background: url("images/lg_ferris_l.jpg") no-repeat 100% 0;  }
+        .ferris-r{  background: url("images/lg_ferris_r.jpg") no-repeat 0 0;  }
+        .ferris-t{  width: 1000px;  height: 90px;  background: url("images/lg_ferris_c.jpg") no-repeat 0 0;  }
+        .ferris-con{  position: relative;  width: 1000px;  height: 990px;  }
+        .ferris-cage{  position: absolute;  height: 154px;  width: 180px;  padding-top: 54px;  background: url("images/lg_cage.png") no-repeat 0 0;  }
+        .ferris-b{  position: absolute;  height: 152px;  width: 784px;  left: 108px;  bottom: 32px;  background: url("images/lg_mo_b.png") no-repeat 0 0;  }
+        .ferris-p{  position: absolute;  width: 616px;  height: 620px;  left: 192px;  top: 248px;  background: url("images/lg_mo_pan.png") no-repeat 0 0;  animation: roll 6s linear infinite; -webkit-animation: roll 6s linear infinite; -moz-animation: roll 6s linear infinite;-o-animation: roll 6s linear infinite;-ms-animation: roll 6s linear infinite;}
+        .ferris-c{  position: absolute;  left: 312px;  top: 436px;  width: 377px;  height: 244px;  background: url("images/lg_mo_c.png");  }
+        .ferris-cage1{  top: 36px;  left: 250px;  }
+        .ferris-cage2{  top: 36px;  left: 570px;  }
+        .ferris-cage3{  top: 275px;  left: 15px;  }
+        .ferris-cage4{  top: 275px;  left: 805px;  }
+        .ferris-cage5{  top: 605px;  left: 15px;  }
+        .ferris-cage6{  top: 605px;  left: 805px;  }
+        @keyframes roll {
+            0%{
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            33%{
+                transform: rotate(120deg);
+                -moz-transform: rotate(120deg);
+                -o-transform: rotate(120deg);
+                -ms-transform: rotate(120deg);
+                -webkit-transform: rotate(120deg);
+            }
+            66%{
+                transform: rotate(240deg);
+                -moz-transform: rotate(240deg);
+                -o-transform: rotate(240deg);
+                -ms-transform: rotate(240deg);
+                -webkit-transform: rotate(240deg);
+            }
+            100%{
+                transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes roll {
+            0%{
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            33%{
+                transform: rotate(20deg);
+                -moz-transform: rotate(20deg);
+                -o-transform: rotate(20deg);
+                -ms-transform: rotate(20deg);
+                -webkit-transform: rotate(20deg);
+            }
+            66%{
+                transform: rotate(40deg);
+                -moz-transform: rotate(40deg);
+                -o-transform: rotate(40deg);
+                -ms-transform: rotate(40deg);
+                -webkit-transform: rotate(40deg);
+            }
+            100%{
+                transform: rotate(60deg);
+                -moz-transform: rotate(60deg);
+                -o-transform: rotate(60deg);
+                -ms-transform: rotate(60deg);
+                -webkit-transform: rotate(60deg);
+            }
+        }
+
+        .spot{  overflow: hidden;  }
+        .spot-l{  background: url("images/lg_spot_l.jpg") no-repeat 100% 0;  }
+        .spot-r{  background: url("images/lg_spot_r.jpg") no-repeat 0 0;  }
+        .spot-t{  width: 1000px;  height: 90px;  background: url("images/lg_spot_t.jpg") no-repeat 0 0;  }
+        .spot-con{  width: 970px;  height: 410px;  margin: 0 15px 0;  }
+        .spot-con-l{  float: left;  width: 510px;  height: 383px;  background: #FFC700; }
+        .spot-con-l-img{  position: relative; width: 485px;  height: 360px;  border: 1px solid #985F00;  margin: 9px 10px; overflow: hidden  }
+        .spot-con-l-img-box{  position: absolute;  left: 0;  top: 0;  height: 360px;  }
+        .spot-con-r{  float: left;  width: 458px;  height: 381px;  border: 1px solid #FFC700;  background: url("images/lg_spot_r_mod.jpg") no-repeat 0 0;  }
+
+        .cool-l{  background: url("images/lg_cool_l.jpg") no-repeat 100% 0;  }
+        .cool-r{  background: url("images/lg_cool_r.jpg") no-repeat 0 0;  }
+        .cool-t{  height: 88px;  width: 1000px;  background: url("images/lg_cool_t.jpg") no-repeat 0 0;  }
+        .cool-c{  width: 1000px;  height: 543px;  background: url("images/lg_cool_c.jpg") no-repeat 0 0;  }
+
+        .ath-l{  background: url("images/lg_ath_l.jpg") no-repeat 100% 0;  }
+        .ath-r{  background: url("images/lg_ath_r.jpg") 0 0;  }
+        .ath-c{  position: relative;  width: 1000px;  height: 554px;  background: url("images/lg_ath_c.jpg");  }
+        .ath-c1{  position: absolute;  width: 342px;  height: 470px;  top: 80px;  left: 22px;  }
+        .ath-c2{  position: absolute;  width: 216px;  height: 389px;  top: 124px;  left: 396px;  }
+        .ath-c3{  position: absolute;  width: 309px;  height: 413px;  top: 96px;  left: 656px;  }
+
+        .intro-l{  background: url("images/lg_intro_l.jpg") no-repeat 100% 0;  }
+        .intro-r{  background: url("images/lg_intro_r.jpg") no-repeat 0 0;  }
+        .intro-t{  width: 1000px;  height: 79px;  background: url("images/lg_intro_t.jpg") no-repeat 0 0;  }
+        .intro-c{  position: relative;  width: 1000px;  height: 274px;  overflow: hidden;  }
+        .intro-con{  position: relative;  width: 810px;  height: 190px;  overflow: hidden;  margin: 48px 95px 35px;  }
+        .intro-con-box{  position: absolute;  top: 0;  left: 0;  height: 190px;  }
+        .intro-btn{  height: 60px;  width: 55px;  position: absolute;  top: 120px;  cursor: pointer;  background: url("images/lg_spirit2.png") no-repeat;  }
+        .intro-btn1{  left: 30px;  background-position: 0 0;  }
+        .intro-btn2{  right: 30px;  background-position: -58px 0;  }
+
+        .off-l{  background: url("images/lg_office_l.jpg") no-repeat right bottom;  }
+        .off-r{  background: url("images/lg_office_r.jpg") no-repeat left bottom;  }
+        .off-t{  height: 95px;  width: 1000px;  background: url("images/lg_office_t.jpg") no-repeat 0 0;  }
+        .off-mod{  height: 134px;  width: 920px;  padding-left: 40px;  background: url("images/lg_office_bg.jpg") no-repeat 0 0;  }
+
+        .foot-l{  background: url("images/lg_foot_l.jpg") no-repeat 100% 0;  }
+        .foot-r{  background: url("images/lg_foot_r.jpg") no-repeat 0 0;  }
+        .foot-c{  color: #E9D2FF;  height: 428px;  padding-top: 100px;  text-align: center;  background: url("images/lg_foot_c.jpg") no-repeat 0 0;  }
+        .foot-c a{  color: #E9D2FF;  }
+        .foot-c a:hover{  color: #E9D2FF;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table  width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img src="images/lg_head_c1.jpg" width="1000" height="255" alt=""/>
+            <img src="images/lg_head_c2.jpg" width="1000" height="335" alt=""/>
+            <img src="images/lg_head_c3.jpg" width="1000" height="275" alt=""/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--浮动-->
+<div class="flow">
+    <div class="flow-title"></div>
+    <ul>
+        <li><a href="#act" class="a-act" target="_self">关于活动</a></li>
+        <li><a href="#act-list" target="_self">游戏项目</a></li>
+        <li><a href="#live" target="_self">现场直播</a></li>
+        <li><a href="#athletic" target="_self">电竞赛事</a></li>
+        <li><a href="#intro" target="_self">游戏装备</a></li>
+    </ul>
+    <div class="flow-code">
+        模块内容
+    </div>
+    <div class="flow-scan"></div>
+    <div class="flow-back" id="return"></div>
+    <div class="flow-bar"></div>
+</div>
+<!--活动-->
+<table class="act" id="act" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="act-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="act-pre">
+                <div class="act-pre-video">
+                    模块内容
+                </div>
+                <div class="act-pre-txt">
+                    模块内容
+                </div>
+            </div>
+            <ul class="act-list" id="act-list">
+                <li class="act-l1">
+                    模块内容
+                    <div class="act-flow"></div>
+                </li>
+                <li class="act-l2">
+                    模块内容
+                    <div class="act-flow"></div>
+                </li>
+                <li class="act-l3">
+                    模块内容
+                    <div class="act-flow"></div>
+                </li>
+                <li class="act-l4">
+                    模块内容
+                    <div class="act-flow"></div>
+                </li>
+            </ul>
+            <div class="act-in">
+                <div class="act-in-title">
+                    竞游新生 2016网友嘉年华
+                </div>
+                <div class="act-in-con">
+                    <div class="act-in-mod">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="act-r">&nbsp;</td>
+    </tr>
+</table>
+<!--直播-->
+<table class="live" id="live" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="live-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="live-title"></div>
+            <div class="live-con clearfix">
+                <div class="live-c-l">
+                    <div class="live-c-l1 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l2 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l3 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l4 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l5 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l6 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l7 live-c-ln">
+                        模块内容
+                    </div>
+                    <div class="live-c-l-img">
+                        模块内容
+                    </div>
+                </div>
+                <div class="live-c-r">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="live-r">&nbsp;</td>
+    </tr>
+</table>
+<!--时光机-->
+<table class="ferris" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="ferris-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="ferris-t"></div>
+            <div class="ferris-con">
+                <div class="ferris-b"></div>
+                <div class="ferris-p"></div>
+                <div class="ferris-c"></div>
+                <div class="ferris-cage1 ferris-cage">
+                    模块内容
+                </div>
+                <div class="ferris-cage2 ferris-cage">
+                    模块内容
+                </div>
+                <div class="ferris-cage3 ferris-cage">
+                    模块内容
+                </div>
+                <div class="ferris-cage4 ferris-cage">
+                    模块内容
+                </div>
+                <div class="ferris-cage5 ferris-cage">
+                    模块内容
+                </div>
+                <div class="ferris-cage6 ferris-cage">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="ferris-r">&nbsp;</td>
+    </tr>
+</table>
+<!--现场-->
+<table class="spot" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="spot-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="spot-t"></div>
+            <div class="spot-con clearfix">
+                <div class="spot-con-l">
+                    <div class="spot-con-l-img">
+                        <div class="spot-con-l-img-box">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="spot-con-r">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="spot-r">&nbsp;</td>
+    </tr>
+</table>
+<!--酷品-->
+<table class="cool" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="cool-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="cool-t"></div>
+            <div class="cool-c">
+
+            </div>
+        </td>
+        <td class="cool-r">&nbsp;</td>
+    </tr>
+</table>
+<!--电竞-->
+<table class="athletic" id="athletic" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="ath-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="ath-c">
+                <div class="ath-c1">
+                    模块内容
+                </div>
+                <div class="ath-c2">
+                    模块内容
+                </div>
+                <div class="ath-c3">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="ath-r">&nbsp;</td>
+    </tr>
+</table>
+<!--推荐-->
+<table class="intro" id="intro" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="intro-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="intro-t"></div>
+            <div class="intro-c">
+                <div class="intro-btn1 intro-btn"></div>
+                <div class="intro-btn2 intro-btn"></div>
+                <div class="intro-con">
+                    <div class="intro-con-box">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="intro-r">&nbsp;</td>
+    </tr>
+</table>
+<!--官推-->
+<table class="office" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="off-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="off-t"></div>
+            <div class="off-mod">
+                模块内容
+            </div>
+            <!--<div class="off-mod">
+                模块内容
+            </div>-->
+        </td>
+        <td class="off-r">&nbsp;</td>
+    </tr>
+</table>
+<!--尾部-->
+<table class="foot" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="foot-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="foot-c">
+                模块内容
+            </div>
+        </td>
+        <td class="foot-r">&nbsp;</td>
+    </tr>
+</table>
+
+<script charset="gbk" src="../jquery-1.9.1.js"></script>
+<script charset="gbk">
+    /*浮动边栏*/
+    var $flow_a=$('.flow ul').find('a');
+    $flow_a.bind('click', function () {
+        $(this).closest('ul').find('li a').removeClass('a-act');
+        $(this).addClass('a-act');
+    });
+
+    /*回到顶部*/
+    $("#return").click(function () {
+        var speed=200;//滑动的速度
+        $('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+    });
+
+</script>
+</body>
+</html>

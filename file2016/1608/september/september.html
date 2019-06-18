@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>ZOL开学季运营活动专题</title>
+    <meta name="keywords" content="ZOL开学季" />
+    <meta name="description" content="ZOL开学季" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, figcaption { margin: 0; padding: 0; font-size: 32px; }
+        html, body { height: 100%; }
+        body { -webkit-tap-highlight-color: rgba(0,0,0,0); background-color: #F2FCFD; color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a { color: #000; text-decoration: none; }
+        a img { border: 0 none; }
+        img { display: block; }
+        table { border-collapse: collapse; border-spacing: 0; }
+        th, td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*动画*/
+        .float-left, .float-right, .float-up, .float-down, .float-scale { -webkit-transition: .6s; transition: .6s; opacity: 0; }
+        .float-left { -webkit-transform: translate(30px,0); transform: translate(30px,0); }
+        .float-right { -webkit-transform: translate(-30px,0); transform: translate(-30px,0); }
+        .float-up { -webkit-transform: translate(0,30px); transform: translate(0,30px); }
+        .float-down { -webkit-transform: translate(0,-100px); transform: translate(0,-100px); }
+        .float-scale { -webkit-transform: scale(1.1); transform: translate(1.1); }
+        .flow-exh{  opacity: 0;  }
+        .current .float-left, .current .float-right, .current .float-up, .act .float-down, { -webkit-transform: none; transform: none; opacity: 1; }
+        .show-fly-down1, .show-fly-down2, .show-fly-down3,.show-fly-down4 { opacity: 0; transform: translate(-20px,-5px); -webkit-transform: translate(-20px,-5px); }
+        .show-fly-up1, .show-fly-up2 { opacity: 0; transform: translate(40px,40px); -webkit-transform: translate(40px,40px); }
+        .flow-hand{  opacity: 0;  transform: translate(10px,5px);  }
+
+        @-webkit-keyframes show-hide1 {
+            0% { opacity: 0.8; -webkit-transform: scale(0.8); }
+            50% { opacity: 1; -webkit-transform: scale(1); }
+            100% { opacity: 0.8; -webkit-transform: scale(0.8); }
+        }
+        @keyframes show-hide1 {
+            0% { opacity: 0.8; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(0.8); }
+        }
+        @-webkit-keyframes show-hide2 { 0% {  -webkit-transform: scale(0.4);opacity: 0.6; } 100% { -webkit-transform: scale(0.4);opacity: 1;  } }
+        @keyframes show-hide2 { 0% {  transform: scale(0.4);opacity: 0.6; } 100% {  transform: scale(1);opacity: 1; } }
+
+        @-webkit-keyframes show-fly-down {
+            0% { -webkit-transform: translate(-20px,-5px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-down {
+            0% { transform: translate(-20px,-5px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0% { -webkit-transform: translate(-20px,0px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up {
+            0% { transform: translate(-20px,0px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+
+        @-webkit-keyframes show-fly-up2 {
+            0% { -webkit-transform: translate(0px,10px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up2 {
+            0% { transform: translate(0px,10px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+
+        @-webkit-keyframes show-fly-up3 {
+            0% { -webkit-transform: translate(0px,10px) scale(1.02);  }
+            100% { -webkit-transform: translate(0,0) scale(1);  }
+        }
+        @keyframes show-fly-up3 {
+            0% { transform: translate(0px,10px) scale(1.02);  }
+            100% { transform: translate(0,0); scale(1)}
+        }
+        @-webkit-keyframes flow-exh { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes flow-exh { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+        @-webkit-keyframes music {
+            0% { -webkit-transform: rotate(0deg); }
+            50% { -webkit-transform: rotate(180deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes music {
+            0% { transform: rotate(0deg);  }
+            50% { transform: rotate(180deg);  }
+            100% { transform: rotate(360deg);  }
+        }
+
+        @-webkit-keyframes flow-hand {
+            0% {  opacity: 0;  -webkit-transform: translate(10px,5px);  }
+            40% {  opacity: 1;  -webkit-transform: translate(0px,0px);  }
+            80% {  opacity: 0.4;  -webkit-transform: translate(0px,0px);  }
+            100% {  opacity: 1;  -webkit-transform: translate(0px,0px);  }
+        }
+        @keyframes flow-hand {
+            0% {  opacity: 0;  transform: translate(10px,5px);  }
+            40% {  opacity: 1;  transform: translate(0px,0px);  }
+            80% {  opacity: 0.4;  transform: translate(0px,0px);  }
+            100% {  opacity: 1;  transform: translate(0px,0px);  }
+        }
+
+        .float-show1 {-webkit-animation: show-hide1 1s ease-in 0s infinite; animation: show-hide1 1s ease-in 0s  infinite;  }
+        .float-show2 {-webkit-animation: show-hide2 0.6s ease-in 0s forwards; animation: show-hide2 0.6s ease-in 0s forwards;  }
+        .show-fly-down1 {-webkit-animation: show-fly-down 0.2s ease-in 0s forwards; animation: show-fly-down 0.2s ease-in 0s forwards;  }
+        .show-fly-down2 { -webkit-animation: show-fly-down 0.2s ease-in 0.2s forwards;  animation: show-fly-down 0.2s ease-in 0.2s forwards;}
+        .show-fly-down3 {-webkit-animation: show-fly-down 0.2s ease-in 0.4s forwards; animation: show-fly-down 0.2s ease-in 0.4s forwards;  }
+        .current .show-fly-down4 {  -webkit-animation: show-fly-down 0.2s ease-in 0.6s forwards;animation: show-fly-down 0.2s ease-in 0.6s forwards; }
+        .show-fly-up1 {-webkit-animation: show-fly-up 0.4s ease-in 0s forwards; animation: show-fly-up 0.4s ease-in 0s forwards;  }
+        .show-fly-up2 { -webkit-animation: show-fly-up 0.4s ease-in 0.2s forwards; animation: show-fly-up 0.4s ease-in 0.2s forwards; }
+        .current .show-fly-up3 { -webkit-animation: show-fly-up 0.4s ease-in 0.4s forwards; animation: show-fly-up 0.4s ease-in 0.4 forwards; }
+        .current .show-fly-up4 {-webkit-animation: show-fly-up 0.4s ease-in 0.6s forwards;  animation: show-fly-up 0.4s ease-in 0.6 forwards; }
+        .flow-exh {-webkit-animation: flow-exh 0.6s ease-in 0.2s forwards; animation: flow-exh 0.6s ease-in 0.2s forwards;  }
+        .current .flow-hand { -webkit-animation: flow-hand 1.6s ease-in-out 0.4s forwards;  animation: flow-hand 1.6s ease-in-out 0.4s forwards;}
+        #btn-music p.music { -webkit-animation: music 4s linear infinite; animation: music 4s linear infinite; }
+
+        @-webkit-keyframes an-name{
+            0% {background-position: 0 0;}
+            50% {background-position: -92px 0;}
+            100% {background-position: 0 0;}
+        }
+        @keyframes an-name{
+            0% {background-position: 0 0;}
+            50% {background-position: -92px 0;}
+            100% {background-position: 0 0;}
+        }
+        .run1{
+            -webkit-animation: an-name 1s step-start infinite;
+            animation: an-name 1s step-start infinite;
+        }
+        /*结构*/
+        .c{  width: 640px; height: 100%; margin: 0 auto; overflow: hidden;position: relative; background-size: cover; background-repeat: no-repeat;background-position: top center;  }
+        .logo{  position: fixed;  z-index: 99; top: 20px;  left: 30px;  width: 127px;  height: 39px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_logo.png") no-repeat 0 0;  }
+        .page{  display: none;  width: 640px;  height: 100%;  overflow: hidden;  position: relative;  }
+        .page.act{  display: block;  }
+        .hid{  display: none;  }
+
+        .head{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_bg.jpg") no-repeat;  }
+        .head-pic{  width: 587px;  height: 365px;  margin: 50px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_head.png") no-repeat;  }
+        .head-rule1{  width: 453px;  height: 87px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_rule1.png") no-repeat;  }
+        .head-rule2{  width: 567px; height: 30px;  margin: 10px auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_rule2.png") no-repeat;  }
+        .head-play{  width: 243px;  height: 60px;  margin: 320px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_head_play.png") no-repeat ;  }
+
+        .game-bg{  position: relative;  width: 640px;  height: 539px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_bg1.png") no-repeat;  }
+        .game-p1{  position: absolute;  top: 308px;  left: 20px;  width: 92px;  height: 217px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_person1.png") no-repeat;  }
+        .game-voice{  position: absolute;  top: 344px;  left: 100px;  width: 102px;  height: 65px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_voice.png") no-repeat;  }
+        .game-p2{  position: absolute;  top: 334px;  right: 0;  width: 160px;  height: 212px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_person2_run1.gif") no-repeat 0 0;  }
+        .game-p2.act1{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_person2_run2.gif") no-repeat;  }
+        .game-num-bar{  width: 486px;  height: 46px;  background: #F81445; text-align: center;  border: 3px solid #ddd;  -webkit-border-radius: 23px;  -moz-border-radius: 23px;  border-radius: 30px;    margin: 20px auto 15px;  }
+        #game-time{ margin: 0 auto;  width: 100px;  height: 38px;text-align: center; background: none;  font: bold 28px/46px 'microsoft yahei'; color: #fff;  border: none; outline: none;  }
+        .game-click{  width: 242px;  height: 242px;  margin: 10px auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_click.png") no-repeat 0 0;  }
+        .game-start{  margin: 0 auto;  width: 243px;  height: 60px;  }
+        .game-start input{ width: 243px;  height: 60px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_game_start.png") no-repeat 0 0; border: 0; }
+
+        .fail{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_bg.jpg") no-repeat;  }
+        .fail-p1{  width: 350px;  height: 81px;  margin: 120px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_fail1.png") no-repeat 0 0;  }
+        .fail-p2{  width: 563px;  height: 61px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_fail2.png") no-repeat 0 0;  }
+        .fail-cry{  width: 315px;  height: 519px;  margin:50px auto 0;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_fail_cry.png") no-repeat 0 0;  }
+        .try-again{  margin: 446px auto 0;  width: 300px;  height: 72px;  }
+
+        .end{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_bg.jpg") no-repeat 0 0;  }
+        .end-p1{  width: 563px;  height: 61px;  margin: 120px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_end1.png") no-repeat ;  }
+        .end-p2{  width: 538px;  height: 39px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_end2.png") no-repeat;  }
+        .end-person{  width: 198px;  height: 465px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_end_person.png") no-repeat 0 0;}
+
+        .success{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_bg.jpg") no-repeat 0 100px;  }
+        .success-p1{  width: 527px;  height: 63px;  margin: 120px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_success_p1.png") no-repeat 0 0;  }
+        .success-p2{  width: 336px;  height: 63px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_success_p2.png") no-repeat 0 0;  }
+        .success-box{  width: 595px;  height: 497px;  overflow: hidden;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_success_box.png") no-repeat 0 0;  }
+        .success-mod{  width: 442px;  height: 416px;  margin: 40px auto 0;  background-repeat: no-repeat;background-position: center;   }
+        .success-p{  text-align: center;  color: #fff;  font: 28px/42px 'microsoft yahei';  height: 44px;  margin: 20px auto;  -webkit-border-radius: 22px;  -moz-border-radius: 22px;  border-radius: 22px;  background: #E74C3C;  }
+        .success-p3{  width: 514px;  }
+        .success-p4{  width: 600px;  }
+        .success-p5{  width: 440px;  }
+        .success-share{  display: none; width: 203px;  height: 60px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_success_share.png") no-repeat;  }
+
+        .info{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_bg.jpg") no-repeat 0 80px;  }
+        .info-p1{  width: 375px;  height: 62px;  margin: 100px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_info1.png") no-repeat;  }
+        .info-p2{  width: 494px;  height: 40px;  margin: 20px auto 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_info2.png") no-repeat;  }
+        .info-s{  width: 490px;  padding-left: 18px;  height: 70px;  -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px; margin: 0 auto 15px;  background: #fff;  color: #444;  overflow: hidden;  font: bold 30px/68px 'microsoft yahei';  border: 1px solid #FF9393;  }
+        .info-s input{  width: 360px;  height: 70px;  border: none;  outline: none;  padding: 0 15px;  color: #000;  font: bold 34px/68px 'microsoft yahei';  }
+        .info-submit{  width: 200px;  height: 58px;  background: #DF3B2A; -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px;  margin: 30px auto 0;  color: #fff;  font: bold 34px/58px 'microsoft yahei';  text-align: center;  }
+        .info-shadow{  position: absolute;  top: 200px;  left: 50%;  margin-left: -300px;  width: 600px;  height: 585px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_info_shadow.png") no-repeat 0 0;  }
+        .info-shadow.hid{  display: none;  }
+        .info-close{  position: absolute;  width: 58px;  height: 58px;  top: 26px;  right: 22px;  }
+        .disabled{pointer-events: none;}
+
+        .paper{  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_bg.jpg") no-repeat 0 120px;  }
+        .paper-p1{  color: #E54C3A;  width: 580px;  margin: 100px auto 0;  font: 40px/50px 'microsoft yahei';  }
+        .paper-p2{  color: #E54C3A;  width: 580px;  margin: 10px auto 0;  font: 28px/32px 'microsoft yahei';  }
+        .paper-mod{  position: relative;  margin: 10px auto 0;  width: 597px;  height: 683px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/lg_paper.png") no-repeat;  }
+        .paper-m{  position: absolute;  width: 320px;  height: 30px;  text-align: center;  color: #fff;  left: 67px;  font: 24px/30px 'microsoft yahei';  }
+        .paper-m1{  top: 155px;  }
+        .paper-m2{  top: 305px;  }
+        .paper-m3{  top: 454px;  }
+        .paper-m4{  top: 602px;  }
+
+        .pop-box{position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 10; display: none}
+        .pop-box .pop{position: absolute; left: 50%; top: 50%; width: 600px; display: none; -webkit-transform: translate(-50%,-50%); transform: translate(-50%,-50%);}
+        .zol-pop{  height: 530px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/pop1.png) no-repeat; }
+        .test-fail{height: 585px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/pop2.png) no-repeat;}
+        .pop-box .close{position: absolute; top: 25px; right: 22px; width: 60px; height: 60px;}
+        .test-fail .text{position: absolute; left: 57px; top: 375px; width: 494px; height: 149px; font-size: 38px; color: #fff; text-align: center; line-height: 40px;}
+        .test-fail .text span{font-size: 50px; line-height: 88px;}
+        .pop-box .end{width: 640px; height: 600px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/end.jpg) no-repeat;}
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--construct-->
+<div class="c" id="c">
+    <div class="logo"></div>
+    <div class="pop-box" >
+        <div class="zol-pop pop"><span class="close"></span></div>
+        <div class="end pop" ></div>
+        <div class="test-fail pop" >
+            <span class="close"></span>
+            <p class="text">
+                <span>很抱歉!非ZOL客户端用户！</span><br/>不能参加本次活动哦！
+            </p>
+        </div>
+    </div>
+    <script>
+
+    </script>
+    <div class="page head act" id="head">
+        <div class="head-pic flow-exh"></div>
+        <div class="head-rule1 show-fly-up1"></div>
+        <div class="head-rule2 show-fly-up2"></div>
+        <div class="head-play" id="head-play"></div>
+    </div>
+    <div class="page game" id="game">
+        <div class="game-bg">
+            <div class="game-p1 run1"></div>
+            <div class="game-voice float-show1"></div>
+            <div class="game-p2" id="game-man"></div>
+        </div>
+        <div class="game-num-bar">
+            <input type="text" id="game-time"  readonly="readonly" value="6:00S"/>
+        </div>
+        <div class="game-click" id="game-click"></div>
+        <div class="game-start">
+            <input type="button" id="game-start"/>
+        </div>
+    </div>
+    <div class="page fail" id="fail">
+        <div class="fail-p1"></div>
+        <div class="fail-p2"></div>
+        <div class="fail-cry">
+            <div class="try-again" id="try-again"></div>
+        </div>
+    </div>
+    <div class="page success" id="success">
+        <div class="success-p1" id="success-p1"></div>
+        <div class="success-p2" id="success-p2"></div>
+        <div class="success-p success-p3 hid" id="success-p3">您上次挑战成功，已经领取如下奖品!</div>
+        <div class="success-box">
+            <div class="success-mod" id="success-mod"></div>
+        </div>
+        <div class="success-p success-p4" id="success-p4">点击右上角分享，分享成功后即可领取奖品啦!</div>
+        <div class="success-p success-p5 hid" id="success-p5">分享可查看已获得的优惠券!</div>
+        <div class="success-share" id="success-share"></div>
+    </div>
+    <div class="page info" id="info">
+        <div class="info-p1"></div>
+        <div class="info-p2"></div>
+        <div class="info-s info-s1">
+            <label>姓名:</label><input type="text" id="info-name" maxlength="8"/>
+        </div>
+        <div class="info-s info-s2">
+            <label>电话:</label><input type="tel" id="info-tel" maxlength="11"/>
+        </div>
+        <div class="info-submit" id="info-submit">提交</div>
+        <div class="info-shadow hid" id="info-shadow">
+            <div class="info-close" id="info-close"></div>
+        </div>
+    </div>
+    <div class="page end" id="end">
+        <div class="end-p1"></div>
+        <div class="end-p2"></div>
+        <div class="end-person"></div>
+    </div>
+    <div class="page paper" id="paper">
+        <div class="paper-p1">使用说明:</div>
+        <div class="paper-p2">不要忘记将此页面截图哦，使用时，直接在相关平台输入优惠券码。</div>
+        <div class="paper-mod">
+            <div class="paper-m paper-m1" id="paper1">888</div>
+            <div class="paper-m paper-m2" id="paper2">888</div>
+            <div class="paper-m paper-m3" id="paper3">888</div>
+            <div class="paper-m paper-m4" id="paper4">888</div>
+        </div>
+    </div>
+</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<!--<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" data-options="z.flipview"></script>-->
+
+<script charset="gbk">
+
+    var json_obj='http://m.zol.com.cn/topic/services/kaixueji.php?callback=?',
+            json_check='http://m.zol.com.cn/topic/services/tokenValidate.php',
+            pages=document.getElementsByClassName('page'),
+            head_play=document.getElementById('head-play'),
+            game=document.getElementById('game'),
+            head=document.getElementById('head'),
+            game_time=document.getElementById('game-time'),
+            game_start=document.getElementById('game-start'),
+            game_man=document.getElementById('game-man'),
+            game_click=document.getElementById('game-click'),
+            fail=document.getElementById('fail'),
+            paper=document.getElementById('paper'),
+            paper1=document.getElementById('paper1'),
+            paper2=document.getElementById('paper2'),
+            paper3=document.getElementById('paper3'),
+            paper4=document.getElementById('paper4'),
+            success=document.getElementById('success'),
+            success_p1=document.getElementById('success-p1'),
+            success_p2=document.getElementById('success-p2'),
+            success_p3=document.getElementById('success-p3'),
+            success_p4=document.getElementById('success-p4'),
+            success_p5=document.getElementById('success-p5'),
+            success_mod=document.getElementById('success-mod'),
+            success_share=document.getElementById('success-share'),
+            info=document.getElementById('info'),
+            info_name=document.getElementById('info-name'),
+            info_tel=document.getElementById('info-tel'),
+            info_submit=document.getElementById('info-submit'),
+            info_close=document.getElementById('info-close'),
+            info_shadow=document.getElementById('info-shadow'),
+            try_again=document.getElementById('try-again'),
+            end=document.getElementById('end'),
+            time0=600,
+            timer=null,prize_id=null,prize_name=null,prize_code=null,jm_prize_id=null,jm_prize_name=null,prize_paper=[],
+            num=0;
+
+    /*页面切换*/
+    head_play.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+            url:json_check,
+            type:'get',
+            dataType:'jsonp',
+            success: function (){
+                $.ajax({
+                    url:json_obj,
+                    data:{action:'getTime'},
+                    type:'get',
+                    dataType:'jsonp',
+                    error: function () {
+                        alert('活动还未开始哦;')
+                    },
+                    success: function (obj) {
+                        var on_time=obj.errCode;
+                        if(on_time==10036){
+                            alert('活动还未开始哦！敬请期待')
+                        }else if(on_time==10037){
+                            head.classList.remove('act');
+                            end.classList.add('act');
+                        }else if(on_time==10000){
+                            //客户端判断
+                            if(location.href.indexOf("article") == -1){
+                                var nA = navigator.userAgent,
+                                        zol = /zol/ig.test(nA),
+                                        ios = /iPhone|iPad|iPod|iTouch/i.test(nA),
+                                        webkit = /webkit/i.test(nA),
+                                        android = /android/i.test(nA) || (webkit && !ios);
+                                if(!zol){
+                                    document.querySelector('.pop-box').style.display = document.querySelector('.zol-pop').style.display = 'block';
+                                    setTimeout(function(){
+                                        location.href = 'app://'
+                                        openTimeout = setTimeout(function () {
+                                            location.href = (ios || android) ? 'http://a.app.qq.com/o/simple.jsp?pkgname=com.zol.android' : (ios ? 'https://itunes.apple.com/cn/app/zhong-guan-cun-zai-xianiphone/id539824445?mt=8' : (android ? 'http://sj.zol.com.cn/down.php?softid=20061&subcateid=106&site=11&server=111&w=1&m=0' : 'http://www.windowsphone.com/zh-cn/store/app/%E4%B8%AD%E5%85%B3%E6%9D%91%E5%9C%A8%E7%BA%BF/cbff8656-4fcc-4052-a5f1-6eab30f59570'));
+                                        }, 500);
+                                    },1000)
+                                }
+                            }
+                            head.classList.remove('act');
+                            game.classList.add('act');
+                        }
+                    }
+                })
+            }
+        });
+    });
+    /*开始游戏*/
+    game_start.addEventListener('click', function () {
+        game_start.disabled = true;
+        num=0;
+        if(!time0==600){
+            return false;
+        }
+        setTimeout(time_func,50);
+    });
+
+    function time_func(){
+        time0-=5;
+        var t1=Math.floor(time0/100);
+        var t2=Math.floor(time0%100);
+        if(t2<10){
+            t2='0'+t2;
+        }
+        game_time.value=t1+':'+t2+'S';
+
+        if(time0!==0){
+            tt&&clearTimeout(tt);
+            var tt=setTimeout(time_func,50);
+        }else{
+            if(game.classList.contains('act')==true){
+                game.classList.remove('act');
+                fail.classList.add('act');
+            }
+        }
+    }
+
+    /*游戏过程*/
+    game_click.addEventListener('tap', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if(game_start.disabled==false){
+            return false;
+        }
+        num++;
+        if(num>=30){
+            game_man.classList.add('act1');
+        }
+        if(num>=40){
+            //clearInterval(timer);
+            game.classList.remove('act');
+            $.ajax({
+                url:json_check,
+                type:'get',
+                dataType:'jsonp',
+                success: function () {
+                    $.ajax({
+                        url:json_obj,
+                        data:{action:'getPrize'},
+                        type:'get',
+                        dataType:'jsonp',
+                        error: function () {
+                            alert('error');
+                        },
+                        success: function (obj) {
+                            res=obj.result;
+                            prize_code=obj.errCode;
+                            prize_id=res.prizeid;
+                            prize_name=res.prizename;
+                            jm_prize_id=obj.jiami_prizeid;
+                            jm_prize_name=obj.jiami_prizename;
+                            if(obj.quanmacode){
+                                prize_p=obj.quanmacode;
+                                for(var k=0;k<prize_p.length;k++){
+                                    prize_paper[k]=prize_p[k].CODE;
+                                }
+                            }
+                            if(prize_code==403){
+                                alert('粗了点问题!');
+                            }
+
+                            if(prize_code==10000){
+                                success_p2.style.display='block';
+                                success_p3.style.display='none';
+                                success_p4.style.display='block';
+                                success_p5.style.display='none';
+                                if(prize_id){
+                                    success_mod.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/pro"+prize_id+".png"+')';
+                                }
+                                success.classList.add('act');
+                            }else if(prize_code==10099||prize_code==10999){
+                                success.classList.add('act');
+                                success_p2.style.display='none';
+                                success_p3.style.display='block';
+                                success_p4.style.display='none';
+                                success_mod.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/pro"+prize_id+".png"+')';
+                                if(prize_code==10099){
+                                    success_p5.style.display='none';
+                                }else if(prize_code==10999){
+                                    success_p5.style.display='block';
+                                }
+                            }else{
+                                alert('未获得用户标识，不能参加此活动！');
+                            }
+                        }
+                    });
+                },
+                error: function () {
+                    alert('bad request');
+                }
+            });
+        }
+        game_man.style.webkitTransform=game_man.style.transform="translate(-"+num*10+"px,0px)";
+    });
+
+    /*再试一次*/
+    try_again.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.body.pointEvents='none';
+        trtr&&clearTimeout(trtr);
+        var trtr=setTimeout(function () {
+            document.body.pointEvents='all';
+        },350);
+        //window.clearInterval(timer);
+        fail.classList.remove('act');
+        time0=600;
+        game_man.classList.remove('act1');
+        game_time.value='6:00S';
+        game_start.disabled=false;
+        game_man.style.webkitTransform=game_man.style.transform="translate(0px,0px)";
+        game.classList.add('act');
+    });
+
+    /*分享验证通过*/
+    window.onShare=function(isShare,ssid){
+        if(isShare){
+            success.classList.remove('act');
+            $.ajax({
+                url:json_check,
+                type:'get',
+                dataType:'jsonp',
+                success: function (){
+                    $.ajax({
+                        url:json_obj,
+                        data:{action:'ToShare'},
+                        type:'get',
+                        dataType:'jsonp',
+                        error: function () {
+                            alert('您还没有完成分享哦！')
+                        },
+                        success: function () {
+                        }
+                    })
+                }
+            });
+            if(prize_code==10000){
+                if(prize_id==8){
+                    paper.classList.add('act');
+                    for(var i=0;i<prize_paper.length;i++){
+                        paper1.innerHTML=prize_paper[0];
+                        paper2.innerHTML=prize_paper[1];
+                        paper3.innerHTML=prize_paper[2];
+                        paper4.innerHTML=prize_paper[3];
+                        return false;
+                    }
+                }else if(0<=prize_id<=7){
+                    info.classList.add('act');
+                }else{
+                    alert('谢谢参与');
+                }
+            }else if(prize_code==10099){
+                success.classList.add('act');
+                success_p2.style.display='none';
+                success_p3.style.display='block';
+                success_p4.style.display='none';
+                success_p5.style.display='none';
+                success_mod.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/pro"+prize_id+".png"+')';
+            }else if(prize_code==10999){
+                paper.classList.add('act');
+                for(var i=0;i<prize_paper.length;i++){
+                    paper1.innerHTML=prize_paper[0];
+                    paper2.innerHTML=prize_paper[1];
+                    paper3.innerHTML=prize_paper[2];
+                    paper4.innerHTML=prize_paper[3];
+                    return false;
+                }
+            }else{
+                alert('活动还未开始哦！');
+            }
+        }
+    };
+
+    /*信息提交*/
+    info_submit.addEventListener('tap', function () {
+        var _this = this;
+        name_Val =info_name.value;
+        reg=/^[\u4E00-\u9FA5]{1,4}$/;
+        tel_Val = info_tel.value.trim();
+        if(!name_Val || name_Val.length>=9||!(reg.test(name_Val))){
+            // 请正确填写您的姓名
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u59D3\u540D');
+            return false;
+        }
+        if (!tel_Val || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(tel_Val))) {
+            // 请正确填写您的手机号码。
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+            return false;
+        }
+        _this.classList.add('disabled');
+        $.ajax({
+            url:json_check,
+            type:'get',
+            dataType:'jsonp',
+            success: function () {
+                $.ajax({
+                    url:json_obj,
+                    data:{action:'subInfo',name:name_Val,phone:tel_Val,quanmacode:'id_8_pro',prizeid:jm_prize_id,prizename:jm_prize_name},
+                    type:'get',
+                    dataType:'jsonp',
+                    error: function () {
+                        alert('subInfo Error happen')
+                    },
+                    success: function (obj) {
+                        if(obj.errCode&&obj.errCode==10000){
+                            info_shadow.classList.remove('hid')
+                        }else{
+                            alert(obj.msg);
+                        }
+                    }
+                })
+            }
+        });
+    });
+    /*隐藏遮罩*/
+    info_close.addEventListener('tap', function () {
+        info_shadow.classList.add('hid');
+        info.classList.remove('act');
+        success.classList.add('act');
+        success_mod.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/pro"+prize_id+".png"+')';
+    });
+
+
+
+    /*loading载入*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    /*载入页面*/
+    window.addEventListener('load', function () {
+        loading.dismiss();
+    });
+
+    /*分享*/
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_57c/7fbab5bcdc/share.jpg',
+        title: '我在中关村在线客户领取了购物大礼包，好事说三遍！快来抢！快来抢！快来抢！'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

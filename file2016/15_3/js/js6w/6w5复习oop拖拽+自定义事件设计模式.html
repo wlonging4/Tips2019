@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oop拖拽</title>
+    <style type="text/css">
+        #div1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100px;
+            background: red;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script src="event.js"></script>
+<script>
+    //var div1=document.getElementById("div1");
+    function EventEmitter(){//事件发射器
+    }
+    EventEmitter.prototype.on=function(type,fn){
+        if(!this[type]){
+            this[type]=[]
+        }
+        var a=this[type];
+        for(var i=0;i<a.length;i++){
+            if(a[i]==fn)return;
+        }
+        a.push(fn);
+    };
+
+    EventEmitter.prototype.run=function(type,e){//通知
+        var a=this[type];
+        if(a){
+            for(var i=0;i<a.length;i++){
+                if(typeof a[i]=="function"){
+                    a[i].call(this,e);
+                }
+            }
+        }
+    };
+
+    EventEmitter.prototype.off=function(type,fn){
+        var a=this[type];
+        if(a){
+            for(var i=0;i<a.length;i++){
+                if(a[i]==fn){
+                    a[i]=null;
+                    return;
+                }
+            }
+        }
+    };
+    function Drag(ele){
+        this.ele=ele;
+        this.x=null;
+        this.y=null;
+        this.mx=null;
+        this.my=null;
+        function processThis(obj,fn){return function (e) {fn.call(obj,e)}}
+        this.DOWN=processThis(this,this.down);
+        this.MOVE=processThis(this,this.move);
+        this.UP=processThis(this,this.up);
+        //on(ele,"onmousedown",this.down);
+        on(ele,"mousedown",this.DOWN);
+    }
+    //实现继承
+    //原型继承只能实现对定义圆形prototype上的方法的继承,如果是构造函数,无法用原型继承的方式实现;
+    Drag.prototype=new EventEmitter;
+    //Drag.prototype.__proto__=EventEmitter.prototype;//IE下不兼容
+    Drag.prototype.down= function (e) {
+        this.x=this.ele.offsetLeft;
+        this.y=this.ele.offsetTop;
+        this.mx= e.pageX;
+        this.my= e.pageY;
+        if(this.ele.setCapture){
+            this.ele.setCapture();
+            on(this.ele,"mousemove",this.MOVE);
+            on(this.ele,"mouseup",this.UP);
+        }else{
+            on(document,"mousemove",this.MOVE);
+            on(document,"mouseup",this.UP);
+        }
+        e.preventDefault();
+        this.run("dragstart",e);
+    };
+    Drag.prototype.move= function (e) {
+        this.ele.style.left=this.x+ e.pageX-this.mx+"px";
+        this.ele.style.top=this.y+ e.pageY-this.my+"px";
+        this.run("drag",e);
+    };
+    Drag.prototype.up= function (e) {
+        if(this.ele.releaseCapture){
+            this.ele.releaseCapture();
+            off(this.ele,"mousemove",this.MOVE);
+            off(this.ele,"mouseup",this.UP);
+        }else{
+            off(document,"mousemove",this.MOVE);
+            off(document,"mouseup",this.UP);
+        }
+        this.run("dragend",e);
+    };
+
+    Drag.prototype.addBorder=function(){
+        this.ele.style.border="2px solid gray";
+    };
+    Drag.prototype.removeBorder= function () {
+        this.ele.style.border="";
+    };
+    Drag.prototype.border= function () {
+        this.on("dragstart",this.addBorder);
+        this.on("dragend",this.removeBorder);
+    };
+    var obj=new Drag(div1);
+    /*obj.limit({left:100,right:500,top:0,bottom:400});
+     obj.addBorder();*/
+    obj.border();
+    obj.on("dragstart",clearEffect);
+    obj.on("drag",getSpeed);
+    obj.on("dragend",fly);
+    obj.on("dragend",drop);
+    function clearEffect(){
+        window.clearTimeout(this.flyTimer);
+        window.clearTimeout(this.dropTimer);
+    }
+
+    function getSpeed(e){
+        if(!this.prevPosi){
+            this.prevPosi= e.pageX;
+        }else{
+            this.speed= e.pageX-this.prevPosi;
+            this.prevPosi= e.pageX;
+        }
+    }
+
+    function fly(){
+        this.speed*=0.97;
+        var val=this.ele.offsetLeft+this.speed;
+        var maxRight=(document.documentElement.clientWidth||document.body.clientWidth)-this.ele.offsetWidth;
+        if(val>=maxRight){
+            this.ele.style.left=maxRight+"px";
+            this.speed*=-1;
+        }else if(val<=0){
+            this.ele.style.left=0;
+            this.speed*=-1;
+        }else{
+            this.ele.style.left=val+"px";
+        }
+        if(Math.abs(this.speed)>=0.5){
+            this.flyTimer=window.setTimeout(processThis(this,fly),20);
+        }
+    }
+
+     var counter=0;
+     function drop(){
+         if(!this.dropSpeed){
+             this.dropSpeed=9;
+         }else{
+             this.dropSpeed+=9;
+         }
+         this.dropSpeed*=0.97;
+         var val=this.ele.offsetTop+this.dropSpeed;
+         var maxBottom=(document.documentElement.clientHeight||document.body.clientHeight)-this.ele.offsetHeight;
+         if(val>=maxBottom){
+             this.ele.style.top=maxBottom+"px";
+             this.dropSpeed*=-1;
+             counter++;
+         }else{
+             this.ele.style.top=val+"px";
+             counter=0;
+         }
+         if(counter<2){
+             this.dropTimer= window.setTimeout(processThis(this,drop),20);
+         }
+     }
+</script>
+</body>
+</html>

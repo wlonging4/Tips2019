@@ -1,0 +1,603 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="GBK">
+    <title>竞游新生 ZOL 2016网友嘉年华</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#01002b; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#ebebf9;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/06695d51d7/lg_head_l2.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/06695d51d7/lg_head_r2.jpg") no-repeat 0 0;  }
+
+        .flow{  position: fixed;  _position: absolute;  top: 200px;  left: 50%;  margin-left: 570px;  height: 460px;  width: 120px;  background: #7B09AC;  }
+        .flow-title{  position: absolute;  top: -75px;  left: -28px;  height: 112px;  width: 173px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_flow.png") no-repeat 0 0;  }
+        .flow ul{  width: 104px;  padding: 50px 8px 0;  }
+        .flow ul li{  _display:inline;  width: 104px;  height: 36px;  margin-bottom: 8px;  }
+        .flow ul li a{  display: block;  width: 104px;  height: 36px;  line-height: 36px;  color: #fff;  font-size: 18px;  text-align: center;  background: #30008C;  }
+        .flow ul li a:hover{  background: #B308EB;  }
+        .flow ul li a.a-act{  background: #B308EB;  }
+        .flow-code{  width: 105px;  height: 100px;  padding: 0 8px 10px;  }
+        .flow-scan{  width: 120px;  height: 26px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_scan.jpg") no-repeat 0 0;  }
+        .flow-back{  position: absolute;  bottom: 15px;  left: 44px;  width: 35px;  height: 31px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_backtop.png") no-repeat 0 0;  }
+        .flow-bar{  position: absolute;  left: 0;  bottom: 1px;  width: 120px;  height: 7px;  background: #000;  }
+
+        .act-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_act_l.jpg") no-repeat 100% 0;  }
+        .act-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_act_r.jpg") no-repeat 0 0;  }
+
+        .act-pre{  height: 405px;  width: 1000px;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_act_pre.jpg") no-repeat 0 0;  }
+        .act-pre-btn{  position: absolute;  top: 362px;  left: 208px;  height: 40px;  width: 205px;  }
+        .act-pre-btn1{  margin-right: 15px; }
+        .act-pre-bt{  float: left;  height: 36px;  width: 95px;  background: #F739FE; cursor: pointer;  border-radius: 5px; color: #fff ;line-height: 32px; text-align: center ;font-size: 15px}
+        .act-pre-bt .bai14{  display: block;  text-align: center;  }
+        .act-pre-bt .bai14:hover{  text-decoration: none;  }
+        .act-pre-bt.act-pre-bt-bg{  background: #962D9D;  }
+
+        .act-pre-video{  position: absolute;  width: 575px;  height: 323px;  top: 8px;  left: 23px;  background: #000;  }
+        .video{  height: 323px;  width: 575px;  }
+        .act-pre-txt{  position: absolute;  width: 345px;  height: 340px;  top: 8px;  left: 640px;  }
+        .act-pre-txt .hui20{  color: #F739FE;  display: block;  font-size: 19px;  line-height: 42px;  }
+        .act-pre-txt .hui20:hover{  color: #F739FE;  }
+        .act-pre-txt .hui12{   color: #ECECFB;  }
+        .act-pre-txt .ln{  height: 34px;  }
+
+        .act-list{  height: 278px;  width: 1000px;  padding: 34px 0 70px 0;  }
+        .act-list .bai20{  display: block;  padding: 14px 0 4px;  line-height: 40px;  font-size: 22px;  }
+        .act-list .bai20:hover{  color: #fff;  text-decoration: none;  }
+        .act-list .hui14{  display: block;  text-align: center;  line-height: 22px;  color: #fff;  }
+        .act-list li{  position: relative;  float: left;  display: block;  _display: inline;  width: 225px;  height: 270px;  margin: 0 12px 0 13px;  }
+        .act-list .act-flow{  position: absolute;  top: 155px;  width: 200px;  height: 170px;  }
+        .act-l1{  background: #7400c2;  border-top: 8px solid #30008C;  }
+        .act-l1 .act-flow{  left: 15px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spirit1.png") no-repeat 0 0;  }
+        .act-l2{  background: #78AA1F;  border-top: 8px solid #336708;  }
+        .act-l2 .act-flow{  left: 10px;  top: 145px; background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spirit1.png") no-repeat -200px 0;  }
+        .act-l3{  background: #FD7100;  border-top: 8px solid #FB2E00;  }
+        .act-l3 .act-flow{  left: 10px;  top: 145px; background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spirit1.png") no-repeat -400px 0;  }
+        .act-l4{  background: #DA199D;  border-top: 8px solid #B80654;  }
+        .act-l4 .act-flow{  left: 25px;  top: 140px; background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spirit1.png") no-repeat -600px 0;  }
+
+        .act-in{  height: 180px;  width: 970px;  margin: 0 auto;  }
+        .act-in-title{  height: 50px;  width: 970px;  line-height: 50px;  font-size: 26px; color: #FFC700;  text-align: center;  background: #844B00;  }
+        .act-in-con{  position: relative;  height: 130px;  width: 970px;  background: url("http://2.zol-img.com.cn/zt/tm_572/96c0e90ac3/lg_baoming.jpg") no-repeat 0 0;  }
+        .act-in-mod{  position: absolute;  height: 52px;  width: 165px;  left: 658px;  top: 40px;  }
+        .act-in-mod .bai20{  display: block;  line-height: 46px;  font-size: 24px;  font-weight: bolder;  color: #e4e4e4;  }
+        .act-in-mod .bai20:hover{  color: #0B17A1;  text-decoration: none;  }
+        .act-i{  position: absolute;  top: 40px;  width: 180px;  height: 50px;  }
+        .act-i .bai16{  color: #FFC600;  display: block;  padding-left: 2px }
+        .act-i .bai16:hover{  color: #FFC600;  text-decoration: none;  }
+        .act-i .hong16{  display: block;  color: #844B00;  padding-top: 2px; font-size: 14px ;font-weight: bold }
+        .act-time{  left: 118px;  }
+        .act-place{  left: 415px;  }
+
+        .live-title{  width: 1000px;  height: 98px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_live_title.jpg");  }
+        .live-con{  width: 970px;  height: 600px; margin-left: 15px; }
+        .live-c-l{  position: relative; float: left; background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_live_l.jpg") no-repeat 0 0;  height: 600px;  width: 342px;    }
+        .live-c-l .bai14 em{  display: block;  float: left;  position: relative;  line-height: 30px;  width: 95px;  margin-right: 25px;  }
+        .live-c-l .bai14 span{  display: block;  float: left;  line-height: 30px;  color: #01002c;  }
+        .live-c-l4 .bai14 em{  line-height: 142px;  width: 95px;  margin-right: 25px;  }
+        .live-c-l4 .bai14 span{  line-height: 34px;}
+
+        .live-c-ln{  position: absolute;  width: 300px;  left: 30px;  }
+        .live-c-l1{  top: 28px;  height: 30px;  }
+        .live-c-l2{  top: 65px;  height: 30px;  }
+        .live-c-l3{  top: 101px;  height: 30px;  }
+        .live-c-l4{  top: 138px;  height: 142px;  }
+        .live-c-l5{  top: 289px;  height: 30px;  }
+        .live-c-l6{  top: 325px;  height: 30px;  }
+        .live-c-l7{  top: 361px;  height: 30px;  }
+        .live-c-l-img{  position: absolute;  width: 314px;  height: 155px;  top: 410px;  left: 13px;  }
+        .live-c-r{  float: right;  width: 610px; margin-left: 18px;  height: 592px;  border-top: 8px solid #7B09AC; background: #fff }
+
+        .ferris-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_ferris_l.jpg") no-repeat 100% 0;  }
+        .ferris-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_ferris_r.jpg") no-repeat 0 0;  }
+        .ferris-t{  width: 1000px;  height: 90px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_ferris_c.jpg") no-repeat 0 0;  }
+        .ferris-con{  position: relative;  width: 1000px;  height: 990px;  }
+        .ferris-cage{  position: absolute;  height: 154px;  width: 180px;  padding-top: 54px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_cage.png") no-repeat 0 0;  }
+        .ferris-b{  position: absolute;  height: 152px;  width: 784px;  left: 108px;  bottom: 32px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_mo_b.png") no-repeat 0 0;  }
+        .ferris-p{  position: absolute;  width: 616px;  height: 620px;  left: 192px;  top: 248px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_mo_pan.png") no-repeat 0 0;  animation: roll 36s linear infinite; -webkit-animation: roll 36s linear infinite; -moz-animation: roll 36s linear infinite;-o-animation: roll 36s linear infinite;-ms-animation: roll 36s linear infinite;}
+        .ferris-c{  position: absolute;  left: 312px;  top: 436px;  width: 377px;  height: 244px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_mo_c.png");  }
+        .ferris-cage1{  top: 36px;  left: 250px;  }
+        .ferris-cage2{  top: 36px;  left: 570px;  }
+        .ferris-cage3{  top: 275px;  left: 15px;  }
+        .ferris-cage4{  top: 275px;  left: 805px;  }
+        .ferris-cage5{  top: 605px;  left: 15px;  }
+        .ferris-cage6{  top: 605px;  left: 805px;  }
+        .ferris-cage .bai16{  font-size: 17px;  display: block;  padding-top: 5px;  }
+        @keyframes roll {
+            0%{
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            33%{
+                transform: rotate(120deg);
+                -moz-transform: rotate(120deg);
+                -o-transform: rotate(120deg);
+                -ms-transform: rotate(120deg);
+                -webkit-transform: rotate(120deg);
+            }
+            66%{
+                transform: rotate(240deg);
+                -moz-transform: rotate(240deg);
+                -o-transform: rotate(240deg);
+                -ms-transform: rotate(240deg);
+                -webkit-transform: rotate(240deg);
+            }
+            100%{
+                transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+            }
+        }
+        @-webkit-keyframes roll {
+            0%{
+                transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            33%{
+                transform: rotate(20deg);
+                -moz-transform: rotate(20deg);
+                -o-transform: rotate(20deg);
+                -ms-transform: rotate(20deg);
+                -webkit-transform: rotate(20deg);
+            }
+            66%{
+                transform: rotate(40deg);
+                -moz-transform: rotate(40deg);
+                -o-transform: rotate(40deg);
+                -ms-transform: rotate(40deg);
+                -webkit-transform: rotate(40deg);
+            }
+            100%{
+                transform: rotate(60deg);
+                -moz-transform: rotate(60deg);
+                -o-transform: rotate(60deg);
+                -ms-transform: rotate(60deg);
+                -webkit-transform: rotate(60deg);
+            }
+        }
+
+        .spot{  overflow: hidden;  }
+        .spot-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spot_l.jpg") no-repeat 100% 0;  }
+        .spot-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spot_r.jpg") no-repeat 0 0;  }
+        .spot-t{  width: 1000px;  height: 90px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spot_t.jpg") no-repeat 0 0;  }
+        .spot-con{  width: 970px;  height: 410px;  margin: 0 15px 0;  }
+        .spot-con-l{  float: left;  width: 510px;  height: 383px;  background: #FFC700; }
+        .spot-con-l-img{  position: relative; width: 485px;  height: 360px;  border: 1px solid #985F00;  margin: 9px 10px; overflow: hidden  }
+        .spot-con-l-img-box{  position: absolute;  left: 0;  top: 0;  height: 360px;  }
+        .spot-con-r{  float: left;  width: 444px;  height: 366px; padding: 15px 8px 0 6px;  border: 1px solid #FFC700;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spot_r_mod.jpg") no-repeat 0 0;  }
+        .spot-con-r .ln{  height: 16px;  }
+
+        .cool-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_cool_l.jpg") no-repeat 100% 0;  }
+        .cool-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_cool_r.jpg") no-repeat 0 0;  }
+        .cool-t{  height: 88px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_cool_t.jpg") no-repeat 0 0;  }
+        .cool-c{  width: 985px;  height: 470px;  padding: 18px 0 55px 15px;   background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_cool_c.jpg") no-repeat 0 0;  }
+        .cool-c img{  padding-left: 15px;  }
+        .cool-c .ln{  height: 40px;  }
+        .cool-c .hui16{  display: block;  color: #F2B8F8;  line-height: 36px;  text-align: left;  padding-left: 20px;  font-weight: bold;  }
+        .cool-c .hui16:hover{  color: #F2B8F8;  text-decoration: none;  }
+        .cool-c .hui12{  display: block;  padding: 10px 40px 0 22px;  color: #EBEBF9;  }
+
+        .ath-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_ath_l.jpg") no-repeat 100% 0;  }
+        .ath-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_ath_r.jpg") 0 0;  }
+        .ath-c{  position: relative;  width: 1000px;  height: 554px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_ath_c.jpg");  }
+        .ath-c1{  position: absolute;  width: 342px;  height: 470px;  top: 80px;  left: 22px;  }
+        .ath-c2{  position: absolute;  width: 216px;  height: 389px;  top: 124px;  left: 396px;  }
+        .ath-c2-title{  position: absolute;  width: 245px;  height: 30px;  top: 82px;  left: 380px; }
+        .ath-c2-title .bai16{  display: block;  line-height: 30px;   text-align: center }
+        .ath-c2-title .bai16:hover{  color: #fff;  text-decoration: none;  }
+        .ath-c3{  position: absolute;  width: 309px;  height: 413px;  top: 96px;  left: 656px;  }
+        .ath-c1 .bai16{  display: block;  line-height: 38px;  text-indent: 12px;  }
+        .ath-c1 .bai16:hover{  color: #fff;  text-decoration: none;  }
+        .ath-c1 .hui12{  color: #EBEBFA; display: block;  padding: 15px;  line-height: 20px;  }
+        .ath-c1 .ln{  height: 26px;  }
+
+        .intro-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_intro_l.jpg") no-repeat 100% 0;  }
+        .intro-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_intro_r.jpg") no-repeat 0 0;  }
+        .intro-t{  width: 1000px;  height: 79px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_intro_t.jpg") no-repeat 0 0;  }
+        .intro-c{  position: relative;  width: 1000px;  height: 274px;  overflow: hidden;  }
+        .intro-con{  position: relative;  width: 810px;  height: 190px;  overflow: hidden;  margin: 48px 95px 35px;  }
+        .intro-con-box{  position: absolute;  top: 0;  left: 0;  height: 190px;  }
+        .intro-btn{  height: 60px;  width: 55px;  position: absolute;  top: 120px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_spirit2.png") no-repeat;  }
+        .intro-btn1{  left: 30px;  background-position: 0 0;  }
+        .intro-btn2{  right: 30px;  background-position: -58px 0;  }
+
+        .off-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_office_l.jpg") no-repeat right bottom;  }
+        .off-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_office_r.jpg") no-repeat left bottom;  }
+        .off-t{  height: 95px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_office_t.jpg") no-repeat 0 0;  }
+        .off-mod{  position: relative;  height: 125px;  width: 900px;  padding-left: 50px;  padding-top: 15px;overflow: hidden  }
+        .off-box{  position: relative;  top: 0;  left: 0;  height: 125px;  }
+        .off-box img{  padding: 15px;  background: url("http://2.zol-img.com.cn/zt/tm_572/876aa77593/lg_rock.jpg") no-repeat 0 0;  }
+
+        .foot-l{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_foot_l.jpg") no-repeat 100% 0;  }
+        .foot-r{  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_foot_r.jpg") no-repeat 0 0;  }
+        .foot-c{  color: #E9D2FF;  height: 428px;  padding-top: 100px;  text-align: center;  background: url("http://2.zol-img.com.cn/zt/tm_572/029a49ce6e/lg_foot_c.jpg") no-repeat 0 0;  }
+        .foot-c a{  color: #E9D2FF;  }
+        .foot-c a:hover{  color: #E9D2FF;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img width="1000" height="346" alt="" src="http://2.zol-img.com.cn/zt/tm_573/c3e09e60cf/lg_head_c12.jpg">
+            <img width="1000" height="311" alt="" src="http://2.zol-img.com.cn/zt/tm_572/06695d51d7/lg_head_c22.jpg">
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--浮动-->
+<div class="flow">
+    <div class="flow-title"></div>
+    <ul>
+        <li><a class="a-act" href="#act" target="_self">关于活动</a></li>
+        <li><a href="#act-list" target="_self">游戏项目</a></li>
+        <li><a href="#live" target="_self">现场直播</a></li>
+        <li><a href="#athletic" target="_self">电竞赛事</a></li>
+        <li><a href="#intro" target="_self">游戏装备</a></li>
+    </ul>
+    <div class="flow-code">
+        <{data[0]}>
+    </div>
+    <div class="flow-scan"></div>
+    <div class="flow-back" id="return"></div>
+    <div class="flow-bar"></div>
+</div>
+<!--活动-->
+<table width="100%" class="act" id="act" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="act-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="act-pre">
+                <div class="act-pre-video">
+
+                    <{data[60]}>
+                    <!--<iframe class="video" id="video" src="http://player.youku.com/player.php/sid/XMTU0NzIwMjY5Ng==/v.swf" frameborder="0" scrolling="0"></iframe>-->
+                </div>
+                <!--<div class="act-pre-btn clearfix">
+                    <div class="act-pre-bt act-pre-btn1 act-pre-bt-bg">
+                        
+                    </div>
+                    <div class="act-pre-bt act-pre-btn2">
+                        
+                    </div>
+                </div>-->
+                <div class="act-pre-txt">
+                    <{data[2]}>
+                </div>
+            </div>
+            <ul class="act-list" id="act-list">
+                <li class="act-l1">
+                    <{data[3]}>
+                    <div class="act-flow"></div>
+                </li>
+                <li class="act-l2">
+                    <{data[4]}>
+                    <div class="act-flow"></div>
+                </li>
+                <li class="act-l3">
+                    <{data[5]}>
+                    <div class="act-flow"></div>
+                </li>
+                <li class="act-l4">
+                    <{data[6]}>
+                    <div class="act-flow"></div>
+                </li>
+            </ul>
+            <div class="act-in">
+                <div class="act-in-title">
+                    竞游新生 2016网友嘉年华
+                </div>
+                <div class="act-in-con">
+                    <div class="act-in-mod">
+                        <{data[7]}>
+                    </div>
+                    <div class="act-time act-i">
+                        <{data[35]}>
+                    </div>
+                    <div class="act-place act-i">
+                        <{data[36]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="act-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--直播-->
+<table width="100%" class="live" id="live" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="live-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="live-title"></div>
+            <div class="live-con clearfix">
+                <div class="live-c-l">
+                    <div class="live-c-l1 live-c-ln">
+                        <{data[8]}>
+                    </div>
+                    <div class="live-c-l2 live-c-ln">
+                        <{data[9]}>
+                    </div>
+                    <div class="live-c-l3 live-c-ln">
+                        <{data[10]}>
+                    </div>
+                    <div class="live-c-l4 live-c-ln">
+                        <{data[11]}>
+                    </div>
+                    <div class="live-c-l5 live-c-ln">
+                        <{data[12]}>
+                    </div>
+                    <div class="live-c-l6 live-c-ln">
+                        <{data[13]}>
+                    </div>
+                    <div class="live-c-l7 live-c-ln">
+                        <{data[14]}>
+                    </div>
+                    <div class="live-c-l-img">
+                        <{data[15]}>
+                    </div>
+                </div>
+                <div class="live-c-r">
+                    <{data[16]}>
+                </div>
+            </div>
+        </td>
+        <td class="live-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--时光机-->
+<table width="100%" class="ferris" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="ferris-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="ferris-t"></div>
+            <div class="ferris-con">
+                <div class="ferris-b"></div>
+                <div class="ferris-p"></div>
+                <div class="ferris-c"></div>
+                <div class="ferris-cage1 ferris-cage">
+                    <{data[17]}>
+                </div>
+                <div class="ferris-cage2 ferris-cage">
+                    <{data[18]}>
+                </div>
+                <div class="ferris-cage3 ferris-cage">
+                    <{data[19]}>
+                </div>
+                <div class="ferris-cage4 ferris-cage">
+                    <{data[20]}>
+                </div>
+                <div class="ferris-cage5 ferris-cage">
+                    <{data[21]}>
+                </div>
+                <div class="ferris-cage6 ferris-cage">
+                    <{data[22]}>
+                </div>
+            </div>
+        </td>
+        <td class="ferris-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--现场-->
+<table width="100%" class="spot" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="spot-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="spot-t"></div>
+            <div class="spot-con clearfix">
+                <div class="spot-con-l">
+                    <div class="spot-con-l-img">
+                        <div class="spot-con-l-img-box">
+                            <{data[23]}>
+                        </div>
+                    </div>
+                </div>
+                <div class="spot-con-r">
+                    <{data[24]}>
+                </div>
+            </div>
+        </td>
+        <td class="spot-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--酷品-->
+<table width="100%" class="cool banners" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="cool-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="cool-t"></div>
+            <div class="cool-c">
+                <{data[32]}>
+            </div>
+        </td>
+        <td class="cool-r">&nbsp;</td>
+    </tr>
+    </tbody></table><table width="100%" class="athletic banners" id="athletic" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="ath-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="ath-c">
+                <div class="ath-c1">
+                    <{data[25]}>
+                </div>
+                <div class="ath-c2-title">
+                    <{data[56]}>
+                </div>
+                <div class="ath-c2">
+                    <{data[26]}>
+                </div>
+                <div class="ath-c3">
+                    <{data[27]}>
+                </div>
+            </div>
+        </td>
+        <td class="ath-r">&nbsp;</td>
+    </tr>
+    </tbody></table><table width="100%" class="intro banners" id="intro" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="intro-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="intro-t"></div>
+            <div class="intro-c">
+                <div class="intro-btn1 intro-btn"></div>
+                <div class="intro-btn2 intro-btn"></div>
+                <div class="intro-con">
+                    <div class="intro-con-box" style="left: 0px; width: 2430px;">
+                        <{data[28]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="intro-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--电竞-->
+
+<!--推荐-->
+
+<!--官推-->
+<table width="100%" class="office" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="off-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="off-t"></div>
+            <div class="off-mod">
+                <div class="off-box">
+                    <{data[34]}>
+                </div>
+            </div>
+        </td>
+        <td class="off-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--尾部-->
+<table width="100%" class="foot" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="foot-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="foot-c">
+                <{data[31]}>
+            </div>
+        </td>
+        <td class="foot-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+
+<script charset="gbk">
+    /*浮动边栏*/
+    var $flow_a=$('.flow ul').find('a');
+    $flow_a.bind('click', function () {
+        $(this).closest('ul').find('li a').removeClass('a-act');
+        $(this).addClass('a-act');
+    });
+
+    /*回到顶部*/
+    $("#return").click(function () {
+        var speed=200;//滑动的速度
+        $('body,html').animate({ scrollTop: 0 }, speed);
+        return false;
+    });
+
+    /*图片切换*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".intro-con-box",".intro-con",3,".intro-btn1",".intro-btn2");
+
+    /*滚动logo*/
+    var $o_box=$(".off-box");
+    var $o_mod=$(".off-mod");
+
+    var $o_tr=$o_mod.find('tr');
+    var $o_td=$o_mod.find('td');
+
+    /*视频切换1*/
+    /*function video_show(v_link,v_show){
+     var iniUrl = v_link.eq(0).attr('href');
+     v_link.click(function () {
+     $(this).addClass('act-pre-bt-bg').siblings().removeClass('act-pre-bt-bg');
+     var $this = $(this);
+     var videoUrl = $this.attr('href');
+     v_show.attr('src',videoUrl);
+     return false;
+     });
+     }
+     video_show($('.act-pre-bt table a'),$('#video'));*/
+
+    /*视频切换2*/
+    /*$('.act-pre-bt').bind('click', function () {
+     $(this).addClass('act-pre-bt-bg').siblings().removeClass('act-pre-bt-bg');
+     if($('.act-pre-bt').index(this)==1){
+     $('#video').attr('src','http://player.youku.com/player.php/sid/XMTU0NzI0NTM3Mg==/v.swf');
+     }else{
+     $('#video').attr('src','http://player.youku.com/player.php/sid/XMTU0NzIwMjY5Ng==/v.swf');
+     }
+     })*/
+
+</script>
+
+</body></html>

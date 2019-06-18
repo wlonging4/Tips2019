@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM库练习</title>
+</head>
+<body>
+<div id="div1">
+    <ul id="ul1">
+        <li id="li1">0</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li id="li2">5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+</div>
+<script charset="UTF-8" type="text/javascript" src="3w5DOM库.js"></script>
+<script charset="UTF-8" type="text/javascript">
+    var li1=document.getElementById("li1");
+    var li2=document.getElementById("li2");
+    //【深入理解null和undefined】
+    /*DOM.next= function (ele) {
+     //if(ele.nextElementSibling)用来检查是否支持这个属性;这个属性不一定有值,可能是null,如果是null判断为false但是并非不支持这个属性,也就是说这样判断不严谨
+     if(typeof ele.nextElementSibling=="obeject"){
+     //这就是为什么null被归于obeject类型而undefined属于undefined类型的;
+     //在一个方法里如果规定有返回值，但是不能找到结果则返回null;如果方法本身就不需要返回值,则这个方法结束留下一个undefinded；比如var ele=document.getElementsByTagName('p');->ele[100]：undefinded得到一个未知的属性；ele.item(100)；null找到属性找不到属性值;
+     return ele.nextElementSibling;
+     }else{
+     var next=ele.nextSibling;
+     while(next){
+     if(next.nodeType==1){
+     return next;
+     }
+     next=next.nextSibling;
+     }
+     return null;//防止没进去上面循环导致后面的返回undefinded;有必要设置一个null返回值
+     }
+     };*/
+    //【判断节点】
+    //①用nodeType判断
+    //②用nodeName判断
+    /*tagName=tagName.toUpperCase();
+    function judge2() {
+        for (var i = 0; i < childNodes.length; i++) {
+            var child = childNodes[i];
+            if (child.nodeName == tagName) {
+                //tagName是传递进来的参数;
+                a.push(child);
+            }
+        }
+    }*/
+    //③第二个参数tagName是可选的,如果第二个参数不传表示获得所有的子元素
+    /*tagName=tagName.toUpperCase();
+    function judge3() {
+        if (typeof tagName == "string") {
+            var reg = new RegExp("^" + "tagName" + "$");
+        } else {
+            //如果第二个参数传错了，则只需要写一个能够匹配任意标签名的正则就好
+            var reg = /^[A-Z][A-Z0-9]*$]/;
+            //匹配一个合法的标签名，因为nodeName中的字符只有大写所以是[A-Z];
+        }
+    }*/
+    //正则的构造函数方法可以传递进来变量;但是直接量创建的正则传进来的内容就是字符串;不能当作变量传递进来;
+    //【】
+    //【trim】
+    /*去除字符串左右两端的空格，在vbscript里面可以轻松地使用 trim、ltrim 或 rtrim，但在js中却没有这3个内置方法，需要手工编写。下面的实现方法是用到了正则表达式，效率不错，并把这三个方法加入String对象的内置方法中去。
+    写成类的方法格式如下：（str.trim();）
+    String.prototype.trim=function(){
+        return this.replace(/(^\s*)|(\s*$)/g, "");
+    }
+    String.prototype.ltrim=function(){
+        return this.replace(/(^\s*)/g,"");
+    }
+    String.prototype.rtrim=function(){
+        return this.replace(/(\s*$)/g,"");
+    }
+    写成函数可以这样：(trim(str))
+    function trim(str){ //删除左右两端的空格
+        return str.replace(/(^\s*)|(\s*$)/g, "");
+    }
+    function ltrim(str){ //删除左边的空格
+        return str.replace(/(^\s*)/g,"");
+    }
+    function rtrim(str){ //删除右边的空格
+        return str.replace(/(\s*$)/g,"");
+    }*/
+    //【获取类名正则】
+    /*var strClass="content";
+    //先写一个用匹配类名的正则
+    var reg=/(^| )strClass( |$)/;//直接量没办法写变量，一次性就写死了
+    var reg=eval("/(^| )"+strClass+"( |$)/");//这样也行
+    var reg=new RegExp("(^| )"+strClass+"( |$)");//构造函数的方式更灵活
+    //然后再通过这个正则去匹配元素的className属性
+    var a=[];
+    var eles=document.getElementsByTagName("*");
+    for(var i=0;i<eles.length;i++){
+        var ele=eles[i];
+        if(reg.test(ele.className)){
+            a.push(ele);
+        }
+    }
+    function byClass(strClass,eles){
+        //var eles=document.getElementsByTagName("*");
+        var reg=new RegExp("(^| )"+strClass+"( |$)");
+        var a=[];
+        for(var i=0;i<eles.length;i++){
+            var ele=eles[i];
+            if(reg.test(ele.className)){
+                a.push(ele);
+            }
+        }
+        return a;
+    }
+    document.getElementsByClassName("content tab promoted");//获得类名同时是content,tab和promoted的元素
+    document.querySelectorAll(".content.tab.promoted");//功能同上*/
+    //【】
+</script>
+</body>
+</html>

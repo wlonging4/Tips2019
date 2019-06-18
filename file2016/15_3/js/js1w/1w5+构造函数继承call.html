@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call的使用</title>
+</head>
+<body>
+<div id="div1">div.的inner!</div>
+</body>
+<script type="text/javascript">
+    //call是function的一个方法，由一个function来执行，作用是使这个function执行，并且使这个function里的this关键字指向call方法的第一个参数，call第一个参数之后的其他参数是传给这个function使用的
+    function fn(a){
+        alert(this.innerHTML+a);
+    }
+    var innerHTML="全局window下的inner";
+    obj={
+        innerHTML:"obj的inner"
+    };
+    var oDiv=document.getElementById("div1");
+    fn(1);
+    fn.call(oDiv,2);
+    fn.call(obj,3);
+</script>
+</html>

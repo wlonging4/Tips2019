@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM练习</title>
+    <style type="text/css">
+        div{
+            float: left;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background: #D2413A;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    function add(){
+        var oDiv=document.createElement("div");
+        var oText=document.createTextNode("I Am Constructed!");
+        oDiv.appendChild(oText);
+        document.body.appendChild(oDiv);
+        var oLis=document.getElementsByTagName("div");
+        oText.nodeValue=oLis.length+"个";
+        oDiv.onclick= function (e) {
+            var e=e||event;
+            if(e.stopPropagation){
+                //组织事件传播
+                e.stopPropagation();
+            }else{
+                e.cancelBubble=true;
+            }
+            //删除当前被点击的这个div
+            document.body.removeChild(this);
+        }
+    }
+    document.onclick= function () {
+        add();
+    }
+</script>
+</body>
+</html>

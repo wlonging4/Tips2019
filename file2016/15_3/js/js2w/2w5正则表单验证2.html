@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+    <style type="txt/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        span{
+            height: 20px;
+            width: 20px;
+            background: lightgray;
+            border: 1px solid darkslategray;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        input{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+Name：<input type="text" id="name" value="Input username here..."/><br>A ge：<input type="text" id="age" value="Input your age here..."/>
+</body>
+<script type="text/javascript">
+    var oInput1=document.getElementById("name");
+    var oInput2=document.getElementById("age");
+    var regTest1 = /^[\u4e00-\u9fa5a-z]+$/i;
+    var regTest2=/\d{1,2}?/;
+    conf(oInput1,regTest1);
+    conf(oInput2,regTest2);
+    function conf(obj,regTest) {
+        obj.onfocus = function () {
+            obj.value = "";
+        };
+        obj.onblur = function () {
+            var reg = /^\s*$/;
+            if (reg.test(this.value)) {
+                this.value = this.defaultValue;
+            } else {
+                this.value.replace(/\s+/g, "");
+                if (!regTest.test(this.value)) {
+                    var nex = this.nextSibling;
+                    if (nex.tagName == "SPAN") {
+                        //=="SPAN";==="span"这个是个大坑啊
+                        nex.innerHTML = "×";
+                        nex.style.color = "red";
+                    } else {
+                        oSpan = document.createElement("span");
+                        oSpan.innerHTML = "×";
+                        oSpan.style.color = "red";
+                        var parent = this.parentNode;
+                        parent.insertBefore(oSpan, this.nextSibling)
+                    }
+                } else {
+                    var ele = this.nextSibling;
+                    if (ele.tagName == "SPAN") {
+                        ele.innerHTML = "√";
+                        ele.style.color = "green";
+                    } else {
+                        oSpan = document.createElement("span");
+                        oSpan.innerHTML = "√";
+                        oSpan.style.color = "green";
+                        var parent = this.parentNode;
+                        parent.insertBefore(oSpan, this.nextSibling)
+                    }
+                }
+            }
+        }
+    }
+</script>
+</html>

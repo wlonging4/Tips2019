@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>AOC显示器专题需求</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#000;font:12px/20px simsun,arial; background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#727284}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat  0 0;  }
+
+        .sale-l{  background: url("images/lg_sale_l.jpg") no-repeat 100% 0;  }
+        .sale-r{  background: url("images/lg_sale_r.jpg") no-repeat 0 0;  }
+        .sale-c{  position: relative;  height: 343px;  width: 1200px;  background: url("images/lg_sale_c.jpg") no-repeat 0 0;  }
+        .sale1{  position: absolute;  width: 942px;  height: 89px;  top: 90px;  left: 210px;  }
+        .sale2{  position: absolute;  width: 132px;  height: 63px;  top: 187px;  }
+        .sale21{  right: 185px;  }
+        .sale22{  right: 50px;  }
+
+        .info-l{  background: url("images/lg_info_l.jpg") no-repeat 100% 0;  }
+        .info-r{  background: url("images/lg_info_r.jpg") no-repeat 0 0;  }
+        .info-c{  position: relative;  width: 1200px;  height: 555px;  background: url("images/lg_info_c.jpg") no-repeat 0 0;  }
+        .info-c-l{  float: left;  width: 650px;  height: 555px;  overflow: hidden;  }
+        .info-c-l-live{  width: 630px;  height: 400px;  background: #000;  margin: 7px 13px 25px 7px;  }
+        .info-c-l-art{  width: 630px;  height: 100px;  padding-left: 8px;  }
+        .info-c-r{  float: left;  width: 550px;  height: 555px;  }
+        .info-c-r-mod{  width: 546px;  height: 550px;  }
+        .info-c-r-mod table img{  padding: 6px;  background: url("images/lg_info_img_bg.png") no-repeat 0 0;  }
+
+        .pic-l{  background: url("images/lg_pic_l.jpg") no-repeat 100% 0;  }
+        .pic-r{  background: url("images/lg_pic_r.jpg") no-repeat 0 0;  }
+        .pic-c{  position: relative;  height: 800px;  width: 1200px;  background: url("images/lg_pic_c.jpg") no-repeat 0 0;  }
+        .pic-c-t{  position: absolute;  top: 105px;  left: 30px;  width: 1140px;  height: 164px;  }
+        .pic-c-t img{  border: 1px solid #434444;  }
+        .pic-c-b{  position: absolute;  overflow: hidden;  width: 1120px;  height: 496px; top: 282px ; left: 40px; }
+        .pic-c-box{  position: absolute;  top: 0;  left: 0;  height: 496px;  }
+
+        .more-l{  background: url("images/lg_more_l.jpg") no-repeat 100% 0;  }
+        .more-r{  background: url("images/lg_more_r.jpg") no-repeat 0 0;  }
+        .more-c{  position: relative;  height: 361px;  width: 1200px;  background: url("images/lg_more_c.jpg") no-repeat 0 0;  }
+        .more-l-mod{  position: absolute;  top: 120px;  left: 0;  width: 470px;  height: 130px;  }
+        .more-r-mod{  position: absolute;  top: 100px;  right: 35px;  width: 700px;  height: 170px;  }
+        .more-r-mod table img{  padding: 6px;  background: url("images/lg_more_img_bg.png") no-repeat 0 0;  }
+
+        .zol_foot{  height: 265px;  padding-top: 60px;  background: url("images/lg_foot.jpg") no-repeat top center;  }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <img src="images/lg_head_c.jpg" alt="" width="1200" height="726"/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--购买-->
+<table class="sale" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="sale-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="sale-c">
+                <div class="sale1">
+                    模块内容
+                </div>
+                <div class="sale2 sale21">
+                    模块内容
+                </div>
+                <div class="sale2 sale22">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="sale-r">&nbsp;</td>
+    </tr>
+</table>
+<!--信息-->
+<table class="info" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="info-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="info-c clearfix">
+                <div class="info-c-l">
+                    <div class="info-c-l-live">
+                        模块内容
+                    </div>
+                    <div class="info-c-l-art">
+                        模块内容
+                    </div>
+                </div>
+                <div class="info-c-r">
+                    <div class="info-c-r-mod">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="info-r">&nbsp;</td>
+    </tr>
+</table>
+<!--图片-->
+<table class="pic" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pic-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="pic-c">
+                <div class="pic-c-t">
+                    模块内容
+                </div>
+                <div class="pic-c-b">
+                    <div class="pic-c-box">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="pic-r">&nbsp;</td>
+    </tr>
+</table>
+<!--更多-->
+<table class="more" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="more-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="more-c">
+                <div class="more-l-mod">
+                    模块内容
+                </div>
+                <div class="more-r-mod">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="more-r">&nbsp;</td>
+    </tr>
+</table>
+
+<script charset="gbk">
+    var pic_s=$('.pic-c-t table img'),pic_l=$('.pic-c-box');
+    pic_s.bind('mouseenter', function () {
+        pic_l.animate({'left':'-'+1120*pic_s.index(this)+'px'},400);
+    })
+</script>
+</body>
+</html>

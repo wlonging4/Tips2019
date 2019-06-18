@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html>
+<head lang="GBK">
+    <meta charset="gbk">
+    <title>三星家电众测季产品巡礼H5</title>
+    <meta name="keywords" content="三星家电众测季产品巡礼" />
+    <meta name="description" content="三星家电众测季产品巡礼" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no" />
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /*下滑按钮*/
+        .swipe{position:absolute;z-index:10;left:50%;bottom:40px;width:45px;margin-left:-10px;height:20px;overflow:hidden;color:rgba(0,0,0,0);background:url('http://2.zol-img.com.cn/zt/tm_580/08bb565312/swipe1.png') no-repeat;-webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;}
+
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        /*动画*/
+        .float-left,.float-right,.float-up,.float-down,.float-scale{-webkit-transition:.5s;transition:.5s;opacity:0;}
+        .float-left{-webkit-transform:translate(100px,0);transform:translate(100px,0);}
+        .float-right{-webkit-transform:translate(-100px,0);transform:translate(-100px,0);}
+        .float-up{-webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-down{-webkit-transform:translate(0,-100px);transform:translate(0,-100px);}
+        .float-scale{-webkit-transform:scale(1.2);transform:scale(1.2);}
+        .float-show1{  opacity: 0; -webkit-transform:scale(0.5);transform:translate(0.5); }
+        .float-show2{  opacity: 0; -webkit-transform:rotate(60deg);transform:rotate(60deg); }
+        .current .float-left,.current .float-right,.current .float-up,.current .float-down,.current .float-scale,.circle1,.circle2{-webkit-transform:none;transform:none;opacity:1;}
+        .show-fly-down1,.show-fly-down2,.show-fly-down3{  opacity: 0;  -webkit-transform: translate(0px,-20px);  transform: translate(0px,-40px);  }
+        .show-fly-up1,.show-fly-up2,.show-fly-up3{  opacity: 0;  -webkit-transform: translate(0px,20px);  transform: translate(0px,20px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+        .bttp1,.bttp2,.bttp3,.bttp4,.bttp5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+
+        @-webkit-keyframes show-hide1 {
+            0%{  -webkit-transform:none;opacity: 1;  }
+            50%{  opacity: 0; -webkit-transform:scale(0.5);  }
+            100%{  -webkit-transform:none; opacity: 1;  }
+        }
+        @keyframes show-hide1 {
+            0%{  transform:none; opacity: 1;  }
+            50%{  opacity: 0; transform:translate(0.5);  }
+            100%{  transform:none; opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-hide2 {
+            0%{  opacity: 0; -webkit-transform:rotate(60deg);  }
+            100%{  opacity: 1; -webkit-transform:rotate(0deg);  }
+        }
+        @keyframes show-hide2 {
+            0%{  opacity: 0; transform:rotate(60deg);  }
+            100%{  opacity: 1; transform:rotate(0deg);  }
+        }
+
+
+        @-webkit-keyframes show-fly-down {
+            0%{  -webkit-transform: translate(0px,-20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-down {
+            0%{  transform: translate(0px,-20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0%{  -webkit-transform: translate(0px,20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-up {
+            0%{  transform: translate(0px,20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-down {
+            0%{  -webkit-transform: translate(0px,0px);opacity: 0.8;  }
+            100%{  -webkit-transform: translate(0px,194px);opacity: 1;  }
+        }
+        @keyframes flow-down {
+            0%{  transform: translate(0px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,194px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle1 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(360deg);opacity: 1;  }
+        }
+        @keyframes circle1 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(100deg);opacity: 1;  }
+            66%{  transform: rotate(240deg);opacity: 1;  }
+            100%{  transform: rotate(360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle2 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(-100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(-240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(-360deg);opacity: 1;  }
+        }
+        @keyframes circle2 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(-100deg);opacity: 1;  }
+            66%{  transform: rotate(-240deg);opacity: 1;  }
+            100%{  transform: rotate(-360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-none {
+            0%{  -webkit-transform: scale(1);opacity: 1;  }
+            100%{  -webkit-transform: scale(1.6);opacity: 0;  }
+        }
+        @keyframes flow-none {
+            0%{  transform: scale(1);opacity: 1;  }
+            100%{  transform: scale(1.6);opacity: 0;  }
+        }
+
+        @-webkit-keyframes shake-lr {
+            0%{  -webkit-transform: rotate(0deg);  }
+            25%{  -webkit-transform: rotate(-3deg);  }
+            50%{  -webkit-transform: rotate(0deg);  }
+            75%{  -webkit-transform: rotate(3deg);  }
+            100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr {
+            0%{  transform: rotate(0deg);  }
+            25%{  transform: rotate(-3deg);  }
+            50%{  transform: rotate(0deg);  }
+            75%{  transform: rotate(3deg);  }
+            100%{  transform: rotate(0deg);  }
+        }
+
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(1.1) translate(10px,0px);  }
+            50%{  -webkit-transform: scale(1.2) translate(5px,-5px);  }
+            75%{  -webkit-transform: scale(1.1) translate(0px,-10px);  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(1.1) translate(10px,0px);  }
+            50%{  transform: scale(1.2) translate(5px,-5px);  }
+            75%{  transform: scale(1.1) translate(0px,-10px);  }
+            100%{  transform: scale(1) translate(0px,0px);  }
+        }
+        @-webkit-keyframes blast2 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(0.96) rotate(2deg);  }
+            50%{  -webkit-transform: scale(1) rotate(0deg);  }
+            75%{  -webkit-transform: scale(0.96) rotate(-1deg);  }
+            100%{  -webkit-transform: scale(1) rotate(0deg);  }
+        }
+        @keyframes blast2 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(0.96) rotate(2deg);  }
+            50%{  transform: scale(1) rotate(0deg);  }
+            75%{  transform: scale(0.96) rotate(-1deg);  }
+            100%{  transform: scale(1) rotate(0deg);  }
+        }
+
+        @-webkit-keyframes move-rabbit {
+            0%{  -webkit-transform: rotate(0deg) translate(0px,0px);  }
+            5%{  -webkit-transform: rotate(0deg) translate(0px,0px);  }
+            20%{  -webkit-transform: rotate(40deg) translate(0px,0px);  }
+            30%{  -webkit-transform: rotate(40deg) translate(0px,0px);  }
+            50%{  -webkit-transform: rotate(70deg) translate(0px,0px);  }
+            60%{  -webkit-transform: rotate(70deg) translate(0px,0px);  }
+            72%{  -webkit-transform: rotate(70deg) translate(-70px,-30px);  }
+            80%{  -webkit-transform: rotate(70deg) translate(0px,0px);  }
+            100%{  -webkit-transform: rotate(0deg)  translate(0px,0px); }
+        }
+        @keyframes move-rabbit {
+            0%{  transform: rotate(0deg) translate(0px,0px);  }
+            5%{  transform: rotate(0deg) translate(0px,0px);  }
+            20%{  transform: rotate(40deg) translate(0px,0px);  }
+            30%{  transform: rotate(40deg) translate(0px,0px);  }
+            50%{  transform: rotate(70deg) translate(0px,0px);  }
+            60%{  transform: rotate(70deg) translate(0px,0px);  }
+            72%{  transform: rotate(70deg) translate(-70px,-30px);  }
+            80%{  transform: rotate(70deg) translate(0px,0px);  }
+            100%{  transform: rotate(0deg) translate(0px,0px);  }
+        }
+
+        @-webkit-keyframes move-rabbit2 {
+            0%{  -webkit-transform: rotate(40deg);  }
+            30%{  -webkit-transform: rotate(10deg);  }
+            50%{  -webkit-transform: rotate(10deg);  }
+            70%{  -webkit-transform: rotate(-20deg);  }
+            80%{  -webkit-transform: rotate(-20deg) translate(0,0); opacity: 1  }
+            100%{  -webkit-transform: rotate(-20deg) translate(-90px,240px); opacity: 0  }
+        }
+        @keyframes move-rabbit2 {
+            0%{  transform: rotate(40deg);  }
+            30%{  transform: rotate(10deg);  }
+            50%{  transform: rotate(10deg);  }
+            70%{  transform: rotate(-20deg);  }
+            80%{  transform: rotate(-20deg) translate(0,0); opacity: 1  }
+            100%{  transform: rotate(-20deg) translate(-90px,240px); opacity: 0  }
+        }
+
+        @-webkit-keyframes move-rtl {
+            0%{  -webkit-transform:translate(0px,0px);  }
+            100%{  -webkit-transform:translate(100px,0px);  }
+        }
+        @keyframes move-rtl {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(100px,0px);  }
+        }
+        @-webkit-keyframes move-ltr {
+            0%{  -webkit-transform:translate(0px,0px);  }
+            100%{  -webkit-transform:translate(-100px,0px);  }
+        }
+        @keyframes move-ltr {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(-100px,0px);  }
+        }
+        @-webkit-keyframes move-ltr2 {
+            0%{  -webkit-transform:translate(0px,0px); opacity: 1;  }
+            100%{  -webkit-transform:translate(-300px,0px); opacity: 0.8;  }
+        }
+        @keyframes move-ltr2 {
+            0%{  transform: translate(0px,0px); opacity: 1;  }
+            100%{  transform: translate(-300px,0px); opacity: 0.8;  }
+        }
+        @-webkit-keyframes show-bing {
+            0%{  opacity: 0; -webkit-transform: scale(0.5);  }
+            100%{  opacity: 1; -webkit-transform: scale(1); }
+        }
+        @keyframes show-bing {
+            0%{  opacity: 0; transform: scale(0.5); }
+            100%{  opacity: 1;transform: scale(1);  }
+        }
+
+        .current .float-show1{  -webkit-animation: show-hide1 1.5s ease-in 0.6s 1 forwards; animation: show-hide1 1.5s ease-in 0.6s 1 forwards;  }
+        .current .float-show2{  -webkit-animation: show-hide2 0.5s ease-in 0.4s forwards; animation: show-hide2 0.5s ease-in 0.4s forwards;  }
+        .current .show-fly-down1{  -webkit-animation: show-fly-down 0.3s ease-in 0s forwards;  animation: show-fly-down 0.3s ease-in 0s forwards;  }
+        .current .show-fly-down2{  -webkit-animation: show-fly-down 0.3s ease-in 0.2s forwards;  animation: show-fly-down 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-down3{  -webkit-animation: show-fly-down 0.3s ease-in 0.5s forwards;  animation: show-fly-down 0.3s ease-in 0.5s forwards;  }
+        .current .show-fly-up1{  -webkit-animation: show-fly-up 0.3s ease-in 0s forwards;  animation: show-fly-up 0.3s ease-in 0s forwards;  }
+        .current .show-fly-up2{  -webkit-animation: show-fly-up 0.3s ease-in 0.2s forwards;  animation: show-fly-up 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-up3{  -webkit-animation: show-fly-up 0.3s ease-in 0.5s forwards;  animation: show-fly-up 0.3s ease-in 0.5s forwards;  }
+        .current .ltr1{ -webkit-animation: ltr 0.2s ease-in 0s forwards;  animation: ltr 0.2s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr 0.2s ease-in 0.1s forwards;  animation: ltr 0.2s ease-in 0.2s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr 0.2s ease-in 0.3s forwards;  animation: ltr 0.2s ease-in 0.4s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr 0.2s ease-in 0.5s forwards;  animation: ltr 0.2s ease-in 0.6s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr 0.2s ease-in 0.7s forwards; animation: ltr 0.2s ease-in 0.8s forwards;  }
+        .current .ttb1{ -webkit-animation: ttb 0.2s ease-in 0s forwards;  animation: ttb 0.2s ease-in 0s forwards;   }
+        .current .ttb2{ -webkit-animation: ttb 0.2s ease-in 0.1s forwards;  animation: ttb 0.2s ease-in 0.2s forwards;  }
+        .current .ttb3{ -webkit-animation: ttb 0.2s ease-in 0.3s forwards;  animation: ttb 0.2s ease-in 0.4s forwards;  }
+        .current .ttb4{ -webkit-animation: ttb 0.2s ease-in 0.5s forwards;  animation: ttb 0.2s ease-in 0.6s forwards;  }
+        .current .ttb5{ -webkit-animation: ttb 0.2s ease-in 0.7s forwards; animation: ttb 0.2s ease-in 0.8s forwards;  }
+        .current .btt1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .btt2{ -webkit-animation: btt 0.2s ease-in 0.1s forwards;  animation: btt 0.2s ease-in 0.2s forwards;  }
+        .current .btt3{ -webkit-animation: btt 0.2s ease-in 0.3s forwards;  animation: btt 0.2s ease-in 0.4s forwards;  }
+        .current .btt4{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.6s forwards;  }
+        .current .btt5{ -webkit-animation: btt 0.2s ease-in 0.7s forwards; animation: btt 0.2s ease-in 0.8s forwards;  }
+        .current .bttp1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .bttp2{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.5s forwards;  }
+        .current .bttp3{ -webkit-animation: btt 0.2s ease-in 1.4s forwards;  animation: btt 0.2s ease-in 1.4s forwards;  }
+        .current .bttp4{ -webkit-animation: btt 0.2s ease-in 2.4s forwards;  animation: btt 0.2s ease-in 2.4s forwards;  }
+        .current .bttp5{ -webkit-animation: btt 0.2s ease-in 3.1s forwards; animation: btt 0.2s ease-in 3.1s forwards;  }
+        .current .car{ -webkit-animation: car 1.6s ease-in 0.2s forwards;  animation: car 1.6s ease-in 0.2s forwards;  }
+        .current .flow-down{ -webkit-animation: flow-down 1.6s ease-in 0.4s infinite;  animation: flow-down 1.6s ease-in 0.4s infinite;  }
+        .current .flow-none{ -webkit-animation: flow-none 0.8s ease-in 0s forwards;  animation: flow-none 0.8s ease-in 0s forwards;  }
+        .current .shake-lr{ -webkit-animation: shake-lr 1s linear 0s infinite;  animation: shake-lr 1s linear 0s infinite;  }
+        .current .circle1{ -webkit-animation: circle1 3s linear infinite;  animation: circle1 3s linear infinite;  }
+        .current .circle2{ -webkit-animation: circle2 3s linear infinite;  animation: circle2 3s linear infinite;  }
+        .current .circle3{ -webkit-animation: circle2 10s linear infinite;  animation: circle2 10s linear infinite;  }
+        .current .show-bing{ -webkit-animation: show-bing 1s linear 4s forwards;  animation: show-bing 1s linear 4s forwards;  }
+        .current .blast{ -webkit-animation: blast 5s linear infinite;  animation: blast 5s linear infinite;  }
+        .current .blast2{ -webkit-animation: blast2 10s linear infinite;  animation: blast2 10s linear infinite;  }
+        .current .move-rtl{ -webkit-animation: move-rtl 10s linear infinite;  animation: move-rtl 10s linear infinite;  }
+        .current .move-ltr{ -webkit-animation: move-ltr 10s linear infinite;  animation: move-ltr 10s linear infinite;  }
+        .current .move-ltr2{ -webkit-animation: move-ltr2 10s linear forwards;  animation: move-ltr2 10s linear forwards;  }
+        .current .move-rabbit{ -webkit-animation: move-rabbit 6s ease-out infinite;  animation: move-rabbit 6s ease-out infinite;  }
+        .current .move-rabbit2{ -webkit-animation: move-rabbit2 5s ease-out forwards;  animation: move-rabbit2 5s ease-out forwards;  }
+
+        /*分享*/
+        .share { width:408px; height: 112px;text-align: center; margin: 10px auto 0; }
+        .share a { display: inline-block; width: 188px; height: 46px; display: inline-block; background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/share_btns.png") no-repeat 0 0; vertical-align: top; overflow: hidden; margin: 10px 8px 0; text-indent: 999px; }
+        .share a.weibo{background-position: 0 0;}
+        .share a.wechat{background-position: 0 -46px;}
+        .share a.qzone{background-position: 0 -92px;}
+        .share a.tencent-weibo{background-position: 0 -138px;}
+        .share-txt{background: url(http://2.zol-img.com.cn/zt/tm_56a/86907cc0b2/p7-4.png) no-repeat 0 0;width: 36px;height: 80px;overflow: hidden;display:block;float: left;text-indent: -999px;}
+        @media only screen and (max-device-height: 480px){
+            /*ip4*/
+        }
+
+        /*lg_style*/
+        .container{height:1000%;}
+        section{height:10%;overflow:hidden;position:relative;background-image: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/bg2.jpg"); background-size:cover;background-repeat: no-repeat;background-position: top center;}
+        #slide1{  background-image: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/bg1.jpg");  }
+        #viewport{width:640px;height:100%;margin:0 auto;overflow:hidden;}
+
+        /*结构*/
+        @-webkit-keyframes hide { 0% { opacity: 1; } 100% { opacity: 0; } }
+        @keyframes hide { 0% { opacity: 1; } 100% { opacity: 0; } }
+        .logo1{  width: 155px;  height: 48px;  position: absolute;  left: 20px;  top: 15px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/logo1.png") no-repeat 0 0;  }
+        .logo2{  width: 151px;  height: 24px;  position: absolute;  right: 20px;  top: 25px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/logo2.png") no-repeat 0 0;  }
+        .p1-art{  margin: 100px auto 0;  width: 440px;  height: 275px;  }
+        .p1-art1{  width: 430px;  height: 220px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p1_art1.png") no-repeat 0 0;  }
+        .p1-art2{  width: 420px;  height: 28px;  margin: 5px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p1_art2.png") no-repeat 0 0;  }
+        .p1-pro{  width: 520px;  height: 610px;  position: relative;  margin: 20px auto 0;  }
+        .p1-pro1{  position: absolute;  top: 0;  left: 160px;  width: 301px;  height: 605px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p1_pro1.png") no-repeat 0 0;  }
+        .p1-pro2{  position: absolute;  top: 180px;  left: -5px;  width: 254px;  height: 402px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p1_pro2.png") no-repeat 0 0;  }
+        .p1-pro3{  position: absolute;  top: 200px;  right: -20px;  width: 188px;  height: 359px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p1_pro3.png") no-repeat 0 0;  }
+        .p2-ul{  width: 551px;  height: 780px;  margin: 60px auto 0;  }
+        .p2-ul li{  position: relative;  width: 551px;  height: 229px;  margin-bottom: 20px;  }
+        .p2-ul li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_pro1.png") no-repeat 0 0;  }
+        .p2-ul li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_pro2.png") no-repeat 0 0;  }
+        .p2-ul li:nth-child(3){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_pro3.png") no-repeat 0 0;  }
+        .p2-btn{  position: absolute;  width: 228px;  height: 45px; top: 130px; right: 25px;  }
+        .p2-btn1{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn1.png") no-repeat 0 0;  }
+        .p2-btn2{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn2.png") no-repeat 0 0;  }
+        .p2-btn3{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn3.png") no-repeat 0 0;  }
+
+        .second{  width: 555px;  height: 860px;  margin: 50px auto 0;  }
+        .second-t{  height: 75px;  margin-bottom: 10px;  }
+        .second1 .second-t{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p3_t.png") no-repeat center;  }
+        .second2 .second-t{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p4_t.png") no-repeat center;  }
+        .second3 .second-t{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p5_t.png") no-repeat center;  }
+        .second-pic{  width: 555px;  }
+        .second-pic li{  position: relative;  width: 553px;  height: 348px;  margin-bottom: 12px;  }
+        .second .second-li1,.second .second-li2{  position: absolute;  width: 228px;  height: 45px;  }
+        .second1 .second-li1{  top: 140px;  left: 260px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn1.png") no-repeat 0 0;  }
+        .second1 .second-li2{  top: 175px;  left: 55px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn1.png") no-repeat 0 0;  }
+        .second2 .second-li1{  top: 165px;  left: 255px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn2.png") no-repeat 0 0;  }
+        .second2 .second-li2{  top: 160px;  left: 45px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn2.png") no-repeat 0 0;  }
+        .second3 .second-li1{  top: 180px;  left: 260px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn3.png") no-repeat 0 0;  }
+        .second3 .second-li2{  top: 175px;  left: 40px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p2_btn3.png") no-repeat 0 0;  }
+        .second1 li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p3_li1.jpg") no-repeat 0 0;  }
+        .second1 li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p3_li2.jpg") no-repeat 0 0;  }
+        .second2 li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p4_li1.jpg") no-repeat 0 0;  }
+        .second2 li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p4_li2.jpg") no-repeat 0 0;  }
+        .second3 li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p5_li1.jpg") no-repeat 0 0;  }
+        .second3 li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/p5_li2.jpg") no-repeat 0 0;  }
+        .second-return{  width: 228px;  height: 45px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/return.png") no-repeat 0 0;  margin: 5px auto 0;  }
+
+        .s{  width: 600px;  height: 760px;  margin: 20px auto 0;  overflow: hidden;  }
+        .s-b{  display: none; margin: 0 auto; width: 600px;  height: 760px;  overflow: hidden;  }
+        .s-b.blk{  display: block;  }
+        .s-t{  height: 70px;  margin-bottom: 5px;  }
+        .s-t1{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri1_t.png") no-repeat center;  }
+        .s-t2{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri2_t.png") no-repeat center;  }
+        .s-t3{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash1_t.png") no-repeat center;  }
+        .s-t4{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash2_t.png") no-repeat center;  }
+        .s-t5{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air1_t.png") no-repeat center;  }
+        .s-t6{  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air2_t.png") no-repeat center;  }
+        .s-box{  width: 600px; margin: 0 auto;  height: 640px;  position: relative;  }
+        .s-box-con{  width: 550px;  height: 550px;  overflow: hidden;  margin:  0 auto;  }
+        .s-box-pics{ margin: 0 auto;  width: 1000%;  height: 550px;  overflow: hidden;  }
+        .s-box-pics li{  float: left; width: 10%;  height: 550px;   }
+        .s-box-btn{  position: absolute;  top: 240px;  width: 50px;  height: 59px;  }
+        .s-box-btn1{  left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/show_btns.png") no-repeat 0 0;  }
+        .s-box-btn2{  right: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/show_btns.png") no-repeat -50px 0;  }
+        .s-box-arts{  width: 600px;  height: 90px;  overflow: hidden;  }
+        .s-box-arts li{  display: none;  width: 600px;  height: 70px; padding-top: 10px;  color: #333;  font: 22px/34px 'microsoft yahei';  text-align: center;  }
+        .s-box-arts li.selected{  display: block;  }
+        .s-box-arts li.li-single{  font: 22px/76px 'microsoft yahei';  }
+        .s-btns{  width: 480px;  height: 45px;  margin: 0 auto;  }
+        .s-btns1{  float: left;  width: 228px;  height: 45px;  margin: 0 6px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/return.png") no-repeat 0 0;  }
+        .s-btns2{  float: left;  width: 228px;  height: 45px;  margin: 0 6px;  background: url("http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/test.png") no-repeat 0 0;  }
+        .s-btns2 a{  display: block;  width: 228px;  height: 45px;  }
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--content-->
+<div class="logo"></div>
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container" id="container">
+        <section id="slide1">
+            <div class="logo1"></div>
+            <div class="logo2"></div>
+            <div class="p1-art">
+                <div class="p1-art1 float-scale"></div>
+                <div class="p1-art2 float-up"></div>
+            </div>
+            <div class="p1-pro">
+                <div class="p1-pro1 float-down"></div>
+                <div class="p1-pro2 float-right"></div>
+                <div class="p1-pro3 float-left"></div>
+            </div>
+        </section>
+        <section id="slide2">
+            <ul class="p2-ul">
+                <li class="float-right" id="btn1"><div class="p2-btn p2-btn1"></div></li>
+                <li class="float-left" id="btn2"><div class="p2-btn p2-btn2"></div></li>
+                <li class="float-right" id="btn3"><div class="p2-btn p2-btn3"></div></li>
+            </ul>
+        </section>
+        <section id="slide3">
+            <div class="second second1">
+                <div class="second-t"></div>
+                <ul class="second-pic">
+                    <li class="float-left" id="li1"><div class="second-li second-li1"></div></li>
+                    <li class="float-right" id="li2"><div class="second-li second-li2"></div></li>
+                </ul>
+                <div class="second-return" id="second-return1"></div>
+            </div>
+        </section>
+        <section id="slide4">
+            <div class="second second2">
+                <div class="second-t"></div>
+                <ul class="second-pic">
+                    <li class="float-down" id="li3"><div class="second-li second-li1"></div></li>
+                    <li class="float-up" id="li4"><div class="second-li second-li2"></div></li>
+                </ul>
+                <div class="second-return" id="second-return2"></div>
+            </div>
+        </section>
+        <section id="slide5">
+            <div class="second second3">
+                <div class="second-t"></div>
+                <ul class="second-pic">
+                    <li class="float-up" id="li5"><div class="second-li second-li1"></div></li>
+                    <li class="float-down" id="li6"><div class="second-li second-li2"></div></li>
+                </ul>
+                <div class="second-return"  id="second-return3"></div>
+            </div>
+        </section>
+        <section id="slide6">
+            <div class="s">
+                <div class="s-b blk">
+                    <div class="s-t s-t1 float-up"></div>
+                    <div class="s-box flipview" id="s-box1"  data-loop="false">
+                        <div class="s-box-con">
+                            <ul class="container s-box-pics clearfix" dir="left-right">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri1_1.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri1_2.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri1_3.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri1_4.jpg" width="550" height="550" alt=""/></li>
+                            </ul>
+                        </div>
+                        <div class="s-box-btn s-box-btn1" id="s-box-btn11"></div>
+                        <div class="s-box-btn s-box-btn2" id="s-box-btn21"></div>
+                        <ul class="s-box-arts tabs clearfix">
+                            <li class="li-single selected">
+                                545L 对开门双循环大容量家用冰箱（日曜金）
+                            </li>
+                            <li>
+                                金色机身,典雅外观,经典对开门设计<br/>LED触控屏,隐藏式门把手
+                            </li>
+                            <li>
+                                545升海量存储,分区精细,风冷无霜<br/>双循环制冷系统,锁住水分,避免串味
+                            </li>
+                            <li>
+                                智能变频压缩机,10年包修<br/>一级能效,节能环保,持久新鲜
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="s-btns">
+                        <li class="s-btns1 float-right" id="return-second1"></li>
+                        <li class="s-btns2 float-left"><a href="http://jd.zol.com.cn/topic/6084520.html"></a></li>
+                    </ul>
+                </div>
+                <div class="s-b">
+                    <div class="s-t s-t2 float-up"></div>
+                    <div class="s-box flipview" id="s-box2"  data-loop="false">
+                        <div class="s-box-con">
+                            <ul class="container s-box-pics clearfix" dir="left-right">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri2_1.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri2_2.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri2_3.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/fri2_4.jpg" width="550" height="550" alt=""/></li>
+                            </ul>
+                        </div>
+                        <div class="s-box-btn s-box-btn1" id="s-box-btn12"></div>
+                        <div class="s-box-btn s-box-btn2" id="s-box-btn22"></div>
+                        <ul class="s-box-arts tabs clearfix">
+                            <li class="li-single selected">
+                                540L 智能变频 风冷大容量对开门冰箱（日曜金）
+                            </li>
+                            <li>
+                                韩系对开门设计,LED触控屏<br/>人体工学门把手,开关轻松方便
+                            </li>
+                            <li class="li-single">
+                                540升超大容量,分层式抽屉,风冷无霜,送风均匀
+                            </li>
+                            <li>
+                                智能变频,精确控温,全环绕气流<br/>节能降噪,压缩机10年包修
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="s-btns">
+                        <li class="s-btns1 float-right" id="return-second2"></li>
+                        <li class="s-btns2 float-left"><a href="http://jd.zol.com.cn/topic/6084520.html"></a></li>
+                    </ul>
+                </div>
+                <div class="s-b">
+                    <div class="s-t s-t3 float-up"></div>
+                    <div class="s-box flipview" id="s-box3"  data-loop="false">
+                        <div class="s-box-con">
+                            <ul class="container s-box-pics clearfix" dir="left-right">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash1_1.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash1_2.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash1_3.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash1_4.jpg" width="550" height="550" alt=""/></li>
+                            </ul>
+                        </div>
+                        <div class="s-box-btn s-box-btn1" id="s-box-btn13"></div>
+                        <div class="s-box-btn s-box-btn2" id="s-box-btn23"></div>
+                        <ul class="s-box-arts tabs clearfix">
+                            <li class="li-single selected">
+                                8公斤 安心添 泡泡净 智能变频滚筒洗衣机
+                            </li>
+                            <li>
+                                45.6cm纤薄机身,8公斤超大洗涤量<br/>“安心添”设计,随洗随添
+                            </li>
+                            <li>
+                                “泡泡净”技术,深层洁净,呵护衣物<br/>智能变频电机,性能强劲,高效节能
+                            </li>
+                            <li>
+                                “钻石型”内筒,降低磨损,加倍呵护<br/>智能减震,加倍降噪,“环保筒清洁”,一键操作,呵护健康
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="s-btns">
+                        <li class="s-btns1 float-right" id="return-second3"></li>
+                        <li class="s-btns2 float-left"><a href="http://jd.zol.com.cn/topic/6084520.html"></a></li>
+                    </ul>
+                </div>
+                <div class="s-b">
+                    <div class="s-t s-t4 float-up"></div>
+                    <div class="s-box flipview" id="s-box4"  data-loop="false">
+                        <div class="s-box-con">
+                            <ul class="container s-box-pics clearfix" dir="left-right">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash2_1.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash2_2.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash2_3.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/wash2_4.jpg" width="550" height="550" alt=""/></li>
+                            </ul>
+                        </div>
+                        <div class="s-box-btn s-box-btn1" id="s-box-btn14"></div>
+                        <div class="s-box-btn s-box-btn2" id="s-box-btn24"></div>
+                        <ul class="s-box-arts tabs clearfix">
+                            <li class="li-single selected">
+                                9公斤 安心添变频洗烘一体滚筒洗衣机
+                            </li>
+                            <li>
+                                洗涤、烘干一次完成,随洗随干<br/>多种烘干模式选择,9公斤洗涤量,6公斤烘干量
+                            </li>
+                            <li>
+                                热风清新,无需水洗,轻松除味<br/>“安心添”,随时添加,省心便捷
+                            </li>
+                            <li class="li-single">
+                                快洗功能,45分钟完成5公斤洗衣任务,智能检测,省时省力
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="s-btns">
+                        <li class="s-btns1 float-right" id="return-second4"></li>
+                        <li class="s-btns2 float-left"><a href="http://jd.zol.com.cn/topic/6084520.html"></a></li>
+                    </ul>
+                </div>
+                <div class="s-b">
+                    <div class="s-t s-t5 float-up"></div>
+                    <div class="s-box flipview" id="s-box5"  data-loop="false">
+                        <div class="s-box-con">
+                            <ul class="container s-box-pics clearfix" dir="left-right">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air1_1.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air1_2.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air1_3.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air1_4.jpg" width="550" height="550" alt=""/></li>
+                            </ul>
+                        </div>
+                        <div class="s-box-btn s-box-btn1" id="s-box-btn15"></div>
+                        <div class="s-box-btn s-box-btn2" id="s-box-btn25"></div>
+                        <ul class="s-box-arts tabs clearfix">
+                            <li class="li-single selected">
+                                客厅家用除甲醛加强雾霾送卧室净化器
+                            </li>
+                            <li>
+                                瑞雪白机身,前进风设计,节约空间,隐藏滚轮,便捷美观<br/>滤网更换提醒,简单方便,客厅书房首选
+                            </li>
+                            <li>
+                                搭配增强型滤网,更有效去除甲醛<br/>颗粒物CCM达到新国标P4等级,CCM甲醛达到新国标F4等级
+                            </li>
+                            <li>
+                                专利除菌技术——超净<sup>3</sup>离子群,空气质量智能提示<br/>远程智控,贴心空气管家,更多智能模式选择
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="s-btns">
+                        <li class="s-btns1 float-right" id="return-second5"></li>
+                        <li class="s-btns2 float-left"><a href="http://jd.zol.com.cn/topic/6084520.html"></a></li>
+                    </ul>
+                </div>
+                <div class="s-b">
+                    <div class="s-t s-t6 float-up"></div>
+                    <div class="s-box flipview" id="s-box6"  data-loop="false">
+                        <div class="s-box-con">
+                            <ul class="container s-box-pics clearfix" dir="left-right">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air2_1.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air2_2.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air2_3.jpg" width="550" height="550" alt=""/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_580/0843c0ef7d/air2_4.jpg" width="550" height="550" alt=""/></li>
+                            </ul>
+                        </div>
+                        <div class="s-box-btn s-box-btn1" id="s-box-btn16"></div>
+                        <div class="s-box-btn s-box-btn2" id="s-box-btn26"></div>
+                        <ul class="s-box-arts tabs clearfix">
+                            <li class="li-single selected">
+                                卧室静音杀菌除甲醛雾霾PM2.5空气净化器
+                            </li>
+                            <li>
+                                精致外观,流线型设计,薄荷绿色机身<br/>智能更换滤网提示,省心便捷
+                            </li>
+                            <li>
+                                颗粒物CCM达到新国标P4等级,CCM甲醛达到新国标F3等级<br/>内置三重滤网,滤网寿命长久,高效净化,呵护健康
+                            </li>
+                            <li>
+                                三星专利除菌技术——超净<sup>3</sup>离子群,高效杀菌,还你洁净空间<br/>人性化的睡眠模式,噪音更低,柔和指示灯,营造安心睡眠环境
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="s-btns">
+                        <li class="s-btns1 float-right" id="return-second6"></li>
+                        <li class="s-btns2 float-left"><a href="http://jd.zol.com.cn/topic/6084520.html"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="share"></div>
+        </section>
+    </div>
+</div>
+<!--slide-->
+<div id="swipe" class="swipe" role="button">向上滑动</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+
+<script>
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('current');
+    });
+
+    var btn1=document.querySelector('#btn1'),
+            btn2=document.querySelector('#btn2'),
+            btn3=document.querySelector('#btn3'),
+            return1=document.querySelector('#second-return1'),
+            return2=document.querySelector('#second-return2'),
+            return3=document.querySelector('#second-return3'),
+            li1=document.querySelector('#li1'),
+            li2=document.querySelector('#li2'),
+            li3=document.querySelector('#li3'),
+            li4=document.querySelector('#li4'),
+            li5=document.querySelector('#li5'),
+            li6=document.querySelector('#li6'),
+            re_s1=document.querySelector('#return-second1'),
+            re_s2=document.querySelector('#return-second2'),
+            re_s3=document.querySelector('#return-second3'),
+            re_s4=document.querySelector('#return-second4'),
+            re_s5=document.querySelector('#return-second5'),
+            re_s6=document.querySelector('#return-second6'),
+            s_bs=document.querySelectorAll('.s-b');
+
+    /*切换栏目*/
+    function chg1(btn,num){
+        btn.addEventListener('click', function () {
+            viewport.go(num);
+        })
+    }
+    chg1(btn1,2);
+    chg1(btn2,3);
+    chg1(btn3,4);
+    chg1(return1,1);
+    chg1(return2,1);
+    chg1(return3,1);
+    chg1(re_s1,2);
+    chg1(re_s2,2);
+    chg1(re_s3,3);
+    chg1(re_s4,3);
+    chg1(re_s5,4);
+    chg1(re_s6,4);
+
+    function chg2(li,n){
+        li.addEventListener('click', function () {
+            for(var i=0;i<s_bs.length;i++){
+                s_bs[i].className='s-b';
+            }
+            s_bs[n].className='s-b blk';
+            s_bs[n].querySelector('.s-box').refresh();
+            viewport.go(6);
+        })
+    }
+    chg2(li1,0);
+    chg2(li2,1);
+    chg2(li3,2);
+    chg2(li4,3);
+    chg2(li5,4);
+    chg2(li6,5);
+
+    /*左右切换*/
+    function turnPage(i,objs){
+        var third = document.querySelector(objs);
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=3)
+            third.index = parseInt(horizontalIndex) + i;
+    }
+    function chg3(btn1,btn2,event1,res){
+        document.querySelector(btn1) && document.querySelector(btn1).addEventListener(event1,function(){turnPage(-1,res)});
+        document.querySelector(btn2) && document.querySelector(btn2).addEventListener(event1,function(){turnPage(1,res)});
+    }
+    chg3('#s-box-btn11','#s-box-btn21','click','#s-box1');
+    chg3('#s-box-btn12','#s-box-btn22','click','#s-box2');
+    chg3('#s-box-btn13','#s-box-btn23','click','#s-box3');
+    chg3('#s-box-btn14','#s-box-btn24','click','#s-box4');
+    chg3('#s-box-btn15','#s-box-btn25','click','#s-box5');
+    chg3('#s-box-btn16','#s-box-btn26','click','#s-box6');
+
+    /*滑动*/
+    var swipe=document.getElementById('swipe');
+    viewport.addEventListener('changed', function (e) {
+        if(e.target.tagName=='UL'){return false}
+        var current = this.querySelector('.current');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+        e.current && e.current.classList.add('current');
+
+        console.log(this.index);
+        if(this.index>=1){
+            container.denyFlag=1;
+            swipe.style.display='none';
+        }
+
+        swipe.classList[last ? 'add' : 'remove']('last');
+    });
+
+    swipe.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    /*分享*/
+    var share_title=encodeURIComponent( '三星家电众测季产品巡礼');
+    var share_link=encodeURIComponent('http://m.zol.com.cn/topic/6088762.html');
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_580/08bb565312/share.jpg');
+    var share_t=encodeURIComponent('三星家电众测季产品巡礼');
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+    var share_con = '<a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="wechat" href="#wechat" style="display: none">wechat</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a>';
+    document.querySelectorAll('.share').forEach(function(div,idx){
+        div.innerHTML = share_con;
+    });
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_580/08bb565312/share.jpg',
+        title: '三星家电众测季产品巡礼'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布页面</title>
+</head>
+<body>
+github发布静态页面
+【静态页面】内容是固定的,不能再github上发布后台数据接口;
+新建一个仓库
+settings/github pages/automatic page launch /continue to layout/选择模板/publish pages
+刚才创建页面没在主分支上,而是在gh-pages分支上
+切换主分支:把默认的分支设置成gh-pages分支上 settings/branches/default branch/gh-pages
+克隆到本地$git clone
+把项目上传到这个仓库gh-pages这个分支下
+准备好项目文件放在克隆下来的这个文件夹目录上
+git add -A
+git commit -m"~~"
+git push origin gh-pages
+查找自己的项目地址
+settings/github pages/your site is published at ...
+生成一个二维码(草料二维码生成器)
+网址->二维码
+
+如果访问生成的网址是整个项目的文件地址,默认访问的是index.html;如果想看别的,在后面写"/xx.html"
+</body>
+</html>

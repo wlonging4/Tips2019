@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style type="text/css">
+        body,ul,div,li{
+            margin: 0;
+            padding: 0;
+            font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+            font-size: 16px;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #chg{
+            width: 500px;
+            margin: 50px auto 0;
+        }
+        #chg div{
+            clear: both;
+            display: none;
+            width: 450px;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            border:1px solid gray;
+            border-radius: 10px;
+        }
+        #chg div.select{
+            display: block;
+        }
+        #chg ul li{
+            position: relative;
+            top:1px;
+            float: left;
+            height: 30px;
+            margin-right: 5px;
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px gray solid;
+            border-radius: 5px;
+        }
+        #chg ul li.select{
+            background: -webkit-linear-gradient(top left,gray,white);
+        }
+        #a1{
+            background: -webkit-linear-gradient(top left,black,red,yellow);
+        }
+        #a2{
+            background: -webkit-linear-gradient(top left,green,yellow,green);
+        }
+        #a3{
+            background: -webkit-linear-gradient(top left,red,yellow);
+        }
+        #a4{
+            background: -webkit-linear-gradient(top left,white,red);
+        }
+
+    </style>
+</head>
+<body>
+<div id="chg">
+    <ul>
+        <li>德国</li>
+        <li>巴西</li>
+        <li>中国</li>
+        <li>日本</li>
+        <div id="a1" class="select">Germany</div>
+        <div id="a2">Brasil</div>
+        <div id="a3">China</div>
+        <div id="a4">Japan</div>
+    </ul>
+</div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("chg");
+    var oDiv2=oDiv.getElementsByTagName("div");
+    var oLis=oDiv.getElementsByTagName("li");
+
+    for(var i=0;i<oLis.length;i++) {
+        oLis[i].x = i;
+        oLis[i].onmouseover=function(index){
+        for (var j = 0; j < oLis.length; j++) {
+                oLis[j].className = "";
+                oDiv2[j].className = "";
+            }
+            var index=this.x;
+            oLis[index].className="select";
+            oDiv2[index].className="select";
+        };
+    }
+</script>
+</body>
+</html>

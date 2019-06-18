@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>shop_page_detail</title>
+    <style type="text/css">
+        /*reset*/
+        body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0; padding:0;}
+        ul,ol{list-style:none;}
+        body{font:12px/1.5 "microsoft yahei UI",arial; color:#333; background:#f0f0f0}
+        select,input,button{vertical-align:middle;font-size:100%;}
+        fieldset,img{border:0 none;}
+        em{font-style:normal;}
+        a{ color:#333; text-decoration: none;}
+        a:hover{ color: #c00; text-decoration:underline;}
+        .clear {clear:both;display:block;height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after {content:"."; display: block; height: 0; clear: both; visibility: hidden; font-size:0}
+        .clearfix {*zoom:1}
+
+        /*style*/
+        .wrapper{  width: 1200px;  margin: 0 auto;  }
+        .wrapper2{  width: 1000px;  border-right: 1px dashed #ebebeb;  }
+        .wrapper3{  margin: 0 20px;  padding: 15px 0;  }
+        .info{  background: #fff;  padding-bottom: 50px; position: relative; }
+        .info-bar{  position: absolute;top: 0;  background: #fafafa; width: 1200px  }
+        .info-bar ul{  position: relative;  display: block;  border-bottom: 1px solid #ebebeb;  }
+        .info-bar ul li{  position: relative;  float: left;  _display:inline;  margin-left: -1px;  margin-bottom: -1px;  padding: 6px 40px 6px;  line-height: 32px;  font-size: 16px;  color: #666;  background: #fafafa;  border-width: 2px 1px 1px;  border-style: solid;  border-color: #fafafa #ebebeb #ebebeb;  cursor: pointer;  }
+        .info-bar ul li.li-hover{  position: relative;  border-color: #179c6a #ebebeb #fff;  background: #fff;  color: #333;  }
+        .info-bar-side{  position: absolute;  right: 0;  top: 50px;  padding: 30px 90px 0 0;  }
+        .info-bar-side-s{  width: 80px;  }
+        .info-bar-side-s1{  width: 18px;  height: 18px;  float: left;  background: url("images/shop_detail1.png") no-repeat 0 -18px;  }
+        .info-bar-side-s2{  width: 60px;  margin-left:5px;  line-height: 20px;  font-size: 14px;  color: #333;  }
+        .info-bar-side-bg .info-bar-side-s .info-bar-side-s1{  background: url("images/shop_detail1.png") no-repeat 0 0;}
+        .info-bar-side-bg .info-bar-side-s .info-bar-side-s2{  color: #189c6b;;}
+        .info-bar-side-b{  height: 35px;  margin-left: 7px;  border-left: 2px dashed #ededed;  }
+
+
+        .info-main-intro{  text-align: center; padding-top: 60px }
+        .info-main-intro p{  line-height: 28px;  font-size: 16px;  color: #666;  }
+        .info-main-title{  background: #189c6b;  color: #fff;  line-height: 30px;  font-size: 14px;  text-indent: 14px;  }
+        .info-main-com-count{  margin: 5px 0 5px;  padding-bottom: 10px;  height: 29px;  border-bottom:1px solid #ededed;  }
+        .info-main-com-count1{  float: left;  width: 135px;  line-height: 32px;  font-size: 12px;  color: #333;  text-indent: 15px;  border-right: 1px solid #ededed;  }
+        .info-main-com-count1 em{  font-size: 16px;  color: #ff6600;  }
+        .info-main-com-count-form1{  float: left;  padding-top: 7px;  }
+        .info-main-com-count-form1 label{  line-height: 20px;  font-size: 12px;  color: #333;  margin-left: 20px;  }
+        .info-main-com-count-form2{  float: right;  padding-top: 7px;  }
+        .info-main-com-count-form12 label{  line-height: 20px;  font-size: 12px;  color: #333;  margin-right: 20px;  }
+        .info-main-form-check em{  color: #f60;  }
+
+
+        .info-main-table{  border-collapse: collapse;  padding-left: 15px;  }
+        .info-main-table thead{  background: #f8f8f8;  }
+        .info-main-table thead th{  line-height: 32px;  font-size: 12px;  color: #333;  text-align: left;  font-weight: 500;  }
+        .info-main-table thead .th1{  width: 640px;  padding-left: 15px;  }
+        .info-main-table thead .th2{  width: 160px;  }
+        .info-main-table thead .th3{  width: 145px;  }
+        .info-main-table tbody td{  vertical-align: top;  padding: 10px 0;  border-bottom: 1px solid #eee;  }
+        .info-main-table tbody .td1{  padding: 15px 110px 12px 15px;  }
+        .info-main-table tbody .td1 p{  line-height: 20px;  font-size: 14px;  color: #333;  padding-bottom: 5px;  }
+        .info-main-table tbody .td1 span{  line-height: 20px;  font-size: 12px;  color: #999;  }
+        .info-main-table tbody .td1 span em{  line-height: 20px;  font-size: 12px;  color: #f60;  }
+        .info-main-table tbody .td2 p{  line-height: 24px;  font-size: 12px;  color: #999;  }
+        .info-main-table tbody .td2 p em{  color: #666;  }
+        .info-main-table tbody .td3 p{  line-height: 24px;  font-size: 12px;  color: #333;  }
+        .info-main-table tbody .td3 span{  line-height: 24px;  font-size: 12px;  color: #999;  }
+
+
+        .info-main-foot{  margin: 20px auto 0;  }
+        .info-main-foot-wrap{  margin-left: 330px; }
+        .info-main-foot-btn{  float: left;  height: 32px;  width: 40px;  margin-right: 8px;  border: 1px solid #e6e6e6;  cursor: pointer;  }
+        .info-main-foot-btn1{  background: url("images/shop_detail_spirit.png") no-repeat 0 -18px;  }
+        .info-main-foot-btn2{  margin-right: 22px; background: url("images/shop_detail_spirit.png") no-repeat 0 -50px;  }
+        .info-main-foot-btn1:hover{  background: url("images/shop_detail_spirit.png") no-repeat 0 -82px;  border: 1px solid #189c6b;  }
+        .info-main-foot-btn2:hover{  background: url("images/shop_detail_spirit.png") no-repeat 0 -114px;  border: 1px solid #189c6b;  }
+        .info-main-foot-ul{  float: left;  display: block;  overflow: hidden;  }
+        .info-main-foot-ul li{  _display:inline;  float: left;  height: 32px;  line-height: 32px;  width: 34px;  font-size: 12px;  color: #737272;  margin-right: 6px;  text-align: center;  border: 1px solid #e6e6e6;  cursor: pointer; }
+        .info-main-foot-ul li:hover{  color: #189c6b;  border: 1px solid #189c6b;  }
+        .info-main-foot-ul li.info-main-foot-li-select{  border: 1px solid #189c6b;  color: #fff;  background: #189c6b;  }
+        .info-main-foot-ul li.info-main-foot-li-select:hover{  color: #fff;background: #189c6b;  }
+        .info-main-list p{  padding: 8px 0;  line-height: 32px;  font-size: 14px;  text-indent: 15px;  color: #333;  border-bottom: 1px solid #ededed; }
+        .info-main-promise{  border-bottom: 1px solid #ededed;  padding-bottom: 20px;  }
+        .info-main-pro{  padding: 20px;  }
+        .info-main-pro-s{  float: left;  width: 36px;  }
+        .info-main-pro-s1{  height: 36px;  width: 36px;  background: url("images/shop_detail_spirit2.png") no-repeat -2px -2px;  }
+        .info-main-pro-s2{  height: 36px;  width: 36px;  background: url("images/shop_detail_spirit2.png") no-repeat -2px -42px;  }
+        .info-main-pro-text{  float: left;  margin-left: 20px;  }
+        .info-main-pro-ss{  width: 80px;  line-height: 30px;  font-size: 18px;  color: #179c6a;  }
+        .info-main-pro-text p{  width: 860px;  line-height: 30px;  font-size: 14px;  color: #333;  }
+
+        /*测试*/
+        .test{
+            width: 200px;
+            height: 600px;
+            background: indianred;
+        }
+    </style>
+</head>
+<body>
+<!--测试-->
+<div class="test">
+测试用
+</div>
+<!--产品信息-->
+<div id="info" class="info wrapper">
+    <!--信息标题-->
+    <div id="info-bar" class="info-bar">
+        <ul id="info-bar-ul" class="info-bar-ul clearfix">
+            <li class="li-hover">
+                <span>详细信息</span>
+            </li>
+            <li>
+                <span>用户评价（2344）</span>
+            </li>
+            <li>
+                <span>包装清单</span>
+            </li>
+            <li>
+                <span>售后保障</span>
+            </li>
+        </ul>
+        <div id="info-bar-side" class="info-bar-side">
+            <div class="info-bar-side-bg">
+                <div class="info-bar-side-s">
+                    <span class="info-bar-side-s1"></span>
+                    <span class="info-bar-side-s2">详细信息</span>
+                </div>
+                <div class="info-bar-side-b"></div>
+            </div>
+            <div>
+                <div class="info-bar-side-s">
+                    <span class="info-bar-side-s1"></span>
+                    <span class="info-bar-side-s2">用户评价</span>
+                </div>
+                <div class="info-bar-side-b"></div>
+            </div>
+            <div>
+                <div class="info-bar-side-s">
+                    <span class="info-bar-side-s1"></span>
+                    <span class="info-bar-side-s2">包装清单</span>
+                </div>
+                <div class="info-bar-side-b"></div>
+            </div>
+            <div>
+                <div class="info-bar-side-s">
+                    <span class="info-bar-side-s1"></span>
+                    <span class="info-bar-side-s2">售后服务</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--信息主体-->
+    <div id="info-main" class="info-main wrapper2">
+        <!--详情介绍-->
+        <div id="info-main-intro" class="info-main-intro wrapper3">
+            <h2>4.7英寸IPS全贴合屏幕</h2>
+            <p>这意味着屏幕透光率大幅度提高，再强光照射下的屏幕对比度大大的增强</p>
+            <img src="images/shop_detail_product.jpg" alt=""/>
+        </div>
+        <!--评价内容-->
+        <div id="info-main-comment" class="info-main-comment wrapper3">
+            <div class="info-main-title">
+                累计评价（5646）
+            </div>
+            <div class="info-main-com-count clearfix">
+                <div class="info-main-com-count1">好评率：<em>97.13%</em></div>
+                <form class="info-main-com-count-form1" action="#.php" method="post">
+                    <label><input type="radio" checked name="comment"/>&nbsp;<em>全部评价(366)</em></label>
+                    <label class="info-main-form-check"><input type="radio" name="comment"/>&nbsp;<em>好评(301)</em></label>
+                    <label><input type="radio" name="comment"/>&nbsp;<em>中评(55)</em></label>
+                    <label><input type="radio" name="comment"/>&nbsp;<em>差评(3)</em></label>
+                </form>
+                <form class="info-main-com-count-form2" action="#.php" method="post">
+                    <label><input type="checkbox" checked name="content"/><em>&nbsp;有内容</em></label>
+                </form>
+            </div>
+            <table  class="info-main-table">
+                <thead>
+                <tr>
+                    <th class="th1">评价信息</th>
+                    <th class="th2">购买信息</th>
+                    <th class="th3">评论者</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>评价方未及时做出评价，系统默认好评~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>什么也不说了，都是泪啊，是在是态度不好，没什么好说的了，机子根本就是个半成品的，还加了好多的垃圾应用，沟通就是泪啊，是在是态度什么也不说了，都是泪啊，是在是态度不好，没什么好说的了，机子根本就是个半成品的，还加了好多的垃圾应用，沟通就是泪啊，是在是态度什么也不说了，都是泪啊，是在是态度不好，没什么好说的了，机子根本就是个半成品的，还加了好多的垃圾应用，沟通就是泪啊，是在是态度</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td1">
+                        <p>还不错，就是发货速度有点慢！手机还行~</p>
+                        <span>描述符合&nbsp;<em>5</em></span>
+                        <span>服务态度&nbsp;<em>5</em></span>
+                        <span>发货速度&nbsp;<em>5</em></span>
+                    </td>
+                    <td class="td2">
+                        <p>颜色：<em>白色</em></p>
+                        <p>套装：<em>官方标配</em></p>
+                    </td>
+                    <td class="td3">
+                        <p>zol_l***0</p>
+                        <span>2015-07-01  23:27购买</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="info-main-foot clearfix">
+                    <div class="info-main-foot-wrap clearfix">
+                        <div class="info-main-foot-btn info-main-foot-btn1"></div>
+                        <ul class="info-main-foot-ul clearfix">
+                            <li class="info-main-foot-li-select">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="info-main-foot-btn info-main-foot-btn2"></div>
+                    </div>
+            </div>
+        </div>
+        <!--包装清单-->
+        <div id="info-main-list" class="info-main-list wrapper3">
+            <div class="info-main-title">
+                包装清单
+            </div>
+            <p>主机×1、 电源适配器×1 、 数据线×1</p>
+        </div>
+        <!--售后保障-->
+        <div id="info-main-promise" class="info-main-promise wrapper3">
+            <div class="info-main-title">
+                售后保障
+            </div>
+            <div class="info-main-pro clearfix">
+                <div class="info-main-pro-s">
+                    <div class="info-main-pro-s1">
+
+                    </div>
+                </div>
+                <div class="info-main-pro-text">
+                    <div class="info-main-pro-ss">正品行货</div>
+                    <p>京东商城向您保证所售商品均为正品行货，运营商产品服务详见//sale.zol.com 全国联保 凭质保证书及京东商城</p>
+                </div>
+            </div>
+            <div  class="info-main-pro clearfix">
+                <div class="info-main-pro-s">
+                    <div class="info-main-pro-s2">
+
+                    </div>
+                </div>
+                <div class="info-main-pro-text">
+                    <div class="info-main-pro-ss">全国联保</div>
+                    <p>凭质保证书及京东商城发票，可享受全国联保服务（奢侈品,钟表除外;奢侈品,钟表由京东联系保修，享受法定三包售后服务），与你亲临商场选购的产品具有相同的质量保证。京东商城还为您提供具有竞争力的商品价格和运费政策，请您放心购买！
+                        <br/>
+                        注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.9.1.js" charset="utf-8"></script>
+<script charset="UTF-8">
+    /*选项卡与时间轴同步*/
+    $(function () {
+        var bar_topLi=$('.info-bar-ul>li');
+        var $bar_sideLi=$('.info-bar-side>div');
+
+        bar_topLi.on('mouseover', function () {
+            bar_topLi.eq($(this).index()).addClass("li-hover").siblings().removeClass('li-hover');
+            $bar_sideLi.eq($(this).index()).addClass("info-bar-side-bg").siblings().removeClass('info-bar-side-bg');
+        });
+    });
+
+    /*表单选中*/
+    $(function () {
+        var form_1_input=$('.info-main-com-count-form1 label>input[name=comment]');
+        form_1_input.on('click',function(){
+            $(this).parent().addClass('info-main-form-check').siblings().removeClass('info-main-form-check');
+        });
+    });
+
+    /*吸顶实现*/
+;(function (){
+        function getPos(obj)
+        {
+            var left=0;
+            var top=0;
+            while (obj)
+            {
+                left+=obj.offsetLeft;
+                top+=obj.offsetTop;
+                obj=obj.offsetParent;
+            }
+            return {left:left, top:top};
+        }
+
+        var info_bar=document.getElementById('info-bar');
+        var top=getPos(info_bar).top;
+        window.onscroll=function (){
+            var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+            if (scrollTop > top)
+            {
+                info_bar.style.position="fixed";
+            }
+            else
+            {
+                info_bar.style.position="absolute";
+            }
+        };
+    })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312" />
+    <title>专题</title>
+    <style type="text/css">
+        body{color:#545454;font:12px/22px arial; background:#FFF;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#545454;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#666;}
+        .hong12{color:#B16406}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+    </style>
+    <link href="http://active.zol.com.cn/15active/1127zj/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+<div class="f-3bg list0">
+    <div class="wrapper">
+        <div class="list-title3"><span class="act">最新</span> | <span>最热</span></div>
+        <div class="list-currenttime" id="list-currenttime">
+            <p class="nodata">现在还没有数据,快来参与活动吧~~</p>
+        </div>
+
+        <div id="detail-list1" class="detail-list table">
+            <p class="nodata">现在还没有数据,快来参与活动吧~~</p>
+        </div>
+
+        <div id="page-list">
+            <a href="#">上一页</a><a href="#">1</a><a href="#">2</a><span>...</span><a href="#">下一页</a>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    var zj_json = 'http://zj.zol.com.cn/index.php?c=Ajax_zjActive&callback=?';
+    var showorder = 1;
+    var page = 0;
+
+    /*最新动态*/
+    function new_list() {
+        $.getJSON(zj_json, {a: "Get2h"},function(obj) {
+            var str = '';
+            if (obj) {
+
+                str += '<ul>';
+                for (i in obj) {
+                    if(obj[i].name){
+                        str += '<li><a href="' + obj[i].url + '"><b>' + obj[i].name + '</b> 上传了他的配置</a></li>';
+                    }
+                }
+                str += '</ul>';
+
+            } else {
+                str = '<p class="nodata">快来参与活动吧~~</p>';
+            }
+            $("#list-currenttime").html(str);
+            ongoing(true, 'list-currenttime', '', '', 'toleft', 1)
+        });
+    }
+
+
+    /*首页列表*/
+    function index_list(order, page) {
+        order = parseInt(order);
+        page = parseInt(page);
+        $.getJSON(zj_json, {
+                    a: "getInfo",
+                    order: order,
+                    page: page
+                },
+                function(obj) {
+                    var str = '';
+                    var pagestr = '';
+
+                    if (obj) {
+                        str += '<ul class="clearfix">';
+
+                        for(k in obj['detail']){
+                            str += '<li><div class="tablebox"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>类&nbsp;&nbsp;&nbsp;&nbsp;别</th><th class="para">参&nbsp;&nbsp;&nbsp;&nbsp;数</th><th>价&nbsp;&nbsp;&nbsp;&nbsp;格</th></tr>';
+                            for (j in obj['detail'][k].detail) {
+                                str += '<tr><td>' + obj['detail'][k].detail[j].subcateName + '</td><td class="para"><a href="' + obj['detail'][k].detail[j].url + '">' + SetString(obj['detail'][k].detail[j].name, 20) + '</a></td><td class="price">￥' + obj['detail'][k].detail[j].price + '</td></tr>';
+                            }
+                            str += '</table></div><div class="handle"><em class="vote-nums">已得<i>' + obj['detail'][k].good + '</i>票</em><em class="vote-btn" onclick="vote_event(' + obj['detail'][k].id + ',this)">投他一票</em><a class="handle-more" href="' + obj['detail'][k].url + '">配置详情</a><em class="vote-share" onmouseover="voteshare(this)">立即分享></em><div class="share-tip"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s1.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s2.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s3.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s4.png"></div></div></li>';
+                        }
+
+                        str += '</ul>';
+
+                        //分页
+                        obj.nowPage = parseInt(obj.nowPage);
+                        obj.maxPage = parseInt(obj.maxPage);
+                        if(obj.maxPage>0){
+                            if(obj.nowPage>1){
+                                pagestr +='<span onclick="index_list('+showorder+',1)">首页</span> <span onclick="index_list('+showorder+','+(obj.nowPage-1)+')">上一页</span>';
+                            }
+                            var temp_num1 = obj.nowPage-5>=1?obj.nowPage-5:1;
+                            var temp_num2 = obj.nowPage+10>obj.maxPage+1?obj.maxPage:obj.nowPage+10;
+                            for(var i=temp_num1;i<temp_num2;i++){
+                                if(i==obj.nowPage){
+                                    pagestr+='<span class="act">'+i+'</span>'
+                                }else{
+                                    pagestr+='<span onclick="index_list('+showorder+','+i+')">'+i+'</span>'
+                                }
+                            }
+                            if(obj.maxPage<=obj.nowPage){
+                                pagestr +='<span class="act">尾页</span>'
+                            }else{
+                                pagestr +='<span onclick="index_list('+showorder+','+(obj.nowPage+1)+')">下一页</span> <span onclick="index_list('+showorder+','+(obj.maxPage)+')">尾页</span>'
+                            }
+                        }
+
+                    } else {
+                        str = '<p class="nodata">快来参与活动吧~~</p>';
+                    }
+                    $("#detail-list").html(str);
+                    //$("#page-list").html(pagestr);
+                });
+    }
+
+    index_list(showorder, page);
+
+    /*列表页*/
+    function list_list(order, page) {
+        order = parseInt(order);
+        page = parseInt(page);
+        $.getJSON(zj_json, {
+                    a: "GetYouxiInfo",
+                    order: order,
+                    page: page
+                },
+                function(obj) {
+                    var str = '';
+                    var pagestr = '';
+
+                    if (obj) {
+                        str += '<ul class="clearfix">';
+
+                        for(k in obj['detail']){
+                            str += '<li><div class="tablebox"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>类&nbsp;&nbsp;&nbsp;&nbsp;别</th><th class="para">参&nbsp;&nbsp;&nbsp;&nbsp;数</th><th>价&nbsp;&nbsp;&nbsp;&nbsp;格</th></tr>';
+                            for (j in obj['detail'][k].detail) {
+                                str += '<tr><td>' + obj['detail'][k].detail[j].subcateName + '</td><td class="para"><a href="' + obj['detail'][k].detail[j].url + '">' + SetString(obj['detail'][k].detail[j].name, 20) + '</a></td><td class="price">￥' + obj['detail'][k].detail[j].price + '</td></tr>';
+                            }
+                            str += '</table></div><div class="handle"><em class="vote-nums">已得<i>' + obj['detail'][k].good + '</i>票</em><em class="vote-btn" onclick="vote_event(' + obj['detail'][k].id + ',this)">投他一票</em><a class="handle-more" href="' + obj['detail'][k].url + '">配置详情</a><em class="vote-share" onmouseover="voteshare(this)">立即分享></em><div class="share-tip"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s1.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s2.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s3.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s4.png"></div></div></li>';
+                        }
+
+                        str += '</ul>';
+
+                        //分页
+                        obj.nowPage = parseInt(obj.nowPage);
+                        obj.maxPage = parseInt(obj.maxPage);
+                        if(obj.maxPage>0){
+                            if(obj.nowPage>1){
+                                pagestr +='<span onclick="list_list('+showorder+',1)">首页</span> <span onclick="list_list('+showorder+','+(obj.nowPage-1)+')">上一页</span>';
+                            }
+                            var temp_num1 = obj.nowPage-5>=1?obj.nowPage-5:1;
+                            var temp_num2 = obj.nowPage+10>obj.maxPage+1?obj.maxPage:obj.nowPage+10;
+                            for(var i=temp_num1;i<temp_num2;i++){
+                                if(i==obj.nowPage){
+                                    pagestr+='<span class="act">'+i+'</span>'
+                                }else{
+                                    pagestr+='<span onclick="list_list('+showorder+','+i+')">'+i+'</span>'
+                                }
+                            }
+                            if(obj.maxPage<=obj.nowPage){
+                                pagestr +='<span class="act">尾页</span>'
+                            }else{
+                                pagestr +='<span onclick="list_list('+showorder+','+(obj.nowPage+1)+')">下一页</span> <span onclick="list_list('+showorder+','+(obj.maxPage)+')">尾页</span>'
+                            }
+                        }
+
+                    } else {
+                        str = '<p class="nodata">快来参与活动吧~~</p>';
+                    }
+                    $("#detail-list1").html(str);
+                    $("#page-list").html(pagestr);
+                });
+    }
+
+    list_list(showorder, page);
+
+
+    function sharelink(){
+        var share_title=encodeURIComponent('华硕杯2015年度游戏攒机大赛');
+        var share_link='http://diy.zol.com.cn/topic/5544554.html';
+        var share_url = '<a onclick="hidesharebox(this)" href="http://v.t.sina.com.cn/share/share.php?title='+share_title+'&url='+share_link+'&source=bookmark" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s1.png" alt="分享到新浪微博"></a><a onclick="hidesharebox(this)" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s2.png" alt="分享到QQ空间"></a><a onclick="hidesharebox(this)" href="http://v.t.qq.com/share/share.php?title='+share_title+'&url='+share_link+'" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s3.png" alt="分享到腾讯微博"></a><a onclick="hidesharebox(this)" href="http://connect.qq.com/widget/shareqq/index.html?url='+share_link+'%3F%2614034-sqq-1-47906-5759bb29e6b80477a9012ab865bccc52&title='+share_title+'&desc=&summary=&site=baidu" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s4.png" alt="分享到QQ好友"></a>';
+
+        $(".share-tip").html(share_url);
+    }
+    sharelink()
+
+    $('.nav-share').mouseover(function(){
+        $('.nav-nums .share-tip').show();
+    })
+
+    function hidesharebox(id){
+        id.parentNode.style.display = 'none';
+    }
+
+    function voteshare(tag){
+        sharelink()
+        $(tag).parent().parent().parent().find('.share-tip').hide();
+        $(tag).parent().find('.share-tip').show();
+    }
+
+    $('.share-tip a').click(function(){
+        $(this).parent().find('.share-tip').hide();
+    })
+
+    $('.list-title span').click(function() {
+        var _index = $('.list-title span').index($(this));
+        $('.list-title span').removeClass('act').eq(_index).addClass('act');
+        if (_index == 0) {
+            showorder = 1
+        } else {
+            showorder = 0
+        }
+        index_list(showorder, page);
+    })
+
+    $('.list-title3 span').click(function() {
+        var _index = $('.list-title3 span').index($(this));
+        $('.list-title3 span').removeClass('act').eq(_index).addClass('act');
+        if (_index == 0) {
+            showorder = 1
+        } else {
+            showorder = 0
+        }
+        list_list(showorder, page);
+    })
+
+    //投票
+    function vote_event(id,thistag) {
+        $.getJSON(zj_json, {
+                    a: "SubmitForTopic",
+                    id: id,
+                    good: 1,
+                    bad: 0
+                },
+                function(obj) {
+                    if (obj.flag == 'success') {
+                        if (obj.data == 1) {
+                            alert('投票成功~~');
+                            //index_list(showorder, page);
+                            var votenum = parseInt($(thistag).parent('.handle').find('.vote-nums i').html())
+                            $(thistag).parent('.handle').find('.vote-nums i').html(votenum+1);
+                        } else if (obj.data == 2) {
+                            alert('您今天已经给这个配置单投过票了~~');
+                        }
+                    }
+
+                })
+    }
+
+    /*今日最佳*/
+    function today_list(id,element) {
+        $.getJSON(zj_json, {
+                    a: "getOneInfo",
+                    id: id
+                },
+                function(obj) {
+                    var str = '';
+                    if (obj) {
+                        str += '<div class="tablebox"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>类&nbsp;&nbsp;&nbsp;&nbsp;别</th><th class="para">参&nbsp;&nbsp;&nbsp;&nbsp;数</th><th>价&nbsp;&nbsp;&nbsp;&nbsp;格</th></tr>';
+                        for (i in obj.detail) {
+                            str += '<tr><td>' + obj.detail[i].subcateName + '</td><td class="para"><a href="' + obj.detail[i].url + '">' + SetString(obj.detail[i].name, 20) + '</a></td><td class="price">￥' + obj.detail[i].price + '</td></tr>';
+                        }
+                        str += '</table></div><div class="handle"><em class="vote-nums">已得<i>' + obj.good + '</i>票</em><em class="vote-btn" onclick="vote_event(' + obj.id + ',this)">投他一票</em><a class="handle-more" href="' + obj.url + '">配置详情</a><em class="vote-share" onmouseover="voteshare(this)">立即分享></em><div class="share-tip"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s1.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s2.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s3.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s4.png"></div></div></li>';
+                    } else {
+                        str = '<p class="nodata">快来参与活动吧~~</p>';
+                    }
+                    $(element).html(str);
+                });
+    }
+    var todayid = $('.todayid span').html();
+    today_list(parseInt(todayid),".today-list-con");
+    today_list(8268881,"#top1");
+
+    /*2强投票*/
+    function top_vote(id,element) {
+        $.getJSON(zj_json, {
+                    a: "getOneInfo",
+                    id: id
+                },
+                function(obj) {
+                    var str = '';
+                    if (obj) {
+                        str += '<div class="handle"><em class="vote-nums">已得<i>' + obj.good + '</i>票</em><em class="vote-btn" onclick="vote_event(' + obj.id + ',this)">投他一票</em></div>';
+                    }
+                    $(element).html(str);
+                });
+    }
+    top_vote(8257996,"#top2a");
+    top_vote(8268881,"#top2b");
+
+
+
+
+
+    /*投票排行*/
+    function vote_list() {
+        $.getJSON(zj_json, {
+                    a: "Get2h",
+                    order: 1
+                },
+                function(obj) {
+                    var str = '';
+                    var no = 1;
+                    if (obj) {
+                        str += '<ul>';
+                        for (i in obj) {
+                            if(obj[i].name){
+                                if (no < 13) {
+
+                                    str += '<li><a href="' + obj[i].url + '">点击查看</a><span class="n1">' + no + '</span><b>' + obj[i].name + '</b> 共' + obj[i].good + '票</li>';
+
+                                }
+                                no++
+                            }
+                        }
+                        str += '</ul>';
+                    } else {
+                        str = '<p class="nodata">快来参与活动吧~~</p>';
+                    }
+                    $("#vote-list").html(str);
+                });
+    }
+    vote_list()
+
+    //截字符
+    function SetString(str, len) {
+        var strlen = 0;
+        var s = "";
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 128) {
+                strlen += 2;
+            } else {
+                strlen++;
+            }
+            s += str.charAt(i);
+            if (strlen >= len) {
+                return s;
+            }
+        }
+        return s;
+    }
+
+    //ongoing(true,'list-currenttime','','','toleft',1)
+    function ongoing(direction, listbox, prev, next, scrollto, scrollnum) {
+        var timer = null;
+        var timerout = null;
+        var pausetime = 0;
+        var speed = 1;
+
+        var list = document.getElementById(listbox);
+        var list_ul = list.getElementsByTagName('ul')[0];
+        var list_li = list_ul.getElementsByTagName('li');
+        if (prev && next) {
+            var prevbtn = document.getElementById(prev);
+            var nextbtn = document.getElementById(next);
+        }
+
+        var i = 0;
+        var str = list_ul.innerHTML + list_ul.innerHTML;
+        list_ul.innerHTML = str;
+        if (scrollto == 'toleft') {
+            list_ul.style.width = list_li[0].offsetWidth * list_li.length + 'px';
+        } else if (scrollto == 'totop') {
+            list_ul.style.height = list_li[0].offsetHeight * parseInt(list_li.length / scrollnum) + 'px';
+        }
+        for (i = 0; i < list_li.length; i++) {
+            list_li[i].onmouseover = function() {
+                stopMove();
+            };
+
+            list_li[i].onmouseout = function() {
+                startMove(direction);
+            };
+        }
+
+        if (prev && next) {
+            prevbtn.onmouseover = function() {
+                startMove(true);
+            };
+
+            nextbtn.onmouseover = function() {
+                startMove(false);
+            };
+        }
+        startMove(true);
+
+        function startMove(bLeft) {
+            direction = bLeft;
+
+            if (timer) {
+                clearInterval(timer);
+            }
+            timer = setInterval(doMove, 30);
+        }
+
+        function stopMove() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function doMove() {
+            var list = document.getElementById(listbox);
+            var list_ul = list.getElementsByTagName('ul')[0];
+            var list_li = list_ul.getElementsByTagName('li');
+
+            if (scrollto == 'toleft') {
+                var l = list_ul.offsetLeft;
+
+                if (direction) {
+                    l -= speed;
+                    if (l <= -list_ul.offsetWidth / 2) {
+                        l += list_ul.offsetWidth / 2;
+                    }
+                } else {
+                    l += speed;
+                    if (l >= 0) {
+                        l -= list_ul.offsetWidth / 2;
+                    }
+                }
+
+                if (Math.abs(l - Math.round(l / list_li[0].offsetWidth) * list_li[0].offsetWidth) < Math.ceil(speed / 2)) {
+                    stopMove();
+                    timerout = setTimeout(function() {
+                                startMove(direction);
+                            },
+                            pausetime);
+
+                    l = Math.round(l / list_li[0].offsetWidth) * list_li[0].offsetWidth;
+                }
+                list_ul.style.left = l + 'px';
+            } else if (scrollto == 'totop') {
+                var l = list_ul.offsetTop;
+                if (direction) {
+                    l -= speed;
+                    if (l <= -list_ul.offsetHeight / 2) {
+                        l += list_ul.offsetHeight / 2;
+                    }
+                } else {
+                    l += speed;
+                    if (l >= 0) {
+                        l -= list_ul.offsetHeight / 2;
+                    }
+                }
+
+                if (Math.abs(l - Math.round(l / list_li[0].offsetHeight) * list_li[0].offsetHeight) < Math.ceil(speed / 2)) {
+                    stopMove();
+                    timerout = setTimeout(function() {
+                                startMove(direction);
+                            },
+                            pausetime);
+
+                    l = Math.round(l / list_li[0].offsetHeight) * list_li[0].offsetHeight;
+                }
+                list_ul.style.top = l + 'px';
+            }
+        }
+    }
+
+    $('.pic2 .hong12').html('立即购买')
+
+
+    new_list()
+</script>
+</body>
+</html>

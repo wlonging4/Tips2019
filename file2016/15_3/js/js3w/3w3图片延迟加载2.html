@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片延迟加载综合</title>
+    <style type="text/css">
+        body, div, span, ul, li, h2, p {
+            margin: 0;  padding: 0;  font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;  font-size: 14px;  -webkit-user-select: none;
+        }
+        ul, li {
+            list-style: none;
+        }
+        #newsList {
+            margin: 10px;
+        }
+        #newsList li {
+            position: relative;  padding: 10px 0;  height: 60px;  border-bottom: 1px dashed #ccc;
+        }
+        #newsList li .logo {
+            position: absolute;  width: 75px;  height: 60px;
+        }
+        #newsList li .logo img {
+            width: 100%;  height: 100%;  border: none;
+        }
+        #newsList li .title {
+            margin-left: 85px;  height: 60px;
+        }
+        #newsList li .title h2 {
+            height: 20px;  line-height: 20px;  text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;
+        }
+        #newsList li .title p {
+            height: 40px;  line-height: 20px;  color: #999;  font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<ul id="newsList"></ul>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/json.js"></script>
+<script type="text/javascript">
+    var newsList = document.getElementById("newsList");
+    //绑定数据:
+    //return为空可以不写{};
+    //注意字符串拼接
+    var initData = function () {
+        if (!dataAry) return;
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < dataAry.length; i++) {
+            var curItem = dataAry[i];
+            curItem.logo = curItem.logo || "img/default.jpg";
+            curItem.title = curItem.title || "--";
+            curItem.desc = curItem.desc || "--";
+            var oLi = document.createElement("li");
+            var str = "";
+            str += "<div class='logo'><img src='img/default.jpg' trueImg='" + curItem.logo + "'/></div>";
+            str += "<div class='title'>";
+            str += "<h2>" + curItem.title + "</h2>";
+            str += "<p>" + curItem.desc + "</p2>";
+            str += "</div>";
+            oLi.innerHTML = str;
+            frg.appendChild(oLi);
+        }
+        newsList.appendChild(frg);
+    };
+    initData();
+    function getWin(attr) {
+        return document.documentElement[attr]||document.body[attr];
+    }
+    //2、编写图片延迟加载的方法
+    //闭包的方式解决的是oImg.onload是异步加载的
+    //var offT = utils.offset(curImg).top;->获取图片到顶部距离offsetTop
+    //var curH = curImg.offsetHeight;->获取图片的高度offsetHeight=clientHeight+上下边框=真是height+上下padding+上下边框;
+    var winH=getWin("clientHeight");
+    var loadImg= function () {
+        var winT=getWin("scrollTop");
+        var imgList=document.getElementsByTagName("img");
+        for(var i=0;i<imgList.length;i++){
+            ~function () {
+                var curImg=imgList[i];
+                if(!curImg.isLoad){
+                    var offT=utils.offset(curImg).top;
+                    var curT=curImg.offsetHeight;
+                    if(offT+curT<winH+winT){
+                        var oImg=new Image;
+                        oImg.src=curImg.getAttribute("trueImg");
+                        oImg.onload= function () {
+                            curImg.src=oImg.src;
+                            curImg.isLoad=true;
+                        }
+                    }
+                }
+            }(i);
+        }
+    };
+    //进入叶面,加载完成数据后,1s后在加载真实图片或者滚动的时候加载真实的图片
+    window.setTimeout(loadImg,2000);
+    window.onscroll=loadImg;
+</script>
+</body>
+</html>

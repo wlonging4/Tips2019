@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件库方法</title>
+</head>
+<body>
+<script>
+    //主要解决顺序问题
+    function on(ele,type,fn){
+        //创建一个事件池
+        if(!ele["aEvent"+type]){
+            ele["aEvent"+type]=[];
+        }
+        var a=ele["aEvent"+type];
+        for(var i=0;i< a.length;i++){
+            if(a[i]==fn)return;
+        }
+        a.push(fn);
+        //bind(ele,type,run);
+        //bind上的run可以避免重复绑定到ele上
+        ele.attachEvent("on"+type, function(){run.call(ele)});
+    }
+
+    function run(){
+        //把chrome,firefox,IE处理时间的方式统一成相同的格式
+        var e=window.event;
+        if(!e.target){
+            //表明不支持e.target代表当前是IE,所以下面的方法都是不支持的要自定义;
+            e.target= e.srcElement;
+            e.preventDefault= function () {e.returnValue=false;};
+            e.stopPropagation= function () {e.cancelBubble=true;};
+            e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+ e.clientX;
+            e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+ e.clientY;
+        }
+        var a=this["aEvent"+type];
+        for(var i=0;i< a.length;i++){
+            if(typeof a[i]=="function"){
+                a[i].call(this,e);
+                //e是事件对象
+            }else{
+                a.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    function off(ele,type,fn){
+        var a=ele["aEvent"+type];
+        if(a){
+            for(var i=0;i< a.length;i++){
+                if(a[i]==fn){
+                    a[i]=null;
+                    break;
+                }
+            }
+        }
+    }
+
+    //主要解决this关键字,还不能使run重复绑定;
+    function bind(ele,type,fn){
+        function fnTemp(e){fn.call(ele,e);}//核心代码
+        ele.attachEvent("on"+type,fnTemp);
+        for(var i=0;i< a.length;i++){
+            if(a[i].photo==fn)return;
+            }
+        a.push(fn);
+        ele.attachEvent("on"+type,tempFn);
+    }
+    function unbind(ele,type,fn){
+
+    }
+</script>
+</body>
+</html>

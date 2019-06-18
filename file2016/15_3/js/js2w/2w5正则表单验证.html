@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>正则验证表单</title>
+    <style type="text/css">
+        span{
+            width: 20px;
+            font-size: 16px;
+            font-weight: bolder;
+            border-radius: 5px;
+            border: 1px solid green;
+            margin-left: 10px;
+        }
+        input{
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    姓名<input type="text" name="name" value="请输入姓名" id="name"/><br>
+    年龄<input type="text" name="age" value="请输入年龄" id="age"/>
+
+</form>
+<!--input.on鼠标进来的时候（onfocus）=function(){
+把默认的提示值清空
+}
+input.on鼠标离开的时候(onblur)=function(){
+先把this.value中的空格清掉，
+然后再做正常字符和中文的验证regText=/^[\u4e00-\u9fa5a-z]+$/i;
+if(通不过验证){
+提示验证失败的信息
+创建一个span，在span里提示，
+当然在创建之前先要判断一下这个span是否存在，如果存在则不需要重复创建，只要得达到它，修改提示信息就好
+}else{
+验证成功
+则提示正确的信息
+}
+}-->
+</body>
+</html>
+<script>
+    document.getElementById("name").onfocus=function(){
+        this.value="";
+        //onfocus的时候value内容为空
+    };
+    document.getElementById("name").onblur=function(){
+        //onblur鼠标离开的时候
+        reg=/^\s*$/;
+        //输入框内容为空
+        if(reg.test(this.value)){
+            this.value=this.defaultValue;
+        }else{
+            this.value=this.value.replace(/\s+/g,"");
+            //把输入内容的空格去掉
+            var regText=/^[\u4e00-\u9fa5a-z]+$/i;
+            if(!regText.test(this.value)){
+                //不成功的时候
+                var tex=this.nextSibling;
+                if(tex.tagName=="SPAN"){
+                    //=="SPAN";==="span"这个是个大坑啊
+                    //如果存在这年提示标签（有可能正确的时候创建的）
+                    tex.innerHTML="×";
+                    tex.style.color="red";
+                }else{
+                    oSpan=document.createElement("span");
+                    oSpan.innerHTML="×";
+                    oSpan.style.color="red";
+                    var parent=this.parentNode;
+                    parent.insertBefore(oSpan,this.nextSibling)
+                }
+            }else{
+                var ele=this.nextSibling;
+                if(ele.tagName=="SPAN"){
+                    ele.innerHTML="√";
+                    ele.style.color="green"
+                }else{
+                    oSpan=document.createElement("span");
+                    oSpan.innerHTML="√";
+                    oSpan.style.color="green";
+                    var parent=this.parentNode;
+                    parent.insertBefore(oSpan,this.nextSibling)
+                }
+            }
+        }
+
+    }
+</script>

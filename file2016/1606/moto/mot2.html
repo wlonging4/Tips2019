@@ -1,0 +1,529 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="gbk">
+    <title>摩托罗拉系统调查问卷</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#cc0;font:12px/20px 'microsoft yahei',arial; background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#727284}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  height: 510px;  width: 1000px;  }
+
+        .zol_foot{  height: 120px;  padding-top: 70px;  background: #052532;  }
+        .zol_foot,.zol_foot a{  color: #2EB4E7;  }
+
+        .v-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_video_l.jpg") no-repeat 100% 0;  }
+        .v-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_video_r.jpg") no-repeat 0 0;  }
+        .v-c{  position: relative;  overflow: hidden;  height: 680px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_video_c.jpg") no-repeat 0 0;  }
+        .v-box{  position: relative;  width: 870px;  margin: 40px 65px;  height: 540px;  background: #000;  overflow: hidden;  }
+        .v-video{  width: 870px;  height: 490px; background: #000;  }
+        .v-mod-t{  padding-left: 345px;  width: 525px;  display: none;  height: 50px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_video_t_bg.jpg") no-repeat 0 0;  }
+        .v-t-act{  display: block;  }
+        .v-mod-t .bai20{  display: block;  line-height: 50px;  font-size: 22px;  font-weight: bold;  }
+        .v-mod-t .bai20:hover{  text-decoration: none;  color: #fff;  }
+
+        .v-ul{  width: 90px;  height: 22px;  margin: 35px auto;  overflow: hidden;  }
+        .v-ul li{  float: left;  _display: inline;  margin: 0 3px;  width: 22px;  height: 22px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_li.png") no-repeat -22px 0;  }
+        .v-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_li.png") no-repeat 0 0;  }
+
+        .abt-s{  background: #073141;  }
+        .abt-c{  position: relative;  width: 1000px;  height: 292px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_abt_c.jpg") no-repeat 0 0;  }
+        .abt-c1{  position: absolute;  width: 660px;  height: 55px;  left: 36px;  top: 140px;  }
+        .abt-c1 .bai14{  display: block;  font-family: 'simsun';  line-height: 24px;  }
+        .abt-c1 .hong12{  font-size: 14px;  color: #00A3DF;  }
+        .abt-c2{  position: absolute;  width: 150px;  height: 220px;  top: 39px;  right: 53px;  }
+        .abt-c2 .lan18{  display: block;     padding-top: 15px;  line-height: 22px; font-weight: bold; color: #00A3DF;  }
+
+        .vote-t{  height: 154px;  width: 1000px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_vote_t.jpg") no-repeat 0 0;  }
+        .vote{  color: #000;  }
+        .v-tr{  position: relative;  display: block;  height: 118px;  width: 1000px;  margin-bottom: 30px;  }
+        .v-1{  margin-left: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v1.png") no-repeat 0 0;  }
+        .v-2{  margin-left: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v2.png") no-repeat 0 0;  }
+        .v-3{  margin-left: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v3.png") no-repeat 0 0;  }
+        .v-4{  margin-left: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v4.png") no-repeat 0 0;  }
+        .v-5{  margin-left: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v5.png") no-repeat 0 0;  }
+        .v-6{  margin-left: 90px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v6.png") no-repeat 0 0;  }
+        .v-7{  margin-left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v7.png") no-repeat 0 0;  }
+        .v-8{  margin-left: 50px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_v8.png") no-repeat 0 0;  }
+        .v-tr td{  display: block;  }
+        .v-td-t{  font-size: 20px;  height: 30px;  color: #212121;  line-height: 30px;  text-indent: 105px;  font-weight: bold;  padding-top: 10px;  font-style: oblique;  }
+
+        .v-txt{  position: absolute;  font-size: 18px;  color: #333;  font-family: '黑体';  }
+        .v-tr input{  display: none;  }
+        .v-tr label:hover{  font-weight: bold;  color: #80d1f0;  }
+        .on{  font-weight: bold;  color: #80d1f0;  }
+        .v11{  top: 50px;  left: 80px;  }
+        .v12{  top: 78px;  left: 80px;  }
+        .v13{  top: 78px;  left: 180px;  }
+        .v14{  top: 78px;  left: 280px;  }
+        .v15{  top: 78px;  left: 360px;  }
+        .v16{  top: 78px;  left: 440px;  }
+        .v17{  top: 78px;  left: 500px;  }
+        .v18{  top: 50px;  left: 600px;  }
+        .v19{  top: 78px;  left: 600px;  }
+
+        .v21{  top: 60px;  left: 120px;  }
+        .v22{  top: 60px;  left: 250px;  }
+        .v23{  top: 60px;  left: 380px;  }
+        .v24{  top: 60px;  left: 510px;  }
+
+        .v31{  top: 50px;  left: 100px;  }
+        .v32{  top: 50px;  left: 350px;  }
+        .v33{  top: 50px;  left: 620px;  }
+        .v34{  top: 78px;  left: 100px;  }
+        .v35{  top: 78px;  left: 350px;  }
+        .v36{  top: 78px;  left: 620px;  }
+
+        .v41{  top: 60px;  left: 120px;  }
+        .v42{  top: 60px;  left: 200px;  }
+        .v43{  top: 60px;  left: 280px;  }
+        .v44{  top: 60px;  left: 360px;  }
+        .v45{  top: 60px;  left: 440px;  }
+        .v46{  top: 60px;  left: 520px;  }
+        .v47{  top: 60px;  left: 600px;  }
+
+        .v51{  top: 50px;  left: 120px;  }
+        .v52{  top: 50px;  left: 340px;  }
+        .v53{  top: 50px;  left: 500px;  }
+        .v54{  top: 50px;  left: 680px;  }
+        .v55{  top: 78px;  left: 120px;  }
+        .v56{  top: 78px;  left: 340px;  }
+        .v57{  top: 78px;  left: 500px;  }
+
+        .v61{  top: 50px;  left: 100px;  }
+        .v62{  top: 50px;  left: 350px;  }
+        .v63{  top: 50px;  left: 620px;  }
+        .v64{  top: 78px;  left: 100px;  }
+        .v65{  top: 78px;  left: 350px;  }
+        .v66{  top: 78px;  left: 620px;  }
+
+        .v71{  top: 50px;  left: 100px;  }
+        .v72{  top: 50px;  left: 350px;  }
+        .v73{  top: 50px;  left: 750px;  }
+        .v74{  top: 78px;  left: 100px;  }
+        .v75{  top: 78px;  left: 460px;  }
+        .v76{  top: 78px;  left: 800px;  }
+
+        .v81{  top: 50px;  left: 120px;  }
+        .v82{  top: 50px;  left: 340px;  }
+        .v83{  top: 50px;  left: 500px;  }
+        .v84{  top: 50px;  left: 680px;  }
+        .v85{  top: 78px;  left: 120px;  }
+        .v86{  top: 78px;  left: 340px;  }
+        .v87{  top: 78px;  left: 500px;  }
+
+        .txt-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_txt_l.jpg") no-repeat 100% 0;  }
+        .txt-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_txt_r.jpg") no-repeat 0 0;  }
+        .txt-c{  position: relative;  height: 230px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_txt_c.jpg") no-repeat 0 0;  }
+        .txt-input{  display: block;  position: absolute;  background: transparent;  border: 0;  color: #fff;  font-size: 14px;  height: 20px;  outline: none;  font-family: 'microsoft yahei';  }
+        .input1{  top: 107px;  left: 365px;  width: 99px;  }
+        .input2{  top: 108px;  left: 648px;  width: 108px;  }
+        .input3{  top: 174px;  left: 253px;  width: 99px;  }
+        .input4{  top: 175px;  left: 492px;  width: 105px;  }
+        .input5{  top: 177px;  left: 734px;  height: 17px;  width: 120px;  }
+        .sub-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_sub_l.jpg") no-repeat 100% 0;  }
+        .sub-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_sub_r.jpg") no-repeat 0 0;  }
+        .sub-c{  position: relative;  height: 57px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_577/5f7a56ac30/lg_sub_c.jpg") no-repeat 0 0;  }
+        .submit_form{  display: block;  position: absolute;  background: transparent; width: 150px;  height: 38px;  top: 0;  left: 425px;  border: 0;  font-family: 'microsoft yahei';  font-size: 22px;  font-weight: bold;  cursor: pointer;  color: #2DB3E6;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--视频-->
+<table class="video" width="100%" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="v-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="v-c">
+                <div class="v-box">
+                    <div class="v-box-t">
+                        <div class="v-mod-t v-t-act">
+                            <{data[1]}>
+                        </div>
+                        <div class="v-mod-t">
+                            <{data[3]}>
+                        </div>
+                        <div class="v-mod-t">
+                            <{data[5]}>
+                        </div>
+                    </div>
+                    <div class="v-video" id="video">
+
+                    </div>
+                </div>
+                <ul class="v-ul">
+                    <li class="act"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </td>
+        <td class="v-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--投票-->
+<div class="vote-t"></div>
+<form name="form1" method="post" onsubmit="return check_frm(this);" action="http://service.zol.com.cn/survey_new/save_new.php" target="_self">
+    <input type="hidden" name="curtime" value="1475078400">
+    <table border="0" class="vote" align="center" cellpadding="0" cellspacing="0" width="1000">
+        <tbody><tr class="v-tr v-1">
+            <td class="v-td-t">
+                贵公司正在使用的对讲机品牌是？
+            </td>
+            <td>
+                <div class="v11 v-txt">A.已使用，品牌是_________</div>
+                <label class="v12 v-txt">
+                    <input type="radio" name="q1" value="摩托罗拉" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    1.摩托罗拉
+                </label>
+                <label class="v13 v-txt">
+                    <input type="radio" name="q1" value="威泰克斯" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    2.威泰克斯</label>
+                <label class="v14 v-txt">
+                    <input type="radio" name="q1" value="海能达" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    3.海能达</label>
+                <label class="v15 v-txt">
+                    <input type="radio" name="q1" value="科立讯" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    4.科立讯</label>
+                <label class="v16 v-txt"><input type="radio" name="q1" value="建伍" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    5.建伍</label>
+                <label class="v17 v-txt">
+                    <input type="radio" name="q1" value="其他" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    6.其他</label>
+                <label class="v18 v-txt">
+                    <input type="radio" name="q1" value="计划部署" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    B.未使用，正计划部署</label>
+                <label class="v19 v-txt">
+                    <input type="radio" name="q1" value="不计划" req_type="check" title="贵公司正在使用的对讲机品牌是？" req_hint="请选择贵公司正在使用的对讲机品牌是？!">
+                    C.未使用，无部署计划</label>
+            </td>
+        </tr>
+        <tr class="v-tr v-2">
+            <td class="v-td-t">
+                贵公司是否会在近期考虑采购数字对讲机？
+            </td>
+            <td>
+                <label class="v21 v-txt">
+                    <input type="radio" name="q2" value=" 1-3个月内  " req_type="check" title="贵公司是否会在近期考虑采购数字对讲机？" req_hint="请选择贵公司是否会在近期考虑采购数字对讲机？!">
+                    A.1-3个月内  </label>
+                <label class="v22 v-txt">
+                    <input type="radio" name="q2" value="3-6个月内" req_type="check" title="贵公司是否会在近期考虑采购数字对讲机？" req_hint="请选择贵公司是否会在近期考虑采购数字对讲机？!">
+                    B.3-6个月内</label>
+                <label class="v23 v-txt">
+                    <input type="radio" name="q2" value="6个月以后" req_type="check" title="贵公司是否会在近期考虑采购数字对讲机？" req_hint="请选择贵公司是否会在近期考虑采购数字对讲机？!">
+                    C.6个月以后</label>
+                <label class="v24 v-txt">
+                    <input type="radio" name="q2" value="近期还没有采购意向" req_type="check" title="贵公司是否会在近期考虑采购数字对讲机？" req_hint="请选择贵公司是否会在近期考虑采购数字对讲机？!">
+                    D.近期还没有采购意向</label>
+            </td>
+        </tr>
+        <tr class="v-tr v-3">
+            <td class="v-td-t">
+                如已使用对讲机，其主要应用于哪些场景？（多选）
+            </td>
+            <td>
+                <label class="v31 v-txt">
+                    <input type="checkbox" name="q3[]" id="q3" value="日常生产运营管理" req_type="check" title="如已使用对讲机，其主要应用于哪些场景？（多选）" req_hint="请选择如已使用对讲机，其主要应用于哪些场景？!">
+                    A.日常生产运营管理 </label>
+                <label class="v32 v-txt">
+                    <input type="checkbox" name="q3[]" id="q3" value="应急指挥调度管理" req_type="check" title="如已使用对讲机，其主要应用于哪些场景？（多选）" req_hint="请选择如已使用对讲机，其主要应用于哪些场景？!">
+                    B.应急指挥调度管理 </label>
+                <label class="v33 v-txt">
+                    <input type="checkbox" name="q3[]" id="q3" value=" 跨装置区整体调度管理" req_type="check" title="如已使用对讲机，其主要应用于哪些场景？（多选）" req_hint="请选择如已使用对讲机，其主要应用于哪些场景？!">
+                    C.跨装置区整体调度管理 </label>
+                <label class="v34 v-txt">
+                    <input type="checkbox" name="q3[]" id="q3" value="企业安全保卫" req_type="check" title="如已使用对讲机，其主要应用于哪些场景？（多选）" req_hint="请选择如已使用对讲机，其主要应用于哪些场景？!">
+                    D.企业安全保卫 </label>
+                <label class="v35 v-txt">
+                    <input type="checkbox" name="q3[]" id="q3" value="安全检查及装置设备维护管理" req_type="check" title="如已使用对讲机，其主要应用于哪些场景？（多选）" req_hint="请选择如已使用对讲机，其主要应用于哪些场景？!">
+                    E.安全检查及装置设备维护管理 </label>
+                <label class="v36 v-txt">
+                    <input type="checkbox" name="q3[]" id="q3" value="其他" req_type="check" title="如已使用对讲机，其主要应用于哪些场景？（多选）" req_hint="请选择如已使用对讲机，其主要应用于哪些场景？!">
+                    F.其他 </label>
+            </td>
+        </tr>
+        <tr class="v-tr v-4">
+            <td class="v-td-t">
+                您公司在采购对讲机时首要考虑的因素是？（多选）
+            </td>
+            <td>
+                <label class="v41 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="品牌 " req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    A.品牌  </label>
+                <label class="v42 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="质量" req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    B.质量 </label>
+                <label class="v43 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="功能" req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    C.功能 </label>
+                <label class="v44 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="款式" req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    D.款式 </label>
+                <label class="v45 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="价格" req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    E.价格 </label>
+                <label class="v46 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="售后" req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    F.售后 </label>
+                <label class="v47 v-txt">
+                    <input type="checkbox" name="q4[]" id="q4" value="其他" req_type="check" title="您公司在采购对讲机时首要考虑的因素是？（多选）" req_hint="请选择您公司在采购对讲机时首要考虑的因素是？（多选）!">
+                    G.其他 </label>
+            </td>
+        </tr>
+        <tr class="v-tr v-5">
+            <td class="v-td-t">
+                您在使用对讲机的过程中，最关注的是？（多选）
+            </td>
+            <td>
+                <label class="v51 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="通话距离" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    A.通话距离 </label>
+                <label class="v52 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="外观样式" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    B.外观样式 </label>
+                <label class="v53 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="电池使用时长" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    C.电池使用时长 </label>
+                <label class="v54 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="话音质量" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    D.话音质量 </label>
+                <label class="v55 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="操作简单" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    E.操作简单 </label>
+                <label class="v56 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="保密性" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    F.保密性 </label>
+                <label class="v57 v-txt">
+                    <input type="checkbox" name="q5[]" id="q5" value="功能齐全" req_type="check" title="您在使用对讲机的过程中，最关注的是？（多选）	" req_hint="请选择您在使用对讲机的过程中，最关注的是？（多选）	!">
+                    G.功能齐全 </label>
+            </td>
+        </tr>
+        <tr class="v-tr v-6">
+            <td class="v-td-t">
+                在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）
+            </td>
+            <td>
+                <label class="v61 v-txt">
+                    <input type="checkbox" name="q6[]" id="q6" value="嘈杂环境中声音不够清晰" req_type="check" title="在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）" req_hint="请选择在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）!">
+                    A.嘈杂环境中声音不够清晰 </label>
+                <label class="v62 v-txt">
+                    <input type="checkbox" name="q6[]" id="q6" value="无线蓝牙功能导致使用不便" req_type="check" title="在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）" req_hint="请选择在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）!">
+                    B.无线蓝牙功能导致使用不便 </label>
+                <label class="v63 v-txt">
+                    <input type="checkbox" name="q6[]" id="q6" value="有效使用距离太短" req_type="check" title="在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）" req_hint="请选择在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）!">
+                    C.有效使用距离太短 </label>
+                <label class="v64 v-txt">
+                    <input type="checkbox" name="q6[]" id="q6" value="存在通讯盲区 " req_type="check" title="在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）" req_hint="请选择在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）!">
+                    D.存在通讯盲区  </label>
+                <label class="v65 v-txt">
+                    <input type="checkbox" name="q6[]" id="q6" value="只能传输语音信息" req_type="check" title="在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）" req_hint="请选择在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）!">
+                    E.只能传输语音信息 </label>
+                <label class="v66 v-txt">
+                    <input type="checkbox" name="q6[]" id="q6" value="对讲机无法与其他通讯设备直接沟通" req_type="check" title="在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）" req_hint="请选择在工厂现场的通讯，您觉得使用对讲机过程中碰到哪些问题对您影响最大？（多选）!">
+                    F.对讲机无法与其他通讯设备直接沟通 </label>
+            </td>
+        </tr>
+        <tr class="v-tr v-7">
+            <td class="v-td-t">
+                相较于模拟对讲，数字对讲拥有众多性能优势，实际应用中您认为以下优势哪些最重要？（多选）</td>
+            <td>
+                <label class="v71 v-txt">
+                    <input type="checkbox" name="q7[]" id="q7" value="全面提升频率的利用效率" req_type="check" title="相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）" req_hint="请选择相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）!">
+                    A.全面提升频率的利用效率 </label>
+                <label class="v72 v-txt">
+                    <input type="checkbox" name="q7[]" id="q7" value="提升了对讲机的有效通信距离和语音清晰度" req_type="check" title="相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）" req_hint="请选择相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）!">
+                    B.提升了对讲机的有效通信距离和语音清晰度 </label>
+                <label class="v73 v-txt">
+                    <input type="checkbox" name="q7[]" id="q7" value="更高的通话私密性" req_type="check" title="相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）" req_hint="请选择相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）!">
+                    C.更高的通话私密性 </label>
+                <label class="v74 v-txt">
+                    <input type="checkbox" name="q7[]" id="q7" value="使团队间的无线对讲沟通变得更加灵活和便利" req_type="check" title="相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）" req_hint="请选择相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）!">
+                    D.使团队间无线对讲沟通变得更加灵活便利 </label>
+                <label class="v75 v-txt">
+                    <input type="checkbox" name="q7[]" id="q7" value="除语音外，还有GPS、文字短信等沟通方式" req_type="check" title="相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）" req_hint="请选择相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）!">
+                    E. 除语音外，还有GPS、文字短信等方式 </label>
+                <label class="v76 v-txt">
+                    <input type="checkbox" name="q7[]" id="q7" value="更长的续航时间" req_type="check" title="相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）" req_hint="请选择相较于模拟对讲机，数字对讲拥有众多性能优势，实际应用中，您认为以下优势哪个是最重要的？（多选）!">
+                    F.更长的续航时间 </label>
+            </td>
+        </tr>
+        <tr class="v-tr v-8">
+            <td class="v-td-t">
+                您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）</td>
+            <td>
+                <label class="v81 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="产品演示" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    A.产品演示 </label>
+                <label class="v82 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="电话联系" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    B.电话联系 </label>
+                <label class="v83 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="研讨会/客户会" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    C.研讨会/客户会 </label>
+                <label class="v84 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="管理/技术培训" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    D.管理/技术培训 </label>
+                <label class="v85 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="电子邮件" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    E.电子邮件 </label>
+                <label class="v86 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="微信" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    F.微信 </label>
+                <label class="v87 v-txt">
+                    <input type="checkbox" name="q8[]" id="q8" value="官网" req_type="check" title="您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）" req_hint="请选择您希望摩托罗拉系统及合作伙伴以哪种方式为您提供支持？（多选）!">
+                    G.官网 </label>
+            </td>
+        </tr>
+        </tbody></table>
+    <table class="txt" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+            <td class="txt-l">&nbsp;</td>
+            <td width="1000" valign="top">
+                <div class="txt-c">
+                    <input class="txt-input input1" type="text" name="q11" size="60" req_type="chinese" title="姓名" req_hint="请正确填写姓名!">
+
+                    <input class="txt-input input2" type="text" name="q10" size="60" req_type="chinese" title="工作单位" req_hint="请正确填写工作单位!">
+
+                    <input class="txt-input input3" type="text" name="q13" size="60" req_type="mobile" title="电话" req_hint="请正确填写电话!">
+
+                    <input class="txt-input input4" type="text" name="q14" size="60" req_type="chinese" title="职位" req_hint="请正确填写职位!">
+
+                    <input class="txt-input input5" type="text" name="q15" size="60" req_type="mail" title="邮件" req_hint="请正确填写邮件!">
+                </div>
+            </td>
+            <td class="txt-r">&nbsp;</td>
+        </tr>
+        </tbody></table>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+        <script>document.write("<input type=hidden name=require_user value=0>");</script><input type="hidden" name="require_user" value="0"><input type="hidden" name="require_user" value="0">
+        <tbody><tr height="56">
+            <td class="sub-l">&nbsp;</td>
+            <td valign="top" width="1000">
+                <div class="sub-c">
+                    <input type="hidden" name="surveyid" value="2678">
+                    <input type="hidden" name="q_num" value="15">
+                    <input class="submit_form" type="submit" name="submit" value="确认提交">
+                    <input type="hidden" class="backoff" name="backurl" value="http://auto.zol.com.cn/topic/5914286.html">
+                </div>
+            </td>
+            <td class="sub-r">&nbsp;</td>
+        </tr>
+        </tbody></table>
+    <!--关于-->
+    <table class="about" width="100%" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+            <td class="abt-s">&nbsp;</td>
+            <td width="1000" valign="top">
+                <div class="abt-c">
+                    <div class="abt-c1">
+                        <{data[7]}>
+                    </div>
+                    <div class="abt-c2">
+                        <{data[8]}>
+                    </div>
+                </div>
+            </td>
+            <td class="abt-s">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script type="text/javascript" src="http://www.zol.com.cn/js/swfobject.js"></script>
+<script>
+    var url_now=window.location.href;
+    if(url_now.indexOf('article')>-1){
+        $('.v-ul li').click(function () {
+            var $this = $(this);
+            $(this).addClass('act').siblings().removeClass('act');
+            $('.v-box .v-mod-t').eq($('.v-ul li').index(this)).addClass('v-t-act').siblings().removeClass('v-t-act');
+        });
+    }
+
+
+    function video_tab(vid,div){
+        var so = new SWFObject("http://v.zol.com.cn/flash/meatPlayer.swf?ord="+Math.random(), "fplayer","870", "490", "10", "#000000");
+        so.addParam("quality", "high");
+        so.addVariable("movieId",vid);
+        so.addVariable("open_window","0");
+        so.addVariable("auto_start","0");
+        so.addVariable("show_ffbutton","1");
+        so.addParam("swLiveConnect", "true");
+        so.addParam("menu", "false");
+        so.addParam("scale", "noScale");
+        so.addParam("allowScriptAccess", "always");
+        so.addParam("allowFullScreen", "true");
+        so.addParam("wmode", "opaque");
+        so.write("video");
+    }
+
+
+    videoshow($('.v-box .v-mod-t a'),$('#video'),870,490);
+    function videoshow(videotab,videoshow,width,height){
+        var iniUrl = videotab.eq(0).attr('href');
+        var re=/\d+/g;
+        var id = iniUrl.match(re)[0];
+        console.log(id);
+        video_tab(id,"video");
+        $('.v-ul li').click(function () {
+            var $this = $(this);
+            $(this).addClass('act').siblings().removeClass('act');
+            $('.v-box .v-mod-t').eq($('.v-ul li').index(this)).addClass('v-t-act').siblings().removeClass('v-t-act');
+            var videoUrl = videotab.eq($('.v-ul li').index(this)).attr('href');
+            var id1 = videoUrl.match(re)[0];
+            video_tab(id1,"video");
+            return false;
+        });
+    }
+
+
+    /*视频切换*/
+    /*var lis=$('.v-ul li'),tis=$('.v-box .v-mod-t');
+     function video_show(v_link,v_show,v_click){
+     var iniUrl = v_link.eq(0).attr('href');
+     v_click.click(function () {
+     $(this).addClass('act').siblings().removeClass('act');
+     tis.eq(lis.index(this)).addClass('v-t-act').siblings().removeClass('v-t-act');
+     var $this = $(this);
+     var videoUrl = v_link.eq(v_click.index(this)).attr('href');
+     v_show.attr('src',videoUrl);
+     return false;
+     });
+     }
+
+     video_show($('.v-box-t .v-mod-t a'),$('#video'),lis);*/
+
+
+
+    /*投票点击*/
+    $('[name="form1"]').delegate('input[type="radio"],input[type="checkbox"]','change',function(){
+        $(this).parent().parent().find('label').each(function(ind,ele){
+            console.log($(ele).find('input').prop('checked'))
+            $(ele)[$(ele).find('input').prop('checked')?'addClass':'removeClass']('on')
+
+        })
+    })
+</script>
+</body></html>

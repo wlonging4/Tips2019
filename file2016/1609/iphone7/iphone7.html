@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head lang="GBK">
+    <meta charset="gbk">
+    <title>2016苹果发布会H5</title>
+    <meta name="keywords" content="2016苹果发布会H5" />
+    <meta name="description" content="2016苹果发布会H5" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no" />
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /*下滑按钮*/
+        .swipe{position:absolute;z-index:10;left:50%;bottom:40px;width:39px;margin-left:-20px;height:19px;overflow:hidden;color:rgba(0,0,0,0);background:url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_1.png') no-repeat;-webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;}
+        .swipe.diff{background-image: url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_diff.png'); width: 123px; height: 69px; margin-left: -62px;}
+        .swipe.last{background-image: url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_last.png'); width:39px;margin-left:-20px;height:19px;}
+        .swipe.new{  background-image: url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_new.png');  width: 129px;  height: 69px;  margin-left: -62px;  }
+        .swipe.chat{  background-image: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_chat.png");  width: 165px;  height: 73px;  margin-left: -82px;  }
+        .swipe.circle{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_circle.png");  width: 175px;  height: 63px;  margin-left: -86px;  }
+        .swipe.out{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/slide_outstanding.png");  width: 156px;  height: 69px;  margin-left: -78px;  }
+        .swipe.buy{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_buy.png"); width: 164px;  height: 69px; margin-left: -82px;  }
+        .swipe.compare{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_compare.png");  width: 164px;  height: 69px;  margin-left: -82px;  }
+        .swipe.core{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_core.png");  width: 165px;  height: 69px;  margin-left: -83px;  }
+        .swipe.first{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_first.png");  width: 168px;  height: 69px;  margin-left: -84px;  }
+        .swipe.highlight{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_highlight.png");  width: 222px;  height: 69px;  margin-left: -111px;  }
+        .swipe.price{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_price.png");  width: 158px;  height: 69px;  margin-left: -79px;  }
+        .swipe.sale{  background: url("http://2.zol-img.com.cn/zt/tm_57c/fccfeeb732/slide_sale.png");  width: 159px;  height: 69px;  margin-left: -80px;  }
+        .swipe.update{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0bd97e2254/slide_update.png");  width: 144px;  height: 72px;  margin-left: -72px;  }
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        /*动画*/
+        .float-left,.float-right,.float-up,.float-down,.float-scale{-webkit-transition:.5s;transition:.5s;opacity:0;}
+        .float-left{-webkit-transform:translate(100px,0);transform:translate(100px,0);}
+        .float-right{-webkit-transform:translate(-100px,0);transform:translate(-100px,0);}
+        .float-up{-webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-down{-webkit-transform:translate(0,-100px);transform:translate(0,-100px);}
+        .float-scale{-webkit-transform:scale(1.2);transform:scale(1.2);}
+        .float-show1{  opacity: 0; -webkit-transform:scale(0.5);transform:translate(0.5); }
+        .float-show2{  opacity: 0; -webkit-transform:rotate(60deg);transform:rotate(60deg); }
+        .current .float-left,.current .float-right,.current .float-up,.current .float-down,.current .float-scale{-webkit-transform:none;transform:none;opacity:1;}
+        .show-fly-down1,.show-fly-down2,.show-fly-down3{  opacity: 0;  -webkit-transform: translate(0px,-20px);  transform: translate(0px,-40px);  }
+        .show-fly-up1,.show-fly-up2,.show-fly-up3{  opacity: 0;  -webkit-transform: translate(0px,20px);  transform: translate(0px,20px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+        .bttp1,.bttp2,.bttp3,.bttp4,.bttp5{  opacity: 0;  -webkit-transform: translate(0px,160px);  transform: translate(0px,160px);  }
+
+        @-webkit-keyframes show-hide1 {
+            0%{  -webkit-transform:none;opacity: 1;  }
+            50%{  opacity: 0; -webkit-transform:scale(0.5);  }
+            100%{  -webkit-transform:none; opacity: 1;  }
+        }
+        @keyframes show-hide1 {
+            0%{  transform:none; opacity: 1;  }
+            50%{  opacity: 0; transform:translate(0.5);  }
+            100%{  transform:none; opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-hide2 {
+            0%{  opacity: 0; -webkit-transform:rotate(60deg);  }
+            100%{  opacity: 1; -webkit-transform:rotate(0deg);  }
+        }
+        @keyframes show-hide2 {
+            0%{  opacity: 0; transform:rotate(60deg);  }
+            100%{  opacity: 1; transform:rotate(0deg);  }
+        }
+
+
+        @-webkit-keyframes show-fly-down {
+            0%{  -webkit-transform: translate(0px,-20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-down {
+            0%{  transform: translate(0px,-20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0%{  -webkit-transform: translate(0px,20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-up {
+            0%{  transform: translate(0px,20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-down {
+            0%{  -webkit-transform: translate(0px,0px);opacity: 0.8;  }
+            100%{  -webkit-transform: translate(0px,194px);opacity: 1;  }
+        }
+        @keyframes flow-down {
+            0%{  transform: translate(0px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,194px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-none {
+            0%{  -webkit-transform: scale(1);opacity: 1;  }
+            100%{  -webkit-transform: scale(1.6);opacity: 0;  }
+        }
+        @keyframes flow-none {
+            0%{  transform: scale(1);opacity: 1;  }
+            100%{  transform: scale(1.6);opacity: 0;  }
+        }
+
+        @-webkit-keyframes shake-lr {
+            0%{  -webkit-transform: rotate(0deg);  }
+            25%{  -webkit-transform: rotate(-5deg);  }
+            50%{  -webkit-transform: rotate(0deg);  }
+            75%{  -webkit-transform: rotate(5deg);  }
+            100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr {
+            0%{  transform: rotate(0deg);  }
+            25%{  transform: rotate(-5deg);  }
+            50%{  transform: rotate(0deg);  }
+            75%{  transform: rotate(5deg);  }
+            100%{  transform: rotate(0deg);  }
+        }
+
+        .current .float-show1{  -webkit-animation: show-hide1 1.5s ease-in 0.6s 1 forwards; animation: show-hide1 1.5s ease-in 0.6s 1 forwards;  }
+        .current .float-show2{  -webkit-animation: show-hide2 0.5s ease-in 0.4s forwards; animation: show-hide2 0.5s ease-in 0.4s forwards;  }
+        .current .show-fly-down1{  -webkit-animation: show-fly-down 0.3s ease-in 0s forwards;  animation: show-fly-down 0.3s ease-in 0s forwards;  }
+        .current .show-fly-down2{  -webkit-animation: show-fly-down 0.3s ease-in 0.2s forwards;  animation: show-fly-down 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-down3{  -webkit-animation: show-fly-down 0.3s ease-in 0.5s forwards;  animation: show-fly-down 0.3s ease-in 0.5s forwards;  }
+        .current .show-fly-up1{  -webkit-animation: show-fly-up 0.3s ease-in 0s forwards;  animation: show-fly-up 0.3s ease-in 0s forwards;  }
+        .current .show-fly-up2{  -webkit-animation: show-fly-up 0.3s ease-in 0.2s forwards;  animation: show-fly-up 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-up3{  -webkit-animation: show-fly-up 0.3s ease-in 0.5s forwards;  animation: show-fly-up 0.3s ease-in 0.5s forwards;  }
+        .current .ltr1{ -webkit-animation: ltr 0.2s ease-in 0s forwards;  animation: ltr 0.2s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr 0.2s ease-in 0.1s forwards;  animation: ltr 0.2s ease-in 0.2s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr 0.2s ease-in 0.3s forwards;  animation: ltr 0.2s ease-in 0.4s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr 0.2s ease-in 0.5s forwards;  animation: ltr 0.2s ease-in 0.6s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr 0.2s ease-in 0.7s forwards; animation: ltr 0.2s ease-in 0.8s forwards;  }
+        .current .ttb1{ -webkit-animation: ttb 0.2s ease-in 0s forwards;  animation: ttb 0.2s ease-in 0s forwards;   }
+        .current .ttb2{ -webkit-animation: ttb 0.2s ease-in 0.1s forwards;  animation: ttb 0.2s ease-in 0.2s forwards;  }
+        .current .ttb3{ -webkit-animation: ttb 0.2s ease-in 0.3s forwards;  animation: ttb 0.2s ease-in 0.4s forwards;  }
+        .current .ttb4{ -webkit-animation: ttb 0.2s ease-in 0.5s forwards;  animation: ttb 0.2s ease-in 0.6s forwards;  }
+        .current .ttb5{ -webkit-animation: ttb 0.2s ease-in 0.7s forwards; animation: ttb 0.2s ease-in 0.8s forwards;  }
+        .current .btt1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .btt2{ -webkit-animation: btt 0.2s ease-in 0.1s forwards;  animation: btt 0.2s ease-in 0.2s forwards;  }
+        .current .btt3{ -webkit-animation: btt 0.2s ease-in 0.3s forwards;  animation: btt 0.2s ease-in 0.4s forwards;  }
+        .current .btt4{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.6s forwards;  }
+        .current .btt5{ -webkit-animation: btt 0.2s ease-in 0.7s forwards; animation: btt 0.2s ease-in 0.8s forwards;  }
+        .current .bttp1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .bttp2{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.5s forwards;  }
+        .current .bttp3{ -webkit-animation: btt 0.2s ease-in 1.4s forwards;  animation: btt 0.2s ease-in 1.4s forwards;  }
+        .current .bttp4{ -webkit-animation: btt 0.2s ease-in 2.4s forwards;  animation: btt 0.2s ease-in 2.4s forwards;  }
+        .current .bttp5{ -webkit-animation: btt 0.2s ease-in 3.1s forwards; animation: btt 0.2s ease-in 3.1s forwards;  }
+        .current .car{ -webkit-animation: car 1.6s ease-in 0.2s forwards;  animation: car 1.6s ease-in 0.2s forwards;  }
+        .current .flow-down{ -webkit-animation: flow-down 1.6s ease-in 0.4s infinite;  animation: flow-down 1.6s ease-in 0.4s infinite;  }
+        .current .flow-none{ -webkit-animation: flow-none 0.8s ease-in 0s forwards;  animation: flow-none 0.8s ease-in 0s forwards;  }
+        .current .shake-lr{ -webkit-animation: shake-lr 1s linear 0s infinite;  animation: shake-lr 1s linear 0s infinite;  }
+
+        /*lg_style*/
+        .container{height:1000%;}
+        section{height:10%;overflow:hidden;position:relative; background-color:#fafafa;background-size:cover;background-repeat: no-repeat;background-position: top center;}
+        #viewport{width:640px;height:100%;margin:0 auto;overflow:hidden;}
+        #slide1{background: #000;}
+        #slide3{background-image:url('http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color1.jpg');}
+        #slide4{background:#fafafa;}
+        #slide5{background:#fafafa;}
+        #slide6{background:#fafafa;}
+        #slide7{background:#fafafa;}
+        #slide8{background:#fafafa;}
+        #slide9{background:#fafafa;}
+        #slide10{background-image: url("http://2.zol-img.com.cn/zt/tm_57d/0a8fb108be/bg10.jpg")}
+        #slide11{}
+        #slide12{}
+        #slide13{background-image:url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/p13-bg.jpg');}
+        #slide14{background:#fff;}
+        #slide15{background-image:url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/p15-bg.jpg'); background-color: #000;}
+        #slide16{background-image:url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/p16-bg.png'); background-color: #000;}
+        .cant-see{ display: none; }
+
+        /*结构*/
+        .p1-bg{  width: 640px;  height: 545px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p1_bubble.jpg") no-repeat center;  }
+        .logo{  position: absolute;  width: 117px;  height: 36px;  top: 30px;  left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_logo.png");  }
+        .p1-art{  position: absolute;  top: 360px;  left: 50%;  margin-left: -270px;  width: 540px;  height: 540px;  }
+        .p1-a1{  width: 150px;  height: 48px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p1_a1.png");  }
+        .p1-a2{  width: 536px;  height: 57px;  margin: 25px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p1_a2.png");  }
+        .p1-a3{  width: 303px;  height: 69px;  margin: 15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p1_a3.png");  }
+        .p1-a4{  width: 47px;  height: 37px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p1_a4.png");  }
+        .p1-a5{  width: 177px;  height: 96px;  margin: 10px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/092e79890f/lg_p1_a5.png");  }
+        .p1-a6{  width: 436px;  height: 85px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p1_a6.png");  }
+
+        .bar-btn{  position: absolute;  top: 0;  left: 0;  height: 270px;  width: 383px;  overflow: hidden;  }
+        .bar-btn li{  height: 45px;  margin-top: 9px;  background-image: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/bar-btns.png");  }
+        .bar-btn li:nth-child(1){  width: 232px;  background-position: 0 0;  }
+        .bar-btn li:nth-child(1).act{  width: 232px;  background-position: 0 -46px;  }
+        .bar-btn li:nth-child(2){  width: 268px;  background-position: 0 -92px;  }
+        .bar-btn li:nth-child(2).act{  width: 268px;  background-position: 0 -138px;  }
+        .bar-btn li:nth-child(3){  width: 383px;  background-position: 0 -184px;  }
+        .bar-btn li:nth-child(3).act{  width: 383px;  background-position: 0 -230px;  }
+        .bar-btn li:nth-child(4){  width: 308px;  background-position: 0 -276px;  }
+        .bar-btn li:nth-child(4).act{  width: 308px;  background-position: 0 -322px;  }
+        .bar-btn li:nth-child(5){  width: 192px;  background-position: 0 -368px;  }
+        .bar-btn li:nth-child(5).act{  width: 192px;  background-position: 0 -414px;  }
+
+        .mobile-show{  margin: 330px auto 0;  width: 320px;  height: 350px;  background-position: center;  background-repeat: no-repeat;  background-image: url("http://2.zol-img.com.cn/zt/tm_57d/09548478f9/mobile1.png");  }
+        .color-btn{  margin: 35px auto 0;  height: 84px;  width: 520px;  overflow: hidden;  }
+        .color-btn li{  float: left;  width: 84px;  height: 84px;  color: #fff;  text-align: center;  font: 22px/82px 'microsoft yahei';  -webkit-border-radius: 42px;  -moz-border-radius: 42px;  border-radius: 42px;  margin: 0 10px;  }
+        .color-btn li:nth-child(1){  background: #E4C7A8;  }
+        .color-btn li:nth-child(2){  background: #D0A8A0;  }
+        .color-btn li:nth-child(3){  background: #000;  }
+        .color-btn li:nth-child(4){  background: #333333;  }
+        .color-btn li:nth-child(5){  background: #C9C9C9;  }
+        .color-btn li:nth-child(1).act{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color-btns.png") 0 0;  }
+        .color-btn li:nth-child(2).act{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color-btns.png") -84px 0;  }
+        .color-btn li:nth-child(3).act{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color-btns.png") -167px 0;  }
+        .color-btn li:nth-child(4).act{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color-btns.png") -251px 0;  }
+        .color-btn li:nth-child(5).act{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color-btns.png") -336px 0;  }
+
+        .p2-c{  width: 640px;  height: 100%;  overflow: hidden;  position: absolute;  top: 0;  display: none;  }
+        .p2-s{background-image:url('http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/bg2.jpg');  background-size: cover; width: 640px; height: 100%; position: absolute; top: 0; z-index:99; overflow: hidden}
+        .p2-box{  position: absolute;  top: 0;  overflow: hidden;  margin: 0 auto 0;  width: 627px;  height: 941px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0934b889dd/lg_p2_box.png");  }
+        .p2-man{  position: absolute;  top: 215px;  left: 140px;  width: 356px;  height: 163px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p2_person.png");  }
+        .p2-finger{  position: absolute;  left: 280px;  top: 475px;  width: 141px;  height: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p2_finger.png");  }
+        .p2-art{  position: absolute;  top: 710px;  left: 108px;  width: 412px;  height: 78px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p2_art.png");  }
+        .p2-scan{  position: absolute;  left: 215px;  top: 450px;  width: 260px;  overflow: hidden;  height: 194px;  }
+        .p2-scan-mod{  position: absolute;  width: 260px;  height: 192px;  left: -2px;  top: -196px;  background: rgba(157,147,184,0.5);  border: 2px solid #9698b3;  }
+
+        .p4-pic1{  position: absolute;  top: 20px;  right: 0;  width: 275px;  height: 267px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/09b9335fdd/lg_p4_pic1.png");  }
+        .p4-pic2{  position: absolute;  bottom: -85px;  left: 0;  width: 342px;  height: 411px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/09b9335fdd/lg_p4_pic2.png");  }
+        .p4-sale{  width: 550px;  height: 240px;  margin: 340px auto 0;  overflow: hidden;  }
+        .p4-sale-a1{  width: 425px;  height: 34px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p4_a1.png");  }
+        .p4-sale-a2{  width: 319px;  height: 34px;  margin: 15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p4_a2.png");  }
+        .p4-list{  width: 496px;  height: 108px;  padding: 29px 26px 0;  overflow: hidden;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p4_ul.png") no-repeat;  }
+        .p4-list li{  float: left;  height: 108px;  width: 92px;  margin: 0 16px;  overflow: hidden;  }
+        .p4-list-pic{  width: 92px;  height: 61px;  }
+        .p4-list-a{ width: 92px;  padding-top: 10px;  height: 37px;  color: #666;  text-align: center;  font: bold 23px/36px 'microsoft yahei';  }
+
+        .p5-sale-a1{  width: 425px;  height: 34px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p5_a1.png");  }
+        .p5-sale-a2{  width: 249px;  height: 34px;  margin: 15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p5_a2.png");  }
+        .p5-list{  width: 496px;  height: 108px;  padding: 29px 26px 0;  overflow: hidden;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p5_ul.png") no-repeat;  }
+        .p5-list li{  float: left;  height: 108px;  width: 92px;  margin: 0 16px;  overflow: hidden;  }
+        .p5-num{  color: #557BC4;  width: 200px;  height: 30px;  text-align: center;  margin: 20px auto 0; font: 22px/30px 'microsoft yahei';  }
+        .p5-pic{  width: 506px;  height: 382px;  bottom: 0;  left: 50%;  margin-left: 68px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/09d99d0903/lg_p5_pic.png");  }
+
+        .p6-pic1{  position: absolute;  top: 0;  right: 0;  width: 240px;  height: 288px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/09f4843e2b/lg_p6_pic1.png");  }
+        .p6-pic2{  position: absolute;  bottom: 0;  left: 0;  width: 629px;  height: 331px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/09f4843e2b/lg_p6_pic2.png");  }
+        .p6-list{  width: 500px;  height: 350px;  margin: 340px auto 0;  overflow: hidden;  }
+        .p6-a1{  width: 425px;  height: 47px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p6_a1.png") no-repeat 0 0;  }
+        .p6-ul{  width: 500px;  height: 120px;  margin: 20px auto 0;  }
+        .p6-ul li{  float: left;  width: 220px;  margin: 0 15px;  height: 120px;  -webkit-border-radius: 20px;  -moz-border-radius: 20px;  border-radius: 20px;  text-align: center;  overflow: hidden;  }
+        .p6-ul li:nth-child(1){  background: #B5C6E5;  }
+        .p6-ul li:nth-child(2){  background: #F89EA5;  }
+        .p6-li-a1{  width: 220px;  height: 32px;  margin-top: 18px;  color: #fff;  font: 22px/32px 'microsoft yahei';  }
+        .p6-li-a2{  width: 220px;  height: 50px;  color: #fff;  font: 40px/50px 'microsoft yahei';  }
+        .p6-a2{  width: 250px;  height: 51px;  margin: 40px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p6_a2.png");  }
+        .p6-a3{  text-align: center;  width: 300px;  margin: 15px auto 0;  height: 50px;  color: #666666;  font: 36px/50px 'microsoft yahei';  }
+
+        .p7-box{  position: relative;  width: 585px;  height: 435px;  overflow: hidden;  margin: 340px auto 0;  }
+        .p7-a1{  width: 153px;  height: 47px;  margin: 0 auto;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p7_a1.png");  }
+        .p7-a2{  width: 239px;  height: 47px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p7_a2.png");  }
+        .p7-a3{  width: 570px;  height: 21px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/lg_p7_a3.png") no-repeat top right;  }
+        .p7-ul1,.p7-ul2{  width: 570px;  height: 112px;  margin: 20px auto 0;  }
+        .p7-ul1 li,.p7-ul2 li{  float: left;  width: 182px;  height: 112px;  margin: 0 4px;  }
+        .p7-ul1 li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/price1.png") no-repeat;  }
+        .p7-ul1 li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/price2.png") no-repeat;  }
+        .p7-ul1 li:nth-child(3){  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/price3.png") no-repeat;  }
+        .p7-ul2 li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/price4.png") no-repeat;  }
+        .p7-ul2 li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/price5.png") no-repeat;  }
+        .p7-ul2 li:nth-child(3){  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a09c30c73/price6.png") no-repeat;  }
+
+        .p8-top{  width: 640px;  height: 420px;  background: #fff;  overflow: hidden;  border-bottom: 1px solid #ddd;  }
+        .p8-t1{  width: 227px;  height: 34px;  margin: 40px 0 35px 40px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p8_title1.png");  }
+        .p8-t2{  width: 312px;  height: 34px;  margin: 40px 0 35px 40px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p8_title2.png");  }
+        .p8-c{  width: 550px;  height: 320px;  margin: 10px auto 0;  overflow: hidden;  }
+        .p8-pic{  float: left;  }
+        .p8-pic1{  width: 136px;  height: 277px;  margin: 2px 30px 0 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a30e9ccee/lg_p8_pic1.png");  }
+        .p8-pic2{  width: 158px;  height: 317px;  margin: 0 30px 0 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a30e9ccee/lg_p8_pic2.png");  }
+        .p8-det{  float: left;  width: 361px;  height: 259px;  }
+        .p8-det1{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a30e9ccee/lg_p8_detail1.png"); margin-top: 12px;  }
+        .p8-det2{  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a30e9ccee/lg_p8_detail2.png"); margin-top: 30px;  }
+
+        .p9{  width: 640px;  height: 100%;  }
+        .p9-t{  position: absolute;  top: 70px;  left: 50%;  margin-left: -205px;  width: 409px;  height: 34px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p9_t.png");  }
+        .p9-l{  float: left;  width: 320px;  height: 100%;  background: #B5C6E5;  }
+        .p9-l-pic{  width: 244px;  height: 261px;  margin: 150px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p9_l_pic.png");  }
+        .p9-r{  float: left;  width: 320px;  height: 100%;  background: #F89EA5;  }
+        .p9-r-pic{  width: 335px;  height: 268px;  margin: 145px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a59d2956f/lg_p9_r_pic.png");  }
+        .p9-l-a{  width: 222px;  height: 381px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a59d2956f/lg_p9_l_a.png");  }
+        .p9-r-a{  width: 230px;  height: 381px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a59d2956f/lg_p9_r_a.png");  }
+
+        .p10-a1{  margin: 40px 0 0 30px;  width: 105px;  height: 34px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p10_a1.png");  }
+        .p10-a2{  margin: 20px 0 0 30px;  width: 482px;  height: 326px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0a8fb108be/lg_p10_a2.png");    position: relative;  z-index: 99;  }
+
+        .p11-time{  margin: 10px auto 25px;  width: 210px;  height: 32px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p11_time.png");  }
+        .p11-list{  width: 585px;  height: 760px;  overflow: hidden;  margin: 0 auto;  }
+        .p11-list li{  width: 585px;  margin-bottom: 25px;  }
+        .p11-list li:nth-child(1){  height: 99px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ac54c1ab9/lg_p11_1a.png") no-repeat top left;  }
+        .p11-list li:nth-child(2){  height: 100px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ac54c1ab9/lg_p11_2a.png") no-repeat top right;  }
+        .p11-list li:nth-child(3){  height: 159px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ac54c1ab9/lg_p11_1b.png") no-repeat top left;  }
+        .p11-list li:nth-child(4){  height: 130px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ac54c1ab9/lg_p11_2b.png") no-repeat top right;  }
+        .p11-list li:nth-child(5){  height: 129px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ac54c1ab9/lg_p11_1c.png") no-repeat top left;  }
+
+        .p12{  width: 590px;  height: 100%;  margin: 0 auto;  overflow: auto;  }
+        .p12-ul{  width: 590px;  height: 2400px;  overflow: hidden;  }
+        .p12-ul li:nth-child(1){  width: 562px;  height: 153px;  margin-top: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_w1.png") no-repeat top left;  }
+        .p12-ul li:nth-child(3){  width: 510px;  height: 481px;  margin-left: 75px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_c1.png");  }
+        .p12-ul li:nth-child(4){  width: 546px;  height: 92px;  margin-top: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_w2.png");  }
+        .p12-ul li:nth-child(6){  width: 510px;  height: 351px;  margin-left: 75px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_c2.png");  }
+        .p12-ul li:nth-child(7){  width: 561px;  height: 92px;  margin-top: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_w3.png");  }
+        .p12-ul li:nth-child(9){  width: 510px;  height: 271px;  margin-left: 75px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_c3.png");  }
+        .p12-ul li:nth-child(10){  width: 573px;  height: 241px;  margin-top: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_w4.png");  }
+        .p12-ul li:nth-child(12){  width: 510px;  height: 231px;  margin-left: 75px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_c4.png");  }
+        .p12-ul li:nth-child(13){  text-align: center;  }
+        .p12-li{  width: 505px;  height: 25px;  overflow: hidden;  margin: 20px 0 10px 78px;  }
+        .p12-l{  float: left;  width: 100px;  height: 25px;  }
+        .p12-l1{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_t1.png") no-repeat 0 0;  }
+        .p12-l2{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_t2.png") no-repeat 0 0;  }
+        .p12-l3{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_t3.png") no-repeat 0 0;  }
+        .p12-l4{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_t4.png") no-repeat 0 0;  }
+        .p12-nice{  float: right;  width: 25px;  height: 23px;  border: none;  outline: none;  margin: 1px 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_btn.png") no-repeat 0 0;  }
+        .p12-nice.act{  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p12_btn.png") no-repeat 0 -23px; pointer-events: none;  }
+        .p12-r{  float: right; padding: 0 5px;  height: 25px;  overflow: hidden;  color: #7E7E7E;  text-align: center;  font: bold 20px/25px 'microsoft yahei';  }
+
+        .p13-pic1{  position: absolute;  top: -70px;  left: 220px;  width: 423px;  height: 239px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ad65f2a17/lg_p13_pic1.png");  }
+        .p13-pic2{  position: absolute;  left: 0;  top: -35px;  width: 307px;  height: 495px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ad65f2a17/lg_p13_pic2.png");  }
+        .p13-pic3{  position: absolute;  top: 195px;  right: 0;  width: 340px;  height: 342px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ad65f2a17/lg_p13_pic3.png");  }
+        .p13-box{  width: 580px;  height: 400px;  margin: 460px auto 0;  overflow: hidden;  }
+        .p13-a1{  width: 304px;  height: 70px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ad65f2a17/lg_p13_a1.png");  }
+        .p13-a2{  margin-top: 20px;  width: 518px;  height: 76px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0ad65f2a17/lg_p13_a2.png");  }
+        .p13-list{  width: 580px;  height: 200px;  margin-top: 25px;  overflow: hidden;  }
+        .p13-a3{  float: left;  width: 102px;  height: 22px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p13_a3.png");  }
+        .p13-ul{ float: left;  width: 480px;  height: 120px;  margin-left: -5px  ;}
+        .p13-ul li{  float: left;  width: 220px;  margin: 0 10px;  height: 120px;  -webkit-border-radius: 20px;  -moz-border-radius: 20px;  border-radius: 20px;  text-align: center;  overflow: hidden;  }
+        .p13-ul li:nth-child(1){  background: #B5C6E5;  }
+        .p13-ul li:nth-child(2){  background: #F89EA5;  }
+
+        .p14-a1{  margin: 30px 0 0 30px;  width: 369px;  height: 38px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p14_a1.png");  }
+        .p14-a2{  width: 561px;  height: 325px;  margin: 20px 0 0 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0afef93a6a/lg_p14_a2.png");  }
+        .p14-pic{  margin: 0 auto;  width: 640px;  height: 414px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/0afef93a6a/lg_p14_pic.png");  }
+
+        .p15-a1{  width: 417px;  height: 34px;  margin: 220px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p15_a1.png");  }
+        .p15-a2{  width: 220px;  height: 52px;  margin: 25px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p15_a2.png");  }
+        .p15-video{  width: 600px;  height: 420px;  background: #000;  margin: 35px auto 0;  }
+
+        .p16-a1{  margin: 100px auto 40px;  width: 443px;  height: 40px; text-align: center; color: #fff;  font:34px/40px 'microsoft yahei';  }
+        .p16-code{display:block;  width: 538px;  height: 488px; margin: 0 auto }
+        .p16-code img{  padding: 20px 100px 130px;   }
+        .p16-a2{  margin: 0 auto;  width: 214px; height: 34px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p16_a2.png");  }
+
+        @-webkit-keyframes hide { 0% { opacity: 1; } 100% { opacity: 0; } }
+        @keyframes hide { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+        /*分享*/
+        .shareBox{width: 440px;height: 102px;margin:20px auto 0;overflow: hidden;}
+        .share { width:440px; height: 102px;text-align: center; }
+        .share a { display: inline-block; width: 102px; height: 102px; display: inline-block; background: url("http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/lg_p16_pic.png") no-repeat 0 0; vertical-align: top; overflow: hidden; margin: 0 4px;}
+        .share a.weibo{background-position: 0 0;}
+        .share a.wechat{background-position: -102px 0;}
+        .share a.qzone{background-position: 0 -102px;}
+        .share a.tencent-weibo{background-position: -102px -102px;}
+        .share-txt{background: url(http://2.zol-img.com.cn/zt/tm_56a/86907cc0b2/p7-4.png) no-repeat 0 0;width: 36px;height: 80px;overflow: hidden;display:block;float: left;text-indent: -999px;}
+        @media only screen and (max-device-height: 480px){
+            /*ip4*/
+        }
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--content-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container" id="container">
+        <section id="slide1">
+            <div class="p1-bg"></div>
+            <div class="logo"></div>
+            <div class="p1-art">
+                <div class="p1-a1 float-scale"></div>
+                <div class="p1-a2 float-scale"></div>
+                <div class="p1-a3"></div>
+                <div class="p1-a4 show-fly-up1"></div>
+                <div class="p1-a5 show-fly-up2"></div>
+                <div class="p1-a6 show-fly-up3"></div>
+            </div>
+        </section>
+        <section id="slide3">
+            <div class="p2-c" id="p2-c">
+                <ul class="bar-btn">
+                    <li class="sp1 ltr1 act"></li>
+                    <li class="sp2 ltr2"></li>
+                    <li class="sp3 ltr3"></li>
+                    <li class="sp4 ltr4"></li>
+                    <li class="sp5 ltr5"></li>
+                </ul>
+                <div class="mobile-show" id="mobile-show"></div>
+                <ul class="color-btn" id="color-btn">
+                    <li class="act">金色</li>
+                    <li>玫瑰金</li>
+                    <li>亮黑</li>
+                    <li>黑色</li>
+                    <li>银色</li>
+                </ul>
+            </div>
+
+            <div class="p2-s" id="p2-s">
+                <div class="p2-box">
+                    <div class="p2-man shake-lr"></div>
+                    <div class="p2-art float-scale"></div>
+                    <div class="p2-finger float-up"></div>
+                    <div class="p2-scan" id="p2-finger">
+                        <div class="p2-scan-mod flow-down"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slide4">
+            <ul class="bar-btn">
+                <li class="sp1 ttb1"></li>
+                <li class="sp2 ttb2 act"></li>
+                <li class="sp3 ttb3"></li>
+                <li class="sp4 ttb4"></li>
+                <li class="sp5 ttb5"></li>
+            </ul>
+            <div class="p4-pic1 float-left"></div>
+            <div class="p4-pic2 float-right"></div>
+            <div class="p4-sale">
+                <div class="p4-sale-a1"></div>
+                <div class="p4-sale-a2"></div>
+                <ul class="p4-list">
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_america.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">美版</div>
+                    </li>
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_japan.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">日版</div>
+                    </li>
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_hk.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">港版</div>
+                    </li>
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_china.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">国行</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="slide5">
+            <ul class="bar-btn">
+                <li class="sp1 ltr1"></li>
+                <li class="sp2 ltr2"></li>
+                <li class="sp3 ltr3 act"></li>
+                <li class="sp4 ltr4"></li>
+                <li class="sp5 ltr5"></li>
+            </ul>
+            <div class="p4-sale">
+                <div class="p5-sale-a1"></div>
+                <div class="p5-sale-a2"></div>
+                <ul class="p5-list">
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_china.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">中国</div>
+                    </li>
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_america.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">美国</div>
+                    </li>
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_hk.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">香港地区</div>
+                    </li>
+                    <li>
+                        <div class="p4-list-pic"><img src="http://2.zol-img.com.cn/zt/tm_57c/f7cae7a951/flag_japan.jpg" width="92" height="61" alt=""/></div>
+                        <div class="p4-list-a">日本</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="p5-num show-fly-up2">等24个国家...</div>
+            <div class="p5-pic show-fly-up3"></div>
+        </section>
+        <section id="slide6">
+            <ul class="bar-btn">
+                <li class="sp1 btt1"></li>
+                <li class="sp2 btt2"></li>
+                <li class="sp3 btt3"></li>
+                <li class="sp4 btt4 act"></li>
+                <li class="sp5 btt5"></li>
+            </ul>
+            <div class="p6-pic1 float-left"></div>
+            <div class="p6-pic2 float-right"></div>
+            <div class="p6-list">
+                <div class="p6-a1"></div>
+                <ul class="p6-ul">
+                    <li class="float-scale">
+                        <div class="p6-li-a1">9月9日</div>
+                        <div class="p6-li-a2">预售</div>
+                    </li>
+                    <li class="float-scale">
+                        <div class="p6-li-a1">9月16日</div>
+                        <div class="p6-li-a2">开售</div>
+                    </li>
+                </ul>
+                <div class="p6-a2"></div>
+                <div class="p6-a3 show-fly-up3">澳大利亚</div>
+            </div>
+        </section>
+        <section id="slide7">
+            <ul class="bar-btn">
+                <li class="sp1 ltr1"></li>
+                <li class="sp2 ltr2"></li>
+                <li class="sp3 ltr3"></li>
+                <li class="sp4 ltr4"></li>
+                <li class="sp5 ltr5 act"></li>
+            </ul>
+            <div class="p7-box">
+                <div class="p7-a1"></div>
+                <ul class="p7-ul1 show-fly-down2">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="p7-a2"></div>
+                <ul class="p7-ul2 show-fly-down3">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="p7-a3"></div>
+            </div>
+        </section>
+        <section id="slide8">
+            <div class="p8-top">
+                <div class="p8-t p8-t1"></div>
+                <div class="p8-c clearfix">
+                    <div class="p8-pic p8-pic1 float-scale"></div>
+                    <div class="p8-det p8-det1 float-left"></div>
+                </div>
+            </div>
+            <div class="p8-t p8-t2"></div>
+            <div class="p8-c clearfix">
+                <div class="p8-pic p8-pic2 float-scale"></div>
+                <div class="p8-det p8-det2 float-left"></div>
+            </div>
+        </section>
+        <section id="slide9">
+            <div class="p9-t float-down"></div>
+            <div class="p9 clearfix">
+                <div class="p9-l">
+                    <div class="p9-l-pic float-right"></div>
+                    <div class="p9-l-a float-up"></div>
+                </div>
+                <div class="p9-r">
+                    <div class="p9-r-pic float-left"></div>
+                    <div class="p9-r-a float-up"></div>
+                </div>
+            </div>
+        </section>
+        <section id="slide10">
+            <div class="p10-a1 float-down"></div>
+            <div class="p10-a2 float-right"></div>
+        </section>
+        <section id="slide11">
+            <div class="p11-time"></div>
+            <ul class="p11-list">
+                <li class="bttp1"></li>
+                <li class="bttp2"></li>
+                <li class="bttp3"></li>
+                <li class="bttp4"></li>
+                <li class="bttp5"></li>
+            </ul>
+        </section>
+        <section id="slide12">
+            <div class="p12" id="p12">
+                <ul class="p12-ul" id="p12-ul">
+                    <li></li>
+                    <li class="clearfix p12-li">
+                        <div class="p12-l p12-l1"></div>
+                        <div class="p12-r" id="num1">0</div>
+                        <input type="button" class="p12-nice" id="btn1">
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li class="clearfix p12-li">
+                        <div class="p12-l p12-l2"></div>
+                        <div class="p12-r" id="num2">0</div>
+                        <input type="button" class="p12-nice" id="btn2">
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li class="clearfix p12-li">
+                        <div class="p12-l p12-l3"></div>
+                        <div class="p12-r" id="num3">0</div>
+                        <input type="button" class="p12-nice" id="btn3">
+                    </li>
+                    <li></li>
+                    <li></li>
+                    <li class="clearfix p12-li">
+                        <div class="p12-l p12-l4"></div>
+                        <div class="p12-r" id="num4">0</div>
+                        <input type="button" class="p12-nice" id="btn4">
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+        </section>
+        <section id="slide13">
+            <div class="p13-pic1 float-down"></div>
+            <div class="p13-pic2 float-right"></div>
+            <div class="p13-pic3 float-left"></div>
+            <div class="p13-box">
+                <div class="p13-a1 show-fly-up1"></div>
+                <div class="p13-a2 show-fly-up2"></div>
+                <div class="p13-list show-fly-up3">
+                    <div class="p13-a3 clearfix"></div>
+                    <ul class="p13-ul">
+                        <li>
+                            <div class="p6-li-a1">9月9日</div>
+                            <div class="p6-li-a2">预售</div>
+                        </li>
+                        <li>
+                            <div class="p6-li-a1">9月16日</div>
+                            <div class="p6-li-a2">开售</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="slide14">
+            <div class="p14-a1 show-fly-down1"></div>
+            <div class="p14-a2 show-fly-down2"></div>
+            <div class="p14-pic show-fly-down3"></div>
+        </section>
+        <section id="slide15">
+            <div class="p15-a1 show-fly-up1"></div>
+            <div class="p15-a2 show-fly-up2"></div>
+            <div class="p15-video"><iframe width="600" height="420" frameborder="0" src="http://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=127b276b571fdbc9df8450224757c558&tvId=6321494909&accessToken=2.3d2798e22e9ee8d8523ddf958529266e&appKey=63a8dcd35d6748ff8f056d0e435b8491&appId=2769&autoplay=0&autoChainPlay=0&showRecommend=0&width=600px&height=420px"></iframe></div>
+        </section>
+        <section id="slide16">
+            <div class="p16-a1">点击二维码为iPhone 7打分</div>
+            <a class="p16-code" href="http://m.zol.com.cn/topic/6033110.html"  target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_57d/0b10acded3/lg_p16_code.png" width="338px" height="338px" alt=""/></a>
+            <div class="p16-a2"></div>
+            <div class="shareBox">
+                <div class="share"></div>
+            </div>
+        </section>
+    </div>
+</div>
+<!--slide-->
+<div id="swipe" class="swipe" role="button">向上滑动</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/iscroll-lite.min.js"></script>
+
+<script>
+    var flag=null,flag2=null;
+    /*p2切换*/
+    var p2_shadow=document.getElementById('p2-s'),p2_con=document.getElementById('p2-c'),p2_finger=document.getElementById('p2-finger');
+
+    p2_finger.addEventListener('tap', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        p2_shadow.classList.add('flow-none');
+        container.denyFlag = 0;
+        flag=1;
+        setTimeout(function () {
+            p2_shadow.style.display='none';
+            p2_con.style.display='block';
+            swipe.style.display='block';
+        },810)
+    });
+
+    /*p3切换显示*/
+    var color_btn_li=document.getElementById('color-btn').getElementsByTagName('li');
+    var slide3=document.getElementById('slide3');
+    var mobile_show=document.getElementById('mobile-show');
+    for(var i=0;i<color_btn_li.length;i++){
+        color_btn_li[i].ind=i;
+        color_btn_li.addEventListener('tap', function () {
+            for(var j=0;j<color_btn_li.length;j++) {
+                color_btn_li[j].className = "";
+            }
+            var index=this.ind;//this表示oLis[i];相当于i=index传到函数中；
+            color_btn_li[index].className = "act";
+            slide3.style.backgroundImage='url("http://2.zol-img.com.cn/zt/tm_57d/0987f0e257/color'+(index+1)+'.jpg")';
+            mobile_show.style.backgroundImage='url("http://2.zol-img.com.cn/zt/tm_57d/09548478f9/mobile'+(index+1)+'.png")';
+        })
+    }
+
+    /*点击bar切换*/
+    var bar1=document.querySelectorAll('.sp1'),bar2=document.querySelectorAll('.sp2'),bar3=document.querySelectorAll('.sp3'),bar4=document.querySelectorAll('.sp4'),bar5=document.querySelectorAll('.sp5');
+    bar1.addEventListener('tap', function () {viewport.go(1);});
+    bar2.addEventListener('tap', function () {viewport.go(2);});
+    bar3.addEventListener('tap', function () {viewport.go(3);});
+    bar4.addEventListener('tap', function () {viewport.go(4);});
+    bar5.addEventListener('tap', function () {viewport.go(5);});
+
+    /*点赞*/
+    var num1=document.getElementById('num1'),num2=document.getElementById('num2'),num3=document.getElementById('num3'),num4=document.getElementById('num4'),btn1=document.getElementById('btn1'),btn2=document.getElementById('btn2'), btn3=document.getElementById('btn3'), btn4=document.getElementById('btn4'),p12=document.getElementById('p12');
+    var json_url='http://m.zol.com.cn/topic/services/zan.php?callback=?';
+    $.ajax({
+        url:json_url,
+        type:'get',
+        dataType:'jsonp',
+        data:{'act':'get','id':6032834,'itemId':0},
+        success: function (obj) {
+            console.log(obj);
+            num1.innerHTML=obj[0].count;
+            num2.innerHTML=obj[1].count;
+            num3.innerHTML=obj[2].count;
+            num4.innerHTML=obj[3].count;
+        }
+    });
+    function bind_data(obj1,obj2,num){
+        obj1.addEventListener('tap', function () {
+            obj1.classList.add('act');
+            $.ajax({
+                url:json_url,
+                type:'get',
+                dataType:'jsonp',
+                data:{'act':'add','id':6032834,'itemId':num},
+                success: function (obj) {
+                    obj2.innerHTML=obj[0].count;
+                }
+            });
+        });
+    }
+    bind_data(btn1,num1,1);
+    bind_data(btn2,num2,2);
+    bind_data(btn3,num3,3);
+    bind_data(btn4,num4,4);
+
+    /*点赞页面*/
+
+    var scroll = document.querySelector('#p12');
+    var iScrollBrand = new iScroll(scroll, {
+        bounce: true,
+        onScrollMove: function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var scrollT=Math.abs(iScrollBrand.y);
+            if( (scrollT >= iScrollBrand.scrollerH-p12.clientHeight)||(iScrollBrand.y >= 0)){
+                swipe.style.display = 'block';
+                container.denyFlag = 0;
+                scroll.style.pointerEvents = 'none';
+                iScrollBrand.timer && clearTimeout(iScrollBrand.timer);
+                iScrollBrand.timer = setTimeout(function(){
+                    scroll.style.pointerEvents = 'all';
+                },1000);
+            }else{
+                scroll.style.pointerEvents = 'all';
+            }
+        }
+    });
+
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('current');
+    });
+
+    /*滑动*/
+    var title_usual='2016 苹果秋季新品发布会';
+    var swipe=document.getElementById('swipe');
+    viewport.addEventListener('changed', function (e) {
+        if(e.target.tagName=='UL'){return false}
+        var current = this.querySelector('.current');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+        e.current && e.current.classList.add('current');
+
+        console.log(this.index);
+        if(this.index==0){
+            swipe.className='swipe';
+            document.title=title_usual;
+        }else if(this.index==1){
+            swipe.className='swipe sale';
+            document.title=title_usual;
+            if(!flag){
+                container.denyFlag = 1;
+                swipe.style.display='none';
+            } else{
+                container.denyFlag = 0;
+                swipe.style.display='block';
+            }
+        }else if(this.index==2){
+            swipe.className='swipe first';
+            document.title=title_usual;
+        }else if(this.index==3){
+            swipe.className='swipe buy';
+            document.title=title_usual;
+        }else if(this.index==4){
+            swipe.className='swipe price';
+            document.title=title_usual;
+        }else if(this.index==5){
+            swipe.className='swipe core';
+            document.title=title_usual;
+        }else if(this.index==6){
+            swipe.className='swipe compare';
+            document.title=title_usual;
+        }else if(this.index==7){
+            swipe.className='swipe new';
+            document.title=title_usual;
+        }else if(this.index==8){
+            swipe.className='swipe chat';
+            document.title=title_usual;
+        }else if(this.index==9){
+            swipe.className='swipe circle';
+            document.title='蒂姆.库克';
+        }
+        if(this.index==10){
+            swipe.className='swipe update';
+            document.title='大佬的朋友圈';
+        }
+        if(this.index==11){
+            swipe.className='swipe highlight';
+            document.title=title_usual;
+        }else if((this.index==12)||(this.index==13)){
+            swipe.className='swipe';
+            document.title=title_usual;
+        }
+        swipe.classList[last ? 'add' : 'remove']('last');
+    });
+
+    swipe.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    /*分享*/
+    var link = window.location.href;
+    var share_title=encodeURIComponent('没时间解释了快点击,iPhone 7最全资料汇总');
+    var share_link=encodeURIComponent(link);
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_575/e2d9926f9d/share.jpg');
+    var share_t=encodeURIComponent('没时间解释了快点击,iPhone 7最全资料汇总');
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+    var share_con = '<a target="_self" class="weibo" href="'+sina+'"></a><a target="_self" class="wechat" style="display:none;" href="#wechat" ></a><a target="_self" class="qzone" href="'+qzone+'"></a><a target="_self" class="tencent-weibo" href="'+tencent+'"></a>';
+    document.querySelector('.share').innerHTML = share_con;
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_57c/f98d75cfbe/share.jpg',
+        title: '没时间解释了快点击，iPhone 7最全资料汇总'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

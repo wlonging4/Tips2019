@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>笃定创新 扬帆海外</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#262327;font:12px/20px 'simsun',arial; background: #fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#e60012;font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;   }
+        .wrap{  position: relative;  width: 100%; background: #f5f5f5;   }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 110px; padding-top: 50px ;background: #3c3d42; }
+        .zol_foot,.zol_foot a{  color: #89898c;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 367px; }
+
+        .hot{  width: 1000px;  height: 310px;  padding: 50px 0 55px;  overflow: hidden;  }
+        .hot-p{  float: left;  width: 225px;  height: 310px;  }
+        .hot-p .hong20{  display: block; color: #e60012;  padding: 10px 0 10px;  font: bold 20px/40px 'microsoft yahei';  }
+        .hot-p .hei12{  text-indent: 24px;  line-height: 22px;  }
+        .hot-p1{  margin: 0 20px 0 5px;  }
+        .hot-p2{  margin: 0 5px 0 20px;  }
+        .hot-box{  position: relative;  float: left;  width: 500px;  height: 310px;  overflow: hidden; background: #000;  }
+        .hot-mod{  position: absolute;  height: 310px;  left: 0;  }
+        .hot-ul{  position: relative;  margin: 295px auto 0;  width: 165px;  height: 5px;  overflow: hidden;  }
+        .hot-ul li{  float: left;  _display: inline;  width: 45px;  margin: 0 5px;  height: 5px;  background: #fff;  }
+        .hot-ul li.act{  background: #8c8c8c;  }
+
+        .read-l{  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_read_l.jpg") no-repeat 100% 0;  }
+        .read-r{  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_read_r.jpg") no-repeat 0 0;  }
+        .read-c{  width: 1000px;  height: 310px; padding-top: 122px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_read_c.jpg") no-repeat 0 0;  }
+        .read-l-mod{  float: left;  width: 460px;  height: 310px;  margin-right: 30px;  background: #000;  }
+        .read-r-mod{  float: left;  width: 510px;  height: 310px;  }
+        .read-r-mod .hei12{  text-indent: 24px;  line-height: 26px;  padding-top: 14px; }
+
+        .inter{  overflow: hidden;  height: 450px;  }
+        .inter-t{  width: 280px;  height: 62px;  margin: 18px auto 17px;  }
+        .inter-c{  width: 1000px;  height: 310px;  background: #f6f6f6;  }
+        .inter-c .hong20{  display: block; color: #e60012;  padding: 10px 0 5px; margin: 0 25px; border-bottom: 1px dashed #8c8c8c;  font: bold 20px/56px 'microsoft yahei';  }
+        .inter-c .hei12{  text-indent: 24px; padding: 0 25px;  line-height: 24px;  }
+
+        .fas-l{  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_fas_l.jpg") no-repeat 100% 0;  }
+        .fas-r{  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_fas_r.jpg") no-repeat 0 0;  }
+        .fas-c{  width: 1000px;  height: 536px; overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_fas_c.jpg") no-repeat 0 0;  }
+        .fas-ul{  margin-top: 113px;  width: 1000px;  height: 423px;  overflow: hidden;  }
+        .fas-ul li{  float: left;  width: 225px;  height: 423px;  margin-right: 33px;  }
+        .fas-ul li .hei12{  text-indent: 24px; padding-top: 5px;  line-height: 24px;  }
+        .fas-ul .li-last{  margin-right: 0;  }
+        .fas-ul li .fas-mod{  width: 225px;  height: 420px;  }
+        .fas-ul li .fas-bar{  width: 225px;  height: 3px;  background: #efefef;  }
+        .fas-ul li.act .fas-bar{  background: #e81122;  }
+
+        .pic{  overflow: hidden;  height: 500px;  }
+        .pic-t{  width: 230px;  height: 50px;  margin: 20px auto 30px;  }
+        .pic-c{  width: 1000px;  height: 360px;  }
+        .pic-c #carousel-left595346{
+            bottom: 140px;
+            width: 54px;
+            height: 108px;
+            background: url("http://2.zol-img.com.cn/zt/tm_571/76986e24ee/lg_btn1.png") no-repeat 0 0;
+        }
+        .pic-c #carousel-right595346{
+            bottom: 140px;
+            width: 54px;
+            height: 108px;
+            background: url("http://2.zol-img.com.cn/zt/tm_571/76986e24ee/lg_btn1.png") no-repeat -54px 0;
+        }
+
+        .more{  padding: 35px 0 50px;  width: 1000px;  height: 170px;  }
+        .more-l{  float: left;  width: 510px;  height: 170px;  overflow: hidden;  }
+        .more-bar{  float: left;  width: 50px;  height: 170px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/6c5694bba4/lg_more_bar.jpg") no-repeat center;  }
+        .more-r{  float: left;  width: 440px;  height: 170px;  overflow: hidden;  }
+        .more-t{  width: 170px;  height: 50px;  margin-bottom: 10px;  }
+        .more-l-c{  width: 510px;  height: 95px;  }
+        .more-l-c .hei12{  text-indent: 24px; padding-left: 20px;  line-height: 24px;  }
+        .more-r-c{  width: 440px;  height: 95px;  }
+        .more-r-c .ln{
+            height: 3px;
+        }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--热门-->
+<div class="wrapper hot clearfix">
+    <div class="hot-p hot-p1"><{data[1]}></div>
+    <div class="hot-box">
+        <div class="hot-mod"><{data[2]}></div>
+        <ul class="hot-ul">
+            <li class="act"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="hot-p hot-p2"><{data[3]}></div>
+</div>
+<!--阅读-->
+<table class="read" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="read-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="read-c clearfix">
+                <div class="read-l-mod"><{data[4]}></div>
+                <div class="read-r-mod"><{data[5]}></div>
+            </div>
+        </td>
+        <td class="read-r">&nbsp;</td>
+    </tr>
+</table>
+<!--专访-->
+<div class="wrapper inter">
+    <div class="inter-t"><{data[6]}></div>
+    <div class="inter-c">
+        <{data[7]}>
+    </div>
+</div>
+<!--时尚-->
+<table class="fas" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="fas-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="fas-c clearfix">
+                <ul class="fas-ul">
+                    <li class="act">
+                        <div class="fas-mod"><{data[8]}></div>
+                        <div class="fas-bar"></div>
+                    </li>
+                    <li>
+                        <div class="fas-mod"><{data[9]}></div>
+                        <div class="fas-bar"></div>
+                    </li>
+                    <li>
+                        <div class="fas-mod"><{data[10]}></div>
+                        <div class="fas-bar"></div>
+                    </li>
+                    <li class="li-last">
+                        <div class="fas-mod"><{data[11]}></div>
+                        <div class="fas-bar"></div>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="fas-r">&nbsp;</td>
+    </tr>
+</table>
+<!--图赏-->
+<div class="wrapper pic">
+    <div class="pic-t"><{data[12]}></div>
+    <div class="pic-c">
+        <{data[13]}>
+    </div>
+</div>
+<!--更多-->
+<div class="wrap">
+    <div class="wrapper more clearfix">
+        <div class="more-l">
+            <div class="more-t"><{data[14]}></div>
+            <div class="more-l-c"><{data[15]}></div>
+        </div>
+        <div class="more-bar"></div>
+        <div class="more-r">
+            <div class="more-t"><{data[16]}></div>
+            <div class="more-r-c"><{data[17]}></div>
+        </div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    /*图片切换*/
+    var pic_l=$('.hot-ul li'),pic_b=$('.hot-mod');
+    pic_l.bind('mouseenter', function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        pic_b.stop().animate({left:'-'+500*(pic_l.index(this))+'px'},200);
+    });
+
+    /*切换底栏*/
+    var fas_li=$('.fas-ul li');
+    fas_li.bind('mouseenter', function () {
+        $(this).closest('.fas-ul').find('li').removeClass('act');
+        $(this).addClass('act');
+    })
+
+
+</script>
+
+</body>
+</html>

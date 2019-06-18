@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>彩色方块</title>
+</head>
+<body>
+<script type="text/javascript">
+    //定义布局内容
+    function createBox(){
+        document.body.innerHTML="";
+        //清空body内容
+        var wWidth=document.documentElement.clientWidth||document.body.clientWidth;
+        var wHeight=document.documentElement.clientHeight||document.body.clientHeight;
+        var nWidth=wWidth/50;
+        var nHeight=wHeight/25;
+        var oFrag=document.createDocumentFragment();
+        for(var row=0;row<25;row++){
+            for(var col=0;col<50;col++){
+                var oDiv=document.createElement("div");
+                oDiv.style.position="absolute";
+                oDiv.style.height=nHeight+"px";
+                oDiv.style.width=nWidth+"px";
+                oDiv.style.left=nWidth*col+"px";
+                oDiv.style.top=nHeight*row+"px";
+                oDiv.style.background="RGB("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+                oFrag.appendChild(oDiv);
+            }
+        }
+        document.body.appendChild(oFrag);
+    }
+    //定义变色函数
+    function chgColor(){
+        document.getElementsByTagName("div").item(Math.floor(Math.random()*1250)).style.background="RGB("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")";
+    }
+    //定时器执行
+    window.onload=function(){
+        createBox();
+        //方法名后不要加括号,加了括号就表示把这个方法的返回值赋值给onresize事件了;
+        window.setInterval(chgColor,10);
+    };
+    //方法名后不要加括号,加了括号就表示把这个方法的返回值赋值给onresize事件了;
+    window.onresize=createBox();
+</script>
+</body>
+</html>

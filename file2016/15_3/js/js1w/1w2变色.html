@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变色</title>
+    <style type="text/css" >
+       *{
+           margin: 0;
+           padding: 0;
+       }
+       html,body{
+           height: 100%;
+           width: 100%;
+           overflow:hidden;
+       }
+        input {
+            height: 30px;
+            width: 100px;
+            background-color: gray;
+            display: block;
+            border: 2px solid lightgray;
+            box-shadow: 2px 4px darkgray;
+            /*inset代表内阴影，默认是外阴影；x,y轴的偏移量，阴影的模糊半径，阴影的扩展半径，阴影的颜色*/
+            border-radius: 5px;
+            line-height: 28px;
+            text-align: center;
+            margin-bottom: 5px;
+            cursor: pointer;
+            background: -webkit-linear-gradient(top left,#A0A000,#219161);
+            /*linear->线性渐变 radial->径向渐变*/
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="红"/>
+<input type="button" value="蓝"/>
+<input type="button" value="绿"/>
+<input type="button" value="黑"/>
+<input type="button" value="白"/>
+<script type="text/javascript">
+    var ary=["red",'blue','green','black','white'];
+    var aInput=document.getElementsByTagName("input");
+    for(var i=0;i<aInput.length;i++){
+        aInput[i].index=i;
+        aInput[i].onclick=function(){
+            document.body.style.background=ary[this.index];
+        }
+    }
+</script>
+</body>
+</html>

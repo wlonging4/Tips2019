@@ -1,0 +1,67 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script>
+        /*
+        //标准浏览器兼容性：ie7 chrome fF safari opera
+        var xhr=new XMLHttpRequest();
+        //ie 调用ie的.dll动态链接库
+        var xhr2=new ActiveXObject("Microsoft.XMLHTTP");
+        //对上面的方法进行简单的改进
+        var xmlhttp2=new ActiveXObject("Msxml2.XMLHTTP");
+        var xmlhttp3=new ActiveXObject("Msxml3.XMLHTTP");
+        */
+
+        //step1：获取ajax对象
+        //http事务不能复用;返回一个函数把返回对象包起来,f1=getXHR();f2=getXHR();其中f1不等于f2解决了复用的问题;
+        var getXHR= function () {
+            var flag=window.XMLHttpRequest;
+            if(flag){
+                return function () {
+                    return new XMLHttpRequest();
+                }
+            }
+            return function () {
+                return new ActiveXObject('Microsoft.XMLHTTP');
+            }
+        };
+        var x=getXHR();
+
+        //step2:建立http请求
+        //open的arg[0]->http method:get/post/put/delete/head/options;
+        //open的arg[1]->http url请求服务器的路径
+        //open的arg[2]->http async默认是true异步
+        //open的arg[3]->username
+        //open的arg[4]->password
+        x.open("get","/");
+
+        //step3:接受响应
+        //两种方法:①使用onload接受;只能在XMLHttpRequest对象上使用②使用onreadystatechange接受;使用较多;
+        //readystate:->ajax对象的状态;http response status:->http的状态;
+        /*readystate:
+        0:UNSENT实例化ajax对象时为0,也是默认值;
+        1:OPENED执行open方法之后变为1
+        2:HEADER_RECEIVED接收到服务器响应首部变为2
+        3:LOADING开始接受响应主体变为3
+        4：DONE响应主体接受变为4*/
+        //如果同步的话send后面就不会执行;下面的方法就不会执行;所有send要放在onreadystatechange后面,这样不管同步异步都会执行;onreadystatechange是注册一个方法,因为状态码改变都会执行这个方法;
+        x.onreadystatechange= function () {
+            if(x.readyState===4&& /^2\d{2}$/.test(x.status)){
+                console.log(x.responseText);
+            }
+        };
+
+        //step4: 发送请求
+        //send方法会把参数放在请求主体里;get系是没有请求主体的,所以就不需要传参数;但是post系需要;
+        //当使用同步请求的时候send方法后会发生阻塞;一直等到服务器响应
+        x.send();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

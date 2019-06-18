@@ -1,0 +1,472 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>奥运自主招商项目</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#9fa0a0;  font:12px/22px "SimSun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#9fa0a0; text-decoration:none}
+        a:hover,td a:hover{color:#c00; text-decoration:underline}
+        .hong12{color:#0096d6; font-size: 14px; }
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        /* 背景 */
+        .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/m_l01.jpg) no-repeat 100% 0;}
+        .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/m_r01.jpg) no-repeat 0 0;}
+
+        .bg2-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/d9a7adc09f/m_l02.jpg) no-repeat 100% 0;}
+        .bg2-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/d9a7adc09f/m_r02.jpg) no-repeat 0 0;}
+        .bg2-c{background:url(http://2.zol-img.com.cn/zt/tm_57a/d9a7adc09f/m_c02.jpg) no-repeat 0 0; height: 575px;}
+
+        .bg3-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/m_l03.jpg) no-repeat 100% 0;}
+        .bg3-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/m_r03.jpg) no-repeat 0 0;}
+        .bg3-c{background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/m_c03.jpg) no-repeat 0 0; height: 136px;}
+
+        .bg4-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/d9d65bf599/m_l04.jpg) no-repeat 100% 0;}
+        .bg4-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_r04.jpg) no-repeat 0 0;}
+        .bg4-c{background:url(http://2.zol-img.com.cn/zt/tm_57a/d9d65bf599/m_c04.jpg) no-repeat 0 0; max-height: 814px;}
+
+        .bg5-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_l05.jpg) no-repeat 100% 0;}
+        .bg5-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_r05.jpg) no-repeat 0 0;}
+        .bg5-c{background:url(http://2.zol-img.com.cn/zt/tm_57a/80260074c3/m_c05.jpg) no-repeat 0 0; max-height: 805px;}
+
+        .bg6-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_l06.jpg) no-repeat 100% 0;}
+        .bg6-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_r06.jpg) no-repeat 0 0;}
+        .bg6-c{background:url(http://2.zol-img.com.cn/zt/tm_57a/838118d62e/m_c06.jpg) no-repeat 0 0; max-height: 823px;}
+
+        .bg7-l{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_r07.jpg) no-repeat 100% 0;}
+        .bg7-r{background:url(http://2.zol-img.com.cn/zt/tm_57a/7fe000d732/m_r07.jpg) no-repeat 0 0;}
+        .bg7-c{background:url(http://2.zol-img.com.cn/zt/tm_57a/d9d832f302/m_c07.jpg) no-repeat 0 0; height: 479px;}
+
+        /* 内容 */
+        .wrapper{width:1200px;  position: relative; }
+        .zol_foot{padding-top: 35px; height: 220px ; text-align: center; color: #B2E3A4; font-size: 14px; width: 100%; min-width: 1200px; background: url(http://2.zol-img.com.cn/zt/tm_57a/d9e31a8fcb/foot.jpg) no-repeat 50% 0;}
+        .zol_foot a:link,.zol_foot a:visited{color: #B2E3A4;}
+
+        .focus-box{position: absolute; top: 74px; left: 15px; width: 660px; height: 440px;}
+        .focus-box .bai16{position: absolute; width: 660px; line-height: 40px; background:rgba(0,0,0,0.8); filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#cc000000,endcolorstr=#cc000000,gradientType=1); margin-top:-40px; color:#fff; font-family:"Microsoft Yahei"; text-indent:40px;}
+        .rank-list{position: absolute; top: 97px; right: 0; width: 423px; height: 449px;}
+        .rank-list li{height: 45px; line-height: 44px;}
+        .rank-list li span{display: inline-block; vertical-align: top; width: 85px;  font:20px/44px "simHei"; text-align: center;}
+        .rank-list li .first{text-align: left; color: #5A5A5A;}
+        .rank-list li .second{color: #D9A51F}
+        .rank-list li .third{color: #969696}
+        .rank-list li .fourth{color: #9F7455}
+        .rank-list li .fifth{width: 83px; color: #7A7A7A}
+        .section3{width: 1000px; height: 87px; margin: 20px auto 0;}
+        .section3 .lan12{color: #39E67A; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/dot.jpg) no-repeat 0 50%; padding-left: 8px; margin-left:20px;}
+        .section3 .hui12{color: #386A1A}
+        .section4,.section5,.section6{padding-top: 195px;}
+        .content{width: 1200px; /* height: 590px;  */}
+        .tabs-tit{width: 1200px; height: 100px; position: relative;}
+        .tabs-tit .line{position: absolute; top: 19px; left: 0; width: 1200px; height: 4px;}
+        .tabs-tit span{float: left; width: 70px; text-align: center; font:14px/30px "simHei"; padding-top: 45px; position: relative; z-index: 1; cursor: pointer;}
+        .tabs-tit .act{font-weight: bold; font-size: 18px; padding-bottom: 10px;}
+        .section4 .tabs-tit .line{background: #32B8EF}
+        .section4 .tabs-tit span{color: #32B8EF; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/icon1.jpg) no-repeat 50% 5px;}
+        .section4 .tabs-tit .act{color: #FFD51C; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/icon2.jpg) no-repeat 50% 0;}
+
+        .section5 .tabs-tit .line{background: #CEB500}
+        .section5 .tabs-tit span{color: #CEB500; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/icon3.jpg) no-repeat 50% 5px;}
+        .section5 .tabs-tit .act{color: #535353; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/icon4.jpg) no-repeat 50% 0;}
+
+        .section6 .tabs-tit .line{background: #EA690B}
+        .section6 .tabs-tit span{color: #C2580A; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/icon5.jpg) no-repeat 50% 5px;}
+        .section6 .tabs-tit .act{color: #fff; background: url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/icon6.jpg) no-repeat 50% 0;}
+
+        .tab-con{width: 1200px; /* height: 480px; */}
+        .tab-con .item{display: none;}
+        .tab-con .pic-box{/* height: 420px; */ width: 1200px; position: relative; overflow: hidden; min-height:30px;}
+        .tab-con .pic-dw{position: absolute; left: 0; top: 0; width: 1200px;}
+        .control-box {width: 1200px; height: 16px; margin: 30px 0; text-align: center;}
+        .control-box span{display: inline-block; vertical-align: top; width: 17px; height: 17px; margin:0 8px; cursor: pointer; background: url(http://2.zol-img.com.cn/zt/tm_57a/06a45bf78c/dot2.png) no-repeat;}
+        .control-box .act{background: url(http://2.zol-img.com.cn/zt/tm_57a/06a45bf78c/dot3.png) no-repeat;}
+        .section4 .control-box .act{background: url(http://2.zol-img.com.cn/zt/tm_57a/06a45bf78c/dot4.png) no-repeat;}
+        .comment{position: absolute; left: 0; top: 47px; width: 700px; height: 432px; }
+        .about{position: absolute; width: 487px; height: 280px; top: 141px; right: 0;}
+        .about .prev,.about .next{width: 22px; height: 43px; position: absolute; cursor: pointer; top: 127px;}
+        .about .prev{left: 0; background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/prev.png) no-repeat;}
+        .about .next{right: 0;background:url(http://2.zol-img.com.cn/zt/tm_57a/0681cd008f/next.png) no-repeat;}
+        .about .logos{width: 416px; height: 280px; margin: 0 auto; position: relative; overflow: hidden;}
+        .about .logos-con{position: absolute; left: 0;   top: 0;    }
+
+        .item table a{display:block; width:292px; heihgt:420px; overflow:hidden;}
+        .item img{-webkit-transition:transform 300ms linear; -ms-transition:transform 300ms linear; transition:transform 300ms linear; }
+        .item img:hover{-webkit-transform:scale(1.05);  -ms-transform:scale(1.05); transform:scale(1.05); opacity:0.9}
+        /*.erweima { display: block; position: fixed; z-index: 99; left: 50%; top: 492px; width: 177px; height: 251px; margin-left: 610px; background: url(http://2.zol-img.com.cn/zt/tm_57a/9b555cb857/erweima.png) no-repeat; }*/
+        .erweima{ display: block; position: fixed; z-index: 99; right: 0; top: 492px; width: 177px; height: 251px; /* margin-left: 610px; */
+            background: url(http://2.zol-img.com.cn/zt/tm_57a/9b555cb857/erweima.png) no-repeat; }
+    </style>
+
+</head>
+<body>
+<!--[if IE 6]>
+<script src=" http://active.zol.com.cn/frontend/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+    DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg1-c">
+            <{data[55]}>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg2-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg2-c">
+            <div class="wrapper">
+                <div class="focus-box"><{data[0]}></div>
+                <div class="rank-list">
+                    <ul id="rank"><li><span class="first">美国</span><span class="second">10</span><span class="third">11</span><span class="fourth">9</span><span class="fifth">30</span></li><li><span class="first">中国</span><span class="second">9</span><span class="third">4</span><span class="fourth">8</span><span class="fifth">21</span></li><li><span class="first">日本</span><span class="second">6</span><span class="third">1</span><span class="fourth">10</span><span class="fifth">17</span></li><li><span class="first">匈牙利</span><span class="second">5</span><span class="third">1</span><span class="fourth">1</span><span class="fifth">7</span></li><li><span class="first">俄罗斯</span><span class="second">4</span><span class="third">7</span><span class="fourth">4</span><span class="fifth">15</span></li><li><span class="first">韩国</span><span class="second">4</span><span class="third">2</span><span class="fourth">3</span><span class="fifth">9</span></li><li><span class="first">澳大利亚</span><span class="second">4</span><span class="third">0</span><span class="fourth">5</span><span class="fifth">9</span></li><li><span class="first">意大利</span><span class="second">3</span><span class="third">6</span><span class="fourth">2</span><span class="fifth">11</span></li><li><span class="first">英国</span><span class="second">3</span><span class="third">3</span><span class="fourth">6</span><span class="fifth">12</span></li><li><span class="first">法国</span><span class="second">2</span><span class="third">3</span><span class="fourth">1</span><span class="fifth">6</span></li></ul>
+
+                </div>
+            </div>
+        </td>
+        <td class="bg2-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg4-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg4-c">
+            <div class="section4">
+                <div class="content ">
+                    <div class="tabs-tit">
+                        <div class="line"></div>
+                        <span date-time="2016-08-06" class="on">8月6日</span>
+                        <span date-time="2016-08-07" class="on">8月7日</span>
+                        <span date-time="2016-08-08" class="on">8月8日</span>
+                        <span date-time="2016-08-09" class="on">8月9日</span>
+                        <span date-time="2016-08-10" class="on">8月10日</span>
+                        <span date-time="2016-08-11" class="act on">8月11日</span>
+                        <span date-time="2016-08-12" class="">8月12日</span>
+                        <span date-time="2016-08-13" class="">8月13日</span>
+                        <span date-time="2016-08-14" class="">8月14日</span>
+                        <span date-time="2016-08-15" class="">8月15日</span>
+                        <span date-time="2016-08-16" class="">8月16日</span>
+                        <span date-time="2016-08-17" class="">8月17日</span>
+                        <span date-time="2016-08-18" class="">8月18日</span>
+                        <span date-time="2016-08-19" class="">8月19日</span>
+                        <span date-time="2016-08-20" class="">8月20日</span>
+                        <span date-time="2016-08-21" class="">8月21日</span>
+                        <span date-time="2016-08-22" class="">8月22日</span>
+                    </div>
+                    <div class="tab-con">
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[2]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box" style="height: 420px;">
+                                <div class="pic-dw"><{data[3]}></div>
+                            </div>
+                            <div class="control-box"><span class="act"></span></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box" style="height: 420px;">
+                                <div class="pic-dw"><{data[4]}></div>
+                            </div>
+                            <div class="control-box"><span class="act"></span></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box" style="height: 420px;">
+                                <div class="pic-dw"><{data[5]}></div>
+                            </div>
+                            <div class="control-box"><span class="act"></span></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box" style="height: 420px;">
+                                <div class="pic-dw"><{data[6]}></div>
+                            </div>
+                            <div class="control-box"><span class="act"></span></div>
+                        </div>
+                        <div class="item" style="display: block;">
+                            <div class="pic-box" style="height: 420px;">
+                                <div class="pic-dw"><{data[7]}></div>
+                            </div>
+                            <div class="control-box"><span class="act"></span></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[8]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[9]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[10]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[11]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[12]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[13]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[14]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[15]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[16]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[17]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                        <div class="item" style="display: none;">
+                            <div class="pic-box">
+                                <div class="pic-dw"><{data[18]}></div>
+                            </div>
+                            <div class="control-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </td>
+        <td class="bg4-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tbody><tr>
+        <td class="bg7-l">&nbsp;</td>
+        <td width="1200" valign="top" class="bg7-c">
+            <div class="wrapper">
+                <div class="comment"><{data[53]}></div>
+                <div class="about">
+                    <span class="prev"> </span>
+                    <span class="next"> </span>
+                    <div class="logos">
+                        <div class="logos-con" style="width: 832px; left: 0px;"> <{data[54]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg7-r">&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div class="erweima">
+
+</div>-->
+
+
+
+<script>
+
+    ~function(){
+        $.ajax({
+            type:'get',
+            url: 'http://dynamic.zol.com.cn/channel/index.php?c=Olympic&a=MedalTally&callback=indexCallbackObject.olympic_data_callback&num=10',
+            data:{action:'getawardsLists'},
+            dataType: 'jsonp',
+            success: function (data) {
+                if(data){
+                    var str = '',
+                            obj = data.data;
+                    //str += '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
+                    for(var i=0; i<10; i++){
+                        str +='<li><span class="first">'+obj[i].countryCnName+'</span><span class="second">'+obj[i].gold+'</span><span class="third">'+obj[i].silver+'</span><span class="fourth">'+obj[i].bronze+'</span><span class="fifth">'+obj[i].all_medal+'</span></li>';
+                    }
+                    //str += '</table>';
+
+                    $('#rank').html(str);
+                }else{
+                    $('#rank').html('');
+                }
+            }
+        });
+    }();
+
+    // 对应日期判断
+    (function(){
+        var newdate = null;
+        function getToDay(){
+            var now = new Date();
+            var nowYear = now.getFullYear();
+            var nowMonth = now.getMonth();
+            var nowDate = now.getDate();
+            newdate = new Date(nowYear,nowMonth,nowDate);
+            nowMonth = doHandleMonth(nowMonth + 1);
+            nowDate = doHandleMonth(nowDate);
+            return nowYear+"-"+nowMonth+"-"+nowDate;
+        }
+        function doHandleMonth(month){
+            if(month.toString().length == 1){
+                month = "0" + month;
+            }
+            return month;
+        }
+        newdate = getToDay();
+        //判断当前日期-选项卡改变
+        var tabBtns = $('.tabs-tit span');
+        tabBtns.each(function (i,item) {
+
+            var _data = $(item).attr("date-time");
+
+            if(newdate == _data){
+                $(item).addClass('act').siblings('span').removeClass('act');
+                $('.tab-con .item').eq(i).show().siblings('.item').hide();
+                $(item).addClass('on');
+                $(item).prevAll('span').addClass('on');
+
+            }
+        })
+
+        var itemCon = $('.content .item');
+        itemCon.each(function (i,item) {
+            if($(item).find('table img').length){
+                $(item).find('.pic-box').css('height','420px');
+            }
+
+        })
+
+    })();
+
+
+    function tabs(parent){
+
+        $(parent+' .tabs-tit .on').click(function(){
+            var k = $(parent).find('.tabs-tit .on').index(this);
+            //console.log($(parent).find('.tabs-tit .on'))
+            $(this).addClass('act').siblings('span').removeClass('act');
+            $(parent+' .tab-con .item').eq(k).show().siblings('.item').hide();
+        })
+
+        //根据内容来计算圆点数
+        autoPage('.control-box','.pic-box table img','.pic-dw',420,4,parent);
+    }
+
+
+    var $item = $('.tab-con .item');
+
+
+    function autoPage(nav,con,box,h,n,p){
+
+        $item.each(function(i,ele){
+            var control = $(ele).find(nav),
+                    k = $item.index(ele);
+            $(control).html('');
+            dotNum = $(ele).find(con).length;
+            pageNum =Math.ceil(dotNum/n);
+
+            var str = '';
+            for(var i=0; i<pageNum; i++){
+                str += '<span class=""></span>';
+            }
+            $(control).html(str);
+            $(control).find('span:first').addClass('act').siblings().removeClass('act');
+
+            $(control).find('span').bind('mouseover',function(){
+                var n = $(control).find('span').index(this);
+                $(this).addClass('act').siblings().removeClass('act');
+                $(ele).find(box).css('top',n*-h);
+            });
+
+        })
+    }
+
+    tabs('.section4') ;
+    tabs('.section5') ;
+    tabs('.section6') ;
+
+    //图片切换
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+
+    }
+    scrolls(".logos-con",".logos",1,".prev",".next");
+
+</script>
+</body></html>

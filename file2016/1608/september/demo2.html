@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>ZOL手机站V6.1.7_ChinaJoy移动端抽奖活动</title>
+    <meta name="keywords" content="ChinaJoy移动端抽奖活动" />
+    <meta name="description" content="ChinaJoy移动端抽奖活动" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, figcaption { margin: 0; padding: 0; font-size: 32px; }
+        html, body { height: 100%; }
+        body { -webkit-tap-highlight-color: rgba(0,0,0,0); background-color: #fff; color: #000; font: 32px/1.5 "microsoft yahei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a { color: #000; text-decoration: none; }
+        a img { border: 0 none; }
+        img { display: block; }
+        table { border-collapse: collapse; border-spacing: 0; }
+        th, td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /*lg_style*/
+        body {width:640px; margin:0 auto; position: relative;}
+        .home{width:100%; height:100%; position:absolute; overflow:hidden; background: url('http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_bg.jpg') no-repeat 50% 0; -webkit-background-size: cover; background-size: cover;}
+        .main{  position: relative;  margin: 250px 0 0;  width: 640px;  height: 580px;  }
+        #turn{  position: relative;  margin: 0 auto;  width: 440px;  height: 440px;  background-image: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_tab1.png"); background-position: 0 0; background-repeat: no-repeat;   -webkit-transition: all 3s ease-out;transition: all 3s ease-out;-webkit-transform: rotate(0deg);transform: rotate(0deg); }
+        #turn.ok{  transition: none;-webkit-transition: none;  }
+        #turn.a0{  -webkit-transform: rotate(1080deg);  transform: rotate(1080deg);    }
+        #turn.a0-ok{  -webkit-transform: rotate(0deg);  transform: rotate(0deg); }
+        #turn.a1{  -webkit-transform: rotate(1410deg);  transform: rotate(1410deg);  }
+        #turn.a1-ok{   -webkit-transform: rotate(330deg);  transform: rotate(330deg); }
+        #turn.a2{  -webkit-transform: rotate(1380deg);  transform: rotate(1380deg);    }
+        #turn.a2-ok{   -webkit-transform: rotate(300deg);  transform: rotate(300deg); }
+        #turn.a3{   -webkit-transform: rotate(1350deg);  transform: rotate(1350deg);  }
+        #turn.a3-ok{  -webkit-transform: rotate(270deg);transform: rotate(270deg);  }
+        #turn.a4{  -webkit-transform: rotate(1320deg);   transform: rotate(1320deg);    }
+        #turn.a4-ok{  -webkit-transform: rotate(240deg);  transform: rotate(240deg);  }
+        #turn.a5{    -webkit-transform: rotate(1290deg); transform: rotate(1290deg);   }
+        #turn.a5-ok{   -webkit-transform: rotate(210deg);transform: rotate(210deg);   }
+        #turn.a6{  -webkit-transform: rotate(1260deg);   transform: rotate(1260deg);   }
+        #turn.a6-ok{  -webkit-transform: rotate(180deg);  transform: rotate(180deg); }
+        #turn.a7{   -webkit-transform: rotate(1230deg);  transform: rotate(1230deg);     }
+        #turn.a7-ok{  -webkit-transform: rotate(150deg);  transform: rotate(150deg);  }
+        #turn.a8{   -webkit-transform: rotate(1200deg);   transform: rotate(1200deg);    }
+        #turn.a8-ok{  -webkit-transform: rotate(120deg); transform: rotate(120deg);  }
+        #turn.a9{   -webkit-transform: rotate(1170deg);   transform: rotate(1170deg);  }
+        #turn.a9-ok{  -webkit-transform: rotate(90deg); transform: rotate(90deg);  }
+        #turn.a10{  -webkit-transform: rotate(1140deg);  transform: rotate(1140deg);  }
+        #turn.a10-ok{    -webkit-transform: rotate(60deg); transform: rotate(60deg); }
+        #turn.a11{   -webkit-transform: rotate(1110deg);   transform: rotate(1110deg);   }
+        #turn.a11-ok{  -webkit-transform: rotate(30deg); transform: rotate(30deg);  }
+
+        .turn-guide{  position: absolute;  top: 130px;  left: 50%;  margin-left: -90px;  width: 180px;  height: 180px;  background: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_btn_guide.png") no-repeat 0 0;  }
+        .turn-start{  position: absolute;  top: 160px;  left: 50%;  margin-left: -60px;  width: 120px;  height: 120px;  background: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_btn_start.png") no-repeat 0 0;  }
+        .remind{  position: absolute;  font-size: 28px;  top: 460px;  width: 100%;  height: 40px;  line-height: 40px;  color: #747484;  }
+        .remind-l{  float: left; padding-left: 20px  }
+        .remind-l .user{ color: #747484; text-decoration: underline; }
+        .remind-r{  float: right;  padding-right: 20px }
+
+        .rule{  position: absolute;  top: 520px;  left: 50%;  margin-left: -110px;  width: 220px;  height: 70px;  background: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_btn_rule.png") no-repeat 0 0;  }
+        .rule-page{  position: absolute;  display: none;  top: 0;  left: 0;  width: 100%;  height: 100%;  background: rgba(0,0,0,0.6);  }
+        .rule-page.act{  display: block;  }
+        .rule-article{  position: relative;  margin: 50px auto;  width: 500px;  height: 650px;  border: 1px solid #313140; background: #0e0e1d ;  }
+        .art-p1{  color: #fff;  font-size: 30px;  font-weight: bold;  line-height: 50px;  text-align: center;  }
+        .art-p11{  padding-top: 20px;  }
+        .art-p13{  padding-top: 5px;  }
+        .art-p2{  color: #fff;  font-size: 20px;  line-height: 32px;  text-align: center;  }
+        .art-p3{  color: #fff;  font-size: 20px;  line-height: 32px;  text-align: left;  padding-left: 30px;  padding-right: 30px;  }
+        .art-p4{  color: #fff;  font-size: 20px;  line-height: 32px;  text-align: left;  padding-left: 62px;  padding-right: 30px;  }
+        .rule-close{  position: absolute;  top: 0;  right: 0;  width: 30px;  height: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_close.png") no-repeat 0 0;  }
+
+        .info-page{  position: absolute;  display: none;  top: 0;  left: 0;  width: 100%;  height: 100%;  background: rgba(0,0,0,0.6);  }
+        .info-page.act{  display: block;  }
+        .tips-close{  position: absolute;  top: 0;  right: 0;  width: 30px;  height: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_close.png") no-repeat 0 0;  }
+        .tips{display:none; overflow: hidden;  position:absolute; left:50%; margin-left: -230px; top:250px; width:360px; padding: 30px 50px;  border:1px solid #313140; text-align:center;  color:#747484;background:rgba(0,0,0,0.8);}
+        .tip-msg{ font:36px/40px 'microsoft yahei'; text-align: center; font-weight: bold; color: #fff; padding:10px 0 5px;}
+        .p-remind{ display: none; text-align: center; font-size: 22px; color: #fff; padding: 10px 0;   }
+        .p-remind i{  font-style: normal;  font-size: 14px; cursor: pointer  }
+        .address-info{ display: none;  position: relative; width:360px; height:160px; overflow:hidden;}
+        .address-info .dd1{  display: none; width: 117px; padding-right: 245px  }
+        .address-info .dd2{  position: absolute; top: 0; left: 0; width: 360px; height: 50px;  }
+        .address-info .dd3{  position: absolute; top: 80px; left: 0; width: 200px; height: 50px;  }
+        .address-info .dd4{  position: absolute; top: 79px; left: 228px; width: 130px; height: 50px; }
+        .txt{ padding:0 5px; height:50px;  -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px; border:1px solid #313140; outline: none;height: 50px; background:#313140; line-height:40px;font-size: 24px; color:#fff;font-family: 'microsoft yahei';}
+        .txt2{  width: 350px;  }
+        .txt3{  width: 200px;  }
+        .txt4{  width: 130px;  height: 52px;  font: 20px/40px 'microsoft yahei'; color: #fff;  border: none;  text-align: center;   cursor: pointer  }
+        .txt4:disabled{  color: #8c8c8c;  }
+        #tel:-moz-placeholder{  color: #11101d;  }
+        #tel:-ms-input-placeholder{  color: #11101d;  }
+        #tel::-webkit-input-placeholder{  color: #11101d;  }
+        #check-code:-moz-placeholder{  color: #11101d;  }
+        #check-code:-ms-input-placeholder{  color: #11101d;  }
+        #check-code::-webkit-input-placeholder{  color: #11101d;  }
+        .error1{  position: absolute;  top: 57px; text-align: left;  font-size: 18px;  height: 20px;  width: 360px;  line-height: 20px;  color: #8C0000;  }
+        .error2{  position: absolute;  top: 138px;  font-size: 18px;text-align: left;  height: 20px;  width: 360px;  line-height: 20px;  color: #8C0000;  }
+
+        .btns{display:inline-block; width:160px; height:50px; font-weight: bold;  margin: 5px auto 10px;  border: none;  background: url("http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_btn_pass.png") no-repeat 0 0; color:#fff; border-radius:5px;font: 32px/40px 'microsoft yahei';}
+        .btns:disabled{  color: #8c8c8c;  }
+        .tip-btn{display: none;}
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="home">
+    <div class="main">
+        <div class="" id="turn"></div>
+        <div class="turn-guide"></div>
+        <div class="turn-start" id="start"></div>
+        <div class="remind clearfix">
+            <div class="remind-l" id="remind-l">请 <a href="" class="user"></a> 抽奖</div>
+            <div class="remind-r" id="remind-r">您今日抽奖机会: 3次</div>
+        </div>
+        <div class="rule" id="rule"></div>
+    </div>
+    <div class="rule-page" id="rule-page">
+        <div class="rule-article">
+            <p class="art-p1 art-p11">CHINAJOY大转盘 天天有惊喜</p>
+            <p class="art-p1 art-p12">四日奖品</p>
+            <p class="art-p2">一等奖 1000元游戏装备</p>
+            <p class="art-p2">二等奖 200元游戏装备</p>
+            <p class="art-p2">纪念奖 100元游戏装备</p>
+            <p class="art-p2">一等奖每天2名，二等奖每天10名，三等奖每天20名</p>
+            <p class="art-p1 art-p13">游戏规则</p>
+            <p class="art-p3">1.&nbsp;&nbsp;&nbsp;活动有效期2016年7月28日-31日，</p>
+            <p class="art-p4">每天上午10点-下午5点。</p>
+            <p class="art-p3">2.&nbsp;&nbsp;&nbsp;参与本活动用户请提交有效真实手机号摇奖，每人每天仅有3次抽奖机会。</p>
+            <p class="art-p3">3.&nbsp;&nbsp;&nbsp;领取奖品</p>
+            <p class="art-p4">凭有效手机号提交信息领奖，</p>
+            <p class="art-p4">中奖网友请等待我们联系您领奖。</p>
+            <p class="art-p3">4.&nbsp;&nbsp;&nbsp;同手机号仅发放一个奖品。</p>
+            <p class="art-p3">5.&nbsp;&nbsp;&nbsp;发现作弊行为将取消用户获奖资格，</p>
+            <p class="art-p4">本活动最终解释权归中关村在线所有。</p>
+            <div class="rule-close" id="rule-close"></div>
+        </div>
+    </div>
+    <div class="info-page" id="info-page">
+        <div class="tips" id="tips">
+            <div class="tips-close" id="tips-close"></div>
+            <div class="tip-msg" id="tip-msg">恭喜您获得一等奖</div>
+            <p class="p-remind" id="p-remind">请您提交手机号，等待我们联系您</p>
+            <div class="address-info" id="address-info">
+                <div class="dd1">
+                    <input type="text" id="user-name" class="txt txt1" value="">
+                </div>
+                <div class="dd2">
+                    <input type="text" id="tel" class="txt txt2" value="" placeholder="请输入手机号">
+                </div>
+                <div class="error1" id="error1"></div>
+                <div class="dd3">
+                    <input type="text" id="check-code" class="txt txt3" value="" placeholder="请输入验证码">
+                </div>
+                <div class="error2" id="error2"></div>
+                <div class="dd4">
+                    <input type="button" id="get-code" class="txt txt4" disabled="disabled" value="获取验证码"/>
+                </div>
+            </div>
+            <div class="tip-btn" id="tip-btn"><input type="button" id="postInfo" class="btns" disabled="disabled" value="提&nbsp;交"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script>
+
+    /*loading登陆*/
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+    var
+            lottery_json = 'http://comment.zol.com.cn/index.php?c=api_ChinaJoy&callback=?',
+            arr_no=['a3'],arr3=['a9'],
+            arr_lv0,arr_lv1,arr_lv2,arr_lv3,
+            arr11=['a1','a6','a10'],arr12=['a0','a2','a4','a5','a7','a8','a11'],
+            arr21=['a2','a4'],arr22=['a0','a1','a5','a6','a7','a8','a10','a11'],
+            arr31=['a0','a8'],arr32=['a1','a2','a4','a5','a6','a7','a10','a11'],
+            arr41=['a5','a11'],arr42=['a0','a1','a2','a4','a6','a7','a8','a10'],
+            remind_l=document.getElementById('remind-l'),
+            remind_r=document.getElementById('remind-r'),
+            rule_btn=document.getElementById('rule'),
+            rule_page=document.getElementById('rule-page'),
+            rule_close=document.getElementById('rule-close'),
+            info_page=document.getElementById('info-page'),
+            tips_close=document.getElementById('tips-close'),
+            tip_btn=document.getElementById('tip-btn'),
+            tip_msg=document.getElementById('tip-msg'),
+            tips=document.getElementById('tips'),
+            p_remind=document.getElementById('p-remind'),
+            address_info=document.getElementById('address-info'),
+            start=document.getElementById('start'),
+            turn=document.getElementById('turn'),
+            user_name=document.getElementById('user-name'),
+            tel=document.getElementById('tel'),
+            check_code=document.getElementById('check-code'),
+            get_code=document.getElementById('get-code'),
+            error1=document.getElementById('error1'),
+            error2=document.getElementById('error2'),
+            postInfo=document.getElementById('postInfo'),
+            nums=3;
+
+    /*活动规则*/
+    rule_btn.addEventListener('tap', function () {
+        rule_page.classList.add('act');
+    });
+    rule_close.addEventListener('tap', function () {
+        rule_page.classList.remove('act');
+    });
+    tips_close.addEventListener('tap', function () {
+        info_page.style.display='none';
+        p_remind.classList.remove('act');
+    });
+    /*初始化时间和背景*/
+    $.ajax({
+        type:'get',
+        url: lottery_json,
+        data: {a:'UserInfo'},
+        dataType: 'json',
+        success: function (obj){
+            if(obj.time){
+                var b_time=new Date(obj.time*1000);
+                //var D_time= b_time.toLocaleDateString().substring(7,9);
+                M_time=b_time.getMonth()+1;
+                Y_time=b_time.getFullYear();
+                D_time=b_time.getDate();
+                H_time=b_time.getHours();
+                arr_lv3=arr3;
+                arr_lv0=arr_no;
+                tokenstr = obj.userinfo.token;
+                nums = obj.chance;
+                if(Y_time==2016&&M_time==7&&D_time==28){
+                    turn.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_tab1.png"+')';
+                    arr_lv1=arr11;
+                    arr_lv2=arr12;
+                }else if(Y_time==2016&&M_time==7&&D_time==29){
+                    turn.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_tab2.png"+')';
+                    arr_lv1=arr21;
+                    arr_lv2=arr22;
+                }else if(Y_time==2016&&M_time==7&&D_time==30){
+                    turn.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_tab3.png"+')';
+                    arr_lv1=arr31;
+                    arr_lv2=arr32;
+                } else if(Y_time==2016&&M_time==7&&D_time==31){
+                    turn.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_579/6f8f54376f/lg_tab4.png"+')';
+                    arr_lv1=arr41;
+                    arr_lv2=arr42;
+                } else{
+                    return false;
+                }
+            }
+        },
+        error: function () {
+            alert('ZOL');
+        }
+    });
+
+    /*登陆*/
+    function init(){
+        var userid = document.cookie && document.cookie.match(/zol_userid=([^;$]+)/);
+        var backurl = encodeURIComponent(location.href), signinUrl = 'http://service.zol.com.cn/user/mlogin.php?backurl=' + backurl;
+        if (userid && userid[1]) {
+            window.userid = userid[1];
+            try { Object.defineProperty(window, 'userid', { value: userid[1], writable: false }); } catch (error) { }
+            remind_l.innerHTML='用户&nbsp;<span class="user">'+userid[1]+'&nbsp;</span>';
+            remind_r.innerHTML='您今日抽奖机会:'+nums+'次';
+            userid_test=1;
+        }else {
+            remind_l.innerHTML='请&nbsp;<a href='+'"'+signinUrl+'"'+' class="user" target="_self">登录<\/a>&nbsp;抽奖';
+            remind_r.innerHTML='您今日抽奖机会:'+nums+'次';
+            userid_test=0;
+        }
+    }
+    init();
+
+    /*旋转点击条件*/
+    var sign=true;
+    start.addEventListener('tap', function () {
+        /*alert('活动已结束~');
+         return false;*/
+        /*if(!(userid && userid[1])){
+         alert('请登录');
+         }*/
+        init();
+        if(userid_test==0){
+            window.location.href='http://service.zol.com.cn/user/mlogin.php?backurl='+'http://appnews.zol.com.cn/topic/5955799.html';
+            return false;
+        }
+        init();
+        if(Y_time==2016&&M_time==7&&D_time<=27){
+            alert('活动时间未开始,敬请期待');
+            return false;
+        }
+        if(Y_time>=2016&&M_time>=8){
+            alert('活动时间已结束');
+            return false;
+        }
+        if(Y_time==2016&&M_time==7&&(28<=D_time<=31)&&(H_time<=9)){
+            alert('今日活动时间还未开始,敬请期待');
+            return false;
+        }
+        if(Y_time==2016&&M_time==7&&(28<=D_time<=31)&&(H_time>=17)){
+            alert('今日活动时间已结束,敬请期待');
+            return false;
+        }
+
+        if(nums==0){
+            info_page.style.display='block';
+            tip_msg.innerHTML='您今天抽奖次数已用完';
+            p_remind.style.display='none';
+            tips.style.display='block';
+            return false;
+        }
+        if(sign == true){
+            sign=false;
+            LuckyDraw();
+        }
+    });
+
+    //getData
+    function LuckyDraw() {
+        init();
+        var win1 = arr_lv1;
+        var win2 = arr_lv2;
+        var win3 = arr_lv3;
+        var win0 = arr_no;
+        win00 = win0[Math.floor(Math.random() * win0.length)];
+        win11 = win1[Math.floor(Math.random() * win1.length)];
+        win22 = win2[Math.floor(Math.random() * win2.length)];
+        win33 = win3[Math.floor(Math.random() * win3.length)];
+        $.ajax({
+            type: 'get',
+            url: lottery_json,
+            data: {a: 'Roll'},
+            dataType: 'json',
+            success: function (obj) {
+                nums = obj.chance||0;
+                obj.awards = obj.awards - 1;
+                switch (obj.info) {
+                    case "error":
+                        rotateFunc(0, win00, 1, null, null, nums);
+                        break;
+                    case "ok":
+                        if (obj.lv == 0) {
+                            rotateFunc(0, win00, 1, null, null, nums)
+                        } else if (obj.lv == 1) {
+                            rotateFunc(obj.lv, win11, 2, null, obj.lv, nums);
+                        } else if (obj.lv == 2) {
+                            rotateFunc(obj.lv, win22, 2, null, obj.lv, nums);
+                        } else if (obj.lv == 3) {
+                            rotateFunc(obj.lv, win33, 2, null, obj.lv, nums);
+                        }
+                        break;
+                }
+                setTimeout(function () {
+                    init();
+                }, 3500)
+            }
+        });
+    }
+
+    var cur=true;
+    var rotateFunc = function(awards,angle,x,cont,n,number){
+        if(cur){
+            cur=false;
+            turn.className='';
+            turn.classList.add(angle);
+            var angle_after=angle+'-ok ok';
+            setTimeout(function () {
+                turn.classList.remove(angle);
+                turn.className=angle_after;
+                if(awards == 0){
+                    info_page.style.display='block';
+                    tip_msg.innerHTML='很遗憾您木有中奖';
+                    p_remind.innerHTML='您今天还有有'+nums+'次抽奖机会';
+                    p_remind.style.display='block';
+                    address_info.style.display='none';
+                    tip_btn.style.display='none';
+                    tips.style.display='block';
+                }else if(awards==1){
+                    info_page.style.display='block';
+                    tip_msg.innerHTML='恭喜您，获得一等奖';
+                    p_remind.innerHTML='请您提交手机号，等待我们联系您';
+                    p_remind.style.display='block';
+                    tips.style.display='block';
+                    address_info.style.display='block';
+                    tip_btn.style.display='block';
+                }else if(awards==2){
+                    info_page.style.display='block';
+                    tip_msg.innerHTML='恭喜您，获得二等奖';
+                    p_remind.innerHTML='请您提交手机号，等待我们联系您';
+                    p_remind.style.display='block';
+                    tips.style.display='block';
+                    address_info.style.display='block';
+                    tip_btn.style.display='block';
+                }else if(awards==3){
+                    info_page.style.display='block';
+                    tip_msg.innerHTML='恭喜您，获得三等奖';
+                    p_remind.innerHTML='请您提交手机号，等待我们联系您';
+                    p_remind.style.display='block';
+                    tips.style.display='block';
+                    address_info.style.display='block';
+                    tip_btn.style.display='block';
+                }
+                cur=true;
+                sign=true;
+            },3020);
+        }
+    };
+
+
+    /*验证码部分*/
+    String.prototype.trim=function() {
+        return this.replace(/(^\s*)|(\s*$)/g,'');
+    };
+
+    tel.addEventListener('change', checkRegister);
+    tel.addEventListener('input', checkRegister);
+    check_code.addEventListener('change', checkRegister);
+    check_code.addEventListener('input', checkRegister);
+    user_name.addEventListener('input', checkRegister);
+    user_name.addEventListener('change', checkRegister);
+
+    function checkRegister() {
+        error1.innerHTML = error2.innerHTML = '';
+        if (get_code.value === '获取验证码') {
+            if((tel.value.length == 11) && (/^\d{11}$/.test(tel.value))){
+                get_code.disabled = false;
+            }else{
+                get_code.disabled = true;
+            }
+        }
+
+        if(tel.value.length === 11 && check_code.value.length === 6){
+            postInfo.disabled = false;
+        }
+    }
+
+    get_code.addEventListener('click',function(){
+        if (get_code.disabled) return;
+        var timeout = 60, interval;
+
+        if (!tel.value || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(tel.value))) {
+            // 请正确填写您的手机号码。
+            error1.innerHTML = '请正确填写您的手机号码';
+            return;
+        }
+
+        get_code.disabled = true;
+        get_code.value = timeout+'s';
+        interval = setInterval(function () {
+            timeout--;
+            if (timeout > 0) {
+                get_code.value = timeout+'s';
+            } else {
+                clearInterval(interval);
+                get_code.value = '获取验证码';
+                get_code.disabled = false;
+            }
+        }, 1000);
+
+        $.ajax({
+            url: lottery_json,
+            data: {a:'getCode',telNum: tel.value},
+            type: 'get',
+            dataType: 'jsonp',
+            success: function (obj) {
+                if (!obj || !obj.flag) {
+                    // 发送验证码时发生错误，请稍后重试。
+                    alert('发送验证码时发生错误，请稍后重试');
+                }
+                if(obj.flag==1001){
+                    alert('您点击得太频繁了，请稍后再点击');
+                }
+            },
+            error: function () {
+                // 发送验证码时发生错误，请检查您的网络设置，并在稍后重试。
+                alert('发送验证码时发生错误，请检查您的网络设置，并在稍后重试');
+                clearInterval(interval);
+                get_code.value = '发送验证码';
+                get_code.disabled = false;
+            }
+        });
+    });
+    //提交预约信息
+    var ZCode, ZCodeSending;
+    postInfo.addEventListener('click',function(){
+        /*if (!user_name.value) {
+         // 请正确填写您的姓名
+         error2.innerHTML = '请正确填写您得姓名';
+         return;
+         }*/
+        if (!tel.value || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(tel.value))) {
+            // 请正确填写您的手机号码
+            error1.innerHTML = '请正确填写您的手机号码';
+            return;
+        }
+        if (!check_code.value || !(/^\d{6}$/.test(check_code.value))) {
+            // 验证码错误。
+            error2.innerHTML = '验证码错误';
+            return;
+        }
+        this.disabled = true;
+
+        $.ajax({
+            url: lottery_json,
+            data: {a:"RecordPersonInfo",token:tokenstr,signName:'wap',signTele:tel.value,code:check_code.value},
+            type: 'get',
+            dataType: 'jsonp',
+
+            success: function (obj) {
+                console.log('token-info');
+                console.log(obj);
+                if(obj&&obj.info=='ok'){
+                    console.log('o1');
+                    tip_msg.innerHTML='获奖信息提交成功';
+                    p_remind.innerHTML='请等待活动结束后我们联系您';
+                    console.log('o3');
+                    address_info.style.display='none';
+                    console.log('o2');
+                    tip_btn.style.display='none';
+                }else{
+                    // 验证码错误。
+                    error2.innerHTML = '验证码错误';
+                }
+            }
+        });
+    });
+
+    /*微信分享*/
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_579/8b23b2af56/share.jpg',
+        title: 'ChinaJoy大转盘 游戏装备等你拿'
+    };
+
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

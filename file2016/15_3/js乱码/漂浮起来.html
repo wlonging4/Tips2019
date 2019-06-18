@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>漂浮模块</title>
+    <style type="text/css">
+        html,body{
+            background: #f3f3f3;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            float: left;
+            background: white;
+            height: 200px;
+            width: 100px;
+            margin-left: 10px;
+            margin-top: 10px;
+            line-height: 100px;
+            text-align: center;
+        }
+        .bg{
+            box-shadow: 2px 2px 5px 5px #f1e7f5;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+    <li>今天天气真不错</li>
+</ul>
+<script type="text/javascript">
+    var oLis=document.getElementsByTagName("li");
+    for(var i=0;i<oLis.length;i++) {
+        oLis[i].onmouseover= function () {
+            this.className="bg";
+        };
+        oLis[i].onmouseout= function () {
+            this.className="";
+        }
+    }
+</script>
+</body>
+</html>

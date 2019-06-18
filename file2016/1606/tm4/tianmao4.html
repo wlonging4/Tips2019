@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>天猫第四期</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#cc0;font:12px/20px 'simsun',arial; background:#0cbbfc;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#727284}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  width: 1000px;  height: 557px;  }
+        .head-c-link{  position: absolute;  width: 165px;  height: 60px;  left: 261px;  bottom: 59px;  }
+        .head-c-link .bai20{  display: block;  line-height: 58px;  text-align: center;  font-size: 34px;  font-family: 'microsoft yahei';  }
+        .head-c-link .bai20:hover{  color: #fff;  }
+        .odd-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_odd_l.jpg") no-repeat 100% 0;  }
+        .odd-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_odd_r.jpg") no-repeat 0 0;  }
+        .even-l{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_even_l.jpg") no-repeat 100% 0;  }
+        .even-r{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_even_r.jpg") no-repeat 0 0;  }
+        .zol_foot{  height: 100px;  padding-top: 40px;  }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+        .box{  height: 950px;  width: 1000px;  overflow: hidden;  }
+        .box-c{  height: 930px;  width: 1000px;  margin-top: 20px;  }
+        .box-t{  position: relative;width: 1000px;height: 85px;  }
+        .box-t-link{  position: absolute;  width: 120px;  height: 25px;  top: 45px;  right: 20px;  }
+        .box-t-link .bai14{  font-weight: bold;  }
+        .box-t-link .bai14:hover{ color: #fff;  }
+        .box-c-con{  width: 1000px;  height: 830px;  overflow: hidden;  }
+        .box-c-con .slh{  display: none;  }
+        .box-c-con .hei12 span .slh{  display: none!improtant;  }
+        .box-c-con .hong12{  width: 197px;  height: 34px;  position: absolute;  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_btn.png") no-repeat 0 0;  }
+
+        .box-c-mod1{  width: 980px;  height: 400px;  margin: 0 10px 10px 15px;  }
+        .box-c-mod1 table table img{  padding: 20px 10px;  background: #fff;  }
+        .box-c-mod1 .hei14{  display: block;  font-size: 18px; font-family: 'microsoft yahei';  background: #fff;  margin-right: 10px;  line-height: 20px;  padding: 40px 20px 20px 10px;  text-align: left;  font-weight: bold;  }
+        .box-c-mod1 .hei12{  position: relative;  display: block;  background: #fff;  margin-right: 10px;  padding-top: 0;  padding-bottom: 124px;  padding-left: 10px;  line-height: 22px;  }
+        .box-c-mod1 .hei12 span{  display: block;  position: absolute;  right: 35px;  bottom: 84px;  color: #f00;  font-weight: bold;  }
+        .box-c-mod1 .hong12{  bottom: 45px;  }
+        .box-c-mod1 .hei12 span.slh{  display: none;  }
+
+        .box-c-mod2{  width: 980px;  height: 418px;  margin: 0 10px 0;  }
+        .box-c-mod2 table table img{  padding: 12px;  background: #fff;  }
+        .box-c-mod2 .hei20{  display: block; font-size: 18px;  background: #fff;    font-family: 'microsoft yahei';  text-align: left;  padding: 0 15px 15px;  text-align: left;  font-weight: bold;  }
+        .box-c-mod2 .hei12{  position: relative;  display: block;  padding: 0 15px 70px;  background: #fff;  }
+        .box-c-mod2 .hei12 span{  display: block;  position: absolute;  right: 15px;  bottom: 44px;  color: #f00;  font-weight: bold;  }
+        .box-c-mod2 .hong12{  bottom: 6px;  right: 16px;  }
+        .box-c-mod2 .hei12 span.slh{  display: none;  }
+
+        .bc1{  background: #9665FA;  }
+        .bc2{  background: #6CB524;  }
+        .bc3{  background: #0460C6;  }
+        .bc4{  background: #9665FA;  }
+        .bc5{  background: #6CB524;  }
+        .box-c1-t{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_t1.jpg") no-repeat 0 0;  }
+        .box-c2-t{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_t2.jpg") no-repeat 0 0;  }
+        .box-c3-t{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_t3.jpg") no-repeat 0 0;  }
+        .box-c4-t{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_t4.jpg") no-repeat 0 0;  }
+        .box-c5-t{  background: url("http://2.zol-img.com.cn/zt/tm_577/3756686acc/lg_t5.jpg") no-repeat 0 0;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+                <div class="head-c-link">
+                    <{data[1]}>
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--500-->
+<table class="c" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="odd-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="box">
+                <div class="box-c bc1">
+                    <div class="box-c1-t box-t">
+                        <div class="box-t-link">
+                            <{data[2]}>
+                        </div>
+                    </div>
+                    <div class="box-c1-c box-c-con">
+                        <div class="box-c1-mod1 box-c-mod1">
+                            <{data[3]}>
+                        </div>
+                        <div class="box-c1-mod2 box-c-mod2">
+                            <{data[4]}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="odd-r">&nbsp;</td>
+    </tr>
+</table>
+<!--1500-->
+<table class="c" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="even-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="box">
+                <div class="box-c bc2">
+                    <div class="box-c2-t box-t">
+                        <div class="box-t-link">
+                            <{data[5]}>
+                        </div>
+                    </div>
+                    <div class="box-c2-c box-c-con">
+                        <div class="box-c2-mod1 box-c-mod1">
+                            <{data[6]}>
+                        </div>
+                        <div class="box-c2-mod2 box-c-mod2">
+                            <{data[7]}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="even-r">&nbsp;</td>
+    </tr>
+</table>
+<!--2500-->
+<table class="c" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="odd-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="box">
+                <div class="box-c bc3">
+                    <div class="box-c3-t box-t">
+                        <div class="box-t-link">
+                            <{data[8]}>
+                        </div>
+                    </div>
+                    <div class="box-c3-c box-c-con">
+                        <div class="box-c3-mod1 box-c-mod1">
+                            <{data[9]}>
+                        </div>
+                        <div class="box-c3-mod2 box-c-mod2">
+                            <{data[17]}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="odd-r">&nbsp;</td>
+    </tr>
+</table>
+<!--3500-->
+<table class="c" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="even-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="box">
+                <div class="box-c bc4">
+                    <div class="box-c4-t box-t">
+                        <div class="box-t-link">
+                            <{data[11]}>
+                        </div>
+                    </div>
+                    <div class="box-c4-c box-c-con">
+                        <div class="box-c4-mod1 box-c-mod1">
+                            <{data[12]}>
+                        </div>
+                        <div class="box-c4-mod2 box-c-mod2">
+                            <{data[13]}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="even-r">&nbsp;</td>
+    </tr>
+</table>
+<!--4500-->
+<table class="c" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="odd-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="box">
+                <div class="box-c bc5">
+                    <div class="box-c5-t box-t">
+                        <div class="box-t-link">
+                            <{data[14]}>
+                        </div>
+                    </div>
+                    <div class="box-c5-c box-c-con">
+                        <div class="box-c5-mod1 box-c-mod1">
+                            <{data[15]}>
+                        </div>
+                        <div class="box-c5-mod2 box-c-mod2">
+                            <{data[16]}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="odd-r">&nbsp;</td>
+    </tr>
+</table>
+
+<script>
+    $('.box-c-con table .hong12').html('');
+</script>
+</body>
+</html>

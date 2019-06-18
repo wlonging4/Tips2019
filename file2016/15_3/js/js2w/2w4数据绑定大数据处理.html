@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+            font-size: 20px;
+            font-weight: bolder;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+        }
+        ul{
+            width: 200px;
+            background: -webkit-linear-gradient(top left,yellowgreen,forestgreen,orangered);
+            border-radius: 10px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -200px;
+            margin-left: -100px;
+        }
+        ul li{
+            list-style: none;
+            height:40px;
+            width: 180px;
+            border-bottom: 1px dashed #5b7bdb;
+            border-radius: 10px;
+            margin:5px 8px;
+            text-align: center;
+        }
+        ul li:last-child{
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li>3</li>
+    <li>5</li>
+    <li>1</li>
+</ul>
+<script type="text/javascript">
+    var oUl=document.getElementById("ul1");
+    var oLis=oUl.getElementsByTagName("li");
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].onmouseover= function () {
+            this.style.backgroundColor="red";
+        };
+        oLis[i].onmouseout= function () {
+            this.style.backgroundColor=null;
+        };
+    }
+    var ary=[1,2,3,4,5,6,7,8,9,10,11,12,13];
+    //需求：循环数组，创建和数组长度一般多的li；让数组中的每一项内容为li中的内容;->把指定数据绑定到页面上;
+    //1.在JS当中把需要创建的标签都以字符串拼接的方式拼接好，通过innerHTML添加到页面中；
+   /* var str="";
+    for(var i=0;i<ary.length;i++){
+        str+="<li>"+ary[i]+"</li>";
+    }
+    oUl.innerHTML+=str;*/
+    //首先把之前的数据获取到，然后和我们的新字符串进行字符串拼接；浏览器重新渲染新标签;
+    //【innerHTMl弊端】->每一次添加新内容,都是把原有的先拿出来(拿出来的时候要就消失了原来的绑定事件),然后再放进去,每次操作浏览器从新渲染了我们的html标签,之前元素绑定的事件间和相关操作就没有了；会对原有的元素产生影响;
+    //优势->把所有的元素都放在一个html元素中一次添加只发生一次回流;
+
+
+    //2.动态创建元素标签,然后追加到容器中
+    //【DOM映射】不需要重新获取，类数组的数据变成了最新的内容；
+    /*for(var i=0;i<ary.length;i++){
+        var oLi=document.createElement("li");
+        oLi.innerHTML=ary[i];
+        oUl.appendChild(oLi);
+    }*/
+    //改进->只是向容器末尾增加新的元素，对之前的元素没有影响;
+    //弊端->DOM的回流发生了13次;每当创建一个新的li都向页面增加一次引发一次回流;
+    //关于DOM的【回流】和【重绘】
+    //回流：reflows->当页面DOM文档结构发生改变（增加删除移动等）即使只有一个元素发生变化也要将全部的页面重新浏览一遍再渲染;浏览器都要重新的计算一遍DOM结构;->回流十分消耗性能,减少DOM的回流是JS中优化的一个非常重要的地方;
+    //重绘：repaint->当前html结构没发生改变,某一个元素的样式（backgroundcolor,outline,visibility,）发生改变,浏览器需要重新渲染这个元素;
+    //以上两种方式在数据量比较大的时候，自身的弊端都称为致命的因素;JS在处理大数据绑定的时候通常使用文档碎片的方式;
+    //【文档碎片】
+    //把要添加的元素都放在文档碎片中(相当于一个临时存储容器)，最后把整个容器一起追加到我们的文档中;
+
+
+    //3.DOM文档碎片
+    var frg=document.createDocumentFragment();
+    for(var i=0;i<ary.length;i++) {
+        var oLi = document.createElement("li");
+        oLi.innerHTML = ary[i];
+        frg.appendChild(oLi);
+    }
+    oUl.appendChild(frg);
+    //集合两种方式优势:一次添加，回流一次
+    //真是项目中,处理大数据是多职位协作开发,我们的数据绑定，大部分是数据异步加载:先加载一部分打开页面就可以看到的;现在我们经常会使用第三方插件进行数据绑定;我们把第三方插件称为模板引擎技术->常用的有kTemplate,jade,angular.js中的双向数据绑定等技术；
+    //->类似git原理,编写代码,提交到缓存区add,最后统一的把缓存区放在历史区commit；
+</script>
+</body>
+</html>

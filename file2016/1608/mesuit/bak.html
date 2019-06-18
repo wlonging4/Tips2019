@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>机甲专题</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#444;font:12px/20px 'simsun',arial; background: #fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#FF6C2B;font-size: 12px}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 130px; padding-top: 40px ;background: #eee; }
+        .zol_foot,.zol_foot a{  color: #333;  }
+
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  width: 1000px;  height: 600px;   }
+        .head-link{  position: absolute;  width: 106px;  height: 43px;  bottom: 71px;  left: 416px;  text-align: left;  font: 22px/43px 'microsoft yahei',Arial;  }
+
+        .v-l{  background: url("images/lg_video_l.jpg") no-repeat 100% 0;  }
+        .v-r{  background: url("images/lg_video_r.jpg") no-repeat 0 0;  }
+        .v-c{  position: relative;  width: 1000px;  height: 680px;  background: url("images/lg_video_c.jpg") no-repeat 0 0;  }
+        .v-mod{  width: 850px;  height: 520px;  padding: 65px 75px;  background: #eee;  }
+        .v-box{  width: 850px;height: 520px;background: #000;  }
+        .v-flow{  position: absolute;  top: 0;  right: -170px;  width: 157px;  height: 380px;  overflow: hidden;  }
+        .v-code{  width: 157px;  height: 182px;  background: #000;  margin-bottom: 8px;  }
+
+        .new-l{  background: url("images/lg_new_l.jpg") no-repeat 100% 0;  }
+        .new-r{  background: url("images/lg_new_r.jpg") no-repeat 0 0;  }
+        .new-c{  position: relative;  overflow: hidden;  height: 211px;  width: 1000px;  background: url("images/lg_new_c.jpg") no-repeat 0 0;  }
+        .new-t{  width: 100px;  height: 33px; }
+        .new-ul{  margin-top: 15px;  height: 118px;  width: 1000px;  overflow: hidden;  }
+        .new-ul li{  float: left;  width: 315px;height: 118px;margin-right: 27px;  }
+        .new-ul li.new-li-last{  margin-right: 0;  }
+
+        .de-l{  background: url("images/lg_de_l.jpg") no-repeat 100% 0;  }
+        .de-r{  background: url("images/lg_de_r.jpg") no-repeat 0 0;  }
+        .de-c{  position: relative;  overflow: hidden;  width: 1000px;  height: 953px;  background: url("images/lg_de_c.jpg") no-repeat 0 0;  }
+        .de-c-l{  float: left;  width: 490px;  height: 923px;  margin-right: 10px;  }
+        .de-c-l-t{  width: 490px;  height: 33px;  }
+        .de-c-l-c{  width: 490px;  height: 890px;  }
+        .de-c-r{  float: left;  width: 500px;  height: 923px;  overflow: hidden;  }
+        .de-c-r-t{  width: 500px;  height: 33px;  }
+        .de-c-r-c1{  width: 500px;  padding-top: 20px;  height: 307px;  }
+        .de-mod{  float: left;  width: 335px;  height: 263px;  overflow: hidden;  }
+        .de-box{  display: none;  width: 335px;  height: 263px;  }
+        .de-box.blk{  display: block;  }
+        .de-ul{  width: 148px;  height: 270px;  overflow: hidden;  }
+        .de-ul li{  -webkit-border-radius: 3px;  -moz-border-radius: 3px;  border-radius: 3px;  background: #FF6C2B;  width: 148px;  height: 38px;  color: #fff;  font: 20px/38px 'microsoft yahei',Arail;  text-align: center;  margin-bottom: 7px;  cursor: pointer;  }
+        .de-ul li.act{  text-align: left;  text-indent: 20px;  }
+        .de-c-r-c2{  width: 500px;  padding-top: 20px;  height: 232px;  }
+        .de-c-r-c3{  width: 498px;  height: 243px;  border: 1px solid #ccc;  }
+
+        .pic-l{  background: url("images/lg_pic_l.jpg") no-repeat 100% 0;  }
+        .pic-r{  background: url("images/lg_pic_r.jpg") no-repeat 0 0;  }
+        .pic-c{  overflow: hidden;  position: relative;  width: 1000px;  height: 470px;  background: url("images/lg_pic_c.jpg") no-repeat 0 0;  }
+        .pic-t{  width: 1000px;  height: 33px;  }
+        .pic-mod{  width: 920px;  height: 360px;  margin: 35px auto 0;  }
+
+        .abt-l{  background: url("images/lg_abt_l.jpg") no-repeat 100% 0;  }
+        .abt-r{  background: url("images/lg_abt_r.jpg") no-repeat 0 0;  }
+        .abt-c{  overflow: hidden;  position: relative;  width: 1000px;  height: 470px;  background: url("images/lg_abt_c.jpg") no-repeat 0 0;  }
+        .abt-m1{  float: left;  width: 490px;  height: 140px;  overflow: hidden;  margin-right: 10px;  }
+        .abt-m1-t{  width: 490px;  height: 33px;  margin-bottom: 20px;  }
+        .abt-m1-c{  width: 490px;  height: 87px;  }
+        .abt-m2{  float: left;  width: 500px;  height: 140px;  overflow: hidden;  }
+        .abt-m2-t{  width: 500px;  height: 33px;  margin-bottom: 20px;  }
+        .abt-m2-c{  width: 500px;  height: 87px;  }
+        .abt-m{  float: left;  width: 235px;  height: 87px;  margin-left: 15px;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                模块内容
+                <div class="head-link">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--视频-->
+<table class="video" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="v-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="v-c">
+                <div class="v-mod">
+                    <div class="v-box">模块内容</div>
+                </div>
+                <div class="v-flow">
+                    <div class="v-code">模块内容</div>
+                    <div class="v-code">模块内容</div>
+                </div>
+            </div>
+        </td>
+        <td class="v-r">&nbsp;</td>
+    </tr>
+</table>
+<!--新品-->
+<table class="new" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="new-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="new-c">
+                <div class="new-t">模块内容</div>
+                <ul class="new-ul">
+                    <li>模块内容</li>
+                    <li>模块内容</li>
+                    <li class="new-li-last">模块内容</li>
+                </ul>
+            </div>
+        </td>
+        <td class="new-r">&nbsp;</td>
+    </tr>
+</table>
+<!--细节-->
+<table class="detail" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="de-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="de-c clearfix">
+                <div class="de-c-l">
+                    <div class="de-c-l-t">模块内容</div>
+                    <div class="de-c-l-c">模块内容</div>
+                </div>
+                <div class="de-c-r">
+                    <div class="de-c-r-t">模块内容</div>
+                    <div class="de-c-r-c1">
+                        <div class="de-mod">
+                            <div class="de-box blk">模块内容</div>
+                            <div class="de-box">模块内容</div>
+                            <div class="de-box">模块内容</div>
+                            <div class="de-box">模块内容</div>
+                            <div class="de-box">模块内容</div>
+                            <div class="de-box">模块内容</div>
+                        </div>
+                        <ul class="de-ul">
+                            <li class="act">模块内容</li>
+                            <li>模块内容</li>
+                            <li>模块内容</li>
+                            <li>模块内容</li>
+                            <li>模块内容</li>
+                            <li>模块内容</li>
+                        </ul>
+
+                    </div>
+                    <div class="de-c-r-t">模块内容</div>
+                    <div class="de-c-r-c2">模块内容</div>
+                    <div class="de-c-r-t">模块内容</div>
+                    <div class="de-c-r-c3">模块内容</div>
+                </div>
+            </div>
+        </td>
+        <td class="de-r">&nbsp;</td>
+    </tr>
+</table>
+<!--图赏-->
+<table class="picture"  width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pic-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="pic-c">
+                <div class="pic-t">
+                    模块内容
+                </div>
+                <div class="pic-mod">
+
+                </div>
+            </div>
+        </td>
+        <td class="pic-r">&nbsp;</td>
+    </tr>
+</table>
+<!--关于-->
+<table class="about"  width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="abt-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="abt-c clearfix">
+                <div class="abt-m1">
+                    <div class="abt-m1-t">模块内容</div>
+                    <div class="abt-m1-c">模块内容</div>
+                </div>
+                <div class="abt-m2">
+                    <div class="abt-m2-t">模块内容</div>
+                    <div class="abt-m2-c clearfix">
+                        <div class="abt-m21 abt-m">模块内容</div>
+                        <div class="abt-m22 abt-m">模块内容</div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="abt-r">&nbsp;</td>
+    </tr>
+</table>
+
+
+<script src="../jquery-1.9.1.js"></script>
+<script charset="gbk">
+    /*切换*/
+    /*选项卡*/
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('mouseenter', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.de-ul li','act','.de-box','blk');
+</script>
+</body>
+</html>

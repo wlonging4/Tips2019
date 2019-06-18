@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第二周第一天视频及教材</title>
+</head>
+<body>
+<script type="text/javascript">
+/*【原型深入】
+    function F(){
+        var num=100;//不影响实例
+        this.x=100;
+    }
+    F.prototype.getX()=function{
+        console.log(this.x);
+    };
+    var f=new F;
+    f.getX();//->100
+    f.__proto__.getX();//->undefined*/
+    //在JS中Obeject是所有对象数据类型的基类;在JS中Function是所有函数数据类型的基类->每一个函数(匿名/实名/自定义类/内置类)都是他的实例;函数数据类型都含有一个prototype属性;查看原型console.dir(Function.prototype);
+    /*在JS中函数具有两面性:
+    ①它是一个函数:他可以执行并且可以形成私有作用域
+    ②它也是一个对象:可以像普通对象拥有属性名和属性值->例如prototype、__proto__等;他的__proto__也指向所属类的原型F->Function->Object;
+    Function的prototype是一个函数数据类型（这个跟别的不一样，但是操作起来和其他的没什么区别）->
+    console.log(typeof Function.prototype);//->function
+    console.log(typeof Object.prototype);//->object
+    cosole.dir(Function);//->查看其prototype和__proto__;
+    在Function的prototype上内置了几个常用方法:call等;每一个函数数据类型都是Function的一个实例;所以每一个函数都可以使用call和apply的方法;*/
+    // F可以使用Function里的方法,如call,apply等方法。
+/*Object.__proto__.__proto__===Object.prototype;
+Function.prototype.__proto__===Object.prototype;
+Function.__proto__===Function.prototype;*/
+//【call/aplly】
+    /*作用:直接改变被执行函数的作用域指向传参指定的新对象,即更改被执行函数的内部指针this的指向
+    使用:①让当前函数执行
+        ②fn.call([this],parameter1,parameter2...);第一个参数指想让fn的this是谁就写谁;第二个及以后的参数都是相当于给fn这个函数执行的时候传递参数
+    function fn(num1,num2,num3){
+        console.log(num1+num2+num3);
+        console.log(this);
+    }
+    fn(1,2,3);//->6,window
+    fn.call(1,2,3);//->NaN,1
+//三个参数,第一个是1,被当成了指向fn执行的指针
+        ③特殊情况->在非严格模式下.fn.call(_/null/undefined);没传值或null/undefined默认this->window;严格模式("use strict")下,传null/undefined就是this指向null/undefined默认this;不传递值就是undefined;
+        ④区别:aplly的第二个参数一定得是数组,把需要传递的参数统一放在一个数组中传递进去;
+fn.call(null,1,2,3);等于->fn.aplly(null,[1,2,3]);*/
+   /* 如何区分JS中的【this指向】
+    ①函数执行,看函数名前面是否有".",有的话,"."前面是谁,this就是谁;没有"."的话就是window;
+    ②自执行函数中的this永远是window;
+    ③给元素的某一个事件绑定方法的时候，只有事件被触发了才会执行相应的函数，此时函数中的this是当前的元素->oDiv,aLis等;
+    ④在构造函数模式创建一个类的时候,方法执行里面的this其实就是我们当前类的一个实例
+    ⑤call和apply来改变当前函数的this关键字指向[优先级最高],在非严格模式下第一个参数写null,undefined,和不写都表示是window,写别的什么this就是指向什么*/
+    /*function fn(){
+        console.log(this);
+    }
+    var obj={fn:fn};
+    fn();//->window
+    obj.fn();//->obj
+    fn.call(obj);//->obj
+    obj.fn.call();//->window*/
+
+
+</script>
+</body>
+</html>

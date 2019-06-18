@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>单图片加载</title>
+</head>
+<body style="height:5000px;">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src="img/default.jpg" width="200" height="200">
+</body>
+</html>
+<script>
+    var str="http://www.nadoujp.com/uploads/131216/4-131216102132158.jpg";
+    /*var oImg=new Image;
+     oImg.src=str+"?"+Math.random();//str+"?"+Math.random()照片重新定位在网上重新下载而不是读取缓存;
+     oImg.onload=function(){
+     alert("苍老师来了！！");
+     }
+     oImg.onerror=function(){
+     alert("你谁啊，我来不了！！");
+     }*/
+    //offset函数
+    function offset(ele){
+        var l=ele.offsetLeft;
+        var t=ele.offsetTop;
+        var p=ele.offsetParent;
+        while(p){
+            if(window.navigator.userAgent.indexOf("MSIE 8")>-1){
+                l+= p.offsetLeft;
+                t+= p.offsetTop;
+            }else{
+                l+= p.offsetLeft+ p.clientLeft;
+                t+= p.offsetTop+ p.clientTop;
+            }
+            p= p.offsetParent;
+        }
+        return {l:l,t:t}
+    }
+    //getWin函数
+    function getWin(attr) {
+        return document.documentElement[attr] || document.body[attr];
+    }
+    //实现
+    window.onload= function () {
+        var oImg=document.getElementsByTagName("img").item(0);
+        var imgBot=offset(oImg).t+oImg.clientHeight;
+        window.onscroll= function () {
+            var winBot=getWin("scrollTop")+getWin("clientHeight");
+            if(imgBot<winBot){
+                var newImg=new Image;
+                newImg.src=str+"?"+Math.random();
+                newImg.onload= function () {
+                    oImg.src=this.src;
+                }
+                oImg.src="img/o_loading.jpg";
+            }
+        }
+    }
+</script>

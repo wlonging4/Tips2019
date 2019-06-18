@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>免费课第二周第二天</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+     五，【数组array】数据类型;
+     ①push->向ary末尾添加新内容
+     并且返回操作后的数组长度;
+     ary.push(x);
+     ②unshift->向ary前添加新内容
+     并且返回操作后的数组长度;
+     ary.unshift(x);
+     ③splice->向ary中指定位置添加新内容
+     ary.splice(n,0,x);
+     从索引n开始[包含索引n对应的值]删除0个元素，并把新元素插到[索引n]前面;(n可以是一个负数,先转为正再往后删)
+     ary.splice(n,m);
+     从索引n开始[包含索引n对应的值]删除m个元素，并且返回索引n-索引n+m-1（即被删除数组）;会改变原数组;
+     ary.splice(ary.length,0,x)->ary.push(x)
+     ④pop()->删除数组最后一个并将其返回
+     pop后面的()不能传参数;如果数组为空,还pop会返回undefinded
+     ⑤shift->删除数组的第一个并将其返回
+     ⑥slice(m,n)->从索引n开始[包括n]找到索引m处[不包含m]
+     然后把找到的内容作为新数组返回，原数组不变;
+     如果是-1表示最后一个元素;
+     slice(n)->从索引n[包含n]考试一直到数组末尾;
+     slice(0)->等于slice()->将原有数组复制一份返回
+     ⑦concat()==slice()->也可以实现数组的复制
+     不会改变原数组,返回一个被连接后的新数组
+     concat原意是数组的拼接
+     res=ary.concat(ary2);
+     res->ary+ary;被拼接的放在原数组的后面
+     ⑧toString->转化为字符串
+     布尔值、数值、对象、字符串(自身也有,在object基类上继承下来的)都有这个方法,但是null和undefined没有这个方法
+     toString传参数(默认是十进制)
+     console.log(num.toString(2));//2进制;可以输8,16也可以输5这些可接受的数字;如12(5)->22;
+     var obj={name:"abc",age:12}
+     console.log(obj.toString());//->"[object object]"
+     此时转换对象为字符串调用的是从Obeject继承下来的原始的toString方法;
+     toString方法判断数据类型
+     Object.prototype.toString.call(xx);//->"[object type]";
+     ⑨join->拼接数组成string,加分隔符默认不写为“，”
+     ary.join("");->string
+     ⑩reverse->数组倒序排列
+     会改变原数组
+     ⑪sort->数组排序
+     会改变原数组
+     直接写sort只能实现10以内的数字排序//->ary.sort();
+     处理10以上的需要->
+     ary.sort(function(a,b){return a-b});->由小到大
+     a代表每一次循环当前的这个项;b是后面的这一项;
+     return a-b;表示当前项减后一项->如果大于0就交换下两者位置->冒泡排序机制
+     ⑫indexOf,forEach,map等常见但是不兼容;
+     ⑬toLocalString()//->区别于toString的是用地区特定分隔符将生成字符串连接起来
+       valueOf()//->返回Array对象的原数值,通常后台隐式调用;
+       indexOf()/lastIndexOf()->传两个参数->第一个是目标值必填;第二个是开始开始查找位置,可以为负值;并且查找的时候前一个是从前往后,后一个是从后往前;
+     ⑭其他迭代方法及缩小方法->第一周周末课预习教材
+    六、【String】:字符串类;
+    对象：万物皆对象。
+    类：细分Object,Array,RegExp,Date,String,Node...这些都是JS中的内置类。
+    实例：类中的一个具体的东西;
+    Array这个数组类提供很多方法，每一个数组都是他里面的一个实例，所有的数组都可以用这些方法;
+    字符串中也存在索引，也是从0开始的;
+    字符串所有方法使用了,改变的是返回值,但是原先的字符串内容顺序不会发生改变->因为字符串是基本数据类型;
+    ①获取指定"索引位置"的字符：
+    console.log(str.charAt(8));==>console.log(str[8]);
+    获取string中所有的字符：
+    for(var i=0;i<str.length;i++){
+    console.log(str.charAt(i));
+    }
+    包含空格，回车，特殊符号;一个汉字也是一个索引，一个字符;
+    返回值是索引位置字符对应的ASCII编码:
+    console.log(str.charCodeAt(8));
+    ②字符串的截取:3种方式
+    由于字符串是基本数据类型。所以以下的所有方法都不会对原有的字符串产生影响。
+
+    (1)从索引n开始截取m"个"字符;包括n在内，返回截取好的;
+    substr(n,m);
+
+    (2)从索引n（包含n）->索引m(不包含m)开始截取,把截取的返回;
+    substring(n,m);
+
+    (3)从索引n（包含n）->索引m(不包含m)开始截取,把截取的返回;
+    slice(n,m);
+    slice支持已负数作为索引,并且两个都是负数的话,str.length+负数索引=正向索引;倒数第二个索引=-1;若想截取到最后一个用slice(n);表示从n（包含n）一直截取到末尾;
+    这三个方法都写一个，都表示截取到末尾;
+
+    ③查找字符的索引:两个方法
+    字符串的这个方法是兼容的，而数组中这个方法是不兼容的;
+    indexOf(字符):获取指定字符在字符串中第一次出现的位置;
+    lastIndexOf(字符):获取指定字符在字符串最后一次出现的位置;
+    字符不仅仅是一个字母，也可以是一个字符串;输出的是该字符串第一个字符index值;
+    如果没有该字符，则返回“-1”;
+    用处：经常用此来判断字符串中是否包含某一个字符;
+    if(str.indexOf("a")>-1){
+    包含a这个字符;
+    }
+    ④大小写转换
+    toLower/UpperCase();
+    ⑤替换
+    replace(要替换的原字符,要替换的新字符);
+    在不使用正则的情况下,每一次调用方法只能替换一次,即一个字符串出现多个"o"字符，想全部替换掉，就得重新写很多遍;
+    所以一般情况下都是用正则处理的;
+    console.log(repalce(/o/g,"A"));
+    ⑥字符串按指定分隔符拆分成数组
+    str.split("+")->ary;若以空字符""拆分，则每一项都拆分;若以空格" "拆分一个没有空格的字符串,那么会不拆然后再整体输出;若以“不存在的字符”split出来的结果是整体输出;
+    ary.join("+")->str;
+    ⑦match()
+    需要和正则一起配合使用，捕获正则匹配的内容
+    ⑧search()
+    查找字符位置,类似于indexOf,但是这个参数可以是正则表达式
+
+
+    【案例:】
+    var time="2015-10-19 12:12:2";
+    转换为2015年10月19日12时12分2秒
+    1，function timechg(timeStr){
+    var ary=timeStr.split(" ");
+    var str1=ary[0];
+    var str2=ary[1];
+    var ary1=str1.split("-");
+    var ary2=str2.split(":");
+    //补0函数
+    function zero(value){
+    return value<10?"0"+value:value;
+    }字符串拼接。
+    2，用replace一个个替换。
+    3，正则
+
+
+    【扩展:】获取4位随机验证码
+    html部分
+    <div id="code">mlgb<div>
+    css部分
+    body,div{
+    margin:0;
+    padding:0;
+    font-family:..;
+    font-size:18px;
+    -webkit-user-select:none;//禁止用户选中
+    }
+    #code{
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-50px;
+    margin-left:-25px;
+    width:100px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border:1px solid ..;
+    cursor:pointer;
+    letter-spacing:2px;//间隔2像素;
+    }
+    js部分
+    var oDiv=document.getElementById("code");
+    var codeStr="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    function getCode(){
+    var str="";
+    for(var i=0;i<4;i++){
+    var ran=(Math.round(Math.random()*61));
+    str+=codeStr.charAt(ran);
+    }
+    oDiv.innerHTML=str;
+    }
+    oDiv.onclick=function(){
+    getCode();
+    }
+
+    【Data类】：
+    获取当前电脑时间，跟PC同步，因为PC时间可以更改，在严格操作下不要用本地时间作为重要参考，安全性高的是采用Ajax获取服务器时间;例如：限时抢购，考勤打卡等;
+    var time=new Date();
+    console.log(time);
+    返回时间格式数据（对象数据类型）;
+    转化汉化时间：
+    html部分
+    <div id="div1">北京时间：</div>
+    css部分
+    body.div{
+    margin:0;
+    padding:0;
+    font-family:;
+    font-size:20px;
+    }
+    #div{
+    margin:50px auto;
+    padding:5px;
+    width=800px;
+    height:50px;
+    text-align:center;
+    line-height:50px;
+    border:1px solid green;
+    background:;
+    }
+    js部分
+    var oDiv=document.getElementById("div1");
+    var timeStr=formatTime();
+    oDiv.innerHTML+=timeStr;
+
+    //formatTime函数定义;
+    function formatTime(){
+    var time=new Date();
+    var year=time.getFullYear();
+    var month=time.getMonth()+1;//0~11返回值;
+    var w=time.getDay();//0~6代表周日~周六
+        var wstr="日一二三四五六"；
+        var week=wstr.charAt(w);
+
+    var hours=time.time.getHours();
+    var minutes=time.getMinutes();
+    var seconds=time.getSeconds();
+    var mseconds=time.getMilliseconds;//毫秒
+    return year+"年"+zero(month)+"月"+zero(day)+"日 星期"+week+zero(hours)+"时"+zero(minutes)+"分"+zero(seconds)+"秒";
+    }
+    //补零函数
+    function zero(value){
+    return value<10?"0"+value:value;
+    }
+
+    【倒计时函数：】
+    html及样式css不变，div内文字改成"距离爆炸：";
+    JS部分:
+    //把时间格式的字符变成我们的标准时间格式->直接把目标时间字符串传进来new Date(目标时间字符串)->就可以获取到标准时间格式的目标时间;<-真特么神奇;
+    //这样传递对字符串格式有要求
+    //这个格式转换年月日之间的中杠"-"在IE6~8下不兼容;需要改成"/";具体该方法支持的时间格式还有很多但是最常用的还是这一个格式:2015/05/24 17:59:59";
+    var oDIv=document.getElementById("div1");
+    var str=baozha();
+    oDiv.innerHTML=str;
+
+    function baozha(){
+    var tarTime=new Date(tar);
+    var tar="2015/05/24 17:59:59";//设定个目标时间;
+    var nowTime=new Date();//当前时间获取
+    //获取毫秒差var x=y.getTime();
+    var tarSpan=tarTime.getTime();
+    var nowSpan=nowTime.getTime();
+    var differTime=tarSpan-nowSpan;
+    //单位:毫秒差;
+    var hour=Math.floor(differTime/(1000*60*60);
+    //向下取整把整小时取出来;
+    var hourMs=hour*1000*60*60;//所有小时占用的ms数;
+    var spanMs=differTime-hourMs;//得到剩余ms数
+    //向下取整把整分钟取出来;
+    var minute=spanMs/(1000*60);
+    var minuteMs=minute*60*1000;
+    var spanMs=spanMs-minuteMs;//得到剩余ms数;
+    //计算秒
+    var second=Math.floor(spanMs/1000);
+    return hour+":"+minute+":"+second;
+    }
+     //加上补零函数;
+     function zero(value){
+     return value<10?"0"+value:value;
+     }
+
+    【定时器：】【弹性缓冲，指数衰减等运动方法;
+    window.setInterval(function[],interval(单位ms));
+    不清除会继续执行;
+    window.setTimeout(function[],interval(单位ms));
+    只运行一次;
+    var count=0;
+    var timer=window.setInterval(function(){
+    count++;
+    console.log(timer);
+    },1000);
+    定时器的返回值是一个数字，代表当前是第几个定时器;->
+    var timer1=window.setInterval(function(){定义部分},1000);
+
+
+
+    */
+</script>
+</body>
+</html>

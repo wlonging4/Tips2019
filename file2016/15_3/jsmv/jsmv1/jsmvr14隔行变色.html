@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>免费课第二周第二天</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+            font-size: 14px;
+        }
+        #ul1{
+            margin:10px auto;
+            width:70%;
+            text-align: center;
+            list-style: none;
+            padding: 15px;
+            border:1px solid green;
+            border-radius: 30px;
+        }
+        #ul1 li{
+            height: 35px;
+            line-height: 35px;
+            text-overflow: ellipsis;/*截取超出部分用省略号代替*/
+            white-space: nowrap;/*强制不换行*/
+            overflow: hidden;
+        }
+        .hover{
+            background-color: #954121;
+        }
+        .c0{
+            background-color: #00A000;
+        }
+        .c1{
+            background-color: #219161;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li>浮夸</li>
+    <li>浮躁</li>
+    <li>浮华</li>
+    <li>浮屠</li>
+    <li>浮生</li>
+</ul>
+</body>
+<script type="text/javascript">
+    /*//预习，笔记，实战项目
+    正式课考试2,3,4,5,8,9考试;
+    补考统一在周日晚上下课的时候,时间错过,本次考试作废.
+
+    自定义属性：把每一个li自己的class值保存在一个自定义属性上，当鼠标离开时，我们重新获取这个自定义属性的值,设置其class等于之前的值即可;
+    */
+    var oUl=document.getElementById("ul1");
+    var aLis=oUl.getElementsByTagName("li");
+
+    for(var i=0;i<aLis.length;i++){
+        aLis[i].className="c"+i%2;
+        aLis[i].index="c"+i%2;
+        aLis[i].onmouseover=function(){
+            this.className="hover";
+        };
+        aLis[i].onmouseout=function(){
+            this.className=this.index;
+        }
+    }
+</script>
+</html>
+
+

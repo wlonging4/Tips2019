@@ -1,0 +1,415 @@
+<!DOCTYPE html><html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>无标题文档</title>
+
+
+    <style>
+        body {margin:0;padding:0;font:12px/22px "SimSun",Arial;background:#000;color:#fff;}
+        a {color:#666;text-decoration:none}
+        a:hover {color:#f60;text-decoration:underline}
+        h1, h2, h3, div, ol, ul, li, dl, dt, dd, p , form, img {padding:0;margin:0;border:0}
+        ul, li {list-style:none}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        .clearfix:after {content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0}
+        .clearfix {*zoom:1}
+        .foot,.foot a{color:#666;}
+        .hong12{color:#D34544;}
+
+        .po-a{ position:absolute}
+        .bor img{ border:1px #F1ADB8 solid;}
+
+        /*page*/
+        .vote-main{width:1000px;height:187px; background:url(http://2.zol-img.com.cn/zt/tm_54c/992e44030d/x141230_bj2.jpg) no-repeat; position:relative}
+        .num0{font:800 14px/25px "SimSun";color: #FFCC99;position: absolute;left: 143px;top: 94px;width: 80px;height: 25px;display: block;text-align: center;}
+
+
+        .num1{font:800 14px/25px "SimSun";color:#FFCC99; position:absolute;left:780px;top:94px;width: 80px;height: 25px; display:block; text-align:center}
+
+        .zhu0{height:25px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9970521470/left_z.png) no-repeat; padding-left:12px; position:absolute;right:500px;top:94px;}
+        .zhu4{height:25px; background:url(http://2.zol-img.com.cn/zt/tm_54c/997f5a84af/right_z.png) no-repeat right top; padding-right:12px; position:absolute;left:500px;top:94px;}
+
+        .pinkbody{height:25px; background:#FA8F24}
+        .yellowbody{height:25px; background:#D96D00}
+
+
+        .main1{width:980px;height:618px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj4.jpg) no-repeat; padding:172px 10px 0}
+        .main1 .template1{width:482px; float:left}
+        .main1 .template2{width:482px; float:right}
+        .main1 img{ padding:1px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/img_bj.jpg) no-repeat; margin-bottom:18px;}
+        .main1 .ln{height:38px; line-height:38px;}
+        .main1 .hei18{font:18px/34px "Microsoft YaHei";color:#160B03; display:block;width:138px;height:34px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/txt_bj.png) no-repeat;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop , src='images/txt_bj.png')}
+        .main1 .cheng18{font:18px/34px "Microsoft YaHei";color:#FFB973; display:block;width:138px;height:34px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/txt_bj.png) no-repeat;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=crop , src='images/txt_bj.png')}
+        .main1 .cheng12{ line-height:21px;color:#FE7926}
+        .main1 .template1 .hong12{color:#8A5A4D}
+        .main1 .template2 .hong12{color:#D6AE44}
+        .main1 .txt{margin-top:30px}
+
+        .vote-box{width:1000px;height:152px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj5.jpg) no-repeat; position:relative;}
+        .vote-box .vote0{ position:absolute;left:103px;top:38px;width:122px;height:40px; text-align:center;font:22px/40px "Microsoft YaHei";color:#fff; cursor:pointer;}
+        .vote-box .vote0 em{ font:normal 16px/36px "Microsoft YaHei";color:#fff; padding-right:10px}
+        .vote-box .vote1{ position:absolute;left:766px;top:38px;width:122px;height:40px; text-align:center;font:22px/40px "Microsoft YaHei";color:#fff; cursor:pointer;}
+        .vote-box .vote1 em{ font:normal 16px/36px "Microsoft YaHei";color:#fff; padding-right:10px}
+        .vote-box .btn0{height:28px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9d15389023/h1.png) no-repeat;position:absolute;right:501px;top:45px; padding-left:11px;}
+        .vote-box .btn1{height:28px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9d2699e691/h2.png) no-repeat right top;position:absolute;left:499px;top:45px;  padding-right:9px;}
+
+        .vote-box .movepic{width:503px;height:40px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/movepic.gif) no-repeat; position:absolute;left:243px;top:42px; z-index:0;}
+
+        .vote-box2{width:1000px;height:187px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj7.jpg) no-repeat; position:relative}
+        .vote-box2 .vote0{ position:absolute;left:103px;top:44px;width:122px;height:40px; text-align:center;font:22px/40px "Microsoft YaHei";color:#fff; cursor:pointer;}
+        .vote-box2 .vote0 em{ font:normal 16px/36px "Microsoft YaHei";color:#fff; padding-right:10px}
+        .vote-box2 .vote1{ position:absolute;left:766px;top:44px;width:122px;height:40px; text-align:center;font:22px/40px "Microsoft YaHei";color:#fff; cursor:pointer;}
+        .vote-box2 .vote1 em{ font:normal 16px/36px "Microsoft YaHei";color:#fff; padding-right:10px}
+        .vote-box2 .btn0{height:28px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9d15389023/h1.png) no-repeat;position:absolute;right:500px;top:51px; padding-left:11px;}
+        .vote-box2 .btn1{height:28px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9d2699e691/h2.png) no-repeat right top;position:absolute;left:499px;top:51px;  padding-right:9px;}
+
+        .vote-box2 .movepic{width:503px;height:40px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/movepic.gif) no-repeat; position:absolute;left:240px;top:48px; z-index:0;}
+
+
+        .main2{width:980px;height:354px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj6.jpg) no-repeat; padding:60px 10px 0;}
+        .main2 .template1{width:482px;float:left}
+        .main2 .template2{width:482px; float:right}
+        .main2 img{ border:1px #884E32 solid}
+        .main2 .txt{width:430px;height:40px; margin-top:20px}
+        .main2 .template1 .txt{ margin-left:26px}
+        .main2 .template2 .txt{ margin-left:56px}
+
+        .main3{width:900px;height:543px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9a8083d61a/x141230_bj8.jpg) no-repeat; padding:53px 50px 0; position:relative}
+        .main3 .tabbtn{width:790px; margin:0 auto 50px; text-align:center; padding-left:100px;}
+        .main3 .tabbtn li{width:112px;height:40px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9a8083d61a/libtn.png) no-repeat; text-align:center;cursor:pointer;font:24px/40px "Microsoft YaHei";color:#FFF7E5; margin:0 32px; float:left;_display:inline;}
+        .main3 .template1{width:414px;float:left}
+        .main3 .template1 .sj{ position:absolute;left:97px;top:386px;}
+        .main3 .template2 .sj{ position:absolute;left:579px;top:386px;}
+        .main3 .act{ border:1px #F39D5E solid!important;}
+        .main3 .template2{width:414px; float:right}
+        .main3 .hid{width:405px;height:305px; border:1px #AD6022 solid; position:relative; overflow:hidden;}
+        .main3 .dw{ position:absolute;left:0;top:0;}
+        .main3 .pics{width:412px;height:80px; margin-top:14px}
+        .main3 .pics img{ border:1px #AD6022 solid;}
+        .main3 .txt{width:388px; height:64px; margin:32px auto 0}
+        .main3 .cheng12{ line-height:21px; color:#D7550B}
+
+        .main4{width:956px;height:511px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj9.jpg) no-repeat; padding:85px 22px 0}
+        .main4 .template1{width:445px; float:left; position:relative}
+        .main4 .template2{width:414px; float:right; position:relative}
+        .main4 .template1 .txt{ position:absolute;left:0;top:0;width:153px}
+        .main4 .template1 .txt img{ margin-bottom:22px}
+        .main4 .template1 .pic{width:270px;height:475px; border:1px #AD6022 solid; position:absolute;left:168px;top:0;}
+        .main4 .template2 .txt{ position:absolute;left:272px;top:0;width:153px}
+        .main4 .template2 .txt img{ margin-bottom:22px}
+        .main4 .template2 .pic{width:270px;height:475px; border:1px #AD6022 solid; position:absolute;left:-33px;top:0;}
+
+        .prize{width:1000px; height:196px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj11.jpg) no-repeat; position:relative}
+        .prize .pics{width:162px;height:56px; position:absolute;left:509px;top:124px}
+        .prize .pics img{ border:1px #853B02 solid;}
+
+        .title-box{width:1000px;height:66px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj13.jpg) no-repeat; position:relative}
+        .title1{width:189px;height:46px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/title1.jpg) no-repeat; position:absolute;left:56px;top:3px;}
+        .title2{width:189px;height:46px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/title2.jpg) no-repeat; position:absolute;left:552px;top:3px;}
+        .title-box .bai20{font:20px/46px "Microsoft YaHei";color:#FFF7E5}
+
+        .list-box{width:890px;height:555px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj14.jpg) no-repeat; padding:79px 50px 0 60px; margin-top:67px;}
+        .list-box .template1{width:442px; float:left; position:relative;}
+        .list-box .template2{width:442px; float:right; position:relative}
+
+        .list-box .txt{width:400px;height:141px;  margin:0 auto;}
+        .list-box .template1 .txt .hei20{ display:block;width:399px;height:45px; background:url(http://2.zol-img.com.cn/zt/tm_54a/a02416de11/mintit1.png) no-repeat; text-align:center; line-height:45px}
+        .list-box .template2 .txt .hei20{ display:block;width:399px;height:45px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/mintit2.jpg) no-repeat; text-align:center; line-height:45px;color:#E87126}
+        .list-box .txt .cheng12{ padding-top:10px;}
+
+        .list-box .cheng12{ line-height:21px;color:#D7550B}
+        .list-box .pic{width:210px;height:290px; position:absolute;left:2px;top:140px;}
+        .list-box .list{width:207px;height:291px; position:absolute;left:223px;top:140px;}
+        .list-box .cheng18{ display:block;width:209px;height:40px; line-height: 40px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/list_bjbj.jpg) no-repeat; text-align:center;color:#DCD94E}
+        .list-box .cheng18 em{ font: normal 18px/45px "SimSun";color:#FFE599; padding-right:10px; background:url(http://2.zol-img.com.cn/zt/tm_54a/a042a5c5cb/line.jpg) no-repeat 39px center;}
+        .list-box .ln{height:9px; line-height:9px}
+        .list-box .link{ display:block;width:240px;height:48px; position:absolute;left:96px;top:463px;}
+        .list-box .template2 .link{ left:110px}
+
+        .msg-box{width:1000px;height:380px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj15.jpg) no-repeat;}
+        .msg-box .msg{ margin:0 10px;_display:inline;width:479px;height:357px; float:left}
+
+        .video-box{width:1000px;height:455px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj16.jpg) no-repeat; position:relative; margin-top:30px;}
+        .video-box .vd{width:360px;height:300px; position:absolute;left:557px;top:106px;}
+        .video-box .list{width:450px; position:absolute;left:37px;top:80px;}
+        .video-box .list .cheng12{display:block;width:333px;height:50px; background:url(http://2.zol-img.com.cn/zt/tm_54a/a36316da33/t_bj.png) no-repeat;padding:5px 0 0 20px; margin:25px 0 0 10px}
+        .video-box .ln{height:22px; line-height:22px;}
+
+        .over{width:1000px;height:252px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj17.jpg) no-repeat; padding-top:96px}
+        .over img{ padding:2px; border:1px #6D3512 solid; margin-bottom:18px;}
+        .over .hei20{font:20px/40px "Microsoft YaHei";color:#000; display:block;width:223px;height:45px; background:url(http://2.zol-img.com.cn/zt/tm_54a/a009023971/over_bj.jpg) no-repeat}
+
+        .foot{width:1000px;height:102px; background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj19.jpg) no-repeat; padding-top:100px;}
+        .footer{width:600px;height:60px; margin:0 auto; text-align:center;color:#3D1D0A}
+        .footer a{color:#3D1D0A}
+
+
+        /*txt*/
+        .cheng12{ line-height:21px;color:#D7550B}
+        .hong12{color:#FACE3F}
+
+
+        /*images*/
+        .l1{ background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_top1.jpg) no-repeat right top;}
+        .r1{ background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_top3.jpg) no-repeat;}
+        .l2{ background:url(http://2.zol-img.com.cn/zt/tm_54c/992e44030d/x141230_bj1.jpg) no-repeat right top;}
+        .r2{ background:url(http://2.zol-img.com.cn/zt/tm_54c/992e44030d/x141230_bj3.jpg) no-repeat;}
+
+        .fl{ background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj18.jpg) no-repeat right top;}
+        .fr{ background:url(http://2.zol-img.com.cn/zt/tm_54a/9fbd093087/x141230_bj20.jpg) no-repeat;}
+
+        /*gai*/
+        .b1{height:28px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9d112d1f95/b1.jpg) repeat-x;width:20px;}
+        .b2{height:28px; background:url(http://2.zol-img.com.cn/zt/tm_54c/9d2c45b277/b2.jpg) repeat-x;width:20px;}
+
+
+
+
+    </style>
+
+
+
+</head>
+
+<body data-feedly-mini="yes" huaban_collector_injected="true">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td class="l1">&nbsp;</td>
+        <td width="1000">
+            <img src="http://2.zol-img.com.cn/zt/tm_572/ada75a2438/f-h1.jpg" height="191" width="1000">
+            <img src="http://2.zol-img.com.cn/zt/tm_572/ada75a2438/f-h2.jpg" height="168" width="1000">
+        </td>
+        <td class="r1">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+<table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td class="l2">&nbsp;</td>
+        <td width="1000">
+            <div class="vote-main">
+                <span class="num0" id="num0"></span>
+                <span class="num1" id="num1"></span>
+                <div class="zhu0"><div class="pinkbody z_one0" style="width:70px"></div></div>
+                <div class="zhu4"><div class="yellowbody z_one1" style="width:70px"></div></div>
+            </div>
+        </td>
+        <td class="r2">&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="main1 clearfix">
+                <div class="template1">
+                    <div class="pic"><{data[0]}></div>
+                    <div class="txt"><{data[1]}></div>
+                </div>
+                <div class="template2">
+                    <div class="pic"><{data[2]}></div>
+                    <div class="txt"><{data[3]}></div>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="vote-box">
+                <div class="movepic"></div>
+                <div class="vote0 vote_one0" id="btn0"></div>
+                <div class="vote1 vote_one1" id="btn1"></div>
+                <div class="btn0"><div class="vote_one_b0 b1"></div></div>
+                <div class="btn1"><div class="vote_one_b1 b2"></div></div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="main2 clearfix">
+                <div class="template1">
+                    <div class="pic"><{data[4]}></div>
+                    <div class="txt"><{data[5]}></div>
+                </div>
+                <div class="template2">
+                    <div class="pic"><{data[6]}></div>
+                    <div class="txt"><{data[7]}></div>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="vote-box2">
+                <div class="movepic"></div>
+                <div class="vote0 vote_two0" id="btn2"></div>
+                <div class="vote1 vote_two1" id="btn3"></div>
+                <div class="btn0"><div class="vote_two_b0 b1"></div></div>
+                <div class="btn1"><div class="vote_two_b1 b2"></div></div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="main3 clearfix">
+                <ul class="tabbtn clearfix">
+                    <li>室内</li>
+                    <li>室内</li>
+                    <li>室外</li>
+                    <li>微距</li>
+                </ul>
+                <div class="template1">
+                    <div class="hid"><div class="dw" style="left: -1221px;"><{data[8]}></div></div>
+                    <div class="txt"><{data[10]}></div>
+                </div>
+                <div class="template2">
+                    <div class="hid"><div class="dw" style="left: -1221px;"><{data[11]}></div></div>
+                    <div class="txt"><{data[13]}></div>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="vote-box2">
+                <div class="movepic"></div>
+                <div class="vote0 vote_three0" id="btn4"></div>
+                <div class="vote1 vote_three1" id="btn5"></div>
+                <div class="btn0"><div class="vote_three_b0 b1"></div></div>
+                <div class="btn1"><div class="vote_three_b1 b2"></div></div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="main4 clearfix">
+                <div class="template1 clearfix">
+                    <div class="txt"><{data[14]}></div>
+                    <div class="pic"><{data[15]}></div>
+                </div>
+                <div class="template2 clearfix">
+                    <div class="txt"><{data[16]}></div>
+                    <div class="pic"><{data[17]}></div>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="vote-box2">
+                <div class="movepic"></div>
+                <div class="vote0 vote_four0" id="btn6"></div>
+                <div class="vote1 vote_four1" id="btn7"></div>
+                <div class="btn0"><div class="vote_four_b0 b1"></div></div>
+                <div class="btn1"><div class="vote_four_b1 b2"></div></div>
+
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="list-box">
+                <div class="template1">
+                    <div class="pic"><{data[23]}></div>
+                    <div class="txt"><{data[24]}></div>
+                    <div class="list"><{data[25]}></div>
+                    <a href="http://bbs.zol.com.cn/sjbbs/x392889.html" target="_blank" class="link" title=""></a>
+                </div>
+                <div class="template2">
+                    <div class="pic"><{data[26]}></div>
+                    <div class="txt"><{data[27]}></div>
+                    <div class="list"><{data[28]}></div>
+                    <a href="http://bbs.zol.com.cn/sjbbs/x374237.html" target="_blank" class="link" title=""></a>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><table class="banners" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td>&nbsp;</td>
+        <td width="1000">
+            <div class="msg-box">
+                <div class="msg"><{data[36]}></div>
+                <div class="msg"><{data[35]}></div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody></table><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td class="fl">&nbsp;</td>
+        <td width="1000">
+            <div class="foot">
+                <div class="footer"><{data[32]}></div>
+            </div>
+        </td>
+        <td class="fr">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+
+<form id="form_vote" method="post" name="form0" target="_top" acevt="1"><input value="2" name="itemnum" type="hidden">
+    <input value="http://mobile.zol.com.cn/topic/5812392.html" name="backurl" type="hidden">
+    <input id="qid" name="q" type="hidden">
+</form>
+
+<script src="http://active.zol.com.cn/15active/0106phone_main/main.js"></script>
+
+<norunscript>
+
+    $(function(){
+    vote_init(6767,'.vote_one','.vote_one_b');
+    vote_init(6768,'.vote_two','.vote_two_b');
+    vote_init(6769,'.vote_three','.vote_three_b');
+    vote_init(6770,'.vote_four','.vote_four_b');
+
+
+    //外观对比
+
+    makeVote('#btn0','33009','6767')
+    makeVote('#btn1','33010','6767')
+
+    //UI对比
+    makeVote('#btn2','33011','6768');
+    makeVote('#btn3','33012','6768');
+
+    //拍照对比
+    makeVote('#btn4','33013','6769');
+    makeVote('#btn5','33014','6769');
+
+    //性能对比
+    makeVote('#btn6','33015','6770');
+    makeVote('#btn7','33016','6770');
+
+
+    })
+</norunscript>
+</body></html>

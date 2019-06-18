@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>反弹动画</title>
+    <style type="text/css">
+        body,div{
+            margin:0;
+            padding: 0;
+        }
+        #div1{
+            height: 300px;
+            width: 300px;
+            position: absolute;
+            top: 140px;
+            left: 0;
+            background-color: firebrick;
+            border-radius: 150px;
+        }
+        #btn1{
+            position: absolute;
+            left: 500px;
+            height: 80px;
+            width: 150px;
+            border: none;
+            outline: none;
+            background: darkgrey;
+        }
+        #btn2{
+            position: absolute;
+            right: 500px;
+            height: 80px;
+            width: 150px;
+            border: none;
+            outline: none;
+            background: darkgrey;
+        }
+    </style>
+</head>
+<body>
+<input id="btn1" type="button" value="←"/>
+<input id="btn2" type="button" value="→"/>
+<div id="div1"></div>
+<script type="text/javascript" src="wlgjs-1.0.min.js"></script>
+<script type="text/javascript">
+    //从左到右目标值是target；如果当前获取的curL值小于target,就+;
+    //从右向左目标值是0;如果当前获取的curL值大于0,就-;
+    var oDiv=document.getElementById("div1");
+    var b1=document.getElementById("btn1");
+    var b2=document.getElementById("btn2");
+    var target=utils.win("clientWidth")-oDiv.offsetWidth;
+    function move(target){
+        window.clearTimeout(oDiv.timer);
+        ~function _move() {
+            window.clearTimeout(oDiv.timer);
+            var curL=utils.css(oDiv,"left");
+            if(curL<target){
+                if(curL+5>=target){
+                    return;
+                }
+                utils.css(oDiv,"left",curL+5);
+            }else if(curL>target){
+                if(curL<=target){
+                    return;
+                }
+                utils.css(oDiv,"left",curL-5)
+            }else{
+                return;
+            }
+            oDiv.timer=window.setTimeout(_move,13);
+        }();
+    }
+    b2.onclick= function () {
+        var tar=utils.win("clientWidth")-oDiv.offsetWidth;
+        move(tar);
+    };
+    b1.onclick= function () {
+        move(0);
+    };
+</script>
+</body>
+</html>

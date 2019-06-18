@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    /*1、基础知识填空  每一个空是2分 错一点两分就没了
+    惩罚标准：所有错4个及以上的(数组常用方法、字符串常用方法、Math、Date、DOM获取的方法、DOM节点之间关系的属性、DOM的动态操作的方法、数据类型之间转换的规则) -->手抄三遍 (周六早上9:30)
+    1)sort(function(a,b){return b-a;});
+    2)pop、ary.length-=1、splice(ary.length-1,1)
+    3)slice(n-1,m)
+    4)document.documentElement.clientWidth||document.body.clientWidth
+    5)appendChild、insertBefore
+    6)previousElementSibling
+    var pre=curEle.previousSibling;
+    while(pre && pre.nodeType!==1){
+         pre=pre.previousSibling;
+     }
+    7)Math.round(Math.random()*(m-n)+n)
+    8)replace
+    9)document.getElementById("tab")
+    document.getElementsByClassName("tabCon")[0]
+    document.getElementsByTagName("div")[0]
+    document.querySelector("#tab")
+    document.querySelector(".tabCon")
+    document.querySelector("div")
+    10) true  true*/
+
+    //2、
+    //1)undefined 、12
+
+    //2)"zhuFeng"、5000  "zhuFeng"、5000
+        /*window下的预解释:var name; var age;
+        window下的代码执行:
+        name = "china";
+        age = 5000;
+        执行一个自执行函数，形成一个私有的作用域
+          形参赋值: name="china"; age=undefined;
+          arguments[0] = "zhuFeng"; -->私有的name="zhuFeng";
+          age = age || this.age; -->age=window.age=5000;
+          this.name = name; -->window.name="zhuFeng";*/
+        /*var name = "china";
+        var age = 5000;
+        ~function (name, age) {
+            arguments[0] = "zhuFeng";
+            age = age || this.age;
+            this.name = name;
+            console.log(name, age);
+        }(name);
+        console.log(name, age);*/
+
+    /*||:var val=a||b 首先看a是真还是假，如果a是真，val=a的值  如果a是假 val=b的值
+    var val=12||13; -->val=12
+    var val=0||13; -->val=13*/
+
+    //3)21 32 21 41
+    /*    var i = 10;
+        function fn(i) {
+            return function (n) {
+                console.log(n + (++i));
+            }
+        }
+        var f = fn(i);
+        f(10);
+        f(20);
+        fn(i)(10);
+        fn(20)(20);*/
+
+    //4)21 22 30 31
+        var num = 10;
+        var obj = {
+            num: 10,
+            fn: (function (num) {
+                this.num = num + 10;
+                num += 10;
+                return function () {
+                    this.num = num + 10;
+                    num++;
+                    console.log(num);
+                }
+            })(num)
+        };
+        var fn = obj.fn;
+        fn();
+        obj.fn();
+        console.log(num);
+        console.log(obj.num);
+
+    //5)""、"12"
+    /*    var ary = [12, 23];
+        ~function (ary) {
+            ary.length -= 1;
+            ary = [34];
+            ary.length -= 1;
+            alert(ary);
+        }(ary);
+        alert(ary);*/
+
+    //6)true、报错 f.getX is not a function、200、undefined、Object
+        /*function Fn() {
+            this.x = 100;
+            this.y = 200;
+        }
+        Fn.prototype.getX = function () {
+            console.log(this.x);
+        };
+        Fn.prototype = {
+            getY: function () {
+                console.log(this.y);
+            }
+        };
+        var f = new Fn;
+        console.log(f.getY === Fn.prototype.getY);//true
+        //f.getX(); 报错
+        f.getY();//200
+        f.__proto__.getY();//undefined
+        console.log(f.constructor);//Object*/
+
+
+    //三
+    /*var oBtn = document.getElementsByTagName("input");
+    var ary = ["red", "green", "yellow"];*/
+    //自定义属性的方式:
+        /*for (var i = 0; i < oBtn.length; i++) {
+            oBtn[i].index = i;
+            oBtn[i].onclick = function () {
+                document.body.style.backgroundColor = ary[this.index];
+            }
+        }*/
+
+    //闭包的方式:
+        /*for (var i = 0; i < oBtn.length; i++) {
+            ~function (i) {
+                oBtn[i].onclick = function () {
+                    document.body.style.backgroundColor = ary[i];
+                }
+            }(i);
+        }
+*/
+    /*for (var i = 0; i < oBtn.length; i++) {
+        oBtn[i].onclick = (function (i) {
+            return function () {
+                document.body.style.backgroundColor = ary[i];
+            }
+        })(i);
+    }*/
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动淡入淡出</title>
+    <style type="text/css">
+        #div1{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            left: 150px;
+            top:0;
+            background: green;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+    var ele=document.getElementById("div1");
+    function getCss(curEle,attr) {
+        if ("getComputedStyle" in window) {
+            return parseFloat(getComputedStyle(curEle, null)[attr]);
+        } else {
+            //处理在IE678下的opacity->
+            if (attr == "opacity") {
+                var val = ele.currentStyle.filter;
+                //先把opacity的值分解出来,并且按照标准浏览器原则返回opacity介于0-1之间;
+                var reg = /alpha\(opacity=(\d+)\)/;
+                if (reg.test(val)) {
+                    return RegExp.$1 / 100;
+                } else {
+                    return 1;//如果没有发现滤镜样式里的opacity则默认值;
+                }
+            }
+            return parseFloat(curEle.currentStyle[attr]);
+        }
+    }
+    //淡入淡出
+    /*function fadeInOut(ele,target,duration,callback){
+        duration=duration||600;
+        var begin=getCss(ele,"opacity");
+        var change=target-begin;
+        var interval=15;
+        var times=0;
+        window.clearInterval(ele.timer);
+        function step(){
+            times+=interval;
+            if(times<duration){
+                ele.style.opacity=times/duration*change+begin;
+            }else{
+                ele.style.opacity=target;
+                window.clearInterval(ele.timer);
+                if(typeof callback=="function"){
+                    callback();
+                }
+            }
+        }
+        ele.timer=window.setInterval(step,interval);
+    }*/
+    function fadeInOut(ele,target,duration,callback){
+        duration=duration||600;
+        var begin=getCss(ele,"opacity");
+        var change=target-begin;
+        var interval=15;
+        var times=0;
+        window.clearInterval(ele.timer);
+        function step(){
+            times+=interval;
+            if(times<duration){
+                ele.style.opacity=times/duration*change+begin;
+            }else{
+                ele.style.opacity=target;
+                window.clearInterval(ele.timer);
+                if(typeof callback=="function"){
+                    callback();
+                }
+            }
+        }
+        ele.timer=window.setInterval(step,interval);
+    }
+    //自动淡入淡出
+    function fadeIn(){
+        fadeInOut(ele,1,1000,fadeout);
+    }
+    function fadeout(){
+        fadeInOut(ele,0,1000,fadeIn);
+    }
+    document.documentElement.onclick= fadeout;
+    //加给网页或者文档一个click事件最好要用这个方法;不能是body
+    //区别body的宽高可以设置为0固定;但是documentElement几乎跟element几乎是一样的就是整个html;
+    //点击淡入淡出
+    /*document.documentElement.onclick= function () {
+        if(getCss(ele,"opacity")<0.5){
+            fadeInOut(ele,1,2000);
+        }else{
+            fadeInOut(ele,0,2000);
+        }
+    }*/
+</script>
+</body>
+</html>

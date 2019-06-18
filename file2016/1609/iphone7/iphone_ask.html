@@ -1,0 +1,462 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>title</title>
+    <script type="text/javascript" src="http://active.zol.com.cn/16active/0908iphone7/html2canvas.js"></script>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script><meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi"><meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi">
+    <style>
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body {-webkit-tap-highlight-color:rgba(0,0,0,0); height: 100%; }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #777; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /* 首页 */
+        body {width:640px; margin:0 auto;  color:#666; position: relative; height: 100%;}
+        .wrapper{width: 640px; overflow: hidden; height: 100%;}
+        .wrapper > section{width: 640px; height: 100%; position: absolute; left: 0; top: 0;background: url(http://m.zol.com.cn/topic/0907iphone7/images/bg.jpg);}
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .home .logo{position: absolute; left: 17px; top: 17px; width: 117px; height: 36px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/logo.png) no-repeat;}
+        .home .tit{position: absolute; left: 50%; top: 10%; margin-left: -226.5px; width: 453px; height: 437px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/tit1.png) no-repeat; }
+        .home .text{position: absolute; left: 50%; margin-left: -242px; top: 50%; width: 484px; height: 357px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/text1.png) no-repeat; }
+        .home .name{position: absolute; left: 180px; top: 27px; width: 290px; height: 40px; border:0 none; padding:0 10px; font-size: 24px; color: #520C0D; text-align: center;}
+        .home .start{position: absolute; width: 339px; height: 86px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/start.png) no-repeat; left: 76px; bottom: 25px; }
+        .home .hand{position: absolute; width: 173px; height: 147px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/hand.png) no-repeat; left: 389px; bottom: -62px;}
+        .page .mod{position: absolute; left: 50%; top: 50%; -webkit-transform:translate(-50%,-50%); transform:translate(-50%,-50%); padding-right:20px;}
+        .question1 .mod{width: 483px; height: 824px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/question1.png) no-repeat;}
+        .page .button{position: absolute;  width: 282px; height: 62px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/btn.png) no-repeat; line-height: 60px; font-size: 32px; color: #fff; text-align: center; left: 130px; bottom: 12px;}
+        .page .pic1{display: block;}
+        .question1 .pic1{margin:160px auto 0;}
+        .page{display: none;}
+        .question1 .con{width: 393px; margin:17px auto 0;}
+        .page .con li{ height: 49px;  background: #fff; border:1px solid #7B3D1B; border-radius: 8px; margin-bottom: 12px; line-height: 49px; padding-left: 20px; font-size: 24px; color: #520D0E; position: relative;}
+        .page .con li.act{background: #520D0E; color: #ECB509;}
+        .question1 .con li{width: 371px;}
+
+        .question2 .mod{width: 547px; height: 784px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/question2.png) no-repeat;}
+        .question2 .con{width: 463px; margin:45px auto 0;}
+        .question2 .con li{width: 445px;}
+        .question2 .pic1{margin:154px auto 0;}
+        .page .con .act:after{position: absolute;  content: "";}
+        .question2 .con .act:nth-child(1):after{width: 124px; height: 163px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon1.png) no-repeat; left: -92px; top: -103px;}
+        .question2 .con .act:nth-child(2):after{width: 188px; height: 105px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon2.png) no-repeat; right: -66px; bottom: -45px;}
+
+
+        .question3 .mod{width: 483px; height: 798px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/question3.png) no-repeat;}
+        .question3 .mod:before,.question4 .mod:before{position: absolute; width: 48px; height: 85px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/check.png) no-repeat; left: -47px; top: 131px; content: "";}
+        .question3 .con{width: 455px; margin:185px auto 0;}
+        .question3 .con li{width: 440px;}
+        .question3 .con .act:nth-child(1):after{width: 108px; height: 72px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon3.png) no-repeat; right: -45px; top: -15px;}
+        .question3 .con .act:nth-child(4):after{width: 73px; height: 73px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon4.png) no-repeat; right: -62px; top: -12px;}
+        .question3 .con .act:nth-child(7):after{width: 130px; height: 177px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon5.png) no-repeat; right: -76px; bottom:-3px;}
+
+        .question4 .mod{width: 483px; height: 734px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/question4.png) no-repeat;}
+        .question4 .con{width: 233px; margin:185px auto 0;}
+        .question4 .con li{width: 231px; text-align: center; margin-bottom: 15px;}
+        .question4 .con li:not(:last-child):after{position: absolute; width: 62px; height: 62px; content: ""; left: -35px; top: -8px;}
+        .question4 .con li:nth-child(1):after{ background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon6.png) no-repeat; }
+        .question4 .con li:nth-child(2):after{ background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon7.png) no-repeat; }
+        .question4 .con li:nth-child(3):after{ background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon8.png) no-repeat; }
+        .question4 .con li:nth-child(4):after{ background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon9.png) no-repeat; }
+        .question4 .con li:nth-child(5):after{ background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon10.png) no-repeat; }
+        .question4 .con li:last-child{width: 391px; margin-left: -90px;}
+        .question4 .con li:last-child:after{width: 121px; height: 125px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon11.png) no-repeat; right: -97px; top:-53px;}
+
+        .question5 .mod{width: 482px; height: 734px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/question5.png) no-repeat;}
+        .question5 .con{width: 423px; margin:310px auto 0;}
+        .question5 .con li{width: 401px; margin-bottom: 38px;}
+        .question5 .con .act:nth-child(1):after{width: 338px; height: 173px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon12.png) no-repeat; left: 46px; top: -170px;}
+        .question5 .con .act:nth-child(2):after{width: 179px; height: 141px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/icon13.png) no-repeat; left: 120px; bottom: -146px;}
+
+        .wrapper .result{background: rgba(82,12,12,0.8); top: 100%;}
+        .visible .wrapper .result{top: 0;}
+        .result-con{position: absolute; left: 50%; top: 30px; width: 582px; margin-left: -291px; height: 78%; background: #ECB509; border-radius: 4px; border: 1px solid #520D0E;}
+        /* .visible .result-con{overflow: auto;} */
+        .result-scroll{padding:20px; position: relative;}
+        .result-con:before,.result-con:after{position: absolute; width: 574px; height: 6px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/yuan1.png) no-repeat; left:6px; content: "" }
+        .result-con:before{top: 6px;}
+        .result-con:after{bottom: 6px;}
+        .result .button{left: 50%; margin-left: -141px; top: 90%;}
+        .result .part1{width: 539px; height: 794px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/bg1.jpg) no-repeat;}
+        .result .part2{width: 537px; background: #F6CD0A; border: 1px solid #520D0E; border-radius: 10px; padding-bottom: 20px;}
+        .part2 >section{margin-top: 27px;}
+        .part2 .pic1{margin:10px auto;}
+        .part2 .hd{width: 537px; height: 34px; margin:26px 0 0;}
+        .part2 .hd1{background: url(http://m.zol.com.cn/topic/0907iphone7/images/hd1.jpg) no-repeat 50% 0;}
+        .part2 .hd2{background: url(http://m.zol.com.cn/topic/0907iphone7/images/hd2.jpg) no-repeat 50% 0;}
+        .part2 .hd3{background: url(http://m.zol.com.cn/topic/0907iphone7/images/hd3.jpg) no-repeat 50% 0;}
+        .part2 .hd4{background: url(http://m.zol.com.cn/topic/0907iphone7/images/hd4.jpg) no-repeat 50% 0;}
+        .part2 .hd5{background: url(http://m.zol.com.cn/topic/0907iphone7/images/hd5.jpg) no-repeat 50% 0;}
+        .part2 .con{margin: 30px auto 0;}
+        .part2 .question2 .con .act:nth-child(1):after{left: -60px;}
+        .part2 .question2 .con li{margin:40px 0 20px;}
+        .part2 .question5 .con li:nth-child(1){margin:170px 0 15px;}
+        .part2 .question5 .con li:nth-child(2){margin:15px 0 150px;}
+        .qrcode{display: block; margin:30px auto 20px;}
+        #canvasimg{margin: -20px 0 0 -20px;}
+
+        .score{position: absolute; width: 187px; height: 103px;  float: left; text-align: center; line-height: 103px; color: #F33232; font-size: 100px; left: 194px; top: 97px; letter-spacing: 5px;}
+        .tips{position: absolute; width: 491px; height: 154px; left: 35px; top: 566px;}
+        .tips1{background: url(http://m.zol.com.cn/topic/0907iphone7/images/tips1.jpg) no-repeat; }
+        .tips2{background: url(http://m.zol.com.cn/topic/0907iphone7/images/tips2.jpg) no-repeat; }
+        .tips3{background: url(http://m.zol.com.cn/topic/0907iphone7/images/tips3.jpg) no-repeat; }
+        .tips4{background: url(http://m.zol.com.cn/topic/0907iphone7/images/tips4.jpg) no-repeat; }
+        .tips5{background: url(http://m.zol.com.cn/topic/0907iphone7/images/tips5.jpg) no-repeat; }
+        .mask{position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: rgba(0,0,0,0.8); display: none;}
+        .mask p{position: absolute; top: 50%;text-align: center; width: 100%; color: #eee; font-size: 26px; }
+        .result .question1 li:not(.act),.result .question2 li:not(.act),.result .question5 li:not(.act){display: none;}
+        .result .question3 .con .act:before,.result .question4 .con .act:before{position: absolute; width: 65px; height: 49px; background: url(http://m.zol.com.cn/topic/0907iphone7/images/ok.png) no-repeat; left: -50px; top: -10px; content: ""; z-index: 1;}
+        .save-tip{position: absolute; top: 83%; width:282px; left:50%; margin-left: -141px;  }
+        .save-arrow{display: block; width: 148px; height: 68px; background: url(http://2.zol-img.com.cn/zt/tm_57c/fcd2216b7e/arrow.png) no-repeat; margin:0 auto;  -webkit-animation: swipe 1s ease 0s infinite;animation: swipe 1s ease 0s infinite;}
+        .save-btn{display: block; margin:15px auto 0; width: 282px; height:62px; background: url(http://2.zol-img.com.cn/zt/tm_57c/fcd2216b7e/btn2.png) no-repeat;}
+        @-webkit-keyframes swipe{
+            0%   {-webkit-transform:translate(0,0)}
+            50%  {-webkit-transform:translate(0,10px)}
+            100% {-webkit-transform:translate(0,0)}
+        }
+        @keyframes swipe{
+            0%   {transform:translate(0,0)}
+            50%  {transform:translate(0,10px)}
+            100% {transform:translate(0,0)}
+        }
+
+
+        @media screen and (max-width:640px) and (max-height: 900px) {
+            .home .tit{top: 2%;}
+            .page .mod{margin-top: 20px;}
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="wrapper">
+    <section class="home">
+        <span class="logo"></span>
+        <div class="tit"></div>
+        <div class="text">
+            <input type="text" class="name">
+            <span class="start" id="start"></span>
+            <span class="hand"></span>
+        </div>
+    </section>
+    <section class="page question1">
+        <div class="mod">
+            <img src="http://m.zol.com.cn/topic/0907iphone7/images/pic1.jpg" width="456" height="377" class="pic1">
+            <ul class="con" type="radio">
+                <li data-answer='15'>A.苹果7真神奇，最酷最炫最美丽</li>
+                <li  data-answer='0'>B.苹果7争第一，最丑最烂必是你</li>
+            </ul>
+            <span class="button next-btn" order="1">下一题</span>
+        </div>
+
+    </section>
+    <section class="page question2">
+        <div class="mod">
+            <img src="http://m.zol.com.cn/topic/0907iphone7/images/pic2.png" width="423" height="289" class="pic1">
+            <ul class="con" type="radio">
+                <li  data-answer='15'>A.前开山后养虎，哥是钻石王老五</li>
+                <li  data-answer='0'>B.俺的肾最勤劳，换7换6不唠叨：你懂的</li>
+            </ul>
+            <span class="button next-btn" order="2">下一题</span>
+        </div>
+    </section>
+    <section class="page question3">
+        <div class="mod">
+            <ul class="con">
+                <li  data-answer='5'>A.Plus后置双摄像头</li>
+                <li data-answer='5'>B.取消耳机插孔，新增AirPods无线耳机</li>
+                <li data-answer='5'>C.升级A10处理器，性能提升40%</li>
+                <li data-answer='5'>D.Home键引入震动引擎，采用压感设计</li>
+                <li data-answer='5'>E.Plus摄像头支持2X光变，10X数码变焦</li>
+                <li data-answer='5'>F.IP67防尘防水</li>
+                <li >G.太烂！全都不满意</li>
+            </ul>
+            <span class="button next-btn" order="3">下一题</span>
+        </div>
+    </section>
+    <section class="page question4">
+        <div class="mod">
+            <ul class="con">
+                <li  data-answer='5'>A.金色</li>
+                <li data-answer='5'>B.玫瑰金</li>
+                <li data-answer='5'>C.亮黑色</li>
+                <li data-answer='5'>D.银色</li>
+                <li data-answer='5'>E.黑色</li>
+                <li>F.除了Android宝贝，我谁都看不上!</li>
+            </ul>
+            <span class="button next-btn" order="4">下一题</span>
+        </div>
+    </section>
+    <section class="page question5" >
+        <div class="mod">
+            <ul class="con" type="radio">
+                <li  data-answer='15'>A.东风吹战鼓擂，有7不买对得起谁</li>
+                <li data-answer='0'>B.安卓表安卓机，为啥非要买苹果7</li>
+            </ul>
+            <span class="button next-btn" order="5">提交</span>
+        </div>
+    </section>
+    <section class="page result" >
+        <div class="result-con">
+            <div class="result-scroll" >
+                <div class="part1">
+                    <div class="score">100</div>
+                    <div class="tips"></div>
+                </div>
+                <div class="part2">
+                    <section class="question1">
+                        <img src="http://m.zol.com.cn/topic/0907iphone7/images/pic1.jpg" width="456" height="377" class="pic1">
+                        <div class="hd hd1"></div>
+                        <ul class="con item1">
+
+                        </ul>
+                    </section>
+                    <section class="question2">
+                        <img src="http://m.zol.com.cn/topic/0907iphone7/images/pic2.png" width="423" height="289" class="pic1">
+                        <div class="hd hd2"></div>
+                        <ul class="con item2">
+
+                        </ul>
+                    </section>
+                    <section class="question3">
+                        <div class="hd hd3"></div>
+                        <ul class="con item3">
+
+                        </ul>
+                    </section>
+                    <section class="question4">
+                        <div class="hd hd4"></div>
+                        <ul class="con item4">
+
+                        </ul>
+                    </section>
+                    <section class="question5">
+                        <div class="hd hd5"></div>
+                        <ul class="con item5">
+
+                        </ul>
+                    </section>
+                    <img src="http://m.zol.com.cn/topic/0907iphone7/images/qr.png" class="qrcode">
+                </div>
+
+            </div>
+        </div>
+        <div class="save-tip">
+            <span class="save-arrow"></span>
+            <span class="save-btn"></span>
+        </div>
+
+    </section>
+</div>
+<div class="mask" id="mask"><p>成绩计算中...</p></div>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/iscroll-lite.min.js"></script>
+
+
+<script>
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+    var sections = document.querySelectorAll('.wrapper > .page'),
+            question = document.querySelectorAll('.mod .con li'),
+            next = document.querySelectorAll('.next-btn'),
+            tips = document.querySelector('.tips'),
+            items = document.querySelectorAll('.result .con');
+    function gopage(n){
+        sections.forEach(function(item,idx){
+            if(n==idx ) item.style.display = 'block';
+        });
+    }
+
+    //开始测试
+    start.addEventListener('tap',function(){
+        var nameVal = document.querySelector('.name').value.trim();
+        if(!nameVal || nameVal.length>5){
+            alert('请正确填写您的姓名');
+            return false;
+        };
+        uname = nameVal;
+        gopage(0);
+
+    });
+    //选择按钮
+    question.addEventListener('tap',function(){
+        var parent = this.parentNode;
+
+        if(parent.getAttribute('type') == 'radio'){
+
+            var n = question.indexOf(this);
+            question.forEach(function(li,i){
+                li.classList[n===i ? 'add' : 'remove']('act');
+            })
+        }else{
+            if(this.classList.contains('act')){
+                this.classList.remove('act');
+            }else{
+                this.classList.add('act');
+            }
+        }
+
+    })
+    var score = 0;
+    var shareTitle ;
+    //下一题
+    next.addEventListener('tap',function(){
+        var act = this.parentNode.querySelector('.act');
+        if(!act){
+            alert('请至少选择一个答案');
+            return false;
+        };
+        var k = this.getAttribute('order');
+        gopage(k);
+        var prev = this.previousElementSibling;
+        var acts = prev.querySelectorAll('.act');
+        items.forEach(function(item,i){
+            if((k-1)==i){
+                item.innerHTML = prev.innerHTML;
+            }
+        })
+        if(!prev.querySelector('li:last-child').classList.contains('act')){
+            acts.forEach(function(act,l){
+                var num = act.getAttribute('data-answer');
+                score +=parseInt(num);
+            })
+        }
+        //提交
+        if(k == 5){
+            document.querySelector('.score').innerHTML = addZero(score);
+            shareTitle =uname+ '觉得新发布的iPhone 7能得'+score+'分，这也太...'
+            document.title = shareTitle;
+            if(score<=20){
+                tips.classList.add('tips1');
+            }else if(score>20 && score<=40){
+                tips.classList.add('tips2');
+            }else if(score>40 && score<=60){
+                tips.classList.add('tips3');
+            }else if(score>60 && score<=80){
+                tips.classList.add('tips4');
+            }else if(score>80 && score<=100){
+                tips.classList.add('tips5');
+            }
+            mask.style.display = 'block';
+            window.addEventListener(Event.Touch.move,noTouch);
+            print();
+
+        }
+
+
+    })
+    // 禁止滑动
+    function noTouch(e){
+
+        e.preventDefault();
+
+    }
+
+    function addZero(n){
+        if(n<10){
+            return '00'+n;
+        }else if(n>=10 && n<100){
+            return '0'+n;
+        }else if(n==100){
+            return n;
+        }
+    }
+
+
+
+
+
+    function print()
+    {
+        html2canvas( $(".result-scroll") ,
+                {
+                    onrendered: function(canvas)
+                    {
+                        //$('.save-btn a').attr( 'href' , canvas.toDataURL() )
+                        //$('.save-btn a').attr( 'download' ,'myjobdeer.png' ) ;
+                        // console.log(canvas.width)
+                        // $('.result-scroll').html('<img src='+canvas.toDataURL()+' id="canvasimg">');
+                        var width = canvas.width,
+                                height = canvas.height;
+                        var scroll = document.querySelector('.result-con');
+                        var iScrollBrand = new iScroll(scroll, {
+                            bounce: false
+                        });
+
+                        $.ajax({ //上传作品
+                            url:'http://m.zol.com.cn/topic/services/iphone7Dati.php?action=uploadPic',
+                            data:{'width':width,'height':height,'src': canvas.toDataURL()},
+                            crossDomain:true,
+                            dataType:'json',
+                            type:'post',
+                            success: function(data) {
+                                //console.log(canvas.toDataURL())
+                                document.querySelector('.result-scroll').innerHTML = '<img src='+data.result+' id="canvasimg">';
+                                canvasimg.addEventListener('load',function(){
+                                    document.body.classList.add('visible');
+                                    mask.style.display = 'none';
+                                    window.removeEventListener(Event.Touch.move,noTouch);
+                                    iScrollBrand.refresh();
+                                })
+                            }
+                        })
+
+
+                    }
+                });
+    }
+
+
+
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_57c/fb20233a79/weixin.jpg',
+        title: shareTitle
+    };
+
+
+    /* end 微信分享图片和文字设置 */
+
+</script>
+
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+
+
+</body></html>

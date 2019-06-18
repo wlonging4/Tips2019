@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk" />
+    <title>我不仅仅是一台智能影院--中关村在线</title>
+    <meta name="viewport" content="width=640,user-scalable=no target-densitydpi=device-dpi" />
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+
+    <style>
+        html, body, h1, h2, h3, h4, h5, p, form, ul, li,div,img,a { margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body {background-color:#fff; font:20px/1.5  "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul li { list-style-type: none; }
+        .clear {clear:both;display:block;height:0;visibility:hidden;}
+        .clearfix:after {content:"."; display: block; height: 0;clear: both; visibility: hidden; font-size:0}
+        .clearfix {*zoom:1}
+
+        #viewport {width: 640px; height: 100%; margin: 0 auto; overflow: hidden;}
+        .container {height: 100%;width:700%;}
+        section{position:relative;float:left;width:640px;height: 100%; overflow: hidden;-webkit-perspective: 603;
+            -webkit-perspective-origin: 50% 50%;background-image: url(http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_bg.jpg);background-size:cover;background-position:center center;background-repeat:no-repeat;}
+        section .page{position:absolute;width:640px;height: 100%;left:0px;top:0px;}
+        section .p1 .pic2 .ig2{-webkit-animation:sw-ani infinite .5s;animation:sw-ani infinite .5s;}
+        #slide4 .p1 .pic2 .ig2{-webkit-animation:none;animation:none;}
+
+
+        #slide1 .pic1{height: 80px;padding:18px 0px 0px 20px;}
+        #slide1 .pic2{position:relative;width: 218px;height: 496px;margin:0 auto;}
+        #slide1 .pic2 img,#slide1 .pic3 img{position: absolute;}
+        #slide1 .pic2 img.ig1{top:0px;left:0px;}
+        #slide1 .pic2 img.ig2{top:38px;right:0px;}
+        #slide1 .pic3{position:relative;height: 280px;}
+        #slide1 .pic3 img.ig1{top:0px;left:206px;z-index:101;}
+        #slide1 .pic3 img.ig2{top:60px;left:136px;z-index:100;}
+        #slide1 .pic3 img.ig3{top:12px;right:18px;}
+        #slide1 .p2 .pic1{height:90px;}
+        #slide1 .p2 .pic2{width:100%;height: 514px;margin-bottom: 88px;}
+        #slide1 .p2 .pic2 .ig1{top:372px;left:32px;}
+        #slide1 .p2 .pic2 .ig2{top:0px;left:0px;}
+
+        #slide2 .pic1{height: 80px;padding:18px 0px 0px 20px;}
+        #slide2 .pic2{position:relative;width: 146px;height: 480px;margin:0 auto;background: url() top center no-repeat;z-index:200;}
+        #slide2 .pic2 img,#slide2 .pic3 img{position: absolute;}
+        #slide2 .pic2 img.ig2{bottom:-8px;right:0px;}
+        #slide2 .pic2 img.ig1{top:0px;left:10px;}
+        #slide2 .pic3{position:relative;height: 416px;z-index:201;}
+        #slide2 .pic3 img.ig1{top:-26px;left:42px;}
+        #slide2 .pic3 img.ig2{bottom:0px;right:-12px;}
+        #slide2 .p2 .pic1{height:90px;}
+        #slide2 .p2 .pic2{width:100%;height: 530px;margin-bottom: 38px;}
+        #slide2 .p2 .pic2 .ig1{top:354px;left:24px;}
+        #slide2 .p2 .pic2 .ig2{top:0px;left:20px;}
+        #slide2 .p2 .pic3 img.ig1{top:36px;}
+
+        #slide3 .pic1{height: 80px;padding:18px 0px 0px 20px;}
+        #slide3 .pic2{position:relative;width: 224px;height:390px;margin:0 auto;}
+        #slide3 .pic2 img,#slide3 .pic3 img{position: absolute;}
+        #slide3 .pic2 img.ig2{bottom:0px;left:0px;}
+        #slide3 .p1 .pic2 img.ig1{top:0px;right:10px;}
+        #slide3 .pic3{position:relative;height: 414px;}
+        #slide3 .pic3 img.ig1{top:130px;left:28px;}
+        #slide3 .pic3 img.ig2{top:62px;left:140px;z-index:301;}
+        #slide3 .pic3 img.ig3{top:106px;right:26px;z-index:300;}
+        #slide3 .p2 .pic1{height:84px;}
+        #slide3 .p2 .pic2{width:100%;height: 490px;margin-bottom: 96px;}
+        #slide3 .p2 .pic2 .ig1{top:360px;left:22px;}
+        #slide3 .p2 .pic2 .ig2{top:0px;left:16px;}
+        #slide3 .p2 .pic3 img.ig1{top:72px;}
+        #slide3 .p2 .pic3 img.ig2{top:4px;}
+        #slide3 .p2 .pic3 img.ig3{top:48px;}
+
+        #slide4 .pic1 img,#slide4 .pic2 img,#slide4 .pic3 img{position: absolute;}
+        #slide4 .pic1{height: 206px;position: relative;z-index:400;margin-bottom: -90px;}
+        #slide4 .pic1 .ig1{top:18px;left:20px;}
+        #slide4 .pic1 .ig2{top:0px;left:136px;}
+        #slide4 .pic2{position:relative;width: 374px;height:400px;margin:0 auto;z-index:401;}
+        #slide4 .pic2 img.ig1{top:0px;right:86px;}
+        #slide4 .pic2 img.ig2{top:0px;right:0px;}
+        #slide4 .pic3{position:relative;height: 382px;}
+        #slide4 .pic3 img.ig1{top:40px;left:78px;}
+
+        #slide5 .pic1{height:46px;padding:18px 0px 0px 20px;margin-bottom:-10px;}
+        #slide5 .pic2{position:relative;width: 228px;height:422px;margin:0 auto 100px;}
+        #slide5 .pic2 img,#slide5 .pic3 img{position: absolute;}
+        #slide5 .pic2 img.ig2{bottom:0px;left:24px;}
+        #slide5 .pic2 img.ig1{top:0px;right:0px;}
+        #slide5 .pic3{position:relative;height: 452px;}
+        #slide5 .pic3 img.ig1{top:34px;left:126px;}
+        #slide5 .p2 .pic1{height:116px;}
+        #slide5 .p2 .pic2{width:100%;height:394px;}
+        #slide5 .p2 .pic2 .ig1{top:240px;left:40px;}
+        #slide5 .p2 .pic2 .ig2{top:0px;left:0px;}
+        #slide5 .p2 .pic3 img.ig1{top:8px;}
+
+        #slide6 .pic1{height:46px;padding:18px 0px 0px 20px;margin-bottom:-10px;}
+        #slide6 .pic2{position:relative;width: 212px;height:526px;margin:0 auto -240px;z-index:601;}
+        #slide6 .pic2 img,#slide6 .pic3 img{position: absolute;}
+        #slide6 .pic2 img.ig2{bottom:0px;right:0px;}
+        #slide6 .pic2 img.ig1{top:0px;left:0px;}
+        #slide6 .pic3{position:relative;height: 594px;z-index:600;}
+        #slide6 .pic3 img.ig1{top:0px;left:40px;}
+        #slide6 .pic3 img.ig2{bottom:0px;right:-6px;}
+        #slide6 .p2 .pic1{height:86px;}
+        #slide6 .p2 .pic2{width:100%;height:428px;margin-bottom:-158px;}
+        #slide6 .p2 .pic2 .ig1{top:300px;left:32px;}
+        #slide6 .p2 .pic2 .ig2{top:0px;left:0px;}
+        #slide6 .p2 .pic3 img.ig1{top:8px;}
+
+        #slide7 .pic1{height:80px;padding:18px 0px 0px 20px;margin-bottom:-10px;}
+        #slide7 .pic2{position:relative;width:160px;height:536px;margin:0 auto;background: url(http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s7_font.png) top left no-repeat;}
+        #slide7 .pic2 img,#slide7 .pic3 img,#slide7 .link{position: absolute;}
+        #slide7 .pic2 img.ig2{bottom:0px;right:0px;}
+        #slide7 .pic3{position:relative;height: 274px;}
+        #slide7 .pic3 img.ig1{top:40px;left:168px;}
+        #slide7 .link{display: inline-block;bottom:0px;right:0px;width:60px;height: 182px;}
+
+        /*底部横条*/
+        #btn{position:fixed;bottom:16px;left:0px;width:100%;height:62px;background-image:url(http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_btn2.png);background-position: top center;background-repeat: no-repeat;background-size: cover;z-index:999;}
+
+        /*背景音乐*/
+        #video {width: 0px;height: 0px;position: absolute;z-index: -66;bottom: 0px;left: 0px;}
+        #btn-a1 {position: fixed;top: 10px;right: 10px;width: 77px; height: 87px;z-index: 99;}
+        #btn-a1 p { width: 100%;height: 100%;line-height: 9999px;overflow: hidden;}
+        #btn-a1 p#end{display:block;background: url(http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/player-btn.png) no-repeat;}
+        #btn-a1 p#start {display:none;background: url(http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/player-btn.png) -77px 0px no-repeat !important;}
+
+
+        .sink,.ani-up,.ani-left,.ani-right,.ani-scale{-webkit-transition:.5s;transition:.5s;opacity:0;}
+        .ani-up{-webkit-transform:translate3d(0px,-200px,0px);transform:translate3d(0px,-200px,0px);}
+        .ani-left{-webkit-transform:translate3d(200px,0px,0px);transform:translate3d(200px,0px,0px);}
+        .ani-right{-webkit-transform:translate3d(-200px,0px,0px);transform:translate3d(-200px,0px,0px);}
+        .ani-rotate{-webkit-transform:rotateY(90deg);transform:rotateY(90deg);}
+        .ani-scale{-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0);opacity:0;}
+        .sink{-webkit-transform:translateY(200px);transform:translateY(200px);}
+
+        .curr .ani-up,.curr .ani-left,.curr .ani-right{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);opacity:1;}
+        .curr .ani-scale{-webkit-transform:scale3d(1,1,1) !important;transform:scale3d(1,1,1) !important;opacity:1;}
+        .curr .sink{-webkit-transform:translateY(0px);transform:translateY(0px);opacity:1;}
+
+        .ani-dd,.ani-rotate,.ani-uup,.ani-dd2,.ani-uup2,.mover{-webkit-transition:.500s;transition:.500s;opacity:0;}
+        .ani-dd,.ani-dd2{-weblit-transform:translate3d(0px,200px,0px);transform:translate3d(0px,200px,0px);}
+        .mover{-webkit-transform:translate3d(0px,200px,0px);transform:translate3d(0px,200px,0px);}
+        .ani-uup,.ani-uup2{-webkit-transform:translate3d(0px,-200px,0px);transform:translate3d(0px,-200px,0px);}
+        .currp .ani-rotate{-webkit-transform:rotateY(0deg);transform:rotateY(0deg);opacity:1;}
+        .currp .ani-dd,.currp .ani-dd2,.currp .ani-uup,.currp .ani-uup2,.currp .mover{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);opacity:1;}
+
+
+        @-webkit-keyframes sw-ani{0%{-webkit-transform:translate(0,0);opacity:0.8;}50%{-webkit-transform:translate(0,-4px);opacity:1.0;}}
+        @keyframes sw-ani{0%{transform:translate(0,0);opacity:0.8;}50%{transform:translate(0,-4px);opacity:1.0;}}
+
+
+        .tankuang{background: url(http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_mcbg.jpg) 50% 50% no-repeat rgba(0, 0, 0, 0.8);position:fixed; width:100%; height:100%; z-index:9999; top:0px; left:0px;}
+        .tankuang p{height: 200px;}
+
+    </style>
+</head>
+
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="tankuang" id="tankuang"><p></p></div>
+
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container clearfix" id="main">
+        <section id="slide4" >
+            <div class="page p1">
+                <div class="pic1">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt="" class="ig1">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s4_img1.png" alt="" class="ig2 sink">
+                </div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s4_font.png" alt="" class="ig1 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s4_link.png" alt="" class="ig2 ">
+                </div>
+                <div class="pic3 ani-scale">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s4_img2.png" alt="" class="ig1 ">
+                </div>
+            </div>
+        </section>
+
+        <section id="slide5">
+            <div class="page p1">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt=""></div>
+                <div class="pic2 ">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s5_font.png" alt="" class="ig1 ani-left">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s5_link.png" alt="" class="ig2 ">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s5_img1.png" alt="" class="ig1 ani-right">
+                </div>
+            </div><!--p1 end-->
+            <div class="page p2 ">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_close.png" alt="" class='close'></div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s5_p2_img1.jpg" alt="" class="ig2 ani-rotate">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55b/7419e41aa7/y_s5_p2_font2.png" alt="" class="ig1 mover">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s5_img1.png" alt="" class="ig1 ani-uup">
+                </div>
+            </div><!--p2 end-->
+
+        </section>
+
+        <section id="slide6" >
+            <div class="page p1">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt=""></div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s6_font.png" alt="" class="ig1 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s6_link.png" alt="" class="ig2 ">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s6_img1.png" alt="" class="ig1 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s6_img2.png" alt="" class="ig2 ani-left">
+                </div>
+            </div><!--p1 end-->
+            <div class="page p2">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_close.png" alt="" class='close'></div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s6_p2_img1.jpg" alt="" class="ig2 ani-rotate">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55b/7419e41aa7/y_s6_p2_font2.png" alt="" class="ig1 mover">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s6_img2.png" alt="" class="ig2 ani-uup">    </div>
+            </div><!--p2 end-->
+
+        </section>
+
+        <section id="slide3" >
+            <div class="page p1">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt=""></div>
+                <div class="pic2 ">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_font.png" alt="" class="ig1 ani-left">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_link.png" alt="" class="ig2 ">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_img1.png" alt="" class="ig1 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_img2.png" alt="" class="ig2 sink">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_img3.png" alt="" class="ig3 ani-left">
+                </div>
+            </div><!--p1 end-->
+            <div class="page p2 ">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_close.png" alt="" class='close'></div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_p2_img1.jpg" alt="" class="ig2 ani-rotate">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55b/7419e41aa7/y_s3_p2_font2.png" alt="" class="ig1 mover">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_img1.png" alt="" class="ig1 ani-uup">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_img2.png" alt="" class="ig2 ani-uup">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s3_img3.png" alt="" class="ig3 ani-uup">
+                </div>
+            </div><!--p2 end-->
+
+        </section>
+
+        <section id="slide2" >
+            <div class="page p1">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt=""></div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_font.png" alt="" class="ig1 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_link.png" alt="" class="ig2 ">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_img1.png" alt="" class="ig1 sink">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_img2.png" alt="" class="ig2 ani-left">
+                </div>
+            </div><!--p1 end-->
+            <div class="page p2">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_close.png" alt="" class='close'></div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_p2_img1.jpg" alt="" class="ig2 ani-rotate">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55b/7419e41aa7/y_s2_p2_font2.png" alt="" class="ig1 mover">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_img1.png" alt="" class="ig1 ani-uup2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s2_p2_img2.png" alt="" class="ig2 ani-uup2">
+                </div>
+            </div><!--p2 end-->
+        </section>
+
+        <section id="slide1" >
+            <div class="page p1">
+                <div class="pic1">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt="" class="ig1">
+                </div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_font.png" alt="" class="ig1 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_link.png" alt="" class="ig2 ">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_img2.png" alt="" class="ig1 ani-up">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_img1.png" alt="" class="ig2 sink">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_img3.png" alt="" class="ig3 ani-left">
+                </div>
+            </div><!--p1 end-->
+            <div class="page p2 ">
+                <div class="pic1">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55b/6ee2518ef0/y_close.png" alt="" class='close'>
+                </div>
+                <div class="pic2">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_p2_img1.jpg" alt="" class="ig2 ani-rotate">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55b/7419e41aa7/y_s1_p2_font2.png" alt="" class="ig1 mover">
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_img2.png" alt="" class="ig1 ani-uup">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_img1.png" alt="" class="ig2 ani-uup">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_img3.png" alt="" class="ig3 ani-uup">
+                </div>
+            </div><!--p2 end-->
+        </section>
+
+        <section id="slide7" >
+            <div class="page p1">
+                <div class="pic1"><img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s1_logo.png" alt=""></div>
+                <div class="pic2 ani-right">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s7_link.png" alt="" class="ig2 ">
+                    <a href="http://item.m.jd.com/ware/view.action?wareId=1726259" target="_blank" class="link"></a>
+                </div>
+                <div class="pic3">
+                    <img src="http://2.zol-img.com.cn/zt/tm_55a/cb3d590140/y_s7_img1.png" alt="" class="ig1 ani-left">
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+<div id="btn" role="button"></div>
+<audio id="video" autoplay loop src="http://icon.zol-img.com.cn/m/audios/topic/myth/myth.mp3" preload="auto"></audio>
+<div id="btn-a1">
+    <p id="start">开始</p>
+    <p id="end">结束</p>
+</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+
+<script>
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+
+    function innit(){
+        // loading.dismiss();
+        tankuang.addEventListener('click',function(){
+            document.querySelector('.tankuang').style.display='none';
+            video.play();
+            lMatters();
+            //内容页不可见
+            contHidden();
+        });
+    };
+    window.addEventListener('load',innit, false);
+
+    //最初的页面效果
+    function lMatters() {
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('curr');
+
+    };
+
+    viewport.addEventListener('changed', function (e) {
+        if(e.target.tagName=='UL'){return false}
+        var current = this.querySelector('.curr');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('curr');
+        e.current && e.current.classList.add('curr');
+        history.replaceState(null, document.title, this.index ? ('#' + this.index) : (location.pathname || '#'));
+        contHidden();
+    });
+
+
+    //设置内容页不可见
+    function contHidden(){
+        var sObj=viewport.querySelectorAll('section');
+        var sLen=sObj.length;
+        for(var v=0;v<sLen-1;v++){
+            var cObj=sObj[v].querySelector('.p2');
+            var ccObj=sObj[v].querySelector('.p1');
+            if(cObj!=null){
+                setOpacity(cObj,0);
+                cObj.style.zIndex='6';
+                cObj.classList.remove('currp');
+            };
+            setOpacity(ccObj,100);
+            ccObj.style.zIndex='8';
+        };
+    };
+    //设置透明度
+    function setOpacity(ele, opacity) {
+        if (ele.style.opacity != undefined||ele.style.opacity!=null) {
+            ele.style.opacity = opacity / 100;
+        } else {
+            ele.style.filter = "alpha(opacity=" + opacity + ")";
+        };
+    };
+    //弹窗二级页面
+    var oP=document.querySelectorAll("section");
+    oP.forEach(function(item,index){
+        var cLen=item.children.length;
+        var p1Ig=item.querySelector(".p1").querySelector(".pic2").querySelector(".ig2");
+        p1Ig&&p1Ig.addEventListener('click', function(){
+            if(cLen==2){
+                console.log([]);
+                for(var v=0;v<oP.length;v++){
+                    oP[v].classList.remove("curr");
+                };
+
+                setOpacity(item.children[0],0);
+                item.children[0].style.zIndex='6';
+
+                setOpacity(item.children[1],100);
+                item.children[1].classList.add('currp');
+                item.children[1].style.zIndex='8';
+
+                setOpacity(document.getElementById('btn'),0);
+            };
+        });
+        //二级页面回到一级页面
+        var p2 = item.querySelector('.p2');
+        if(p2!=null){
+            var closeObj=p2.querySelector('.close');
+            closeObj&&closeObj.addEventListener('click', function(){
+                for(var v=0;v<oP.length;v++){
+                    oP[v].classList.remove("curr");
+                };
+                item.classList.add('curr');
+                setOpacity(item.children[0],100);
+                item.children[0].style.zIndex='8';
+
+                setOpacity(item.children[1],0);
+                item.children[1].classList.remove('currp');
+                item.children[1].style.zIndex='6';
+
+                setOpacity(document.getElementById('btn'),100);
+            });
+        };
+    });
+
+    //背景音乐
+    var bObj=document.getElementById('btn-a1');
+    var video=document.getElementById('video');
+    bObj&&bObj.addEventListener('click', function(){
+        if(video!==null){
+            if(!video.paused){
+                video.pause();
+                document.getElementById('start').style.display='block';
+                document.getElementById('end').style.display='none';
+            }else{
+                video.play();
+                document.getElementById('start').style.display='none';
+                document.getElementById('end').style.display='block';
+            };
+        };
+    });
+
+    /* end 微信分享图片和文字设置 */
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_55b/0b5bcc9736/weixin.jpg',
+        title: '我不仅仅是一台智能影院--中关村在线'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

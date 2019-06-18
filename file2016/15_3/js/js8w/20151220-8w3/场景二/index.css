@@ -1,0 +1,249 @@
+*{
+    margin:0;
+    padding:0;
+}
+ul{
+    list-style: none;
+}
+html{
+    height:100%;
+    overflow: hidden;
+}
+#main{
+    width: 640px;
+    height: 1008px;
+    position: absolute;
+    left:50%;
+    top:0;
+    margin-left: -320px;
+    -webkit-transform-origin: top;
+}
+#loading{
+    width: 100%;
+    height:100%;
+    background:#000;
+    position: absolute;
+    z-index: 10;
+
+}
+.progress{
+    margin: 0 15%;
+    width: 70%;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    position: absolute;
+    top:40%;
+    overflow: hidden;
+}
+.progress span{
+    display: block;
+    width: 0;
+    height: 40px;
+    background-image: -webkit-linear-gradient(45deg,#5cb85c 25%,#74c274 50%,#5cb85c 75%,#74c274 100%);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+    -webkit-transition :1s;
+}
+
+.phone{
+    width: 100%;
+    height: 100%;
+    background-image: url(images/phoneBg.jpg);
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 9;
+    -webkit-transition: 1s;
+
+}
+.phoneName{
+    width: 100%;
+    height: 89px;
+    text-align: center;
+    margin-top: 60px;
+    background:url(images/logo.png) no-repeat center;
+}
+.phoneText{
+    font-size:24px;
+    color: #fff;
+    letter-spacing: 5px;
+}
+.answerOne{
+    width: 520px;
+    height: 360px;
+    background:url(images/phoneBtn.png) no-repeat;
+    position: absolute;
+    left:50%;
+    margin-left: -265px;
+    bottom:5%;
+}
+.oneTouch,.touchClick{
+    width:170px;
+    height: 170px;
+    border:3px solid #0F0;
+    position:absolute;
+    left:358px;
+    top:143px;
+    z-index: -1;
+    border-radius: 50%;
+    -webkit-animation:touchAnimate 1s ease-out infinite;
+
+}
+.touchClick{
+    -webkit-animation: none;
+    z-index:3;
+    border:0;
+    cursor: pointer;
+
+}
+@-webkit-keyframes touchAnimate {
+    0%{
+        -webkit-transform:scale(1.2)
+    }
+    100%{
+        -webkit-transform:scale(0.5);
+    }
+ }
+.answerOther{
+    width: 520px;
+    height: 659px;
+    background: url(images/phoneKey.png) no-repeat;
+    position: absolute;
+    left:50%;
+    margin-left: -265px;
+    bottom:0;
+    -webkit-transform :translate(0,659px);
+    -webkit-transition:1s;
+}
+
+.message{
+    width: 100%;
+    height: 100%;
+    background: #eaeaea;
+    position: absolute;
+    z-index: 7;
+    left:0;
+    top:0;
+
+
+}
+.message ul{
+    -webkit-transition: 1s;
+}
+.messageText{
+    position:absolute;
+    width: 640px;
+    height: 88px;
+    left:50%;
+    margin-left: -320px;
+    bottom:0;
+    background: url(images/messageText.png);
+}
+.message ul li{
+    max-width: 360px;
+    padding: 25px;
+    line-height: 40px;
+    font-size: 26px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    position: relative;
+    opacity: 0;
+    -webkit-transform: translate(0,20px);
+    -webkit-transition:0.5s;
+}
+.message .left{
+    float: left;
+    border: 2px #cacaca solid;
+    background: #fff;
+    left:125px;
+}
+.message .left img{
+    position: absolute;
+    left:-100px;
+    top:0;
+}
+.message .left .arrow{
+    left: -10px;
+    top:auto
+}
+.message .right{
+    float: right;
+    right:125px;
+    background: #a2e45c;
+    border: 2px #96b474 solid;
+}
+.message .right img{
+    position: absolute;
+    right:-100px;
+    top:0;
+}
+.message .right .arrow{
+    right: -10px;
+    top:auto
+}
+.cube{
+    width: 100%;
+    height: 100%;
+    background: url(images/cubeBg.jpg) no-repeat;
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top:0;
+    perspective: 800px;
+    cursor: pointer;
+}
+.cubeBox{
+    width:510px;
+    height: 510px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-top: -255px;
+    margin-left: -255px;
+    transform-style: preserve-3d;
+    -webkit-transform: scale(0.2) rotateX(-135deg) rotateY(-180deg);
+    -webkit-transform-origin: 255px 255px -255px;
+    opacity: 0;
+    -webkit-transition:-webkit-transform 1s;
+}
+.cubeBox li{
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    position: absolute;
+}
+.cubeBox li:nth-of-type(1){
+    background: url(images/cubeImg1.png);
+}
+.cubeBox li:nth-of-type(2){
+    background: url(images/cubeImg2.png);
+    left:510px;
+    -webkit-transform-origin: left;
+    -webkit-transform: rotateY(90deg);
+}
+.cubeBox li:nth-of-type(3){
+    background: url(images/cubeImg3.png);
+    left:-510px;
+    -webkit-transform-origin: right;
+    -webkit-transform: rotateY(-90deg);
+}
+.cubeBox li:nth-of-type(4){
+    background: url(images/cubeImg4.png);
+    top:510px;
+    -webkit-transform-origin: top;
+    -webkit-transform: rotateX(-90deg);
+}
+.cubeBox li:nth-of-type(5){
+    background: url(images/cubeImg5.png);
+    top:-510px;
+    -webkit-transform-origin:bottom;
+    -webkit-transform: rotateX(90deg);
+
+}
+.cubeBox li:nth-of-type(6){
+    background: url(images/cubeImg6.png);
+    -webkit-transform: translateZ(-510px);
+}
+
+

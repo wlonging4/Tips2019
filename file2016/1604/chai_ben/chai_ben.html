@@ -1,0 +1,841 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="GBK">
+    <title>拆本办</title>
+    <script src="http://icon.zol-img.com.cn/active/js/cookie.js"></script>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#777; font:12px/22px "microsoft yahei",Arial; background-color:#eee; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#777;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  width: 1000px;  margin: 0 auto;  }
+        .wrapper2{  width: 960px;  padding: 0 20px 0;  }
+        .wrapper3{  width: 960px;  margin: 0 20px 0;  }
+        .wrapper4{  width: 960px;  margin: 0 27px 0;  }
+        .head-logo{  float: left;  margin: 22px 0 10px;  height: 75px;  width: 159px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cc1d49f75e/lg_logo.png") no-repeat 0 0;  }
+        .head-link{  float: right;  padding-top: 50px; width: 630px }
+        .head-link a{  color: #333;  }
+        .head-link a:hover{  color: #333;  }
+        .head-link-l{  float: left;  }
+        .head-link-r{  float: right;  }
+
+        .c{  box-shadow: 0 0 2px 2px #D4D4D4;  background: #fff; border-radius: 3px }
+        .info-title{  height: 42px;  background: #f2f2f2;  border-top: 1px solid #fff;  border-bottom: 1px solid #fff;border-radius: 3px  }
+        .info-t1{ float: left; margin-left: 20px;  color: #535353;  line-height: 52px;  }
+        .info-t2{ float: left;   }
+        .info-title .hui12{ color: #535353; line-height: 54px; margin-left: 5px; }
+        .info-con{  padding-top: 35px;  background: #fff;  border-top: 1px solid #ddd;  }
+        .info-con-l{  float: left;  height: 360px;  width: 622px;  }
+        .info-con-l-txt1{  height: 215px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cc1d49f75e/lg_info_l_bg.jpg") no-repeat 0 0;  }
+        .info-con-l-txt1 .hei20{  font-size: 26px; display: block ; padding-bottom: 50px }
+        .info-con-l-txt1 .hei20:hover{  color: #000;  text-decoration: none;  }
+        .info-con-l-txt1 .hui12{  color: #777;  line-height: 22px;  padding: 0 15px;  }
+        .info-con-l-txt2 .hui12{  color: #777;  line-height: 20px;  }
+        .info-con-l-share{ position: relative; width: 620px;  height: 35px;  border-top: 1px solid #ddd;  border-bottom: 1px solid #ddd;  }
+        .info-share-vote{   float: left;  width: 60px;  height: 22px;  padding: 6px;  }
+        .info-vote-flow{  position: absolute;  height: 36px;  width: 102px;  top: -31px;  left: -33px;  background:  url("http://2.zol-img.com.cn/zt/tm_570/cbe420f915/lg_spirit.png") no-repeat 0 0;  display: none;  }
+        .info-vote-flow.blk{  display: block;  }
+        .info-share-vote .vote_btn{  float: left;  height: 22px;  width: 34px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cbe420f915/lg_spirit.png") no-repeat -6px -37px;  }
+        .info-share-vote .vote_num{  float: left;  }
+        .info-share-com{  float: left;  width: 23px;  height: 18px;  margin: 8px 5px 9px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cbe420f915/lg_spirit.png") no-repeat -6px -85px;  }
+        .info-share-com a{  display: block;  width: 23px;  height: 18px;  cursor: pointer;  }
+        .info-share-wei{  float: right;  width: 120px;  height: 35px;  }
+        .info-share-wei1{  float: left;  width: 40px;  line-height: 35px;  font-size: 12px;  color: #535353;  }
+        .info-share-wei2{  float: left;  width: 80px;  height: 30px;  }
+        .info-share-wei2 .bdsharebuttonbox .bds_tsina{  margin-left: 8px;  width: 10px;  height: 22px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cbe420f915/lg_spirit.png") no-repeat -42px -126px;  }
+        .info-share-wei2 .bdsharebuttonbox .bds_weixin{  margin-left: 4px;  width: 10px;  height: 22px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cbe420f915/lg_spirit.png") no-repeat -42px -158px;  }
+        .info-con-l-txt2{  width: 600px;  height: 60px;  margin: 30px 10px 20px; overflow: hidden }
+        .info-con-r{  float: left;  height: 360px;  width: 330px;  margin-left: 8px;  }
+        .info-con-r-img{  height: 260px;   }
+        .info-con-r-detail{  color: #ccc;  margin-left: -10px;  padding: 20px 0 15px;  text-align: left;  }
+        .info-con-r-detail a{  font-size: 12px;  color: #0071CC;  margin: 0 10px;  }
+        .info-con-r-detail a:hover{  color: #F57D7D;  text-decoration: none;  }
+        .info-con-r-price{  font-size: 12px;  color: #0071CC;  }
+        .info-con-r-price span{  color: #F26565;  }
+        .info-con-r-price span em{  font-size: 16px;  }
+
+        .media{  height: 360px;  padding-bottom: 12px; overflow:hidden }
+        .media-l{  float: left;  width: 590px;  height: 340px;  margin-left: 15px; margin-top: 15px ; background:#000; }
+        .media-r{  float: left;  width: 330px;  height: 340px;  margin-left: 25px; margin-top: 15px ; background: #eee;  }
+        .media-r-c{  padding: 0 10px;  }
+        .media-r-c-p{  height: 35px;  line-height: 35px;  font-size: 14px;  color: #777;  }
+        .media-r-c-img{  height: 300px;  }
+        .media-r-c-img .ln{  height: 2px;  }
+
+        .adv{  height: 90px;  background: #eee;  }
+
+        .step{    padding: 10px 20px 10px;  border-bottom: 1px solid #ebebeb;  }
+        .step-l{  position: relative; float: left;  margin-left: 15px;  height: 442px;  width: 590px;  border: 1px solid #ebebeb;  overflow: hidden;  }
+        .step-l-box{  position: absolute;  left: 0;  top: 0; width: 590px }
+        .step-r{  float: left;  width: 330px;    margin-left: 22px;  }
+        .step-r-ul{  width: 330px;  height: 74px;  margin-left: -6px;  }
+        .step-r-ul li{  float: left;  height: 74px;  width: 102px;  margin-left: 6px;  border: 1px solid #eee;cursor: pointer  }
+        .step-r-tit{  height: 25px;  padding: 15px 0;  }
+        .step-r-tit-l{  float: left; font-weight: bold; }
+        .step-r-tit-l .hui16{  color: #545454;  }
+        .step-r-tit-l .hui16:hover{  color: #545454;  text-decoration: none;  }
+        .step-r-tit-r{  float: right;  height: 25px;  width: 25px;  background: url("http://2.zol-img.com.cn/zt/tm_570/cbe420f915/lg_spirit.png") no-repeat -6px -85px;  }
+        .step-r-tit-r a{  display: block;  height: 25px;  width: 25px;  cursor: pointer;  }
+        .step-r .hui12bi{  color: #777;  line-height: 20px; padding-left: 24px; }
+        .step-r .hui12bi:hover{  text-decoration: none;  }
+        .step-r-p{  color: #777;  }
+        .hd{  position: relative;  width: 330px;  word-break: normal;  word-wrap: break-word;  line-height: 20px;  text-indent: 26px; margin-top: 2px }
+        .hd.left{ margin-left: 20px; width: 310px; }
+        .hd.top{ margin-top:8px }
+        .hd em{  display: block;  position: absolute;  top: 4px;  left: 4px;  height: 12px;  width: 12px;  }
+        .hd .hong{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -15px;  }
+        .hd .cheng{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -29px;  }
+        .hd .huang{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -43px;  }
+        .hd .lv{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -57px;  }
+        .hd .lan{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -71px;  }
+        .hd .dian{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -85px;  }
+        .hd .zi{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -99px;  }
+        .hd .hei{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -1px -1px;  }
+        .hd .he{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -15px -71px;  }
+        .hd .hui{  background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -15px -85px;  }
+        .hd .log1{ top:0; left: 0;  height:20px; width: 24px; background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -15px -1px;  }
+        .hd .log2{ top:0; left: 0; height:20px; width: 24px; background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -16px -25px;  }
+        .hd .log3{ top:0; left: 0; height:20px; width: 24px; background: url("http://2.zol-img.com.cn/zt/tm_574/c415808e81/lg_spirit2.png") no-repeat -16px -49px;  }
+
+
+
+        .comment{  height: 840px;  padding-top: 5px;  padding-bottom: 5px;  }
+        .backup{  width: 945px;  height: 114px;  background: #eee;  }
+        .backup-c{  padding: 12px 15px 0;  height: 89px;  width: 915px;  }
+        .backup-c .ln{  height: 1px;  }
+        .img-lab{  height: 18px  ;  width: 24px  ;background: #212427  ;position: absolute  ;bottom: 0  ;right: 1px  ;color: #fff  ;line-height: 18px  ;font-size: 14px ;text-align: center;  }
+        .img-lab.img-lab2{  right: 2px  }
+
+        .zol_foot{  color: #777;  }
+        .zol_foot a{  color: #777;  }
+        .zol_foot a:hover{  color: #777;    }
+    </style>
+    <style type="text/css"></style><script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=406836"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=6aba13f0.css"><script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=406854"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=6aba13f0.css"><style type="text/css"></style><script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=406854"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=6aba13f0.css"><script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=406874"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=6aba13f0.css"></head>
+<body>
+<!--头部-->
+<div class="head wrapper clearfix">
+    <div class="head-logo"></div>
+    <div class="head-link clearfix">
+        <div class="head-link-l">
+            <a href="http://www.zol.com.cn/" target="_blank">首页</a>&nbsp;|&nbsp;
+            <a href="http://detail.zol.com.cn/" target="_blank">产品报价</a>&nbsp;|&nbsp;
+            <a href="http://bbs.zol.com.cn/" target="_blank">论坛</a>&nbsp;|&nbsp;
+            <a href="http://topic.zol.com.cn/" target="_blank">专题</a>&nbsp;|&nbsp;
+            <a href="http://news.zol.com.cn/" target="_blank">新闻</a>&nbsp;|&nbsp;
+            <a href="http://v.zol.com.cn/" target="_blank">视频</a>&nbsp;|&nbsp;
+            <a href="http://sj.zol.com.cn/" target="_blank">手机软件</a>&nbsp;|&nbsp;
+            <a href="http://xiazai.zol.com.cn/" target="_blank">软件下载</a>&nbsp;|&nbsp;
+            <a href="http://www.zol.com.cn/help/iphone.html" target="_blank">ZOL客户端</a>
+        </div>
+        <div class="head-link-r" id="zt_head_login"><a href="http://service.zol.com.cn/user/login.php" target="_self">登录</a> | <a href="http://service.zol.com.cn/user/register.php" target="_blank">免费注册</a></div>
+    </div>
+</div>
+<script>
+    (function (){
+        var zolid = readCookie('zol_userid');
+        if(!zolid){
+            document.getElementById("zt_head_login").innerHTML = '<a href="http://service.zol.com.cn/user/login.php" target="_self">登录</a> | <a href="http://service.zol.com.cn/user/register.php" target="_blank">免费注册</a>';
+        }else{
+            document.getElementById("zt_head_login").innerHTML = '<a href="http://my.zol.com.cn/"'+zolid+'/ target="_blank">'+zolid+'</a> | <a href="http://service.zol.com.cn/user/login.php?type=quit" target="_self">退出</a>';
+        }
+    })();
+</script>
+<!--内容-->
+<div class="c wrapper">
+    <!--信息-->
+    <div class="info">
+        <div class="info-title">
+            <div class="info-t1"> &lt;&lt; </div>
+            <div class="info-t2"><{data[26]}></div>
+        </div>
+        <div class="info-con wrapper2 clearfix">
+            <div class="info-con-l">
+                <div class="info-con-l-txt1">
+                    <{data[0]}>
+                </div>
+                <div class="info-con-l-share clearfix">
+                    <div class="info-share-vote"><{data[1]}></div>
+                    <div class="info-vote-flow"></div>
+                    <div class="info-share-com">
+                        <a href="#comment" target="_self"></a>
+                    </div>
+                    <div class="info-share-wei">
+                        <div class="info-share-wei1">分享：</div>
+                        <div class="info-share-wei2">
+                            <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1464752675372">
+                                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-con-l-txt2">
+                    <{data[2]}>
+                </div>
+            </div>
+            <div class="info-con-r">
+                <div class="info-con-r-img">
+                    <{data[3]}>
+                </div>
+                <div class="info-con-r-detail" id="info-con-r-detail">
+                    <a href="http://detail.zol.com.cn//notebook/index1137255.shtml" id="info-unit" target="_blank">产品综述</a>|
+                    <a href="http://detail.zol.com.cn//1138/1137255/pic.shtml" id="info-picture" target="_blank">图片(<em id="img-count">352</em>)</a>|
+                    <a href="http://detail.zol.com.cn//1138/1137255/param.shtml" id="info-parameter" target="_blank">参数</a>|
+                    <a href="http://detail.zol.com.cn//1138/1137255/price.shtml" id="info-price" target="_blank">报价</a>|
+                    <a href="http://detail.zol.com.cn//1138/1137255/review.shtml" id="info-comment" target="_blank">点评(<em id="img-comment">1</em>)</a>
+                </div>
+                <div class="info-con-r-price" id="info-con-r-price">
+                    本地参考底价：&nbsp;&nbsp;<span><em id="img-price">5万</em>&nbsp;元</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--影音-->
+    <div class="media banners wrapper2 clearfix">
+        <div class="media-l">
+            <{data[121]}>
+        </div>
+        <div class="media-r">
+            <div class="media-r-c">
+                <p class="media-r-c-p">步骤</p>
+                <div class="media-r-c-img">
+                    <{data[5]}>
+                </div>
+            </div>
+        </div>
+    </div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="sys_hidden_bar" style="display: none;">@@@div_hidden_bar@@@</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[7]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/03/0E/ChMkJlcwuiWIKEyJAACspDO7CA8AAROFACo8sAAAKy8703.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0C/ChMkJlc4FrGIEBbHABCI7MaZn_QAARdNwKmct8AEIkE658.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0C/ChMkJlc4FsGIRE5gAADTbROWr9cAARdNwNUQroAANOF043.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[8]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[57]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[12]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJlc4KCmIRQ9VAAuk5ArTtIUAARdWgGZNSUAC6T8313.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJ1c4KFWIGbE3AA7c0AYEF80AARdWgLM81wADtzo514.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJ1c4KGuIQY2JAAoJrIsXXgoAARdWgObY0AACgnE940.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[13]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[62]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[64]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJlc4LqqIenzLAALg6irX6fQAARdawAEGxkAAuEC314.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJ1c4LgyIcx1DAANghWvmpKIAARdagBjd6oAA2Cd128.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJ1c4KGuIQY2JAAoJrIsXXgoAARdWgObY0AACgnE940.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[65]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[66]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[79]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/08/07/ChMkJlc5Z8SIXhbvAA6pnktV3KYAARf1gCyPX8ADqm2379.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/08/07/ChMkJ1c5Z9yIGptuAApWfMkye-kAARf1gFcLqcAClaU109.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/08/07/ChMkJ1c5Z_mIfxXKAAsr2HiXzDAAARf1gKkUJ0ACyvw820.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[80]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[81]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[67]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0D/05/ChMkJldC1M2ISZ_iAAcUoMZ-ElEAARy3QARvV4ABxS4004.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0D/04/ChMkJldC1FiIegyPAAdNnhHOJJAAARy2wDpDEMAB022051.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0D/04/ChMkJ1dC1GaIfjLRAAU1EAhdrOUAARy2wEac4kABTUo763.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[68]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[69]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[70]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldHxuyIXLSAAAtXNVTyJ5oAAR8zANPoGwAC1dN150.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dHxp2IHgarAA827YQRJQYAAR8ywIu5o0ADzcF977.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0C/ChMkJldHxU2IPLtYAAc6vn3AzYwAAR8xgNvyWkABzrW040.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[71]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[72]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[73]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dHyk2IAYo6AAvnvKPGlVIAAR81QD1AFoAC-fU095.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dHyj2IGnOgAAxZ3mUwXFgAAR81QBL0AsADFn2354.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldHygeISEOFAA5ZYLB2r6UAAR81AKvM5kADll4060.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[74]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[75]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[76]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldH0k6IPLyjAAh7Z_TvAQwAAR84wK9MXAACHt_531.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH0kKIFQE5AAoXZa0P5LYAAR84wKl1BgAChd9610.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJ1c4KGuIQY2JAAoJrIsXXgoAARdWgObY0AACgnE940.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[77]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[78]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[91]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH0-GIHTuSAAl39jXVvTQAAR85gIcf9sACXgO554.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH01mIDJlPAAqO_3aN-nUAAR85QCqtaAACo8X875.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH006ILBc4AAqbKN41wTQAAR85QAbJ64ACptA081.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[92]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[93]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[106]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH1SeIHPTsAAWO2oBOW6YAAR86APOQv0ABY7y530.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldH1Q-IdEbiAAZmrcZR0sEAAR86AMfgEcABmbF881.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH1QWIEoYHAAYouEmIUHEAAR86AKzLwwABijQ008.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[107]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[108]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[103]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH3A-IVG6BAA1UnSdjTkkAAR89gFRjzEADVS1039.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldH2_mIAwoBABKjtqdDAsAAAR89gCuUkMAEqPO253.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldH2--IDIAtAA7WSOzOeOEAAR89gAZJDUADtZg579.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[104]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[105]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[100]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJ1dH3bWIU2zLAAzVOVosX18AAR8-gBOAjAADNVR148.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldH3Z6IVsWaAA2J7zi2eCoAAR8-QNIBBwADYoH924.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/0F/0D/ChMkJldH3ZWIditnAAejApbr1rUAAR8-QKl_kwAB6Ma606.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[101]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[102]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[97]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/01/01/ChMkJldLF7qIc1-dAAcpCOOCuJsAASCAgNoZOMABykg684.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/01/01/ChMkJldLGASIa25LAAs-8Y6MnoUAASCAwDsNrYACz8J549.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/01/01/ChMkJldLGBeISAYEAAkExuMyrJwAASCAwE3FN8ACQTe889.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[98]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[99]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[94]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/01/01/ChMkJldLGO6IH_iqAAas5p5rKksAASCAwN3hYUABqz-772.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/01/01/ChMkJ1dLGQOIeENYAAptadTQdiMAASCAwOpFYwACm2B324.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNKmWINKGSAA7qfBecCXwAASFyAKJx9oADuqU732.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[95]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[96]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[88]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJldNMMSIV0cUAAwp9WHi0CMAASF2gISzlgADCoN573.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNMIKIVwP9AAndox3JM8kAASF2QNDAKoACd27813.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJldNMJ6ISSxKAAy6OCZISNEAASF2gCHQCIADLpQ283.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[89]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[90]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[85]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNMYCIYZSwAAptgmB6l5sAASF2wOv1LEACm2a362.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNMZuIf23pAAcRpss1IegAASF3AGEER8ABxG-259.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJldNMbyIdsd3AAYysUkkHI8AASF3APz-bUABjLJ069.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[86]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[87]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[82]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJldNNNSIO8q-AAq-99OlE3wAASF6QAGdAwACr8P441.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNNMSIYr8VAAoWIRB3KcgAASF6AOENVAAChY5785.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/07/0D/ChMkJ1c4KGuIQY2JAAoJrIsXXgoAARdWgObY0AACgnE940.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[83]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[84]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[112]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJldNNXKIb9FcAAKev5EBCn4AASF6gPWo2EAAp7X047.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNNa-ITClDAAJyv5ELRKUAASF6wMNY_IAAnLX560.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNNZKIBOsOAAI-aS-hzCUAASF6wHXpO0AAj6B493.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[113]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[114]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[118]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNOzeIVde8AAqV51xnQZEAASF_ACp0LUACpX_661.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJldNO1WIaDWoAEAZG1G7hw0AASF_AGprL0AQBkz099.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/01/ChMkJ1dNO2yIZNmXAAbCtgEazToAASF_AKppj4ABsLO185.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[119]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[120]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[115]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/02/ChMkJldNP6aIYZfdAAwYaSQso00AASGCQKJd7MADBiB093.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/02/ChMkJ1dNP9KIL-QqAA87-jDhY9oAASGCgGYGrMADzwS447.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/02/ChMkJldNP_eIZLPXAAzBl26qiuEAASGCgOjCGoADMGv406.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[116]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[117]}>
+        </div>
+    </div>
+</div><div class="step banners wrapper2 clearfix">
+    <div class="step-l">
+        <div class="step-l-box">
+            <{data[17]}>
+        </div>
+    </div>
+    <div class="step-r">
+        <ul class="step-r-ul clearfix">
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/02/ChMkJldNQPSIZtfuAA1gTn0jMqkAASGDQE8RnIADWBm286.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://zt.fd.zol-img.com.cn/t_s590x442c/g5/M00/02/02/ChMkJldNQQ6IV3kwAAdJ7XoHAY0AASGDQLHI14AB0oF824.jpg" alt="" width="0" height="0"></li>
+            <li><img src="http://2.zol-img.com.cn/zt/tm_4aa6/5df3f0662/tu.jpg" alt="" width="0" height="0"></li>
+        </ul>
+        <div class="step-r-tit clearfix">
+            <div class="step-r-tit-l">
+                <{data[18]}>
+            </div>
+            <div class="step-r-tit-r">
+                <a href="#comment" target="_self"></a>
+            </div>
+        </div>
+        <div class="step-r-p">
+            <{data[63]}>
+        </div>
+    </div>
+</div><div class="comment banners wrapper2" id="comment">
+    <{data[22]}>
+</div>
+
+
+
+    <!--步骤1-->
+
+    <!--步骤2-->
+
+    <!--步骤3-->
+
+    <!--评论-->
+
+</div>
+<script type="text/javascript">
+    /*加载图片链接信息*/
+    var $img_info=$('.info-con-r-img').find('table img').parent().attr('href');
+    var id=$img_info.match(/\d{6,7}/);
+    $.getJSON("http://active.zol.com.cn/16active/0413detail/getsimpleinfo.php?proid="+id+"&callback=?",{ id:id },function(obj){
+
+        $('#info-unit').attr('href','http://detail.zol.com.cn/'+obj['urls']['detail']);/*features*/
+        $('#info-picture').attr('href','http://detail.zol.com.cn/'+obj['urls']['picture']);
+        $('#img-count').html(obj['picTotal']);
+        $('#info-parameter').attr('href','http://detail.zol.com.cn/'+obj['urls']['param']);
+        $('#info-price').attr('href','http://detail.zol.com.cn/'+obj['urls']['price']);
+        $('#info-comment').attr('href','http://detail.zol.com.cn/'+obj['urls']['review']);
+        $('#img-comment').html(obj['commentNum']);
+        $('#img-price').html(obj['priceShow']['price']);
+    });
+
+
+    /*百度分享*/
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "16"
+        }, "share": {}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+    /*图片标签*//*media-r-c-img*/
+    label_chg('.backup-c','img-lab');
+    label_chg('.media-r-c-img','img-lab img-lab2');
+    function label_chg(box,cls){
+        var $backup_img=$(box).find('table img').parent();
+        $backup_img.css({position:'relative',display:'block'});
+        $('<div class="img-label"></div>').appendTo($backup_img);
+        var img_lab=$backup_img.find('.img-label');
+        img_lab.addClass(cls);
+        for(var i=0;i<img_lab.length;i++){
+            img_lab.eq(i).html(i+1);
+        }
+    }
+
+    /*投票*/
+    $vote=$('.info-share-vote');
+    $vote_info=$('.info-vote-flow');
+    $vote.bind('mouseenter', function () {
+        $vote_info.addClass('blk');
+    });
+    $vote.bind('mouseleave', function () {
+        $vote_info.removeClass('blk');
+    });
+
+    var $vote_btn=$vote.find('.vote_btn').bind('click', function () {
+        $vote_btn.css('background-position','-'+6+'px -'+57+'px')
+    });
+
+
+    /*大图转换*/
+    var $img_media1=$('.media-r-c-img').find('table img');
+    var $img_media1_a=$('.media-r-c-img').find('table a');
+    $img_media1.attr({'alt':''});
+    $img_media1_a.attr({'title':''});
+    console.log($img_media1.length);
+    for(var u=0;u<$img_media1.length;u++){
+        $img_media1.eq(u).attr({'src':($('.step').eq(u).find('.step-l table img')).eq(0).attr('src'),'width':'60px','height':'44px'})
+    }
+    chg_bg('.step');
+    function chg_bg(obj){
+        console.log($(obj).length);
+        for(var g=0;g<$(obj).length;g++){
+            var $img_b=$(obj).eq(g).find('.step-l table img');
+            var $img_l=$(obj).eq(g).find('.step-r-ul li img');
+            for(var i=0;i<$img_b.length;i++){
+                $img_l.eq(i).attr({'src':$img_b.eq(i).attr('src'),'width':'102px','height':'74px'});
+            }
+        }
+    }
+
+    /*小图滑过切换*/
+    var $l_box_img=$('.step-l-box');
+    for(var h=0;h<=$l_box_img.length;h++){
+        if($l_box_img.eq(h).find('td img').length==2){
+            $l_box_img.eq(h).closest('.step').find('.step-r-ul li:last').css({display:'none'});
+        }
+    }
+
+    var $l_img=$('.step').find('.step-r-ul li');
+    $l_img.bind('mouseenter', function () {
+        var $par=$(this).closest('.step');
+        $par.find('.step-l-box').css({top:'-'+(442*($(this).index()))+'px'})
+    });
+    /*跳转制定步骤页*/
+    var $steps=$('.step');
+    $img_media1.bind('click', function () {
+        $img_st=$steps.eq($img_media1.index(this)).offset().top;
+        $(document).scrollTop($img_st);
+        return false;
+    });
+
+
+
+</script>
+
+</body></html>

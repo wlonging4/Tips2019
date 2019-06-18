@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用的DOM库实践</title>
+</head>
+<body>
+<div id="div1" style="background: red"></div>
+<div id="div2" style="background: red"></div>
+<script type="text/javascript" src="wlgJs.js"></script>
+<script type="text/javascript">
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    utils.css(oDiv1,"height",10);
+    utils.css(oDiv1,"width",10);
+    var str="   php  ?  com=1   ";
+    console.log(str);
+    console.log(str.myTrim());
+    console.log(str.queryURLParameter());
+    var val1=220;
+    var val2="zifuchuan";
+    console.log(utils.isNum(val1));
+    console.log(utils.isNum(val2));
+    console.log(utils.isStr(val2));
+    /*【框架(类库)】
+     框架源于应用，却又高于应用。
+    jQuery:提供了我们项目中常用的一些操作DOM,数组,Ajax等方法(把兼容性都处理好了,我们以后做项目只需要引入这个类库,直接的使用里面的方法即可)->不针对任何的项目,我们都可以使用的;
+    框架与类库的区别主要表现在以下几个方面：
+    （1）从结构上说，框架内部是高内聚的，而类库内部则是相对松散的。
+    （2）框架封装了处理流程的控制逻辑，而类库几乎不涉及任何处理流程和控制逻辑。
+    （3）框架具有IOC（控制反转）能力，而类库没有。
+    IOC，即俗称的好莱坞模式（Don’t call us, we will call you）。对于类库中的元素来说，通常都是由我们的应用来调用它；而框架具有这种能力――在适当的时候调用我们应用中的逻辑。这种能力是通过框架扩展点（或称为“插槽”）来做到的――具体的应用通过扩展点注入自己的逻辑，而在适当的时候，框架会调用这个扩展点中已注册的逻辑。实际上，.NET中的事件（5w4event）发布、预定机制就是IOC的一个代表性例子。
+    （4）框架专注于特定领域，而类库却是更通用的。
+    框架着力于一个特定领域的解决方案的完整表达，而类库几乎不针对任何特定领域。比如，本书中提到的通信框架只适用于需要在TCP/UDP基础上直接构建通信的应用程序，而像正则表达式这样的类库却可以使用在各种不同的应用中。
+    （5）框架通常建立在众多类库的基础之上，而类库一般不会依赖于某框架。
+    【UI框架】
+    css+JS都封装成一体的框架
+    bootstrap;css和JS文件引入;我们只需要引入他的css和JS,并且按照规定把我们的HTML结构做好,那么连带样式和JS操作效果的功能都实现了;
+    【插件】
+    具体的应用于某一个业务,例如有专门处理轮播图及拖拽的插件
+    jQery.validate.js;表单验证插件*/
+    /*【回调函数demo】
+    var utils={
+        //遍历数组中的每一项,每一次循环的时候都执行fn
+        each: function (curAry,fn) {
+            for(var i=0;i<curAry.length;i++){
+                var item=curAry[i];
+                var index=i;
+                typeof fn==="function"?fn(item,index,curAry):null;
+                //里面函数的this代表utils这个命名空间;防止以后改名后不要影响使用
+            }
+        },
+        //将类数组转换为数组
+        listToArray:function(likeAry){
+            var ary=[];
+            try{
+                ary=Array.prototype.slice.call(likeAry,0);
+            }catch(e){
+                this.each(likeAry, function(item,index,curAry){
+                    //回调函数
+                    ary[ary.length]=item;
+                })
+            }
+            return ary;
+        }
+    }; */
+    /*【通过类名获取】
+    class="a b c"
+    class="b c"
+    class="a c"
+    class="a b"
+    getElementsByClassName("a")->获取得到3个
+    getElementsByClassName("a b")->获取到2个:并且两个参数顺序及空格长度不影响效果;*/
+    /*【代码压缩】
+    tool.css-js.com*/
+</script>
+</body>
+</html>

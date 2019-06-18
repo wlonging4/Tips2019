@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一周综合面试题</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*【综合面试题】->
+     【闭包，作用域，预解释，this关键字】
+     this表示的是谁，和定义在哪儿没关系，只和运行在哪儿有关系
+     变量的值是哪一个，和运行在哪里没关系，只和定义在哪儿有关系*/
+     var num=10;//
+     var obj={
+        num:20,//
+     //自运行函数可以独立出来到全局内，然后再赋给fn1；自运行函数或者类似fn()这样前面不赋给别人的函数内部的this.都表示的是window
+        fn:(function(num){
+            this.num*=2;
+            num+=10;
+            var num=30;//发现形参已经存在，不需要考虑声明
+            return function(){
+                this.num*=2;//fn执行前面没"."里面的this代表着window
+                num+=20;
+                console.log(num);
+            }
+        })(num)//把全局下的num的值10赋值给自执行函数的形参，如果是对象内的num则写obj.num
+     };
+     var fn=obj.fn;
+     fn();//50
+     obj.fn();//70->这个执行的是obj.fn里的return小函数;
+     console.log(window.num);//40
+     console.log(obj.num);//40
+</script>
+</body>
+</html>

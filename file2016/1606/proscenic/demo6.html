@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Canvas加载图片</title>
+    <style type="text/css">
+        body{
+            background: #000;
+        }
+        .c1{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c1" class="c1" width="500" height="400">
+    <span>此浏览器不支持CANVAS</span>
+</canvas>
+<canvas id="c2" class="c1" width="500" height="400">
+    <span>此浏览器不支持CANVAS</span>
+</canvas>
+<script>
+    var c1=document.getElementById('c1');
+    var c2=document.getElementById('c2');
+    var dc1= c1.getContext('2d');
+    var dc2= c2.getContext('2d');
+
+    var oImg=new Image();
+    oImg.src='../4.jpg';
+
+    oImg.onload= function () {
+        draw(this);
+        /*this表示oImg这个对象*/
+    };
+
+    function draw(obj){
+        dc1.drawImage(obj,0,0,500,400);
+        dc2.drawImage(obj,0,0,500,200,0,0,250,200);
+    }
+</script>
+</body>
+</html>

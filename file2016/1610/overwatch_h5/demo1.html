@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>tit</title>
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /* 首页 */
+        body {width:640px; margin:0 auto; background-color:#000; color:#fff; position: relative;}
+        .wrapper {height:100%;  position:relative; z-index:1; margin:0 auto; overflow:hidden}
+        .main {position:absolute; left:0; top:0; z-index:1; width:100%; height:1000%; }
+        .section{width:100%; height:10%; position:relative; overflow:hidden; }
+        .next-btn{width:53px; height:32px; position:fixed; bottom:3%; left:50%; margin-left:-30px;  z-index:10; -webkit-animation: swipe 1s ease 0s infinite;animation: swipe 1s ease 0s infinite; }
+        .next-btn {background:url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/next.png) no-repeat 50% 50%;}
+
+
+        @-webkit-keyframes swipe{
+            0%   {-webkit-transform:translate(0,0)}
+            50%  {-webkit-transform:translate(0,10px)}
+            100% {-webkit-transform:translate(0,0)}
+        }
+        @keyframes swipe{
+            0%   {transform:translate(0,0)}
+            50%  {transform:translate(0,10px)}
+            100% {transform:translate(0,0)}
+        }
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .section .logo{position: absolute; left: 23px; top: 23px; width: 311px; height: 52px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/logo.png) no-repeat; left: 13px; top: 18px;}
+        /* section1 */
+
+        .section1{background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg1.jpg) no-repeat 50% 0;}
+        .section1 .date{position: absolute; width: 153px; height: 53px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/date.png) no-repeat; left: 50%; margin-left: -75px; bottom: 12%;}
+        /* section2 */
+        .section2{background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg2.jpg) no-repeat 50% 0;}
+        .sec2-con{width: 640px; position: absolute; left: 0; top: 15%;}
+        .sec2-con .hd1{width: 640px; height: 30px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/hd1.png) no-repeat 50% 0;}
+        .sec2-con .hd2{width: 640px; height: 30px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/hd2.png) no-repeat 50% 0; margin-top: 30px;}
+        .sec2-con .mod1 li{width: 448px; height: 38px; margin:0 auto 18px; border: 1px solid #1691f7; color: #b5b5b6; font-size: 20px; line-height: 38px; text-align: center; position: relative;}
+        .sec2-con .mod1 li:last-child{width: 500px;}
+        .sec2-con .mod1 li:after{position: absolute; width: 52px; height: 10px; top: 14px; content: ""}
+        .sec2-con .mod1 li:nth-child(odd):after{ background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/icon1.png) no-repeat; left:-52px;}
+        .sec2-con .mod1 li:nth-child(even):after{ background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/icon2.png) no-repeat; right:-52px;}
+        .sec2-con .mod1{margin-top: 30px;}
+        .sec2-con .mod2{background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg01.png) no-repeat 0 10px; width: 500px; height: 268px; margin:20px 0 0  109px; padding-top: 1px;}
+        .sec2-con .mod2 li{height: 40px; border-radius: 20px; width: 330px; padding-left: 50px; line-height: 40px; margin: 20px 0 0 20px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/icon3.png) no-repeat;  background-color: rgba(9,41,71,0.5); font-size: 20px; color: #fff; opacity:0;}
+        .sec2-con .mod2 li:nth-child(1){background-position:0 0 ; }
+        .sec2-con .mod2 li:nth-child(2){background-position:0 -60px }
+        .sec2-con .mod2 li:nth-child(3){background-position:0 -119px ; width: 370px; }
+        .sec2-con .mod2 li:nth-child(4){background-position:0 -176px ;}
+        .sec2-con .more{width: 250px; height: 60px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/btn1.png) no-repeat; margin:0 auto;}
+        .sec2-con .plane{width: 285px; height: 105px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/plane.png) no-repeat; margin-top: 20px; -webkit-transform:translate(-300px,0); transform:translate(-300px,0);}
+
+        .show .mod2 li:nth-child(1){-webkit-animation: fadein .5s .1s; animation: fadein .5s .1s;}
+        .show .mod2 li:nth-child(2){-webkit-animation: fadein .5s .2s; animation: fadein .5s .2s;}
+        .show .mod2 li:nth-child(3){-webkit-animation: fadein .5s .3s; animation: fadein .5s .3s;}
+        .show .mod2 li:nth-child(4){-webkit-animation: fadein .5s .4s; animation: fadein .5s .4s;}
+        .show .mod2 li{-webkit-animation-fill-mode:forwards !important; animation-fill-mode:forwards !important;}
+
+        @-webkit-keyframes fadein{
+            0%{opacity:0; }
+            100%{opacity:1;}
+        }
+        @keyframes fadein{
+            0%{opacity:0; }
+            100%{opacity:1;}
+        }
+        .show .plane{-webkit-animation: plane 3.6s linear infinite; animation: plane 3.6s linear infinite;}
+        @-webkit-keyframes plane{
+            0%{-webkit-transform:translate(-300px,0); }
+            100%{-webkit-transform:translate(600px,0);}
+        }
+        @keyframes plane{
+            0%{transform:translate(-300px,0); }
+            100%{transform:translate(600px,0);}
+        }
+        .float-up{-webkit-transition:.7s;transition:.7s;opacity:0; -webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-left{-webkit-transition:.7s;transition:.7s;opacity:0; -webkit-transform:translate(-100,0);transform:translate(-100px,0);}
+        .float-right{-webkit-transition:.7s;transition:.7s;opacity:0; -webkit-transform:translate(100px,0);transform:translate(100px,0);}
+        .show-up{-webkit-transition:.7s;transition:.7s;opacity:0; -webkit-transform:scale(0); transform:scale(0);}
+        .show .float-up,.show .float-left,.show .float-right,.show .show-up{-webkit-transform:none;transform:none;opacity:1;}
+        /* section3 */
+        .section3{background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg3.jpg) no-repeat 50% 0;}
+        .sec3-con{position: absolute; left:50%; margin-left: -273px; top: 26%; width: 546px; height: 490px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg02.png) no-repeat;}
+        .sec3-con .number{position: absolute; width: 38px; height: 54px; -webkit-transform:scale(0); transform:scale(0); }
+        .sec3-con .number1{top: 46px; left: 161px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/number1.png) no-repeat;}
+        .sec3-con .number2{top: 66px; left: 397px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/number2.png) no-repeat;}
+        .sec3-con .number3{top: 270px; left: 44px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/number3.png) no-repeat;}
+        .sec3-con .number4{top: 253px; left: 278px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/number4.png) no-repeat;}
+        .show .number1{-webkit-animation: number .5s .2s; animation: number .5s .2s;}
+        .show .number2{-webkit-animation: number .5s .4s; animation: number .5s .4s;}
+        .show .number3{-webkit-animation: number .5s .6s; animation: number .5s .6s;}
+        .show .number4{-webkit-animation: number .5s .8s; animation: number .5s .8s;}
+        .show .number{-webkit-animation-fill-mode:forwards !important; animation-fill-mode:forwards !important;}
+        @-webkit-keyframes number{
+            0%{-webkit-transform:scale(0); }
+            100%{-webkit-transform:scale(1); }
+        }
+        @keyframes number{
+            0%{transform:scale(0); }
+            100%{transform:scale(1); }
+        }
+        /* section4 */
+        .section4{background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg4.jpg) no-repeat 50% 100% #000; }
+        .section4 .map{width: 598px; height: 508px; border: 1px solid #1691f7; position: absolute; left: 50%; margin-left: -298px; top: 12%; }
+        .meet-con{position: absolute; left: 50%; width: 500px; margin-left: -250px; top: 69%;}
+        .meet-con span{font-size:20px; color:#fff; line-height:30px; height:30px;  padding-left:40px; }
+        .meet-con span:nth-child(1){background:url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/icon4.png) no-repeat 0 50%; float: left;}
+        .meet-con span:nth-child(2){background:url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/icon5.png) no-repeat 0 50%; float:  right;}
+        .meet-btn{position: absolute; width: 640px; left: 0; top: 76%; text-align: center; height: 64px;}
+        .meet-btn span,.sub-btn{width: 224px; height: 64px; border:0 none; -webkit-border-radius: 10px; border-radius: 10px;  background: -webkit-gradient(radial, center center, 0, center center, 52, from(#01cdf9), to(#1691f7)); background: radial-gradient(circle closest-side at 50% 50%, #01cdf9 0%, #1691f7 100%); margin:0 30px; display: inline-block; vertical-align: top; font-size: 34px; line-height: 64px; color: #fff; text-align: center;}
+
+        .share{height:66px; text-align:center; width:100%; }
+        .share label{display: inline-block; width: 82px; line-height: 66px; height: 66px; vertical-align: top; font-size: 24px;  color: #fff;}
+        .share a{display:inline-block; width: 66px; height: 66px;  background:url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/share.png) no-repeat 0 0;   margin:0 17px; vertical-align:top; overflow:hidden; color:rgba(0,0,0,0);}
+        .share .wechat { background-position:-100px 0;}
+        .share .qzone { background-position: -201px 0; }
+        .share .weibo { background-position: 0 0; }
+        .share .tencent-weibo { background-position: -302px 0; }
+        .section4 .share{ position:absolute; top:85%; left:0;}
+        .pop-box{width: 100%; height: 100%; position: absolute; left: 0; bottom: 0; z-index: 10; display: none;}
+        .pop-con{position: absolute; left: 50%; top: 50%; -webkit-transform:translate(-50%,-47%); transform:translate(-50%,-47%); width: 600px; height: 87%; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/bg5.jpg) no-repeat 0 0 #021a2e; padding-top: 240px; -webkit-box-sizing:border-box;box-sizing:border-box;}
+        .pop-con .close{position: absolute; right: 0; top: 0; width: 80px; height: 80px; }
+        .pop-box .tit-box{text-align: center;line-height: 40px; display: none;}
+        .pop-box .tit-box p:nth-child(1){ font-size: 30px;  color: #fff; }
+        .pop-box .tit-box p:nth-child(2){ font-size:20px;  color: #1691f7;}
+        .info-box li{height: 50px; margin-top: 22px;}
+        .info-box li input[type="text"],.info-box li input[type="tel"]{float: left; width: 298px;  height: 48px; border: 1px solid #1691f7; line-height: 50px; padding:0 10px; font-size: 18px; color: #fff; background: #021a2e;}
+        .info-box li label{float: left; width:164px; padding-right: 20px; text-align: right; height: 50px; line-height: 50px; font-size: 30px; color: #fff;}
+        .info-box input::-webkit-input-placeholder{ color: #045497;}
+        .info-box input:-moz-placeholder{ color: #045497;}
+        .info-box input::-moz-placeholder{ color: #045497;}
+        .info-box input:-ms-input-placeholder{ color: #045497;}
+        .info-box li span{float: left; font-size: 18px; color: #045497; line-height: 50px; margin-left: 10px;}
+        .sub-btn{display: block; margin:30px auto 0; width: 300px;}
+        .success-box{width: 530px; height: 383px; margin:0  auto; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/pop.png) no-repeat; padding-top: 110px; display: none;}
+        .success-box .tit{text-align: center; font-size: 40px; color: #ff4a01; line-height: 40px;}
+        .success-box .tips{font-size: 30px; color: #fff; text-align: center; line-height: 30px; margin-top: 20px;}
+        .success-box p{font-size: 31px; color: #fff; text-align: center; margin-top: 40px;}
+        .pop-box .share{margin-top: 20px;}
+        .more-box{position: absolute; width: 100%; height: 100%; z-index: 10; overflow: hidden; display: none;}
+        .more-box img{vertical-align: top;}
+        .more-box .close{position: absolute; left: 21px; top: 122px; width: 65px; height: 27px; }
+        .rule-box{padding:0 45px; display: none;}
+        .rule-box .hd{ background: -webkit-gradient(radial, center center, 0, center center, 52, from(#01cdf9), to(#1691f7)); background: radial-gradient(circle closest-side at 50% 50%, #01cdf9 0%, #1691f7 100%);  text-align: center; font-size: 24px; color: #fff; line-height: 40px; padding:0 25px; display: inline-block; position: relative; }
+        .rule-box  p{font-size: 18px; color: #fff; line-height: 28px; padding:5px 0;}
+        .rule-box .p2 span{font-family: 'Impact'; color: #00a6fb;padding-right:6px; }
+        .rule-box .p2  i{color: #ff5d05}
+        .rule-box .p3{display: inline-block; padding-left: 50px; font-size: 24px; color: #008bff; }
+        .rule-box .p4 span{color: #f55a08}
+        .rule-box .p4 .n1{color: #f55a08; font-size: 24px; font-family: 'Impact'}
+        .rule-box .bz{position: absolute; right: 10px; bottom: 10px;  font-size: 14px; color: #014177}
+        .info-form{display: none;}
+        .rule-box .hd1:after{position: absolute; width: 92px; height: 5px; left:50%; margin-left: -46px; bottom: -8px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/line1.png) no-repeat ; content: "";}
+        .rule-box .hd2:after{position: absolute; width: 190px; height: 5px; left:50%; margin-left: -95px; bottom: -8px; background: url(http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/line2.png) no-repeat ; content: "";}
+
+        /* 音乐开关 */
+
+        #control{position: absolute;right:20px;top:20px;width:52px; height:52px; border-radius:27px;border:2px solid #fff; z-index: 11; background:no-repeat 50% 50%}
+        #control.on{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAbCAYAAADyBeakAAACWklEQVR42r3Xj2dWURjA8buaLLxrGSu2ITQtr20GEjVrywYplrBYDTayoQ3U1n+wxEZGsLdYFESSECZGKqLa4l2zrUHWapb9tNx9zzxHZ6f3x7n3nXv4OHufe99zn3vPfc9z5vm+7+2REiRQHfS7+7zcmxqjA1/RhrygA+TnmEA1hnEq17sI02K4iw+SwG+sRplECybQg/14hBNYcPiumqoEmndFA7xAx/DC/9cmUW8cn5F4TYYxCpHEL5TquMvFD+A2VuUia+iTuBcwCU+Ob+CJjqkX83qaRzeKk9JXSuwlujDtOHWHUIU3RuwjhtCLOD57fvpWJI9sGfO4bN1RucOTUHe7hDLr3KPYxKCeDt1GMWIloY6fRswYQA34GOuozJKE+nsLwymm5Tnm7CT0Re3P2kHcMd4NNXinwzuRkLuOWfGbcn6ZaxK1xkVUe2U9hUxJNEj8Qpp4ves6oV7EAnzDRTRh0vG776WvsOKL0he5LttLaMAUNgIubsvGKptz7fgSclU+Ir29ohbrG9yLKpqtnZX+kxWvkj4ZRRI3ZP7Hrfg5fMe8OR33sZlikCt4i9kQCbSiDrewZU1Rk2wDvGwrZlzW+RX0Ij9DTUj1E72HCVljzHMH5Ny4rh3tae5C7Q9WMIbzGMBVdOKd45NQ5b4Ea9ZGqBtPd+pGgFLeih+S/V9Z8wtDVNHQpVw7jAfGdKmidilgEnmyjDeb8TC76jMyz7o9k4rqup/4T9jtvdrQ9EslVe2PbHYiTUI7jtfWr6om6v87kmjENfyMesu/a6+Mh7LjHpHPgdo26LyuKheqPc8AAAAASUVORK5CYII=);}
+        #control.off{background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAbCAYAAAAZMl2nAAACKklEQVR42sXXPUgcQRTA8fUzRKJeGpskhBSCGsUjjTYKisZUh2AQoqCx0cZKq8SksNfGRsEiqkQbCQGJYqEgliGlJqCIgoKiIBrUqCfrf+AdGZfddXdvOR/8uLu5u913M+/N7hmmaRohKcA4yoN8P91IPtQxOvEHbUgLcpDMJJMoxwgqw/g1QSIXg/glSRzhLNWJNGENPcjAJIpwkNSU+CioF/hh/o/fqNHe35LxaJBi9fKhbHzEmZzoHH0yboSViCrW9w6TNYUSeSyWsXl0Y9MIO0zniOAJTrCDt5Zf8czDjGQhzWWmbfeRaYxb8tzFG5mRGRl7Kp9d12bKLnIwh2Epaj2i2EDMbkYikp31dcJDfNZqJY4ulxlpwLWMfUWGjFfgWMZX9GL1ksgr7UQqFlDsYWkacSnj06jVkljCI7+JqOd72EDMYc2duiamJROXx0XkWNvX69K8xAOXFnRr3w/acfdtju1rZ13FRYDGVAXZL8/jKMA3KeakrzVe4510W5bsR9U4QQ0WkB+ka+7i1jVfLF1z4NY1UxizSaQZzwMkoopxFsM2m1oZtvHaLhG7nbUUFzhFLzJ9FqvnnVVdazoc1lfdX5xiGfUYQCu68NNjjVy5vHcZ5DagRdrOlHUfQl6YV18/H36MUW3pdmTnTHkiCVVY0xL6LlfilCeSKLRP+Ccn/ys3TClPJKFQrht6RO/jf426J6lDOw7v4+/ErcbDhNzJj8lr33EDSSMP42WS66gAAAAASUVORK5CYII=);}
+        @media screen and (max-width:640px) and (max-height: 900px) {
+            .sec2-con{top: 10%;}
+            .sec3-con{top: 30%;}
+            .section4 .map{top: 8%;}
+            .pop-con{padding-top:190px;}
+        }
+
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="wrapper flipview" data-loop="false" id="wrapper">
+    <div class="next-btn" id="next-btn"></div>
+    <i id="control" class="on"></i>
+    <div class="main container" id="main">
+        <div class="section section1">
+            <span class="logo"></span>
+            <span class="date float-up"></span>
+        </div>
+        <div class="section section2">
+            <span class="logo"></span>
+            <div class="sec2-con">
+                <div class="hd1"></div>
+                <ul class="mod1">
+                    <li class="float-left">三大板块，集学术交流，科普，竞技于一体</li>
+                    <li class="float-right">近20场专题论坛&nbsp;&nbsp;300余位国内外专家出席</li>
+                    <li class="float-left">双展馆4万平米，4大展区，百余家知名厂商参展</li>
+                    <li class="float-right">6大赛事，跨越5洲，囊括水陆空，不一样的科技奥运</li>
+                </ul>
+                <div class="hd2"></div>
+                <ul class="mod2">
+                    <li>专业报道团队 斗鱼主播倾力加盟</li>
+                    <li>专家做客访谈 5X24小时不间断报道</li>
+                    <li>大会视频直播 PC移动端联合报道</li>
+                    <li>精彩互动回答 网友抢先众测</li>
+                </ul>
+                <div class="more"></div>
+                <div class="plane"></div>
+            </div>
+        </div>
+        <div class="section section3" >
+            <span class="logo"></span>
+            <div class="sec3-con">
+                <span class="number number1"></span>
+                <span class="number number2"></span>
+                <span class="number number3"></span>
+                <span class="number number4"></span>
+            </div>
+        </div>
+        <div class="section section4" >
+            <span class="logo"></span>
+            <div class="map"><a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=%E5%8C%97%E4%BA%AC%E4%BA%A6%E5%88%9B%E5%9B%BD%E9%99%85%E4%BC%9A%E5%B1%95%E4%B8%AD%E5%BF%83&c=131&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&src=0/vt=map&ecom=0"><img src="http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/map.jpg" ></a></div>
+            <div class="meet-con">
+                <span>10月20日-10月25日</span>
+                <span>北京亦创国际会展中心</span>
+            </div>
+            <div class="meet-btn">
+                <span class="detail-btn">活动详情</span>
+                <span class="reg-btn">我要报名</span>
+            </div>
+            <div class="share"></div>
+        </div>
+    </div>
+    <div class="pop-box">
+        <div class="pop-con">
+            <span class="close"></span>
+            <div class="tit-box">
+                <p>请填写您的报名信息</p>
+                <p>（本活动仅限北京地区小伙伴参加）</p>
+            </div>
+            <div class="rule-box">
+                <div class="hd hd1">招募要求</div>
+                <p class="p1">如果您对电子产品有独特的感情，对机器人产品有 浓厚的兴趣。<br/>机器人的发展更让你“操碎了心”，<br/>那么赶快报名参加我们的WRC机器人会展网友参评团，<br/>新奇好玩的产品在等着你。</p>
+                <div class="hd hd2">报名方式及方法</div>
+                <p class="p2"><span>[ 1 ]</span>只接受线上报名；&nbsp;&nbsp;&nbsp;<span>[ 2 ]</span>点击“我要报名”填写个人信息<br/><span>[ 3 ]</span>本次活动仅限<i>北京地区</i>小伙伴</p>
+                <div class="clearfix">
+                    <div class="hd hd3">报名时间</div>
+                    <p class="p3">10月10号—18日</p>
+                </div>
+                <div class="hd hd4">招募规则及须知</div>
+                <p class="p4"><span>10月19日-20日</span>将从报名人员中随机抽取<span class="n1">10</span>位<br/>幸运用户，并通过您所留电话与您联系；<br/>请大家留意接听电话，如因个人原因未能在该<br/>时间内取得联系，视为自动放弃资格，不另行通知。</p>
+                <p class="bz">*本活动最终解释权归中关村在线所有</p>
+            </div>
+            <div class="info-form">
+                <ul class="info-box">
+                    <li><label >姓名</label><input type="text" class="name" placeholder="姓名"><span>*</span></li>
+                    <li><label >性别</label><input type="text" class="sex" placeholder="男/女"></li>
+                    <li><label >手机号</label><input type="tel" maxlength="11" class="phone" placeholder="186XXXX866"><span>*</span></li>
+                    <li><label >邮箱</label><input type="text" class="email" placeholder="XXXX@xx.com"><span>*</span></li>
+                </ul>
+                <input type="button" class="sub-btn" value="确认提交">
+            </div>
+            <div class="success-box">
+                <div class="tit">&nbsp;您已报名成功！</div>
+                <div class="tips">当前已成功报名<span class="count">1</span>位</div>
+                <p>快去召唤你的小伙伴一起当网红吧！</p>
+                <div class="share"></div>
+            </div>
+        </div>
+    </div>
+    <div class="more-box">
+        <div class="more-con">
+            <img src="http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/part1.jpg">
+            <img src="http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/part2.jpg">
+            <img src="http://2.zol-img.com.cn/zt/tm_57f/9df16aba5f/part3.jpg">
+        </div>
+        <span class="close"></span>
+    </div>
+</div>
+<audio src="http://icon.zol-img.com.cn/active/m/id6078220.mp3" preload="auto" id="media"></audio>
+
+
+</body>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" data-options="z.flipview"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/iscroll-lite.min.js"></script>
+
+<script type="text/javascript" >
+
+    //翻页按钮
+
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function() {
+                oldonload();
+                func();
+            }
+        }
+    }
+    function getid(id){
+        return document.getElementById(id);
+    }
+
+
+
+
+    function btnEvent(){
+        document.getElementById('main').addEventListener('changed', function (e) {
+            switch (e.currentIndex){
+                case 3:
+                    getid('next-btn').style.display='none';
+                    break;
+                default:
+                    getid('next-btn').style.display='block';
+            }
+
+        });
+        [getid("next-btn")].forEach(function (button) {
+            button.addEventListener('tap', function () {
+                document.querySelector('.flipview').next(1);
+            });
+        });
+
+
+        //控制show
+        var container = document.querySelector('.container'),list = container && container.children;
+        function init(){
+            list[0].classList.add('show');
+
+        }
+        function addClass(){
+            var index = container.index;
+            if(container.querySelector('.show') && container.querySelector('.show')!==list[index]) {
+                container.querySelector('.show').classList.remove('show');
+            }
+            !list[index].classList.contains('show') && list[index].classList.add('show');
+        };
+        container && container.addEventListener('changed',addClass);
+        init();
+
+
+
+    }
+    addLoadEvent(btnEvent);
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+        //控制音乐自动播放
+        media.play();
+
+        //控制音乐循环播放
+        media.addEventListener('ended', function () {
+            setTimeout(function () {
+                media.play();
+            }, 10);
+        }, false);
+
+        //控制音乐暂停或开始
+        control && control.addEventListener('click',function(){
+            if(this.className === 'on'){
+                this.className = 'off';
+                media.pause();
+            }else{
+                this.className = 'on';
+                media.play();
+            }
+        });
+
+    });
+
+    var scroll = document.querySelector('.more-box'),iScrollBrand;
+
+    iScrollBrand = new iScroll(scroll, {
+        bounce: false,
+    });
+
+
+    var popBox = document.querySelector('.pop-box'),
+            ruleBox = document.querySelector('.rule-box'),
+            infoBox = document.querySelector('.info-form'),
+            successBox = document.querySelector('.success-box'),
+            titBox = document.querySelector('.pop-box .tit-box');
+
+    document.querySelector('.pop-con .close').addEventListener('click',function(){
+        document.body.style.height = '';
+        popBox.style.display = infoBox.style.display = successBox.style.display = ruleBox.style.display = titBox.style.display ='none';
+    });
+    document.querySelector('.more-box .close').addEventListener('tap',function(){
+        document.querySelector('.more-box').style.display ='none';
+    });
+    document.querySelector('.more-box').addEventListener('tap',function(){
+        document.querySelector('.more-box').style.display ='none';
+    });
+
+    document.querySelector('.sec2-con .more').addEventListener('tap',function(){
+        document.querySelector('.more-box').style.display ='block';
+        iScrollBrand.refresh();
+
+    });
+    //点击活动详情
+    document.querySelector('.detail-btn').addEventListener('tap',function(){
+        popBox.style.display = ruleBox.style.display = 'block';
+
+    });
+    //点击我要报名
+    document.querySelector('.reg-btn').addEventListener('tap',function(){
+        document.body.style.height = window.innerHeight+'px';
+        popBox.style.display = infoBox.style.display = titBox.style.display =  'block';
+    })
+    //提交信息
+    document.querySelector('.sub-btn').addEventListener('click',function(){
+
+        if (this.disabled) return;
+        var nameVal = document.querySelector('.name').value.trim(),
+                sexVal = document.querySelector('.sex').value.trim(),
+                mobileVal = document.querySelector('.phone').value,
+                emailVal = document.querySelector('.email').value,
+                activeType = 6078220;
+
+        if(!nameVal){
+            // 请正确填写您的姓名
+            alert('请正确填写姓名');
+            return false;
+        }
+        if(!(sexVal == '男' || sexVal == '女' || sexVal == '')){
+            alert('请正确填写性别');
+            return false;
+        }
+        if (!mobileVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+            alert('请正确填写手机号码');
+            return false;
+        }
+        if(!emailVal || !(/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(emailVal))){
+            alert('请正确填写邮箱');
+            return false;
+        }
+        //document.querySelector('input:focus') && document.querySelector('input:focus').blur();
+        this.disabled = true;
+        getToken(function(){
+            $.ajax({
+                type:'get',
+                url: 'http://m.zol.com.cn/topic/services/user.php?callback=?',
+                data:{token:window.verifyTk,action:'addUser',username:nameVal,type:activeType,tel:mobileVal,ext1:sexVal,ext2:emailVal},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.result == 1){//提交成功
+                        $.ajax({
+                            type:'get',
+                            url: 'http://m.zol.com.cn/topic/services/user.php?callback=?',
+                            data:{type:activeType,action:'getCountUser'},
+                            dataType: 'json',
+                            success: function (res) {
+                                if(res){
+                                    document.querySelector('.count').innerHTML =  res.result;
+                                }
+                            }
+                        })
+                        infoBox.style.display='none';
+                        successBox.style.display='block';
+                    }else {
+                        alert(data.result)
+                        document.querySelector('.sub-btn').disabled = false;
+                    }
+                }
+
+            });
+        })
+
+    })
+
+    // 获取token
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(request){
+                if(request && request.result){
+                    window.verifyTk = request.result;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+            }
+        });
+    }
+
+
+
+    //分享
+    var share_title=encodeURIComponent( '当网红做直播 WRC2016网友参评团火热招募');
+    var share_link=encodeURIComponent('http://m.zol.com.cn/topic/6078220.html');
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_57f/9e8089068a/weixin.jpg');
+    var share_t=encodeURIComponent('专业报道团队 斗鱼主播倾力加盟');
+
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+
+    var share_con = '<label>分享：</label><a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="wechat" href="#wechat" style="display: none">wechat</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a>';
+    document.querySelectorAll('.share').forEach(function(div,idx){
+        div.innerHTML = share_con;
+    })
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_57f/9e8089068a/weixin.jpg',
+        title: '当网红做直播 WRC2016网友参评团火热招募'
+    };
+
+
+
+    /* end 微信分享图片和文字设置 */
+
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+
+</body>
+</html>

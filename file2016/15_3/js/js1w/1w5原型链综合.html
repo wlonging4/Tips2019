@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this原型链</title>
+</head>
+<body>
+<script>
+    //关于this的查找问题
+    //1、Fn这个类中this.xxx=xxx中的this是当前Fn的一个实例
+    //2、Fn类中某些方法中的this(例如:sum这个公共方法中的this)
+    //1)首先看sum这个方法执行前有没".","."前面是谁,那么sum中的this就是谁
+    //2)执行sum中的代码,然后把this是谁用代码给描述出来
+    //3)按照原型的查找机制分析结果即可
+    function F(){
+        this.index=100;
+    }
+    F.prototype.sum=function(){
+        console.log(this.index);
+    };
+    var f=new F;
+    f.sum();//this->f->100
+    //console.log(f.index);
+    f.__proto__.sum();//this->f.__proto__->undefined
+    //console.log(f.__proto__.index);
+    F.prototype.sum();//this->F.prototype->undefined
+    //console.log(F.prototype.index);
+    f.__proto__.__proto__.sum();//->Error:sum is not a function
+</script>
+</body>
+</html>

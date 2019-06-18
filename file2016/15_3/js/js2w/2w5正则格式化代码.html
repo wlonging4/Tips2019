@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>正则格式化代码</title>
+    <style type="text/css">
+        table,tr,td{ border:1px solid blue; border-collapse:collapse;}
+        .keyword{ color:darkBlue; font-weight:bold;}
+    </style>
+</head>
+<body>
+<pre>
+var i=9;
+function fo(){
+	var i=0;
+	return function(n){
+   		 return n+i++;
+    }
+};
+var f=fo();
+var a = f(15); 
+var b = fo()(15);
+var c = fo()(20); 
+var d = f(20); 
+//请问a,b,c,d的值各是什么
+</pre>
+<div>M
+oker</div><div></div><div></div></body>
+</html>
+<script>
+    var reg=/<(pre)>((.|\n)*?)<\/\1>/gm;
+    //alert(reg.exec(document.body.innerHTML));
+    //var reg=/<(div).+<\/\1>/;//->获取所有的div元素
+    //var reg=/<(div).+?<\/\1>/;//->指获取第一个div元素
+    //var reg=/<(div)(.|\n)*?<\/\1>/;//->指获取第一个div元素且不怕他换行;可以取到任意标签的内容了->但是中间换成[.\n]就不可以;
+    //alert(reg.exec(document.body.innerHTML));
+    var  strContent=reg.exec(document.body.innerHTML)[2];
+    var keywordReg=/var|function|return|break|continue|if|for/g;
+    console.log(strContent);
+    if(strContent){
+        var a=strContent.split("\n");
+        var oT=document.createElement('table');
+        var oTb=document.createElement('tbody');
+        oT.appendChild(oTb);
+        for(var i=0;i<a.length;i++){
+            var oTr=document.createElement('tr');
+            var lTd=document.createElement('td');
+            var rTd=document.createElement('td');
+            lTd.innerHTML=i+1;
+            var str=a[i];
+            str=str.replace(keywordReg,function(s){
+                return "<span class='keyword'>"+s+"</span>";
+            });
+            //第一个参数argyments[0]=s=获取到的内容
+            str=str.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
+            rTd.innerHTML=str;
+            oTr.appendChild(lTd);
+            oTr.appendChild(rTd);
+            oTb.appendChild(oTr);
+        }
+        document.body.appendChild(oT);
+    }
+
+</script>

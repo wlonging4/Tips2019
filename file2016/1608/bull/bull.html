@@ -1,0 +1,287 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="gbk">
+    <title>公牛专题</title>
+    <style type="text/css">
+        body{color:#018c39;font:12px/20px 'simsun',arial; background: #fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{ color: #018c39; font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrap1{  background: #efeff1;  width: 100%; overflow: hidden  }
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 110px; padding-top: 55px ;background: #000 }
+        .zol_foot,.zol_foot a{  color: #4D4D4D;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 454px;   }
+
+        .lead{  height: 325px;  padding-top: 80px;  overflow: hidden;  }
+        .lead-pic{  position: relative;  overflow: hidden;  width: 710px;  height: 325px;  float: left;  }
+        .lead-box{  position: absolute;  height: 325px;  }
+        .lead-ul{  position: absolute;  width: 180px;  bottom: 25px;  left: 260px;  overflow: hidden;  }
+        .lead-ul li{  float: left;  cursor: pointer;  _display:inline;  width: 50px;  height: 5px;  margin: 0 5px;  background: #018c39;  }
+        .lead-ul li.act{  background: #333;  }
+        .lead-art{  float: left;  width: 283px;  border: 1px solid #CCCCCC;  margin-left: 5px; height: 323px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_lead_r.jpg") no-repeat top center;  }
+        .lead-art1{  width: 265px;  height: 258px;  margin: 8px auto 0;  }
+        .lead-art1 .hei14{  display: block;  font: bold 16px/26px 'microsoft yahei',Aria;;  }
+        .lead-art2{  width: 150px;  height: 40px;  margin: 0 auto;  }
+        .lead-art2 .bai14{  display: block;  font: 16px/38px 'microsoft yahei',Aria;;  }
+
+        .ac-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_act_l.jpg") no-repeat 100% 0;  }
+        .ac-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_act_r.jpg") no-repeat 0 0;  }
+        .ac-c{  position: relative;  width: 1000px;  height: 505px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_act_c.jpg") no-repeat 0 0;  }
+        .ac-pic{  position: absolute;  top: 90px;  left: 0;  width: 207px;  height: 250px;  }
+        .ac-pics{  position: absolute;  top: 357px;  left: 0;  width: 710px;  height: 95px; }
+        .ac-art{  position: absolute;  top: 220px;  width: 132px;  height: 120px;  }
+        .ac-art .hei20{  display: block;  text-align: left;  color: #008d47;  font: 24px/32px 'microsoft yahei',Arial;  }
+        .ac-art .hui12{  display: block;  color: #8e8e8e;  padding-top: 5px;  font: 12px/22px 'simsun';  text-indent: 24px;;  }
+        .ac-art1{ left: 235px }
+        .ac-art2{ left: 400px }
+        .ac-art3{ left: 570px }
+        .ac-rule1{  position: absolute;  width: 225px;height: 180px;  right: 30px;  top: 115px;  }
+        .ac-rule1 .bai16{  display: block;  font: 16px/16px 'microsoft yahei',Arial;  }
+        .ac-rule1 .bai16 span{  font: 32px/40px 'microsoft yahei',Arial;  }
+        .ac-rule1 .bai12{  display: block;  padding-top: 10px;  text-indent: 24px;  font: 12px/20px 'simsun';  }
+        .ac-rule1 .hong12{  color: #f60;  }
+        .ac-rule2{  position: absolute;  width: 245px;height: 50px;  right: 20px;  top: 315px;  }
+        .ac-rule2 .bai14{  display: block;  position: absolute; top: 0; left: 70px; width: 68px; height: 48px; font: 34px/48px 'microsoft yahei',Arial;  }
+        .ac-rule2 .bai12{      display: block;  position: absolute;  top: 6px;  left: 144px;  width: 108px;  height: 48px;  font: 14px/20px 'simsun';  }
+        .ac-rule2 .hong12{  color: #f60;  }
+        .ac-rule3{  position: absolute;  width: 170px;  height: 49px;  right: 55px;  top: 380px;  }
+
+        .demo{  width: 1000px;  height: 334px;  margin-top: 52px;  overflow: hidden;  }
+        .demo li{  position: relative; width: 90px;  float: left;  _display: inline;  overflow: hidden;  height: 330px;  border-color: #d1d1d1;  border-style: solid;  border-width: 2px;  margin-left: -2px; cursor: pointer;  }
+        .demo li.li-first{  margin-left: 0;  }
+        .demo li .li-l{  position: absolute;left: 0;  width: 90px;  overflow: hidden;  height: 330px;    }
+        .demo li .li-art{  position: absolute;  width: 25px;  height: 220px;  color: #666;  text-align: center;  font: 20px/21px 'microsoft yahei',Arial;  }
+        .demo li .li-art11{  top: 117px;  left: 20px;  }
+        .demo li .li-art12{  top: 127px;  left: 47px;  }
+        .demo li .li-art2{  top: 84px;  left: 32px;  }
+        .demo li .li-art3{  top: 110px;  left: 35px;  }
+        .demo li .li-r{  position: absolute;left: 90px;  width: 670px; height: 250px; padding: 40px 50px 40px 0;  }
+        .demo li .li-r table img{  padding-left: 30px;  }
+        .demo li .li-r table .hei20{  display: block;  padding-left: 20px;  text-align: left;  color: #009b48;  font: 24px/32px 'microsoft yahei',Arial;  }
+        .demo li .li-r table .hui12{  display: block;  padding-left: 20px;  color: #8e8e8e;  padding-top: 5px;  font: 12px/22px 'simsun';  text-indent: 24px;;  }
+        .demo li .li-r .ln{  height: 40px;  }
+        .demo li.act{  z-index: 2;  border-color: #009b48; width: 810px;  }
+        .demo li.act .li-l{  background: #f0f0f0;  }
+        .demo li.act .li-art{  color: #009b48;  }
+
+        .pic-t{  width: 1000px;  height: 166px;  }
+        .pic-c{  height: 305px;  width: 1000px;  }
+        .pic-c #carousel-left593890{  width: 40px;  height: 77px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/bc5e180f79/lg_btn.png") no-repeat 0 0;  }
+        .pic-c #carousel-right593890{  width: 40px;  height: 77px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/bc5e180f79/lg_btn.png") no-repeat -40px 0;  }
+
+        .in-t{  height: 160px;  width: 1000px;   }
+        .in1{  width: 100%;  background: url("http://2.zol-img.com.cn/zt/tm_57b/c102a8f5ed/lg_in1_c.jpg") no-repeat top center;  }
+        .in1-mod{  position: relative;  margin: 0 auto;  width: 1000px;  height: 526px;  }
+        .in1-m{  position: absolute;  top: 35px;  width: 416px;  height: 450px;  }
+        .in1-m .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 30px;  padding-top: 7px }
+        .in1-m .hei20:hover{color: #000 }
+        .in1-m .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in1-m .hui12{ display: block;  color: #a6a6a6;  font: 12px/23px 'simsun';  padding: 10px 20px 8px 19px;  text-indent: 24px; }
+        .in1-m1{  left: 0;  }
+        .in1-m2{  right: 3px;  }
+        .in2-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_in2_l.jpg") no-repeat 100% 0;  }
+        .in2-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_in2_r.jpg") no-repeat 0 0;  }
+        .in2-c{  position: relative;  width: 1000px; height: 1262px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_in2_c.jpg") no-repeat 0 0;  }
+        .in2-m{  position: absolute; }
+        .in2-m1{  width: 505px;height: 370px;top: 55px;left: 0;  }
+        .in2-m2{  width: 500px;height: 365px;top: 332px;left: 0;  }
+        .in2-m3{  width: 435px;height: 310px;top: 55px;right: 0;  }
+        .in2-m4{  width: 435px;height: 310px;top: 388px;right: 0;  }
+        .in2-m5{  width: 515px;height: 430px;bottom: 39px;left: 0;  }
+        .in2-m6{  width: 515px;height: 430px;bottom: 30px;right: 2px;  }
+
+        .in2-m1 .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 20px;  padding-top: 0 }
+        .in2-m1 .hei20:hover{color: #000 }
+        .in2-m1 .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in2-m1 .hui12{  display: block;  color: #a6a6a6;font: 12px/20px 'simsun';  padding: 30px 20px 8px 19px;  text-indent: 24px; }
+        .in2-m2 .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 12px;  padding-top: 72px; }
+        .in2-m2 .hei20:hover{color: #000 }
+        .in2-m2 .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in2-m2 .hui12{  display: block;  color: #a6a6a6;font: 12px/20px 'simsun';  padding: 5px 20px 8px 19px;  text-indent: 24px; }
+        .in2-m3 .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 22px;  padding-top: 18px; }
+        .in2-m3 .hei20:hover{color: #000 }
+        .in2-m3 .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in2-m3 .hui12{  display: block;  color: #a6a6a6;font: 12px/20px 'simsun';  padding: 5px 28px 8px 11px;  text-indent: 24px; }
+        .in2-m4 .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 22px;  padding-top: 3px; }
+        .in2-m4 .hei20:hover{color: #000 }
+        .in2-m4 .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in2-m4 .hui12{  display: block;  color: #a6a6a6;font: 12px/20px 'simsun';  padding: 5px 28px 8px 11px;  text-indent: 24px; }
+        .in2-m5 .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 30px;  padding-top: 13px; }
+        .in2-m5 .hei20:hover{color: #000 }
+        .in2-m5 .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in2-m5 .hui12{  display: block;  color: #a6a6a6;font: 12px/20px 'simsun';  padding: 5px 54px 0 30px;  text-indent: 24px; }
+        .in2-m6 .hei20{  display: block;  font: 24px/26px 'microsoft yahei',Arial;  padding-left: 57px;  padding-top: 3px; }
+        .in2-m6 .hei20:hover{color: #000 }
+        .in2-m6 .hei20 span{  font: 16px/20px 'microsoft yahei',Arial;  }
+        .in2-m6 .hui12{  display: block;  color: #a6a6a6;font: 12px/20px 'simsun';  padding: 5px 28px 8px 59px;  text-indent: 24px; }
+
+
+        .about{  height: 300px;  }
+        .abt1{  float: left;  height: 300px;  width: 355px;  overflow: hidden;  }
+        .abt2{  float: left;  height: 300px;  width: 260px;  margin-right: 40px;  overflow: hidden;  }
+        .abt3{  float: left;  height: 300px;  width: 345px;  overflow: hidden;  }
+        .abt-t{  width: 200px;  height: 84px;  }
+        .abt1-c{  width: 320px;  height: 180px;  margin: 0 auto;  }
+        .abt1-c .hei12{  display: block;  padding: 15px 15px 0;  text-indent: 24px;  line-height: 20px;  }
+        .abt2-c{  width: 255px;  height: 150px;  margin-top: 20px;  }
+        .abt2-c .hei12{  display: block;  line-height: 22px;  }
+        .abt3-c{  width: 345px;  height: 150px;  margin-top: 20px;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--领导-->
+<div class="wrap1">
+    <div class="wrapper lead clearfix">
+        <div class="lead-pic">
+            <div class="lead-box">
+                <{data[1]}>
+            </div>
+            <ul class="lead-ul">
+                <li class="act"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="lead-art">
+            <div class="lead-art1"><{data[2]}></div>
+            <div class="lead-art2"><{data[3]}></div>
+        </div>
+    </div>
+</div>
+<!--活动-->
+<table class="activity" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="ac-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="ac-c">
+                <div class="ac-pic"><{data[4]}></div>
+                <div class="ac-pics"><{data[5]}></div>
+                <div class="ac-art ac-art1"><{data[6]}></div>
+                <div class="ac-art ac-art2"><{data[7]}></div>
+                <div class="ac-art ac-art3"><{data[8]}></div>
+                <div class="ac-rule1"><{data[9]}></div>
+                <div class="ac-rule2"><{data[10]}></div>
+                <div class="ac-rule3"><{data[11]}></div>
+            </div>
+        </td>
+        <td class="ac-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--demo-->
+<ul class="wrapper demo">
+    <li class="li-first clearfix" style="width: 90px; display: list-item;">
+        <div class="li-l li11">
+            <div class="li11-pic"><img src="http://2.zol-img.com.cn/zt/tm_57b/c07d6c8d0f/lg_demo_li11222.png" alt="" width="90" height="115"></div>
+            <div class="li-art li-art11">公牛自动防过充</div>
+            <div class="li-art li-art12">U<br>S<br>B<br>充电器</div>
+        </div>
+        <div class="li-r"><{data[12]}></div>
+    </li>
+    <li class="clearfix" style="width: 90px; display: list-item;">
+        <div class="li-l li11">
+            <div class="li11-pic"><img src="http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_demo_li21.png" alt="" width="90" height="80"></div>
+            <div class="li-art li-art2">公牛车载U<br>S<br>B<br>充电器</div>
+        </div>
+        <div class="li-r"><{data[13]}></div>
+    </li>
+    <li class="clearfix act" style="width: 810px; display: list-item;">
+        <div class="li-l li11">
+            <div class="li11-pic"><img src="http://2.zol-img.com.cn/zt/tm_57b/bae1ef0c5e/lg_demo_li31.png" alt="" width="90" height="110"></div>
+            <div class="li-art li-art3">公牛U<br>S<br>B充电器</div>
+        </div>
+        <div class="li-r"><{data[14]}></div>
+    </li>
+</ul>
+<!--美图-->
+<div class="wrapper pic">
+    <div class="pic-t"><{data[15]}></div>
+    <div class="pic-c"><{data[16]}></div>
+</div>
+<!--智能-->
+<div class="wrapper in-t">
+    <{data[17]}>
+</div>
+<div class="in1">
+    <div class="in1-mod">
+        <div class="in1-m in1-m1"><{data[18]}></div>
+        <div class="in1-m in1-m2"><{data[19]}></div>
+    </div>
+</div>
+<table class="in2" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="in2-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="in2-c">
+                <div class="in2-m in2-m1"><{data[20]}></div>
+                <div class="in2-m in2-m2"><{data[21]}></div>
+                <div class="in2-m in2-m3"><{data[22]}></div>
+                <div class="in2-m in2-m4"><{data[23]}></div>
+                <div class="in2-m in2-m6"><{data[25]}></div>
+                <div class="in2-m in2-m5"><{data[24]}></div>
+            </div>
+        </td>
+        <td class="in2-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--相关-->
+<div class="wrapper about">
+    <div class="abt1 clearfix">
+        <div class="abt-t"><{data[26]}></div>
+        <div class="abt1-c"><{data[27]}></div>
+    </div>
+    <div class="abt2 clearfix">
+        <div class="abt-t"><{data[28]}></div>
+        <div class="abt2-c"><{data[29]}></div>
+    </div>
+    <div class="abt3 clearfix">
+        <div class="abt-t"><{data[30]}></div>
+        <div class="abt3-c"><{data[31]}></div>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    /*轮播*/
+    var pic_l=$('.lead-ul li'),pic_b=$('.lead-box');
+    pic_l.bind('mouseenter', function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        pic_b.stop().animate({left:'-'+710*(pic_l.index(this))+'px'},200);
+    });
+
+    /*滑动切换demo*/
+    var lis=$('.demo li'),li_rs=lis.find('.li-r');
+    lis.bind('mouseenter', function () {
+        $(this).stop().animate({'width':810+'px'},500);
+        $(this).siblings().stop().animate({'width':90+'px'},500);
+        $(this).addClass('act').siblings().removeClass('act');
+    });
+
+
+</script>
+
+</body></html>

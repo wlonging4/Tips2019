@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票点赞</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            -webkit-user-select: none;
+        }
+        h2{
+            width:50%;
+            height:50px;
+            line-height: 50px;
+            margin: 20px auto;
+            border-bottom: green;
+            text-indent: 2em;
+            text-align: center;
+        }
+        #div1{
+            margin:20px auto;
+            width: 40%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: gray;
+            cursor: pointer;
+            border:1px solid black;
+            border-radius: 10px;
+        }
+        #div1:active{
+            background-color: darkgray;
+        }
+        #span1{
+            margin-left:20px;
+        }
+    </style>
+</head>
+<body>
+<h2>问题：认为北京是个大坑的请投票</h2>
+<div id="div1">我要投票<span id="span1">【0】</span></div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("div1");
+    var oSpa=document.getElementById("span1");
+    //第一种利用全局作用域不销毁的原理,把需要保存的值放在全局变量中存储;
+    //弊端->在项目中:尽量少使用全局变量,避免全局变量之间的相互冲突,尽量减少使用全局变量;
+    /*var i=0;
+    oDiv.onclick=function(){
+        i++;
+        oSpa.innerHTML="【"+i+"】";
+    }*/
+
+
+    //第二种创建一个不销毁的私有作用域,把需要累加的num变量做成私有变量;
+    oDiv.onclick=(function () {
+        var num=0;
+        return function(){
+            //把自执行函数的返回值->一个小函数赋值给onclick事件,当我们点击的时候其实执行的是里面的小函数
+            num++;
+            oSpa.innerHTML="【"+num+"】";
+        }
+    })();
+
+
+    //第三种形成一个不销毁的作用域;
+    //最简单的代码保护全局变量冲突->用自执行函数包住
+    /*~(function () {
+        var i=0;
+        oDiv.onclick=function(){
+            i++;
+            oSpa.innerHTML="【"+i+"】";
+        }
+    })();*/
+
+    //第四种->自定义属性相对想能最好;
+    /*oDiv.x=0;
+    oDiv.onclick=function(){
+        /!*this.x++;
+        oSpa.innerHTML="【"+this.x+"】";*!/
+        oSpa.innerHTML=++this.x;
+    }*/
+    //【思考题】参考上述,修改选项卡实现循环绑定的方式;
+</script>
+</body>
+</html>

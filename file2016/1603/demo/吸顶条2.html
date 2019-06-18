@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="智能社 - zhinengshe.com">
+<meta name="copyright" content="智能社 - zhinengshe.com">
+<title>智能社 - www.zhinengshe.com</title>
+<style>
+* { margin:0; padding:0; }
+p { height:150px; background:#ccc; margin:10px; font-size:30px; line-height:1.2; overflow:hidden; }
+#div1 { top:0; left:0; width:100%; height:200px; background:red; }
+#div2 { display:none; height:200px; }
+</style>
+<script>
+window.onload=function (){
+	var oDiv=document.getElementById('div1');
+	var oDiv2=document.getElementById('div2');
+	var top=getPos(oDiv).top;
+	
+	window.onscroll=function (){
+		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+		
+		if (scrollTop > top)
+		{
+			oDiv.style.position='fixed';
+			oDiv2.style.display='block';
+		}
+		else
+		{
+			oDiv.style.position='';
+			oDiv2.style.display='none';
+		}
+	};
+};
+
+function getPos(obj)
+{
+	var left=0;
+	var top=0;
+	
+	while (obj)
+	{
+		left+=obj.offsetLeft;
+		top+=obj.offsetTop;
+		
+		obj=obj.offsetParent;
+	}
+	
+	return {left:left, top:top};
+}
+</script>
+</head>
+
+<body>
+	<p></p>
+	<p>问阿萨德飞机撒地方；垃圾发电是；李经理指数跌幅；流泪的萨芬；李的萨芬了记录卡范德萨拉卡啦快速减肥的；了卡死了烦；拉萨奋斗了卡的萨芬</p>
+	
+	<div id="div1"></div>
+	<div id="div2"></div>
+	
+	<p>阿萨德飞机撒地方；垃圾发电是；李经理指数跌幅；流泪的萨芬；李的萨芬了记录卡范德萨拉卡啦快速减肥的；了卡死了烦；拉萨奋斗</p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+	<p></p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

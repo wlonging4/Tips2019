@@ -1,0 +1,189 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#545454; font:12px/22px "SimSun",Arial;background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#545454; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#E62D25;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        /* 背景 */
+        .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_584/7b1da688e2/m_l01.jpg) no-repeat 100% 0;}
+        .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_584/7b1da688e2/m_r01.jpg) no-repeat 0 0;}
+        /* 内容 */
+        .wrapper{width:1000px; position:relative; overflow:hidden;}
+        .banners{width:980px; margin:14px auto 0;}
+        .nav{ height:45px; position:absolute; left:-1px; top:269px;}
+        .nav .bai18{font:18px/45px "Microsoft Yahei"; color:#fff; padding:0 10px; background:url(http://2.zol-img.com.cn/zt/tm_54e/d84ece9655/m_line.jpg) no-repeat 0 50%;}
+        .compere-box{    width: 81px;  height: 107px;  background: #fff;  position: absolute;  left: 25px;  top: 155px;  padding: 3px;}
+        .compere-box .hei12{color:#111; text-align:center; line-height:18px; display:block}
+        .compere-box .hei12 p{color:#800080;}
+        .video-wrapper{width:603px; height:438px; float:left; margin-bottom:10px; position:relative;}
+        .comments-wrapper{width:364px; height:438px; float:right;}
+        .video-box{width:603px; height:400px;}
+        .video-barrage{height:38px; background:#000;}
+        .attention-num{padding:0 8px; float:right; font:bold 12px/38px "Microsoft Yahei"; color:#fff;}
+        .video-barrage .barrage-btn,.video-barrage .act{width:85px; height:30px; background:#C32728; text-align:center; font:14px/30px "Microsoft Yahei"; color:#fff; cursor:pointer; float:right; margin-top:4px;}
+        .video-barrage .act{background:#666;}
+        /*  标题  */
+        .title-box{width:100%; height:38px; border-bottom:1px solid #aaa; position:relative;}
+        .title-box span{position:absolute; font:bold 24px/34px "Microsoft Yahei"; border-bottom:4px solid #C32728; color:#333; padding-bottom:3px; height:34px;}
+
+        .comments-box{width:364px; height:396px; padding-top:2px;}
+        .view-box{width:597px; height:350px; float:left;}
+        .view-link{float:right; width:72px; padding-top:8px;  height:22px;}
+        .view-link .hong12b{color:#C32728; font-size:12px; border:none;  margin-right:-5px;}
+        .view-con{padding-left:5px;}
+        .view-con li{width:584px; height:96px; border-top:1px solid #ddd; padding-top:14px;}
+        .view-con li.first{border-top:none}
+        .view-con li img{border:1px solid #eee;}
+        .view-con .hui16{font:bold 16px/30px "Microsoft Yahei"; color:#333;}
+        .view-con .hui16 span{margin-right:10px; color:#C32728;}
+        .product-box{width:364px;height:350px; float:right;}
+
+        .product-pic{height:46px; }
+        .product-pic .hui12{color:#797979;  line-height:46px;  font-weight:bold; text-decoration:none; }
+        .product-pic .hui12 b{ padding:0 5px;}
+        .product-pic .hui12 b{color:#C32626; font-size:14px;}
+        .product-pic .hui12 span{color:#aaa; font-weight:normal;}
+        .product-pic img{border:1px solid #ddd; }
+
+
+        .scene-pictures{padding-top:16px;}
+        .scene-pictures img{border:1px solid #ccc; padding:2px; background:#fff;}
+        .scene-pic1{width:493px; height:335px; float:left;}
+        .scene-pic2{width:478px; height:335px; float:right;}
+        .scene-pic2 .ln{height:16px; line-height:16px;}
+        .big-pic{width:980px; overflow:hidden;}
+        .cooperation{padding-top:20px; overflow:hidden;}
+        .cooperation-title{font:bold 35px/40px "Microsoft Yahei"; color:#111;}
+        .cooperation-pic{padding:6px 0 0 10px; width:962px; height:218px;}
+        .footer{padding-top:57px; height:145px; text-align:center; color:#333;}
+        .footer a:link,.footer a:visited{color:#333;}
+
+        /* 返回顶部 */
+        .gotop{color:#333; text-align:center; width:61px; height:100px; position:fixed; _position:absolute; bottom:10px; left:50%; margin-left:550px; cursor:pointer; line-height:30px; display:none;}
+        /*  分享 */
+        .share-btn{float:right; font:16px/34px "Microsoft Yahei"; color:#333; background:url(http://2.zol-img.com.cn/zt/tm_54e/d84ece9655/arrow.png) no-repeat 100% 50% ; padding-right:16px; cursor:pointer;}
+        .share-con{position:absolute; right:-160px; top:2px; display:none;}
+        .bshare-custom.icon-medium a{display:block; width:32px; height:32px !important; margin-right:6px !important; float:left; _display:inline; background:url(http://2.zol-img.com.cn/zt/tm_54e/d84ece9655/share.png) no-repeat !important; padding:0 !important;}
+        .bshare-custom.icon-medium .bshare-qqmb{background-position:0 -37px !important;}
+        .bshare-custom.icon-medium .bshare-qzone{background-position:0 -74px !important; }
+        .bshare-custom.icon-medium .bshare-weixin{background-position:0 -111px !important;}
+
+        .qr-code{width:126px; height:82px; position:fixed; _position:absolute; left:50%; top:50%; margin:-41px 0 0 500px;}
+        /* 弹幕文字 */
+        #barrage {position:absolute; width:603px;height:360px;left:0px;top:0px;overflow: hidden;z-index: 10;}
+        #barrage .movetxt{ position: absolute;left:605px;color:#000;padding:0 10px; display:inline-block; white-space:nowrap;}
+        #barrage .type0{font:800 24px/24px "Microsoft YaHei";color:#f00}
+        #barrage .type1{font:800 22px/24px "Microsoft YaHei";color:#666}
+        #barrage .type2{font:800 18px/24px "Microsoft YaHei";color:#f60}
+        #barrage .type3{font:800 20px/24px "Microsoft YaHei";color:#0C3}
+        #barrage .type4{font:26px/24px "Microsoft YaHei";color:#906}
+        #barrage .type5{font: 800 22px/24px "Microsoft YaHei";color:#FC3}
+        #barrage .type6{font:24px/24px "Microsoft YaHei";color:#96C}
+        #barrage img{display:inline-block}
+
+
+    </style>
+    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&uuid=&pophcol=2&lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+</head>
+<body>
+<!--[if IE 6]>
+<script src=" http://active.zol.com.cn/frontend/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+    DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg1-c">
+            <div class="wrapper">
+                <img src="http://2.zol-img.com.cn/zt/tm_584/7b1da688e2/m_c01.jpg" width="1000" height="314">
+                <div class="nav"><{data[0]}></div>
+                <div class="compere-box"><{data[1]}></div>
+            </div>
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+</table>
+<div class="banners clearfix">
+    <div class="video-wrapper">
+        <div class="video-box"><{data[2]}></div>
+        <div id="barrage"></div>
+        <div class="video-barrage">
+            <div class="attention-num"><{data[3]}></div>
+            <div class="barrage-btn">关闭弹幕</div>
+        </div>
+    </div>
+    <div class="comments-wrapper">
+        <div class="title-box">
+            <span>网友评论</span>
+            <div class="share-btn">分享到</div>
+            <div class="bshare-custom icon-medium share-con"><a title="分享到新浪微博" class="bshare-sinaminiblog" ></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到微信" class="bshare-weixin"></a></div>
+        </div>
+        <div class="comments-box"><{data[4]}></div>
+    </div>
+</div>
+<div class="banners clearfix">
+    <div class="view-box">
+        <div class="title-box">
+            <span>嘉宾核心观点</span>
+            <div class="view-link"><{data[5]}></div>
+        </div>
+        <ul class="view-con">
+            <li class="first"><{data[6]}></li>
+            <li><{data[7]}></li>
+            <li><{data[8]}></li>
+        </ul>
+
+    </div>
+    <div class="product-box">
+        <div class="title-box">
+            <span>产品&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+        <div class="product-pic"><{data[18]}></div>
+    </div>
+</div>
+<div class="banners clearfix">
+    <div class="title-box">
+        <span>现场图赏</span>
+    </div>
+    <div class="scene-pictures clearfix">
+        <div class="scene-pic1"><{data[12]}></div>
+        <div class="scene-pic2"><{data[13]}></div>
+    </div>
+</div>
+<div class="banners">
+    <div class="big-pic"><{data[14]}></div>
+</div>
+
+<div class="footer"><{data[16]}></div>
+<div class="gotop">
+    <img src="http://2.zol-img.com.cn/zt/tm_54e/d84ece9655/gotop.png" width="61" height="61">
+    <span>返回顶部</span>
+</div>
+<div class="qr-code"><{data[17]}></div>
+
+<script src="http://active.zol.com.cn/15active/0225dialogue/main.js"></script>
+<script type="text/javascript">
+
+    //在这个直播时间内每秒刷新 参数(开始时间，结束时间，访谈id)
+    time_range ("02/25/2015 18:00:00", "02/25/2015 18:35:00",1474);
+    //弹幕读取
+    barrage.init('barrage',1474);
+
+</script>
+</body>
+</html>
+

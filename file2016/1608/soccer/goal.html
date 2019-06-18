@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>点球大战案例</title>
+    <link rel="stylesheet" href="reset.css"/>
+    <link rel="stylesheet" href="goal.css"/>
+    <meta name="keywords" content="点球大战案例" />
+    <meta name="description" content="点球大战案例" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 320;
+                document.write('<meta name="viewport" content="width=320, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=320, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=320,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+</head>
+<body>
+<div class="c">
+    <div class="box">
+        <div class="main">
+            <div class="start-game">开始游戏</div>
+            <div class="game-num">剩余可玩次数: <span id="game-num-last">4</span></div>
+            <ul class="main-info">
+                <li class="main-info-detail">活动说明</li>
+                <li class="main-info-rank">排行榜</li>
+                <li class="main-info-focus">一键关注</li>
+            </ul>
+            <div class="main-owner">本产品由中关村在线前端开发出品</div>
+        </div>
+        <div class="rule">
+            <div class="rule-close">
+
+            </div>
+            <div class="rule-txt1"></div>
+            <div class="rule-txt2"></div>
+            <div class="rule-open"></div>
+        </div>
+        <div class="rank">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

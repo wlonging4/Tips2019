@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        div{
+            height: 100px;
+            width: 100px;
+            margin-top: 5px;
+            filter:alpha(opacity:40);
+            opacity: 0.3;/*考虑兼容*/
+            background-color: darkred;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>多div淡入淡出</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    window.onload= function () {
+        var aDiv=document.getElementsByTagName("div");
+        for(var i=0;i<aDiv.length;i++){
+            aDiv[i].alpha=40;
+            aDiv[i].onmouseover=function(){
+                Move(this,100);
+            };
+            aDiv[i].onmouseout=function(){
+                Move(this,40);
+            };
+        }
+    };
+    //var alpha=20;
+    function Move(obj,iTarget){
+        clearInterval(obj.timer);
+            obj.timer=setInterval(function(){
+            var iSpeed=(iTarget-obj.alpha)/5;
+            iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+            if(obj.alpha==iTarget){
+                clearInterval(obj.timer)
+            }else{
+                obj.alpha+=iSpeed;
+                obj.style.filter="alpha(opacity:"+obj.alpha+")";
+                obj.style.opacity=obj.alpha/100;
+            }
+        },50);
+    }
+</script>
+</body>
+</html>

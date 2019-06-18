@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>跨浏览器1</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+function bind(ele,type,fn) {
+	if (ele.addEventListener) {
+		ele.addEventListener(type, fn, false);
+	} else {
+		ele.attachEvent("on" + type, fn);
+	}
+}
+function unbind(ele,type,fn){
+	if(ele.removeEventListener){
+		ele.removeEventListener(type,fn,false);	
+	}else{
+		ele.attachEvent("on"+type,fn);
+	}
+}
+	//IE绑定的方法不同
+	//IE下this不指向被绑定的DOM元素了而是指向了window;
+	//IE绑定之后运行的顺序是无序的;
+	//IE下可以重复的给同一个元素的同一个事件绑定重复的同一个方法;
+	//IE是全局的事件对象window.event，事件对象本身不一样
+	//IE事件源不相同e.target||event.srcElement
+	//IE阻止默认行为不相同e.preventDefault||e.returnValue=false;在DOM0级事件中可以用return false方法;
+	//IE阻止事件传播不相同e.stopPropagation||e.cancelBubble=true;
+</script>

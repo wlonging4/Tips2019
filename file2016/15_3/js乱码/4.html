@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ary的forEach</title>
+</head>
+<body>
+<script>
+    Array.prototype.forEach=function(fun,context){
+        //forEach的实现原理
+        var len=this.length;
+        var context=arguments[1];
+        //即使为undefined，call函数也正常运行。
+        if(typeof fun !=="function"){
+            throw "输入正确函数!";
+        }
+        for(var i=0;i<len;i++){
+            fun.call(context,this[i],i,this);
+            //contex指上下文,即作用对象
+            //this.i是各项元素的值
+            //i是各项索引值
+            //this执行该方法的主体
+        }
+    };
+    var arr=[5,6,7,8];
+    arr.forEach(function(item,index,arr){
+        //item指数组每一项的内容
+        //index各项的索引值
+        //即是输入的原数组值
+        //顺序严格不能变
+        console.log(item,index,arr);
+    });
+</script>
+</body>
+</html>

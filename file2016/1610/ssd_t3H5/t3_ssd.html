@@ -1,0 +1,967 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="gbk">
+    <title>三星T3移动SSD试用招募H5</title>
+    <meta name="keywords" content="三星T3移动SSD试用招募H5">
+    <meta name="description" content="三星T3移动SSD试用招募H5">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no">
+
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script><meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi">
+
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #ccc; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*下滑按钮*/
+        .swipe{position:absolute;z-index:10;left:50%;bottom:40px;  width: 39px;  height: 19px;  margin-left:-20px;overflow:hidden;color:rgba(0,0,0,0);background:url('http://2.zol-img.com.cn/zt/tm_581/31bb7bd145/swipe.png') no-repeat;-webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;}
+        .swipe.last{  display: none;  }
+
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        /*动画*/
+        .float-left,.float-right,.float-up,.float-down,.float-scale{-webkit-transition:.5s;transition:.5s;opacity:0;}
+        .float-left{-webkit-transform:translate(100px,0);transform:translate(100px,0);}
+        .float-right{-webkit-transform:translate(-100px,0);transform:translate(-100px,0);}
+        .float-up{-webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-down{-webkit-transform:translate(0,-100px);transform:translate(0,-100px);}
+        .float-scale{-webkit-transform:scale(1.2);transform:scale(1.2);}
+        .float-show1{  opacity: 0; -webkit-transform:scale(0.5);transform:translate(0.5); }
+        .float-show2{  opacity: 0; -webkit-transform:rotate(60deg);transform:rotate(60deg); }
+        .current .float-left,.current .float-right,.current .float-up,.current .float-down,.current .float-scale,.circle1,.circle2{-webkit-transform:none;transform:none;opacity:1;}
+        .show-fly-down1,.show-fly-down2,.show-fly-down3{  opacity: 0;  -webkit-transform: translate(0px,-20px);  transform: translate(0px,-40px);  }
+        .show-fly-up1,.show-fly-up2,.show-fly-up3{  opacity: 0;  -webkit-transform: translate(0px,20px);  transform: translate(0px,20px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+        .bttp1,.bttp2,.bttp3,.bttp4,.bttp5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+
+        @-webkit-keyframes show-hide1 {
+            0%{  -webkit-transform:none;opacity: 1;  }
+            50%{  opacity: 0; -webkit-transform:scale(0.5);  }
+            100%{  -webkit-transform:none; opacity: 1;  }
+        }
+        @keyframes show-hide1 {
+            0%{  transform:none; opacity: 1;  }
+            50%{  opacity: 0; transform:translate(0.5);  }
+            100%{  transform:none; opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-hide2 {
+            0%{  opacity: 0; -webkit-transform:rotate(60deg);  }
+            100%{  opacity: 1; -webkit-transform:rotate(0deg);  }
+        }
+        @keyframes show-hide2 {
+            0%{  opacity: 0; transform:rotate(60deg);  }
+            100%{  opacity: 1; transform:rotate(0deg);  }
+        }
+
+
+        @-webkit-keyframes show-fly-down {
+            0%{  -webkit-transform: translate(0px,-20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-down {
+            0%{  transform: translate(0px,-20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0%{  -webkit-transform: translate(0px,20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-up {
+            0%{  transform: translate(0px,20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-down {
+            0%{  -webkit-transform: translate(0px,0px);opacity: 0.8;  }
+            100%{  -webkit-transform: translate(0px,194px);opacity: 1;  }
+        }
+        @keyframes flow-down {
+            0%{  transform: translate(0px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,194px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle1 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(360deg);opacity: 1;  }
+        }
+        @keyframes circle1 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(100deg);opacity: 1;  }
+            66%{  transform: rotate(240deg);opacity: 1;  }
+            100%{  transform: rotate(360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle2 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(-100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(-240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(-360deg);opacity: 1;  }
+        }
+        @keyframes circle2 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(-100deg);opacity: 1;  }
+            66%{  transform: rotate(-240deg);opacity: 1;  }
+            100%{  transform: rotate(-360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-none {
+            0%{  -webkit-transform: scale(1);opacity: 1;  }
+            100%{  -webkit-transform: scale(1.6);opacity: 0;  }
+        }
+        @keyframes flow-none {
+            0%{  transform: scale(1);opacity: 1;  }
+            100%{  transform: scale(1.6);opacity: 0;  }
+        }
+
+        @-webkit-keyframes shake-ttb {
+            0%{-webkit-transform:translate(0,0);}
+            60%{-webkit-transform:translate(0,-10px);}
+        }
+        @keyframes shake-ttb {
+            0%{transform:translate(0,0);}
+            60%{transform:translate(0,-10px);}
+        }
+
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(1.1) translate(10px,0px);  }
+            50%{  -webkit-transform: scale(1.2) translate(5px,-5px);  }
+            75%{  -webkit-transform: scale(1.1) translate(0px,-10px);  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(1.1) translate(10px,0px);  }
+            50%{  transform: scale(1.2) translate(5px,-5px);  }
+            75%{  transform: scale(1.1) translate(0px,-10px);  }
+            100%{  transform: scale(1) translate(0px,0px);  }
+        }
+        @-webkit-keyframes blast2 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(0.96) rotate(2deg);  }
+            50%{  -webkit-transform: scale(1) rotate(0deg);  }
+            75%{  -webkit-transform: scale(0.96) rotate(-1deg);  }
+            100%{  -webkit-transform: scale(1) rotate(0deg);  }
+        }
+        @keyframes blast2 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(0.96) rotate(2deg);  }
+            50%{  transform: scale(1) rotate(0deg);  }
+            75%{  transform: scale(0.96) rotate(-1deg);  }
+            100%{  transform: scale(1) rotate(0deg);  }
+        }
+
+        @-webkit-keyframes move-rtl {
+            0%{  -webkit-transform:translate(0px,0px);  }
+            100%{  -webkit-transform:translate(100px,0px);  }
+        }
+        @keyframes move-rtl {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(100px,0px);  }
+        }
+        @-webkit-keyframes move-ltr {
+            0%{  -webkit-transform:translate(0px,0px);  }
+            100%{  -webkit-transform:translate(-100px,0px);  }
+        }
+        @keyframes move-ltr {
+            0%{  transform: translate(0px,0px);  }
+            100%{  transform: translate(-100px,0px);  }
+        }
+        @-webkit-keyframes move-ltr2 {
+            0%{  -webkit-transform:translate(0px,0px); opacity: 1;  }
+            100%{  -webkit-transform:translate(-300px,0px); opacity: 0.8;  }
+        }
+        @keyframes move-ltr2 {
+            0%{  transform: translate(0px,0px); opacity: 1;  }
+            100%{  transform: translate(-300px,0px); opacity: 0.8;  }
+        }
+        @-webkit-keyframes blink {
+            0%{  opacity: 1; -webkit-transform: scale(1);  }
+            80%{  opacity: 0.6; -webkit-transform: scale(0.8); }
+            100%{  opacity: 1; -webkit-transform: scale(1); }
+        }
+        @keyframes blink {
+            0%{  opacity: 1; transform: scale(1); }
+            80%{  opacity: 0.6;transform: scale(0.8);  }
+            100%{  opacity: 1;transform: scale(1);  }
+        }
+        @-webkit-keyframes show-shake {
+            0%{  -webkit-transform: scale(1) translate(0px,0px); opacity: 1;  }
+            40%{  -webkit-transform: scale(1) translate(0px,30px); opacity: 1;  }
+            50%{  -webkit-transform: scale(0.95) translate(0px,40px); opacity: 0.6;  }
+            80%{  -webkit-transform: scale(1) translate(0px,0px);opacity: 1; }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);opacity: 1; }
+        }
+        @keyframes show-shake {
+            0%{  transform: scale(1) translate(0px,0px); opacity: 1;  }
+            40%{  transform: scale(1) translate(0px,30px); opacity: 1;  }
+            50%{  transform: scale(0.95) translate(0px,40px); opacity: 0.6;  }
+            80%{  transform: scale(1) translate(0px,0px);opacity: 1; }
+            100%{  transform: scale(1) translate(0px,0px);opacity: 1; }
+        }
+
+        @-webkit-keyframes show-b1 {
+            0%{  opacity: 0;-webkit-transform: scale(0.6) translate(0px,-100px);  }
+            100%{  opacity: 1;-webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes show-b1 {
+            0%{  opacity: 0;transform: scale(0.6) translate(0px,-100px);  }
+            100%{  opacity: 1;transform: scale(1) translate(0px,0px);  }
+        }
+
+        .current .float-show1{  -webkit-animation: show-hide1 1.5s ease-in 0.6s 1 forwards; animation: show-hide1 1.5s ease-in 0.6s 1 forwards;  }
+        .current .float-show2{  -webkit-animation: show-hide2 0.5s ease-in 0.4s forwards; animation: show-hide2 0.5s ease-in 0.4s forwards;  }
+        .current .show-fly-down1{  -webkit-animation: show-fly-down 0.3s ease-in 0s forwards;  animation: show-fly-down 0.3s ease-in 0s forwards;  }
+        .current .show-fly-down2{  -webkit-animation: show-fly-down 0.3s ease-in 0.2s forwards;  animation: show-fly-down 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-down3{  -webkit-animation: show-fly-down 0.3s ease-in 0.5s forwards;  animation: show-fly-down 0.3s ease-in 0.5s forwards;  }
+        .current .show-fly-up1{  -webkit-animation: show-fly-up 0.3s ease-in 0s forwards;  animation: show-fly-up 0.3s ease-in 0s forwards;  }
+        .current .show-fly-up2{  -webkit-animation: show-fly-up 0.3s ease-in 0.2s forwards;  animation: show-fly-up 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-up3{  -webkit-animation: show-fly-up 0.3s ease-in 0.5s forwards;  animation: show-fly-up 0.3s ease-in 0.5s forwards;  }
+        .current .ltr1{ -webkit-animation: ltr 0.2s ease-in 0s forwards;  animation: ltr 0.2s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr 0.2s ease-in 0.1s forwards;  animation: ltr 0.2s ease-in 0.2s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr 0.2s ease-in 0.3s forwards;  animation: ltr 0.2s ease-in 0.4s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr 0.2s ease-in 0.5s forwards;  animation: ltr 0.2s ease-in 0.6s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr 0.2s ease-in 0.7s forwards; animation: ltr 0.2s ease-in 0.8s forwards;  }
+        .current .ttb1{ -webkit-animation: ttb 0.2s ease-in 0s forwards;  animation: ttb 0.2s ease-in 0s forwards;   }
+        .current .ttb2{ -webkit-animation: ttb 0.2s ease-in 0.1s forwards;  animation: ttb 0.2s ease-in 0.2s forwards;  }
+        .current .ttb3{ -webkit-animation: ttb 0.2s ease-in 0.3s forwards;  animation: ttb 0.2s ease-in 0.4s forwards;  }
+        .current .ttb4{ -webkit-animation: ttb 0.2s ease-in 0.5s forwards;  animation: ttb 0.2s ease-in 0.6s forwards;  }
+        .current .ttb5{ -webkit-animation: ttb 0.2s ease-in 0.7s forwards; animation: ttb 0.2s ease-in 0.8s forwards;  }
+        .current .btt1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .btt2{ -webkit-animation: btt 0.2s ease-in 0.1s forwards;  animation: btt 0.2s ease-in 0.2s forwards;  }
+        .current .btt3{ -webkit-animation: btt 0.2s ease-in 0.3s forwards;  animation: btt 0.2s ease-in 0.4s forwards;  }
+        .current .btt4{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.6s forwards;  }
+        .current .btt5{ -webkit-animation: btt 0.2s ease-in 0.7s forwards; animation: btt 0.2s ease-in 0.8s forwards;  }
+        .current .bttp1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .bttp2{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.5s forwards;  }
+        .current .bttp3{ -webkit-animation: btt 0.2s ease-in 1.4s forwards;  animation: btt 0.2s ease-in 1.4s forwards;  }
+        .current .bttp4{ -webkit-animation: btt 0.2s ease-in 2.4s forwards;  animation: btt 0.2s ease-in 2.4s forwards;  }
+        .current .bttp5{ -webkit-animation: btt 0.2s ease-in 3.1s forwards; animation: btt 0.2s ease-in 3.1s forwards;  }
+        .current .car{ -webkit-animation: car 1.6s ease-in 0.2s forwards;  animation: car 1.6s ease-in 0.2s forwards;  }
+        .current .flow-down{ -webkit-animation: flow-down 1.6s ease-in 0.4s infinite;  animation: flow-down 1.6s ease-in 0.4s infinite;  }
+        .current .flow-none{ -webkit-animation: flow-none 0.8s ease-in 0s forwards;  animation: flow-none 0.8s ease-in 0s forwards;  }
+        .current .shake-ttb{ -webkit-animation: shake-ttb 0.7s ease-out 0s infinite;  animation: shake-ttb 0.7s ease-out 0s infinite;  }
+        .current .shake-ttb2{ -webkit-animation: shake-ttb 0.6s ease-out 0.3s infinite;  animation: shake-ttb 0.6s ease-out 0.3s infinite;  }
+        .current .circle1{ -webkit-animation: circle1 3s linear infinite;  animation: circle1 3s linear infinite;  }
+        .current .circle2{ -webkit-animation: circle2 3s linear infinite;  animation: circle2 3s linear infinite;  }
+        .current .circle3{ -webkit-animation: circle2 10s linear infinite;  animation: circle2 10s linear infinite;  }
+        .current .blink{ -webkit-animation: blink 2s linear infinite;  animation: blink 2s linear infinite;  }
+        .current .blast{ -webkit-animation: blast 5s linear infinite;  animation: blast 5s linear infinite;  }
+        .current .blast2{ -webkit-animation: blast2 10s linear infinite;  animation: blast2 10s linear infinite;  }
+        .current .move-rtl{ -webkit-animation: move-rtl 10s linear infinite;  animation: move-rtl 10s linear infinite;  }
+        .current .move-ltr{ -webkit-animation: move-ltr 10s linear infinite;  animation: move-ltr 10s linear infinite;  }
+        .current .move-ltr2{ -webkit-animation: move-ltr2 10s linear forwards;  animation: move-ltr2 10s linear forwards;  }
+        .current .show-shake{ -webkit-animation: show-shake 2s linear 0s infinite;  animation: show-shake 2s linear 0s infinite;  }
+        .current .selected.show-b1{ -webkit-animation: show-b1 0.2s linear 0s forwards;  animation: show-b1 0.2s linear 0s forwards;  }
+
+
+        /*背景音乐*/
+        #audio {width: 0;height: 0;position: absolute;z-index: -66;bottom: 0;left: 0;}
+        #btn-music {position: fixed;top: 20px;left: 20px;width: 40px; height: 40px;z-index: 999;}
+        #btn-music p { width: 100%;height: 100%;line-height: 48px;overflow: hidden;}
+        #btn-music p#on{display:block;background: url('http://2.zol-img.com.cn/zt/tm_57d/8ea079f75c/music.png') no-repeat 0 0;}
+        #btn-music p#off {display:none;background: url('http://2.zol-img.com.cn/zt/tm_57d/8ea079f75c/music.png') no-repeat 0 -40px!important;}
+
+        /*分享*/
+        .share { display: none; position: relative; margin: 20px auto 0; width:480px; height: 102px;text-align: center;  }
+        .share a { display: inline-block; width: 102px; height: 102px; display: inline-block; background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_share.png") no-repeat 0 0; vertical-align: top; overflow: hidden; margin: 0 9px; text-indent: 999px; }
+        .share a.weibo{background-position: 0 0;}
+        .share a.wechat{background-position: -102px 0;}
+        .share a.qzone{background-position: 0 -102px ;}
+        .share a.tencent-weibo{background-position:-102px -102px;}
+        .share_t{  color: #fff;  padding: 0 10px;  font: 32px/72px 'microsoft yahei';  }
+        .share-txt{background: url(http://2.zol-img.com.cn/zt/tm_56a/86907cc0b2/p7-4.png) no-repeat 0 0;width: 36px;height: 80px;overflow: hidden;display:block;float: left;text-indent: -999px;}
+        @media only screen and (max-height: 480px) and (max-height: 900px) {
+            /*兼容ip4*/
+        }
+
+        /*基础结构*/
+        .container{height:1000%;}
+        section{height:10%;overflow:hidden;position:relative;background-size:cover;background-repeat: no-repeat;background-image: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/bg2.jpg");background-position: top center;}
+        #slide1{  background-image: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/bg1.jpg");  }
+        #viewport{width:640px;height:100%;margin:0 auto;overflow:hidden;}
+
+        /*结构*/
+        .logo1{  position: absolute;  top: 25px;  left: 40px;  width: 117px;  height: 36px;  z-index: 999;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/logo1.png") no-repeat 0 0;  }
+        .logo2{  position: absolute;  top: 30px;  right: 20px;  width: 114px;  height: 38px;  z-index: 999;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/logo2.jpg") no-repeat 0 0;  }
+        .p1-pic{  position: absolute; bottom: 0;  width: 640px;  height: 522px;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p1_pic.png") no-repeat 0 0;  }
+        .p1-box{  position: relative;  z-index: 2;  width: 600px;  height: 480px;  overflow: hidden;  margin: 300px auto 0;  }
+        .p1-rule1{  width: 168px;  height: 68px;  margin: 50px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p1_rule1.png") no-repeat 0 0;  }
+        .p1-art1{  width: 246px;  height: 45px;  margin: -5px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p1_art1.png") no-repeat 0 0;  }
+        .p1-rule2{  width: 168px;  height: 68px;  margin: 5px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p1_rule2.png") no-repeat 0 0;  }
+        .p1-art2{  width: 316px;  height: 44px;  margin: -5px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/7f659c31ff/p1_art2.png") no-repeat 0 0;  }
+        .p1-rule3{  width: 168px;  height: 68px;  margin: 5px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p1_rule3.png") no-repeat 0 0;  }
+        .p1-art3{  width: 591px; height: 109px;  margin: -5px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p1_art3.png") no-repeat 0 0;  }
+
+        .p2-art{  overflow: hidden;  width: 395px;  height: 140px;  margin: 50px auto 0;  }
+        .p2-a1{  width: 393px;  height: 84px;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p2_a1.png") no-repeat 0 0;  }
+        .p2-a2{  width: 273px;  height: 58px;  margin: -15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p2_a2.png") no-repeat 0 0;  }
+        .p2-box{  width: 640px;  height: 710px;overflow: hidden;position: relative;  margin: 0 auto 0;  }
+        .p2-mod.act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic_bg.png") no-repeat bottom center;  }
+        .p2-mod{  width: 640px;  height: 680px;  margin-top: 40px;  }
+        .p2-btn{  position: absolute; z-index: 5; width: 40px;  height: 50px;  top: 480px;  }
+        .p2-btn1{  opacity: 0; left: 20px;   background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p2_btns.png") no-repeat 0 0;  }
+        .p2-btn2{  right: 20px;   background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p2_btns.png") no-repeat 14px -50px;  }
+        .p2-m{  width: 1000%;  height: 680px;  }
+        .p2-m li{  float: left;  width: 10%;  height: 680px;  }
+        .p2-ul-dad{  position: absolute;  top: 0;  left: 50%;  margin-left: -194px;  width: 388px;  height: 266px;  overflow: hidden;  }
+        .p2-ul{  width: 1940px;  height: 266px;  overflow: hidden;  }
+        .p2-ul li{  float: left;  width: 388px;  height: 266px;   }
+        .p2-ul li.selected{   display: block;   }
+        .p2-ul li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic_a1.png") no-repeat 0 17px;  }
+        .p2-ul li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic_a2.png") no-repeat 24px 12px;  }
+        .p2-ul li:nth-child(3){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic_a3.png") no-repeat 24px 19px;  }
+        .p2-ul li:nth-child(4){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic_a4.png") no-repeat 24px 18px;  }
+        .p2-ul li:nth-child(5){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic_a5.png") no-repeat 24px 0;  }
+
+        .p3-art{  overflow: hidden;  width: 395px;  height: 140px;  margin: 50px auto 0;  }
+        .p3-a1{  width: 474px;  height: 84px;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p3_a1.png") no-repeat 0 0;  }
+        .p3-a2{  width: 297px;  height: 58px;  margin: -15px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p3_a2.png") no-repeat 0 0;  }
+        .p3-video{  width: 598px;  height: 454px;  padding: 17px;  margin: 0 auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p3_v.png") no-repeat 0 0;  }
+        .p3-list{  width: 620px;  height: 180px;  margin: 20px auto; text-align: center  }
+        /*.p3-list .hei12{ display: block; height: 53px; padding-top: 5px; width: 140px;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p3_art_bg.png") no-repeat center top; color: #000; font: 16px/22px 'microsoft yahei'  }*/
+        .p3-list li{  float: left;  display: inline-block;  width: 140px;  height: 180px;  color: #000; margin: 0 7px;  text-align: center;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p3_art_bg.png") no-repeat center bottom;  font: 14px/22px 'microsoft yahei';  }
+
+        .show-t{  width: 453px;  height: 156px;  margin: 20px auto 0;  }
+        .show-t4{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p4_t.png") no-repeat center;  }
+        .show-t5{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p5_t.png") no-repeat center;  }
+        .show-t6{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p6_t.png") no-repeat center;  }
+        .show-t7{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p7_t.png") no-repeat center;  }
+        .title{  width: 618px;  height: 68px;  color: #fff;   text-align: center;  font: bold 30px/68px 'microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/t1.png") no-repeat 0 0;  }
+        .title a{color: #fff;}
+        .title1{  margin: 15px auto 0;  }
+        .title2{  margin: 50px auto 0;  }
+        .show-pic1{ display: block;  width: 620px;  height: 182px;  margin: 20px auto 0;  }
+        .show-pic2{ display: block;  width: 620px;  height: 182px;  margin: 10px auto 0;  }
+        .show-pic1 ul,.show-pic2 ul{  width: 620px;  height: 182px;overflow: hidden;text-align: center;  }
+        .show-pic1 ul li,.show-pic2 ul li{  display: inline-block;  width: 180px;  height: 180px;  margin: 0 5px;  border: 1px solid #20CDFE;  }
+
+        .title3{  width: 600px;  height: 40px;  margin: 0 auto; text-align: center;  font: 28px/40px 'microsoft yahei'; color: #FD7800;  }
+
+        .p8-t{  width: 481px;  height: 155px;  margin: 20px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_t.png") no-repeat 0 0;  }
+        .p8-use{  display: block;  width: 280px;  height: 55px;  text-align: center;  color: #000;  margin: 65px auto 0;  font: 35px/52px 'microsoft yahei';  -webkit-border-radius:5px;  -moz-border-radius:5px;  border-radius:5px;  background: #20CDFE;  }
+        .p8-takein{  width: 610px;  height: 140px;  margin: 10px auto 0; }
+        .p8-takein a{  display: block; float: left;  width: 305px;  height: 140px;  }
+        .p8-takein .p8-link1{  background: url("http://2.zol-img.com.cn/zt/tm_585/0f41f5e5ff/p8_link1.png") no-repeat 0 0;  }
+        .p8-takein .p8-link2{  background: url("http://2.zol-img.com.cn/zt/tm_585/0f41f5e5ff/p8_link2.png") no-repeat 0 0;  }
+        .p8-form{ position: relative;  width: 595px;  height: 110px;  margin: 30px auto 0;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_form.png") no-repeat 0 0 ;  }
+        .p8-form input[type='tel']{  float: left;  border: none;  outline: none;  width: 340px;  margin: 20px 2px 20px 34px;  height: 60px;  color: #00BFFF;  font: 36px/60px 'microsoft yahei';  background: #10091B;  }
+        .p8-form button{ position: absolute;  display: block;  width: 200px;  height: 93px;  float: left;  top: 8px; right: 8px;  border: none;  outline: none;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_btn.png") no-repeat 0 0;  }
+        .p8-remind{  opacity: 0; width: 400px;  height: 50px;  color: #FD7800;  text-align: center;  margin: 0 auto;  font: 20px/50px 'microsoft yahei';  }
+        .p8-art,.p8-art2{  width: 600px;  height: 130px;  text-align: center;  color: #20CDFE;  margin: 10px auto 0;  font: 26px/40px 'microsoft yahei';  }
+        .p8-art{  display: block;  }
+        .p8-art2{  display: none;  }
+        .p8-art2 span{  color: #FD7800;  }
+        .p8-info{ display: none;  width: 620px;  height: 210px;  margin: 30px auto 0;  }
+        .p8-info1{  width: 548px; height: 68px;  margin: 0 auto;  color: #20CDFE;  text-align: center;  font: 27px/68px 'microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_info1.png") no-repeat 0 0;  }
+        .p8-info1.act{  width: 398px;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_info1_act.png") no-repeat 0 0;  }
+        .p8-info1 #p8-info-num{  color: #E36C00;  }
+        .p8-card{  width: 600px;  margin: 18px auto 0;  overflow: hidden;  height: 122px;  }
+        .p8-card li{  float: left;  width: 112px;  height: 122px;  margin: 0 4px;  }
+        .p8-card li:nth-child(1){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card1.png") no-repeat 0 0;  }
+        .p8-card li:nth-child(2){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card1.png") no-repeat -112px 0;  }
+        .p8-card li:nth-child(3){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card1.png") no-repeat -224px 0;  }
+        .p8-card li:nth-child(4){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card1.png") no-repeat -336px 0;  }
+        .p8-card li:nth-child(5){  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card1.png") no-repeat -448px 0;  }
+        .p8-card li:nth-child(1).act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card2.png") no-repeat 0 0;  }
+        .p8-card li:nth-child(2).act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card2.png") no-repeat -112px 0;  }
+        .p8-card li:nth-child(3).act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card2.png") no-repeat -224px 0;  }
+        .p8-card li:nth-child(4).act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card2.png") no-repeat -336px 0;  }
+        .p8-card li:nth-child(5).act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_card2.png") no-repeat -448px 0;  }
+        .p8-shadow{ display: none;  position: absolute;  width: 640px;  height: 100%;  top: 0;  background: rgba(0,0,0,0.5);  }
+        .p8-cover{  position: absolute;  top: 200px;  left: 50%;  margin-left: -270px;  width: 540px;  height: 396px;  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_bg2.png") no-repeat top right;  }
+        .p8-p1l{  color: #fff;  text-align: center;  padding-top: 30px;  font: 40px/100px 'microsoft yahei';  }
+        .p8-cover .p8-p2{ color: #bbb;  text-align: center;  font: 38px/55px 'microsoft yahei';  }
+        .p8-cover .p8-confirm{  width: 200px;  height: 80px;  font: 45px/80px 'microsoft yahei'; text-align: center;  background: #000;  color: #fff;  -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;  margin: 30px auto 0;  }
+        .p8-close{  position: absolute;  top: 0;  right: 0;  width: 75px;  height: 75px;  }
+        .p8-cover.act{  background: url("http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/p8_bg1.png") no-repeat top right;  }
+        .p8-cover.act .p8-p2{  color: #7A3900;  }
+        .p8-cover.act .p8-confirm{  background: #f00;  }
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading" style="display: none;"><span class="loading-ring"></span></div>
+<!--content-->
+<div id="viewport" class="flipview" data-loop="false" style="pointer-events: all;">
+    <div class="container" id="container">
+        <section id="slide1">
+            <div class="logo1"></div>
+            <div class="logo2"></div>
+            <div class="p1-pic float-up"></div>
+            <div class="p1-box">
+                <div class="p1-rule1 float-right"></div>
+                <div class="p1-art1 float-left"></div>
+                <div class="p1-rule2 float-right"></div>
+                <div class="p1-art2 float-left"></div>
+                <div class="p1-rule3 float-right"></div>
+                <div class="p1-art3 float-left"></div>
+            </div>
+        </section>
+        <section id="slide2">
+            <div class="p2-art">
+                <div class="p2-a1 float-down"></div>
+                <div class="p2-a2 float-up"></div>
+            </div>
+            <div class="p2-box flipview" id="p2-box" data-loop="false">
+                <div class="p2-btn p2-btn1 shake-ttb" id="p2-btn1"></div>
+                <div class="p2-btn p2-btn2 shake-ttb" id="p2-btn2"></div>
+                <div class="p2-mod" id="p2-mod">
+                    <ul class="p2-m container" id="p2-m" dir="left-right">
+                        <li>
+                            <img src="http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic1.png" alt="" width="640" height="680">
+                        </li>
+                        <li>
+                            <img src="http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic2.png" alt="" width="640" height="680">
+                        </li>
+                        <li>
+                            <img src="http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic3.png" alt="" width="640" height="680">
+                        </li>
+                        <li>
+                            <img src="http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic4.png" alt="" width="640" height="680">
+                        </li>
+                        <li>
+                            <img src="http://2.zol-img.com.cn/zt/tm_581/31b62b42f1/pic5.png" alt="" width="640" height="680">
+                        </li>
+                    </ul>
+                </div>
+                <div class="p2-ul-dad">
+                    <ul class="p2-ul clearfix">
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="slide3">
+            <div class="p3-art">
+                <div class="p3-a1 float-down"></div>
+                <div class="p3-a2 float-up"></div>
+            </div>
+            <div class="p3-video">
+                <iframe id="p3-video" src='http://v.zol.com.cn/player185801_0.html' frameborder='0' scrolling="no" width='100%' height='454' allowfullscreen='true'></iframe>
+            </div>
+            <ul class="p3-list" id="p3-list">
+                <li href="http://v.zol.com.cn/player185801_0.html">
+                    <img src="http://2.zol-img.com.cn/zt/tm_584/a80ce57e9d/video_pic2.png" width="140" height="120" alt=""/>
+                    我的T3初体验 PC<br/>MOD中国第一人邢凯
+                </li>
+                <li href="http://v.zol.com.cn/player185800_0.html">
+                    <img src="http://2.zol-img.com.cn/zt/tm_584/a80ce57e9d/video_pic3.png" width="140" height="120" alt=""/>
+                    我的T3初体验<br/>资深媒体人孙玉亮
+                </li>
+                <li href="http://v.zol.com.cn/player185860_0.html">
+                    <img src="http://2.zol-img.com.cn/zt/tm_584/a80ce57e9d/video_pic1.png" width="140" height="120" alt=""/>
+                    我的T3初体验<br/>独立摄影师原老未
+                </li>
+                <li href="http://v.zol.com.cn/player185898_0.html">
+                    <img src="http://2.zol-img.com.cn/zt/tm_585/a2456e059d/video_pic4.png" width="140" height="120" alt=""/>
+                    我的T3初体验<br/>企业高管于晓晞
+                </li>
+            </ul>
+        </section>
+        <section id="slide4">
+            <div class="show-t show-t4 float-down"></div>
+            <div class="title title1 btt1"><a href="http://bbs.zol.com.cn/diybbs/d434_27308.html" target="_blank">颠覆不止于快</a></div>
+            <a class="show-pic1 btt2" href="http://bbs.zol.com.cn/diybbs/d434_27308.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li111.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li112.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li113.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+            <div class="title title2 btt3"><a href="http://bbs.zol.com.cn/diybbs/d34444_19239.html" target="_blank">小巧便携的存储利器</a></div>
+            <div class="title3 btt4">三星T3移动固态硬盘体验</div>
+            <a class="show-pic2 btt5" href="http://bbs.zol.com.cn/diybbs/d34444_19239.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li121.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li122.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li123.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+        </section>
+        <section id="slide5">
+            <div class="show-t show-t5 float-down"></div>
+            <div class="title title1 btt1"><a href="http://bbs.zol.com.cn/diybbs/d434_27311.html" target="_blank">小巧玲珑 速度惊人</a></div>
+            <a class="show-pic1 btt2" href="http://bbs.zol.com.cn/diybbs/d434_27311.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li211.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li212.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li213.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+            <div class="title title2 btt3"><a href="http://bbs.zol.com.cn/diybbs/d231_861817.html" target="_blank">岂止高清，更是“高轻”！</a></div>
+            <div class="title3 btt4">体验三星T3移动SSD</div>
+            <a class="show-pic2 btt5" href="http://bbs.zol.com.cn/diybbs/d231_861817.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li221.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li222.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li223.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+        </section>
+        <section id="slide6">
+            <div class="show-t show-t6 float-down"></div>
+            <div class="title title1 btt1"><a href="http://bbs.zol.com.cn/diybbs/d231_861575.html" target="_blank">AES 256位硬件加密 全方位保护</a></div>
+            <a class="show-pic1 btt2" href="http://bbs.zol.com.cn/diybbs/d231_861575.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li311.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li312.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li313.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+            <div class="title title2 btt3"><a href="http://bbs.zol.com.cn/diybbs/d231_862065.html" target="_blank">“雷电、严寒、飓风、洪水、酷暑”的试炼</a></div>
+            <div class="title3 btt4">T3 SSD开箱上手</div>
+            <a class="show-pic2 btt5" href="http://bbs.zol.com.cn/diybbs/d231_862065.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_585/1f810e5a72/li321.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_585/1f810e5a72/li322.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_585/1f810e5a72/li323.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+        </section>
+        <section id="slide7">
+            <div class="show-t show-t7 float-down"></div>
+            <div class="title title1 btt1"><a href="http://bbs.zol.com.cn/diybbs/d34444_19243.html" target="_blank">是时候和大容量U盘说再见了</a></div>
+            <a class="show-pic1 btt2" href="http://bbs.zol.com.cn/diybbs/d34444_19243.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li411.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li412.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li413.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+            <div class="title title2 btt3"><a href="http://bbs.zol.com.cn/diybbs/d434_27309.html" target="_blank">比鸡蛋轻比名片小的魅</a></div>
+            <div class="title3 btt4">三星T3移动固态硬盘开箱上手</div>
+            <a class="show-pic2 btt5" href="http://bbs.zol.com.cn/diybbs/d434_27309.html" target="_blank">
+                <ul>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li421.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li422.png" width="180" height="180" alt=""/></li>
+                    <li><img src="http://2.zol-img.com.cn/zt/tm_584/cf09004451/li423.png" width="180" height="180" alt=""/></li>
+                </ul>
+            </a>
+        </section>
+        <section id="slide8">
+            <div class="p8-t float-down"></div>
+            <a class="p8-use" href="http://active.zol.com.cn/16active/1215t3/" target="_blank">T3使用宝典</a>
+            <div class="p8-takein float-scale clearfix">
+                <a class="p8-link1" href="http://m.zol.com.cn/huodong/d2_26645.html" target="_blank"></a>
+                <a class="p8-link2" href="https://item.m.jd.com/product/2376036.html" target="_blank"></a>
+            </div>
+            <div class="p8-form clearfix">
+                <input type="tel" class="phone" placeholder="请输入您的手机号">
+                <button class="p8-submit"></button>
+            </div>
+            <div class="p8-remind">错误提示:  手机号码格式不正确</div>
+            <div class="p8-info">
+                <div class="p8-info1 act">您目前集齐<span id="p8-info-num">0</span>张,需集5张</div>
+                <ul class="p8-card">
+                    <li data-vv="1"></li>
+                    <li data-vv="2"></li>
+                    <li data-vv="3"></li>
+                    <li data-vv="4"></li>
+                    <li data-vv="5"></li>
+                </ul>
+            </div>
+            <div class="p8-art float-up">
+                集卡活动<br>
+                集齐5张即可免费获得三星T3小礼品<br>
+                请您提交有效手机号，用于记录集卡和领奖
+            </div>
+            <div class="p8-art2 float-up">
+                点击下方分享给小伙伴后<br>
+                即可抽取卡<br>
+                <span>集齐5张</span>即可免费获得三星T3小礼品
+            </div>
+            <div class="share"></div>
+            <div class="p8-shadow">
+                <div class="p8-cover">
+                    <div class="p8-close"></div>
+                    <p class="p8-p1l">很遗憾，这次没抽中</p>
+                    <p class="p8-p2">
+                        集卡5张即可免费获得<br>三星T3小礼品
+                    </p>
+                    <div class="p8-confirm">确定</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!--slide-->
+<div id="swipe" class="swipe" role="button">向上滑动</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<script charset="gbk">
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        /*var fn_p2_box=document.getElementById('p2-box');
+         fn_p2_box.classList.add('flipview');
+         var fn_p2_m=document.getElementById('p2-m');
+         fn_p2_m.classList.add('container');
+         $.FlipView(fn_p2_box);*/
+
+        //$.container(document.getElementById('p2-m'));
+
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('current');
+    });
+
+    /*滑动*/
+    var logo1=document.querySelector('#logo1'),logo2=document.querySelector('#logo2');
+    var swipe=document.getElementById('swipe');
+    viewport.addEventListener('changed', function (e) {
+        if(e.target.tagName=='UL'){return false}
+        var current = this.querySelector('.current');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+        e.current && e.current.classList.add('current');
+        /*if(this.index!==0&&this.index!==6){
+         logo1.style.display=logo2.style.display='none';
+         }else{
+         logo1.style.display=logo2.style.display='block';
+         }
+         if(this.index==6){
+         swipe.style.display='none';
+         }*/
+        swipe.classList[last ? 'add' : 'remove']('last');
+    });
+    swipe.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    /*左右切换*/
+    function turnPage(i,objs){
+        var third = document.querySelector(objs);
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=4)
+            third.index = parseInt(horizontalIndex) + i;
+    }
+    function chg3(btn1,btn2,event1,res){
+        document.querySelector(btn1) && document.querySelector(btn1).addEventListener(event1,function(){turnPage(-1,res)});
+        document.querySelector(btn2) && document.querySelector(btn2).addEventListener(event1,function(){turnPage(1,res)});
+    }
+    chg3('#p2-btn1','#p2-btn2','click','#p2-box');
+    var btn_next=document.querySelector('#p2-btn2'),btn_prev=document.querySelector('#p2-btn1'),p2_mod=document.querySelector('#p2-mod');
+    document.getElementById('p2-box').addEventListener('changed', function (e) {
+        btn_next.style.opacity=1;
+        btn_prev.style.opacity=1;
+        if(e.currentIndex==4){
+            btn_next.style.opacity=0;
+        }
+        /*if(e.currentIndex==4){
+         p2_mod.classList.add('act');
+         }else{
+         p2_mod.classList.remove('act');
+         }*/
+        document.querySelector('.p2-ul').style.transform='translate(-'+e.currentIndex*388+'px,0px)';
+
+        if(e.currentIndex==0){
+            btn_prev.style.opacity=0;
+        }
+    });
+
+    /*分享*/
+    var link = window.location.href;
+    var share_title=encodeURIComponent('不服来战！与大咖一起玩转三星T3移动SSD！');
+    var share_link=encodeURIComponent(link);
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_581/6a2d884dda/share.jpg');
+    var share_t=encodeURIComponent('不服来战！与大咖一起玩转三星T3移动SSD！');
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+    var share_con = '<a target="_self" class="weibo" href="javascript:void(0);">sina</a><a target="_self" class="wechat" style="display:none;" href="javascript:void(0);" ></a><a target="_self" class="qzone" href="javascript:void(0);"></a>';
+    document.querySelector('.share').innerHTML = share_con;
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_581/6a2d884dda/share.jpg',
+        title: '不服来战！与大咖一起玩转三星T3移动SSD！'
+    };
+
+    /*验证提交*/
+    var input_box=document.querySelector('.phone'),
+        p8_submit=document.querySelector('.p8-submit'),
+        p8_shadow=document.querySelector('.p8-shadow'),
+        p8_cover=document.querySelector('.p8-cover'),
+        p8_p1=document.querySelector('.p8-p1l'),
+        p8_confirm=document.querySelector('.p8-confirm'),
+        p8_close=document.querySelector('.p8-close'),
+        p8_share=document.querySelector('.share'),
+        p8_art=document.querySelector('.p8-art'),
+        p8_art2=document.querySelector('.p8-art2'),
+        p8_card=document.querySelector('.p8-card'),
+        p8_card_li=document.querySelectorAll('.p8-card li'),
+        p8_info=document.querySelector('.p8-info'),
+        p8_info1=document.querySelector('.p8-info1'),
+        p8_info_num=document.querySelector('#p8-info-num'),
+        p8_form=document.querySelector('.p8-form'),
+        p8_remind=document.querySelector('.p8-remind'),
+        sh_sina=document.querySelector('.weibo'),
+        sh_wechat=document.querySelector('.wechat'),
+        sh_qzone=document.querySelector('.qzone'),
+        link_sina=sina,
+        link_wechat='#wechat',
+        link_qzone=qzone;
+    var mobile_store=null,card_num=null,share_num=null,share_href=null;
+
+    /*获取信息*/
+    input_box.addEventListener('input', function () {
+        var input_val=this.value;
+        if(!input_val){
+            p8_remind.style.opacity=0;
+        }
+    });
+    input_box.addEventListener('change', function () {
+        var input_val=this.value;
+        if(!input_val){
+            p8_remind.style.opacity=0;
+        }
+    });
+
+    var now_prize_arr=[],new_prize_arr=[];
+
+    p8_submit.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (this.disabled) return;
+        var mobileVal = document.querySelector('.phone').value;
+        mobile_store=mobileVal;
+        window.localStorage.mobile_store=mobileVal;
+        if (!mobileVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+            p8_remind.style.opacity=1;
+            return false;
+        }
+        this.disabled = true;
+        $.ajax({
+            type:'get',
+            url: 'http://m.zol.com.cn/topic/services/samsung.php?callback=?',
+            data:{action:'showUserInfo',tel:mobileVal},
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                if(data.result.info.length!==0){
+                    //提交成功
+                    analysis_data(data);
+                }
+                p8_art.style.display='none';
+                p8_form.style.display='none';
+                p8_remind.style.display='none';
+                p8_info.style.display='block';
+                p8_share.style.display='block';
+                p8_art2.style.display='block';
+            }
+        });
+    });
+
+    function analysis_data(data_ajax){
+        now_prize_arr=[];
+        var now_prize_info=data_ajax.result.info;
+        for(var n=0;n<now_prize_info.length;n++){
+            now_prize_arr.push(parseInt(now_prize_info[n].num));
+            /*unique(now_prize_arr);*/
+            now_prize_arr.sort(function(a, b) { return a-b});
+        }
+        console.log(now_prize_arr);
+        card_num=now_prize_arr.length;p8_info_num.innerHTML=card_num;
+
+        if(card_num==5){
+            p8_info1.classList.remove('act');
+            p8_info1.innerHTML='您目前已集齐五张,请等待我们联系您领奖'
+        }
+
+        for(var h=0;h<p8_card_li.length;h++){
+            var ind=parseInt(p8_card_li[h].getAttribute('data-vv'));
+            now_prize_arr.forEach(function(item,index,array){
+                if(item==ind){
+                    p8_card_li[ind-1].classList.add('act');
+                }
+            });
+        }
+    }
+
+    /*抽卡信息*/
+    function getPrize(share_btn,num,share_link){
+        share_btn.addEventListener('click', function () {
+            card_choose();
+            share_num=num;
+            share_href=share_link;
+        })
+    }
+    getPrize(sh_sina,1,link_sina);
+    getPrize(sh_wechat,2,link_wechat);
+    getPrize(sh_qzone,3,link_qzone);
+
+    function card_choose(){
+        getToken(function(){
+            $.ajax({
+                type:'get',
+                url: 'http://m.zol.com.cn/topic/services/samsung.php?callback=?',
+                data:{token:window.verifyTk,action:'getPrize',tel:mobile_store},
+                dataType: 'json',
+                success: function (data) {
+                    if(data.result.isHit == 1){
+                        //中奖成功
+                        p8_cover.classList.add('act');
+                        p8_p1.innerHTML='恭喜您抽中一张卡片';
+                        //analysis_data(data);
+                    }else{
+                        p8_cover.classList.remove('act');
+                        p8_p1.innerHTML='很遗憾，这次没抽中';
+                    }
+                    analysis_data(data);
+                    p8_cover.style.display='block';
+                    p8_shadow.style.display='block';
+                }
+            });
+        })
+    }
+    p8_close.addEventListener('tap', function () {
+        skip_out();
+    });
+    p8_confirm.addEventListener('tap', function () {
+        skip_out();
+    });
+    function skip_out(){
+        p8_cover.style.display='none';
+        p8_shadow.style.display='none';
+        window.location.href=share_href;
+    }
+
+    /*视频切换*/
+    function video_show(v_link,v_show){
+        var iniUrl = v_link[0].getAttribute('href');
+        v_link.addEventListener('click',function () {
+            var videoUrl = this.getAttribute('href');
+            v_show.setAttribute('src',videoUrl);
+            return false;
+        });
+    }
+    var p3_video=document.getElementById('p3-video'),p3_list=document.querySelectorAll('#p3-list li');
+    video_show(p3_list,p3_video);
+
+    /*获取token*/
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(request){
+                if(request && request.result){
+                    window.verifyTk = request.result;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+
+</body></html>

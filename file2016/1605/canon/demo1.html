@@ -1,0 +1,466 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        body{color:#eee;font:12px/22px arial; background:#070810;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#eee;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#aaa}
+        .hong12{color:#eee}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+
+        /*背景*/
+        .f-al{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-al.jpg) no-repeat right top;}
+        .f-ar{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-ar.jpg) no-repeat left top;}
+        .f-bl{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-bl.jpg) no-repeat right top;}
+        .f-br{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-br.jpg) no-repeat left top;}
+        .f-cl{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-cl.jpg) no-repeat right top;}
+        .f-cr{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-cr.jpg) no-repeat left top;}
+        .f-cla{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-cla.jpg) no-repeat right top;}
+        .f-clb{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-clb.jpg) no-repeat right top;}
+        .f-clc{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-clc.jpg) no-repeat right top;}
+        .f-dl{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-dl.jpg) no-repeat right top;}
+        .f-dr{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-dr.jpg) no-repeat left top;}
+        .f-el{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-el.jpg) no-repeat right top;}
+        .f-er{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-er.jpg) no-repeat left top;}
+        .f-fl{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-fl.jpg) no-repeat right top;}
+        .f-fr{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-fr.jpg) no-repeat left top;}
+        .f-gl{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-gl.jpg) no-repeat right top;}
+        .f-gr{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-gr.jpg) no-repeat left top;}
+        .f-hl{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-hl.jpg) no-repeat right top;}
+        .f-hr{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-hr.jpg) no-repeat left top;}
+
+        .wrapper{width:1000px; margin:0 auto; position:relative;}
+
+        .ani{position:absolute;}
+        .a4{left: 189px;top: 138px;-webkit-animation:a4 .5s;animation:a4 .5s;}
+        @-webkit-keyframes a4{0%{-webkit-transform:scale(0.2);}50%{-webkit-transform:scale(0.5);}50%{-webkit-transform:scale(1);}}
+        @keyframes a4{0%{transform:scale(0.2);}50%{transform:scale(0.5);}50%{transform:scale(1);}}
+        .a5{left: 195px;top: 273px;}
+
+        .tip{position:absolute; left:571px; top:20px; width:268px; height:165px;}
+        .tip .hong16b{display:block; text-indent:20px; font:bold 16px/38px "Microsoft Yahei"; margin-bottom:6px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-line.jpg) no-repeat center bottom}
+
+        #f-tab div{position:absolute; cursor:pointer; }
+        #f-tab div a{display:block;text-indent:-9999px;height:250px;}
+        #b1{left:23px;top:262px;width:165px;height:243px;background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-ba1.png) no-repeat;}
+        #b2{left:238px;top:225px;width:164px;height:238px;background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-ba2.png) no-repeat;}
+        #b3{left:443px;top:262px;width:165px;height:249px;background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-ba3.png) no-repeat;}
+        #b4{left:642px;top:224px;width:165px;height:238px;background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-ba4.png) no-repeat;}
+        #b5{left:814px;top:261px;width:165px;height:250px;background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-ba5.png) no-repeat;}
+        #b1:hover,#b1.act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-bb1.png) no-repeat;}
+        #b2:hover,#b2.act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-bb2.png) no-repeat;}
+        #b3:hover,#b3.act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-bb3.png) no-repeat;}
+        #b4:hover,#b4.act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-bb4.png) no-repeat;}
+        #b5:hover,#b5.act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-bb5.png) no-repeat;}
+
+        .c{position:relative;}
+
+        #f-tab1{position:absolute; z-index:3; width:436px; left:50%; margin-left:22px; top:116px;}
+        #f-tab1 li{float:left; width:102px; height:39px; padding:3px 0 0; text-align:center; display:inline; margin-right:7px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c4.png) no-repeat; font:16px/39px "Microsoft Yahei"; color:#ddd; cursor:pointer}
+        #f-tab1 .act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c5.png) no-repeat; color:#fff;}
+
+        .intro{position:absolute; top:181px; left:522px; width:358px; height:90px;}
+        .more{position:absolute; top:597px; left:536px; width:115px; height:25px;}
+        .more a{display:block; width:115px; height:25px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c6.jpg) no-repeat; text-indent:-9999px;}
+        .photo{position:absolute; top:332px; left:522px; width:440px; height:240px;}
+        .photo img{border:1px solid #e8ae01}
+
+        .view{position:absolute; left:520px; top:147px; width:88px; height:86px;}
+        .view a{display:block; width:88px; height:86px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-d4.jpg) no-repeat; text-indent:-9999px;}
+
+        .intro1,.intro2{position:absolute; top:300px; left:154px; width:221px; height:90px;}
+        .intro2{top:448px; left:10px;}
+
+        .photo1,.photo2,.photo3{position:absolute; left:12px; top:158px; width:314px; height:132px;}
+        .photo2{top:325px;}
+        .photo3{top:488px;}
+        .photo1 img,.photo2 img,.photo3 img{border:1px solid #040707}
+
+        .word1,.word2,.word3{position:absolute; left:27px; top:296px; width:260px; height:90px;}
+        .word2{top:488px;}
+        .word3{left:677px; top:128px;width:299px; height:70px;}
+        .photo4{position:absolute;left:312px; top:244px;width:670px; height:350px;}
+        .photo4 img{border:1px solid #cbcccc}
+        .word4,.word5,.word6{position:absolute;left:31px; top:248px; width:125px; height:24px; font:16px/24px "Microsoft Yahei"; color:#f00}
+        .word5{top:436px;}
+        .word6{width:98px; top:183px; left:522px; text-align:center;}
+
+        #f-tab2{position:absolute; width:650px; left:406px; top:37px;}
+        #f-tab2 li{float:left; width:126px; height:126px; display:inline; margin-right:90px; cursor:pointer}
+        #g1{background:url(http://2.zol-img.com.cn/zt/tm_557/6beecbc196/f-g1.png) no-repeat;}
+        #g2{background:url(http://2.zol-img.com.cn/zt/tm_557/6beecbc196/f-g2.png) no-repeat;}
+        #g3{background:url(http://2.zol-img.com.cn/zt/tm_557/6beecbc196/f-g3.png) no-repeat;}
+        #g1:hover,#g1.act{background:url(http://2.zol-img.com.cn/zt/tm_557/6beecbc196/f-g1a.png) no-repeat;}
+        #g2:hover,#g2.act{background:url(http://2.zol-img.com.cn/zt/tm_557/6beecbc196/f-g2a.png) no-repeat;}
+        #g3:hover,#g3.act{background:url(http://2.zol-img.com.cn/zt/tm_557/6beecbc196/f-g3a.png) no-repeat;}
+
+        .intro3{position:absolute;left:33px; top:188px; width:366px; height:130px;}
+        .intro3 .hong18{display:block; color:#f00; line-height:42px; margin-bottom:4px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-line1.png) no-repeat center bottom}
+        .intro3 .hong18 b{color:#ddd}
+
+        .photos{position:absolute;}
+        .photos img{border:1px solid #cbcccc}
+        .photos1{left:32px; top:336px; width:376px; height:132px;}
+        .photos2{left:32px; top:480px; width:370px; height:132px;}
+        .photos3{left:410px; top:198px; width:562px; height:270px;}
+        .photos4{left:410px; top:480px; width:560px; height:132px;}
+
+        .nav{display:none;position:absolute; z-index:3; left:50%; top:652px; width:930px; padding-left:33px; margin-left:-481px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-nav.png) no-repeat center 6px;}
+        .nav li{float:left; width:110px; text-align:center; padding:25px 0 0; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-nav1.png) no-repeat top center; font:14px/21px "Microsoft Yahei"; color:#aaa; cursor:pointer}
+        .nav .act{background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-nav2.png) no-repeat top center; color:#f00}
+
+        .foot{position:absolute; z-index:3; left:50%; top:770px; width:1000px; margin-left:-500px; text-align:center;}
+        #photowrap376408 .photobox{width:100%; margin-left:auto; margin-right:auto;}
+        #photowrap376408 .photowrap{width:100%; margin:0 auto;height: 871px;overflow: hidden; position:relative;}
+        #photowrap376408 .photocon{height:871px;overflow: hidden;position: absolute;}
+        #photowrap376408 .photocon .listbox{width:100%; height:871px;overflow: hidden;float: left;position: relative;}
+
+        #photowrap376408 .photoprev,#photowrap376408 .photonext{position:absolute; width:50px; height:50px; z-index:2; top:50%; left:50%; margin-top:-25px; cursor:pointer; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-prev.png) no-repeat;}
+        #photowrap376408 .photoprev{margin-left:-580px;}
+        #photowrap376408 .photonext{margin-left:540px; background:url(http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-next.png) no-repeat;}
+
+        #f-top{display:none;width:104px; height:139px; position:absolute; top:200px; right:30px;}
+    </style>
+
+</head>
+<body>
+<div class="photobox" id="photowrap376408">
+    <div class="photowrap">
+        <ul class="photocon">
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-al">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-a1.jpg" width="1000" height="273">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-a2.jpg" width="1000" height="342">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-a3.jpg" width="1000" height="256">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-a4.png" width="605" height="104" class="ani a4">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-a5.png" width="190" height="37" class="ani a5"></div></td>
+                        <td class="f-ar">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-bl">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper" id="f-tab-c">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-b1.jpg" width="1000" height="223">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-b2.jpg" width="1000" height="414">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-b3.jpg" width="1000" height="234">
+                                <div class="tip" style="display: none;"><{data[0]}></div>
+                                <div class="tip" style="display: none;"><{data[1]}></div>
+                                <div class="tip" style="display: none;"><{data[2]}></div>
+                                <div class="tip" style="display: none;"><{data[3]}></div>
+                                <div class="tip" style="display: block;"><{data[4]}></div>
+                                <div id="f-tab">
+                                    <div id="b1" class=""><a href="http://dcdv.zol.com.cn/slide/524/5248763_1.html#p=1">2000年 PowerShot  G1</a></div>
+                                    <div id="b2" class=""><a href="http://dcdv.zol.com.cn/slide/524/5248763_1.html#p=1">2003年 PowerShot  G5</a></div>
+                                    <div id="b3" class=""><a href="http://dcdv.zol.com.cn/slide/524/5248763_1.html#p=1">2006年 PowerShot  G7</a></div>
+                                    <div id="b4" class=""><a href="http://dcdv.zol.com.cn/slide/524/5248763_1.html#p=1">2012年 PowerShot  G1X</a></div>
+                                    <div id="b5" class="act"><a href="http://dcdv.zol.com.cn/slide/524/5248763_1.html#p=1">2015年 PowerShot  G7X</a></div>
+                                </div>
+
+                            </div></td>
+                        <td class="f-br">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <div class="c" id="f-tab1-c">
+                    <ul id="f-tab1">
+                        <li class="act">极致体验</li>
+                        <li>任性做工</li>
+                        <li>轻松捕捉</li>
+                        <li>随意分享</li>
+                    </ul>
+                    <div class="cc" style="display: block;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td class="f-cl">&nbsp;</td>
+                                <td width="1000">
+                                    <div class="wrapper">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c1.jpg" width="1000" height="181">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c2.jpg" width="1000" height="456">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c3.jpg" width="1000" height="234">
+                                        <div class="intro"><{data[5]}></div>
+                                        <div class="more"><{data[38]}></div>
+                                    </div></td>
+                                <td class="f-cr">&nbsp;</td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                    <div class="cc" style="display: none;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td class="f-cla">&nbsp;</td>
+                                <td width="1000">
+                                    <div class="wrapper">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c1a.jpg" width="1000" height="181">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c2a.jpg" width="1000" height="456">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c3a.jpg" width="1000" height="234">
+                                        <div class="intro"><{data[6]}></div>
+                                        <div class="photo"><{data[7]}></div>
+                                        <div class="more"><{data[39]}></div>
+                                    </div></td>
+                                <td class="f-cr">&nbsp;</td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                    <div class="cc" style="display: none;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td class="f-clb">&nbsp;</td>
+                                <td width="1000">
+                                    <div class="wrapper">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c1b.jpg" width="1000" height="181">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c2b.jpg" width="1000" height="456">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c3b.jpg" width="1000" height="234">
+                                        <div class="intro"><{data[8]}></div>
+                                        <div class="photo"><{data[9]}></div>
+                                        <div class="more"><{data[40]}></div>
+                                    </div></td>
+                                <td class="f-cr">&nbsp;</td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                    <div class="cc" style="display: none;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td class="f-clc">&nbsp;</td>
+                                <td width="1000">
+                                    <div class="wrapper">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c1c.jpg" width="1000" height="181">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c2c.jpg" width="1000" height="456">
+                                        <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-c3c.jpg" width="1000" height="234">
+                                        <div class="intro"><{data[10]}></div>
+
+                                        <div class="more"><{data[41]}></div>
+                                    </div></td>
+                                <td class="f-cr">&nbsp;</td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                </div>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-dl">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-d1.jpg" width="1000" height="294">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-d2.jpg" width="1000" height="343">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-d3.jpg" width="1000" height="234">
+                                <div class="view"><{data[42]}></div>
+                            </div></td>
+                        <td class="f-dr">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-el">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-e1.jpg" width="1000" height="294">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-e2.jpg" width="1000" height="343">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-e3.jpg" width="1000" height="234">
+                                <div class="intro1"><{data[11]}></div>
+                                <div class="intro2"><{data[12]}></div>
+                            </div></td>
+                        <td class="f-er">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-fl">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-f1.jpg" width="1000" height="294">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-f2.jpg" width="1000" height="343">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-f3.jpg" width="1000" height="234">
+                                <div class="photo1"><{data[13]}></div>
+                                <div class="photo2"><{data[14]}></div>
+                                <div class="photo3"><{data[15]}></div>
+                            </div></td>
+                        <td class="f-fr">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-gl">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-g1.jpg" width="1000" height="294">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-g2.jpg" width="1000" height="343">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-g3.jpg" width="1000" height="234">
+                                <div class="word1"><{data[16]}></div>
+                                <div class="word2"><{data[17]}></div>
+                                <div class="word3"><{data[18]}></div>
+                                <div class="word4"><{data[19]}></div>
+                                <div class="word5"><{data[20]}></div>
+                                <div class="word6"><{data[21]}></div>
+                                <div class="photo4"><{data[22]}></div>
+                            </div></td>
+                        <td class="f-gr">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+            <li class="listbox" style="width: 1858px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="f-hl">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper" id="f-tab-c2">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-h1.jpg" width="1000" height="294">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-h2.jpg" width="1000" height="343">
+                                <img src="http://2.zol-img.com.cn/zt/tm_555/d5b570178f/f-h3.jpg" width="1000" height="234">
+                                <ul id="f-tab2">
+                                    <li id="g1" class="act"></li>
+                                    <li id="g2"></li>
+                                    <li id="g3"></li>
+                                </ul>
+                                <div class="cc" style="display: block;">
+                                    <div class="intro3"><{data[23]}></div>
+                                    <div class="photos photos1"><{data[24]}></div>
+                                    <div class="photos photos2"><{data[25]}></div>
+                                    <div class="photos photos3"><{data[26]}></div>
+                                    <div class="photos photos4"><{data[27]}></div>
+                                </div>
+                                <div class="cc" style="display: none;">
+                                    <div class="intro3"><{data[28]}></div>
+                                    <div class="photos photos1"><{data[29]}></div>
+                                    <div class="photos photos2"><{data[30]}></div>
+                                    <div class="photos photos3"><{data[31]}></div>
+                                    <div class="photos photos4"><{data[32]}></div>
+                                </div>
+                                <div class="cc" style="display: none;">
+                                    <div class="intro3"><{data[33]}></div>
+                                    <div class="photos photos1"><{data[34]}></div>
+                                    <div class="photos photos2"><{data[35]}></div>
+                                    <div class="photos photos3"><{data[36]}></div>
+                                    <div class="photos photos4"><{data[37]}></div>
+                                </div>
+                            </div></td>
+                        <td class="f-hr">&nbsp;</td>
+                    </tr>
+                    </tbody></table>
+            </li>
+        </ul>
+        <div class="photoprev"></div>
+        <div class="photonext"></div>
+        <div class="photonav">
+            <ul class="nav" style="display: block;">
+                <li class="">极致·任性</li>
+                <li class="">G族光辉历史</li>
+                <li class="">产品解析</li>
+                <li class="">性能PK</li>
+                <li class="">极致工艺</li>
+                <li class="">极限挑战</li>
+                <li class="">编辑证言</li>
+                <li class="">他们都在用</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="foot"><{data[43]}></div>
+
+<div id="f-top" style="display: block;"><img src="http://2.zol-img.com.cn/zt/tm_556/58b6717233/f-top.png" width="104" height="139" border="0" usemap="#Map">
+    <map name="Map">
+        <area shape="rect" coords="1,62,105,102" href="http://www.canon.com.cn/specialsite/g/" alt="进入官网">
+        <area shape="rect" coords="0,102,110,141" href="http://canon.tmall.com/category-968962877.htm?spm=a1z10.1-b.w4006-8120399625.27.o4PUUZ&scene=taobao_shop" alt="点击购买">
+    </map></div>
+<script>
+    function f_tab(f_tab1,f_tab2,f_con,f_event){
+        f_tab1.each(function(i){
+            $(this).bind(f_event,function(){
+                f_tab2.hide().eq(i).show();
+                f_tab1.removeClass(f_con);
+                $(this).addClass(f_con);
+            })
+            if ($(this).hasClass(f_con)) {
+                $(this).addClass(f_con);
+                f_tab2.hide().eq(i).show();
+            }
+        })
+    }
+    f_tab($("#f-tab div"),$("#f-tab-c .tip"),"act","mouseover");
+    f_tab($("#f-tab1 li"),$("#f-tab1-c .cc"),"act","mouseover");
+    f_tab($("#f-tab2 li"),$("#f-tab-c2 .cc"),"act","mouseover");
+
+
+    photowrap("#photowrap376408","#photowrap376408 .photocon","#photowrap376408 .photocon .listbox","#photowrap376408 .photonav li","#photowrap376408 .photoprev","#photowrap376408 .photonext");
+
+    function photowrap(wrap, con, con_li, nav_span, prev, next) {
+        function showPics(index) {
+            if(index>0){
+                $(".nav").show();
+                $("#f-top").show();
+            }else{
+                $(".nav").hide();
+                $("#f-top").hide();
+            }
+            var nowLeft = -index * sWidth;
+            $(con).stop(!0, !1).animate({
+                        left: nowLeft
+                    },
+                    300,
+                    function() {}),
+                    $(nav_span).removeClass("act").eq(index).addClass("act")
+        }
+        function fullScreen(wrap, con_li) {
+            var ssWidth = $(wrap).width();
+            $(con_li).width(ssWidth)
+        }
+        var sWidth = $(wrap).width(),
+                len = $(con_li).length,
+                index = 0,
+                picTimer;
+        $(con).css("width", sWidth * len),
+                $(window).resize(function() {
+                    fullScreen(wrap, con_li),
+                            sWidth = $(wrap).width(),
+                            $(con).css("width", sWidth * len),
+                            showPics(index)
+                }),
+                fullScreen(wrap, con_li),
+                $(con_li).width(sWidth),
+                $(nav_span).click(function() {
+                    index = $(nav_span).index(this);
+                    showPics(index);
+
+                })//.eq(0).trigger("mouseenter"),
+        //$(wrap).hover(function(){clearInterval(picTimer)},function(){picTimer=setInterval(function(){showPics(index),index++,index==len&&(index=0)},6e3)}).trigger("mouseleave"),
+        $(prev).click(function() {
+            index--,
+            index < 0 && (index = len - 1),
+                    showPics(index)
+            $("#photonav-img").attr("src","http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav"+(index+1)+".png");
+        }),
+                $(next).click(function() {
+                    index++,
+                    index == len && (index = 0),
+                            showPics(index)
+                    $("#photonav-img").attr("src","http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav"+(index+1)+".png");
+                })
+    }
+</script>
+
+</body></html>>

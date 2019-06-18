@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>圣诞活动</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#fff;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*下滑按钮*/
+        .swipe{position:absolute;z-index:10;left:50%;bottom:40px; width: 65px;height: 41px;  margin-left: -33px;  overflow:hidden;color:rgba(0,0,0,0);background:url('http://2.zol-img.com.cn/zt/tm_583/e6fc786646/slide.png') no-repeat;-webkit-animation:swipe-ani infinite .5s;animation:swipe-ani infinite .5s;}
+        .swipe.last{  display: none;  }
+        @-webkit-keyframes swipe-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes swipe-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        /*动画*/
+        .float-left,.float-right,.float-up,.float-down,.float-scale{-webkit-transition:.5s;transition:.5s;opacity:0;}
+        .float-left{-webkit-transform:translate(100px,0);transform:translate(100px,0);}
+        .float-right{-webkit-transform:translate(-100px,0);transform:translate(-100px,0);}
+        .float-up{-webkit-transform:translate(0,100px);transform:translate(0,100px);}
+        .float-down{-webkit-transform:translate(0,-100px);transform:translate(0,-100px);}
+        .float-scale{-webkit-transform:scale(1.2);transform:scale(1.2);}
+        .float-show1{  opacity: 0; -webkit-transform:scale(0.5);transform:translate(0.5); }
+        .float-show2{  opacity: 0; -webkit-transform:rotate(60deg);transform:rotate(60deg); }
+        .current .float-left,.current .float-right,.current .float-up,.current .float-down,.current .float-scale,.circle1,.circle2{-webkit-transform:none;transform:none;opacity:1;}
+        .show-fly-down1,.show-fly-down2,.show-fly-down3{  opacity: 0;  -webkit-transform: translate(0px,-20px);  transform: translate(0px,-40px);  }
+        .show-fly-up1,.show-fly-up2,.show-fly-up3{  opacity: 0;  -webkit-transform: translate(0px,20px);  transform: translate(0px,20px);  }
+        .ltr1,.ltr2,.ltr3,.ltr4,.ltr5{  opacity: 0;  -webkit-transform: translate(-160px,0px);  transform: translate(-160px,0px);  }
+        .ttb1,.ttb2,.ttb3,.ttb4,.ttb5{  opacity: 0;  -webkit-transform: translate(0px,-160px);  transform: translate(0px,-160px);  }
+        .btt1,.btt2,.btt3,.btt4,.btt5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+        .bttp1,.bttp2,.bttp3,.bttp4,.bttp5{  opacity: 0;  -webkit-transform: translate(0px,100px);  transform: translate(0px,100px);  }
+
+        @-webkit-keyframes show-show {
+            0%{  opacity: 0.2;  }
+            100%{  opacity: 1;  }
+        }
+        @keyframes show-show {
+            0%{  opacity: 0.2;  }
+            100%{  opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-hide2 {
+            0%{  opacity: 0; -webkit-transform:rotate(60deg);  }
+            100%{  opacity: 1; -webkit-transform:rotate(0deg);  }
+        }
+        @keyframes show-hide2 {
+            0%{  opacity: 0; transform:rotate(60deg);  }
+            100%{  opacity: 1; transform:rotate(0deg);  }
+        }
+
+
+        @-webkit-keyframes show-fly-down {
+            0%{  -webkit-transform: translate(0px,-20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-down {
+            0%{  transform: translate(0px,-20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0%{  -webkit-transform: translate(0px,20px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes show-fly-up {
+            0%{  transform: translate(0px,20px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ltr {
+            0%{  -webkit-transform: translate(-160px,0px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ltr {
+            0%{  transform: translate(-160px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes ttb {
+            0%{  -webkit-transform: translate(0px,-160px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes ttb {
+            0%{  transform: translate(0px,-160px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes btt {
+            0%{  -webkit-transform: translate(0px,100px);opacity: 0;  }
+            100%{  -webkit-transform: translate(0px,0px);opacity: 1;  }
+        }
+        @keyframes btt {
+            0%{  transform: translate(0px,100px);opacity: 0;  }
+            100%{  transform: translate(0px,0px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-down {
+            0%{  -webkit-transform: translate(0px,0px);opacity: 0.8;  }
+            100%{  -webkit-transform: translate(0px,194px);opacity: 1;  }
+        }
+        @keyframes flow-down {
+            0%{  transform: translate(0px,0px);opacity: 0;  }
+            100%{  transform: translate(0px,194px);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle1 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(360deg);opacity: 1;  }
+        }
+        @keyframes circle1 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(100deg);opacity: 1;  }
+            66%{  transform: rotate(240deg);opacity: 1;  }
+            100%{  transform: rotate(360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes circle2 {
+            0%{  -webkit-transform: rotate(0deg);opacity: 1;  }
+            33%{  -webkit-transform: rotate(-100deg);opacity: 1;  }
+            66%{  -webkit-transform: rotate(-240deg);opacity: 1;  }
+            100%{  -webkit-transform: rotate(-360deg);opacity: 1;  }
+        }
+        @keyframes circle2 {
+            0%{  transform: rotate(0deg);opacity: 1;  }
+            33%{  transform: rotate(-100deg);opacity: 1;  }
+            66%{  transform: rotate(-240deg);opacity: 1;  }
+            100%{  transform: rotate(-360deg);opacity: 1;  }
+        }
+
+        @-webkit-keyframes flow-none {
+            0%{  -webkit-transform: scale(1);opacity: 1;  }
+            100%{  -webkit-transform: scale(1.6);opacity: 0;  }
+        }
+        @keyframes flow-none {
+            0%{  transform: scale(1);opacity: 1;  }
+            100%{  transform: scale(1.6);opacity: 0;  }
+        }
+
+        @-webkit-keyframes shake-lr {
+            0%{  -webkit-transform: rotate(0deg);  }
+            25%{  -webkit-transform: rotate(-3deg);  }
+            50%{  -webkit-transform: rotate(0deg);  }
+            75%{  -webkit-transform: rotate(3deg);  }
+            100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr {
+            0%{  transform: rotate(0deg);  }
+            25%{  transform: rotate(-3deg);  }
+            50%{  transform: rotate(0deg);  }
+            75%{  transform: rotate(3deg);  }
+            100%{  transform: rotate(0deg);  }
+        }
+
+        @-webkit-keyframes blast {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(1.1) translate(10px,0px);  }
+            50%{  -webkit-transform: scale(1.2) translate(5px,-5px);  }
+            75%{  -webkit-transform: scale(1.1) translate(0px,-10px);  }
+            100%{  -webkit-transform: scale(1) translate(0px,0px);  }
+        }
+        @keyframes blast {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(1.1) translate(10px,0px);  }
+            50%{  transform: scale(1.2) translate(5px,-5px);  }
+            75%{  transform: scale(1.1) translate(0px,-10px);  }
+            100%{  transform: scale(1) translate(0px,0px);  }
+        }
+        @-webkit-keyframes blast2 {
+            0%{  -webkit-transform: scale(1) translate(0px,0px);  }
+            25%{  -webkit-transform: scale(1.2) rotate(8deg);  }
+            50%{  -webkit-transform: scale(1) rotate(0deg);  }
+            75%{  -webkit-transform: scale(1.16) rotate(-7deg);  }
+            100%{  -webkit-transform: scale(1) rotate(0deg);  }
+        }
+        @keyframes blast2 {
+            0%{  transform: scale(1) translate(0px,0px);  }
+            25%{  transform: scale(1.2) rotate(8deg);  }
+            50%{  transform: scale(1) rotate(0deg);  }
+            75%{  transform: scale(1.16) rotate(-7deg);  }
+            100%{  transform: scale(1) rotate(0deg);  }
+        }
+        @-webkit-keyframes shake-lr2 { 0%{  -webkit-transform: rotate(0deg);  } 25%{  -webkit-transform: rotate(-3deg);  } 50%{  -webkit-transform: rotate(0deg);  } 75%{  -webkit-transform: rotate(3deg);  } 100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr2 {
+            0%{  transform: rotate(0deg);  } 25%{  transform: rotate(-3deg);  } 50%{  transform: rotate(0deg);  } 75%{  transform: rotate(3deg);  } 100%{  transform: rotate(0deg);  }
+        }
+
+        @-webkit-keyframes shake-lr3 { 0%{  -webkit-transform: rotate(0deg);  } 25%{  -webkit-transform: rotate(-1deg);  } 50%{  -webkit-transform: rotate(0deg);  } 50%{  -webkit-transform: rotate(1deg);  } 100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr3 {
+            0%{ transform: rotate(0deg);  } 25%{  transform: rotate(-2deg);  } 50%{  transform: rotate(0deg);  } 50%{ transform: rotate(2deg);  } 100%{  transform: rotate(0deg);  }
+        }
+        @-webkit-keyframes shake-lr4 { 0%{  -webkit-transform: rotate(0deg);  } 25%{  -webkit-transform: rotate(8deg);  } 50%{  -webkit-transform: rotate(0deg);  } 50%{  -webkit-transform: rotate(-8deg);  } 100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr4 {
+            0%{ transform: rotate(0deg);  } 25%{  transform: rotate(8deg);  } 50%{  transform: rotate(0deg);  } 50%{ transform: rotate(-8deg);  } 100%{  transform: rotate(0deg);  }
+        }
+        @-webkit-keyframes shake-lr5 { 0%{  -webkit-transform: rotate(0deg);  } 25%{  -webkit-transform: rotate(-8deg);  } 50%{  -webkit-transform: rotate(0deg);  } 50%{  -webkit-transform: rotate(8deg);  } 100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr5 {
+            0%{ transform: rotate(0deg);  } 25%{  transform: rotate(-8deg);  } 50%{  transform: rotate(0deg);  } 50%{ transform: rotate(8deg);  } 100%{  transform: rotate(0deg);  }
+        }
+        @-webkit-keyframes float-mm {
+            0%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  -webkit-transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  -webkit-transform: translate(0px,-20px) scale(1);opacity: 0.9;  }
+            100%{  -webkit-transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @keyframes float-mm {
+            0%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+            80%{  transform: translate(0px,0px) scale(0.9);opacity: 1;  }
+            86%{  transform: translate(0px,-20px) scale(1);opacity: 0.9;  }
+            100%{  transform: translate(0px,0px) scale(1);opacity: 1;  }
+        }
+        @-webkit-keyframes shake-lr {
+            0%{  -webkit-transform: rotate(0deg);  }
+            25%{  -webkit-transform: rotate(-5deg);  }
+            50%{  -webkit-transform: rotate(0deg);  }
+            75%{  -webkit-transform: rotate(5deg);  }
+            100%{  -webkit-transform: rotate(0deg);  }
+        }
+        @keyframes shake-lr {
+            0%{  transform: rotate(0deg);  }
+            25%{  transform: rotate(-5deg);  }
+            50%{  transform: rotate(0deg);  }
+            75%{  transform: rotate(5deg);  }
+            100%{  transform: rotate(0deg);  }
+        }
+
+        .current .show-show{  -webkit-animation: show-show 0.2s ease-in 1 forwards; animation: show-show 0.2s ease-in 1 forwards;  }
+        .current .float-show2{  -webkit-animation: show-hide2 0.5s ease-in 0.4s forwards; animation: show-hide2 0.5s ease-in 0.4s forwards;  }
+        .current .show-fly-down1{  -webkit-animation: show-fly-down 0.3s ease-in 0s forwards;  animation: show-fly-down 0.3s ease-in 0s forwards;  }
+        .current .show-fly-down2{  -webkit-animation: show-fly-down 0.3s ease-in 0.2s forwards;  animation: show-fly-down 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-down3{  -webkit-animation: show-fly-down 0.3s ease-in 0.5s forwards;  animation: show-fly-down 0.3s ease-in 0.5s forwards;  }
+        .current .show-fly-up1{  -webkit-animation: show-fly-up 0.3s ease-in 0s forwards;  animation: show-fly-up 0.3s ease-in 0s forwards;  }
+        .current .show-fly-up2{  -webkit-animation: show-fly-up 0.3s ease-in 0.2s forwards;  animation: show-fly-up 0.3s ease-in 0.2s forwards;  }
+        .current .show-fly-up3{  -webkit-animation: show-fly-up 0.3s ease-in 0.5s forwards;  animation: show-fly-up 0.3s ease-in 0.5s forwards;  }
+        .current .ltr1{ -webkit-animation: ltr 0.2s ease-in 0s forwards;  animation: ltr 0.2s ease-in 0s forwards;   }
+        .current .ltr2{ -webkit-animation: ltr 0.2s ease-in 0.1s forwards;  animation: ltr 0.2s ease-in 0.2s forwards;  }
+        .current .ltr3{ -webkit-animation: ltr 0.2s ease-in 0.3s forwards;  animation: ltr 0.2s ease-in 0.4s forwards;  }
+        .current .ltr4{ -webkit-animation: ltr 0.2s ease-in 0.5s forwards;  animation: ltr 0.2s ease-in 0.6s forwards;  }
+        .current .ltr5{ -webkit-animation: ltr 0.2s ease-in 0.7s forwards; animation: ltr 0.2s ease-in 0.8s forwards;  }
+        .current .ttb1{ -webkit-animation: ttb 0.2s ease-in 0s forwards;  animation: ttb 0.2s ease-in 0s forwards;   }
+        .current .ttb2{ -webkit-animation: ttb 0.2s ease-in 0.1s forwards;  animation: ttb 0.2s ease-in 0.2s forwards;  }
+        .current .ttb3{ -webkit-animation: ttb 0.2s ease-in 0.3s forwards;  animation: ttb 0.2s ease-in 0.4s forwards;  }
+        .current .ttb4{ -webkit-animation: ttb 0.2s ease-in 0.5s forwards;  animation: ttb 0.2s ease-in 0.6s forwards;  }
+        .current .ttb5{ -webkit-animation: ttb 0.2s ease-in 0.7s forwards; animation: ttb 0.2s ease-in 0.8s forwards;  }
+        .current .btt1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .btt2{ -webkit-animation: btt 0.2s ease-in 0.1s forwards;  animation: btt 0.2s ease-in 0.2s forwards;  }
+        .current .btt3{ -webkit-animation: btt 0.2s ease-in 0.3s forwards;  animation: btt 0.2s ease-in 0.4s forwards;  }
+        .current .btt4{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.6s forwards;  }
+        .current .btt5{ -webkit-animation: btt 0.2s ease-in 0.7s forwards; animation: btt 0.2s ease-in 0.8s forwards;  }
+        .current .bttp1{ -webkit-animation: btt 0.2s ease-in 0s forwards;  animation: btt 0.2s ease-in 0s forwards;   }
+        .current .bttp2{ -webkit-animation: btt 0.2s ease-in 0.5s forwards;  animation: btt 0.2s ease-in 0.5s forwards;  }
+        .current .bttp3{ -webkit-animation: btt 0.2s ease-in 1.4s forwards;  animation: btt 0.2s ease-in 1.4s forwards;  }
+        .current .bttp4{ -webkit-animation: btt 0.2s ease-in 2.4s forwards;  animation: btt 0.2s ease-in 2.4s forwards;  }
+        .current .bttp5{ -webkit-animation: btt 0.2s ease-in 3.1s forwards; animation: btt 0.2s ease-in 3.1s forwards;  }
+        .current .flow-down{ -webkit-animation: flow-down 1.6s ease-in 0.4s infinite;  animation: flow-down 1.6s ease-in 0.4s infinite;  }
+        .current .flow-none{ -webkit-animation: flow-none 0.8s ease-in 0s forwards;  animation: flow-none 0.8s ease-in 0s forwards;  }
+        .current .shake-lr{ -webkit-animation: shake-lr 1s linear 0s infinite;  animation: shake-lr 1s linear 0s infinite;  }
+        .current .circle1{ -webkit-animation: circle1 3s linear infinite;  animation: circle1 3s linear infinite;  }
+        .current .circle2{ -webkit-animation: circle2 3s linear infinite;  animation: circle2 3s linear infinite;  }
+        .current .circle3{ -webkit-animation: circle2 10s linear infinite;  animation: circle2 10s linear infinite;  }
+        .current .blast{ -webkit-animation: blast 5s linear infinite;  animation: blast 5s linear infinite;  }
+        .current .blast2{ -webkit-animation: blast2 5s linear infinite;  animation: blast2 5s linear infinite;  }
+        .current .shake-lr{ -webkit-animation: shake-lr 1s linear 0s infinite;  animation: shake-lr 1s linear 0s infinite;  }
+        .current .shake-lr2{ -webkit-animation: shake-lr2 1s linear 0s infinite;  animation: shake-lr2 1s linear 0s infinite;  -webkit-transform-origin: center top; transform-origin: center top;  }
+        .current .shake-lr3{ -webkit-animation: shake-lr3 2s linear infinite;  animation: shake-lr3 2s linear infinite; }
+        .current .shake-lr4{ -webkit-animation: shake-lr4 2s linear infinite;  animation: shake-lr4 2s linear infinite; }
+        .current .shake-lr5{ -webkit-animation: shake-lr5 2s linear infinite;  animation: shake-lr5 2s linear infinite; }
+        .current .float-mm{ -webkit-animation: float-mm 1s ease-in-out infinite;  animation: float-mm 1s ease-in-out infinite;  }
+
+        /*背景音乐*/
+        #audio {width: 0;height: 0;position: absolute;z-index: -66;bottom: 0;left: 0;}
+        #btn-music {position: fixed;top: 20px;left: 20px;width: 40px; height: 40px;z-index: 999;}
+        #btn-music p { width: 100%;height: 100%;line-height: 48px;overflow: hidden;}
+        #btn-music p#on{display:block;background: url('http://2.zol-img.com.cn/zt/tm_57d/8ea079f75c/music.png') no-repeat 0 0;}
+        #btn-music p#off {display:none;background: url('http://2.zol-img.com.cn/zt/tm_57d/8ea079f75c/music.png') no-repeat 0 -40px!important;}
+
+        /*分享*/
+        .share { width:400px; height: 80px;text-align: center; margin: 40px auto 0; }
+        .share a { display: inline-block; width: 80px; height: 80px; display: inline-block; background: url("http://2.zol-img.com.cn/zt/tm_581/997108918f/p11_share.png") no-repeat 0 0; vertical-align: top; overflow: hidden; margin: 0 10px; text-indent: 999px; }
+        .share a.weibo{background-position: 0 0;}
+        .share a.wechat{background-position: -80px -80px;}
+        .share a.qzone{background-position: 0 -80px;}
+        .share a.tencent-weibo{background-position: -80px 0;}
+        .share-txt{background: url(http://2.zol-img.com.cn/zt/tm_56a/86907cc0b2/p7-4.png) no-repeat 0 0;width: 36px;height: 80px;overflow: hidden;display:block;float: left;text-indent: -999px;}
+        @media only screen and (max-device-height: 480px){  /*ip4*/  }
+
+        /*结构*/
+        .container{height:1000%;}
+        .visible,.act{display: block!important;}
+        section{height:10%;overflow:hidden;position:relative;background-size:cover;background-repeat: no-repeat;background-position: top center;background-image: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/bg1.jpg");}
+        .s{  display: none; width: 640px;  height: 100%;  position:relative; overflow: hidden;  background-size:cover;background-repeat: no-repeat;background-position: top center;  }
+        .s3,.s4,.s5{  background-image: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/bg2.jpg");  }
+        #viewport{width:640px;height:100%;margin:0 auto;overflow:hidden;}
+
+        .logo{  width: 143px;  height: 45px;  margin: 20px 0 0 40px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_logo.png") no-repeat 0 0;  }
+        .p1-tree{  position: relative;  margin: -20px auto 0; width: 508px;  height: 457px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_tree.png") no-repeat 0 0;  }
+        .p1-star{  position: absolute; top: -36px;  left: 50%;  margin-left: -28px;  width: 56px;  height: 53px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_star.png") no-repeat 0 0;  }
+        .p1-rule{  position: absolute;  bottom: -370px;  left: 50%;  margin-left: -312px;  width: 624px; height: 384px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_rule.png") no-repeat 0 0;  }
+        .p1-snow{  width: 168px;  height: 176px;  position: absolute;  top: 320px;  left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_snowman.png") no-repeat 0 0; -webkit-transform-origin: center bottom; transform-origin: center bottom;  }
+        .p1-deer{  position: absolute;  top: -150px;  right: 100px;  width: 142px;  height: 225px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_deer.png") no-repeat 0 0;  }
+        .p1-man{  position: absolute;  top: -200px;  left: 190px;  width: 262px;  height: 284px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_man.png") no-repeat 0 0;  }
+        .p1-art{  width: 467px;  height: 256px;  position: absolute;  top: 25px;  left: 50%;  margin-left: -238px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_art.png") no-repeat 0 0;  }
+        .p1-bell{  position: absolute;  top: 255px;  left: -50px;  width: 130px;  height: 106px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_bell.png") no-repeat 0 0;  }
+        .p1-gift{  position: absolute;  top: 200px;  right: -45px;  width: 108px;  height: 121px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_gift.png") no-repeat 0 0;  }
+        .p1-remind{  width: 530px;  height: 90px;  text-align: center;  margin: 200px auto 0;  }
+        .p1-remind .p11{  color: #df2113;  text-align: center;  font: bold 26px/40px 'microsoft yahei';  padding-bottom: 12px;  }
+        .p1-remind .p12{  color: #563b15;  text-align: center; background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/p1_dot.png") no-repeat center left;  font: 22px/40px 'microsoft yahei';  }
+        .p1-remind .p12 span{  font-weight: bold;  }
+
+        .s1-a{  width: 234px;  height: 63px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps1_art.png") no-repeat 0 0;  }
+        .s1-info{  width: 550px;  height: 550px;  overflow: hidden;  margin: 15px auto 0;  }
+        .s1-info p{  color: #fff;  font: 26px/45px 'microsoft yahei';  }
+        .s1-box{  width: 554px;  height: 504px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps1_box.png") no-repeat 0 0;  }
+        .s1-box label{  display: block;  position: relative;  height: 61px;  margin-top: 49px;  color: #d20510;  font: bold 25px/60px 'microsoft yahei';  }
+        .s1-form{  width: 460px;  margin: 25px auto 0;  }
+        .s1-form input{  width: 335px;  height: 37px; color: #2e2e2e;  font: 24px/36px 'microsoft yahei';  padding: 12px 22px;  border: none;  outline: none;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps1_in1.png") no-repeat  0 0;  }
+        .s1-form input.separate{  pointer-events: none;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps1_in2.png") no-repeat  0 0;  }
+        .sep-btn{  width: 70px;  height: 55px;  position: absolute;  right: 10px;  top: 0;  }
+        .sep-choice{  display: none;  width: 300px;  height: 144px;  margin: -2px 0 0 78px;  background: #fff;  border: 1px solid #e5c696;  }
+        .sep-choice li{  width: 300px;  height: 46px;  color: #513509;  text-indent: 30px;  font: 26px/46px 'microsoft yahei';  }
+        .s1-sub{  width: 234px;  height: 74px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps1_btn.png") no-repeat 0 0;  }
+
+        .s2-art{  text-shadow: 2px 5px 10px #bf121c;  color: #fff;  margin: 40px 0 10px 40px;  font: bold 40px/45px 'microsoft yahei';  }
+        .s2-box{  width: 560px;  height: 580px;  overflow: hidden;  margin: 10px auto 0;  }
+        .s2-title{  width: 560px;  height: 75px;  color: #fff;  font: 24px/75px 'microsoft yahei';  }
+        .s2-title span{  display: block; font: 24px/37px 'microsoft yahei';  }
+        .s2-mod{  width: 554px;  height: 504px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps1_box.png") no-repeat 0 0;  }
+        .s2-ul{  width: 518px;  height: 400px;  overflow: hidden;  margin: 60px auto 0;  }
+        .s2-ul li{  color: #ff2020;  font: bold 24px/80px 'microsoft yahei';  width: 438px;  padding-left: 80px;  height: 80px;  margin: 10px 0;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/choice_btn2.png") no-repeat 0 0;  }
+        .s2-ul li span{  font: bold 24px/40px 'microsoft yahei';  }
+        .s2-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/choice_btn1.png") no-repeat 0 0;  }
+        .s2-btn{  width: 234px;  height: 74px;  margin: 30px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps2_btn.png") no-repeat 0 0;  }
+
+        .s3-box{  width: 598px;  height: 384px;  margin: 460px auto 0;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps3_box.png") no-repeat 0 0;  }
+        .s3-info2{  width: 240px;  height: 40px;  color: #f00f0f;  text-align: center;  font: bold 35px/40px 'microsoft yahei';  margin: 65px auto 0;  }
+        .s3-man{  position: absolute;  width: 514px;  height: 402px;  top: 84px;  left: 50%;  margin-left: -257px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps3_man.png") no-repeat 0 0;  }
+        .s3-info1{  margin: 360px 0 0 178px;  width: 140px;  height: 34px;  text-align: center;  color: #fff;  font: 30px/34px 'microsoft yahei';  }
+        .s4-info2{  width: 440px;  height: 90px;  color: #f00f0f;  text-align: center;  font: bold 26px/38px 'microsoft yahei';  margin: 44px auto 0;  }
+        .s4-info2 #ps4-num{  font: bold 40px/38px 'microsoft yahei';}
+
+        .s5-box{  width: 628px;  height: 494px;  margin: 355px auto 0;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps5_box.png") no-repeat 0 0;  }
+        .s5-info2{  margin: 140px auto 0;  width: 490px;  height: 285px;  }
+        .s5-info2 .p1{  color: #2c920c;  font: bold 36px/72px 'microsoft yahei';  }
+        .s5-info2 .p2{  color: #f00f0f;  font: bold 25px/34px 'microsoft yahei';  }
+        .s5-man{  width: 450px;  height: 355px;  position: absolute;  top: 30px;  left: 50%;  margin-left: -225px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps5_man.png") no-repeat 0 0;  }
+        .s5-gift{  width: 143px;  height: 154px;  position: absolute;  top: 130px;  right: 5px;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps5_gift.png") no-repeat 0 0;  }
+        .s5-info1{  width: 370px;  height: 65px;  padding: 24px 40px 0;  color: #fff;  text-align: center;  font: 34px/65px 'microsoft yahei';  }
+        .s5-info1 span{  font:  bold 48px/65px 'microsoft yahei';  }
+        .s5-shadow{  display: none;  position: absolute;  top: 0;  width: 100%;  height: 100%;  background: rgba(0,0,0,0.8);  }
+        .s5-bang{  width: 640px;  height: 810px;  margin: 0 auto;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_583/e6f7104676/ps5_shadow.png") no-repeat 0 0;  }
+        .s5-bang-btn{  width: 320px;  height: 100px;  margin: 505px auto 0;  }
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--structure-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container" id="container">
+        <!--p1规则-->
+        <section id="slide1">
+            <div class="logo"></div>
+            <div class="p1-tree">
+                <div class="p1-star blast2"></div>
+                <div class="p1-snow shake-lr5"></div>
+                <div class="p1-rule shake-lr3">
+                    <div class="p1-deer shake-lr4"></div>
+                    <div class="p1-man float-mm"></div>
+                    <div class="p1-remind">
+                        <p class="p11">有奖答题活动,只要你是人才,大奖就属于你</p>
+                        <p class="p12"><span>前200名</span>最先<span>答对5道题以上</span>的同学会获得奖品一份</p>
+                    </div>
+                </div>
+                <div class="p1-art float-down"></div>
+                <div class="p1-bell shake-lr2"></div>
+                <div class="p1-gift shake-lr"></div>
+            </div>
+        </section>
+        <section id="slide2">
+            <!--p2身份-->
+            <div class="s s1 act" id="s1">
+                <div class="logo"></div>
+                <div class="s1-a"></div>
+                <div class="s1-info">
+                    <p>请填写以下信息:</p>
+                    <div class="s1-box">
+                        <div class="s1-form">
+                            <label>&nbsp;&nbsp;姓名&nbsp;<input class="name" maxlength="4" type="text"/></label>
+                            <label>&nbsp;&nbsp;部门&nbsp;<input class="depart" maxlength="12" type="text"/></label>
+                            <label>&nbsp;&nbsp;所属&nbsp;<input class="separate" disabled maxlength="12" type="text"/><div class="sep-btn"></div></label>
+                            <ul class="sep-choice">
+                                <li data-rank="0">媒体业务</li>
+                                <li data-rank="1">电商业务</li>
+                                <li data-rank="2">公共平台</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="s1-sub"></div>
+            </div>
+            <!--p3答题-->
+            <div class="s s2" id="s2">
+                <div class="logo"></div>
+                <div class="s2-art">有奖答题<span id="s2-art-num">-</span>/10</div>
+                <div class="s2-box">
+                    <div class="s2-title">----</div>
+                    <div class="s2-mod">
+                        <ul class="s2-ul">
+                            <li>--</li>
+                            <li>--</li>
+                            <li>--</li>
+                            <li>--</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="s2-btn"></div>
+            </div>
+            <!--p4满额-->
+            <div class="s s3" id="s3">
+                <div class="s3-box float-down">
+                    <div class="s3-info2">获奖名额已满</div>
+                </div>
+                <div class="s3-man float-up">
+                    <div class="s3-info1">非常抱歉</div>
+                </div>
+            </div>
+            <!--p5打错-->
+            <div class="s s4" id="s4">
+                <div class="s3-box float-down">
+                    <div class="s4-info2">您只答对了 <span id="ps4-num">-</span> 道题<br/>答对5道题以上才有奖品喔~</div>
+                </div>
+                <div class="s3-man float-up">
+                    <div class="s3-info1">非常抱歉</div>
+                </div>
+            </div>
+            <!--p6获奖-->
+            <div class="s s5" id="s5">
+                <div class="s5-box float-up">
+                    <div class="s5-info2">
+                        <p class="p1">领奖信息:</p>
+                        <p class="p2" id="s5-i1">所在业务</p>
+                        <p class="p2" id="s5-i2">所在部门</p>
+                        <p class="p2" id="s5-i3">获奖人</p>
+                        <p class="p1">注意:</p>
+                        <p class="p2">所获奖品行政部会后续通知奖品领取流程。</p>
+                    </div>
+                </div>
+                <div class="s5-man shake-lr3">
+                    <div class="s5-info1">
+                        答题共答对<span id="s5-num">-</span>道题
+                    </div>
+                    <div class="s5-gift float-mm"></div>
+                </div>
+                <div class="s5-shadow">
+                    <div class="s5-bang">
+                        <div class="s5-bang-btn"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!--slide-->
+<div id="swipe" class="swipe" role="button">向上滑动</div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<script charset="gbk">
+    var json_ti=[
+        {
+            'ti_sep':1,
+            'ti_as':[0,2,1,3,2,0,0,0,2,3],
+            'ti_res':[
+                {
+                    'ti_title':'<span>截止到到2016年11月，中关村在线共有多少名<br/>员工？</span>',
+                    'ti_li1':'345个',
+                    'ti_li2':'600个',
+                    'ti_li3':'700个',
+                    'ti_li4':'390个'
+                },
+                {
+                    'ti_title':'中关村在线是在哪一年成立的？',
+                    'ti_li1':'2001年',
+                    'ti_li2':'2004年',
+                    'ti_li3':'1999年',
+                    'ti_li4':'1998年'
+                },
+                {
+                    'ti_title':'截止到2016年11月，中关村在线共有多少家客户？',
+                    'ti_li1':'900家',
+                    'ti_li2':'750家',
+                    'ti_li3':'500家',
+                    'ti_li4':'700家'
+                },
+                {
+                    'ti_title':'<span>全站流量稳步攀升，移动端发展迅猛，ZOL全站<br/>日均流量是多少？</span>',
+                    'ti_li1':'2.1亿',
+                    'ti_li2':'1.1亿',
+                    'ti_li3':'1.9亿',
+                    'ti_li4':'1.8亿'
+                },
+                {
+                    'ti_title':'中关村在线核心业务共分为几大事业部群组？',
+                    'ti_li1':'8个群组',
+                    'ti_li2':'5个群组',
+                    'ti_li3':'7个群组',
+                    'ti_li4':'6个群组'
+                },
+                {
+                    'ti_title':'中关村在线核心业务分为几个销售群组？',
+                    'ti_li1':'8个群组',
+                    'ti_li2':'7个群组',
+                    'ti_li3':'5个群组',
+                    'ti_li4':'6个群组'
+                },
+                {
+                    'ti_title':'中关村在线跟百度合作的项目有哪些？',
+                    'ti_li1':'百度阿拉丁和百度专区',
+                    'ti_li2':'百度搜索和百度推广',
+                    'ti_li3':'百度贴吧和百度阿拉丁',
+                    'ti_li4':'百度推广和百度专区'
+                },
+                {
+                    'ti_title':'中关村在线现在于哪些视频直播网站合作？',
+                    'ti_li1':'斗鱼、花椒、熊猫、企鹅等',
+                    'ti_li2':'PPS、PPLIVE、新浪、腾讯等',
+                    'ti_li3':'斗鱼、新浪、腾讯、PPS等',
+                    'ti_li4':'皮皮影视、PPLive、乐鱼影音等'
+                },
+                {
+                    'ti_title':'中关村在线是哪一年搬到鼎好电子大厦的？',
+                    'ti_li1':'2016年',
+                    'ti_li2':'2014年',
+                    'ti_li3':'2015年',
+                    'ti_li4':'2013年'
+                },
+                {
+                    'ti_title':'<span>ZOL，每天服务( )科技用户，为中国( )家品牌<br/>客户( )家渠道商伙伴提供移动营销解决方案</span>',
+                    'ti_li1':'3000万，4000家，60万',
+                    'ti_li2':'4000万，2600家，70万',
+                    'ti_li3':'5000万，3000家，50万',
+                    'ti_li4':'4000万、3000家，50万'
+                }
+            ]
+        },
+        {
+            'ti_sep':2,
+            'ti_as':[0,1,3,2,0,1,0,0,0,1],
+            'ti_res':[
+                {
+                    'ti_title':'移动阿拉丁在几月上线？',
+                    'ti_li1':'3月',
+                    'ti_li2':'4月',
+                    'ti_li3':'7月',
+                    'ti_li4':'2月'
+                },
+                {
+                    'ti_title':'在几月ZOL清退了23个不良商家？',
+                    'ti_li1':'3月',
+                    'ti_li2':'4月',
+                    'ti_li3':'7月',
+                    'ti_li4':'2月'
+                },
+                {
+                    'ti_title':'新商业产品移动快车几月上线？',
+                    'ti_li1':'3月',
+                    'ti_li2':'4月',
+                    'ti_li3':'7月',
+                    'ti_li4':'5月'
+                },
+                {
+                    'ti_title':'几月份进行了产品库重构？',
+                    'ti_li1':'3月',
+                    'ti_li2':'4月',
+                    'ti_li3':'7月',
+                    'ti_li4':'2月'
+                },
+                {
+                    'ti_title':'超级渠道上线是几月？',
+                    'ti_li1':'9月',
+                    'ti_li2':'4月',
+                    'ti_li3':'7月',
+                    'ti_li4':'2月'
+                },
+                {
+                    'ti_title':'企业采购频道上线是几月？',
+                    'ti_li1':'3月',
+                    'ti_li2':'9月',
+                    'ti_li3':'7月',
+                    'ti_li4':'2月'
+                },
+                {
+                    'ti_title':'Z买卖上线试运营时间？',
+                    'ti_li1':'2016年4月20日',
+                    'ti_li2':'2016年6月10日',
+                    'ti_li3':'2016年6月15日',
+                    'ti_li4':'2016年4月10日'
+                },
+                {
+                    'ti_title':'同城购线上首家合作商户叫什么？',
+                    'ti_li1':'爱科生活',
+                    'ti_li2':'正德科技',
+                    'ti_li3':'中域网讯',
+                    'ti_li4':'迪信通'
+                },
+                {
+                    'ti_title':'同城购上线时间？',
+                    'ti_li1':'2016年5月17日',
+                    'ti_li2':'2016年6月17日',
+                    'ti_li3':'2016年5月16日',
+                    'ti_li4':'2016年6月16日'
+                },
+                {
+                    'ti_title':'Z买卖正式上线时间？',
+                    'ti_li1':'2016年4月20日',
+                    'ti_li2':'2016年6月1日',
+                    'ti_li3':'2016年5月4日',
+                    'ti_li4':'2016年6月2日'
+                }
+            ]
+        },
+        {
+            'ti_sep':3,
+            'ti_as':[0,3,0,2,0,2,1,2,2,0],
+            'ti_res':[
+                {
+                    'ti_title':'中关村在线在哪年成立？',
+                    'ti_li1':'1999年',
+                    'ti_li2':'2001年',
+                    'ti_li3':'2004年',
+                    'ti_li4':'2000年'
+                },
+                {
+                    'ti_title':'中关村在线行政部微信公众号名称是什么？',
+                    'ti_li1':'ZOL行政部',
+                    'ti_li2':'中关村在线—行政部',
+                    'ti_li3':'综合管理部—行政部',
+                    'ti_li4':'中关村在线行政部'
+                },
+                {
+                    'ti_title':'中关村在线在2016年圣诞节的主题是什么？',
+                    'ti_li1':'无限想象，幻象新生',
+                    'ti_li2':'无穷想象，迈向新生',
+                    'ti_li3':'无尽幻想，幻向新生',
+                    'ti_li4':'无限可能，想象无限'
+                },
+                {
+                    'ti_title':'中关村在线一共有几个事业部？',
+                    'ti_li1':'5个',
+                    'ti_li2':'6个',
+                    'ti_li3':'7个',
+                    'ti_li4':'8个'
+                },
+                {
+                    'ti_title':'下列会议室名称哪个是在9层？',
+                    'ti_li1':'双鱼座',
+                    'ti_li2':'巨蟹座',
+                    'ti_li3':'狮子座',
+                    'ti_li4':'双子座'
+                },
+                {
+                    'ti_title':'年终总结会优秀员工抽奖的奖品是什么牌子的手机？',
+                    'ti_li1':'蓝魔',
+                    'ti_li2':'魅族',
+                    'ti_li3':'金阶',
+                    'ti_li4':'金立'
+                },
+                {
+                    'ti_title':'中关村在线是什么时候搬到鼎好大厦办公的？',
+                    'ti_li1':'2015年5月',
+                    'ti_li2':'2015年4月',
+                    'ti_li3':'2015年6月',
+                    'ti_li4':'2016年1月'
+                },
+                {
+                    'ti_title':'公司借用雨伞几天之内归还？',
+                    'ti_li1':'3天',
+                    'ti_li2':'5天',
+                    'ti_li3':'2天',
+                    'ti_li4':'不用还'
+                },
+                {
+                    'ti_title':'家电家居事业群组最近最大的项目是什么？',
+                    'ti_li1':'IFA—德国柏林国际电子消费展会',
+                    'ti_li2':'“两净”峰会',
+                    'ti_li3':'陪你一起成长',
+                    'ti_li4':'海信欧洲杯'
+                },
+                {
+                    'ti_title':'中关村在线客服电话是？',
+                    'ti_li1':'400-678-0068',
+                    'ti_li2':'6897-9888',
+                    'ti_li3':'400-123-123',
+                    'ti_li4':'6897-9333'
+                }
+            ]
+        }
+    ];
+
+    var s1=document.querySelector('.s1'),
+            s2=document.querySelector('.s2'),
+            s3=document.querySelector('.s3'),
+            s4=document.querySelector('.s4'),
+            s4_num=document.querySelector('#ps4-num'),
+            s5=document.querySelector('.s5'),
+            s5_shadow=document.querySelector('.s5-shadow'),
+            s5_bang=document.querySelector('.s5-bang'),
+            s5_btn=document.querySelector('.s5-bang-btn'),
+            s5_i1=document.querySelector('#s5-i1'),
+            s5_i2=document.querySelector('#s5-i2'),
+            s5_i3=document.querySelector('#s5-i3'),
+            s5_num=document.querySelector('#s5-num'),
+            sub_name=document.querySelector('.name'),
+            sub_depart=document.querySelector('.depart'),
+            sub_separate=document.querySelector('.separate'),
+            sep_btn=document.querySelector('.sep-btn'),
+            sep_choice=document.querySelector('.sep-choice'),
+            sep_choice_li=document.querySelectorAll('.sep-choice li'),
+            s2_art_num=document.querySelector('#s2-art-num'),
+            s1_sub=document.querySelector('.s1-sub'),
+            s2_btn=document.querySelector('.s2-btn'),
+            s2_title=document.querySelector('.s2-title'),
+            s2_ul=document.querySelector('.s2-ul'),
+            s2_li=document.querySelectorAll('.s2-ul li');
+
+    var room=null,dat_name=null,dat_depart=null,dat_separate=null,dat_right=null;
+    var as_list=[],as_right=[];
+    var now_num=0;
+    var activeType =6169471;
+    /*表单填写*/
+    var sep_btn_flag=0;
+    sep_btn.addEventListener('click', function () {
+        if(sep_btn_flag==0){
+            sep_choice.classList.add('visible');
+            sep_btn_flag=1;
+        }else{
+            sep_choice.classList.remove('visible');
+            sep_btn_flag=0;
+        }
+    });
+
+    for(var i=0;i<sep_choice_li.length;i++){
+        !(function (i) {
+            sep_choice_li[i].addEventListener('click', function () {
+                sub_separate.value=this.innerHTML;
+                sep_choice.classList.remove('visible');
+                sep_btn_flag=0;
+                room=this.getAttribute('data-rank');
+            })
+        })(i);
+    }
+
+    /*表单验证*/
+    s1_sub.addEventListener('click', function () {
+        if(!sub_name.value||!sub_depart.value||!sub_separate.value){
+            alert('请完善您的信息,以便奖品发放');
+            return false;
+        }
+        dat_name=sub_name.value;dat_depart=sub_depart.value;dat_separate=sub_separate.value;
+        switch4(s2,'act');
+        check_ti(room);
+        switch5(s1,'act');
+    });
+
+    /*绑定试题*/
+    function check_ti(room){
+        bind_ti(room,0);
+        s2_btn.addEventListener('click', function () {
+            if(as_list.length!==now_num+1){
+                alert('您还没做出您明智的选择呐~');
+                return false;
+            }
+            if(now_num>=9){
+                console.log(as_list);
+                dat_right=arr_compare(as_right,as_list);
+                console.log('v_'+dat_name);
+                console.log('v_'+dat_depart);
+                console.log('v_'+dat_separate);
+                console.log('v_'+dat_right);
+                getToken(function(){
+                    $.ajax({
+                        type:'get',
+                        url: 'http://m.zol.com.cn/topic/services/user.php?callback=?',
+                        data:{token:window.verifyTk,action:'addUser',username:dat_name,tel:122112211,type:activeType,ext1:dat_depart,ext2:dat_separate,ext3:dat_right},
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                            if(data.result == 1){
+                                $.ajax({
+                                    type:'get',
+                                    url: 'http://m.zol.com.cn/topic/services/user.php?callback=?',
+                                    data:{type:activeType,action:'getCountUser'},
+                                    dataType: 'json',
+                                    success: function (res) {
+                                        if(res){
+                                            console.log(res.result);
+                                            if(res.result<=200){
+                                                if(dat_right>=6){
+                                                    if(dat_right==10){
+                                                        switch4(s5_shadow,'visible');
+                                                        s5_bang.classList.add('ttb2');
+                                                    }
+                                                    switch5(s2,'act');
+                                                    s5_num.innerHTML=dat_right;
+                                                    s5_i1.innerHTML=dat_separate;
+                                                    s5_i2.innerHTML=dat_depart;
+                                                    s5_i3.innerHTML=dat_name;
+                                                    switch4(s5,'act');
+                                                    return false;
+                                                }
+                                                if(dat_right<6){
+                                                    switch5(s2,'act');
+                                                    s4_num.innerHTML=dat_right;
+                                                    switch4(s4,'act');
+                                                    return false;
+                                                }
+                                            }else{
+                                                switch5(s2,'act');
+                                                switch4(s3,'act');
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                });
+                            }else {
+                                alert('提交信息出错,请重新答题');
+                                return false;
+                            }
+                        }
+                    });
+                });
+                return false;
+            }
+            now_num++;
+            for(var m=0;m<4;m++){
+                s2_li[m].classList.remove('act');
+            }
+            bind_ti(room,now_num);
+        });
+    }
+    function bind_ti(room,now_num){
+        as_right=json_ti[room].ti_as;
+        s2_art_num.innerHTML=now_num+1;
+        s2_title.innerHTML=json_ti[room].ti_res[now_num].ti_title;
+        s2_li[0].innerHTML=json_ti[room].ti_res[now_num].ti_li1;
+        s2_li[1].innerHTML=json_ti[room].ti_res[now_num].ti_li2;
+        s2_li[2].innerHTML=json_ti[room].ti_res[now_num].ti_li3;
+        s2_li[3].innerHTML=json_ti[room].ti_res[now_num].ti_li4;
+    }
+
+    /*点击选项*/
+    s2_li.addEventListener('click', function () {
+        var inx=s2_li.indexOf(this);
+        for(var m=0;m<4;m++){
+            s2_li[m].classList.remove('act');
+        }
+        this.classList.add('act');
+        as_list[now_num]=inx;
+        //console.log(as_list);
+    });
+
+    /*循环比较数组*/
+    function arr_compare(arr1,arr2){
+        var compare_res=0;
+        for(var l=0;l<arr1.length;l++){
+            if(arr1[l]==arr2[l]){
+                compare_res++;
+            }
+        }
+        return compare_res;
+    }
+
+    switch2(s5_btn,s5_shadow,'click','visible');
+
+    /*切换方法*/
+    function switch1(start,response,eve1,cls){
+        start.addEventListener(eve1, function () {
+            response.classList.add(cls);
+        })
+    }
+    function switch2(start,response,eve1,cls){
+        start.addEventListener(eve1, function () {
+            response.classList.remove(cls);
+        })
+    }
+    function switch3(start,origin,response,eve1,cls){
+        start.addEventListener(eve1, function () {
+            origin.classList.remove(cls);
+            response.classList.add(cls);
+        })
+    }
+    function switch4(response,cls){
+        response.classList.add(cls);
+    }
+    function switch5(response,cls){
+        response.classList.remove(cls);
+    }
+
+    /*获取token*/
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(request){
+                if(request && request.result){
+                    window.verifyTk = request.result;
+                    if(typeof fn === 'function'){
+                        fn();
+                    }
+                }
+            }
+        });
+    }
+
+
+
+    /*载入loading*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('current');
+    });
+
+    /*滑动*/
+    var swipe=document.getElementById('swipe');
+    viewport.addEventListener('changed', function (e) {
+        if(e.target.tagName=='UL'){return false}
+        var current = this.querySelector('.current');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+
+        e.current && e.current.classList.add('current');
+        swipe.classList[last ? 'add' : 'remove']('last');
+
+        if(this.index==1){viewport.denyFlag=1;}
+    });
+
+    swipe.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    /*分享*/
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_583/e6fc786646/share.jpg',
+        title: '你还分享？哈哈,有彩蛋哦~'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

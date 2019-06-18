@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary=[2,6,7,1,2,2,2,6,7,6,8];
+/*      for(var i=0;i<ary.length-1;i++) {
+          var cur = ary[i];
+          for (var j = i + 1; j < ary.length; j++) {
+              if (cur == ary[j]) {
+                  ary.splice(j, 1);
+                  j--;
+              }
+          }
+      }
+    window.alert(ary);*/
+
+    var obj={};
+    for(var i=0;i<ary.length;i++){
+        var cur=ary[i];
+        if(obj[cur]==cur){
+            ary.splice(i,1);
+            i--;
+            continue;
+        }
+        obj[cur]=cur;
+    }
+    obj=null;
+    document.writeln(ary);
+    /*for(var i=0;i<ary.length-1;i++){
+        for(var j=0;j<ary.length-1-i;j++){
+            if(ary[j]>ary[j+1]){
+                var temp=ary[j];
+                ary[j]=ary[j+1];
+                ary[j+1]=temp;
+            }
+        }
+    }
+    document.writeln(ary);*/
+    /*
+    *
+     Array.prototype.unique3 = function()
+     {
+     var n = [this[0]]; //结果数组
+     for(var i = 1; i < this.length; i++) //从第二项开始遍历
+     {
+     //如果当前数组的第i项在当前数组中第一次出现的位置不是i，
+     //那么表示第i项是重复的，忽略掉。否则存入结果数组
+     if (this.indexOf(this[i]) == i) n.push(this[i]);
+     }
+     return n;
+     }
+
+    */
+</script>
+</body>
+</html>

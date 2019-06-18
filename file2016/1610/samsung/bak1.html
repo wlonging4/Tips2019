@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>三星家电试用专题V9</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#e20000; font-size: 12px; font-weight: bold;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .zol_foot{  height: 110px;  padding-top: 80px; background: #1d1d21;   }
+        .zol_foot,.zol_foot a{  color: #a0a0a1;  }
+        .wrapper{  width: 1100px;  margin: 0 auto;  overflow: hidden;  position: relative;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1100px;  height: 684px;    }
+        .p-ul1{  margin-left: 20px;  width: 135px;  height: 540px;  float: left;  }
+        .p-ul1 li{  width: 135px;  margin-bottom: -10px;text-align: center;  line-height: 135px;  height: 135px;  color: #000; cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/bubble1.png") no-repeat center;   }
+        .p-ul1 li .hei16{  font-size: 18px; display: block;  height: 135px; color: #a9a9a9;  }
+        .p-ul1 li .hei16:hover{  font-size: 18px;  font-weight: bold;  color: #000; text-decoration: none;  }
+        .p-ul1 li.act{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/bubble2.png") no-repeat center;  }
+        .p-ul1 li.act .hei16{  color: #000; font-weight: bold  }
+        .p-ul2{  float: left;  width: 110px;  height: 520px;  overflow: hidden;  margin-left: 30px; margin-top: 30px;  }
+        .p-ul2 li{  width: 110px;  height: 110px; margin: 15px 0;  color: #373737;  text-align: center;  line-height: 110px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/circle1.png") no-repeat center; cursor: pointer; }
+        .p-ul2 li .hei18{  display: block;  height: 110px;  width: 110px;  font-weight: bold;  color: #373737;  }
+        .p-ul2 li.act .hei18{  color:#e20000;  }
+        .p-ul2 li .hei18:hover{  color:#e20000;  text-decoration: none;  }
+        .p-ul2 li.act{  color: #e20000;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/circle2.png") no-repeat center;  }
+        .p-ul3{  float: left;  margin-left: 30px;  width: 112px;  height: 640px;  margin-bottom: 8px;  }
+        .p-ul3 li{  width: 112px;  height: 158px;  margin-bottom: 2px;  color: #fff;  text-align: right;  line-height: 155px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/rect1.png") no-repeat center right;  cursor: pointer }
+        .p-ul3 li .bai18{ font-family: 'microsoft yahei';  display: block;width: 112px;  height: 158px;  text-align: center;  margin-left: 10px;  font-weight: bold;  }
+        .p-ul3 li.act{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/rect2.png") no-repeat center right;  }
+        .sale-btn{  margin: 0 auto;  width: 129px;  height: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_sale_btn.png") no-repeat 0 0;  }
+        .sale-btn .bai14{  width: 129px;  height: 30px;  font: bold 16px/30px 'microsoft yahei';  }
+        .sale-btn .bai14:hover{  color: #fff;  }
+        .info2{  width: 1100px;  height: 190px;  background: #ededed;  overflow: hidden;  }
+        .info2 .hui12{  color: #333;  text-indent: 24px;  padding: 0 10px 0 10px;  line-height: 24px;  }
+        .info2-box{  width: 1080px;  height: 140px;  margin: 10px;  overflow: hidden;  }
+        .info2-mod{  display: none;  width: 1080px;  height: 140px;  }
+        .info2-mod.blk{  display: block;  }
+        .info2-ul{  width: 180px;  height: 5px;  overflow: hidden;  margin: 20px auto 0;  }
+        .info2-ul li{  width: 50px;  height: 5px; margin: 0 5px;  float: left;  _display :inline;   background: #fff;  }
+        .info2-ul li.act{  background: #878787;  }
+        .info3{  float: left;  height: 620px;  width: 470px;  margin-left: 20px; margin-top: 20px; overflow-x: hidden;  background: #fff; overflow-y: scroll;  }
+        .info3 .ln{  height: 22px;  }
+        .info3 .hui12{  color: #333;  text-indent: 24px;  padding: 0 5px 0 15px;  line-height: 24px;  }
+
+        .p1-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p1_l.jpg") no-repeat 100% 0;  }
+        .p1-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p1_r.jpg") no-repeat 0 0;  }
+        .p1-c{  width: 1100px;  height: 852px;  overflow: hidden;  }
+        .t1{  width: 620px;  height: 70px;  margin: 100px auto 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/t_p1.jpg") no-repeat 0 0;  }
+        .p1-m{  width: 1100px;  height: 540px;  overflow: hidden;  margin-top: 30px;  }
+        .p1-pro{  float: left;  margin-left: 30px;  width: 379px;  height: 499px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/p1_pro.png") no-repeat 0 0;  }
+        .p1-info{  float: left;  width: 470px;  height: 470px;  overflow-x: hidden;  background: #fff; overflow-y: scroll;  margin: 20px 0 0 40px;  }
+        .p1-info .ln{  height: 22px;  }
+        .p1-info .hui12{  color: #333;  text-indent: 24px;  padding: 0 5px 0 15px;  line-height: 24px;  }
+
+        .p2-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p2_l.jpg") no-repeat 100% 0;  }
+        .p2-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p2_r.jpg") no-repeat 0 0;  }
+        .p2-c{  width: 1100px;  height: 971px;  overflow: hidden;  }
+        .t2{  width: 620px;  height: 70px;  margin: 70px auto 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/t_p2.jpg") no-repeat 0 0;  }
+        .p2-m{  width: 1000px;  height: 530px;  margin-top: 30px;  overflow: hidden;  }
+        .p2-pic{  width: 355px;  height: 530px;  float: left;  margin-left: 70px;  }
+        .pic2{  padding: 10px 0 0 80px;  }
+        .p2-pro{  float: left;  width: 420px;  height: 519px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/p2_pro.png") no-repeat;  }
+
+        .p3-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p3_l.jpg") no-repeat 100% 0;  }
+        .p3-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p3_r.jpg") no-repeat 0 0;  }
+        .p3-c{  width: 1100px;  height: 942px;  overflow: hidden;  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p3_c.jpg") no-repeat 0 0;  }
+        .t3{  margin: 90px auto 10px;  width: 538px;  height: 60px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/t3.png") no-repeat 0 0;  }
+        .p3-m{  margin-top: 60px;  width: 1100px;  height: 600px;  }
+        .p3-pro{  float: left;  margin-left: 30px;  width: 415px;  height: 595px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/p3_pro.png") no-repeat 0 0;  }
+        .p3 .p1-info{  margin: 70px 0 0 40px;  }
+
+        .p4-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p4_l.jpg") no-repeat 100% 0;  }
+        .p4-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p4_r.jpg") no-repeat 0 0;  }
+        .p4-c{  width: 1100px;  height: 894px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p4_c.jpg") no-repeat 0 0;  }
+        .t4{  width: 539px;  height: 60px;  margin: 90px auto 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/t4.png") no-repeat 0 0;  }
+        .p4-m{  margin-top: 60px;  width: 1100px;  height: 600px;  }
+        .p4-ul{  margin-top: 0;  margin-left: 420px;  }
+
+        .p5-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p5_l.jpg") no-repeat 100% 0;  }
+        .p5-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p5_r.jpg") no-repeat 0 0;  }
+        .p5-c{  width: 1100px;  height: 1052px; overflow: hidden  }
+        .p5-t{  width: 500px;  height: 70px;  margin: 20px auto 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/t_p5.jpg") no-repeat 0 0;  }
+        .p5-m{  width: 1000px;  margin: 30px auto 0;  overflow: hidden;  height: 680px;  }
+        .p5-pro{  float: left;  width: 343px;  height: 655px;  margin-left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/p5_pro.png") no-repeat 0 0;  }
+        .p5-pics{  float: left;  margin-left: 30px;  width: 410px;  height: 650px;  }
+        .pic4{  padding-top: 10px;  }
+
+        .p6-l{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p6_l.jpg") no-repeat 100% 0;  }
+        .p6-r{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_p6_r.jpg") no-repeat 0 0;  }
+        .p6-c{  width: 1100px;  height: 1052px;  }
+        .p6-t{  width: 500px;  height: 70px;  margin: 70px auto 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/t_p6.jpg") no-repeat 0 0;  }
+        .p6-m{  width: 1000px;  margin: 40px auto 0;  overflow: hidden;  height: 640px;  }
+        .p6-pro{  float: left;  width: 338px;  height: 625px;  margin-left: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/p6_pro.jpg") no-repeat 0 0;  }
+
+        .more{  width: 1100px;  height: 480px;  overflow: hidden;  margin: 40px auto 20px;  }
+        .more .ln{  height: 20px;  }
+        .more .hei20{  display: block;  height: 50px;  margin-left: 30px;  margin-right: 20px;  font: bold 20px/40px 'microsoft yahei'; background: url("http://2.zol-img.com.cn/zt/tm_57f/df998025b6/bar.jpg") no-repeat bottom left;  }
+        .more .hei12{  display: block;  padding-top: 20px;  margin-left: 30px;  margin-right: 20px; text-indent: 24px;  font: 12px/24px 'simsun';  }
+        .more-btn{ width: 98px;  height: 20px;  margin: 0 auto 50px; cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/btn1.png") no-repeat 0 0;  }
+        .more-btn.act{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/btn2.png") no-repeat 0 0;  }
+
+        .about{  width: 1100px;  margin: 20px auto 70px;  height: 282px;  overflow: hidden;  }
+        .abt-m{  margin-right: 14px;  position: relative;  width: 305px;  height: 282px;  float: left;  }
+        .abt-m1{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_tm.jpg");  }
+        .abt-m2{  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_jd.jpg");  }
+        .abt-link{  position: absolute;  width: 108px;  height: 26px;  top: 86px;  left: 102px;  }
+        .abt-link .hong20{  display: block;  width: 108px;  height: 26px;  font: bold 20px/26px 'microsoft yahei';  }
+        .abt-code{  position: absolute;  background: #fff;  width: 140px;  height: 140px;  top: 125px;  left: 85px;  }
+        .abt-c{  float: left;  padding: 77px 0 0 267px;  width: 195px;  height: 205px;  background: url("http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/lg_about.jpg");  }
+        .abt-c .lan20{  display: block;  color: #1428a0;  font: bold 20px/34px 'microsoft yahei';  }
+        .abt-c .hei12{  text-indent: 24px;  font: 12px/24px 'simsun';  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p1-->
+<table class="p1" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td class="p1-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="p1-c">
+                <div class="t1"></div>
+                <div class="sale-btn"><{data[1]}></div>
+                <div class="p1-m clearfix">
+                    <ul class="p-ul1 p1-ul">
+                        <li class="act"><{data[2]}></li>
+                        <li><{data[3]}></li>
+                        <li><{data[4]}></li>
+                        <li><{data[5]}></li>
+                    </ul>
+                    <div class="p1-pro"></div>
+                    <div class="p1-info">
+                        <{data[6]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="p1-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p2-->
+<table class="p2" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td class="p2-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="p2-c">
+                <div class="t2"></div>
+                <div class="sale-btn"><{data[7]}></div>
+                <div class="p2-m clearfix">
+                    <div class="p2-pic">
+                        <img src="http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/pic1.gif" width="355" height="200" alt="">
+                        <img class="pic2" src="http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/pic2.gif" width="275" height="285" alt=""/>
+                    </div>
+                    <div class="p2-pro"></div>
+                    <ul class="p-ul1 p2-ul">
+                        <li class="act"><{data[8]}></li>
+                        <li><{data[9]}></li>
+                        <li><{data[10]}></li>
+                        <li><{data[11]}></li>
+                    </ul>
+                </div>
+                <div class="info2">
+                    <div class="info2-box info2-box1">
+                        <div class="info2-mod blk"><{data[12]}></div>
+                        <div class="info2-mod"><{data[13]}></div>
+                        <div class="info2-mod"><{data[14]}></div>
+                    </div>
+                    <ul class="info2-ul info2-ul1">
+                        <li class="act"></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+        <td class="p2-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p3-->
+<table class="p3" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td class="p3-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="p3-c">
+                <div class="t3"></div>
+                <div class="sale-btn"><{data[15]}></div>
+                <div class="p3-m clearfix">
+                    <ul class="p-ul2 p3-ul">
+                        <li class="act"><{data[16]}></li>
+                        <li><{data[17]}></li>
+                        <li><{data[18]}></li>
+                        <li><{data[19]}></li>
+                    </ul>
+                    <div class="p3-pro"></div>
+                    <div class="p1-info">
+                        <{data[20]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="p3-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p4-->
+<table class="p4" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td class="p4-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="p4-c">
+                <div class="t4"></div>
+                <div class="sale-btn"><{data[21]}></div>
+                <div class="p4-m clearfix">
+                    <div class="p1-info">
+                        <{data[22]}>
+                    </div>
+                    <ul class="p-ul2 p4-ul">
+                        <li class="act"><{data[23]}></li>
+                        <li><{data[24]}></li>
+                        <li><{data[25]}></li>
+                        <li><{data[26]}></li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+        <td class="p4-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p5-->
+<table class="p5" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td class="p5-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="p5-c">
+                <div class="p5-t"></div>
+                <div class="sale-btn"><{data[27]}></div>
+                <div class="p5-m clearfix">
+                    <ul class="p-ul3 p5-ul">
+                        <li class="act"><{data[28]}></li>
+                        <li><{data[29]}></li>
+                        <li><{data[30]}></li>
+                        <li><{data[31]}></li>
+                    </ul>
+                    <div class="p5-pro"></div>
+                    <div class="p5-pics">
+                        <img src="http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/pic3.gif" alt="" width="410" height="325"/>
+                        <img class="pic4" src="http://2.zol-img.com.cn/zt/tm_57f/df0bd98018/pic4.gif" alt="" width="345" height="310"/>
+                    </div>
+                </div>
+                <div class="info2">
+                    <div class="info2-box info2-box2">
+                        <div class="info2-mod blk"><{data[32]}></div>
+                        <div class="info2-mod"><{data[33]}></div>
+                        <div class="info2-mod"><{data[34]}></div>
+                    </div>
+                    <ul class="info2-ul info2-ul2">
+                        <li class="act"></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+        <td class="p5-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p6-->
+<table class="p6" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td class="p6-l">&nbsp;</td>
+        <td width="1100" valign="top">
+            <div class="p6-c">
+                <div class="p6-t"></div>
+                <div class="sale-btn"><{data[35]}></div>
+                <div class="p6-m clearfix">
+                    <div class="info3"><{data[46]}></div>
+                    <ul class="p-ul3 p6-ul">
+                        <li class="act"><{data[36]}></li>
+                        <li><{data[37]}></li>
+                        <li><{data[38]}></li>
+                        <li><{data[39]}></li>
+                    </ul>
+                    <div class="p6-pro"></div>
+                </div>
+            </div>
+        </td>
+        <td class="p6-r">&nbsp;</td>
+    </tr>
+</table>
+<!--更多-->
+<div class="more">
+    <{data[40]}>
+</div>
+<div class="more-btn"></div>
+<!--关于-->
+<div class="wrapper about clearfix">
+    <div class="abt-m abt-m1">
+        <div class="abt-link"><{data[41]}></div>
+        <div class="abt-code"><{data[42]}></div>
+    </div>
+    <div class="abt-m abt-m2">
+        <div class="abt-link"><{data[43]}></div>
+        <div class="abt-code"><{data[44]}></div>
+    </div>
+    <div class="abt-c">
+        <{data[45]}>
+    </div>
+</div>
+
+
+<script charset="gbk">
+    /*切换*/
+    function chg(lis,event1,cls){
+        $(lis).bind(event1, function () {
+            $(this).addClass(cls).siblings().removeClass(cls);
+        })
+    }
+
+    chg('.p1-ul li','mouseenter','act');
+    chg('.p2-ul li','mouseenter','act');
+    chg('.p3-ul li','mouseenter','act');
+    chg('.p4-ul li','mouseenter','act');
+    chg('.p5-ul li','mouseenter','act');
+    chg('.p6-ul li','mouseenter','act');
+
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('mouseenter', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.info2-ul1 li','act','.info2-box1 .info2-mod','blk');
+    card_chg('.info2-ul2 li','act','.info2-box2 .info2-mod','blk');
+
+    /*下拉新闻*/
+    var more=$('.more'),more_btn=$('.more-btn'),num=0;
+    more_btn.bind('click', function () {
+        num++;
+        if(num==3){
+            more_btn.addClass('act');
+        }
+        if(num==4){
+            num=0;
+            more_btn.removeClass('act');
+        }
+        more.stop().animate({'height':480+1440*num+'px'},500);
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>耕新装备 升级换代</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#111; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#007FFF; font-size: 14px;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .zol_foot{  height: 90px;  padding-top: 80px;  background: #090909;  }
+        .zol_foot,.zol_foot a{  color: #bbb;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_head_l.jpg") 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_head_r.jpg") 0 0;  }
+        .head-con{  width: 1000px;  height: 614px; }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_head_l.jpg") 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_head_r.jpg") 0 0;  }
+        .head-c{  width: 1000px;  height: 614px; }
+
+        .up-l{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_update_l.jpg") 100% 0;  }
+        .up-r{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_update_r.jpg") 0 0;  }
+        .up-c{  width: 1000px;  height: 463px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_update_c.jpg") no-repeat 0 0;  }
+
+        .g-r{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_g_r.jpg") no-repeat 0 0;  }
+        .g-l{  background: #000;  }
+        .g-c{  position: relative;  width: 1000px;  height: 650px;  overflow: hidden;  background: #000 url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_g_bg.png") no-repeat top right;  }
+        .g-c-l{  float: left;  height: 650px;  width: 332px;  overflow: hidden  }
+        .g-c-l1{  width: 330px;  height: 365px;  margin: 20px 0 10px;  border: 1px solid #222;  }
+        .g-c-article{  width: 331px;  height: 211px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_g_article.png") no-repeat center;  }
+        .g-c-r{  float: left;  height: 650px;  width: 610px; margin-left: 10px;  overflow: hidden  }
+        .g-c-title{  width: 600px;  height: 60px;  margin: 20px 0 10px;  }
+        .g-c-r1{  width: 610px;  height: 530px;  }
+        .g-c-r1 .bai14{  display: block;  width: 295px;  height: 35px;  font-family: 'microsoft yahei'; font-size: 15px;  line-height: 35px;  background: #222;  }
+        .g-c-r1 .ln{  height: 10px;  }
+
+        .wind-l{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_wind_l.jpg") no-repeat 100% 0;  }
+        .wind-c{  width: 1000px;  height: 650px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_wind_bg.jpg") no-repeat 0 0;  overflow: hidden;  }
+        .wind-c-l{  float: left;  height: 650px;  width: 610px;  overflow: hidden;  margin-left: 45px;  }
+        .wind-c-title{  width: 480px;  height: 60px;  margin: 20px 0 10px 20px;  }
+        .wind-c-l1{  width: 610px;  height: 530px;  }
+        .wind-c-l1 .bai14{  display: block;  width: 295px;  height: 35px;  font-family: 'microsoft yahei'; font-size: 15px;  line-height: 35px;  background: #000;  }
+        .wind-c-l1 .ln{  height: 10px;  }
+        .wind-c-r{  float: left;  height: 650px;  width: 332px;  overflow: hidden;  margin-left: 10px;  }
+        .wind-c-r1{  width: 330px;  height: 365px;  margin: 20px 0 10px;  border: 1px solid #222;  }
+        .wind-c-article{  width: 327px;  height: 211px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_wind_article.png") no-repeat center;  }
+
+        .geek-l{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_geek_l.jpg") 100% 0;  }
+        .geek-r{  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_geek_r.jpg") 0 0;  }
+        .geek-c{  width: 1000px;  height: 725px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_geek_c.jpg") no-repeat 0 0;  }
+
+        .pic-t{  width: 245px;  height: 50px;  margin-bottom: 25px;  }
+        .pic-pic{  position: relative;  width: 1000px;  height: 427px;  margin-bottom: 20px;  overflow: hidden;  }
+        .pic-btn{  position: absolute;  top: 190px;  width: 17px;  height: 62px;  cursor: pointer;  }
+        .pic-btn1{  left: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_btns.png") no-repeat 0 0;  }
+        .pic-btn2{  right: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_57d/90f5ca2c10/lg_btns.png") no-repeat -18px 0;  }
+        .pic-pic-box{  position: absolute;  top: 0;  left: 82px;  width: 835px;  border: 1px solid #444;  height: 425px;  overflow: hidden;  }
+        .pic-pic-mod{  position: absolute;  top: 0;  left: 0;  height: 425px;  }
+        .pic-pics{  width: 910px;  height: 75px;  overflow: hidden;  margin:  0 auto 45px;  }
+
+        .abt-t{  width: 135px;  height: 46px;  margin-bottom: 12px;  }
+        .abt{  width: 1000px;  height: 255px;  overflow: hidden;  }
+        .abt-l{  float: left;  width: 435px;  height: 255px;  margin-left: -10px }
+        .abt-l .bai18{  line-height: 40px;  }
+        .abt-r{  float: left;  width: 563px;  height: 255px; margin-left: 5px  }
+        .abt-r .ln{  height: 10px;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c"><{data[0]}></div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--升级-->
+<table class="update" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="up-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="up-c"></div>
+        </td>
+        <td class="up-r">&nbsp;</td>
+    </tr>
+</table>
+<!--G魂-->
+<table class="g" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="g-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="g-c clearfix">
+                <div class="g-c-l">
+                    <div class="g-c-l1"><{data[1]}></div>
+                    <div class="g-c-article"></div>
+                </div>
+                <div class="g-c-r">
+                    <div class="g-c-title"><{data[2]}></div>
+                    <div class="g-c-r1"><{data[3]}></div>
+                </div>
+            </div>
+        </td>
+        <td class="g-r">&nbsp;</td>
+    </tr>
+</table>
+<!--烈风-->
+<table class="wind" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="wind-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="wind-c clearfix">
+                <div class="wind-c-l">
+                    <div class="wind-c-title"><{data[4]}></div>
+                    <div class="wind-c-l1"><{data[5]}></div>
+                </div>
+                <div class="wind-c-r">
+                    <div class="wind-c-r1"><{data[6]}></div>
+                    <div class="wind-c-article"></div>
+                </div>
+            </div>
+        </td>
+        <td class="wind-r">&nbsp;</td>
+    </tr>
+</table>
+<!--极客-->
+<table class="geek" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="geek-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="geek-c"></div>
+        </td>
+        <td class="geek-r">&nbsp;</td>
+    </tr>
+</table>
+<!--美图-->
+<div class="wrapper pic">
+    <div class="pic-t"><{data[7]}></div>
+    <div class="pic-pic">
+        <div class="pic-pic-box">
+            <div class="pic-pic-mod"><{data[8]}></div>
+        </div>
+        <div class="pic-btn pic-btn1"></div>
+        <div class="pic-btn pic-btn2"></div>
+    </div>
+    <div class="pic-pics"><{data[9]}></div>
+</div>
+<!--关于-->
+<div class="wrapper about">
+    <div class="abt-t"><{data[10]}></div>
+    <div class="abt clearfix">
+        <div class="abt-l"><{data[11]}></div>
+        <div class="abt-r"><{data[12]}></div>
+    </div>
+</div>
+
+<script charset="gbk">
+    var pics=$('.pic-pics table img'),btn1=$('.pic-btn1'),btn2=$('.pic-btn2'),pic=$('.pic-pic-mod');
+    var deg=0;
+    function move(pics,pic,btn1,btn2,event1,event2){
+        pics.bind(event1, function () {
+            pic.css({'left':'-'+835*(pics.index(this))+'px'});
+            deg=-(parseInt(pic.css('left'))/835);
+        });
+
+        btn1.bind(event2,function(){
+            if(deg!==0){
+                deg--;
+                pic.stop().animate({'left':'-'+835*deg+'px'},300);
+            }else{
+                pic.stop().animate({'left':0+'px'},300);
+            }
+        });
+        btn2.bind(event2,function(){
+            if(deg!==5){
+                deg++;
+                pic.stop().animate({'left':'-'+835*deg+'px'},300);
+            }else{
+                return false;
+            }
+        });
+    }
+
+    move(pics,pic,btn1,btn2,'mouseenter','click')
+</script>
+</body>
+</html>

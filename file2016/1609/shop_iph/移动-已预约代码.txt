@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>iphone7火爆预约！官网同步发售，现货不加价！苹果全系降价，500元优惠券任性送！</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <link href="http://active.zol.com.cn/frontend/m/topics20150429.css" rel="stylesheet">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 320;
+                document.write('<meta name="viewport" content="width=320, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + '" />');
+            } else {
+                document.write('<meta name="viewport" content="width=320, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=320,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style>
+        .old{display:none;}
+        .head1{  width: 100%; height: 100%;  overflow: hidden;  position: relative;  }
+        #takein{  position: absolute;  left: 50%; margin-left: -105px;  top: 10px; text-align: center; width: 210px;  height: 16px;  color: #e5e5e5;  font: bold 12px/16px 'microsoft yahei';  }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+<script charset="gbk">
+    var take_num=document.getElementById('take_num');
+
+    var str='1681681';
+    var reg=/^(\d{1,2})?((?:\d{3})+)$/;
+    str=str.replace(reg, function () {
+        var s1=arguments[1];
+        var s2=arguments[2];
+
+        s2=s2.replace(/\d{3}/g,function(){
+            return ","+arguments[0];
+        });
+        if(s1){
+            return s1+s2;
+        }else{
+            return s2.substring(1);
+        }
+    });
+
+    take_num.innerHTML=str;
+
+
+    function jsonpCallback(result) {  
+        //alert(result);  
+       console.log(result.number) 
+        document.getElementById('take_num').innerHTML=result.number;
+    }  
+    var JSONP=document.createElement("script");  
+    JSONP.type="text/javascript";  
+    JSONP.src="http://tuan.zol.com/index.php?c=Detail&a=AjaxGetTuanBuyNum&callback=jsonpCallback";  
+    document.getElementsByTagName("body")[0].appendChild(JSONP);
+</script>
+
+
+<div class="head1"><img src="http://zt.fd.zol-img.com.cn/g5/M00/0F/02/ChMkJ1fICKSIDO0RAAD1cVFA3rEAAU52gFUZHEAAPWJ130.jpg" border="0" hspace="0" vspace="0" />
+<div id="takein">已有 <span id="take_num">-</span> 人参与预约</div></div>
+

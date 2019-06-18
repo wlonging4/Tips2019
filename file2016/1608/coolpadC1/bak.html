@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>酷派C1手机新品发布会</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#777;font:12px/20px 'simsun',arial; background: #000;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#008cd6;font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 200px; padding-top: 150px ;background: url("images/lg_foot.jpg") no-repeat center top; }
+        .zol_foot,.zol_foot a{  color: #BFBFFF;  }
+
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1200px;  height: 340px;  }
+
+        .v-l{  background: url("images/lg_v_l.jpg") no-repeat 100% 0;  }
+        .v-r{  background: url("images/lg_v_r.jpg") no-repeat 0 0;  }
+        .v-c{  overflow: hidden;  width: 1200px;  height: 857px;  background: url("images/lg_v_c.jpg") no-repeat 0 0;  }
+        .v-mod{  width: 1186px;  height: 760px;  margin: 7px auto 0;  background: #000;  }
+
+        .live-l{  background: url("images/lg_live_l.jpg") no-repeat 100% 0;  }
+        .live-r{  background: url("images/lg_live_r.jpg") no-repeat 0 0;  }
+        .live-c{  overflow: hidden;  height: 989px;  width: 1200px;  }
+        .live-c-l{  overflow: hidden;  float: left;  height: 950px;  width: 740px;  margin-right: 20px;  }
+        .live-c-l-t{  width: 540px;  height: 75px;  margin-bottom: 25px;  }
+        .live-c-l1{  height: 120px;  width: 740px;  }
+        .live-c-l2{  height: 728px;  width: 738px;  background: #fff;  border: 1px solid #E6008C;  }
+        .live-c-r{  overflow: hidden;  float: left;  margin-top: 10px;  height: 940px;  width: 440px;  }
+        .live-c-r1{  position: relative;  height: 160px;  width: 440px;  background: #E6008C url("images/lg_live_r1.jpg") no-repeat 0 0;  }
+        .live-c-r1-mod1{  width: 147px;  height: 134px;  position: absolute;  top: 14px;  left: 138px;  }
+        .live-c-r1-mod2{  width: 116px;  height: 32px;  position: absolute;  top: 116px;  left: 308px;  }
+        .live-c-r2{  width: 440px;  height: 48px;  background: #E6008C;  color: #fff;  line-height: 46px;  text-align: center;  font-family: 'microsoft yahei',Arial;  font-size: 18px;  }
+        .live-c-r2 span{  font-size: 24px;  color: #F4D75B;  font-weight: bold;  }
+        .live-c-r3{  width: 438px;  background: #fff;  height: 730px;  border: 1px solid #E6008C;  }
+
+        .mom-l{  background: url("images/lg_mom_l.jpg") no-repeat 100% 0;  }
+        .mom-r{  background: url("images/lg_mom_r.jpg") no-repeat 0 0;  }
+        .mom-c{  overflow: hidden;  width: 1200px;  height: 860px;  background: url("images/lg_mom_c.jpg") no-repeat  0 0;  }
+        .mom-t{  width: 560px;  height: 80px;  }
+        .mom-mod{  margin-top: 20px;  position: relative;  width: 1200px;  height: 720px;  }
+        .mom-btn{  position: absolute;  width: 56px;  height: 109px;  bottom: 295px;  cursor: pointer;  }
+        .mom-btn1{  left: 10px;  background: url("images/lg_mom_btns.png") no-repeat 0 0;  }
+        .mom-btn2{  right: 10px;  background: url("images/lg_mom_btns.png") no-repeat -58px 0;  }
+        .mom-con{  position: absolute;  overflow: hidden;  top: 0;  left: 113px;  width: 974px;  height: 720px;  background: url("images/lg_mom_mod.jpg") no-repeat 0 0;  }
+        .mom-bor{  position: relative;  width: 960px;  height: 706px;  margin: 7px;  overflow: hidden;  background: #000;  }
+        .mom-box{  position: absolute;  top: 0;  height: 706px;  }
+
+        .tech-l{  background: url("images/lg_tech_l.jpg") no-repeat 100% 0;  }
+        .tech-r{  background: url("images/lg_tech_r.jpg") no-repeat 0 0;  }
+        .tech-c{  position: relative;  overflow: hidden;  width: 1200px;  height: 730px;  background: url("images/lg_tech_c.jpg") no-repeat 0 0;  }
+        .tech-t{  width: 465px;  height: 80px;  margin-bottom: 20px;  }
+        .tech-mod{  width: 1200px;height: 590px;  }
+        .tech-mod-l{  float: left;  margin-right: 50px;  width: 760px;  height: 580px;  padding: 5px;  background: #fff;  }
+        .tech-mod-r{  position: relative;  float: left;  width: 380px;  height: 590px;}
+        .tech-mod-m{  position: absolute;  width: 380px;  height: 230px;  right: 0;   }
+        .tech-mod-m1{  top: 65px;  }
+        .tech-mod-m2{  top: 340px;  }
+
+        .pic-l{  background: url("images/lg_pic_l.jpg") no-repeat 100% 0;  }
+        .pic-r{  background: url("images/lg_pic_r.jpg") no-repeat 0 0;  }
+        .pic-c{  overflow: hidden;  width: 1200px;  height: 786px;  background: url("images/lg_pic_c.jpg") no-repeat 0 0;  }
+        .pic-t{  width: 450px;  height: 80px;  margin-bottom: 20px;  }
+        .pic-mod{  width: 1200px;  height: 628px;  overflow: hidden;  }
+        .pic-mod-l{  position: relative; float: left;  width: 900px;  height: 616px;  margin: 6px;  background: #000; overflow: hidden  }
+        .pic-mod-l-box{  position: absolute;  top: 0;  left: 0;  height: 616px;  }
+        .pic-mod-r{  float: left;  width: 262px;  height: 628px;  margin-left: 26px;  background: #000;  }
+
+        .abt-l{
+            background: url("images/lg_abt_l.jpg") no-repeat 100% 0;
+        }
+        .abt-r{
+            background: url("images/lg_abt_r.jpg") no-repeat 0 0;
+        }
+        .abt-c{
+            overflow: hidden;
+            width: 1200px;
+            height: 557px;
+            background: url("images/lg_abt_c.jpg") no-repeat 0 0;
+        }
+        .abt1{
+            float: left;
+            height: 557px;
+            width: 460px;
+            margin-right: 30px;
+        }
+
+        .abt2{
+            float: left;
+            height: 557px;
+            width: 380px;
+            margin-right: 30px;
+        }
+        .abt3{
+            float: left;
+            height: 557px;
+            width: 300px;
+        }
+        .abt-t{
+            width: 250px;
+            height: 25px;
+            margin-bottom: 30px;
+        }
+        .bar{
+            width: 460px;
+            height: 2px;
+            background: url("images/lg_weibo_bar.jpg") no-repeat 0 0;
+        }
+        .abt1-c{
+            width: 460px;
+            height: 500px;
+            background: #fff;
+        }
+        .abt2-c{
+            width: 380px;
+            height: 502px;
+            background: url("images/lg_abt2.jpg") no-repeat 0 0;
+        }
+        .abt2-mod{
+            padding: 135px 52px 0;
+            width: 276px;
+            height: 315px;
+        }
+        .abt3-c{
+            width: 300px;
+            height: 502px;
+        }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                模块内容
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--视频-->
+<table class="video" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="v-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="v-c">
+                <div class="v-mod">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="v-r">&nbsp;</td>
+    </tr>
+</table>
+<!--直播-->
+<table class="live" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="live-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="live-c clearfix">
+                <div class="live-c-l">
+                    <div class="live-c-l-t">模块内容</div>
+                    <div class="live-c-l1">模块内容</div>
+                    <div class="live-c-l2">模块内容</div>
+                </div>
+                <div class="live-c-r">
+                    <div class="live-c-r1">
+                        <div class="live-c-r1-mod1">模块内容</div>
+                        <div class="live-c-r1-mod2">模块内容</div>
+                    </div>
+                    <div class="live-c-r2">
+                        已有<span id="num">4</span>位网友陪您看直播
+                    </div>
+                    <div class="live-c-r3">模块内容</div>
+                </div>
+            </div>
+        </td>
+        <td class="live-r">&nbsp;</td>
+    </tr>
+</table>
+<!--瞬间-->
+<table class="moment" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="mom-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="mom-c">
+                <div class="mom-t">模块内容</div>
+                <div class="mom-mod">
+                    <div class="mom-con">
+                        <div class="mom-bor">
+                            <div class="mom-box">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mom-btn mom-btn1"></div>
+                    <div class="mom-btn mom-btn2"></div>
+                </div>
+            </div>
+        </td>
+        <td class="mom-r">&nbsp;</td>
+    </tr>
+</table>
+<!--解析-->
+<table class="technology" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="tech-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="tech-c">
+                <div class="tech-t">模块内容</div>
+                <div class="tech-mod clearfix">
+                    <div class="tech-mod-l">模块内容</div>
+                    <div class="tech-mod-r">
+                        <div class="tech-mod-m tech-mod-m1">模块内容</div>
+                        <div class="tech-mod-m tech-mod-m2">模块内容</div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="tech-r">&nbsp;</td>
+    </tr>
+</table>
+<!--图赏-->
+<table class="picture" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="pic-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="pic-c">
+                <div class="pic-t">模块内容</div>
+                <div class="pic-mod clearfix">
+                    <div class="pic-mod-l">
+                        <div class="pic-mod-l-box">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="pic-mod-r">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="pic-r">&nbsp;</td>
+    </tr>
+</table>
+<!--关于-->
+<table class="about" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="abt-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="abt-c clearfix">
+                <div class="abt1">
+                    <div class="abt-t">模块内容</div>
+                    <div class="bar"></div>
+                    <div class="abt1-c">
+                        模块内容
+                    </div>
+                </div>
+                <div class="abt2">
+                    <div class="abt-t">模块内容</div>
+                    <div class="abt2-c">
+                        <div class="abt2-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="abt3">
+                    <div class="abt-t">模块内容</div>
+                    <div class="abt3-c">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="abt-r">&nbsp;</td>
+    </tr>
+</table>
+
+<script src="../jquery-1.9.1.js"></script>
+<script charset="gbk">
+    /*精彩瞬间*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".mom-box",".mom-bor",1,".mom-btn1",".mom-btn2");
+
+    /*美图欣赏*/
+    var pic_l=$('.pic-mod-r table img'),pic_b=$('.pic-mod-l-box');
+    pic_l.bind('mouseenter', function () {
+        pic_b.css({left:'-'+900*(pic_l.index(this))+'px'});
+    });
+</script>
+</body>
+</html>

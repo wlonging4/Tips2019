@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5_canvas_ring</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="200" style="border: 1px solid red;"></canvas>
+
+<script type="text/javascript">
+    var canvas = document.getElementById("myCanvas");
+    function canvas_ring(cir_x,cir_y,cir_r,line_w,line_color,line_style,interval){
+        if(canvas.getContext){
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.strokeStyle = line_color;
+            ctx.lineWidth=line_w;
+            ctx.lineCap=line_style;
+            var circle = {
+                x : cir_x,    //圆心的x轴坐标值
+                y : cir_y,    //圆心的y轴坐标值
+                r : cir_r      //圆的半径
+            };
+            var canvas_num=0;
+            /*定义滑环*/
+            function draw() {
+                canvas_num++;
+                ctx.beginPath();
+                ctx.clearRect(0,0,200,200);
+                ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI*canvas_num/30, false);
+                ctx.stroke();
+                ctx.closePath();
+                if(canvas_num<60){
+                    t&&clearTimeout(t);
+                    var t=setTimeout(draw,interval);
+                }
+            }
+            draw();
+        }
+    }
+    canvas_ring(100,100,80,20,'#000','round',20);
+</script>
+</body>

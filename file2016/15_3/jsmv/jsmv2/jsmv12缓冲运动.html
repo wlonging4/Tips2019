@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div缓冲运动</title>
+    <style type="text/css">
+        body,div{
+            padding: 0;
+            margin: 0;
+        }
+        #a1{
+            height:100px;
+            width: 100px;
+            background-color: red;
+            position: absolute;
+            top:200px;
+        }
+        .ss{
+            width: 1px;
+            height: 400px;
+            position: absolute;
+            left:500px;
+            top:100px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<textarea name="" id="tex1" cols="30" rows="10"></textarea><br/>
+<input id="btn" type="button" onclick="move(500)" value="Move~"/><br/>
+<div id="a1"></div>
+<span class="ss"></span>
+<script type="text/javascript">
+    var timer=null;
+    function move(iTar)
+    {
+        var oDiv = document.getElementById("a1");
+        clearInterval(timer);//先关后开，防止连续点击造成定时器开很多导致速度越来越快
+        timer=setInterval(function () {
+            var iSpe=(iTar-oDiv.offsetLeft)/5;
+            iSpe=iSpe>0?Math.ceil(iSpe):Math.floor(iSpe);
+            if(iSpe==0){
+                clearInterval(timer);
+            }
+            if(oDiv.offsetLeft>iTar)//会停止
+            {
+                clearInterval(timer);
+            }else//else包在一起，防止到了目的地还在运动
+            {
+                oDiv.style.left = oDiv.offsetLeft + iSpe + "px";
+            }
+            tex1.value+=iSpe+"\n";
+        }, 50);
+    }
+</script>
+</body>
+</html>

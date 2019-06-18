@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>高保真影音媒体播放中心 HiVi惠威MC-100智能音箱</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#111; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#ebebf9;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+
+        .media-s1{  background: url("images/lg_media.jpg") repeat 100% 0;  }
+        .media-s2{  background: url("images/lg_media.jpg") repeat 0 0;  }
+        .media-c{ position: relative ;  width: 1200px;  height: 498px;  background: url("images/lg_media.jpg") repeat 0 0;  }
+        .media-c-l{  float: left;  width: 620px;  height: 470px;  padding: 28px 65px 0 45px;  }
+        .media-c-l-pic{  width: 620px;  height: 412px;  }
+        .media-c-l-ul{  margin: 0 auto;  width: 50px;  height: 15px;  padding-top: 30px}
+        .media-c-l-ul li{  height: 15px ; width: 15px ; display: block;  float: left;  margin: 0 5px 0;  _display: inline;  background: url("images/lg_media_btns.png") no-repeat 0 -15px; cursor: pointer }
+        .media-c-l-ul li.li-act{  background: url("images/lg_media_btns.png") no-repeat 0 0;  }
+        .media-c-r{  position: relative ;  float: left;  width: 470px;  height: 470px;  padding: 28px 0 0;  }
+        .media-c-r1{  width: 402px;  height: 249px;  }
+        .media-c-r2{  position: absolute; z-index: 99; bottom: -10px;  left: 0;  width: 460px;  height: 283px;  background: url("images/lg_media_r.png") no-repeat 0 0;  }
+        .media-c-r2-ad1{  position: absolute;  top: 170px;  left: 32px;  width: 181px;  height: 78px;  }
+        .media-c-r2-ad2{  position: absolute;  top: 171px;  left: 255px;  width: 174px;  height: 77px;  }
+
+        .analysis-l{  background: url("images/lg_analysis_l.jpg") repeat 100% 0;  }
+        .analysis-r{  background: url("images/lg_analysis_r.jpg") repeat 0 0;  }
+        .analysis-c{  width: 1200px;  height: 841px;  overflow: hidden ;}
+        .an-c1{  position: relative;  width: 1200px;  height: 195px;  background: url("images/lg_analysis_c1.jpg") no-repeat 0 0;  overflow: hidden  }
+        .an-c1-mod{  width: 488px;  height: 135px;  margin: 35px auto;  }
+        .an-c2{  position: relative;  width: 1200px;  height: 646px;  background: url("images/lg_analysis_c2.jpg") no-repeat 0 0;  overflow: hidden  }
+        .an-c2-mod{  position: absolute; width: 790px;  height: 440px;  top: 5px ; left: 196px; }
+
+        .test-l{  background: url("images/lg_test_l.jpg") repeat 100% 0;  }
+        .test-r{  background: url("images/lg_test_r.jpg") repeat 0 0;  }
+        .test-con{  width: 1200px;  height: 800px;  overflow: hidden; }
+        .test-t{  height: 204px;  width: 1200px;  background: url("images/lg_test_t.jpg"); overflow: hidden }
+        .test-t-mod{  width: 488px;  height: 135px;  margin: 35px auto;  }
+        .test-c{  height: 597px;  width: 1200px;  background: url("images/lg_test_c.jpg"); overflow: hidden }
+        .test-c-mod{  height: 536px;  width: 890px;  margin: 0 auto;  }
+
+        .back-l{  background: url("images/lg_back_l.jpg") no-repeat 100% 0;  }
+        .back-r{  background: url("images/lg_back_r.jpg") no-repeat 0 0;  }
+        .back-c{  position: relative;  height: 1051px;  width: 1200px;  overflow: hidden;  }
+        .back-con{  position: absolute;  width: 396px;  height: 134px;  top: 36px;  left: 402px;   }
+
+        .pic-side1{  background: url("images/lg_pic_side.jpg") no-repeat 100% 0;  }
+        .pic-side2{  background: url("images/lg_pic_side.jpg") no-repeat 0 0;  }
+        .pic-t{  width: 1200px;  height: 149px;  background: url("images/lg_pic_t.jpg") no-repeat 0 0;  }
+        .pic-c{  height: 595px;  width: 1200px;  overflow: hidden;  background: url("images/lg_pic_c.jpg") no-repeat 0 0;  }
+
+        .foot-side1{  background: url("images/lg_foot_bg.jpg") repeat-x 100% 0;  }
+        .foot-side2{  background: url("images/lg_foot_bg.jpg") repeat-x 0 0;  }
+        .foot-c{  height: 137px;  padding-top: 70px;  text-align: center;  background: url("images/lg_foot_bg.jpg") repeat-x 0 0;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <img src="images/lg_head_c.jpg" alt="" width="1200" height="462"/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--媒体-->
+<table class="media" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="media-s1">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="media-c clearfix">
+                <div class="media-c-l">
+                    <div class="media-c-l-pic">
+                        模块内容
+                    </div>
+                    <ul class="media-c-l-ul">
+                        <li class="li-act"></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="media-c-r">
+                    <div class="media-c-r1">
+                        模块内容
+                    </div>
+                    <div class="media-c-r2">
+                        <div class=media-c-r2-ad1>
+                            模块内容
+                        </div>
+                        <div class=media-c-r2-ad2>
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="media-s2">&nbsp;</td>
+    </tr>
+</table>
+<!--解析-->
+<table class="analysis" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="analysis-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="analysis-c">
+                <div class="an-c1">
+                    <div class="an-c1-mod">
+                        模块内容
+                    </div>
+                </div>
+                <div class="an-c2">
+                    <div class="an-c2-mod">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="analysis-r">&nbsp;</td>
+    </tr>
+</table>
+<!--体验-->
+<table class="test" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="test-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="test-con">
+                <div class="test-t">
+                    <div class="test-t-mod">
+                        模块内容
+                    </div>
+                </div>
+                <div class="test-c">
+                    <div class="test-c-mod">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="test-r">&nbsp;</td>
+    </tr>
+</table>
+<!--回归-->
+<table class="back" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="back-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="back-c">
+                <div class="back-con">
+                    模块内容
+                </div>
+                <img src="images/lg_back_c1.jpg" width="1200" height="189" alt=""/>
+                <img src="images/lg_back_c2.jpg" width="1200" height="400" alt=""/>
+                <img src="images/lg_back_c3.jpg" width="1200" height="464" alt=""/>
+            </div>
+        </td>
+        <td class="back-r">&nbsp;</td>
+    </tr>
+</table>
+<!--酷图-->
+<table class="pic" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pic-side1">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="pic-t"></div>
+            <div class="pic-c">
+                模块内容
+            </div>
+        </td>
+        <td class="pic-side2">&nbsp;</td>
+    </tr>
+</table>
+<!--尾部-->
+<table class="foot" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="foot-side1">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="foot-c">
+                模块内容
+            </div>
+        </td>
+        <td class="foot-side2">&nbsp;</td>
+    </tr>
+</table>
+</body>
+</html>

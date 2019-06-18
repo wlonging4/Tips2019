@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>NO固态 NO Game 东芝杯攒机PK赛</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#890404;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  width: 1000px;  height: 998px;  overflow: hidden;  }
+        .head-c1{  position: absolute; height: 90px;  width: 700px;  left: 55px;  bottom: 102px;  }
+        .head-c2{  position: absolute;  height: 52px;  width: 170px;  left: 772px;  bottom: 123px;  }
+
+        .assess-l{  background: url("images/lg_assess_l.jpg") no-repeat 100% 0;  }
+        .assess-r{  background: url("images/lg_assess_r.jpg") no-repeat 0 0;  }
+        .assess-t{  width: 1000px;  height: 157px;  background: url("images/lg_assess_t.jpg") no-repeat 0 0;  }
+        .assess-c{  width: 1000px;  height: 400px;  overflow: hidden;  }
+        .assess-c1{  float: left;  width: 440px;  height: 290px;  padding: 40px 20px 70px 15px;  background: url("images/lg_assess_c.jpg") no-repeat 0 0;  }
+        .assess-c2{  float: left;  width: 520px;  height: 355px;  margin-left: 5px;  }
+
+        .rule-l{  background: url("images/lg_rule_l.jpg") no-repeat 100% 0;  }
+        .rule-r{  background: url("images/lg_rule_r.jpg") no-repeat 0 0;  }
+        .rule-t{  width: 1000px;  height: 115px;  background: url("images/lg_rule_t.jpg") no-repeat 0 0;  }
+        .rule-c{  width: 1000px;  height: 688px;  overflow: hidden;  }
+        .rule-c1{  float: left;  width: 435px;  height: 530px;  padding: 92px 20px 76px;  background: url("images/lg_rule_c.jpg") no-repeat 0 0;  }
+        .rule-c2{  float: left;  width: 440px;  height: 595px;  padding: 40px 40px 50px 45px;  }
+
+        .judge-l{  background: url("images/lg_judge_l.jpg") no-repeat 100% 0;  }
+        .judge-r{  background: url("images/lg_judge_r.jpg") no-repeat 0 0;  }
+        .judge-t{  width: 1000px;  height: 116px;  background: url("images/lg_judge_t.jpg") no-repeat 0 0;  }
+        .judge-c{  width: 1000px; height: 287px;  padding-top: 70px ; overflow: hidden;  background: url("images/lg_judge_c.jpg") no-repeat 0 0;  }
+
+        .high-l{  background: url("images/lg_high_l.jpg") no-repeat 100% 0;  }
+        .high-r{  background: url("images/lg_high_r.jpg") no-repeat 0 0;  }
+        .high-t{  width: 1000px;  height: 171px;  background: url("images/lg_high_t.jpg") no-repeat 0 0;  }
+        .high-c{  width: 1000px;  height: 641px;  overflow: hidden;  }
+        .high-c1{  float: left;  height: 641px;  width: 466px;  margin-right: 68px;  background: url("images/lg_high_c1.jpg") no-repeat 0 0;  }
+        .high-c2{  float: left;  height: 641px;  width: 466px;  background: url("images/lg_high_c2.jpg") no-repeat 0 0;  }
+
+        .conf1-l{  background: url("images/lg_conf1_l.jpg") no-repeat 100% 0;  }
+        .conf1-r{  background: url("images/lg_conf1_r.jpg") no-repeat 0 0;  }
+        .conf1-t{  width: 1000px;  height: 158px;  background: url("images/lg_conf1_t.jpg") no-repeat 0 0;  }
+        .conf2-s1{  background: url("images/lg_conf2_side.jpg") repeat 100% 0;  }
+        .conf2-s2{  background: url("images/lg_conf2_side.jpg") repeat 0 0;  }
+        .conf2-c{  width: 1000px;  height: 1150px;  overflow: hidden;  background: url("images/lg_conf2_c.jpg") no-repeat 0 0;  }
+
+        .wrapper{  width:1000px;margin:0 auto;  }
+        .vote-nums i{  font-style: normal;  }
+        .list-title, .list-title3{line-height:38px; padding:18px 25px 0 0;text-align:right;color:#fff;}
+        .list-title a, .list-title3 a{color:#fff;margin-left:12px;}
+        .list-title span, .list-title3 span{cursor:pointer;margin:0 5px;}
+        .list-title .act, .list-title3 .act{font-weight:bold;}
+
+        .list-currenttime{ width:880px; overflow:hidden;height:35px; line-height:35px; margin:5px auto 5px; padding: 0 20px 0; position:relative; border: 1px solid #560013; }
+        .list-currenttime ul{position:absolute;left:0;top:0; width:4000px;}
+        .list-currenttime li{float:left; width:190px;overflow:hidden;padding-right:10px; color:#ececec;}
+        .list-currenttime a{color:#ececec; }
+        .list-currenttime a:hover{color:#B16407}
+
+        .detail-list{ height:1815px;padding:0 0 15px 5px;}
+        .detail-list li{float:left; width:310px; padding:20px 10px 8px;}
+        .table table{width: 310px; margin :0 auto; border-collapse:collapse; color:#c9caca;}
+        .table th{ line-height:34px; background-color:#3f0000; border:1px solid #560013; text-align:center;}
+        .table td{line-height:31px;  text-align:center; width:72px; border:1px solid #560013; border-collapse:collapse;}
+        .table td.para{text-align:left; width:150px;padding:0 5px 0 8px;}
+        .table th.pare{  text-align: center;  }
+        .table a{color:#fff}
+        .table .price{color:#CC9B22;font-weight:bold;}
+        .handle{text-align:center; color:#CC9A21; padding:20px 0 4px; position:relative}
+        .handle em,.handle .handle-more{display:inline-block;margin:0 5px; text-decoration:underline}
+        .handle .vote-btn{ width:77px;height:26px; background:#5c0000; line-height:26px;color:#fff;cursor:pointer; text-decoration:none;}
+        .handle .share-tip{left:210px;top:28px;}
+        .handle .handle-more{color:#CC9A21;}
+
+        .share-tip{display:none;position:absolute;left:0;top:0;z-index:2;width:74px;height:18px;overflow:hidden;padding:6px 0 0 3px;background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-sbg.png) no-repeat;}
+        .share-tip img{float:left; margin-right:2px;}
+
+        .tablebox{height:388px;overflow:hidden; background:url('images/f-tablebg.jpg') no-repeat center top}
+
+        .vote-list ul{width:270px;margin:0 auto}
+        .vote-list li{height:33px;line-height:33px;overflow:hidden;color:#fff}
+        .vote-list a{float:right; color:#666; text-decoration:underline}
+        .vote-list a:hover{color:#CC9920}
+        .vote-list span{display:inline-block;width:23px;height:33px;text-align:center; font-size:14px;font-weight:bold;margin-right:8px;}
+
+
+        .intro-l{  background: url("images/lg_intro_l.jpg") no-repeat 100% 0;  }
+        .intro-r{  background: url("images/lg_intro_r.jpg") no-repeat 0 0;  }
+        .intro-t{  width: 1000px;  height: 165px; overflow: hidden ; background: url("images/lg_intro_t.jpg") no-repeat 0 0;  }
+        .intro-c{  width: 1000px;  height: 290px;  overflow: hidden;  background: url("images/lg_intro_c.jpg") no-repeat 0 0;  }
+        .intro-con{  width: 1000px;  height: 290px; }
+        .intro-con table img{  padding: 10px 12px 10px 11px;  background: url("images/lg_intro_pics.png") no-repeat 0 0;  }
+
+        .foot-l{  background: url("images/lg_foot_l.jpg") no-repeat 100% 0;  }
+        .foot-r{  background: url("images/lg_foot_r.jpg") no-repeat 0 0;  }
+        .foot-c{  width: 1000px;  height: 185px;  padding-top: 80px;  text-align: center;  color: #fff;  background: url("images/lg_foot_c.jpg") no-repeat 0 0;  }
+        .foot-c a{  color: #fff;  }
+        .foot-c a:hover{  color: #fff;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <img src="images/lg_head_c1.jpg" width="1000" height="270" alt=""/>
+                <img src="images/lg_head_c2.jpg" width="1000" height="395" alt=""/>
+                <img src="images/lg_head_c3.jpg" width="1000" height="333" alt=""/>
+                <div class="head-c1">
+                    模块内容
+                </div>
+                <div class="head-c2">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--浮动-->
+<div class="flow">
+
+</div>
+<!--测评-->
+<table class="assess" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="assess-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="assess-t"></div>
+            <div class="assess-c clearfix">
+                <div class="assess-c1">
+                    模块内容
+                </div>
+                <div class="assess-c2">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="assess-r">&nbsp;</td>
+    </tr>
+</table>
+<!--规则-->
+<table class="rule" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="rule-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="rule-t"></div>
+            <div class="rule-c clearfix">
+                <div class="rule-c1">
+                    模块内容
+                </div>
+                <div class="rule-c2">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="rule-r">&nbsp;</td>
+    </tr>
+</table>
+<!--评审-->
+<table class="judge" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="judge-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="judge-t"></div>
+            <div class="judge-c">
+                模块内容
+            </div>
+        </td>
+        <td class="judge-r">&nbsp;</td>
+    </tr>
+</table>
+<!--亮点-->
+<table class="highlight" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="high-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="high-t"></div>
+            <div class="high-c clearfix">
+                <div class="high-c1">
+                    模块内容
+                </div>
+                <div class="high-c2">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="high-r">&nbsp;</td>
+    </tr>
+</table>
+<!--配置-->
+<table class="config" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="conf1-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="conf1-t"></div>
+        </td>
+        <td class="conf1-r">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="conf2-s1">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="conf2-c">
+                <div class="wrapper">
+                    <div class="list-title">
+                        <span class="act">最新</span> | <span>最热</span>
+                        <a href="http://diy.zol.com.cn/topic/5545560.html">更多参赛配置&gt;&gt;</a>
+                    </div>
+                    <div class="list-currenttime" id="list-currenttime"></div>
+                    <div id="detail-list" class="detail-list table"></div>
+                </div>
+            </div>
+        </td>
+        <td class="conf2-s2">&nbsp;</td>
+    </tr>
+</table>
+<!--推荐-->
+<table class="intro" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="intro-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="intro-t"></div>
+            <div class="intro-c">
+                <div class="intro-con">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="intro-r">&nbsp;</td>
+    </tr>
+</table>
+<!--尾部-->
+<table class="foot" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="foot-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="foot-c">
+                模块内容
+            </div>
+        </td>
+        <td class="foot-r">&nbsp;</td>
+    </tr>
+</table>
+<script src="../jquery-1.9.1.js"></script>
+<script src="http://active.zol.com.cn/14active/141029Proscenic/j.easing.min.js"></script>
+
+<script charset="GBK">
+    var zj_json = 'http://zj.pengxufei.test.zol.com.cn/index.php?c=Ajax_zjActive&callback=?';
+    var showorder = 1;
+    var page = 0;
+
+    /*滚动动态*/
+    function new_list() {
+        $.getJSON(zj_json, {a: "Get2h"},function(obj) {
+            // console.log(obj);
+            var str = '';
+            if (obj) {
+                str += '<ul>';
+                for (i in obj) {
+                    if(obj[i].name){
+                        str += '<li><a href="' + obj[i].url + '"><b>' + obj[i].name + '</b> 上传了他的配置</a></li>';
+                    }
+                }
+                str += '</ul>';
+            } else {
+                str = '<p class="nodata">快来参与活动吧~~</p>';
+            }
+            $("#list-currenttime").html(str);
+            ongoing(true, 'list-currenttime', '', '', 'toleft', 1)
+        });
+    }
+
+
+    /*首页列表*/
+    function index_list(order, page) {
+        order = parseInt(order);
+        page = parseInt(page);
+        $.getJSON(zj_json, {
+                    a: "getInfo",
+                    order: order,
+                    page: page
+                },
+                function(obj) {
+                    var str = '';
+                    var pagestr = '';
+                    if (obj) {
+                        str += '<ul class="clearfix">';
+                        for(k in obj['detail']){
+                            if(k>6) {
+
+                            }else{
+                                str += '<li class="test-li"><div class="tablebox"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><th>类&nbsp;别</th><th class="para">参&nbsp;数</th><th>价&nbsp;格</th></tr>';
+                                for (j in obj['detail'][k].detail) {
+                                    str += '<tr><td>' + obj['detail'][k].detail[j].subcateName + '</td><td class="para"><a href="' + obj['detail'][k].detail[j].url + '">' + SetString(obj['detail'][k].detail[j].name, 20) + '</a></td><td class="price">￥' + obj['detail'][k].detail[j].price + '</td></tr>';
+                                }
+                                str += '</table></div><div class="handle"><em class="vote-nums">已得<i>' + obj['detail'][k].good + '</i>票</em><em class="vote-btn" onclick="vote_event(' + obj['detail'][k].id + ',this)">投他一票</em><a class="handle-more" href="' + obj['detail'][k].url + '">配置详情</a><em class="vote-share" onmouseover="voteshare(this)">立即分享></em><div class="share-tip"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s1.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s2.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s3.png"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s4.png"></div></div></li>';
+                            }
+                        }
+                        str += '</ul>';
+
+                        //分页
+                        obj.nowPage = parseInt(obj.nowPage);
+                        obj.maxPage = parseInt(obj.maxPage);
+                        if(obj.maxPage>0){
+                            if(obj.nowPage>1){
+                                pagestr +='<span onclick="index_list('+showorder+',1)">首页</span> <span onclick="index_list('+showorder+','+(obj.nowPage-1)+')">上一页</span>';
+                            }
+                            var temp_num1 = obj.nowPage-5>=1?obj.nowPage-5:1;
+                            var temp_num2 = obj.nowPage+10>obj.maxPage+1?obj.maxPage:obj.nowPage+10;
+                            for(var i=temp_num1;i<temp_num2;i++){
+                                if(i==obj.nowPage){
+                                    pagestr+='<span class="act">'+i+'</span>'
+                                }else{
+                                    pagestr+='<span onclick="index_list('+showorder+','+i+')">'+i+'</span>'
+                                }
+                            }
+                            if(obj.maxPage<=obj.nowPage){
+                                pagestr +='<span class="act">尾页</span>'
+                            }else{
+                                pagestr +='<span onclick="index_list('+showorder+','+(obj.nowPage+1)+')">下一页</span> <span onclick="index_list('+showorder+','+(obj.maxPage)+')">尾页</span>'
+                            }
+                        }
+
+                    } else {
+                        str = '<p class="nodata">快来参与活动吧~~</p>';
+                    }
+                    $("#detail-list").html(str);
+                    //$("#page-list").html(pagestr);
+                });
+    }
+    index_list(showorder, page);
+
+
+    function sharelink(){
+        var share_title=encodeURIComponent('NO固态 NO Game 东芝杯攒机PK赛');
+        var share_link='http://diy.zol.com.cn/topic/5544554.html';
+        var share_url = '<a onclick="hidesharebox(this)" href="http://v.t.sina.com.cn/share/share.php?title='+share_title+'&url='+share_link+'&source=bookmark" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s1.png" alt="分享到新浪微博"></a><a onclick="hidesharebox(this)" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s2.png" alt="分享到QQ空间"></a><a onclick="hidesharebox(this)" href="http://v.t.qq.com/share/share.php?title='+share_title+'&url='+share_link+'" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s3.png" alt="分享到腾讯微博"></a><a onclick="hidesharebox(this)" href="http://connect.qq.com/widget/shareqq/index.html?url='+share_link+'%3F%2614034-sqq-1-47906-5759bb29e6b80477a9012ab865bccc52&title='+share_title+'&desc=&summary=&site=baidu" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-s4.png" alt="分享到QQ好友"></a>';
+        $(".share-tip").html(share_url);
+    }
+    sharelink()
+
+    $('.nav-share').mouseover(function(){
+        $('.nav-nums .share-tip').show();
+    })
+
+    function hidesharebox(id){
+        id.parentNode.style.display = 'none';
+    }
+
+    function voteshare(tag){
+        sharelink()
+        $(tag).parent().parent().parent().find('.share-tip').hide();
+        $(tag).parent().find('.share-tip').show();
+    }
+
+    $('.share-tip a').click(function(){
+        $(this).parent().find('.share-tip').hide();
+    })
+
+    $('.list-title span').click(function() {
+        var _index = $('.list-title span').index($(this));
+        $('.list-title span').removeClass('act').eq(_index).addClass('act');
+        if (_index == 0) {
+            showorder = 1
+        } else {
+            showorder = 0
+        }
+        index_list(showorder, page);
+    })
+
+    $('.list-title3 span').click(function() {
+        var _index = $('.list-title3 span').index($(this));
+        $('.list-title3 span').removeClass('act').eq(_index).addClass('act');
+        if (_index == 0) {
+            showorder = 1
+        } else {
+            showorder = 0
+        }
+        list_list(showorder, page);
+    })
+
+    //投票
+    function vote_event(id,thistag) {
+        $.getJSON(zj_json, {
+                    a: "SubmitForTopic",
+                    id: id,
+                    good: 1,
+                    bad: 0
+                },
+                function(obj) {
+                    if (obj.flag == 'success') {
+                        if (obj.data == 1) {
+                            alert('投票成功~~');
+                            //index_list(showorder, page);
+                            var votenum = parseInt($(thistag).parent('.handle').find('.vote-nums i').html())
+                            $(thistag).parent('.handle').find('.vote-nums i').html(votenum+1);
+                        } else if (obj.data == 2) {
+                            alert('您今天已经给这个配置单投过票了~~');
+                        }
+                    }
+
+                })
+    }
+
+    //截字符
+    function SetString(str, len) {
+        var strlen = 0;
+        var s = "";
+        for (var i = 0; i < str.length; i++) {
+            if (str.charCodeAt(i) > 128) {
+                strlen += 2;
+            } else {
+                strlen++;
+            }
+            s += str.charAt(i);
+            if (strlen >= len) {
+                return s;
+            }
+        }
+        return s;
+    }
+
+    //ongoing(true,'list-currenttime','','','toleft',1)
+    function ongoing(direction, listbox, prev, next, scrollto, scrollnum) {
+        var timer = null;
+        var timerout = null;
+        var pausetime = 0;
+        var speed = 1;
+
+        var list = document.getElementById(listbox);
+        var list_ul = list.getElementsByTagName('ul')[0];
+        var list_li = list_ul.getElementsByTagName('li');
+        if (prev && next) {
+            var prevbtn = document.getElementById(prev);
+            var nextbtn = document.getElementById(next);
+        }
+
+        var i = 0;
+        var str = list_ul.innerHTML + list_ul.innerHTML;
+        list_ul.innerHTML = str;
+        if (scrollto == 'toleft') {
+            list_ul.style.width = list_li[0].offsetWidth * list_li.length + 'px';
+        } else if (scrollto == 'totop') {
+            list_ul.style.height = list_li[0].offsetHeight * parseInt(list_li.length / scrollnum) + 'px';
+        }
+        for (i = 0; i < list_li.length; i++) {
+            list_li[i].onmouseover = function() {
+                stopMove();
+            };
+
+            list_li[i].onmouseout = function() {
+                startMove(direction);
+            };
+        }
+
+        if (prev && next) {
+            prevbtn.onmouseover = function() {
+                startMove(true);
+            };
+
+            nextbtn.onmouseover = function() {
+                startMove(false);
+            };
+        }
+        startMove(true);
+
+        function startMove(bLeft) {
+            direction = bLeft;
+
+            if (timer) {
+                clearInterval(timer);
+            }
+            timer = setInterval(doMove, 30);
+        }
+
+        function stopMove() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function doMove() {
+            var list = document.getElementById(listbox);
+            var list_ul = list.getElementsByTagName('ul')[0];
+            var list_li = list_ul.getElementsByTagName('li');
+
+            if (scrollto == 'toleft') {
+                var l = list_ul.offsetLeft;
+
+                if (direction) {
+                    l -= speed;
+                    if (l <= -list_ul.offsetWidth / 2) {
+                        l += list_ul.offsetWidth / 2;
+                    }
+                } else {
+                    l += speed;
+                    if (l >= 0) {
+                        l -= list_ul.offsetWidth / 2;
+                    }
+                }
+
+                if (Math.abs(l - Math.round(l / list_li[0].offsetWidth) * list_li[0].offsetWidth) < Math.ceil(speed / 2)) {
+                    stopMove();
+                    timerout = setTimeout(function() {
+                                startMove(direction);
+                            },
+                            pausetime);
+
+                    l = Math.round(l / list_li[0].offsetWidth) * list_li[0].offsetWidth;
+                }
+                list_ul.style.left = l + 'px';
+            } else if (scrollto == 'totop') {
+                var l = list_ul.offsetTop;
+                if (direction) {
+                    l -= speed;
+                    if (l <= -list_ul.offsetHeight / 2) {
+                        l += list_ul.offsetHeight / 2;
+                    }
+                } else {
+                    l += speed;
+                    if (l >= 0) {
+                        l -= list_ul.offsetHeight / 2;
+                    }
+                }
+
+                if (Math.abs(l - Math.round(l / list_li[0].offsetHeight) * list_li[0].offsetHeight) < Math.ceil(speed / 2)) {
+                    stopMove();
+                    timerout = setTimeout(function() {
+                                startMove(direction);
+                            },
+                            pausetime);
+
+                    l = Math.round(l / list_li[0].offsetHeight) * list_li[0].offsetHeight;
+                }
+                list_ul.style.top = l + 'px';
+            }
+        }
+    }
+
+    $('.pic2 .hong12').html('立即购买');
+
+    new_list();
+</script>
+</body>
+</html>

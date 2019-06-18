@@ -1,0 +1,330 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gbk">
+    <title>吃的是一种格调。一加美食地图带你领略京城饕餮盛宴3.0</title>
+    <style type="text/css">
+        /*通用样式*/
+        body{color:#cd5c5c; font:12px/22px "SimSun",Arial;background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#000; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#FF6600}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .box{width:100%; height:100%; position:relative;}
+        .head{ height:720px; position:relative; z-index:99; }
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .container{width:100%;  top:0;}
+        .head_white{  position: relative;  z-index: 999;  }
+        .zol_foot{  height: 100px;  padding-top: 40px;  }
+        .zol_foot,.zol_foot a{  color: #aaa;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  height: 722px;  width: 1000px;  }
+        .down{  position: absolute;  width: 47px;  height: 51px;  bottom: 40px;  left: 50%;  margin-left: -24px;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_head_btn.png") no-repeat 0 0;  cursor: pointer;  }
+        .head-mod{  position: absolute;   width: 145px;  height: 45px;  }
+        .head-mod table img{  border: 1px solid #fff;  }
+        .head-mod .hong12,.slh{  display: none;  }
+        .head-mod .hei18{  display: block;  font-family: 'microsoft yahei';  line-height: 45px; text-align: center;  }
+        .head-mod .hei18:hover{  color: #000;  }
+        .head-mod1{  top: 390px;  left: 236px;  }
+        .head-mod2{  top: 394px;  right: 242px;  }
+        .head-mod3{  top: 480px;  left: 325px;  }
+        .head-mod4{  top: 487px;  right: 315px;  }
+
+        .video-l{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_video_bg.jpg") no-repeat 100% 0;  }
+        .video-r{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_video_bg.jpg") no-repeat 0 0;  }
+        .video-c{  width: 1000px;  height: 640px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_video_bg.jpg") repeat 0 0;  }
+        .video-mod{  width: 1000px;  height: 600px;  margin-top: 40px;  background: #000; }
+
+        .show-l{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_show_l.jpg") no-repeat 100% 0;  }
+        .show-r{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_show_r.jpg") no-repeat 0 0;  }
+        .show-t{  width: 1000px;  height: 162px;  position: relative;  overflow: hidden;  }
+        .show-c{  width: 1000px;  height: 1348px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_show_c.jpg") no-repeat 0 0;  }
+        .clk{  position: absolute;   width: 78px;  height: 18px;  }
+        .clk1{  left: 390px;  top: 50px;  }
+        .clk2{  left: 516px;  top: 150px;  }
+        .clk3{  left: 390px;  top: 378px;  }
+        .clk4{  left: 460px;  top: 566px;  }
+        .clk5{  left: 400px;  top: 780px;  }
+        .pic{ position: absolute;}
+        .pic1{  width: 390px;  height: 242px;  top: 0;  left: 0;  }
+        .pic1 table img{  padding: 1px;  border: 1px solid #68d4d7;  }
+        .pic2{  width: 402px;  height: 242px;  top: 46px;  right: 0;  }
+        .pic2 table img{  padding: 1px;  border: 1px solid #ff8bd2;  }
+        .pic3{  width: 382px;  height: 242px;  top: 326px;  left: 0;  }
+        .pic3 table img{  padding: 1px;  border: 1px solid #fbd958;  }
+        .pic4{  width: 442px;  height: 302px;  top: 502px;  right: 0;  }
+        .pic4-con{ position: relative;  width: 300px; height: 300px;   border: 1px solid #68d4d7;  }
+        .pic4-box{ position: relative;  width: 298px; height: 298px;   border: 1px solid #fff; overflow: hidden;  }
+        .pic4-mod{  position: absolute;  height: 298px;  }
+        .pic4-btn{  position: absolute;  width: 72px;  height: 72px;  top: 120px; cursor: pointer  }
+        .pic4-btn1{  left: -85px;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_show_btn.png") no-repeat 0 0;  }
+        .pic4-btn2{  right: 55px;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_show_btn.png") no-repeat -72px 0;  }
+        .pic5{  width: 382px;  height: 242px;  top: 766px;  left: 0;  }
+        .pic5 table img{  padding: 1px;  border: 1px solid #ef7ebe;  }
+        .pic6{  width: 512px;  height: 182px;  top: 1006px;  right: 0;  }
+        .pic6 table img{  padding: 1px;  border: 1px solid #ccc;  }
+        .art{  position: absolute; }
+        .art1{  width: 425px;  height: 65px;  top: 255px;  left: 0; background: url("http://2.zol-img.com.cn/zt/tm_579/05fa58ed68/lg_art1.png") no-repeat 0 0  }
+        .art2{  width: 387px;  height: 131px;  top: 295px;  left: 598px;  background: url("http://2.zol-img.com.cn/zt/tm_57a/94f3598fd6/lg_art2.png") no-repeat 0 0 }
+        .art3{  width: 406px;  height: 162px;  top: 578px;  left: 0; background: url("http://2.zol-img.com.cn/zt/tm_57a/94f3598fd6/lg_art3.jpg") no-repeat 0 0  }
+        .art4{  width: 475px;  height: 132px;  top: 812px;  left: 510px; background: url("http://2.zol-img.com.cn/zt/tm_57a/94f5a9d0a5/lg_art4.png") no-repeat 0 0  }
+        .art5{  width: 406px;  height: 267px;  top: 1018px;  left: 0; background: url("http://2.zol-img.com.cn/zt/tm_57a/94f9fefd83/lg_art5.png") no-repeat 0 0  }
+        .art6{      width: 189px; height: 26px;top: 1205px;right: 270px;background: url("http://2.zol-img.com.cn/zt/tm_579/065436bb5c/lg_art6.png") no-repeat 0 0;  }
+
+        .exh-l{  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_exh_l.jpg") no-repeat 100% 0;  }
+        .exh-r{  background: #9188e5;  }
+        .exh-t{  width: 1000px;  height: 200px;  }
+        .exh-c{  position: relative;  width: 1000px;  height: 490px;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_exh_c.jpg") no-repeat 0 0;  }
+        .exh-mod{  left: 0;  top: 0;  position: absolute;  width: 1000px;  height: 420px;  }
+        .exh-mod table img{  border: 5px solid #73eaed;  }
+        .exh-mod .lan18{  text-indent: 20px;  font-family: 'microsoft yahei';  color: #9188E5;  }
+        .exh-mod .bai12{  display: block;  padding-left: 20px;  padding-bottom: 20px;  line-height: 20px; text-indent: 30px;  }
+        .exh-mod .hong12{  color: #73eaed;  }
+        .exh-mod #carousel-left591584{  bottom: 215px;  width: 32px;  height: 63px;  left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_exh_btn.png") no-repeat 0 0;  }
+        .exh-mod #carousel-right591584{  bottom: 215px;  width: 32px;  height: 63px;  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_578/85900b5e6b/lg_exh_btn.png") no-repeat -32px 0;  }
+
+        #move1,#move2,#move3,#move4{  opacity: 0;  }
+    </style>
+
+</head>
+<body style="height: 3562px;">
+<!--[if IE 6]>
+<script src=" http://active.zol.com.cn/frontend/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+    DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+<div class="box">
+    <!--头部-->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="head">
+        <tbody>
+        <tr>
+            <td class="head-l">&nbsp;</td>
+            <td width="1000" valign="top">
+                <div class="head-c">
+                    <{data[0]}>
+                    <div class="down"></div>
+                    <div class="head-mod head-mod1"><{data[1]}></div>
+                    <div class="head-mod head-mod2"><{data[2]}></div>
+                    <div class="head-mod head-mod3"><{data[3]}></div>
+                    <div class="head-mod head-mod4"><{data[4]}></div>
+                </div>
+            </td>
+            <td class="head-r">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+    <!--内容-->
+    <div class="container" style="position: fixed;">
+        <!--视频-->
+        <table class="video" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="video-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="video-c">
+                        <div class="video-mod">
+                            <{data[5]}>
+                        </div>
+                    </div>
+                </td>
+                <td class="video-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--游记-->
+        <table class="show" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="show-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="show-t">
+                        <{data[6]}>
+                    </div>
+                    <div class="show-c">
+                        <div class="clk clk1"></div>
+                        <div class="clk clk2"></div>
+                        <div class="clk clk3"></div>
+                        <div class="clk clk4"></div>
+                        <div class="clk clk5"></div>
+
+                        <div class="pic pic1">
+                            <{data[7]}>
+                        </div>
+                        <div class="pic pic2" id="move1" style="right: -300px; opacity: 0;">
+                            <{data[8]}>
+                        </div>
+                        <div class="pic pic3" id="move2" style="left: -300px; opacity: 0;">
+                            <{data[9]}>
+                        </div>
+                        <div class="pic pic4">
+                            <div class="pic4-con">
+                                <div class="pic4-box">
+                                    <div class="pic4-mod" style="width: 1788px; left: 0px;">
+                                        <{data[10]}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pic4-btn pic4-btn1"></div>
+                            <div class="pic4-btn pic4-btn2"></div>
+                        </div>
+                        <div class="pic pic5" id="move3" style="left: -300px; opacity: 0;">
+                            <{data[11]}>
+                        </div>
+                        <div class="pic pic6" id="move4" style="right: -300px; opacity: 0;">
+                            <{data[12]}>
+                        </div>
+
+                        <div class="art art1"></div>
+                        <div class="art art2"></div>
+                        <div class="art art3"></div>
+                        <div class="art art4"></div>
+                        <div class="art art5"></div>
+                        <div class="art art6"></div>
+                    </div>
+                </td>
+                <td class="show-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--图赏-->
+        <table class="exhibit" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td class="exh-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="exh-t">
+                        <{data[13]}>
+                    </div>
+                    <div class="exh-c">
+                        <div class="exh-mod">
+                            <{data[14]}>
+                        </div>
+                    </div>
+                </td>
+                <td class="exh-r">&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    /*页面初始化*/
+    var s_height = parseInt($('.head').height());
+    var b_height = parseInt($('.container').height());
+    var h =( s_height + b_height) +'px';
+    var scrollTop=0;
+    $('body').css({'height':h});
+
+    window.onscroll=function(){
+        scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+        scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollTop<=s_height){
+            if($('.container').css('position') !='fixed'){
+                $('.container').css('position','fixed');
+            }
+            $('#move1').stop().animate({'right':'-300px','opacity':'0'},300);
+            $('#move2').stop().animate({'left':'-300px','opacity':'0'},300);
+            $('#move3').stop().animate({'left':'-300px','opacity':'0'},300);
+            $('#move4').stop().animate({'right':'-300px','opacity':'0'},300);
+        }
+        if(scrollTop>s_height && scrollTop<742){
+            $('.container').css('position','');
+        }
+        if(scrollTop>1000){
+            $('.container').css('position','');
+            $('#move1').stop().animate({'right':'0','opacity':'1'},500);
+            if(scrollTop>1300){
+                $('#move2').stop().animate({'left':'0','opacity':'1'},500);
+            }
+            if(scrollTop>1700){
+                $('#move3').stop().animate({'left':'0','opacity':'1'},500);
+            }
+            if(scrollTop>2100){
+                $('#move4').stop().animate({'right':'0','opacity':'1'},500);
+            }
+        }
+    };
+
+    function setScrollTop(num){
+        document.body.scrollTop = num;
+        document.documentElement.scrollTop = num;
+    }
+
+    /*头部按钮*/
+    $('.down').click(function(){
+        var num = 1;
+        clearInterval(timer);
+        var timer = setInterval(function(){
+            setScrollTop(num*1.2);
+            num = num*1.2;
+            if(num >= s_height+40) clearInterval(timer);
+        },10);
+    });
+
+    /*多图片切换*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".pic4-mod",".pic4-box",1,".pic4-btn1",".pic4-btn2");
+</script>
+
+
+
+
+</body></html>

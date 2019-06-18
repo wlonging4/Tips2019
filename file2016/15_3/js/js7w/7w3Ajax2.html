@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域</title>
+</head>
+<body>
+【同源】策略：
+scheme://user:password@host:port/path;param?query#frag;
+ajax访问前提是scheme(协议http,ftp等协议)相同;域名(主域名和子域名都要相同)；
+cs.wenku.baidu.com三级子域名;端口号相同;
+XMLHttpRequest对象,只能保证在以上几种原则都相同的情况下才可以工作;
+    var xhr=new XMLHttpRequest;
+    xhr.open("GET","/ajax");
+    表示的是在当前域名下的/ajax;但是写http://www.qq.com/ajax;XHR不能访问加载这个地址;XHR跨域！
+    以上代码是我们部署在本地的代码,打开这个网页是http://localhost的方式;
+以上代码也是在一个代码中在运行,要保证这个网页和第二个参数中的域名是相同的才可以;否则会失败;
+
+JS外链文件可以引用其他网站上的资源,他的扩展也不必是js,并且还可能这外链文件并不存在,只是由后台语言的逻辑生成的(动态生成的)！
+用script标签的src属性,可以跨网站(跨域)引入一个文件,并且把这个文件里的文本信息当成JS代码来执行;
+如果你想跨域请求,首先你要知道访问哪个网页,并且知道得到的数据是什么格式,还要知道用什么回调方法处理这些数据;
+通过提供数据的这个网站会给你API接口;指定的网页,指定的数据格式;
+从后台拿到数据之后;先讲方法fn提前写好处理这个数据和参数;
+比如下面回调方法怎么指定;用查询字符串的
+</body>
+</html>

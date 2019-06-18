@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第二周第一天免费课</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*【DOM】:document object model;
+    DOM就是描述整个HTML页面的节点图谱；
+    DOM中提供了很多获取元素的方法和之间关系的属性以及操作这些元素的方法
+    获取页面中页面中元素的方法；
+    ①document.getElementById("");
+    如果页面的ID重复了，那我们选取的是第一个ID的元素；
+    在IE6/7中，会把表单元素的Name值当作ID来使用；若没有获取到元素，则返回值是null;在IE6/7中，不区分大小写；在项目上不要让表单元素的name和其他元素的ID重复，不要用id的大小写来区分我们不同的元素；
+    ②var oLis=document.getElementsByTagName("li");
+    oLis.length=oLis["length"];
+    oLis[0]获取第一个元素oLis.item(0);
+    ③context.getElementsByName("");
+    通过元素的name属性值获取一组元素；
+    <div name="div1"></div>...
+    在所有的IE浏览器下只对于表单元素起作用，应用于获取同样的name的表单元素；所以这个方法只应用于获取同样name的表单元素；
+    radio单选框；
+    <input type="radio" value="男" name="sex" checked="checked">男;
+    <input type="radio" value="女" name="sex">女;
+    <input type="button" id="btn">;
+    对于input里的radio进行分组，同样的name值是一个组，所以在同一个组里面只能选择一个；checked表示默认选中的;
+    var oBtn=document.getElementsByName("btn");
+    oBtn.onclick=function(){
+    var oSex=document.getElementsByName("sex");
+        var cur="";
+            for (var i=0;i<oSex.length;i++){
+                if(oSex[i].checked===true){
+                cur=oSex[i].value;
+            break;
+            }
+        console.log("cur");
+        }
+    }
+    ④context.getElementsByClassName("");
+    获取的是一个类数组，一个集合;
+    在IE6/7下不兼容;
+    ⑤document.documentElement->获取html元素；
+    document.body->获取body元素；
+    用来获取页面的信息等内容；
+    var curWidth=document.ducumentElement.clientWidth||document.body.clientWidth;
+    ⑥documet.querySelector();获取一个
+    document.querySelecorAll();获取多个，一个类数组;
+    在移动端获取元素常用的方法，在IE6~8下不兼容；
+    获取#tab这个id下的元素；
+    var oDiv=document.querySelector("#tab");
+    获取#tab这个id下的所有li元素；
+    var oLis=document.querySelectorAll("#tab li");
+    document.querySelecortAll("input[type='radio']");
+    jQuery下的选择器是参考css选择的规则实现的；
+
+    【节点Nodes】：一个页面的所有标签，文本，注释都是节点；
+    DOM下提供获取关系的属性
+    ①console.log(oDiv.childNodes);
+    获取div下所有的子节点；
+    其中包括了空格，回车；则增加了text这个节点。
+    ②console.log(oDiv.children);
+    获取div下所有的元素子节点；
+    只包括了节点元素；
+    方法模拟children方法实现获取指定元素下的元素子节点；
+
+    【函数标准注释】.
+    getMyChildren:获取指定元素下的所有元素节点【英】。
+    @parameter:参数
+       ele:[object]我们要获取那个对象就把那个传进来【英】。
+    @return:[Array]返回最终获取的元素子节点【英】。
+    By Moker on 2015/10/25;
+    function getMyChildren(ele,tagName){
+    var ary=[];
+    var allNodes=ele.childnodes;
+    for(var i=0;i<allNodes.length;i++){
+        var cur=nodes[i];
+        if(cur.nodeType===1){
+            if(tagName){
+                if(cur.nodeName.toLowerCase===tagName.toLowerCase){
+                    ary.push(cur);
+                }
+            }else{
+            ary.push(cur);
+            }
+        }
+    }
+    return ary;
+    }
+    nodeName是大写，但是tagName不一定是大写，所以用str.toLowerCase转换为小写；
+    其中[].nodes就是：
+    var ary=[];
+    var nodes=ele.childNodes;
+    ③console.log(oDiv.parentNode);
+    获取div的父亲节点；
+    ④console.log(oDiv.previousSibling);
+    （1）获取div的哥哥节点；
+    sibling获取的不仅仅是上一个元素节点，还有可能是文本节点;
+    var oLi3=document.getElementById("li3");
+    函数注释版
+    prev:获取元素的上一个哥哥节点：get a previous node of this element;
+    @parameter:
+      ele:the element you need to operate；
+    @return
+        [object]brother node of you want to get from;
+    By:Moker on XXX;
+    function prev(ele){
+    var pre=ele.previousSibling;
+    if(ele.previousElementSibling){
+    return ele.previousElementSibling；
+    }else{
+    while (pre&&pre.nodeType!==1);->while循环的好处，条件不用像for循环哪有要用一个确定的数值作为结束的条件;括号内可以写成（pre！=null&&pre.previousSilbling!===1）也就是说pre存在不为空并且pre的节点类型值不等于1.
+    {
+    pre=pre.previousSibling;->如果不是，就把当前找到的pre作为新的元素查找下一个previous节点;
+    }
+    }
+    return pre;
+    }
+    prev(oLi3);
+    （2）获取所有的previousSilbling;
+    function prevAll(ele){
+    var pre=ele.previousSibling,ary=[];//一次定义两个变量
+    while(pre){
+    if(pre.nodeType===1){
+    ary.unshift(pre);//从下往上找，所以要从前往后插入，不能用push,要用unshift;
+    ary[ary.length]=pre;等价于ary.push(pre);
+    }
+    pre=pre.previousSilbling;
+    }
+    return ary;
+    }
+    （3）优化版prevAll代码
+    function prevAll(curEle){
+    var ary=[];
+    var preEle=prev(curEle);
+    while(preEle){
+    ary.unshift(preEle);
+    preEle=prev(preEle);
+    }
+    }
+
+
+    【思考题】：
+    1.获取下一个弟弟元素节点next
+    function next(ele){
+    var nex1=ele.nextSibling;
+    if(ele.nextElementSibling){
+    return ele.nextElementSibling;
+    }else{
+    while(nex1&&nex1.type!==1){
+    nex1=nex1.nextSibling;
+    }
+    }
+    return nex1;
+    }
+    next(oLi3);
+    2.获取所有弟弟元素节点nextAll
+    function nextAll(ele){
+    var nxt=ele.nextSibling,ary=[];//一次定义两个变量
+    while(nxt){
+    if(pre.nodeType===1){
+    ary.push(pre);
+    }
+    pre=pre.nextSilbling;
+    }
+    return ary;
+    }
+    }
+    3.获取相邻的哥哥和弟弟元素节点sibling
+    function sibling(ele){
+    var ary=[];
+    ary.unshift(prev(ele));
+    ary.push(next(ele));
+    return ary;
+    }
+    4.获取所有的兄弟元素节点sibling
+    5.获取第一个子元素节点first
+     function first(ele) {
+            ele = ele.firstChild;
+            return ele && ele.nodeType != 1 ? next(ele) : ele;
+        }
+    6.获取最后一个元素节点last
+     function last(ele) {
+            ele = ele.lastChild;
+            return ele && ele.nodeType != 1 ? prev(ele) : ele;
+        }
+    7.获取当前元素的索引位置index
+
+    while循环只有条件和循环体，步长i++要加在循环体内;
+    for循环
+    for(var i=0;i<5;i++){
+    console.log(i);
+    }
+    等价于->
+    while循环
+    var i=0;
+    whlie(i<5){
+    console.log(i);
+    i++;
+    }
+
+    //【试题】：
+    for(var i=0;i<5;i++){
+    if(i<=5){
+    i+=1;
+    continue;
+    }else{
+    break;
+    i+=2;
+    }
+    }
+    console.log(i);
+    //答案：6;
+    //改写while循环:
+    var i=0;
+    while(i<5){
+         if(i<=5){
+         i+=1;
+         i++;//加这里；
+         continue;
+         }else{
+         break;
+         i+=2;
+         }
+    }
+    ⑤console.log(oDiv.nextSibling);
+    获取div的弟弟节点；
+    ⑥console.log(oDiv.firstChild);
+    获取所有子节点的第一个；
+    ⑦console.log(oDiv.lastChild);
+    获取所有子节点的最后一个；
+    需要掌握的节点：
+    元素标签node：nodeType=1;nodeName=大写标签名;nodeValue=null;
+    文字node:nodeType=3;nodeName=#text;nodeValue=文字内容;
+    注释node:nodeType=8;nodeName=#comment;nodeValue=注释内容；
+    document节点：nodeType=9;NodeName=#document;nodeValue=null;
+    输出查看
+   console.log(oDiv.nodeName/nodeType/nodeValue);
+
+
+
+    【DOM中的增删改】
+    ①动态创建一个标签的三个方法
+    创建一个动态元素
+    var oDiv=document.creatElement("div");必须加引号;
+    给样式
+    oDiv.id="div1";
+    oDiv.className="box";
+    oDiv.style.width="100px";
+    oDiv.style.height="200px";
+    oDiv.style.border="2px solid red";
+    oDiv.innerHTML="I am the first div";
+    添加到"指定容器"而不是一定是body->的末尾位置
+    document.body（容器）.appendChild(oDiv);
+    创建p
+    var op=document.creatElement("p");
+    0p.id="px"；
+    op.style.height:300px;
+    op.style.width:200px;
+    op.style.border:2px dashed green;
+    op.style.backgroundColor="red";
+    document.body.appendChild(op);
+
+
+    insertBefore:把新元素newEle添加到指定的位置->insertBefore(a,b);->a/b;把a添加到b之前;
+    document.body(指定容器).insertBefore(op,oDiv);
+    oDiv.parentNode（指定容器）.insertBefore(op,oDiv);
+    上面两种方法效果是一样的，因为oDiv.parentNode是已知的body;如果已知容器就不必再用parentNode获取了;
+    ②删除一个元素
+    document.parentNodes.removeChild('oDiv');
+    ->都要先找到被操作元素的的父元素,已知情况下为body容器内;
+    ③复制一个元素
+    var cop=op.cloneNode();克隆一份
+    var cop2=op.cloneNode(true);
+    cop.id="op1";
+    cop.style.backgroundColor="yellow";
+    document.body.appendChild(cop);添加到body内容的末尾位置;
+    cloneNode(true/false默认);
+    克隆元素true：把元素里面的子子孙孙都克隆掉；
+    克隆元素false(默认值)：只克隆当前的元素；
+    ④改变，替换一个元素；
+    var dd=document.creatElement("div");
+     oDiv.id="div1";
+     oDiv.style.width="100px";
+     oDiv.style.height="200px";
+     oDiv.style.border="2px solid blue"
+     oldEle.parentNode.replaceChild(newEle,oldEle);
+     op.parentNode.replaceChild(dd.op);//用dd替换op;
+     全都要先找到他的父元素->op.parentChild;
+
+
+
+     【增加自定义属性】
+     在某一个操作中有时候需要自己的一些值，但是为了防止现在的环境不影响现在的值，我们在之前把需要的值保存在自己的自定义属性里，等到用的是时候再取出来;
+     oDiv2.index=100；
+     console.log(oDiv.index)；
+     存储了，但是在html结构上没有显示出来，我们把oDiv2看作一个对象数据类型的值，然后再其对应的内存空间中增加一个indexs属性名，属性值为100;
+     删除oDiv.index=null/delete oDiv2.index
+     ①把clo看作一个对象数据类型，我们在他开辟的空间中增加一个属性名zhufeng
+     var clo={};
+     clo.zhufeng="1";
+     clo.zhufeng和clo["zhufeng"]内容一样
+     ②clo.setAtrribute();
+     oDiv.setAttribute("index",100);
+     包含自定义属性；
+     该方法修改了html结构;使用这个方法在html方法中可以体现出来；
+     clo.setAttribute("zhufeng"，"珠峰");
+     可以将添加内容写在html文件中clo元素里面；zhufeng="珠峰"；
+     获取方式只能是:console.log(clo.getAttribute("zhufeng"));
+     删除方式只能是:console.log(clo.removeArrtibute("zhufeng"));
+    方法的弊端:不能修改class属性（在IE6-8之下）;其他的属性值都可以设置；
+    clo.className="ccc";
+    clo.setAttribute("class","box");在IE6~8下不兼容;
+
+    【小案例】：
+    点击按钮让弹出层大小位置受控制
+    css部分：
+    body,div,input{
+    margin:0;
+    padding:0;
+    font-family:;
+    font-size:16px;
+    }
+    input{display:block;
+    margin:10px auto;
+    width:100px;
+    height:30px;
+    line-height:30px
+    }
+    html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;//设置没有显示滚动条
+    }
+    #bg{
+    display:none;
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;//默认0;
+    background:..;
+    opacity:0.5;
+    }
+    #layer{
+    dispaly:none;
+    position:absolute;
+    top:0;
+    left:0;
+    width:300px;
+    height:300px;
+    border:1px solid black;
+    background:..;
+    border-radius:;
+    box-shadow:;
+    }
+    html部分：
+    <input type="button" value="登录" id="input1">
+    <div id="bg"></div>
+    <div id="layer"></div>
+    js部分
+    var cw=document.documentElement.clienWith||document.body.clientWidth;
+    var ch=document.documentElement.clienHeight||document.body.clientHeight;
+    var layer=document.getElementById("layer");
+    layer.style.top=(ch-300)/2+'px';
+    layer.style.left=(ch-300)/2+'px';//设置layer居中
+    有的div弹出层不是事先写好的,而是动态创建的
+    var ch=document.documentElement.clientHeight||document.body.clientHeight;
+    var cw=document.documentElement.clientWidth||document.body.clientWidth;
+
+    var oIn=document.getElementById("input1");
+    //点击弹出
+    oIn.onclick=function(){
+     var bg=document.cteatElement("div");
+     bg.di="bg";
+     document.body.appendChild(bg);
+     var layer=document.creatElement("div");
+     layer.id="layer";
+     layer.style.top=(ch-300)/2+'px';
+     layer.style.left=(cw-300)/2+'px';
+     document.body.appendChild(layer);
+
+     layer.onclick=function(){
+     document.body.removeChlid(bg);
+     document.body.removeChlid(layer);//点击删除
+     }
+    }
+    拓展：点击增加从上往下添加。
+    拓展：点击淡入淡出。
+
+    【Math】数学方法
+    ①Math.abs();取绝对值；
+    Math.abs(-12.3);->12.3;
+    ②Math.ceil();向上取整;
+    Math.ceil(12.3);->13
+    Math.ceil(-12.3);->-12
+    ③Math.floor();向下取整；
+    Math.floor(12.8);->12
+    Math.floor(-12.8);->-13
+    ④Math.round();四舍五入;
+    Math.round(12.4);->12;
+    Math.round(-12.4);->-12;
+    Math.round(-12.6);->-13;
+    Math.round(-12.5);->-12;
+    四舍五入在正数下是4舍，5进1;
+    四舍五入在负数下是5舍，6进1;
+    ⑤Math.max();求最大值;
+    Math.max(ary);->ary的最大值;
+    ⑥Math.min();求最小值;
+    Math.min(ary);->ary的最小值;
+    ⑦Math.random();获取[0,1)之间的随机小数;
+    Math.random()->随机数;并且小数的位数长度也不一样;
+    获取n~m之间的随机整数;
+    Math.round(Math.random()*(m-n)+n);
+    设置个函数：
+    function getRandom(n,m){
+    n=Number(n);//不管传递什么值，先进性强制转换
+    m=Number(m);
+    //只要两个中有一个不是有效数字，就返回一个[0,1)之间的随机小数;
+    if(isNaN(n)||isNaN(m)){
+    return Math.random();
+    }
+    //n>m,默认交换位置;
+    var temp=n;
+    if(n>m){
+    n=m;
+    m=temp;
+    }
+    return Math.round(Math.random()*(m-n)+n);
+    }
+    获取4位0~60之间的随机整数；
+    var ary=[];
+    for(var i=0;i<4;i++){
+        ary.push(getRandom(0,60));
+    }
+    console.log(ary);
+    扩展：获取的四位是不重复的数组;
+     */
+
+</script>
+</body>
+</html>

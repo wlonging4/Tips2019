@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>惠普双十一电商狂欢节</title>
+    <style type="text/css">
+        /*reset*/
+        body{color:#ddd;font:12px/22px arial; background:#fafafa;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#ddd;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#aaa}
+        .hong12{color:#B20000;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .zol_foot{  height: 62px;  padding-top: 20px; background: #fafafa;   }
+        .zol_foot,.zol_foot a{  color: #888;  }
+        .wrapper{width:1000px; height: 781px;  margin:0 auto; position:relative;}
+
+        .p1-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p1_l.jpg") no-repeat 100% 0;  }
+        .p1-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p1_r.jpg") no-repeat 0 0;  }
+        .p1{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p1_c.jpg") no-repeat 0 0;  }
+        .p2-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p2_l.jpg") no-repeat 100% 0;  }
+        .p2-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p2_r.jpg") no-repeat 0 0;  }
+        .p2{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p2_c.jpg") no-repeat 0 0;  }
+        .p3-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p3_l.jpg") no-repeat 100% 0;  }
+        .p3-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p3_r.jpg") no-repeat 0 0;  }
+        .p3{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p3_c.jpg") no-repeat 0 0;  }
+        .p4-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p4_l.jpg") no-repeat 100% 0;  }
+        .p4-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p4_r.jpg") no-repeat 0 0;  }
+        .p4{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p4_c.jpg") no-repeat 0 0;  }
+        .p5-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p5_l.jpg") no-repeat 100% 0;  }
+        .p5-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p5_r.jpg") no-repeat 0 0;  }
+        .p5{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/lg_p5_c.jpg") no-repeat 0 0;  }
+        .p6-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p6_l.jpg") no-repeat 100% 0;  }
+        .p6-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p6_r.jpg") no-repeat 0 0;  }
+        .p6{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p6_c.jpg") no-repeat 0 0;  }
+        .p7-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p7_l.jpg") no-repeat 100% 0;  }
+        .p7-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p7_r.jpg") no-repeat 0 0;  }
+        .p7{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p7_c.jpg") no-repeat 0 0;  }
+        .p8-l{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p8_l.jpg") no-repeat 100% 0;  }
+        .p8-r{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p8_r.jpg") no-repeat 0 0;  }
+        .p8{  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/lg_p8_c.jpg") no-repeat 0 0; position: relative; overflow: hidden;  }
+
+        .foot{height:115px;padding:30px 0 0;text-align:center; color:#5d5f65;line-height:22px;}
+        .foot a{color:#5d5f65;}
+
+        #c .c-box{width:100%; margin-left:auto; margin-right:auto;}
+        #c .photowrap{width:100%; margin:0 auto;height:781px;overflow: hidden; position:relative;}
+        #c .photocon{height:781px;overflow: hidden;position: absolute;}
+        #c .photocon .listbox{width:100%; height:781px;overflow: hidden;float: left;position: relative;}
+        #c .photoprev,#c .photonext{display: block;  position:absolute; width:82px; height:83px; z-index:2; top:340px; cursor:pointer;}
+        #c .photoprev{left:50%; margin-left: -588px; background:url('http://2.zol-img.com.cn/zt/tm_581/862b9e5d80/btn1.png') no-repeat 0 0; }
+        #c .photonext{left:50%; margin-left: 500px; background:url('http://2.zol-img.com.cn/zt/tm_581/862b9e5d80/btn1.png') no-repeat -82px 0; }
+        #c .photoprev:hover{  background:url('http://2.zol-img.com.cn/zt/tm_581/862b9e5d80/btn2.png') no-repeat 0 0;  }
+        #c .photonext:hover{  background:url('http://2.zol-img.com.cn/zt/tm_581/862b9e5d80/btn2.png') no-repeat -82px 0;  }
+
+        #c .nav{  width: 206px;  height: 781px;  position: absolute;  top: 0;  right: -121px;  overflow: hidden;  }
+        #c .nav-btn{  float: left;  width: 85px;  height: 156px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_581/86732d780a/flow.png") no-repeat 0 0;  }
+        #c .nav-info{  position: relative;  float: left;  overflow: hidden;  width: 120px;  height: 781px;  background: url("http://2.zol-img.com.cn/zt/tm_581/86732d780a/nav.jpg") no-repeat 0 0;  }
+        #c .nav-close{  position: absolute;  width: 25px;  height: 25px;  top: 0;  right: 0;  cursor: pointer;  }
+        #c .side-nav{  margin-top: 50px;  width: 120px;  height: 700px;  }
+        #c .side-nav li{  width: 120px;  height: 82px;  margin-bottom: 18px;  cursor: pointer;  }
+        #c .side-nav li.li1{  background: url("http://2.zol-img.com.cn/zt/tm_581/86732d780a/dot1.png") no-repeat center;  }
+        #c .side-nav li.li2{  background: url("http://2.zol-img.com.cn/zt/tm_581/86732d780a/dot2.png") no-repeat center;  }
+        #c .side-nav li.li3{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/dot3.png") no-repeat center;  }
+        #c .side-nav li.li4{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/dot4.png") no-repeat center;  }
+        #c .side-nav li.li5{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/dot5.png") no-repeat center;  }
+        #c .side-nav li.li6{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/dot6.png") no-repeat center;  }
+        #c .side-nav li.li7{  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/dot7.png") no-repeat center;  }
+
+        .pro{  display: block;  position: absolute;  }
+        .p1-pro1{  top: 360px;  left: 0;  width: 595px;  height: 348px;  background: url("http://2.zol-img.com.cn/zt/tm_581/86127d8b88/pro1_1.png") no-repeat 0 0;  }
+        .p1-pro2{  top: 360px;  right: 0;  width: 438px;  height: 348px;  background: url("http://2.zol-img.com.cn/zt/tm_581/86127d8b88/pro1_2.png") no-repeat 0 0;  }
+        .p2-pro1{  top: 360px;  left: 5px;  width: 478px;  height: 395px;  background: url("http://2.zol-img.com.cn/zt/tm_581/86127d8b88/pro2_1.png") no-repeat 0 0;  }
+        .p2-pro2{  top: 360px;  right: 5px;  width: 475px;  height: 396px;  background: url("http://2.zol-img.com.cn/zt/tm_581/86127d8b88/pro2_2.png") no-repeat 0 0;  }
+        .p3-pro1{  top: 360px;  left: 5px;  width: 466px;  height: 370px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro3_1.png") no-repeat 0 0;  }
+        .p3-pro2{  top: 386px;  right: 0;  width: 511px;  height: 347px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro3_2.png") no-repeat 0 0;  }
+        .p4-pro1{  top: 380px;  left: 0;  width: 339px;  height: 337px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro4_1.png") no-repeat 0 0;  }
+        .p4-pro2{  top: 380px;  left: 370px;  width: 305px;  height: 337px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro4_2.png") no-repeat 0 0;  }
+        .p4-pro3{  top: 380px;  right: 0;  width: 290px;  height: 337px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro4_3.png") no-repeat 0 0;  }
+        .p5-pro1{  top: 380px;  left: 0;  width: 326px;  height: 322px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro5_1.png") no-repeat 0 0;  }
+        .p5-pro2{  top: 380px;  left: 370px;  width: 300px;  height: 322px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro5_2.png") no-repeat 0 0;  }
+        .p5-pro3{  top: 380px;  right: 0;  width: 269px;  height: 322px;  background: url("http://2.zol-img.com.cn/zt/tm_581/9a1fe70dde/pro5_3.png") no-repeat 0 0;  }
+        .p6-pro1{  top: 390px;  left: 0;  width: 372px;  height: 301px;  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/pro6_1.png") no-repeat 0 0;  }
+        .p6-pro2{  top: 350px;  left: 285px;  width: 426px;  height: 338px;  z-index: 3;  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/pro6_2.png") no-repeat 0 0;  }
+        .p6-pro3{  top: 390px;  right: 0;  width: 374px;  height: 320px;  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/pro6_3.png") no-repeat 0 0;  }
+        .p7-pro1{  top: 360px;  left: 20px;  width: 458px;  height: 309px;  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/pro7_1.png") no-repeat 0 0;  }
+        .p7-pro2{  top: 360px;  right: 20px;  width: 450px;  height: 309px;  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/pro7_2.png") no-repeat 0 0;  }
+
+        .p8-ul{  width: 880px;  height: 37px;  margin: 250px auto 0;  text-align: center;  }
+        .p8-ul li{  display: inline-block;  width: 182px;  height: 37px;  margin: 0 10px;  color: #cbede2;  text-align: center;  font:bold  18px/30px 'microsoft yahei';  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/li1.png") no-repeat top center;  }
+        .p8-ul li.act{  color: #000;  background: url("http://2.zol-img.com.cn/zt/tm_581/c48369c2b9/li2.png") no-repeat top center;  }
+        .p8-box{  width: 1000px;  height: 430px; margin-top: 10px;  overflow: hidden;  }
+        .p8-mod{  display: none;  width: 1000px;  height: 430px;  }
+        .p8-mod.blk{  display: block;  }
+    </style>
+</head>
+<body>
+<div class="c-box" id="c">
+    <div class="photowrap">
+        <ul class="photocon">
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p1-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p1">
+                                <a class="pro p1-pro1" href="http://item.jd.com/3836984.html" target="_blank"></a>
+                                <a class="pro p1-pro2" href="http://item.jd.com/3831100.html" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p1-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p2-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p2">
+                                <a class="pro p2-pro1" href="http://item.jd.com/1504116.html" target="_blank"></a>
+                                <a class="pro p2-pro2" href="http://item.jd.com/1290462.html" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p2-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p3-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p3">
+                                <a class="pro p3-pro1" href="http://item.jd.com/2927840.html" target="_blank"></a>
+                                <a class="pro p3-pro2" href="http://item.jd.com/3244140.html" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p3-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p4-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p4">
+                                <a class="pro p4-pro1" href="http://item.jd.com/1699138.html" target="_blank"></a>
+                                <a class="pro p4-pro2" href="http://item.jd.com/563461.html" target="_blank"></a>
+                                <a class="pro p4-pro3" href="http://item.jd.com/563461.html" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p4-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p5-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p5">
+                                <a class="pro p5-pro1" href="http://item.jd.com/1994881.html" target="_blank"></a>
+                                <a class="pro p5-pro2" href="http://item.jd.com/122074.html" target="_blank"></a>
+                                <a class="pro p5-pro3" href="http://item.jd.com/3454833.html" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p5-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p6-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p6">
+                                <a class="pro p6-pro1" href="http://item.jd.com/3147905.html" target="_blank"></a>
+                                <a class="pro p6-pro2" href="http://item.jd.com/3151133.html" target="_blank"></a>
+                                <a class="pro p6-pro3" href="https://detail.tmall.com/item.htm?spm=a1z10.3-b-s.w4011-
+15060133433.114.ZZqH8k&id=537525111105&rn=d2de9c7841f0f628196d94916ef8203b&abbucket=5&sku_properties=1627207:3232484" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p6-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p7-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p7">
+                                <a class="pro p7-pro1" href="http://item.jd.com/2384789.html" target="_blank"></a>
+                                <a class="pro p7-pro2" href="http://item.jd.com/2383738.html" target="_blank"></a>
+                            </div>
+                        </td>
+                        <td class="p7-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="p8-l">&nbsp;</td>
+                        <td width="1000" height="781" valign="top">
+                            <div class="wrapper p8">
+                                <ul class="p8-ul">
+                                    <li class="act">激光一体机</li>
+                                    <li>商用喷墨一体机</li>
+                                    <li>家用喷墨一体机</li>
+                                    <li>惠普原装耗材</li>
+                                </ul>
+                                <div class="p8-box">
+                                    <div class="p8-mod blk"><{data[1]}></div>
+                                    <div class="p8-mod"><{data[2]}></div>
+                                    <div class="p8-mod"><{data[3]}></div>
+                                    <div class="p8-mod"><{data[4]}></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p8-r">&nbsp;</td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div class="photoprev"></div>
+        <div class="photonext"></div>
+        <div class="nav clearfix">
+            <div class="nav-btn"></div>
+            <div class="nav-info">
+                <div class="nav-close"></div>
+                <ul class="side-nav">
+                    <li class="li1 act"></li>
+                    <li class="li2"></li>
+                    <li class="li3"></li>
+                    <li class="li4"></li>
+                    <li class="li5"></li>
+                    <li class="li6"></li>
+                    <li class="li7"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    photowrap("#c","#c .photocon","#c .photocon .listbox","#c .navigate li","#c .photoprev","#c .photonext","#c .side-nav li");
+
+    function photowrap(wrap, con, con_li, nav_span, prev, next,nav_span2) {
+        function showPics(index) {
+            /*if(index==0){
+             $(prev).hide();
+             }else{
+             $(prev).show();
+             }
+             if(index==4){
+             $(next).hide();
+             }else{
+             $(next).show();
+             }*/
+            var nowLeft = -index * sWidth;
+            $(con).stop(!0, !1).animate({
+                        left: nowLeft
+                    },
+                    300,
+                    function() {}),
+                    $(nav_span).removeClass("act").eq(index).addClass("act");
+            $(nav_span2).removeClass("act").eq(index).addClass("act");
+            if(index>7){
+                $(nav_span).removeClass("act").eq(index-1).addClass("act");
+                $(nav_span2).removeClass("act").eq(index-1).addClass("act");
+            }
+        }
+        function fullScreen(wrap, con_li) {
+            var ssWidth = $(wrap).width();
+            $(con_li).width(ssWidth)
+        }
+        var sWidth = $(wrap).width(),
+                len = $(con_li).length,
+                index = 0,
+                picTimer;
+        $(con).css("width", sWidth * len),
+                $(window).resize(function() {
+                    fullScreen(wrap, con_li),
+                            sWidth = $(wrap).width(),
+                            $(con).css("width", sWidth * len),
+                            showPics(index);
+                }),
+                fullScreen(wrap, con_li),
+                $(con_li).width(sWidth),
+                $(nav_span).click(function() {
+                    index = $(nav_span).index(this);
+                    v=index;
+                    showPics(index);
+                    $(nav_span).removeClass("act").eq(index).addClass("act");
+                    if(index>6){
+                        showPics(index+1);
+                    }
+                });
+        $(nav_span2).click(function() {
+            index = $(nav_span2).index(this);
+            v=index;
+            showPics(index);
+            $(nav_span2).removeClass("act").eq(index).addClass("act");
+            if(index>7){
+                showPics(index+1);
+            }
+        });
+        $(prev).click(function () {
+            index--,
+                    v=index;
+            index < 0 && (index = len - 1),
+                    showPics(index);
+            $("#photonav-img").attr("src", "http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav" + (index + 1) + ".png");
+        });
+        $(next).click(function () {
+            index++,
+                    v=index;
+            index == len && (index = 0),
+                    showPics(index);
+            $("#photonav-img").attr("src", "http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav" + (index + 1) + ".png");
+        });
+
+        /*鼠标滚屏*/
+        function addMouseWheel(oDiv, fn)
+        {
+            oDiv.onmousewheel=fnWheel;
+            if(oDiv.addEventListener)
+            {
+                oDiv.addEventListener('DOMMouseScroll', fnWheel, false);
+            }
+            function fnWheel(ev)
+            {
+                var oEvent=ev||event;
+                var bDown=true;
+                if(oEvent.wheelDelta)
+                {
+                    if(oEvent.wheelDelta<0)
+                    {
+                        bDown=true;
+                    }
+                    else
+                    {
+                        bDown=false;
+                    }
+                }
+                else
+                {
+                    if(oEvent.detail>0)
+                    {
+                        bDown=true;
+                    }
+                    else
+                    {
+                        bDown=false;
+                    }
+                }
+                fn(bDown);
+                if(!(oDiv.id == 'win')){
+                    if(oEvent.preventDefault)
+                    {
+                        oEvent.preventDefault();
+                    }
+                    return false;
+                }
+            }
+        }
+        function bor(){
+            var b = window.navigator.userAgent;
+            if(b.indexOf("WebKit")!=-1){
+                return document.body;
+            }
+            else{
+                return document.documentElement;
+            }
+        }
+
+        var v = 0;
+        var ret = false;
+        var s = bor();
+        addMouseWheel(document,function(wheel){
+            if(wheel){
+                if(ret){return;}
+                ret = true;
+                $(s).stop().animate({scrollTop:0},1000,function(){
+                    ret = false;
+                });
+                v++;
+                if(v>=7)v=7;
+                showPics(v);
+            }
+            else{
+                if(ret || v==0)return;
+                ret = true;
+                $(s).stop().animate({scrollTop:0},1000,function(){
+                    ret = false;
+                });
+                v--;
+                showPics(v);
+            }
+        });
+    }
+
+    /*选项卡*/
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('mouseenter', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.p8-ul li','act','.p8-box .p8-mod','blk');
+
+    /*右侧吸顶*/
+    var btn_flag=0;
+    var r_btn=$('.nav-btn'),r_close=$('.nav-close'),r_nav=$('.nav');
+    r_btn.bind('click', function () {
+        r_nav.stop().animate({'right':'-'+2+'px'},200);
+        if(btn_flag){
+            r_nav.stop().animate({'right':'-'+121+'px'},200);
+            btn_flag=0;
+            return false;
+        }
+        btn_flag=1;
+    });
+    r_close.bind('click', function () {
+        r_nav.stop().animate({'right':'-'+121+'px'},200);
+        btn_flag=0;
+    });
+
+</script>
+</body>
+</html>

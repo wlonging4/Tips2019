@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>Q+二代 为爱升级 开启家庭定制UI时代</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        .wrapper{  position: relative;  width: 960px;  margin: 0 auto;  }
+        .side{  height: 330px;  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_foot.jpg") repeat-x 0 0;  }
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_head_r.jpg") no-repeat 0 0;  }
+
+        .live{  padding-top: 30px;  height: 530px;  }
+        .live-l{  float: left;  width: 750px;  height: 530px;  padding-right: 20px;  }
+        .live-r{  float: left;  width: 190px;  height: 530px;  }
+        .live-r1{  width: 190px;  height: 250px;  padding-top: 20px; padding-bottom: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_573/026fdc758c/lg_video_l.jpg") no-repeat 0 0 }
+        .live-r1 .hei20{  font-size: 22px;  display: block;  line-height: 36px; padding-top: 30px }
+        .live-r1 .hei20:hover{  color: #000;  text-decoration: none;  }
+        .live-r2{  width: 190px;  height: 230px;  }
+        .live-r2 .hong12{  color: #006AB8;  }
+        .live-r2 .hui12{  line-height: 23px;  display: block;  }
+
+        .pro-t{  height: 80px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_pro_t.jpg") no-repeat 0 0;  }
+        .pro-c{  width: 960px;  height: 500px;  }
+        .pro-l{  float: left;  position: relative;  width: 600px;  height: 500px;  overflow: hidden;  }
+        .pro-l-box{  position: absolute;  top: 0;  left: 0;  width: 600px;  height: 500px;  }
+        .pro-l-box .lan20{  color: #006AB8;  display: block; font-family: "microsoft yahei" ; font-weight: bold ; line-height: 30px;  padding: 15px 0 5px 0;  }
+        .pro-l-box .lan20:hover{  color: #006AB8;  }
+        .pro-l-box.hui12{ display: block; padding: 0 30px 0 20px;  color: #999;  }
+        .pro-l-box .hong12{  color: #006AB8;  }
+        .pro-r{  float: left;  width: 320px;  height: 500px;  overflow: hidden;  }
+        .pro-li{  display: block;  _display: inline;  height: 145px;  width: 110px;  cursor: pointer;  float: left;  margin: 0 0 30px 50px;  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s1.jpg") no-repeat;  }
+        .pro-l1.post{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat 0 -2px;  }
+        .pro-l2.post{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat -160px -2px;  }
+        .pro-l3.post{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat 0 -173px;  }
+        .pro-l4.post{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat -160px -173px;  }
+        .pro-l5.post{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat 0 -342px;  }
+        .pro-l6.post{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat -160px -342px;  }
+        /*.pro-li:hover{  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_s2.jpg") no-repeat;  }*/
+        .pro-l1{  background-position: 0 -2px;  }
+        .pro-l2{  background-position: -160px -2px;  }
+        .pro-l3{  background-position: 0 -173px;  }
+        .pro-l4{  background-position: -160px -173px;  }
+        .pro-l5{  background-position: 0 -342px;  }
+        .pro-l6{  background-position: -160px -342px;  }
+
+        .e-t{  width: 960px;  height: 80px;  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_edit_t.jpg") no-repeat 0 0;  }
+        .e-c{  width: 960px;  height: 200px;  background: #f7f7f7;  }
+        .e-c .lan20{  color: #006AB8;  display: block; font-family: "microsoft yahei" ; font-weight: bold ; line-height: 30px;  padding: 20px 30px 0 20px;  }
+        .e-c .lan20:hover{  color: #006AB8;  }
+        .e-c .hui12{ display: block; padding: 0 30px 0 20px;  color: #999; word-break: normal }
+        .e-c .hong12{  color: #006AB8;  }
+
+        .u-t{  width: 960px;  height: 65px;  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_upd_t.jpg") no-repeat 0 0;  }
+        .u-c{  width: 960px;  height: 400px;  padding: 0 0  50px;  }
+        .u-c #carousel-left571307{  height: 70px;  width: 35px;  background: url("http://2.zol-img.com.cn/zt/tm_573/02006d8701/lg_btns.png") no-repeat 0 0;  }
+        .u-c #carousel-right571307{  height: 70px;  width: 35px;  background: url("http://2.zol-img.com.cn/zt/tm_573/02006d8701/lg_btns.png") no-repeat -35px 0;  }
+
+        .v-t{  width: 960px;  height: 55px;  background: url("http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_abt_t.jpg") no-repeat 0 0;  }
+        .v-c{  width: 960px;  height: 125px;  padding-bottom: 50px}
+        .v-c-l{  position: relative; width: 310px;  height: 125px;  float: left;  background: url("http://2.zol-img.com.cn/zt/tm_573/006641973a/lg_foot_l.jpg") no-repeat 0 0 }
+        .v-c-l .hui20{  display: block;  margin-top: -10px;  margin-bottom: -8px;  color: #999999;  font-family: 'microsoft yahei';  padding-left: 40px;  }
+        .v-c-l .hui20:hover{  text-decoration: none;  color: #999999;  }
+        .v-c-l .hui20 span{  color: #C71522;  font-size: 45px;  font-weight: bolder;  }
+        .v-c-l .slh{  display: none;  }
+        .v-c-l .hong20b{  font-family: 'microsoft yahei';  display: block;  padding-left: 40px;  }
+        .v-c-l .hong12{  display: block;  position: absolute;  width: 165px;  height: 50px;  bottom: 0;  right: 0;  cursor: pointer;  }
+        .v-c-r{  width: 610px;  height: 125px;  float: left;  padding-left: 40px;  }
+        .v-c-r .hui12bi{  color: #777;  display: block;  line-height: 30px;  }
+
+        .foot-c{  width: 960px;  height: 240px;  padding-top: 90px;  text-align: center; color: #9797a6 }
+        .foot-c a{  color: #9797a6;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <img src="http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_head_c1.jpg" width="960" height="330" alt=""/>
+            <img src="http://2.zol-img.com.cn/zt/tm_573/00297f0386/lg_head_c2.jpg" width="960" height="230" alt=""/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--直播-->
+<div class="live wrapper clearfix">
+    <div class="live-l">
+
+        <div id="mod_tenvideo_flash_player_1462931591428" class="tenvideo_player"><embed wmode="window" flashvars="vid=h01999jvcvu&tpid=3&showend=1&showcfg=1&searchbar=1&shownext=1&list=2&autoplay=1&outhost=http%3A%2F%2Fv.qq.com%2Fpage%2Fh%2Fv%2Fu%2Fh01999jvcvu.html&openbc=0&fakefull=1&title=%20%E5%88%9B%E7%BB%B4%E7%9B%92%E5%AD%90Q%2B%E4%BA%8C%E4%BB%A3%E7%BA%BF%E4%B8%8A%E7%9B%B4%E6%92%AD" src="http://imgcache.qq.com/tencentvideo_v1/player/TencentPlayer.swf?max_age=86400&v=20140714" quality="high" name="tenvideo_flash_player_1462931591428" id="tenvideo_flash_player_1462931591428" bgcolor="#000000" width="750px" height="530px" align="middle" allowscriptaccess="always" allowfullscreen="true" type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/"></div>
+    </div>
+    <div class="live-r">
+        <div class="live-r1">
+            <{data[1]}>
+        </div>
+        <div class="live-r2">
+            <{data[2]}>
+        </div>
+    </div>
+</div>
+<!--制作-->
+<div class="product wrapper">
+    <div class="pro-t"></div>
+    <div class="pro-c clearfix">
+        <div class="pro-l">
+            <div class="pro-l-box">
+                <{data[9]}>
+            </div>
+        </div>
+        <ul class="pro-r">
+            <li class="pro-li pro-l1 post"></li>
+            <li class="pro-li pro-l2"></li>
+            <li class="pro-li pro-l3"></li>
+            <li class="pro-li pro-l4"></li>
+            <li class="pro-li pro-l5"></li>
+            <li class="pro-li pro-l6"></li>
+        </ul>
+    </div>
+</div>
+<!--编辑-->
+<div class="edit wrapper">
+    <div class="e-t"></div>
+    <div class="e-c">
+        <{data[4]}>
+    </div>
+</div>
+<!--升级-->
+<div class="update wrapper">
+    <div class="u-t"></div>
+    <div class="u-c">
+        <{data[5]}>
+    </div>
+</div>
+<!--理念-->
+<div class="view wrapper">
+    <div class="v-t"></div>
+    <div class="v-c clearfix">
+        <div class="v-c-l">
+            <{data[6]}>
+        </div>
+        <div class="v-c-r">
+            <{data[7]}>
+        </div>
+    </div>
+</div>
+<!--尾部-->
+<table class="foot" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="side">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="foot-c side">
+                <{data[8]}>
+            </div>
+        </td>
+        <td class="side">&nbsp;</td>
+    </tr>
+</table>
+
+
+<script charset="gbk">
+    var $pro_li=$('.pro-li'),$pro_c=$('.pro-l-box');
+    $pro_li.bind('mouseenter', function () {
+        $(this).addClass('post').siblings().removeClass('post');
+        $pro_c.css({'left':'-'+$pro_li.index(this)*600+'px'});
+    });
+
+    $('.v-c-l').find('.hong12').html('');
+</script>
+</body>
+</html>

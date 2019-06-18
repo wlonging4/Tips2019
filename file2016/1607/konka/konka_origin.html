@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>康佳劲速电视</title>
+    <meta name="keywords" content="康佳劲速电视" />
+    <meta name="description" content="康佳劲速电视" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, figcaption { margin: 0; padding: 0; font-size: 32px; }
+        html, body { height: 100%; }
+        body { -webkit-tap-highlight-color: rgba(0,0,0,0); background-color: #fff; color: #000; font: 32px/1.5 "microsoft yahei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a { color: #000; text-decoration: none; }
+        a img { border: 0 none; }
+        img { display: block; }
+        table { border-collapse: collapse; border-spacing: 0; }
+        th, td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*背景音乐*/
+        #audio {width: 0;height: 0;position: absolute;z-index: -66;bottom: 0;left: 0;}
+        #btn-music {position: fixed;top: 85px;left: 20px;width: 48px; height: 48px;z-index: 1000;}
+        #btn-music p { width: 100%;height: 100%;line-height: 48px;overflow: hidden;}
+        #btn-music p#on{display:block;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAzBAMAAAAjuJYaAAAAA3NCSVQICAjb4U/gAAAAMFBMVEX///8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzOGvfDjAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8wNi8xNg5pEkYAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAAB/ElEQVQ4jXWUzU7bQBSFb9KAnVCkdE2p8gQlD4BoJFgn3SB2NW8QP0GTN8Crbg1PkDxC03UkE7quIv62WOIvQH5Oz9jOdKaYkSKP5ptz594zdyLyaoTB6zU1VuJJPqgAX/MVwIW98iH7HmFqra/+8dNJGTg0QRu36nNQK44xMgXAHT8uzsTDkyVIwCfMqhXMq2YuCWCyQSmGr8G3DBQj3EsPA1NAUPohTSbbIsyGl4Imui4LX9enJwKCDh4LEfquPt3DUrGotXH/DqingjgDDnPaZJwxay/s7e1+RwaYz2WZlYQIZBt6EOxgUmKcNvONLFDhdsZp0Zj4H6CJansPwRauTfBSkwK3d9BXCRhAGdFD18PpR7xYYKKu77iF8zXMLDBV7v/8ggsab4FZlR4MtnBbwcICcwVGOYCKN0IJ/e3z8A0eZ4JnNi4CRvs/3d9Ch/ykwIkJZg0pxmiEypIrE9BEhzeVa+J7PBcT2/s8zVR4eHAwr6mLcobDYaRBhAFFydVK0rAZ4MTfwYNuBnqagiaL72Hk6PZxM9Bh68ToqmhiSJJOpE11RlsCNwXsXY+7Q/zS3R4i6/YxzvjralCGfh++i0VdTEn6oqbymd6KKVm+wSNaKKZEAb5alndsgvLNSTrZsI7g2Nc1PUne4Osa5QIm3MhXxI+568t/uL8LSUZEVrFEOgAAAABJRU5ErkJggg==) no-repeat;}
+        #btn-music p#off {display:none;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAArBAMAAAD1Wqe3AAAAA3NCSVQICAjb4U/gAAAAMFBMVEX///8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzOGvfDjAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNy8wNi8xNg5pEkYAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzbovLKMAAABZklEQVQ4jZWTPU7DQBCFxzIEu0GmhztwAJQqHQ0NLdBAiTkCNwB6JIsTcIZAi/AJEEKRKLGUoCiRHT9mdmfttWQXbLPjT292fk00viB39pzxmFBYrNzX6OPGGjGmtAvcK08xN3eQo6QRsE6sHFgYYx+YEZ2Bvazc8jBHfchXgUoctqF8DLzqzW7iZ/iW6ij8FD+RG566dyXON50r5+ilzUPywiWUZ23e4gDlMafd1C8iy4PnVh5MJseOs+fSiY/QnF+O1LQxb3ntyamAd+qTfj6jXi4N6+Ne7h1eDvBqgG/+yeukn+NlgHsFdLhXsMfX8Prp8XnqNTRr+YKnjlvlO2/vDadrr0dB3nLePjwo50FWmXLZPrtuRjKNHDdfhlvFnXJZpo0UJynwi5HjEk2KSzWDTLk48PRFZzYsdlx2bkkHwKqpz/5HscyN42tHYsdZ8cXvew1RHkm3o6aB8c+TWlfUOaet+QcKr+Sp1cxqZwAAAABJRU5ErkJggg==) no-repeat !important;}
+
+        /*头部通栏*/
+        .title{  position: fixed;top: 0;width: 640px; height: 65px;z-index: 1000;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_title.png") no-repeat 0 0;  }
+        .hide{  display: none;  }
+
+        /*下滑按钮*/
+        #swipe { position: absolute; z-index: 10; left: 50%; bottom: 40px; width: 60px; margin-left: -30px; height: 32px; overflow: hidden; color: rgba(0,0,0,0); background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAgBAMAAAC8xgahAAAAA3NCSVQICAjb4U/gAAAAMFBMVEX///////////////////////////////////////////////////////////////9Or7hAAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDYvMTIvMTYaHKcVAAAA/ElEQVQokWPgnMCAEwDl5v/ELQ2Um/8fp3bO/z/BGJdmkE6c2iEacWrHYy3FgFEBhRuOJm3zGEKzdYBA5/8CmIT17t3n/+zevR3CY+no6P4LVOCApNV/A7JBHL9RzOVdMX9G51Oc0vy/Ozp6/yJJ/w2Cs5mB0j84dkn/QJY+vwjGnt8AlOb+yY0s/Vv2nwLzfwh4CJL+gSrNgvAXAxZphj4FZGneL2jSKC7/If8Zr3T/Be7vOKVZk9/VvmnCKc1g95ih7p8CLmn21wYMzO8XwPlsL5BlmWYYAEmbBgbSADDx4UnXoESLN3nO/49HM0g7/rR9/y8+WQbeC6h8ABIgebkWj2wxAAAAAElFTkSuQmCC') no-repeat; -webkit-animation: swipe-ani infinite .5s; animation: swipe-ani infinite .5s; }
+        #swipe.last { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAgBAMAAAC8xgahAAAAA3NCSVQICAjb4U/gAAAAMFBMVEX////qZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fJ+QCEAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDUvMzEvMTZDgUEGAAABNklEQVQokcXPMUvDQBQH8JeahCgO+QQitbNkcE+K55yO2exY6KR0t0ONBw5Z3czuYEEEIUPdBUs/gIXuFYckWFA836VNoD3vVt9wd7kf/5d3AGtlnoGqOlcqNShtKzigNFSFw0ARRzPkca1eVw0mqdoxLkfQIIScNxwAvTnA40k5hPljA4wgYoxleylANGS8hivWWYx3EPUIaW59g/ZuE3LbI07JX3nBHv+I+jsZ37zq33o+tSveTU/7G5z5ccW1+Rw22co5vyRjDF6kAmtTG/mGXuNj7j8FBj8umxuL132Brbzkw4n7LLD2VvLIsxYCg/+xvOE29gTeZnzy5MGdALizNTYf8bkJdBPkuxZ2eALoOvCPpXVoi+/1A/tPN+llsQ4k+SK+6iGJL1tI4qEijPE2BPIw1i+7JXmnPpPEgAAAAABJRU5ErkJggg=='); }
+        #swipe @-webkit-keyframes swipe-ani {
+                   0% { -webkit-transform: translate(0,0); }
+                   50% { -webkit-transform: translate(0,-4px); }
+               }
+        @keyframes swipe-ani {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(0,-4px); }
+        }
+
+        /*动画*/
+        .float-left, .float-right, .float-up, .float-down, .float-scale { -webkit-transition: 1s; transition: 1s; opacity: 0; }
+        .float-left { -webkit-transform: translate(30px,0); transform: translate(30px,0); }
+        .float-right { -webkit-transform: translate(-30px,0); transform: translate(-30px,0); }
+        .float-up { -webkit-transform: translate(0,10px); transform: translate(0,10px); }
+        .float-down { -webkit-transform: translate(0,-100px); transform: translate(0,-100px); }
+        .float-scale { -webkit-transform: scale(1.1); transform: translate(1.1); }
+        .float-show1 { opacity: 0; -webkit-transform: scale(0.5); transform: translate(0.5); }
+        .float-show2 { opacity: 0; -webkit-transform: rotate(60deg); transform: rotate(60deg); }
+        .flow-exh{  opacity: 0;  }
+        .current .float-left, .current .float-right, .current .float-up, .current .float-down, .current .float-scale { -webkit-transform: none; transform: none; opacity: 1; }
+
+        .show-right-top{  opacity: 0;  transform: translate(-200px,200px) rotate(-60deg);-webkit-transform: translate(-200px,200px) rotate(-60deg);  }
+        .show-left-top{  opacity: 0;  transform: translate(200px,200px) rotate(60deg);-webkit-transform: translate(200px,200px) rotate(60deg);  }
+        .show-left-down{  opacity: 0;  transform: translate(200px,-200px) rotate(10deg);-webkit-transform: translate(200px,-200px) rotate(10deg);  }
+
+        .show-fly-down1, .show-fly-down2, .show-fly-down3 { opacity: 0; transform: translate(-40px,-40px); -webkit-transform: translate(-40px,-40px); }
+        .show-fly-up1, .show-fly-up2 { opacity: 0; transform: translate(40px,40px); -webkit-transform: translate(40px,40px); }
+        .show-finger{  opacity: 1;  transform: translate(0,0);  }
+
+        @keyframes show-hide1 {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { transform: none; opacity: 1; }
+        }
+
+        @-webkit-keyframes show-hide1 {
+            0% { opacity: 0; -webkit-transform: scale(0.5); }
+            100% { -webkit-transform: none; opacity: 1; }
+        }
+
+        @keyframes show-hide2 {
+            0% { opacity: 0; transform: rotate(60deg); }
+            100% { opacity: 1; transform: rotate(0deg); }
+        }
+
+        @-webkit-keyframes show-hide2 {
+            0% { opacity: 0; -webkit-transform: rotate(60deg); }
+            100% { opacity: 1; -webkit-transform: rotate(0deg); }
+        }
+
+        @keyframes show-fly-down {
+            0% { transform: translate(20px,0); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+
+        @-webkit-keyframes show-fly-down {
+            0% { -webkit-transform: translate(20px,0); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+
+        @keyframes show-fly-up {
+            0% { transform: translate(-20px,0); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+
+        @-webkit-keyframes show-fly-up {
+            0% { -webkit-transform: translate(-20px,0); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up2 {
+            0% { transform: translate(0px,30px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+
+        @-webkit-keyframes show-fly-up2 {
+            0% { -webkit-transform: translate(0px,30px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up3 {
+            0% { transform: translate(0px,10px) scale(1.02);  }
+            100% { transform: translate(0,0); scale(1)}
+        }
+
+        @-webkit-keyframes show-fly-up3 {
+            0% { -webkit-transform: translate(0px,10px) scale(1.02);  }
+            100% { -webkit-transform: translate(0,0) scale(1);  }
+        }
+
+        @-webkit-keyframes flow-exh {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes flow-exh {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes music {
+            0% { transform: rotate(0deg);  }
+            50% { transform: rotate(180deg);  }
+            100% { transform: rotate(360deg);  }
+        }
+
+        @-webkit-keyframes music {
+            0% { -webkit-transform: rotate(0deg); }
+            50% { -webkit-transform: rotate(180deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes show-finger {
+            0% {    transform: translate(0px,0px) scale(1);  }
+            15%{    transform: translate(0px,0px) scale(0.9);  }
+            30%{  opacity: 1;  transform: translate(0px,0px) scale(1);  }
+            100% {  opacity: 1;  transform: translate(-345px,0px);  }
+        }
+
+        @-webkit-keyframes show-finger {
+            0% {    -webkit-transform: translate(0px,0px) scale(1);  }
+            15%{    -webkit-transform: translate(0px,0px)  scale(0.9);  }
+            30%{  opacity: 1;  -webkit-transform: translate(0px,0px) scale(1);  }
+            100% {  opacity: 1;  -webkit-transform: translate(-345px,0px);  }
+        }
+
+        @keyframes show-right-top {
+            0%{  opacity: 0;  transform: translate(-200px,200px) rotate(-60deg);  }
+            /*50%{  opacity: 0.5;  transform: translate(-100px,100px) rotate(-30deg);  }*/
+            100%{  opacity: 1;  transform: translate(0px,0px) rotate(0deg);  }
+        }
+        @-webkit-keyframes show-right-top {
+            0%{  opacity: 0;  -webkit-transform: translate(-200px,200px) rotate(-60deg);  }
+            /*50%{  opacity: 0.5;  -webkit-transform: translate(-100px,100px) rotate(-30deg);  }*/
+            100%{  opacity: 1;  -webkit-transform: translate(0px,0px) rotate(0deg);  }
+        }
+        @keyframes show-left-top {
+            0%{  opacity: 0;  transform: translate(200px,200px) rotate(60deg);  }
+            100%{  opacity: 1;  transform: translate(0px,0px) rotate(0deg);  }
+        }
+        @-webkit-keyframes show-left-top {
+            0%{  opacity: 0;  -webkit-transform: translate(200px,200px) rotate(60deg);  }
+            100%{  opacity: 1;  -webkit-transform: translate(0px,0px) rotate(0deg);  }
+        }
+        @keyframes show-left-down {
+            0%{  opacity: 0;  transform: translate(200px,-200px) rotate(10deg);  }
+            100%{  opacity: 1;  transform: translate(0px,0px) rotate(0deg);  }
+        }
+        @-webkit-keyframes show-left-down {
+            0%{  opacity: 0;  -webkit-transform: translate(200px,-200px) rotate(10deg);  }
+            100%{  opacity: 1;  -webkit-transform: translate(0px,0px) rotate(0deg);  }
+        }
+
+        .current .float-show1 { animation: show-hide1 1s ease-in 1 forwards; -webkit-animation: show-hide1 1s ease-in 1 forwards; }
+        .current .float-show2 { animation: show-hide2 0.5s ease-in 0.4s forwards; -webkit-animation: show-hide2 0.5s ease-in 0.4s forwards; }
+        .current .show-fly-down1 { animation: show-fly-down 1s ease-in 0s forwards; -webkit-animation: show-fly-down 1s ease-in 0s forwards; }
+        .current .show-fly-down2 { animation: show-fly-down 1s ease-in 0.4s forwards; -webkit-animation: show-fly-down 1s ease-in 0.4s forwards; }
+        .current .show-fly-up1 { animation: show-fly-up 1s ease-in 0s forwards; -webkit-animation: show-fly-up 1s ease-in 0s forwards; }
+        .current .show-fly-up2 { animation: show-fly-up 0.6s ease-in 0.4 forwards; -webkit-animation: show-fly-up 0.6s ease-in 0.4s forwards; }
+        .current .show-top1 { animation: show-fly-up2 0.4s ease-in forwards; -webkit-animation: show-fly-up2 0.4s ease-in forwards; }
+        .current .show-top2 { animation: show-fly-up2 0.4s ease-in 0.3s forwards; -webkit-animation: show-fly-up2 0.4s ease-in 0.3s forwards; }
+        .current .show-top3 { animation: show-fly-up2 0.4s ease-in 0.6s forwards; -webkit-animation: show-fly-up2 0.4s ease-in 0.6s forwards; }
+        .current .show-top4 { animation: show-fly-up2 0.4s ease-in 0.9s forwards; -webkit-animation: show-fly-up2 0.4s ease-in 0.9s forwards; }
+        .current .flow-exh { animation: flow-exh 0.8s ease-in 0.2s forwards; -webkit-animation: flow-exh 0.8s ease-in 0.2s forwards; }
+        .current .show-finger { animation: show-finger 2s ease-in-out infinite; -webkit-animation: show-finger 2s ease-in-out infinite; }
+        .current .show-right-top{  animation: show-right-top 1.2s ease-in forwards; -webkit-animation: show-right-top 1.2s ease-in-out forwards;  }
+        .current .show-left-top{  animation: show-left-top 1.2s ease-in forwards; -webkit-animation: show-left-top 1.2s ease-in-out forwards;  }
+        .current .show-left-down{  animation: show-left-down 1s ease-in forwards; -webkit-animation: show-left-down 1s ease-in-out forwards;  }
+        #btn-music p.music { animation: music 4s linear infinite; -webkit-animation: music 4s linear infinite; }
+
+        /*lg_style*/
+        #viewport {width: 640px; height: 100%; margin: 0 auto; overflow: hidden;}
+        .container {height: 100%;width:800%;}
+        section{position:relative;float:left;width:640px;height: 100%; overflow: hidden;}
+        /*.container { height: 100%; width: 500% }
+        section { height: 100%; width: 100%; overflow: hidden; position: relative; background-size: cover; background-repeat: no-repeat; background-position: top center; }*/
+        /*#viewport { width: 640px; height: 100%; margin: 0 auto; overflow: hidden; }*/
+        .para{  color: #212121;  }
+        .para-weight{  font-weight: bolder; color: #222;  }
+        .para-xxl{  font-size: 60px;  }
+        .para-xl{  font-size: 40px;  }
+        .para-x{  font-size: 34px;  }
+        .para-right{  text-align: right;  }
+        .ch-btn{  position: absolute;  width: 320px;  height: 70px;  line-height: 66px;  color: #fff;  text-align: center;  font-size: 40px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_btn.png") no-repeat;  }
+
+        .p1-box{  margin: 135px auto 0;  position: relative;  width: 550px;  height: 655px;  }
+        .p1-box-t1{  position: absolute; left: 0;  width: 548px;  height: 98px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_txt1.png") no-repeat;  }
+        .p1-box-t2{  position: absolute; top: 110px;  left: 38px;  width: 476px;  height: 42px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_txt2.png") no-repeat;  }
+        .p1-box-pro1{  position: absolute;  top: 165px;  left: -60px;  width: 407px;  height: 349px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_pro1.png") no-repeat;  }
+        .p1-box-pro2{  position: absolute;  top: 375px;  right: -85px;  width: 338px;  height: 260px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_pro2.png") no-repeat;  }
+        .p1-slide{  position: relative; margin: 0 auto;  width: 440px;  height: 95px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_slide.png") no-repeat;  }
+        .p1-finger{  position: absolute; top: 0;  right: 0;  width: 95px;  height: 95px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_finger.png") no-repeat;  }
+
+        .p2-box{  margin: 150px auto;  position: relative;  width: 580px;  height: 675px;  }
+        .p2-box-pro{  position: absolute;  top: 210px;  left: 50%;  margin-left: -500px;  width: 840px;  height: 620px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p2_pro.png") no-repeat 0 0;  }
+
+        .p3-box{  margin: 80px auto;  position: relative;  width: 630px;  height: 850px;  }
+        .p3-box-pro{  position: absolute;  top: 0;  left: 50%;  margin-left: -320px;  width: 640px;  height: 578px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p3_pro.png") no-repeat;  }
+        .p3-box-article{  position: absolute;  top: 510px;  left: 50%;  margin-left: -300px;  height: 210px;  width: 600px;  }
+
+        .p4-box{  position: relative;  width: 100%; height: 100%; z-index: 10;  }
+        .p4-article{  position: relative;  margin: 150px auto;  width: 600px;  height: 400px;  }
+        .p4-box-pro{  position: absolute;  bottom: 0; right: 0; background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p4_pro.png") no-repeat; width: 565px; height: 693px;  }
+
+        .p5-box{  margin: 80px auto;  position: relative;  width: 630px;  height: 850px;  }
+        .p5-box-pro{  position: absolute;  top: 70px;  left: 50%;  margin-left: -320px;  width: 640px;  height: 428px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p5_pro.png") no-repeat;  }
+        .p5-box-article{  position: absolute;  top: 500px;  left: 50%;  margin-left: -300px;  height: 260px;  width: 600px;  }
+
+        .p6-box{  margin: 110px auto;  position: relative;  width: 580px;  height: 700px;  }
+        .p6-box-pro{  position: absolute;  top: 280px;  left: 50%;  margin-left: -270px;width: 542px; height: 460px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p6_pro.png") no-repeat 0 0;  }
+
+        .p7-box{  margin: 0 auto;  position: relative;  width: 630px;  height: 850px;  }
+        .p7-box-pro{  position: absolute;  top: 90px;  left: 50%;  margin-left: -280px;  width: 560px; height: 380px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p7_pro.png") no-repeat;  }
+        .p7-box-article{  position: absolute;  top: 470px;  left: 50%;  margin-left: -300px;  height: 260px;  width: 600px;  }
+
+        .p8-box{  margin: 150px auto 0;  width: 550px;  height: 604px;  }
+        .p8-box-t1{  width: 548px;  height: 98px;  background: url("http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p1_txt1.png") no-repeat;  }
+        .p8-article{  width: 550px;  height: 470px; margin-top: 20px;  text-align: center;  }
+        .p8-art{  margin: 0 auto;  font-size: 40px;  text-align: center;  color: #383838;  padding-bottom: 10px;  padding-top: 10px;  border-bottom: 1px solid #d7d7d7;  opacity: 0;  }
+        .art1{  width: 304px;  }
+        .art2{  width: 374px;  }
+        .art3{  width: 368px;  }
+        .art4{  padding-bottom: 0;  border: none;  }
+        /*分享按钮*/
+        .shareBox { width: 580px; height: 125px; margin: 0 auto 0; overflow: hidden; }
+        .share { width: 580px; height: 125px; text-align: center; }
+        .share a { display: inline-block; width: 124px; height: 124px;  background: url('http://2.zol-img.com.cn/zt/tm_577/e136abe6c2/lg_p8_share.png') no-repeat; vertical-align: top; overflow: hidden;  color: rgba(0,0,0,0); margin:0 10px; }
+        .share a.weibo { background-position: 0 0; }
+        .share a.wechat { background-position: -126px 0; }
+        .share a.qzone { background-position: 0 -126px; }
+        .share a.tencent-weibo { background-position: -126px -126px; }
+
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--BGM-->
+<audio id="audio" autoplay loop src="http://icon.zol-img.com.cn/active/m/id5924017.mp3" preload="auto"></audio>
+<div id="btn-music">
+    <p id="off"></p>
+    <p id="on"></p>
+</div>
+<!--title-->
+<div class="title"></div>
+<!--content-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container clearfix" id="main">
+        <section id="slide1">
+            <div class="p1-box">
+                <div class="p1-box-t1 float-right"></div>
+                <div class="p1-box-t2 float-left"></div>
+                <div class="p1-box-pro1 show-right-top"></div>
+                <div class="p1-box-pro2 show-left-top"></div>
+            </div>
+            <div class="p1-slide">
+                <div class="p1-finger show-finger"></div>
+            </div>
+        </section>
+        <section id="slide2">
+            <div class="p2-box p1" id="p11">
+                <div class="para para-xxl show-fly-up1">康佳V91 OLED电视</div>
+                <div class="para para-xl show-fly-up1">每个像素自发光的有机电视</div>
+                <div class="para para-xl para-weight show-fly-up1">OLED技术</div>
+                <div class="para para-x  show-fly-up1">无限对比度-细节完美呈现</div>
+                <div class="p2-box-pro show-left-down"></div>
+            </div>
+        </section>
+        <section id="slide3">
+            <div class="p3-box p1" id="p12">
+                <div class="p3-box-pro float-left"></div>
+                <div class="p3-box-article">
+                    <div class="para para-xxl show-fly-up1">康佳V91 OLED电视</div>
+                    <div class="para para-xl show-fly-up1">每个像素自发光的有机电视</div>
+                    <div class="para para-xl para-weight show-fly-up1">4色WRGB技术</div>
+                    <div class="para para-x show-fly-up1">最真实的色彩还原</div>
+                </div>
+            </div>
+        </section>
+        <section id="slide4">
+            <div class="p4-box p2" id="p21">
+                <div class="p4-article">
+                    <div class="para para-xxl show-fly-up1">康佳X81系列</div>
+                    <div class="para para-xl para-weight show-fly-up1">薄光溢彩 唯快不破</div>
+                    <div class="para para-x show-fly-up1">完美画质与超薄工艺</div>
+                    <div class="para para-x show-fly-up1">技术和艺术的完美结合</div>
+                </div>
+                <div class="p4-box-pro float-left"></div>
+            </div>
+        </section>
+        <section id="slide5">
+            <div class="p5-box p2" id="p22">
+                <div class="p5-box-pro flow-exh"></div>
+                <div class="p5-box-article">
+                    <div class="para para-xxl show-fly-up1">康佳X81系列</div>
+                    <div class="para para-xl show-fly-up1">薄光溢彩 唯快不破</div>
+                    <div class="para para-xl para-weight show-fly-up1">真"彩"实料</div>
+                    <div class="para para-x show-fly-up1">康佳独有的真彩色轮引擎</div>
+                </div>
+            </div>
+        </section>
+        <section id="slide6">
+            <div class="p6-box p3" id="p31">
+                <div class="para para-right para-xxl show-fly-down1">康佳S8000系列</div>
+                <div class="para para-right para-xl show-fly-down1">超广色域 真彩背光</div>
+                <div class="para para-right para-xl para-weight show-fly-down1">超广色域</div>
+                <div class="para para-right para-x show-fly-down1">114%NTSC极致色彩感染力</div>
+                <div class="p6-box-pro float-right"></div>
+            </div>
+        </section>
+        <section id="slide7">
+            <div class="p7-box p3" id="p32">
+                <div class="p7-box-pro float-down"></div>
+                <div class="p7-box-article">
+                    <div class="para para-xxl show-fly-up1">康佳S8000系列</div>
+                    <div class="para para-xl show-fly-up1">超广色域 真彩背光</div>
+                    <div class="para para-xl para-weight show-fly-up1">YIUI 5.2</div>
+                    <div class="para para-x show-fly-up1">易学教育、易K歌、儿童模式、轮播影院、易播互动、易控家居等,满足一家人的大屏娱乐需求</div>
+                </div>
+            </div>
+        </section>
+        <section id="slide8">
+            <div class="p8-box">
+                <div class="p8-box-t1 float-scale"></div>
+                <div class="p8-article">
+                    <div class="p8-art art1 show-top1">
+                        画面无延迟
+                    </div>
+                    <div class="p8-art art2 show-top2">
+                        17核以上强劲内"芯"<br/>带来极致智能体验
+                    </div>
+                    <div class="p8-art art3 show-top3">
+                        MEMC全程动态优化<br/>极速相映无拖影
+                    </div>
+                    <div class="p8-art art4 show-top4">
+                        真彩HDR技术甄显精彩视界
+                    </div>
+                </div>
+            </div>
+            <div class="shareBox">
+                <div class="share">
+                    <!--<a target="_self" class="weibo">sina</a>
+                    <a target="_self" class="wechat" href="#wechat">wechat</a>
+                    <a target="_self" class="qzone">QQ</a>
+                    <a target="_self" class="tencent-weibo">tencent</a>-->
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!--<div id="swipe" class="first" role="button">Scroll</div>-->
+
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<script charset="gbk">
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+    function addLoadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != 'function') {
+            window.onload = func;
+        } else {
+            window.onload = function() {
+                oldonload();
+                func();
+            }
+        }
+    }
+    /*function btnEvent(){
+     main.addEventListener('changed', function (e) {
+     var index = e.currentIndex;
+     switch (index){
+     case 6:
+     case 7:
+     next.style.display='none';
+
+     break;
+     default:
+     next.style.display='block';
+     }
+     });
+     }
+     addLoadEvent(btnEvent);*/
+
+    function turnPage(i){
+        var third = document.querySelector('.main');
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=9)
+            third.index = parseInt(horizontalIndex) + i;
+    };
+    document.querySelector('#prev') && 	document.querySelector('#prev').addEventListener('click',function(){turnPage(-1)})
+    document.querySelector('#next') && 	document.querySelector('#next').addEventListener('click',function(){turnPage(1)})
+
+    define(function (require, exports) {
+        var container = document.querySelector('.container'),list = container && container.children;
+        var transform = exports.transform,translate3d = translate3d = exports.translate3d && !/MiuiBrowser/i.test(navigator.userAgent)&& !/GT\-\w?\d+/i.test(navigator.userAgent);
+        function init(){
+            list[0].classList.add('current');
+        }
+        function addClass(){
+            var index = container.index;
+            if(container.querySelector('.current') && container.querySelector('.current')!==list[index]) {
+                container.querySelector('.current').classList.remove('current');
+            }
+            !list[index].classList.contains('current') && list[index].classList.add('current');
+        };
+        container && container.addEventListener('changed',addClass);
+        init();
+    });
+    /*背景音乐*/
+    var bObj=document.getElementById('btn-music');
+    var video=document.getElementById('audio');
+    bObj&&bObj.addEventListener('click', function(){
+        if(video!==null){
+            if(!video.paused){
+                video.pause();
+                document.getElementById('off').style.display='block';
+                document.getElementById('on').style.display='none';
+            }else{
+                video.play();
+                document.getElementById('off').style.display='none';
+                document.getElementById('on').style.display='block';
+            }
+        }
+    });
+
+    /*分享*/
+    var link = window.location.href;
+    var share_title=encodeURIComponent('看球利器 康佳劲速电视让你“劲”爽一夏');
+    var share_link=encodeURIComponent(link);
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_575/e2d9926f9d/share.jpg');
+    var share_t=encodeURIComponent('看球利器 康佳劲速电视让你“劲”爽一夏');
+
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&title='+share_t+'&summary='+share_title;
+    var share_con = '<a target="_self" class="weibo" href="'+sina+'">sina</a><a target="_self" class="wechat" style="display:none;" href="#wechat" >wechat</a><a target="_self" class="qzone" href="'+qzone+'">QQ</a><a target="_self" class="tencent-weibo" href="'+tencent+'">tencent</a>';
+    document.querySelector('.share').innerHTML = share_con;
+
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_577/e2bbc83270/share.jpg',
+        title: '看球利器 康佳劲速电视让你“劲”爽一夏'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

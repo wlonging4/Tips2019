@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第二周第二天</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*F.getX=...相当于把F当成一个普通对象把getX当作一个属性增加给对象（私有属性）
+    F.prototype.getX=...相当于把F当作一个原型给其增加一个属性（公有属性）
+    实例f只能使用到F原型上的getX;若想使用私有的只能通过F.getX;
+
+    F.call调用过程->私有对象没call,通过F.__proto__找到Function.prototype上的call;
+    F.hasOwnProperty调用过程->私有对象没有call,过F.__proto__找到Function.prototype上的call,没有则通过Function.prototype.__proto__查找到Object.prototype查找到hasOwnproperty;
+    由于所有的函数都是Function的实例,所以所有的函数都可以使用Function.prototype上定义的方法;
+
+    Object.prototype;//->不执行,对象数据类型,非函数;
+    Function.prototype;//->可执行,函数数据类型,函数
+    在JS中最大的类时Function类;*/
+
+    /*arguments不是数组而是类数组;sort是Array.prototype的公有方法;只有Array才能使用这个方法,arguments不是数组而是类数组是一个接受参数的对象类型集合;
+    console.log(arguments instanceof Array);
+    arguments的callee代表的是fn这个函数;arguments.__proto__指向Object;*/
+    /*【类数组->数组】:循环一个一个放进空数组
+    var ary=[];
+    for(var i=0;i<arguments.length;i++){
+        ary[ary.length]=arguments[i];
+    }
+    arguments变成数组:借用数组的slice方法在执行slice的时候,让slice中的arguments代替了this,这样就相当于把类数组的arguments克隆一份一样的数组
+    让slice执行的方式:[].__proto__.slice()[iE之中不兼容]===[].slice()===Array.prototype.slice();
+    var ary=Array.prototype.slice.call(arguments,0);
+    var ary=[].slice.call(arguments,0);//两个方法相同,所有浏览器都兼容
+
+    num.toFixed(2);->保留小数点后面的2位*/
+
+    /*【try-catch-finally】
+    用来在浏览器中检测捕获异常信息的机制
+    console.log(num);//上面代码报错下面不再执行
+    console.log("1");
+    使用示例:
+    try{
+        console(num);
+        //JS执行的代码
+    }catch(e){
+        console.log(e.message);
+        //如果上面代码执行的时候报错了,自动转到catch中执行其中的代码;e.message存储的就是上面代码报错的原因
+    }finally{
+        //finally不管报不报错,都会执行里面代码
+    }
+        //try-catch捕获到异常信息后,后面代码还会继续执行;
+    console.log("1");//->可以执行了
+    上面报错了,不仅捕获异常信息,并且下面不让其执行
+    把catch{}里的内容改成throw new Error("稍后再试...");
+    其中new是创建了一个Error的实例
+    throw new Error("")
+    throw new ReferenceError("")
+    throw new TypeError("")
+    throw new RangeError("")
+    try-catch可以进行兼容处理->在执行代码时候错了,我们说他不兼容,不兼容的就把catch中的兼容处理了即可=>前提条件:不兼容的代码报错才能检测的到(因为有的不兼容不报错)*/
+
+    /*【sort高级】
+    一维数组/二维数组;
+    sort中a代表当前项,b代表当前项的后一项;若果返回值大于0;交换a和b的位置;[冒泡思想]
+    return parseFloat(a.age)- parseFloat(b.age)
+    localeCompare按照要比较的字符串的首字母在26个首字母中的顺序来判断的,第一个一样依次往后比较;同音的话按照ASCII编码值继续比较;
+    return a.name.localeCompare(b.name);
+    sort简单列表排序*/
+    /*【DOM映射】
+    页面上的元素标签和我们通过JS获取的元素对象是紧紧的绑定到一起的;*/
+    /*【JSON】
+    json不是一种新的数据类型,它只是我们数据类型的一种特殊格式
+    json格式:var j={"name":"1","age":12};->把对象数据类型属性名用"双引号"(只能是"")引起来;
+    JSON格式对象用来完成前端和后台之间的数据衔接交互,所有非常重要;
+    window.JSON->一个对象,里面包含了连个经常使用的方法parse和stringify
+    ①window.JSON.stringify()->JSON格式的对象(普通对象也可以)转换为JSON格式的字符串;
+    var ary=[
+        {name:"a",age:10},
+        {name:"b",age:11}
+    ];
+    ②var jsonStr=JSON.stringify((ary));->字符串(console.log(jsonStr)控制台中黑色的表示字符串数据类型);
+    window.JSON.parse()->把json格式的字符串转换为json格式的对象;
+    在IE6和IE7下面不支持JSON,所以也不存在里面的方法;
+    在IE6,7下我们怎么样转换JSON格式的字符串和对象?
+    JSON格式下字符串转化为JSON格式的对象;
+    IE6/7执行parse报错,可以用try-catch来处理->
+    toJSON:function(str){
+        try{
+            JSON.parse(str);
+        }catch(e){
+            eval("("+str+")");
+        }
+        //加上圆括号的目的是迫使eval函数在处理JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，而不是作为语句（statement）来执行。举一个例子，例如对象字面量{}，如若不加外层的括号，那么eval会将大括号识别为JavaScript代码块的开始和结束标记，那么{}将会被认为是执行了一句空语句。所以下面两个执行结果是不同的
+     alert(eval("{}"); // return undefined
+     alert(eval("({})");// return object[Object]
+     }*/
+    //【JSON表格升降序】
+
+
+
+
+</script>
+</body>
+</html>

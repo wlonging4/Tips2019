@@ -1,0 +1,728 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        body{color:#ddd;font:12px/22px arial; background:#000 url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-bg.jpg) repeat-y bottom center;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#ddd;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#aaa}
+        .hong12{color:#B20000}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+
+        /*背景*/
+        .f-al{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-al.jpg) no-repeat right top;}
+        .f-ar{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-ar.jpg) no-repeat left top;}
+        .f-bl{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-bl.jpg) no-repeat right top;}
+        .f-br{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-br.jpg) no-repeat left top;}
+        .f-el{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-el.jpg) no-repeat right top;}
+        .f-er{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-er.jpg) no-repeat left top;}
+        .f-fl{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-fl.jpg) no-repeat right top;}
+        .f-fr{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-fr.jpg) no-repeat left top;}
+        .f-gl{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-gl.jpg) no-repeat right top;}
+        .f-gr{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-gr.jpg) no-repeat left top;}
+        .f-hl{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-hl.jpg) no-repeat right top;}
+        .f-hr{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-hr.jpg) no-repeat left top;}
+
+        .topbar{height:44px;border-bottom:1px solid #333;background:#000;}
+        .wrapper{width:1000px; margin:0 auto; position:relative;}
+
+        .nav{position:absolute; z-index:3; left:50%; top:10px; width:100px;padding:38px 0 0; margin-left:-620px; background:url(http://2.zol-img.com.cn/zt/tm_564/2d9428bf58/f-nav1.png) no-repeat center top;}
+        .nav li{width:100px; height:36px; text-align:center; font:15px/36px "Microsoft Yahei"; margin-bottom:4px; color:#D72519; cursor:pointer; background:url(http://2.zol-img.com.cn/zt/tm_564/2d9428bf58/f-nav2.png) no-repeat center top;}
+        .nav .act{background:url(http://2.zol-img.com.cn/zt/tm_564/2d9428bf58/f-nav3.png) no-repeat center top; color:#fff}
+        .foot{height:156px;padding:30px 0 0;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-foot.jpg) repeat;text-align:center; color:#ccc;line-height:22px;}
+        .foot a{color:#ccc;}
+
+        #photowrap376408 .photobox{width:100%; margin-left:auto; margin-right:auto;}
+        #photowrap376408 .photowrap{width:100%; margin:0 auto;height:680px;overflow: hidden; position:relative;}
+        #photowrap376408 .photocon{height:680px;overflow: hidden;position: absolute;}
+        #photowrap376408 .photocon .listbox{width:100%; height:680px;overflow: hidden;float: left;position: relative;}
+
+        #photowrap376408 .photoprev,#photowrap376408 .photonext{position:absolute; width:37px; height:117px; z-index:2; top:340px; cursor:pointer; background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-p.png) no-repeat;}
+        #photowrap376408 .photoprev{left:120px;display:none;}
+        #photowrap376408 .photonext{right:120px; background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-n.png) no-repeat;}
+
+        #f-top{display:none;width:148px; height:140px; position:absolute; top:576px; left:50%;margin-left:500px;}
+
+        .tipname{display:none;position:absolute;width:99px;height:35px;padding-left:43px;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-tipname.png) no-repeat; font:20px/35px "Microsoft Yahei"; color:#ddd;cursor:pointer}
+        .bfocus{padding:8px 0 12px;}
+        .bintro,.bigbig-word{border:1px solid #CF3732; height:152px;padding:5px 25px 0;background-color:rgba(0,0,0,0.5); filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#80000000', EndColorStr='#80000000');}
+        :root .bintro,:root .bigbig-word{filter:none;}
+        .bigbig-word{padding:10px 25px 0}
+
+        #f-tab1-c .cc{height:558px; padding:20px 0 0;}
+        #f-tab1{width:804px;margin:0 auto;}
+        #f-tab1 li,#f-tab3 li,#f-tab4 li{float:left;width:138px;height:35px;border:2px solid #b10000;display:inline;margin:0 5px 0 6px; font:18px/35px "Microsoft Yahei";color:#ddd; text-align:center;border-radius:18px;cursor:pointer; background:#000;}
+        #f-tab1 #n1{width:168px;}
+        #f-tab1 .act,#f-tab3 .act,#f-tab4 .act{background:#b10000}
+        #f-tab1-c1{margin:32px 0 0;width:1000px;height:437px;position:relative;}
+        .ctitle,.dtitle,.ftitle{width:452px;height:51px; background:#cd3732; margin:0 auto; font:30px/51px "Microsoft Yahei"; text-align:center;color:#fff;border-radius:26px;}
+        .ctip{display:none;position:absolute;width:206px;height:117px;padding:15px 2px 2px 2px;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/ctip1.png) no-repeat;}
+        .ctip2{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/ctip2.png) no-repeat; padding:2px 2px 15px 2px;}
+        .ctip3{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/ctip3.png) no-repeat;}
+        .ctip4{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/ctip4.png) no-repeat; padding:2px 2px 15px 2px;}
+
+        .use-pic img,.try-intro img,.try-pic img,.dpic img,.epic img,.fpic .changebox,.gpic img,#s-img img,#s-img1 img{border:1px solid #666;}
+
+        .bigbig{float:left;width:529px; padding:24px 0 0;}
+        .bigbig-cc{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/bigbig.png) no-repeat right 58px}
+        .bigbig-intro{float:left;width:442px; padding:329px 0 0 11px;}
+
+        .use-cc{background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/use.png) no-repeat 26px 90px;}
+        .use-intro{float:left;width:492px; padding:321px 8px 0 9px;}
+        .use-pic{float:left;width:481px;padding:14px 0 0;}
+
+        .try-con{padding:0 0 22px;}
+        .try-intro{float:left; width:415px;height:250px; padding:0 20px 0 0;}
+        .try-intro1{float:right;}
+        .try-intro .hong18{line-height:42px;}
+        .try-pic{float:left; width:560px;height:250px;padding:5px 0 0;}
+        .try-pic1{height:124px;}
+
+        .dcon{width:500px;padding:20px 500px 0 0;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-d.png) no-repeat right 95px;}
+        .dtitle{width:402px;}
+        #f-tab3{width:455px;margin:14px auto 0;}
+        #f-tab3 li{margin:0 4px 0 5px;}
+        .dintro{height:87px;padding:6px 0 0;}
+        .dpic{height:372px;}
+        .dmore{width:122px;height:31px;margin-left:2px;background:#CE3732;font:16px/31px "Microsoft Yahei"; color:#fff; text-align:center;}
+        .dmore a,.dmore a:hover{color:#fff}
+
+        .etitle{width:352px;height:63px; margin:18px auto 0; font:46px/63px "Microsoft Yahei"; color:#fff;text-align:center; background:#cd3732;border-radius:32px;}
+        .etitle1{height:46px;text-align:center; font:30px/46px "Microsoft Yahei"; color:#CC3732}
+        .epic{width:740px;height:335px;margin:0 auto;}
+        .eintro{width:740px;height:97px;margin:0 auto;padding:10px 0 0;}
+        #f-tab4{width:688px;margin:0 auto}
+        #f-tab4 li{width:153px;height:39px;line-height:39px;font-size:22px; margin:0 8px 0 7px;}
+
+        .ftitle{float:left;width:375px; margin:30px 41px 0 29px;display:inline;}
+        .fpic{float:left;width:496px;padding:30px 0 0;}
+        .fpic1{height:181px;}
+
+        .gcon{width:540px; margin:0;}
+        .gcon .ftitle{float:none;display:block;}
+        .gpic{padding:17px 0 0;}
+
+        #prev,#next{float:left;width:43px;height:87px;margin-top:283px;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-bp.png) no-repeat; cursor:pointer;}
+        #next{float:right;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-bn.png) no-repeat;}
+        #big-pic{float:left;width:820px;height:550px;overflow:hidden; border:1px solid #666;display:inline;margin:25px 0 12px 40px;}
+
+        .hong20{line-height:34px; color:#CE3732}
+        .hong18{color:#CE3732;font-size:30px; line-height:60px;}
+        .bai14{color:#ddd;line-height:26px}
+        area{outline:none;}
+
+        #carousel-left531596{width:43px!important;height:87px!important;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-bp.png) no-repeat!important;bottom:240px!important;left:-10px!important;}
+        #carousel-right531596{width:43px!important;height:87px!important;background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-bn.png) no-repeat!important;bottom:240px!important;right:-10px!important;}
+        .carousel-feature{border:1px solid #666;}
+
+        :root #carousel531596 .carousel-feature .carousel-caption {bottom: -200px!important;left: -182px!important;width: 980px!important;border: 1px solid #CF3732!important;height: 150px!important;border: 1px solid #CF3732!important;}
+
+        #carousel531596 .carousel-feature .carousel-caption .hong18{display:block;text-align:center;}
+        #carousel531596 .carousel-feature .carousel-caption .hong12{color:#ddd}
+
+        #s-img1{height:81px; padding:12px 0 0}
+        #big-pic1{width:608px;height:393px;overflow:hidden;border:1px solid #666;margin:0 auto;}
+        #loupebox{width:608px;height:393px; position:absolute; left:0;top:0;}
+        #mask{width:608px;height:393px; position:absolute; background:#fff; left:0;top:0; opacity:0;filter:alpha(opacity=0)}
+        #big-pic1{position:relative;}
+        #loupe{width:380px;height:260px; overflow:hidden; position:absolute;left:0;top:0;border:2px solid #eee;}
+        #loupe img{position:absolute;left:0;top:0;}
+
+        #bintro{width:948px;height:140px;overflow:hidden;margin:0 auto;}
+
+        .slidepic{width:527px;height:351px;border:1px solid #666;overflow:hidden;position:relative;}
+        .slidepic img{position:absolute;left:0;top:0;}
+        .slidebg{width:524px;height:47px; margin:29px 0 0;background:url(http://2.zol-img.com.cn/zt/tm_564/2bec9d6830/slidebg.png) no-repeat;position:relative;}
+        .slidebtn{position:absolute;left:2px;top:-9px;width:85px;height:39px;background:url(http://2.zol-img.com.cn/zt/tm_564/2bec9d6830/slidebtn.png) no-repeat;cursor:pointer}
+
+        #indextip{position:relative}
+        .tippic{position:absolute;cursor:pointer;}
+        img.tippic:hover{-webkit-animation:tippic1 .6s forwards;-moz-animation:tippic1 .6s forwards;-ms-animation:tippic1 .6s forwards;animation:tippic1 .6s forwards;}
+        @-webkit-keyframes tippic1{
+            0% { opacity: 0; -webkit-transform: translateY(-8px); -moz-transform: translateY(-8px); -ms-transform: translateY(-8px); transform: translateY(-8px); }
+            40% { opacity: 1; -webkit-transform: translateY(6px); -moz-transform: translateY(6px); -ms-transform: translateY(6px); transform: translateY(6px); }
+            60% { -webkit-transform: translateY(-4px);-moz-transform: translateY(-4px);-ms-transform: translateY(-4px); transform: translateY(-4px); }
+            80% { opacity: 1; -webkit-transform: translateY(2px); -moz-transform: translateY(2px); -ms-transform: translateY(2px); transform: translateY(2px); }
+            100% { -webkit-transform: translateY(0);-moz-transform: translateY(0);-ms-transform: translateY(0); transform: translateY(0); }
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="topbar">
+    <div class="wrapper"><img src="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-logo.jpg" width="116" height="44"></div>
+</div>
+<div class="photobox" id="photowrap376408">
+    <div class="photowrap">
+        <ul class="photocon" style="width: 15048px;">
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-al">&nbsp;</td>
+                        <td width="1000">
+                            <div class="wrapper" id="indextip">
+                                <img src="http://2.zol-img.com.cn/zt/tm_564/2e450e2442/f-a.jpg" width="1000" height="680" border="0" usemap="#Map2">
+                                <img src="http://2.zol-img.com.cn/zt/tm_564/31204b789b/f-p1a.png" width="248" height="249" class="tippic indexnav1" style="left:63px; top:19px;">
+
+                                <img src="http://2.zol-img.com.cn/zt/tm_564/31204b789b/f-p3a.png" width="239" height="213" class="tippic indexnav2" style="left:411px; top:465px;">
+                                <img src="http://2.zol-img.com.cn/zt/tm_564/31204b789b/f-p2a.png" width="298" height="255" class="tippic indexnav3" style="left:70px; top:351px;">
+                                <img src="http://2.zol-img.com.cn/zt/tm_564/3124137691/f-p5a.png" width="255" height="171" class="tippic indexnav4" style="left:638px; top:10px;">
+                                <img src="http://2.zol-img.com.cn/zt/tm_564/31204b789b/f-p4a.png" width="268" height="227" class="tippic indexnav5" style="left:681px; top:283px;">
+
+
+                                <div class="tipname indexnav1" style="left: 160px; top: 216px; display: none;">G族旗舰</div>
+                                <div class="tipname indexnav2" style="left: 390px; top: 620px; display: none;">高倍变焦</div>
+                                <div class="tipname indexnav3" style="left: 109px; top: 371px; display: none;">口袋便携</div>
+                                <div class="tipname indexnav4" style="left: 802px; top: 177px; display: none;">极致便携</div>
+                                <div class="tipname indexnav5" style="left: 695px; top: 291px; display: block;">专业操控</div>
+                            </div></td>
+                        <td class="f-ar">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-bl">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-b.jpg" valign="top"><div class="bfocus"><{data[0]}></div>
+                        </td>
+                        <td class="f-br">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-bl">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-b.jpg" valign="top" id="f-tab1-c">
+                            <div class="cc" style="display: block;">
+                                <div class="ctitle">佳能G3 X:重新定义一机走天下</div>
+                                <div class="fcon" id="f-tab1-c1"><img src="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-c.jpg" width="1000" height="437" border="0" usemap="#Map">
+                                    <map name="Map">
+                                        <area shape="rect" coords="157,1,374,33" href="#" alt="25倍光学变焦镜头">
+                                        <area shape="rect" coords="20,115,253,155" href="#" alt="等效聚焦24-600mm">
+                                        <area shape="rect" coords="75,240,279,274" href="#" alt="5.9张/秒高速连拍">
+                                        <area shape="rect" coords="217,363,387,398" href="#" alt="5cm微距拍摄">
+                                        <area shape="rect" coords="672,1,869,28" href="#" alt="1.0&quot;大尺寸CMOS">
+                                        <area shape="rect" coords="741,118,994,152" href="#" alt="DIGIC 6数字影像处理器">
+                                        <area shape="rect" coords="728,238,975,276" href="#" alt="智能IS光学影像稳定器">
+                                        <area shape="rect" coords="687,361,920,400" href="#" alt="支持Wi-Fi与NFC功能">
+                                    </map>
+                                    <div class="ctip" style="left:174px; top:28px;"><{data[2]}></div>
+                                    <div class="ctip" style="left:51px; top:148px;"><{data[3]}></div>
+                                    <div class="ctip" style="left:80px; top:271px;"><{data[4]}></div>
+                                    <div class="ctip ctip2" style="left:187px; top:232px;"><{data[5]}></div>
+                                    <div class="ctip ctip3" style="left:664px; top:28px;"><{data[6]}></div>
+                                    <div class="ctip ctip3" style="left:733px; top:151px;"><{data[7]}></div>
+                                    <div class="ctip ctip3" style="left:723px; top:272px;"><{data[8]}></div>
+                                    <div class="ctip ctip4" style="left:681px; top:232px;"><{data[9]}></div>
+                                </div>
+                            </div>
+                            <div class="cc" style="display: none;">
+                                <div class="ctitle">相机中的显微镜</div>
+                                <div id="s-img1"><{data[10]}></div>
+                                <div id="big-pic1"><{data[11]}>
+                                    <div id="mask"></div>
+                                    <div id="loupebox"><div id="loupe"><img src="http://active.zol.com.cn/15active/1111canon/b1.jpg"></div></div>
+                                </div></div>
+
+                            <div class="cc bigbig-cc clearfix" style="display: none;">
+                                <div class="ctitle">打鸟摄月神器</div>
+                                <div class="bigbig">
+                                    <div class="bigbig-pic"><div class="slidepic"><img id="slidephoto" src="http://active.zol.com.cn/15active/1111canon/slidepic.jpg" width="527"></div></div>
+                                    <div class="slidebg">
+                                        <div class="slidebtn"></div>
+                                    </div>
+                                </div>
+                                <div class="bigbig-intro">
+                                    <div class="bigbig-word"><{data[13]}></div>
+                                </div>
+                            </div>
+                            <div class="cc use-cc clearfix" style="display: none;">
+                                <div class="ctitle">所有人都能轻松上手</div>
+                                <div class="use-intro">
+                                    <div class="bigbig-word"><{data[14]}></div>
+                                </div>
+                                <div class="use-pic"> <{data[15]}> </div>
+                            </div>
+                            <div class="cc clearfix" style="display: none;">
+                                <div class="try-con clearfix">
+                                    <div class="try-intro"><{data[16]}></div>
+                                    <div class="try-pic">
+                                        <div class="try-pic1"><{data[17]}></div>
+                                        <div class="try-pic2"><{data[18]}></div>
+                                    </div>
+                                </div>
+                                <div class="try-pic">
+                                    <div class="try-pic1"><{data[19]}></div>
+                                    <div class="try-pic2"><{data[20]}></div>
+                                </div>
+                                <div class="try-intro try-intro1"><{data[21]}></div>
+                            </div>
+
+
+                            <ul id="f-tab1">
+                                <li id="n1" class="act">佳能G3 X全解析</li>
+                                <li>微距挑战</li>
+                                <li>远摄挑战</li>
+                                <li>摄控挑战</li>
+                                <li>摄影师试用</li>
+                            </ul>
+                        </td>
+
+                        <td class="f-br">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-bl">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-b.jpg" valign="top"><div class="wrapper clearfix dcon" id="f-tab3-c">
+                            <div class="dtitle">佳能G7 X:高画质随身卡片</div>
+                            <ul id="f-tab3" class="clearfix">
+                                <li class="act">超高画质</li>
+                                <li>急速捕捉</li>
+                                <li>便捷分享</li>
+                            </ul>
+                            <div class="cc" style="display: block;">
+                                <div class="dintro"><{data[22]}></div>
+                                <div class="dpic"><{data[23]}></div>
+                                <div class="dmore"><{data[24]}></div>
+                            </div>
+                            <div class="cc" style="display: none;">
+                                <div class="dintro"><{data[25]}></div>
+                                <div class="dpic"><{data[26]}></div>
+                                <div class="dmore"><{data[27]}></div>
+                            </div>
+                            <div class="cc" style="display: none;">
+                                <div class="dintro"><{data[28]}></div>
+                                <div class="dpic"><{data[29]}></div>
+                                <div class="dmore"><{data[30]}></div>
+                            </div>
+                        </div></td>
+                        <td class="f-br">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-el">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-e.jpg" valign="top"><div class="wrapper" id="f-tab4-c">
+                            <div class="cc" style="display: block;">
+                                <div class="etitle">手机也想称王？</div>
+                                <div class="etitle1">佳能G7 X 迎战iPhone 6S</div>
+                                <div class="epic"><{data[31]}></div>
+                                <div class="eintro"><{data[32]}></div>
+                            </div>
+                            <div class="cc" style="display: none;">
+                                <div class="etitle">手机也想称王？</div>
+                                <div class="etitle1">佳能G7 X 迎战iPhone 6S</div>
+                                <div class="epic"><{data[33]}></div>
+                                <div class="eintro"><{data[34]}></div>
+                            </div>
+                            <div class="cc" style="display: none;">
+                                <div class="etitle">手机也想称王？</div>
+                                <div class="etitle1">佳能G7 X 迎战iPhone 6S</div>
+                                <div class="epic"><{data[35]}></div>
+                                <div class="eintro"><{data[36]}></div>
+                            </div>
+                            <div class="cc" style="display: none;">
+                                <div class="etitle">手机也想称王？</div>
+                                <div class="etitle1">佳能G7 X 迎战iPhone 6S</div>
+                                <div class="epic"><{data[37]}></div>
+                                <div class="eintro"><{data[38]}></div>
+                            </div>
+                            <ul id="f-tab4">
+                                <li class="act">硬件参数</li>
+                                <li>旅游随拍</li>
+                                <li>家庭记录</li>
+                                <li>文艺创作</li>
+                            </ul>
+                        </div></td>
+                        <td class="f-er">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-fl">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-f.jpg" valign="top"><div class="wrapper clearfix">
+                            <div class="ftitle">佳能G5 X:专业不输单反</div>
+                            <div class="fpic">
+                                <div class="fpic1"><{data[39]}></div>
+                                <div class="fpic1"><{data[40]}></div>
+                                <div class="fpic1"><{data[41]}></div>
+                            </div>
+                        </div></td>
+                        <td class="f-fr">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-gl">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-g.jpg" valign="top"><div class="wrapper gcon clearfix">
+                            <div class="ftitle">佳能G9 X:轻薄复古相机</div>
+                            <div class="gpic"><{data[42]}></div>
+                        </div></td>
+                        <td class="f-gr">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox" style="width: 1881px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="f-bl">&nbsp;</td>
+                        <td width="1000" height="680" background="http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-b.jpg" valign="top"><div class="wrapper clearfix">
+                            <div id="prev"></div>
+                            <div id="big-pic"><{data[43]}></div>
+                            <div id="next"></div>
+                            <div class="clear"></div>
+                            <div id="s-img"><{data[44]}></div>
+                        </div></td>
+                        <td class="f-br">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+        <div class="photoprev"></div>
+        <div class="photonext"></div>
+        <div class="photonav">
+            <ul class="nav">
+                <li class="act">首页</li>
+                <li class="">G族 再定义</li>
+                <li class="">高倍变焦机</li>
+                <li class="">口袋便携机</li>
+                <li class="">专业操控机</li>
+                <li class="">极致纤薄机</li>
+                <li class="">大片赏析</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="foot"><{data[45]}></div>
+<div id="f-top" style="display: block;"><a href="http://canon-china.jd.com"><img src="http://2.zol-img.com.cn/zt/tm_567/a43a8b6e9c/148x140.jpg" width="148" height="140" border="0"></a></div>
+<map name="Map2" id="indextipt">
+    <area shape="poly" coords="286,4,371,114,293,295,102,322,2,185,7,105,48,4" href="#" alt="G族旗舰" class="indexnav1">
+    <area shape="poly" coords="424,456,615,431,734,586,698,677,379,677,350,637" href="#" alt="高倍变焦" class="indexnav2">
+    <area shape="poly" coords="101,325,292,301,413,457,339,628,123,629,29,505" href="#" alt="口袋便携" class="indexnav3">
+    <area shape="poly" coords="615,4,580,85,697,243,888,216,963,34,943,2" href="#" alt="极致便携" class="indexnav4">
+    <area shape="poly" coords="700,250,624,429,744,584,934,557,995,411,992,356,889,225" href="#" alt="专业操控" class="indexnav5">
+</map>
+<script src="../jquery-1.9.1.js"></script>
+<script>
+    var btn = false;
+    var x1;
+    $('.slidebtn').bind('mousedown',function(ev){
+        var ev = ev|| window.event;
+        btn = true;
+
+        if (ev.preventDefault) {
+            ev.preventDefault();
+            ev.stopPropagation();
+        }
+
+        $(document).bind('mousemove',function(ev){
+            var ev = ev|| window.event;
+            if(btn){
+                if (document.all)
+                {
+                    ev.returnValue = false;
+                }
+                var cx = ev.clientX;
+                var bgoffsetleft = $('.slidebg').offset().left;
+                var bgwidth = $('.slidebg').width();
+                var btnwidth = $('.slidebtn').width();
+                var btnleft = parseInt(cx - bgoffsetleft - btnwidth/2);
+                var bgright = bgwidth - btnwidth;
+                var factor = parseInt(5472/bgwidth);
+
+                if(btnleft<bgright && btnleft>2){
+                    $('.slidebtn').css('left',btnleft+'px');
+                    $('#slidephoto').attr('width',bgwidth+(btnleft*factor));
+                    $('#slidephoto').css({'left':-parseInt((btnleft*factor)/1.9)+'px','top':-parseInt((btnleft*factor)/3.8)+'px'})
+                }
+            }
+        })
+        $(document).bind('mouseup',function(ev){
+            btn = false;
+        })
+
+    })
+
+    $('#indextip img.tippic').mouseover(function(){
+        var index = $('#indextip img.tippic').index($(this));
+        $('#indextip .tipname').hide().eq(index).fadeIn();
+        var t = parseInt($(this).css('top'));
+
+        var transform = ["-webkit-transform","-ms-transform","-moz-transform","transform"];
+        if(!isSuportCss(transform)){
+
+            $(this).animate({opacity:0.5,top:t+2+'px'},'fast').animate({opacity:1,top:t-2+'px'},'');
+        }
+    })
+
+    function isSuportCss(property){
+        var body = $("body")[0];
+        for(var i=0; i<property.length;i++){
+            if(property[i] in body.style){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    $('#f-tab1-c1 area').mouseover(function(){
+        var index = $('#f-tab1-c1 area').index($(this));
+        $('#f-tab1-c1 .ctip').hide().eq(index).show();
+    })
+
+    $('#s-img1 img').mouseover(function(){
+        var index = $('#s-img1 img').index(this) || 0;
+        $('#loupe img').attr('src','http://active.zol.com.cn/15active/1111canon/b'+(index+1)+'.jpg')
+        $('#loupebox').css('top',393*index+'px');
+    })
+
+    $('#loupebox').mousemove(function(ev){
+        var ev = ev || window.event;
+        var cx = ev.clientX;
+        var cy = ev.clientY;
+        var bigpicleft = $('#big-pic1').offset().left;
+        var bigpictop = $('#big-pic1').offset().top;
+        var bigwidth =$('#big-pic1').width();
+        var bigheight =$('#big-pic1').height();
+        var loupewidth = $('#loupe').width();
+        var loupeheight = $('#loupe').height();
+        var loupeleft = parseInt(cx - bigpicleft - loupewidth/2);
+        var loupetop = parseInt(cy - bigpictop - loupeheight/2);
+        var louperight = bigwidth-loupewidth-4;
+        var loupebottom =bigheight-loupeheight-4;
+        if(loupeleft <0){
+            loupeleft = 0;
+        }
+        if(loupeleft>louperight){
+            loupeleft = louperight
+        }
+        if(loupetop <0){
+            loupetop = 0;
+        }
+        if(loupetop>loupebottom){
+            loupetop = loupebottom;
+        }
+
+        $('#loupe').css({'left':loupeleft+'px','top':loupetop})
+
+        var px = loupeleft/(bigwidth - loupewidth);
+        var py = loupetop/(bigheight - loupeheight);
+        $("#loupe img").css('left',-px*(2861 - loupewidth)+'px');
+        $("#loupe img").css('top',-py*(1907 - loupeheight)+'px');
+    })
+
+    function f_tab(f_tab1,f_tab2,f_con,f_event){
+        f_tab1.each(function(i){
+            $(this).bind(f_event,function(){
+                f_tab2.hide().eq(i).show();
+                f_tab1.removeClass(f_con);
+                $(this).addClass(f_con);
+            })
+            if ($(this).hasClass(f_con)) {
+                $(this).addClass(f_con);
+                f_tab2.hide().eq(i).show();
+            }
+        })
+    }
+
+    f_tab($("#f-tab1 li"),$("#f-tab1-c .cc"),"act","mouseover");
+    f_tab($("#f-tab3 li"),$("#f-tab3-c .cc"),"act","mouseover");
+    f_tab($("#f-tab4 li"),$("#f-tab4-c .cc"),"act","mouseover");
+
+    photowrap("#photowrap376408","#photowrap376408 .photocon","#photowrap376408 .photocon .listbox","#photowrap376408 .photonav li","#photowrap376408 .photoprev","#photowrap376408 .photonext");
+
+    function photowrap(wrap, con, con_li, nav_span, prev, next) {
+        function showPics(index) {
+
+            if(index==0){
+                $(prev).hide();
+            }else{
+                $(prev).show();
+            }
+            if(index==7){
+                $(next).hide();
+            }else{
+                $(next).show();
+            }
+            var nowLeft = -index * sWidth;
+            $(con).stop(!0, !1).animate({
+                        left: nowLeft
+                    },
+                    300,
+                    function() {}),
+                    $(nav_span).removeClass("act").eq(index).addClass("act");
+            if(index>3){
+                $(nav_span).removeClass("act").eq(index-1).addClass("act");
+            }
+        }
+        function fullScreen(wrap, con_li) {
+            var ssWidth = $(wrap).width();
+            $(con_li).width(ssWidth)
+        }
+        var sWidth = $(wrap).width(),
+                len = $(con_li).length,
+                index = 0,
+                picTimer;
+        $(con).css("width", sWidth * len),
+                $(window).resize(function() {
+                    fullScreen(wrap, con_li),
+                            sWidth = $(wrap).width(),
+                            $(con).css("width", sWidth * len),
+                            showPics(index)
+                }),
+                fullScreen(wrap, con_li),
+                $(con_li).width(sWidth),
+                $(nav_span).click(function() {
+                    index = $(nav_span).index(this);
+                    showPics(index);
+                    $(nav_span).removeClass("act").eq(index).addClass("act");
+                    if(index>3){
+                        showPics(index+1);
+                    }
+                })
+        $('.indexnav1').click(function(){
+            showPics(1);
+            return false;
+        })
+        $('.indexnav2').click(function(){
+            showPics(2);
+            return false;
+        })
+        $('.indexnav3').click(function(){
+            showPics(3);
+            return false;
+        })
+        $('.indexnav4').click(function(){
+            showPics(4);
+            return false;
+        })
+        $('.indexnav5').click(function(){
+            showPics(5);
+            return false;
+        })
+
+        //.eq(0).trigger("mouseenter"),
+        //$(wrap).hover(function(){clearInterval(picTimer)},function(){picTimer=setInterval(function(){showPics(index),index++,index==len&&(index=0)},6e3)}).trigger("mouseleave"),
+        $(prev).click(function() {
+            index--,
+            index < 0 && (index = len - 1),
+                    showPics(index)
+            $("#photonav-img").attr("src","http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav"+(index+1)+".png");
+        }),
+                $(next).click(function() {
+                    index++,
+                    index == len && (index = 0),
+                            showPics(index)
+                    $("#photonav-img").attr("src","http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav"+(index+1)+".png");
+                })
+    }
+
+    function scrolls_img(bigimg,simg,prev,next,auto,tag,height){
+        /*大图高度*/
+        var height = $(bigimg).height() || height;
+        /*如果有小图，第一张小图加上当前样式*/
+        if($(simg)){$(simg).eq(0).addClass("act");}
+        var _cur=0,num_pic=$(bigimg).find(tag).length;
+        /*切换*/
+        function change_pic(){
+            _cur++;
+            if(_cur== num_pic) _cur=0;
+            if($(simg)){
+                $(simg).removeClass("act");
+                $(simg).eq(_cur).addClass("act");
+            }
+            $(bigimg).scrollTop(height*_cur);
+        }
+        /*如果有小图，当鼠标移入移出小图时的动作*/
+        if($(simg)){
+            $(simg).bind("mouseover",function(){
+                if(auto=="auto"){clearInterval(timer);}
+                _cur=$(simg).index($(this))-1;
+                change_pic();
+            });
+            $(simg).bind("mouseout",function(){
+                if(auto=="auto"){timer = setInterval(change_pic,3000);}
+            });
+        }
+        /*如果是自动切换，当鼠标移入移出大图时的动作*/
+        if(auto=="auto"){
+            $(bigimg).bind("mouseover",function(){clearInterval(timer);});
+            $(bigimg).bind("mouseout",function(){timer = setInterval(change_pic,3000);});
+        }
+        /*如果有左右按钮，左右按钮点击时的动作*/
+        if($(prev)){
+            $(prev).bind("click",function(){
+                if(auto=="auto"){clearInterval(timer);}
+                _cur--;
+                if(_cur<0) _cur=num_pic;
+                if($(simg)){
+                    $(simg).removeClass("act");
+                    $(simg).eq(_cur).addClass("act");
+                }
+                $(bigimg).scrollTop(height*_cur);
+            })
+            if(auto=="auto"){
+                $(prev).bind("mouseout",function(){
+                    clearInterval(timer);
+                    timer = setInterval(change_pic,3000);
+                })
+            }
+        }
+        if($(next)){
+            $(next).bind("click",function(){
+                if(auto=="auto"){
+                    clearInterval(timer);
+                }
+                change_pic();
+            })
+            if(auto=="auto"){
+                $(next).bind("mouseout",function(){
+                    clearInterval(timer);
+                    timer = setInterval(change_pic,3000);
+                })
+            }
+        }
+        if(auto=="auto"){var timer = setInterval(change_pic,3000);}
+    }
+    /*参数：大图ID，所有小图，上一个按钮ID，下一个按钮ID，是否自动切换*/
+    scrolls_img("#big-pic","#s-img img","#prev","#next","","img");
+    scrolls_img("#big-pic1","#s-img1 img","","","","img","393");
+</script>
+
+</body></html>

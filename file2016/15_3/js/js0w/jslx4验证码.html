@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style type="text/css">
+        body,div{
+            margin: 0;
+            padding: 0;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica;
+            -webkit-user-select: none;/*禁止被选中*/
+        }
+        #div1{
+            margin: 150px auto;
+            width: 100px;
+            height: 40px;
+            line-height: 35px;
+            font-weight: bolder;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            letter-spacing: 5px;
+            border:1px solid green;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("div1");
+    var str="abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    /*function codeSel(){
+        var str1="";//每执行一次都是从空字符串开始
+        for(var i=0;i<4;i++){
+            var rad=Math.round(Math.random()*61);
+            str1+=str[rad];
+        }
+        return str1;
+    }
+    //最单纯的方法
+
+*/
+
+    function codeSel() {
+        var str1 = "";
+        for (var i = 0; i < 4; i++) {
+            var ran = Math.round(Math.random() * 61);
+            var ranStr1 = str[ran];
+            if (str1.indexOf(ranStr1) > -1) {
+                    i--;
+                    continue;
+                }
+                str1 += ranStr1;
+            }
+            return str1;
+        }
+    //没有重复字符的方法
+
+    /*function codeSel(){
+        var str1='';
+        while(str1.length<4){
+            var rad=Math.round(Math.random()*61);
+            var radStr1=str[rad];
+            var tempRad=radStr1.toLowerCase();
+            var tempStr1=str1.toLowerCase();
+            if(tempStr1.indexOf(tempRad)===-1){
+                str1+=radStr1;
+            }
+        }
+        return str1;
+        //大小写字母不重复，并且字符不重复
+    }*/
+    oDiv.innerHTML=codeSel();
+    oDiv.onclick= function () {
+        oDiv.innerHTML=codeSel();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap响应</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <link rel="stylesheet" href="bootstrap-responsive.css"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="row-fluid">
+    <div class="span8" id="content">
+        <h2>HEADER</h2>
+        <p>PARAGRAPH</p>
+    </div>
+    <div class="span4" id="side" visible-phone>
+        <h2>SIDE</h2>
+        <p>PARAGRAPH</p>
+    </div>
+</div>
+
+<!--表单-->
+<div class="input-prepend">
+    <span class="add-on">E-mail:</span>
+    <input type="text" id="textIn" placeholder="aaa@bb.com" class="span2"/>
+</div>
+<div class="input-append">
+    <input type="text" id="textOut" class="span2"/>
+    <span class="add-on">.00</span>
+</div>
+<br/>
+<div class="input-prepend input-append">
+    <span class="span2">E_mail:</span>
+    <input type="text" placeholder="输入邮箱地址"/>
+    <span class="span2">@163.com</span>
+    <button class="btn">提交</button>
+</div>
+
+<!--按钮-->
+<div class="input-prepend input-append">
+    <input type="button" class="btn" value="Email"/>
+    <input type="text"/>
+    <div class="btn-group">
+        <button class="btn" data-toggle="dropdown">@163.com</button>
+        <ul class="dropdown-menu">
+            <li><a href="#">@sina.com</a></li>
+            <li><a href="#">@126.com</a></li>
+            <li><a href="#">@266.com</a></li>
+            <li><a href="#">@live.com</a></li>
+        </ul>
+    </div>
+    <button class="btn">提交</button>
+</div>
+<!--form表单-->
+<form action="#" method="post" class="form-horizontal">
+    <div class="control-group">
+        <div class="control-label">
+            <label for="userName">用  户:</label>
+        </div>
+        <div class="controls">
+            <input type="text" id="userName"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="control-label">
+            <label for="password">密  码:</label>
+        </div>
+        <div class="controls">
+            <input type="text" id="password"/>
+        </div>
+    </div>
+</form>
+<!--表单验证效果-->
+<div class="control-group warning">
+    <label for="user1" class="control-label">用户</label>
+    <div class="controls">
+        <input type="text" id="user1"/>
+        <span class="help-inline">非法用户名</span>
+    </div>
+</div>
+<br/>
+<button id="btn1" class="btn btn-large btn-primary disabled">百度</button>
+<!--<div class="span4 text-center">
+    <img src="3.jpg" alt="" class="image-circle"/>
+    <h3>图片效果</h3>
+</div>-->
+<span class="icon-pause"></span>
+
+
+<script src="jquery-1.9.1.js"></script>
+<script src="bootstrap.js"></script>
+<script>
+    var btn1=document.querySelector("#btn1");
+    btn1.onclick= function () {
+        window.alert("A");
+    }
+</script>
+</body>
+</html>

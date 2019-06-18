@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>仿微博音乐</title>
+    <style type="text/css">
+        body,div,span,ul,li{
+            margin:0;
+            padding: 0;
+        }
+        body{
+            background: url("1.jpg")  no-repeat;
+            background-size: cover;
+        }
+        #main{
+            height:75px;
+            width: 660px;
+            margin-top: 540px;
+            position: absolute;
+            left:-660px;
+
+        }
+        #center{
+            height:75px;
+            width: 660px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color:black;
+            opacity: 0.4;
+        }
+        #ctop{
+            position: absolute;
+            height: 5px;
+            width: 660px;
+            background: #954121;
+        }
+        #scro{
+            position: absolute;
+            height: 5px;
+            width: 460px;
+            background: orange;
+        }
+        #cbot{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 70px;
+            width: 660px;
+        }
+        #cd1{
+            float: left;
+            height: 70px;
+            width: 60px;
+        }
+        #img2{
+            margin-left: 10px;
+            margin-top: 10px;
+            height: 50px;
+            width: 50px;
+            border-color: green;
+            background: url("2.jpg") no-repeat;
+            opacity:1;
+            background-size: cover;
+            cursor: pointer;
+        }
+        #cd2{
+            float: left;
+            height: 70px;
+            width: 140px;
+        }
+        #cd2 ul{
+            display: block;
+            float: left;
+            margin-left: 5px;
+            margin-top: 6px;
+            list-style: none;
+            color: white;
+        }
+        #cd2 ul li{
+            font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 20px;
+            text-align: left;
+        }
+        #cd2 ul li a{
+            cursor:pointer;
+            color: yellow;
+        }
+        #cd2 span{
+            float: right;
+            display: block;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 50px;
+            color: white;
+        }
+        #cd3{
+            float: left;
+            height: 70px;
+            width: 300px;
+        }
+        #bt1{
+            float: left;
+            font-size: 30px;
+            height: 70px;
+            width: 40px;
+            line-height: 70px;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bolder;
+        }
+        #bt2{
+            float: left;
+            font-size: 20px;
+            height: 70px;
+            text-indent: -10px;
+            width: 40px;
+            line-height: 70px;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bolder;
+        }#bt3{
+            float: left;
+            font-size: 30px;
+            text-indent: -10px;
+            height: 70px;
+            width: 40px;
+            line-height: 70px;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bolder;
+        }#bt4{
+            float: left;
+            font-size: 22px;
+            text-indent: -20px;
+            height: 70px;
+            width: 40px;
+            line-height: 70px;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+            font-weight: bolder;
+        }#bt5{
+            float: left;
+            height: 70px;
+            width: 20px;
+        }
+         #voc{
+             margin-top: 25px;
+             margin-left: 5px;
+             height: 20px;
+             width: 20px;
+             padding-top:0;
+             overflow: hidden;
+             cursor: pointer;
+         }
+         #bt6{
+             margin-left: 5px;
+             height: 70px;
+             width: 110px;
+             float: left;
+         }
+         #voice{
+             float: left;
+             margin-top: 33px;
+             margin-left: 10px;
+             height: 5px;
+             width: 100px;
+             border-radius:2px;
+             background: darkblue;
+         }
+        #cd4{
+            float: left;
+            height: 70px;
+            width: 160px;
+        }
+        #l1{
+            height: 70px;
+            width: 40px;
+            float: left;
+            font-size: 20px;
+            font-weight: bolder;
+            color: wheat;
+            text-align: center;
+            line-height: 70px;
+            cursor: pointer;
+        }
+        #l2{
+            height: 70px;
+            width: 40px;
+            float: left;
+            font-size: 20px;
+            font-weight: bolder;
+            color: wheat;
+            text-align: center;
+            line-height: 70px;
+            cursor: pointer;
+        }
+        #l3{
+            height: 70px;
+            width: 80px;
+            float: left;
+            font-weight: bolder;
+            color: wheat;
+        }
+        #tt{
+            height: 20px;
+            width: 80px;
+            padding-top: 10px ;
+            padding-right: 5px;
+            float: left;
+            text-align: right;
+            font-size: 14px;
+            font-weight: bolder;
+        }
+        #bb{
+            height: 20px;
+            width: 80px;
+            float: left;
+            text-align: right;
+            font-size: 14px;
+            font-weight: bolder;
+        }
+        #ll1{
+            width: 20px;
+            float: left;
+            text-align: left;
+            padding-left: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        #ll2{
+            width: 40px;
+            float: left;
+            text-align: left;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        #right{
+            height: 75px;
+            width: 15px;
+            background-color: black;
+            opacity: 1;
+            position: absolute;
+            left: 660px;
+            top: 0;
+            border-radius:5px ;
+            line-height: 75px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        #top{
+            height: 300px;
+            width: 675px;
+            position: absolute;
+            top: -300px;
+            left: 0;
+            background-color: black;
+            opacity: 0.2;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="top">
+
+    </div>
+    <div id="center">
+        <div id="ctop">
+            <div id="scro"></div>
+        </div>
+        <div id="cbot">
+            <div id="cd1">
+                <div id="img2">
+                </div>
+            </div>
+            <div id="cd2">
+                <ul>
+                    <li>海阔天空</li>
+                    <li>黄家驹</li>
+                    <li>来自:<a>百度音乐</a></li>
+                </ul>
+                <span>|</span>
+            </div>
+            <div id="cd3">
+                <div id="bt1"><</div>
+                <div id="bt2">||</div>
+                <div id="bt3">></div>
+                <div id="bt4">の</div>
+                <div id="bt5"><div id="voc"><img  src="voc.png" alt="调节音量" width="20px"/></div></div>
+                <div id="bt6">
+                    <div id="voice"></div>
+                </div>
+            </div>
+            <div id="cd4">
+                <div id="l1">⑤</div>
+                <div id="l2">＠</div>
+                <div id="l3">
+                    <div id="tt">03：44</div>
+                    <div id="bb">
+                        <div id="ll1">三</div>
+                        <div id="ll2">词</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        >
+    </div>
+</div>
+<script type="text/javascript">
+    var oM=document.getElementById("main");
+    var oT=document.getElementById("top");
+    var oC=document.getElementById("center");
+    var oR=document.getElementById("right");
+    var timer=null;
+    oR.onclick=function(){
+        if(oM.offsetLeft<0) {
+            oM.style.left = 0 + "px";
+            oR.innerHTML="<";
+        }else{
+            oM.style.left=-660+"px";
+            oR.innerHTML=">";
+        }
+    };
+    var oL=document.getElementById("ll1");
+    oL.onclick= function () {
+        if(oT.style.display=="none"){
+            oT.style.display="block";
+        }else{
+            oT.style.display="none"
+        }
+    }
+</script>
+</body>
+</html>

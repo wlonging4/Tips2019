@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日历初解</title>
+    <style type="text/css">
+        #div1{
+            height: 200px;
+            width: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<input id="tex1" type="text"/>
+<input type="button" id="btn1" value="设置文字"/>
+<div id="div1">
+
+</div>
+<script type="text/javascript">
+    var oBtn=document.getElementById("btn1");
+    var oTex=document.getElementById("tex1");
+    var oDiv=document.getElementById("div1");
+    oBtn.onclick= function () {
+        oDiv.innerHTML=oTex.value;
+        //不只可以设置文字 还可以添加标签
+    }
+</script>
+</body>
+</html>

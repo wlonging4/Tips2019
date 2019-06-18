@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>机器人的机关枪</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!--禁止拨打电话-->
+    <meta name="format-detection" content="telephone=no" />
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#ecdeca;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        .c{  width:640px; height:100%; position:relative; overflow:hidden;background-size:cover;background-repeat: no-repeat;background-position: top center;  }
+        .section{  width:640px; height:100%; position:relative; overflow:hidden;background-size:cover;background-repeat: no-repeat;background-position: top center;  }
+        .b1,.b2{  display: none;  background-image: url("http://2.zol-img.com.cn/zt/tm_58f/5eda30dc02/bg.jpg");  }
+        .blk{  display: block!important;  }
+
+        .bo2-info{  width: 640px;  height: 50px; }
+        .bo2-info1{  width: 80px;  text-align: center;  height: 50px;  color: #3f7453; font:  bold 40px/50px 'microsoft yahei';  }
+        .bo2-info11{  float: left;  }
+        .bo2-info12{  float: right;  }
+        .noSee{  display: block;  opacity: 0;  position: absolute;  z-index: -99;  pointer-events: none;  }
+        #c1{  position: absolute;  top: 0;  left: 0;  z-index: 9;  }
+        .hand{  width: 30px;  height: 105px;  position: absolute;  top: 630px; background: url("http://2.zol-img.com.cn/zt/tm_58f/5eda30dc02/arrow.png") no-repeat 0 0; -webkit-transform-origin: center bottom; transform-origin: center bottom; }
+        .hand1{  left: 220px;  }
+        .hand2{  left: 390px;  }
+        .magnet{  position: absolute; color: #f00;  top: 0;  left: 50%;  margin-left: -50px;  width: 100px;  height:80px;  text-align: center;  font: bold 60px/80px 'microsoft yahei';  }
+        .bar{  display: block;  width: 300px;  height: 20px; overflow: hidden;  position: absolute;  top: 66px;  left: 50%;  margin-left: -150px;  }
+        .bar li{  float: left;  width: 78px;  height: 18px;  margin: 0 10px;  border: 1px solid #f00;  }
+        .bar li.act{  background: #f00;  }
+        .alert1{  position: absolute;z-index: 99;  width: 260px;  -webkit-border-radius:20px;  -moz-border-radius:20px;  border-radius:20px;  height: 60px;  font: bold 24px/30px 'microsoft yahei';  color: #000; top: 40%; left: 50%; text-align: center; margin-left: -130px;  display: none; background: greenyellow;  }
+        .alert1.blk{  display: block;z-index: 99;  }
+    </style>
+</head>
+<body>
+<!--rot-->
+<div class="c">
+    <div class="section b2 blk">
+        <div id="bo2">
+            <div class="bo2-info clearfix">
+                <div class="bo2-info1 bo2-info11">0</div>
+                <div class="bo2-info1 bo2-info12">30</div>
+            </div>
+            <canvas id="c1" width="640" height="1000px"></canvas>
+            <img src="http://2.zol-img.com.cn/zt/tm_58f/5eda30dc02/apple.png" class="img1 noSee" alt="">
+            <img src="http://2.zol-img.com.cn/zt/tm_58f/5eda30dc02/gun.png" class="img2 noSee" alt="">
+            <img src="http://2.zol-img.com.cn/zt/tm_58f/5eda30dc02/ball.png" class="img3 noSee" alt="">
+            <img src="http://2.zol-img.com.cn/zt/tm_58f/5eda30dc02/heart.png" class="img4 noSee" alt="">
+            <div class="hand hand1"></div>
+            <div class="hand hand2"></div>
+            <div class="magnet">1</div>
+            <ul class="bar">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="alert1"><span class="alert1-num">-</span>个 <span class="alert2-num">-</span>%命中率<br/>TryAagin~</div>
+        </div>
+    </div>
+</div>
+
+<script charset="gbk">
+        /*canvas画布操作*/
+        var img1=document.querySelector('.img1');
+        var img2=document.querySelector('.img2');
+        var img3=document.querySelector('.img3');
+        var img4=document.querySelector('.img4');
+        var numScore=document.querySelector('.bo2-info11');
+        var numTime=document.querySelector('.bo2-info12');
+        var numMag=document.querySelector('.magnet');
+        var numMag1=1;
+        var numScore1=0;
+        var numTime1=30;
+        var hand1=document.querySelector('.hand1');
+        var hand2=document.querySelector('.hand2');
+        var c2=document.querySelector('#c1');
+        var ca2=c2.getContext('2d');
+        var bar_lis=document.querySelectorAll('.bar li');
+        var nowX1=null;
+        var nowY1=null;
+        var nowX2=null;
+        var nowY2=null;
+        var flyX=null;
+        var flyY=null;
+        var degree=null;
+        var date1=null;
+        var date2=null;
+        var date_now=null;
+        var appleNowX=null;
+        var intervalFlag=1;
+        var i_mov=1;
+        var speed=20;
+        var alert1=document.querySelector('.alert1');
+        var alert1_num=document.querySelector('.alert1-num');
+        var alert2_num=document.querySelector('.alert2-num');
+
+        /*苹果构造*/
+        function Apple(num) {
+            this.x=num;
+            this.drawApple=function (num) {
+                ca2.drawImage(img1,num,100,134,110);
+            }
+        }
+        /*子弹构造*/
+        function Ball(deg,delay) {
+            this.arg=0;
+            this.deg=deg;
+            this.srcFlag=null;
+            this.src=img3;
+            this.deg<=0?this.arg=-1:this.arg=1;
+            this.deg1=Math.tan(Math.abs(deg)*Math.PI/180);
+            this.i=0;
+            this.x=null;
+            this.y=null;
+            this.ii=null;
+            this.timeDelay=delay/100;
+            this.drawBall=function (num) {
+                this.src=this.srcFlag?img4:img3;
+                this.i+=speed;
+                this.ii=this.i*this.deg1;
+                this.x=295+this.ii*this.arg*this.timeDelay;
+                this.y=730-this.i*this.timeDelay;
+                ca2.drawImage(this.src,this.x,this.y,50,50);
+            }
+        }
+        var allEle=[];
+        /*手臂运动*/
+        function handMov(deg) {
+            hand1.style.webkitTransform='rotate('+(deg+10)+'deg)';
+            hand1.style.transform='rotate('+(deg+10)+'deg)';
+            hand2.style.webkitTransform='rotate('+(deg-10)+'deg)';
+            hand2.style.transform='rotate('+(deg-10)+'deg)';
+        }
+        var apple1=new Apple(0);
+        var i=20;
+        var ii=5;
+        var i_flag=0;
+
+        c2.addEventListener('touchstart',function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var touch1 = e.targetTouches[0];
+            nowX1=touch1.pageX;
+            nowY1=touch1.pageY;
+            date1=(new Date()).valueOf();
+        });
+        c2.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var touch2 = e.targetTouches[0];
+            nowX2=touch2.pageX;
+            nowY2=touch2.pageY;
+        });
+        c2.addEventListener('touchend', function (e) {
+            flyX=nowX2-nowX1;
+            flyY=nowY2-nowY1;
+            date2=(new Date()).valueOf();
+            if(flyY>=0){
+                return false;
+            }
+            if(flyX<0){
+                flyX=Math.abs(flyX);flyY=Math.abs(flyY);
+                degree=Math.ceil(Math.atan(flyY/flyX)*180/Math.PI)-90;
+            }else if(flyX>0){
+                flyX=Math.abs(flyX);flyY=Math.abs(flyY);
+                degree=90-Math.ceil(Math.atan(flyY/flyX)*180/Math.PI);
+            }else{
+                degree=0;
+            }
+            date_now=date2-date1;
+            flyX_now=Math.abs(flyX);
+            flyY_now=Math.abs(flyY);
+            handMov(degree);
+
+            if(!intervalFlag){
+                alert1_num.innerHTML=numScore1;
+                alert2_num.innerHTML=Math.floor((numScore1||0)*100/(allEle.length||1));
+                alert1.style.display='block';
+            }else{
+                allEle.push(new Ball(degree,date_now));
+            }
+
+
+            //解绑事件
+            this.removeEventListener('touchmove',this,false);
+            this.removeEventListener('touchend',this,false);
+        });
+
+        //var ball1=new　Ball(degree);
+        function mov() {
+            if(i>=20&&i<=480&&i_flag==0){i+=ii;}
+            if(i>480){i_flag=1;i-=ii;}
+            if(i<20){i_flag=0;i+=ii;}
+            if(i>=20&&i<=480&&i_flag==1){i-=ii;}
+            //console.log(i);
+            apple1.drawApple(i);
+            appleNowX=i;
+
+            i_mov++;
+            if(i_mov<600){
+                numMag1=Math.ceil(i_mov/200);
+            }else{
+                numMag1=3-Math.floor((i_mov-600)/205);
+            }
+            speed=20-numMag1*4;
+            for(var q=0;q<bar_lis.length;q++){
+                bar_lis[q].classList.remove('act');
+                if(q<numMag1){
+                    bar_lis[q].classList.add('act');
+                }
+            }
+            numMag.innerHTML=numMag1;
+            if(i_mov%40==0){
+                numTime1--;
+                numTime.innerHTML=numTime1;
+                if(numTime1==0){
+                    intervalFlag=0;
+                    //alert(numScore1+'个');
+                }
+            }
+            for(var n=0;n<allEle.length;n++){
+                allEle[n].drawBall();
+                if(allEle[n].y>=150&&allEle[n].y<=180&&allEle[n].x-appleNowX>10&&allEle[n].x-appleNowX<70){
+                    if(!allEle[n].srcFlag){
+                        allEle[n].srcFlag=1;
+                        numScore1++;
+                        numScore.innerHTML=numScore1;
+                    }
+                }
+            }
+            ca2.drawImage(img3,295,730,50,50);
+            ca2.drawImage(img2,225,700,189,261);
+        }
+        inter&&clearInterval(inter);
+        var inter=setInterval(function () {
+            if(intervalFlag){
+                ca2.clearRect(0,0,640,1000);
+                mov();
+            }else{
+                clearInterval(inter);
+                ca2.drawImage(img2,225,700,189,261);
+            }
+        },25);
+        alert1.addEventListener('click',function () {
+            alert1.style.display='none';
+            intervalFlag=1;
+            i_mov=1;
+            speed=20;
+            numMag1=1;
+            numScore1=0;
+            numTime1=30;
+            numScore.innerHTML=numScore1;
+            numTime.innerHTML=numTime1;
+            numMag.innerHTML=numMag1;
+            inter&&clearInterval(inter);
+            var inter=setInterval(function () {
+                if(intervalFlag){
+                    ca2.clearRect(0,0,640,1000);
+                    mov();
+                }else{
+                    clearInterval(inter);
+                    ca2.drawImage(img2,225,700,189,261);
+                }
+            },25);
+        })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="jslx1.css" type="text/css" rel="stylesheet">
+    <link  type="text/css" rel="stylesheet">
+    <title>第一周第一天免费课</title>
+    <style type="text/css">
+    #div2{
+    width:100px;
+    height:50px;
+    margin-left:0;
+    background-color:red}
+    </style>
+    <style>
+        @import "jslx1.css";
+    </style>
+</head>
+<body>
+<div id="div1" style="width:100px;height:50px;margin-left:0; background-color: #0000FF"></div><hr>
+<div id="div2"></div><hr>
+<div id="div3"></div><hr>
+<div id="div4"></div><hr>
+<script>
+    //①设置div颜色块看不到
+/*  1、删;2、background:transpanrent;3、dispaly:none;4,visibility:hidden;5,另一个元素盖住：z-index；
+    6、宽高为0;7opacity透明度为-0;8,负的margin值；9：定义top和left的值为负；
+    ②一些延伸问题
+    display的几个常用属性值?display:inline作用把块状元素改编成行内元素;块状元素和行内元素的区别是什么？
+    dispaly：none visibility hidden的区别；
+    opacity在IE下不兼容，怎么解决？如何了解IE下面的filter?
+    margin实现三列布局（左右定，中间自适应），另外的实现方式都有什么？
+
+    相对定位和绝对定位的区别?
+    //js javascript 轻量级的脚本编程语言；
+
+
+
+  */
+   /* 作为一名合格的前端开发工程师，他们的任务是什么？
+    1、html+css。2、javascript。3、ajax
+    10.17-10.18   10.24-10.25
+    需要参加免费课的考试结束之后进行考试；
+    ①增加js样式的方法
+    1、行内样式(不推荐使用，安全性比较差)
+    onclick:alert("1");
+    2、内嵌式（把js代码写在script代码中 放在body的末尾）
+    3、外链式（）引入式也是放在body的后面位置？
+    思考题：使用window.onload?和&（document）.ready()的区别是什么。
+    思考题：如果不把Js写在body末尾，需要怎么样处理
+    ②增加css样式的方法；
+    1、行内添加样式
+    2、内嵌式
+    3、外链式
+    4、导入式:导入式怎么用？跟外链式的区别？
+    */
+    //移动div元素
+/*
+  var oDiv=document.getElementById("div3");
+    oDiv.onclick=function(){
+        var count=0;
+        var time=window.setInterval(function(){
+            count+=1;
+            oDiv.style.marginLeft=count+"px";
+            if(count>=700){
+                window.clearInterval(time);
+            }
+        },22)
+
+    };
+    var oDis=document.getElementById("div1");
+    oDis.onclick=function(){
+        var count=0;
+        var time=window.setInterval(function(){
+            count+=1;
+            oDis.style.marginLeft=count+"px";
+            if(count>=400){
+                window.clearInterval(time);
+            }
+        },3)
+    }
+*/
+//考试时间及考试内容
+/*    机考题：选项卡 99乘法表（必考）数组去重+数组冒泡排序（选考）考过了-100；
+      笔试题（只有JS部分）：基础笔试题60分及格；80分以上优秀，优秀的学员-100；满分-200；
+      考试时间：10月17及18号下课后可以考上机考试；10月24及25号下课后可以考上机考试；10月24日下课考笔试；如果是在来不了的提前打招呼；10月25日，对于笔试不及格的参与补考！
+      10月27日全日制班开课！
+
+
+
+      关键字：
+      break,case,catch,continue,default,delete,do,else,finally,for,function,if,in,instanceof,new,return,switch,this,throw,try,typeof,var,void,while,with。
+      保留字:
+      abstract抽象，boolean，byte，char字符,class,const常数,debugger调试器,double,enum枚举,export,import,extends,final,float,goto,implements执行,int,interface,long,native,package,private,protected,public,short,static,super,synchornized同步,throws,transient临时的,volatile不稳定的；
+
+
+
+      JS中的数据类型：一，【基本数据类型】；包含①number②string③boolean④null⑤undefined
+      二，【引用数据类型】：包含①object②array
+      1、object对象数据类型包含：{}对象，[]数组，/`$`/正则；
+      2、function（函数数据类型）；
+      //
+      //
+      JS中数据类型区分和检测的四种方法
+      ①,typeof,检测数据类型的逻辑运算符；其返回结果是字符串；包含类型；
+      var num=1;console.log(typeof num);检测num存储值的内容，而不是单纯检测num;结果是number;但是在控制台
+      入typeof 7;->“number”;返回结果是个字符串（带引号，里面包含数据类型）；
+      typeof null;->"object";null是空对象指针；这个比较特殊；
+      typeof undefined;->"undefined"
+      typeof {name:"zhu"}->"object"
+      typeof function(){}->"function"
+      typeof /^$/->"object"
+      typeof [1,2]->"object"
+      不能检测数组，正则，对象等数据类型；
+      BAT【面试题】：
+      typeof typeof [1,2]->"string"连续出现两个及以上检测数据类型返回值是字符串的string；
+      typeof 不能具体检测出object下面细分的到底是哪个数据类型；
+      ②,constructor,
+      ③,instanceof,可以检测处是否属于某个父级对象；console.log(a instanceof array);
+      ④,object.prototype.toString.call();
+      //
+      一，【number】数据类型：正数，负数，0，NaN(not  a number);
+      typeof NaN;->"number";
+      A:数字+undefined=NaN;B:非有效的数字运算;C:"2"*2=4;字符串2强制转换为数字2，而后再进行乘法运算；"2px"*2结果为NaN;D:强制转换非数字类型的值转换为数字类型的时候，出现NaN;
+      Number();强制（严格）转化为数字类型；Number（"2015年"）=NaN;
+      parseInt/parseFloat:非严格转化；parseInt("2015年")；->2015;把字符串左边开始查找，把所以遇到的有效数字转化为数字，一旦遇到一个非有效的数字，则停止继续查找；parseFloat多了“一个小数点”作为有效的内容；
+      parseInt("到2016年")->NaN;parseFloat("12.1px")->12.1;
+      typeof NaN;->"Number";
+      val.toFixed(n):val保留到小数点后第n位，自动进行四舍五入；
+      NaN包含了很多值的可能性；NaN==NaN（两个等于号用来比较左右两边的值是否相等）false结果不相等！NaN和谁都不相等；
+      检测一个值是否是有效数字不可以用这种方法判断：Number("3px")==NaN;只能用函数isNaN()来判断结果->true/false;
+      isNaN("10px")->如果检测的值不是number类型的，首先默认调用Number强制转换为number类型的在进行检测->10px-NaN->true;
+      BAT【面试题】：
+      var num=Number("13.5px");
+      if(num==13.5){
+      console.log(13.5);
+      }else if(num==NaN);
+      {console.log(NaN);
+      }else if(typeof num=="number"){
+      console.log("number");
+      }else{
+      console.log("13.5px");
+      }
+      ->typeof num=typeof NaN->"number";
+      ->结果是"number";
+      二、【string.boolean】;
+      string字符串；字符串中用双引号和单引号包起来的都是字符串；
+      var ary="[12,23]"<-字符串；
+      字符串"2"-1:结果是2，对字符串强制转化为数字；
+      字符串"2"+1:结果是21，字符串遇到“+”拼接了字符串；
+      "2"+true="2true";
+      "2"+[1,2,3]="21,2,3";
+      boolean:true/false;
+      !的意思是指现将这个值转化为布尔类型的true或false然后再取反；
+      ！1->！true->false;
+      将其他类型转化为布尔类型：只有0,"",NaN,null,undefined；![]->false;空数组是true;
+      !!两个感叹号的意义->boolean()->将其他的数据类型转换为布尔类型；两个感叹号和boolean（）作用是一样的；
+      三、引用数据类型之【object】
+      var obj={};
+      var ary=[];
+      var reg=/^$/;
+      每一个对象数据类型都是由属性名和属性值组成的（也可以说是由多组键值对组成的key:value;）
+      var personInfo={
+      name:"Tim",
+      age:32,
+      height:"181cm"
+      };
+      用逗号隔开各个属性，最后键值对结尾不加符号；且键值名不能重复；如果重复了后面会把前面覆盖掉；
+      var personInfo2{
+      name:"John",
+      age:27,
+      height:"178cm"
+      };
+      在外面增,改,删属性名和属性值；
+      var personInfo={};变量名，但是存储的是一个对象数据类型，所以也叫对象名；
+      personInfo.name="David";增加对象属性名和属性值；
+      personInfo["name"]="David";等价于上一个属性名和属性值；要给属性名加引号；
+      personInfo["age"]=17;
+      personInfo.age=12;后面的覆盖，进行更改；
+      删除的两种办法：假删除（让其属性值为null->personInfo.age=null;）和真删除(delete personInfo.age;)。
+      获取属性名属性值：console.log(personInfo.name,personInfo["name"]);
+      console.dir()比console.log()输出的更详细一些；
+      注意：在一个对象当中，属性名可以使数字；
+      var obj={0:"jer";
+      1:"13";
+      3:"172cm"
+      }
+      数字属性名为数字的话obj.n不能使用；只能使用obj["n"]->obj[0]中括号内的双引号可以省略；
+      两种创建对象数据类型的方法:
+      ①Var obj={}字面量创建方式，从字面上看就可以看出来是一个对象的方式；
+      ②var obj=new Object{}实例创建方式；后面的O是大写字母；
+      两种方式创建结果没有区别；
+
+
+      BAT【面试题】
+      var num1=12;//定义变量num1,赋值12
+      var num2=num1;//讲num1变量存储的那个值赋值给num2,∴num2=12
+      num2=13;
+      console.log(num1);->13;
+
+      var obj1={name:"Ibrahimovic";age:18};
+      var obj2=obj1;
+      obj2.age=20;
+      console.log(obj1.age);
+      基本数据类型和引用数据类型的区别
+      1，结构简单和复杂;2，本质区别：基本数据操作的是值，不一样的变量没有什么关系；引用数据操作的是按引用地址来操作;
+
+      预习和复习：01-09都讲过了,预习:三个循环，三个判断，隔行变色，选项卡，function(是整个JS中最重要的知识);
+
+      */
+</script>
+</body>
+</html>

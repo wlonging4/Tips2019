@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时定时器</title>
+    <style type="text/css">
+        body,div{
+            margin:0;
+            padding:0;
+            font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+            font-size:40px;
+            font-weight: bolder;
+        }
+        #div1{
+            margin:50px auto;
+            padding:5px;
+            width:800px;
+            height:100px;
+            text-align:center;
+            line-height:100px;
+            border:1px solid green;
+            background:-webkit-linear-gradient(top left,yellow,green,red);
+            border-radius: 11px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("div1");
+    oDiv.innerHTML=bZha();//这行要是去掉的话，打开页面要等1秒才能开始运行函数显示的效果;
+    var timer=window.setInterval(function() {
+        //var str=bZha();
+        oDiv.innerHTML=bZha();
+        },1000);
+
+    function bZha(){
+        function zero(value){
+            return value<10?"0"+value:value;
+        }
+        var tarTime=new Date("2015/10/24 17:59:59");
+        //设定个目标时间;
+        var nowTime=new Date();//当前时间获取
+        //获取毫秒差var x=y.getTime();
+        var tarSpan=tarTime.getTime();
+        var nowSpan=nowTime.getTime();
+        var differTime=tarSpan-nowSpan;
+        //单位:毫秒差;
+        var hour=Math.floor(differTime/(1000*60*60));
+        //向下取整把整小时取出来;
+        var hourMs=hour*1000*60*60;//所有小时占用的ms数;
+        var spanMs=differTime-hourMs;//得到剩余ms数
+        //向下取整把整分钟取出来;
+        var minute=Math.floor(spanMs/(1000*60));
+        var minuteMs=minute*60*1000;
+        var spanMs2=spanMs-minuteMs;//得到剩余ms数;
+        //计算秒
+        var second=Math.floor(spanMs2/1000);
+        return "距离爆炸:"+zero(hour)+":"+zero(minute)+":"+zero(second);
+    }
+    //加上补零函数;
+    function zero(value){
+        return value<10?"0"+value:value;
+    }
+</script>
+</body>
+</html>

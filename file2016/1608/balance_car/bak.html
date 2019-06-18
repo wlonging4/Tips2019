@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>“风火轮”还是“疯祸轮” 智能平衡车真的好用么？</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#666;font:12px/20px 'simsun',arial; background: #fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#0470AC;font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 150px; padding-top: 50px ;background: url("images/lg_foot.jpg") no-repeat top center; }
+        .zol_foot,.zol_foot a{  color: #2CA4DD;  }
+
+        .head-l{background: url("images/lg_head_l.jpg") no-repeat 100% 0}
+        .head-r{background: url("images/lg_head_r.jpg") no-repeat 100% 0}
+        .head-c{background: url("images/lg_head_c.jpg") no-repeat 100% 0;width: 1200px;height: 360px}
+
+        .hot-s{background: #f2f2f2;}
+        .hot-c{padding: 30px 0;width: 1200px;height: 550px;background: #f2f2f2}
+
+        .test{  overflow: hidden;  }
+        .test-t{  margin: 35px auto;  width: 800px;  height: 60px;  }
+        .test-c{  position: relative;  overflow: hidden;  height: 1300px;  margin-bottom: 38px;  }
+        .t-pic,.t-art{  position: absolute;  width: 380px;  height: 420px;  }
+        .t-pic1{  top: 0;  left: 0;  }
+        .t-pic2{  top: 0;  right: 0;  }
+        .t-pic3{  top: 440px;  left: 410px;  }
+        .t-pic4{  bottom: 0;  left: 0;  }
+        .t-pic5{  bottom: 0;  right: 0;  }
+        .t-art1{  top: 0;  left: 410px;  }
+        .t-art2{  top: 440px;  left: 0;  }
+        .t-art3{  top: 440px;  right: 0;  }
+        .t-art4{  bottom: 0;  left: 410px;  }
+        .test-pics{  position: relative;  overflow: hidden;  width: 1200px;  height: 370px;  margin-bottom: 35px;  }
+        .test-btn{  position: absolute;  top: 140px;  width: 30px;  height: 60px;  cursor: pointer;  }
+        .test-btn1{  left: 0;  background: url("images/lg_test_btns.png") no-repeat 0 0;  }
+        .test-btn2{  right: 0;  background: url("images/lg_test_btns.png") -30px 0;  }
+        .test-box{  position: relative;  width: 1060px;  height: 370px;  margin: 0 auto;  overflow: hidden;  }
+        .test-mod{  position: absolute;  top: 0;  height: 370px;  }
+
+        .pk-t{  width: 400px;  height: 60px;  padding: 45px 400px 45px; background: #f2f2f2 }
+        .pk-c{  width: 1200px; height: 860px; overflow: hidden; padding-bottom: 40px; background: #f2f2f2  }
+        .pk-vote{  position: relative;  width :1200px; height: 120px;background: url("images/lg_vote.jpg") no-repeat 0 0; margin-bottom: 30px }
+        .pk-p1{  position: absolute;  width: 450px;  height: 58px;  top: 0;  left: 0;  color: #FF6835;  text-align: center;  font:italic 22px/58px 'microsoft yahei';  }
+        .pk-p2{  position: absolute;  width: 450px;  height: 58px;  left: 620px;  top: 0;  color: #1E73C0;  text-align: center;  font:italic 22px/58px 'microsoft yahei';  }
+        .pk-bar1-box{  position: absolute;  bottom: 0;  left: 2px;  width: 580px;  height: 35px;  overflow: hidden;  }
+        .pk-bar1{  position: absolute;  left: 560px;  width: 580px;  height: 35px;  background: #FF6835 url("images/lg_vote_bar1.jpg") no-repeat 0 0;  }
+        .pk-bar2-box{  position: absolute;  bottom: 0;  left: 620px;  width: 580px;  height: 35px;  overflow: hidden;  }
+        .pk-bar2{  position: absolute;  left: 560px;  width: 580px;  height: 35px;  background: #00BBF9 url("images/lg_vote_bar2.jpg") no-repeat 0 0;  }
+        .pk-v1{  position: absolute; top: 0;  left: 450px;  width: 130px;  height: 55px;  }
+        .pk-v2{  position: absolute;  top: 0;  left: 1070px;  width: 130px;  height: 55px;  }
+        .pk-weibo{  width: 1200px;  height: 710px;  }
+        .pk-wb{  float: left;  width: 578px;  height: 706px;  border-color: #FF8C66;  margin-right: 40px;  border-style: solid;  border-width: 3px 1px 1px;  }
+        .pk-wb2{  border-color: #6FDBFF;  margin-right: 0;  }
+
+        .more{  height: 580px;  margin: 45px auto 100px;  overflow: hidden;  }
+        .more1{  height: 440px;  margin-bottom: 40px;  overflow: hidden;  }
+        .more1-l{  float: left;  width: 760px;  height: 440px;  background: #000;  }
+        .more1-r{  float: left;  margin-left: 20px;  width: 420px;  height: 440px;  }
+        .more2{  height: 100px;  overflow: hidden;  }
+        .more2-m{  float: left;  width: 280px;  height: 100px;  margin-right: 26px;  }
+        .more2-m4{  margin-right: 0;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                模块内容
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--热点-->
+<table class="hot" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="hot-s">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="hot-c">
+                模块内容
+            </div>
+        </td>
+        <td class="hot-s">&nbsp;</td>
+    </tr>
+</table>
+<!--评测-->
+<div class="wrapper test">
+    <div class="test-t">模块内容</div>
+    <div class="test-c">
+        <div class="t-pic t-pic1">模块内容</div>
+        <div class="t-pic t-pic2">模块内容</div>
+        <div class="t-pic t-pic3">模块内容</div>
+        <div class="t-pic t-pic4">模块内容</div>
+        <div class="t-pic t-pic5">模块内容</div>
+        <div class="t-art t-art1">模块内容</div>
+        <div class="t-art t-art2">模块内容</div>
+        <div class="t-art t-art3">模块内容</div>
+        <div class="t-art t-art4">模块内容</div>
+    </div>
+    <div class="test-pics">
+        <div class="test-btn test-btn1"></div>
+        <div class="test-btn test-btn2"></div>
+        <div class="test-box">
+            <div class="test-mod">
+                模块内容
+            </div>
+        </div>
+    </div>
+</div>
+<!--pk-->
+<table class="pk" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="hot-s">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="pk-t">模块内容</div>
+            <div class="pk-c">
+                <div class="pk-vote">
+                    <div class="pk-p1">平衡车可以作为代步工具，很方便。</div>
+                    <div class="pk-p2">平衡车也就是个大玩具，绝对不能上路。</div>
+                    <div class="pk-bar1-box">
+                        <div class="pk-bar1"></div>
+                    </div>
+                    <div class="pk-bar2-box">
+                        <div class="pk-bar2"></div>
+                    </div>
+                    <div class="pk-v1">模块内容</div>
+                    <div class="pk-v2">模块内容</div>
+                </div>
+                <div class="pk-weibo clearfix">
+                    <div class="pk-wb">模块内容</div>
+                    <div class="pk-wb pk-wb2">模块内容</div>
+                </div>
+            </div>
+        </td>
+        <td class="hot-s">&nbsp;</td>
+    </tr>
+</table>
+<!--更多-->
+<div class="wrapper more">
+    <div class="more1 clearfix">
+        <div class="more1-l">模块内容</div>
+        <div class="more1-r">模块内容</div>
+    </div>
+    <div class="more2">
+        <div class="more2-m">模块内容</div>
+        <div class="more2-m">模块内容</div>
+        <div class="more2-m">模块内容</div>
+        <div class="more2-m more2-m4">模块内容</div>
+    </div>
+</div>
+
+<script src="../jquery-1.9.1.js"></script>
+<script>
+    /*多图片切换*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".test-mod",".test-box",3,".test-btn1",".test-btn2");
+</script>
+</body>
+</html>

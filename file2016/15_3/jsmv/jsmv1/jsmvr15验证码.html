@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style type="text/css">
+        body,div{
+            margin:0;
+            padding:0;
+            font-family:fantasy;
+            font-size:18px;
+            -webkit-user-select:none;/*//禁止用户选中*/
+        }
+        #code{
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin-top:-50px;
+            margin-left:-25px;
+            width:100px;
+            height:50px;
+            line-height:50px;
+            text-align:center;
+            border:1px solid orangered;
+            cursor:pointer;
+            letter-spacing:2px;/*//间隔2像素;*/
+        }
+    </style>
+</head>
+<body>
+<div id="code">mlgb</div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("code");
+    var codeStr="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    function getCode(){
+        var str="";
+        for(var i=0;i<4;i++){
+            var ran=(Math.round(Math.random()*61));
+            str+=codeStr.charAt(ran);
+        }
+        oDiv.innerHTML=str;
+    }
+    oDiv.onclick=function(){
+        getCode();
+    }
+</script>
+</body>
+</html>

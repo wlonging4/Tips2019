@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结合on+bind</title>
+</head>
+<body>
+bind是真正的绑定;
+unbind
+on是一个伪绑定,只解决顺序问题;
+run
+off
+如果只使用on和off那么就不需要写unbind方法了;把bind方法写的这么复杂目的都是为了最后解绑的时候用到的;但是如果没有写unbind
+</body>
+<script>
+    //实现on和bind结合;on解决顺序bind解决this;合并两个方法简化代码;
+    function on(ele,type,fn){
+        if(!ele["aEvent"+type]){
+            ele["aEvent"+type]=[];
+            ele.attachEvent("on"+type,function(e){run.call(ele,e)});//相当于bind方法写在函数的末尾位置;实现方法只绑定一次也实现了真绑定;
+        }
+        if(ele.addEventListener){
+            ele.addEventListener(type,fn,false);
+            return;
+        }
+        var a=ele["aEvent"+type];
+        //避免一个方法被重发的放在数组里
+        for(var i=0;i< a.length;i++){
+            //如果这个方法在数组中已经存在则退出
+            if(a[i]==fn)return;
+        }
+        a.push(fn);
+        //负责把run绑定在ele元素的type事件上一次
+        //bind(ele,type,run);//可以抛弃掉bind和unbind
+        //ele.attachEvent("on"+type,function(e){run.call(ele,e)});//相当于bind方法写在函数的末尾位置
+    }
+    /*on(ele,"click",fn1);
+    on(ele,"click",fn2);*/
+    function run(){
+        //为什么兼容性问题要写在run里面->因为只有run方法能得到事件对象;是事件驱动即事件触发其执行;
+        //添加各浏览器支持
+        var e=e||window.event;
+        var type= e.type;
+        if(!e.target){
+            e.target= e.srcElement;
+            e.stopPropagation= function () {e.cancelBubble=true;};
+            e.preventDefault= function () {e.returnValue=false;};
+            e.pageX= e.clientX+(document.documentElement.scrollLeft||document.body.scrollLeft);
+            e.pageY= e.clientY+(document.documentElement.scrollTop||document.body.scrollTop);
+        }
+        var a=this["aEvent"+type];
+        //遍历执行这个数组各项
+        for(var i=0;i<a.length;i++){
+            if(typeof a[i]=="function"){
+                a[i].call(this,e);
+            }else{
+                a.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    function off(){
+        if(ele.removeEventListener){
+            ele.removeEventListener(type,fn,false);
+            //这里不写return那么就得在下面添加else{};
+            return;
+        }
+        var a=this["aEvent"+type];
+        if(a){
+            for(var i=0;i< a.length;i++){
+                if(a[i]==fn){
+                    a[i]=null;
+                    break;
+                }
+            }
+        }
+    }
+    //把这些方法写成面向对象形式的;上面三个函数是面向过程的;添加到HTMLElement.prototype.on=function(){}理论上可以但是在IE上实际上没有->IE678上没有浏览器级的DOM对象,IE的DOM操作是由操作系统帮助完成的;
+    //作用域是一个对象是一个活动对象->动态对象执行的时候创建执行完销毁;上下文是一个固定对象;二者之间不存在关系;
+</script>
+</html>

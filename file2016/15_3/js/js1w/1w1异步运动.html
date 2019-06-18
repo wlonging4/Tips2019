@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>异步运动块</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #ul1 li{
+            position: relative;
+            list-style: none;
+            height: 30px;
+            width: 100px;
+            line-height: 28px;
+            text-align: center;
+            overflow: hidden;
+            background-color: green;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <script type="text/javascript">
+        /*var oLis=document.getElementsByTagName("li");
+        for(var i=0;i<oLis.length;i++) {
+            window.setTimeout(function () {
+                oLis[i].style.left = (i + 1) * 100 + "px";
+            }, (i + 1) * 1000);
+        }*///抛出异常,setTimeout内的i的值最后固定为4;但是i索引最大是3;所以需要使用闭包来保护变量
+
+        //设置闭包方法1
+        /*var oLis=document.getElementsByTagName("li");
+        for(var i=0;i<oLis.length;i++) {
+
+            ;(function(i){
+                window.setTimeout(function () {
+                oLis[i].style.left = (i + 1) * 100 + "px";
+            }, (i + 1) * 1000)})(i)
+
+        }*/
+
+        //设置闭包方法2
+        var oLis=document.getElementsByTagName("li");
+        for(var i=0;i<oLis.length;i++) {
+            window.setTimeout((function (i) {
+                return function () {
+                    oLis[i].style.left = (i + 1) * 100 + 'px'
+                }
+            })(i), (i + 1) * 1000);
+        }
+    </script>
+</body>
+</html>

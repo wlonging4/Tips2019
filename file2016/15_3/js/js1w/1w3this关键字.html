@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this关键字</title>
+    <style type="text/css">
+        #div1{
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">我是div</div>
+<script type="text/javascript">
+       /* function fn() {
+            console.log(this.innerHTML);
+        }
+        var innerHTML = "我是WINDOW";
+        var obj = {
+            innerHTML: "我是OBJ",
+            eat: fn //把全局函数fn赋值给我们的obj下的fn这个属性名
+        };
+        fn();//this-->window
+        obj.eat();//this-->obj
+
+        document.getElementById("div1").onclick = fn;//把fn函数定义的部分赋值给我们的事件，当我么事件触发的时候才会执行fn这个函数 --> 当点击的时候,fn中的this-->div1这个元素->输出div中的内容
+        //document.getElementById("div1").onclick = fn();//fn函数先执行，把它的返回值赋值给我们的onclick;*/
+
+
+       var oDiv = document.getElementById("div1");
+       function fn() {
+            console.log(this);
+        }
+        oDiv.onclick = function () {
+            //console.log(this);//->this:oDiv
+            //this-->oDiv
+            fn();//fn不管在哪执行的和this没关系，就看前面是否有"."，所以fn方法中的this-->window
+        };
+       //oDiv.onclick=fn();//->window
+
+        //当我点击的时候，执行匿名函数(this-->oDiv)，在匿名函数中又执行了fn,this是谁?
+</script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>Neato扫地机器人</title>
+    <style type="text/css">
+        /*reset*/
+        body{color:#ddd;font:12px/22px arial; background:#21242d;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#ddd;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#aaa}
+        .hong12{color:#B20000}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .p1-l{  background: url("images/lg_p1_l.jpg") no-repeat 100% 0;  }
+        .p1-r{  background: url("images/lg_p1_r.jpg") no-repeat 0 0;  }
+        .p1{  background: url("images/lg_p1.jpg") no-repeat 0 0;  }
+        .p2-l{  background: url("images/lg_p2_l.jpg") no-repeat 100% 0;  }
+        .p2-r{  background: url("images/lg_p2_r.jpg") no-repeat 0 0;  }
+        .p2{  background: url("images/lg_p2.jpg") no-repeat 0 0;  }
+        .p3-l{  background: url("images/lg_p3_l.jpg") no-repeat 100% 0;  }
+        .p3-r{  background: url("images/lg_p3_r.jpg") no-repeat 0 0;  }
+        .p3{  background: url("images/lg_p3.jpg") no-repeat 0 0;  }
+        .p4-l{  background: url("images/lg_p4_l.jpg") no-repeat 100% 0;  }
+        .p4-r{  background: url("images/lg_p4_r.jpg") no-repeat 0 0;  }
+        .p4{  background: url("images/lg_p4.jpg") no-repeat 0 0;  }
+        .wrapper{width:1000px; height: 760px;  margin:0 auto; position:relative;}
+
+        .nav{position:absolute; z-index:3; left:50%; top:30px; width:712px; margin-left:-240px;}
+        .nav li{ float:left; _display:inline;  width:110px; height:37px; margin:0 34px;  cursor:pointer; }
+        .nav li.li1{  background: url("images/lg_nav1.png") no-repeat;  background-position: 0 -37px;  }
+        .nav li.li2{  background: url("images/lg_nav2.png") no-repeat;  background-position: 0 -37px;  }
+        .nav li.li3{  background: url("images/lg_nav3.png") no-repeat;  background-position: 0 -37px;  }
+        .nav li.li4{  background: url("images/lg_nav4.png") no-repeat;  background-position: 0 -37px;  }
+        .nav li.act{  background-position: 0 0px;  }
+
+        .foot{height:115px;padding:30px 0 0;text-align:center; color:#5d5f65;line-height:22px;}
+        .foot a{color:#5d5f65;}
+
+        #c .c-box{width:100%; margin-left:auto; margin-right:auto;}
+        #c .photowrap{width:100%; margin:0 auto;height:760px;overflow: hidden; position:relative;}
+        #c .photocon{height:760px;overflow: hidden;position: absolute;}
+        #c .photocon .listbox{width:100%; height:760px;overflow: hidden;float: left;position: relative;}
+
+        #c .photoprev,#c .photonext{position:absolute; width:37px; height:117px; z-index:2; top:340px; cursor:pointer; background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-p.png) no-repeat; display: none;}
+        #c .photoprev{left:120px;display:none;}
+        #c .photonext{right:120px; background:url(http://2.zol-img.com.cn/zt/tm_564/1b3899816e/f-n.png) no-repeat;}
+        #c .side-nav{  position: absolute;  right: 60px;  top: 340px;  width: 11px;  height: 108px;  }
+        #c .side-nav li{  width: 11px;  height: 11px;  margin-bottom: 17px;  cursor: pointer;  background: url("images/lg_nav_side.png") no-repeat 0 -11px;  }
+        #c .side-nav li.act{  background-position: 0 0;  }
+
+        /*.use-pic img,.try-intro img,.try-pic img,.dpic img,.epic img,.fpic .changebox,.gpic img,#s-img img,#s-img1 img{border:1px solid #666;}
+        area{outline:none;}*/
+        .p1-mod{  position: absolute;  bottom: 50px;  left: 40px;  width: 920px;  height: 124px;  }
+        .p1-mod-l{  float: left;  width: 550px;  height: 124px;  margin-right: 15px;  }
+        .p1-mod-r{  float: left;  width: 355px;  height: 124px;  }
+
+        .p2-mod{  position: absolute;  top: 140px;  left: 95px;  width: 850px;  height: 500px;  }
+
+        .p3-mod{  position: absolute;  top: 140px;  left: 60px;  width: 910px;  height: 500px;  }
+        .p3-video{  float: left;  width: 580px;  height: 500px;  padding-right: 10px;  }
+        .p3-mod-r{  float: left;  width: 320px;  height: 500px;  }
+        .p3-mod-r1{  height: 135px;  width: 330px;  padding-bottom: 10px;  margin-left: -5px;  }
+        .p3-mod-r2{  width: 320px;  height: 355px;  background: url("images/lg_p3_bg.png") no-repeat}
+
+        .p4-mod{  position: absolute;  top: 140px;  left: 60px;  width: 900px;  height: 500px;  }
+        .p4-m{  float: left;  height: 500px;  }
+        .p4-m1{  width: 288px;  height: 500px;  padding-right: 6px; }
+        .p4-m2{  width: 202px;  height: 500px;  padding-right: 6px;  }
+        .p4-m3{  width: 396px;  height: 500px;  }
+
+    </style>
+</head>
+<body>
+<div class="c-box" id="c">
+    <div class="photowrap">
+        <ul class="photocon">
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="p1-l">&nbsp;</td>
+                        <td width="1000" height="760" valign="top">
+                            <div class="wrapper p1">
+                                <div class="p1-mod clearfix">
+                                    <div class="p1-mod-l">
+                                        模块内容
+                                    </div>
+                                    <div class="p1-mod-r">
+                                        模块内容
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p1-r">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="p2-l">&nbsp;</td>
+                        <td width="1000" height="760" valign="top">
+                            <div class="wrapper p2">
+                                <div class="p2-mod">
+                                    模块内容
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p2-r">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="p3-l">&nbsp;</td>
+                        <td width="1000" height="760" valign="top" id="f-tab1-c">
+                            <div class="wrapper p3">
+                                <div class="p3-mod clearfix">
+                                    <div class="p3-video">
+                                        模块内容
+                                    </div>
+                                    <div class="p3-mod-r">
+                                        <div class="p3-mod-r1">
+                                            模块内容
+                                        </div>
+                                        <div class="p3-mod-r2">
+                                            模块内容
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p3-r">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+            <li class="listbox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="p4-l">&nbsp;</td>
+                        <td width="1000" height="760" valign="top">
+                            <div class="wrapper p4">
+                                <div class="p4-mod">
+                                    <div class="p4-m p4-m1">
+                                        模块内容
+                                    </div>
+                                    <div class="p4-m p4-m2">
+                                        模块内容
+                                    </div>
+                                    <div class="p4-m p4-m3">
+                                        模块内容
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p4-r">&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+        <div class="photoprev"></div>
+        <div class="photonext"></div>
+        <ul class="side-nav">
+            <li class="act"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="navigate">
+            <ul class="nav">
+                <li class="li1 act"></li>
+                <li class="li2"></li>
+                <li class="li3"></li>
+                <li class="li4"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="foot">模块内容</div>
+
+<script src="../jquery-1.9.1.js"></script>
+<script>
+    var btn = false;
+    var x1;
+    $('.slidebtn').bind('mousedown',function(ev){
+        var ev = ev|| window.event;
+        btn = true;
+
+        if (ev.preventDefault) {
+            ev.preventDefault();
+            ev.stopPropagation();
+        }
+
+        $(document).bind('mousemove',function(ev){
+            var ev = ev|| window.event;
+            if(btn){
+                if (document.all)
+                {
+                    ev.returnValue = false;
+                }
+                var cx = ev.clientX;
+                var bgoffsetleft = $('.slidebg').offset().left;
+                var bgwidth = $('.slidebg').width();
+                var btnwidth = $('.slidebtn').width();
+                var btnleft = parseInt(cx - bgoffsetleft - btnwidth/2);
+                var bgright = bgwidth - btnwidth;
+                var factor = parseInt(5472/bgwidth);
+
+                if(btnleft<bgright && btnleft>2){
+                    $('.slidebtn').css('left',btnleft+'px');
+                    $('#slidephoto').attr('width',bgwidth+(btnleft*factor));
+                    $('#slidephoto').css({'left':-parseInt((btnleft*factor)/1.9)+'px','top':-parseInt((btnleft*factor)/3.8)+'px'})
+                }
+            }
+        })
+        $(document).bind('mouseup',function(ev){
+            btn = false;
+        })
+    });
+
+    photowrap("#c","#c .photocon","#c .photocon .listbox","#c .navigate li","#c .photoprev","#c .photonext","#c .side-nav li");
+
+    function photowrap(wrap, con, con_li, nav_span, prev, next,nav_span2) {
+        function showPics(index) {
+            /*if(index==0){
+             $(prev).hide();
+             }else{
+             $(prev).show();
+             }
+             if(index==7){
+             $(next).hide();
+             }else{
+             $(next).show();
+             }*/
+            var nowLeft = -index * sWidth;
+            $(con).stop(!0, !1).animate({
+                        left: nowLeft
+                    },
+                    300,
+                    function() {}),
+                    $(nav_span).removeClass("act").eq(index).addClass("act");
+            $(nav_span2).removeClass("act").eq(index).addClass("act");
+            if(index>3){
+                $(nav_span).removeClass("act").eq(index-1).addClass("act");
+                $(nav_span2).removeClass("act").eq(index-1).addClass("act");
+            }
+        }
+        function fullScreen(wrap, con_li) {
+            var ssWidth = $(wrap).width();
+            $(con_li).width(ssWidth)
+        }
+        var sWidth = $(wrap).width(),
+                len = $(con_li).length,
+                index = 0,
+                picTimer;
+        $(con).css("width", sWidth * len),
+                $(window).resize(function() {
+                    fullScreen(wrap, con_li),
+                            sWidth = $(wrap).width(),
+                            $(con).css("width", sWidth * len),
+                            showPics(index)
+                }),
+                fullScreen(wrap, con_li),
+                $(con_li).width(sWidth),
+                $(nav_span).click(function() {
+                    index = $(nav_span).index(this);
+                    showPics(index);
+                    $(nav_span).removeClass("act").eq(index).addClass("act");
+                    if(index>3){
+                        showPics(index+1);
+                    }
+                });
+        $(nav_span2).click(function() {
+            index = $(nav_span2).index(this);
+            showPics(index);
+            $(nav_span2).removeClass("act").eq(index).addClass("act");
+            if(index>3){
+                showPics(index+1);
+            }
+        });
+        /*$(prev).click(function() {
+         index--,
+         index < 0 && (index = len - 1),
+         showPics(index)
+         $("#photonav-img").attr("src","http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav"+(index+1)+".png");
+         }),
+         $(next).click(function() {
+         index++,
+         index == len && (index = 0),
+         showPics(index)
+         $("#photonav-img").attr("src","http://2.zol-img.com.cn/zt/tm_530/711e69b705/f-nav"+(index+1)+".png");
+         })*/
+    }
+</script>
+</body>
+</html>

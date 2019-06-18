@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面试及框架技术</title>
+</head>
+<body>
+【pc】
+jquery/bootstrap/prototype.js/EasyUI.js/Ext.js/React.js/underscore.js
+【移动端】
+zePto.js/jQuery mobile.js/amazeUI/iScroll.js
+【图形统计】
+HCharts.js/ECharts.js/d3.js/svg.js
+【css预处理】
+sass/less(编写完成的代码需要进行编译)
+compass
+【node.js】
+require.js(AMD)/sea.js(CMD)/backbone.js(MVC)/angular.js(MVVM)
+自动化平台gulp/grunt/fis
+【JS代码检测】
+
+
+静态资源:事先实现布局的时候我们就已经知道的
+动态资源:通过Ajax请求回来的数据中存在的图片
+1、对于静态资源图
+尽可能的把图片在保证不失真的情况下进行压缩和(Gzip压缩)
+把一些小的icon图片合并成一张图片(雪碧图)
+如果以上解决都没有起到本质的作用，在迫不得已的情况下，我们使用一项技术，嗖就解决了-->base64
+http://tool.css-js.com/
+2、对于动态资源图
+图片延迟加载(默认图给一个小于10kb的，最后是1kb的)
+
+【HTML5页面】
+->响应式:在不同屏幕尺寸的设备上,都可以自适应大小
+->DPI(dots per inch)适配:对于高倍像素屏幕比例来说,我们做一些适配(图片的适配)
+1、传统的HTML5页面,基于浏览器(手机的浏览器)运行的
+[webApp]
+2、嵌入到app中,基于web view运行的->【hyBird模式】
+1)在微信中打开(也是同样提供了很多的API接口)
+2)在自己公司的App中打开
+HTML5自己的弊端:
+a、实现的一些动画效果没有使用原生App开发的性能好和流畅;
+b、做离线缓存的话效果也是不佳的,原生的App开发做缓存做的比较的好;
+c、使用HTML5调取手机内部的软件/硬件(读取相册、读取通讯录、打开摄像头、定位、重力感应...)操作起来都是依赖于浏览器是否支持的,即使支持的实现的性能和效果也是不好的
+...
+App原生开发(object-c、java)弊端:用户自主性下载更新太强
+
+HTML5和App如何的实现交互?
+1、伪URL传递参数调用(ios)->和App协定一个假的URL地址(http://kbs.qq.com/false/?flag=photo) App在我们发送URL请求的时候进行拦截，按照事先实现好的协议调取不同的功能
+2、jsBridge.js(安卓)->App/前端编写一个JS,里面提供了我们常用的功能接口,HTML5页面只需要引入这个JS,并且调用里面的方法即可
+phoneGap、React native、APICloud...
+
+</body>
+</html>

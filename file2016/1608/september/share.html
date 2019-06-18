@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    window.onShare=function(isShare,ssid){
+        if(isShare){
+            success.classList.remove('act');
+            $.ajax({
+                url:json_check,
+                type:'get',
+                dataType:'jsonp',
+                success: function (){
+                    $.ajax({
+                        url:json_obj,
+                        data:{action:'ToShare'},
+                        type:'get',
+                        dataType:'jsonp',
+                        error: function () {
+                            alert('您还没有完成分享哦！')
+                        },
+                        success: function () {
+                        }
+                    })
+                }
+            });
+            if(prize_code==10000){
+                if(prize_id==8){
+                    paper.classList.add('act');
+                    for(var i=0;i<prize_paper.length;i++){
+                        paper1.innerHTML=prize_paper[0];
+                        paper2.innerHTML=prize_paper[1];
+                        paper3.innerHTML=prize_paper[2];
+                        paper4.innerHTML=prize_paper[3];
+                        return false;
+                    }
+                }else if(0<=prize_id<=7){
+                    info.classList.add('act');
+                }else{
+                    alert('谢谢参与');
+                }
+            }else if(prize_code==10099){
+                success.classList.add('act');
+                success_p2.style.display='none';
+                success_p3.style.display='block';
+                success_p4.style.display='none';
+                success_p5.style.display='none';
+                success_mod.style.backgroundImage='url('+"http://2.zol-img.com.cn/zt/tm_57c/555a9722ba/pro"+prize_id+".png"+')';
+            }else if(prize_code==10999){
+                paper.classList.add('act');
+                for(var i=0;i<prize_paper.length;i++){
+                    paper1.innerHTML=prize_paper[0];
+                    paper2.innerHTML=prize_paper[1];
+                    paper3.innerHTML=prize_paper[2];
+                    paper4.innerHTML=prize_paper[3];
+                    return false;
+                }
+            }else{
+                alert('活动还未开始哦！');
+            }
+        }
+    };
+</script>
+</html>

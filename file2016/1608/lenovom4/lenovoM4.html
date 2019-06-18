@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>联想MIIX 4 随你而行 唯心所想</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#444;font:12px/20px 'simsun',arial; background: #fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#A98e83;font-size: 12px}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 960px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 130px; padding-top: 60px ;background: #f7f6f5; }
+        .zol_foot,.zol_foot a{  color: #A98C83;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57a/98c32634f1/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57a/98c32634f1/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  width: 960px;  height: 351px;  }  .head-link{  position: absolute;  width: 120px;  height: 40px; -webkit-border-radius: 2px;  -moz-border-radius: 2px;  border-radius: 2px;  bottom: 20px;  text-align: center;  line-height: 40px;  }
+        .head-link1{  right: 140px;  background: #e2231a;  }
+        .head-link2{  width: 118px;  height: 38px;  border: 1px solid #e2231a;  right: 0;  line-height: 38px;  }
+        .head-link2 .bai20{  color: #e2231a;  }
+        .head-link1 .bai20:hover{  color: #fff;  cursor: pointer;  text-decoration: none;  }
+        .head-link2 .bai20:hover{  color: #e2231a;  cursor: pointer;  text-decoration: none;  }
+
+        .art{  margin: 30px auto;  height: 630px;  }
+        .art-m{  width: 960px;  height: 300px;  }
+        .art-m .cheng20{  display: block;  color: #A98C83;  padding-top: 30px;  line-height: 50px;  font-weight: bold;  font-family: 'microsoft yahei',Arial;  }
+        .art-m .hui12{  display: block;  color: #777;  line-height: 22px;  }
+        .art-m1{  margin-bottom: 30px;  }
+        .art-m1 table img{  padding-left: 30px;  }
+        .art-m2 table img{  padding-right: 30px;  }
+
+
+        .test-s{  background: #f7f6f5;  }
+        .test-t{  padding: 30px 480px 30px 0;  width: 480px;  height: 70px;  background: #f7f6f5;  }
+        .test-c{  overflow: hidden;  width: 960px;  height: 360px;  background: #f7f6f5;  padding-bottom: 20px;  }
+        .test-ul{  float: left;  width: 200px;  height: 360px;  margin-right: 20px;  overflow: hidden;  }
+        .test-ul li{  width: 198px;  height: 48px;  line-height: 48px;  text-align: center;  font-size: 18px;  font-weight: bold;  font-family: 'microsoft yahei',Arial;  color: #EC5C00;  margin-bottom: 10px;  border: 1px solid #EC5C00;  -webkit-border-radius: 2px;  -moz-border-radius: 2px;  border-radius: 2px;  cursor: pointer;  }
+        .test-ul li.act{  color: #fff;  background: #EC5C00;  }
+        .test-mod{  float: left;  overflow: hidden;  position: relative;  width: 740px;  height: 350px;  }
+        .test-box{  width: 740px;  height: 2100px;  position: absolute;  top: 0;  }
+        .test-box table img{  padding-right: 20px;  }
+        .test-box .cheng20{  display: block;  color: #A98C83;  padding-top: 30px;  line-height: 50px;  font-weight: bold;  font-family: 'microsoft yahei',Arial;  }
+        .test-box .hui12{  display: block;  color: #777;  line-height: 22px;  }
+
+        .ad{  height: 120px;  margin-top: 30px;  }
+        .intro{  width: 980px;  height: 400px;  margin: 30px auto;  }
+
+        .pic-c{  width: 960px;  height: 380px;  padding-bottom: 30px;  background: #f7f6f5;  }
+        .pic-mod{  float: left;  width: 578px;  height: 378px;  border: 1px solid #8c8c8c; overflow: hidden;   position: relative;  }
+        .pic-box{  position: absolute;  top: 0;  width: 580px;  }
+        .pic-mod-little{  float: left;  width: 380px;  height: 380px;  }
+        .pic-mod-little .ln{  height: 10px;  }
+        .pic-mod-little table img{  border: 1px solid #8c8c8c;  }
+
+        .about{  height: 420px;  overflow: hidden;  }
+        .abt1{  float: left;  width: 370px;  height: 390px;  margin-right: 20px;  }
+        .abt1-t{  width: 370px;  height: 90px;  }
+        .abt1-c{  width: 370px;  height: 300px;  }
+        .abt1-c .hui12{  display: block;  padding-top: 20px;  color: #777777;  line-height: 22px;  }
+        .abt2{  float: left;  width: 570px;  height: 390px;  }
+        .abt2-t{  width: 370px;  height: 90px;  }
+        .abt2-c{  width: 568px;  height: 298px;  border: 1px solid #8c8c8c;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+                <div class="head-link head-link1"><{data[1]}></div>
+                <div class="head-link head-link2"><{data[2]}></div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--文章-->
+<div class="wrapper art">
+    <div class="art-m art-m1"><{data[16]}></div>
+    <div class="art-m art-m2"><{data[17]}></div>
+</div>
+<!--测试-->
+<table class="test" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="test-s">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="test-t">
+                <{data[4]}>
+            </div>
+            <div class="test-c clearfix">
+                <ul class="test-ul">
+                    <li class="act">Surface不再是唯一</li>
+                    <li>一改MIIX系列风格</li>
+                    <li>MIIX系列最出色一代</li>
+                    <li>YOGA血统表链设计</li>
+                    <li>六代酷睿M功耗更低</li>
+                    <li>入门移动级处理性能</li>
+                </ul>
+                <div class="test-mod">
+                    <div class="test-box">
+                        <{data[5]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="test-s">&nbsp;</td>
+    </tr>
+</table>
+<!--广告1-->
+<div class="wrapper ad">
+    <{data[6]}>
+</div>
+<!--介绍-->
+<div class="intro">
+    <{data[7]}>
+</div>
+<!--美图-->
+<table class="picture" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="test-s">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="test-t">
+                <{data[8]}>
+            </div>
+            <div class="pic-c clearfix">
+                <div class="pic-mod">
+                    <div class="pic-box">
+                        <{data[9]}>
+                    </div>
+                </div>
+                <div class="pic-mod-little">
+                    <{data[10]}>
+                </div>
+            </div>
+        </td>
+        <td class="test-s">&nbsp;</td>
+    </tr>
+</table>
+<!--广告2-->
+<div class="wrapper ad">
+    <{data[11]}>
+</div>
+<!--关于-->
+<div class="wrapper about clearfix">
+    <div class="abt1">
+        <div class="abt1-t"><{data[12]}></div>
+        <div class="abt1-c"><{data[13]}></div>
+    </div>
+    <div class="abt2">
+        <div class="abt2-t"><{data[14]}></div>
+        <div class="abt2-c"><{data[15]}></div>
+    </div>
+</div>
+<script charset="gbk">
+    /*点击切换*/
+    var test_li=$('.test-ul li'),test_box=$('.test-box');
+    test_li.bind('click', function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        test_box.css({top:'-'+test_li.index(this)*350+'px'});
+    });
+
+    var pic_l=$('.pic-mod-little table img'),pic_b=$('.pic-box');
+    pic_l.bind('mouseenter', function () {
+        pic_b.css({top:'-'+pic_l.index(this)*378+'px'});
+    });
+</script>
+</body>
+</html>

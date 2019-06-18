@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兼容自反弹动画</title>
+    <style type="text/css">
+        body,div{
+            margin:0;
+            padding: 0;
+        }
+        #div1{
+            height: 300px;
+            width: 300px;
+            position: absolute;
+            top: 140px;
+            left: 0;
+            background-color: firebrick;
+            border-radius: 150px;
+        }
+        #btn1{
+            position: absolute;
+            left: 500px;
+            height: 80px;
+            width: 150px;
+            border: none;
+            outline: none;
+            background: darkgrey;
+        }
+        #btn2{
+            position: absolute;
+            right: 500px;
+            height: 80px;
+            width: 150px;
+            border: none;
+            outline: none;
+            background: darkgrey;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript" src="wlgjs-1.0.min.js"></script>
+<script type="text/javascript">
+    var oDiv=document.getElementById("div1");
+    var t=utils.win("clientWidth")-oDiv.offsetWidth;
+    //方法1
+    function move(target){
+        var _this=this;
+        window.clearTimeout(_this.timer);
+        ~function _move() {
+            window.clearTimeout(_this.timer);
+            var curL=utils.css(_this,"left");
+            if(curL<target){
+                if(curL+5>=target){
+                    utils.css(_this,"left",target);
+                    move.call(_this,0);
+                    return;
+                }
+                utils.css(_this,"left",curL+5);
+            }else if(curL>target){
+                if(curL-5<=target){
+                    utils.css(_this,"left",target);
+                    move.call(_this,t);
+                    return;
+                }
+                utils.css(_this,"left",curL-5);
+            }else{
+                return;
+            }
+            _this.timer=window.setTimeout(_move,13);
+        }();
+    }
+    move.call(oDiv,t);
+    //方法2
+    /*function move() {
+        window.clearTimeout(oDiv.timer);
+        var curL = utils.css(oDiv, "left");
+        if (curL >= t) {
+            oDiv.isTrue = true;
+        }
+        if (!oDiv.isTrue) {
+            utils.css(oDiv, "left", curL + 5);
+        } else {
+            utils.css(oDiv, "left", curL - 5);
+            if (curL <= 0) {
+                oDiv.isTrue = false;
+            }
+        }
+        oDiv.timer = window.setTimeout(move, 13);
+    }
+    move();*/
+
+
+    //方法3
+    /*function move() {
+        window.clearTimeout(oDiv.timer);
+        var curL = utils.offset(oDiv).l;
+        curL >= t ? cur = 0 : null;
+        curL <= 0 ? cur = 1 : null;
+        switch (cur) {
+            case 1:
+                utils.css(oDiv, "left", curL + 5);
+                break;
+            case 0:
+                utils.css(oDiv, "left", curL - 5);
+                break;
+        }
+        oDiv.timer = window.setTimeout(move, 13);
+    }
+    move();*/
+
+</script>
+</body>
+</html>

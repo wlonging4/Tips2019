@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div运动框架</title>
+    <style type="text/css">
+        body,div{
+            padding: 0;
+            margin: 0;
+        }
+        #a1{
+            height:100px;
+            width: 100px;
+            background-color: red;
+            position: absolute;
+            top:30px;
+        }
+    </style>
+</head>
+<body>
+<input id="btn" type="button" onclick="move()" value="Move~"/>
+<div id="a1"></div>
+<script type="text/javascript">
+    var timer=null;
+    function move()
+    {
+        var oDiv = document.getElementById("a1");
+        clearInterval(timer);//先关后开，防止连续点击造成定时器开很多导致速度越来越快
+        timer=setInterval(function () {
+            if(oDiv.offsetLeft>200)//会停止
+        {
+            clearInterval(timer);
+        }else//else包在一起，防止到了目的地还在运动
+            {
+                oDiv.style.left = oDiv.offsetLeft + 10 + "px";
+            }
+        }, 100);
+    }
+</script>
+</body>
+</html>

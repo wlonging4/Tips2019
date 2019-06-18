@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery练习</title>
+    <style type="text/css">
+        div,span,p{
+            width: 140px;
+            height: 140px;
+            margin: 5px;
+            background: cadetblue;
+            border: 1px solid black;
+            float: left;
+            font-size: 17px;
+            font-family: Arial;
+        }
+        div .mini{
+            width: 55px;
+            height: 55px;
+            background-color: lavenderblush;
+            font-size: 12px;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="one" id="one">
+    id-one class-one
+    <div class="mini">class=mini</div>
+</div>
+<div class="one" id="two"  title="test">
+    id-two class-one title-test
+    <div class="mini" title="other">class-mini title-other</div>
+    <div class="mini" title="test">class-mini title-test</div>
+</div>
+<div class="one">
+    <div class="mini">class-mini</div>
+    <div class="mini">class-mini</div>
+    <div class="mini">class-mini</div>
+    <div class="mini"></div>
+</div>
+<div class="one">
+    <div class="mini">class-mini</div>
+    <div class="mini">class-mini</div>
+    <div class="mini">class-mini</div>
+    <div class="mini" title="tesst">class-mini title-tesst</div>
+</div>
+<div class="none" style="display: none;">
+    stype-display-none
+</div>
+<div class="hide">
+    class-hide
+</div>
+<div>
+    包含input-type-hidden的div<input type="hidden" size="8"/>
+</div>
+<span id="mover">执行动画的元素</span>
+</body>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+    //①基本选择器
+    //$("#one").css("background","green");
+    //$(".mini").css("background","green");
+    //$("div").css("background","green");
+    //$("*").css("background","green");
+    //$("span,#two").css("background","green");
+    //②层次选择器
+    //$("body div").css("background","green");
+    //$("body>div").css("background","green");
+    //$(".one+div").css("background","green");
+        //可以替代上一个使用$(".one").next("div");
+    //$("#two~div").css("background","green");
+        //可以替代上一个使用$("#two").nextAll("div");
+    //③过滤选择器
+        //基本过滤选择器
+        //$("div:first").css("background","red");
+        //$("div:last").css("background","red");
+        //$("div:not(.one)").css("background","red");
+        //$("div:even").css("background","red");
+        //$("div:odd").css("background","red");
+        //$("div:eq(3)").css("background","red");
+        //$("div:gt(3)").css("background","red");
+        //$("div:lt(3)").css("background","blue");
+        /*$(":header").css("background","red");*/
+        /*$("animate").css("background","red");*/
+        //内容过滤选择器
+        //$("div:contains(di)").css("background","yellow");
+        //$("div:empty").css("background","yellow");
+        //$("div:has('.mini')").css("background","yellow");
+        //$("div:parent").css("background","red");
+        //可见性过滤选择器
+        //$("div:hidden").show(2000);
+        //$("div:visible").css("background","green");
+        //属性过滤选择器
+        //$("div[title]").css("background","white");
+        //$("div[title=test]").css("background","red");
+        //$("div[title!=test]").css("background","red");
+        //$("div[title^=te]").css("background","red");
+        //$("div[title$=est]").css("background","blue");
+        //$("div[title*=est]").css("background","blue");
+        //$("div[id][title*=es]").css("background","blue");
+        //子元素过滤选择器
+        //$("div.one :nth-child(2)").css("background","blue");//这的索引不同于eq(index);这里是从1开始;
+        //$("div.one :first-child").css("background","red");
+        //$("div.one :last-child").css("background","blue");
+        //$("div.one :only-child").css("background","red");
+        //表单对象属性过滤选择器
+    //④表单选择器
+    //input text password radio checkbox submit image reset button file hidden
+
+
+</script>
+</html>

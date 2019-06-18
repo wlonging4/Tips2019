@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大坑货球队数据值</title>
+    <style type="text/css">
+        h3{
+          text-align: center;
+        }
+        h5{
+          text-align: center;
+        }
+        table,tr,td,th{
+            border: 1px solid blue;
+            border-collapse: collapse;}
+        th{
+            height: 30px;
+            background: -webkit-linear-gradient(top left,dimgray,white);
+            cursor: pointer;
+            -webkit-user-select: none;}
+    </style>
+</head>
+<body>
+<h3>点击表头属性查看排序</h3>
+<h5>By:大坑货官网</h5>
+<table align="center" width="700">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>位置</th>
+        <th>射门值</th>
+        <th>助攻值</th>
+        <th>长传值</th>
+        <th>短传值</th>
+        <th>盘带值</th>
+        <th>突破值</th>
+        <th>速度值</th>
+        <th>力量值</th>
+        <th>技巧值</th>
+        <th>耐力值</th>
+        <th>爆发力</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>吴龙广</td>
+        <td>中后卫</td>
+        <td>6.0</td>
+        <td>8.0</td>
+        <td>6.5</td>
+        <td>8.5</td>
+        <td>6.5</td>
+        <td>7.5</td>
+        <td>9.5</td>
+        <td>9.0</td>
+        <td>7.0</td>
+        <td>9.0</td>
+        <td>10.0</td>
+    </tr>
+    <tr>
+        <td>陈洲</td>
+        <td>门将</td>
+        <td>10.0</td>
+        <td>9.5</td>
+        <td>9.0</td>
+        <td>9.5</td>
+        <td>9.5</td>
+        <td>8.5</td>
+        <td>9.5</td>
+        <td>8.5</td>
+        <td>8.5</td>
+        <td>5.5</td>
+        <td>9.0</td>
+    </tr>
+    <tr>
+        <td>薛念源</td>
+        <td>前腰</td>
+        <td>9.0</td>
+        <td>8.0</td>
+        <td>6.0</td>
+        <td>8.5</td>
+        <td>10.0</td>
+        <td>6.5</td>
+        <td>6.0</td>
+        <td>7.5</td>
+        <td>9.5</td>
+        <td>6.5</td>
+        <td>7.5</td>
+    </tr>
+    <tr>
+        <td>杨远栋</td>
+        <td>边锋</td>
+        <td>7.5</td>
+        <td>9.0</td>
+        <td>6.0</td>
+        <td>7.5</td>
+        <td>8.0</td>
+        <td>8.5</td>
+        <td>8.0</td>
+        <td>8.0</td>
+        <td>8.5</td>
+        <td>8.5</td>
+        <td>9.5</td>
+    </tr>
+    <tr>
+        <td>赵壮</td>
+        <td>中前卫</td>
+        <td>8.5</td>
+        <td>9.5</td>
+        <td>7.0</td>
+        <td>8.0</td>
+        <td>9.0</td>
+        <td>9.5</td>
+        <td>9.0</td>
+        <td>9.0</td>
+        <td>8.5</td>
+        <td>10.0</td>
+        <td>9.5</td>
+    </tr>
+    <tr>
+        <td>曾闯</td>
+        <td>中前卫</td>
+        <td>5.5</td>
+        <td>6.5</td>
+        <td>4.0</td>
+        <td>5.0</td>
+        <td>8.5</td>
+        <td>8.5</td>
+        <td>8.0</td>
+        <td>8.5</td>
+        <td>8.5</td>
+        <td>9.5</td>
+        <td>7.0</td>
+    </tr>
+    <tr>
+        <td>张震宇</td>
+        <td>后腰</td>
+        <td>9.0</td>
+        <td>10.0</td>
+        <td>9.0</td>
+        <td>9.5</td>
+        <td>9.0</td>
+        <td>6.0</td>
+        <td>6.5</td>
+        <td>8.5</td>
+        <td>10.0</td>
+        <td>10.0</td>
+        <td>7.5</td>
+    </tr>
+</table>
+
+</body>
+</html>
+<script>
+    function listToArray(list){
+        try{
+            return Array.prototype.slice.call(list,0)
+        }catch(e){
+            var a=[];
+            for(var i=0;i<list.length;i++){
+                a.push(list[i]);
+            }
+            return a;
+        }
+    }
+    var oTable=document.getElementsByTagName("table").item(0);
+    var oTbody=oTable.tBodies.item(0);//行是tbody里的行
+    var oRows=oTbody.rows;//行集合
+    //如果你想取得行里的列，是oRows[i].cells
+    var aRows=listToArray(oRows);//把DOM集合转为数组
+
+    //第二次的步骤：加在点击事件的排序
+    //var flag=-1;
+    var ths=oTable.getElementsByTagName("th");
+    //var ths=oTable.tHead.rows.item(0).cells;//这两行都可以得到th集合
+    for(var i=0;i<ths.length;i++){
+        ths[i].i=i;
+        ths[i].flag=-1;//给要点击div加一个flag值
+        ths[i].onclick=function(){
+            var index=this.i;
+            this.flag*=-1;
+            var flag=this.flag;
+            aRows.sort(function(a,b){
+                if(index===0){
+                    return flag*(a.cells[index].innerHTML.localeCompare(b.cells[index].innerHTML))
+                }else if(index===1){
+                    return flag*(a.cells[index].innerHTML.localeCompare(b.cells[index].innerHTML))
+                }else{
+                    return flag*(a.cells[index].innerHTML- b.cells[index].innerHTML);
+
+                }
+            });
+            for(var i=0;i<aRows.length;i++){
+                oTbody.appendChild(aRows[i]);
+            }
+        }
+    }
+</script>

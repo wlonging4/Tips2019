@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+    body,div,ul,li,span{
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+    }
+        #d1{
+            height:400px;
+            width:600px;
+            position: absolute;
+            top:50%;
+            Left:50%;
+            margin-top: -200px;
+            margin-left: -300px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            box-shadow: 5px 5px gray;
+            background: -webkit-linear-gradient(top right,greenyellow,lightcoral,orange);
+        }
+        ul,li {
+            list-style: none;
+        }
+        #d1 li{
+            margin-top: 10px;
+            border: 1px solid forestgreen;
+            height: 30px;
+            line-height: 30px;
+        }
+        #d1 li span{
+            text-align: center;
+            margin-left:10px ;
+            width: 55px;
+            display: inline-block;
+        }
+        .c1{
+            background-color: #D2413A;
+        }
+        .c2{
+            background-color: cadetblue;
+        }
+        .c3{
+            background-color: goldenrod;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>99乘法</title>
+</head>
+<body>
+<div id="d1"></div>
+<script type="text/javascript">
+    var oDis=document.getElementById("d1");
+    var str="";
+
+    str+="<ul>";
+    for(var i=1;i<=9;i++){
+        str+="<li>";
+        for(var j=1;j<=i;j++){
+            str+="<span>";
+            str+=" "+j+"*"+i+"="+i*j+" ";
+            str+="</span>";
+        }
+        str+="</li>";
+    }
+    str+="</ul>";
+    oDis.innerHTML=str;
+
+    var oSpans=oDis.getElementsByTagName("span");
+    for(var i=0;i<oSpans.length;i++){
+        oSpans[i].className="c"+(i%3+1);
+    }
+</script>
+</body>
+</html>

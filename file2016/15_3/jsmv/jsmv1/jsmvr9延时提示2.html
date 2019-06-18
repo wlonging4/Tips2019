@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延时提示框-专业</title>
+    <style type="text/css">
+        #div1{
+            height: 30px;
+            line-height: 25px;
+            text-align: center;
+            font-weight: bolder;
+            width: 100px;
+            background: red;
+            cursor: pointer;
+            border-radius: 5px;
+            background: -webkit-linear-gradient(top right,gray,white);
+            box-shadow: 3px 5px lightgray;
+        }
+        #div2{
+            height: 30px;
+            line-height: 28px;
+            text-align: center;
+            width: 200px;
+            background: darkgray;
+            margin: 10px;
+            display: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        #div2 a{
+            text-decoration: none;
+            color: darkslategray;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">产品介绍</div>
+<div id="div2">
+    <a href="#">足球</a>
+    <a href="#">桌球</a>
+    <a href="#">网球</a>
+    <a href="#">篮球</a>
+</div>
+<script type="text/javascript">
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var timer=null;
+
+    //简化代码;
+    function show(){
+        oDiv2.style.display="block";
+        clearTimeout(timer);
+    }
+    function hide(){
+        timer=setTimeout(function(){oDiv2.style.display="none";},500);
+    }
+
+    oDiv1.onmouseover=show;
+    oDiv2.onmouseover=show;
+
+    oDiv1.onmouseout=hide;
+    oDiv2.onmouseout=hide;
+
+</script>
+</body>
+</html>

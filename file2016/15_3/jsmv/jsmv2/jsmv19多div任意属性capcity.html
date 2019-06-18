@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多div运动-任意值属性+opacity运动框架</title>
+    <style type="text/css">
+        div{
+            width: 300px;
+            height: 300px;
+            font-size: 14px;
+            filter:alpha(opacity:30);
+            opacity:0.3;
+            background-color: forestgreen;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="text1"/>
+<div id="div1"></div>
+<script>
+    window.onload=function() {
+        var oDiv = document.getElementById("div1");
+        oDiv.onmouseover=function(){
+            Move(oDiv,"opacity",100);
+        }
+        oDiv.onmouseout=function(){
+            Move(oDiv,"opacity",30);
+        }
+    };
+
+    function getStyle(obj,attr) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr];
+        } else {
+            return getComputedStyle(obj, false)[attr];
+        }
+    }//curren运动函数
+
+    function Move(obj,attr,iTarget){
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function(){
+            var iCur=0;//替代所有的obj.offsetLeft;
+            if(attr="opacity"){
+                iCur=parseInt(parseFloat(getStyle(obj,attr))*100);//把小数位去掉？？
+            }else{
+                iCur=parseInt(getStyle(obj,attr));
+            }
+            iSpeed=(iTarget-iCur)/8;
+            iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+            if(iCur==iTarget){
+                clearInterval(obj.timer);
+            }else{
+                if(attr=="opacity"){
+                    obj.style.filter="alpha(opacity:"+(iCur+iSpeed)+")";
+                    obj.style.opacity=(iCur+iSpeed)/100;
+                    document.getElementById("text1").value=obj.style.opacity;//IE下移动过快的话会导致小数值尾数增多并且不稳定导致闪烁；ff和chr中正常；
+                }else {
+                    obj.style[attr] = iCur + iSpeed + "px";
+                }
+                }
+        },50);
+    }
+</script>
+</body>
+</html>

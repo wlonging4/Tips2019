@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+</head>
+<body>
+<textarea id="tex1" cols="30" rows="10"></textarea><br/>
+<input type="text" id="tex2"/>
+<input type="button" id="btn1" value="请留言"/>
+<script type="text/javascript">
+    var oTxt1=document.getElementById("tex1");
+    var oTxt2=document.getElementById("tex2");
+    var oBtn=document.getElementById("btn1");
+
+    oTxt2.onkeydown=function(ev){
+        var oEvent=ev||event;
+        if(oEvent.ctrlKey&&oEvent.keyCode==13){
+            oTxt1.value+=oTxt2.value+"\n";
+            oTxt2.value=null;
+            //给txt2加事件，键盘输出留言
+        }
+    }
+</script>
+</body>
+</html>

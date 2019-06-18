@@ -1,0 +1,135 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="gbk">
+    <title>极客周刊</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#4799ad;font:12px/20px 'simsun',arial; background:url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_bg.jpg") repeat;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#99dbeb;font-size: 14px}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .zol_foot{  height: 100px; padding-top: 70px ;background: url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_foot.jpg") no-repeat top center; }
+        .zol_foot,.zol_foot a{  color: #D2D0D1;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  width: 1000px;  height: 400px;  }
+        .head-num{  position: absolute;  width: 100px;  height: 28px;  top: 90px;  right: 200px;  }
+        .head-num .bai20{  display: block;  font-size: 22px;  line-height: 28px;  font-family: Hiragino Sans GB,Arial,'microsoft yahei';  }
+
+        .hot{  height: 400px;  margin-top: 30px;  }
+        .hot-l{  float: left;  width: 640px;  height: 360px;  padding: 20px;  -webkit-box-shadow: 0px 0px 15px #ccc;  -moz-box-shadow: 0px 0px 15px #ccc;  box-shadow: 0px 0px 15px #ccc;  background: url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_hot_l.png") no-repeat 0 0;  }
+        .hot-r{  float: left;  width: 320px;  height: 400px;  overflow: hidden;  }
+        .hot-r1{  position: relative;  width: 320px;  height: 120px;  margin-bottom: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/8dd68de935/lg_hot_r11.png") no-repeat 0 0;  }
+        .hot-r2{  position: relative;  width: 320px;  height: 120px;  margin-bottom: 20px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/8dd68de935/lg_hot_r22.png") no-repeat 0 0;  }
+        .hot-r3{  position: relative;  width: 320px;  height: 120px;  background: url("http://2.zol-img.com.cn/zt/tm_57c/8dd68de935/lg_hot_r33.png") no-repeat 0 0;  }
+        .hot-r-mod{  position: absolute;  width: 300px;  height: 40px;  top: 70px;  left: 10px;  }
+        .hot-r-mod .bai18{  padding: 8px 18px; border:1px solid #ccc;  line-height: 40px;  font-family: Hiragino Sans GB,Arial,'microsoft yahei';  }
+
+        .new{  height: 490px;  overflow: hidden;  }
+        .new-t{  width: 246px;  height: 58px;  margin: 30px auto 22px;  }
+        .new-list{  position: relative;  width: 1000px;  height: 380px;  }
+        .new-li{  float: left;  height: 380px;  width: 320px;  overflow: hidden;  -webkit-box-shadow: 0px 0px 15px #ccc;  -moz-box-shadow: 0px 0px 15px #ccc;  box-shadow: 0px 0px 15px #ccc;  background: url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_new.png") no-repeat 0 0;  }
+        .new-li1{  margin-right: 20px;  }
+        .new-li2{ margin-right: 20px; }
+        .new-li .hei20{  display: block;  height: 60px;  font-size: 30px;  text-indent: 20px;  color: #4C4C4D;  line-height: 60px;  }
+        .new-li .hei20:hover{  text-decoration: none;  color: #4C4C4D;  }
+        .new-li .slh,.new-li .hong12{  display: none;  }
+        .new-li .hei12 span.slh{  display: none;  }
+        .new-li .hei12{  display: block;  position: relative;  height: 80px; text-align: center; line-height: 35px; color: #66666B;  }
+        .new-li .hei12 i{  font-style: normal; text-align: center; line-height: 25px;  display: block;  position: absolute;  left: 20px;  bottom: 10px;  width: 60px; height: 25px; color: #fff; background: url("http://2.zol-img.com.cn/zt/tm_57a/2ff02edbae/lg_price.png") no-repeat 0 0; font-weight: bold;  }
+        .new-li .hei12 span{  display: block;  position: absolute; text-align: left; color: #8CBF51;    font-weight: bold;  font-size: 15px; line-height: 25px;  left: 90px;  bottom: 10px; height: 25px;  width: 100px;  }
+
+        .intro{  overflow: hidden;  height: 910px;  margin-bottom: 30px;  }
+        .intro-t{  width: 247px;  height: 58px;  margin: 22px auto 20px;  }
+        .intro-c{  position: relative;  width: 1000px;  height: 810px;  -webkit-box-shadow: 0px 0px 15px #ccc;  -moz-box-shadow: 0px 0px 15px #ccc;  box-shadow: 0px 0px 15px #ccc;  background: url("http://2.zol-img.com.cn/zt/tm_57a/2f4490a371/lg_intro.png") no-repeat 0 0;  }
+        .intro-m{  position: absolute;  width: 180px;  height: 180px;  }
+        .intro-m1{  top: 30px;  left: 220px;  }
+        .intro-m2{  top: 30px;  right: 220px;  }
+        .intro-m3{  top: 220px;  left: 30px;  }
+        .intro-m4{  top: 220px;  left: 410px;  }
+        .intro-m5{  top: 220px;  right: 30px;  }
+        .intro-m6{  top: 410px;  left: 220px;  }
+        .intro-m7{  top: 410px;  right: 220px;  }
+        .intro-m8{  top: 600px;  left: 30px;  }
+        .intro-m9{  top: 600px;  left: 410px;  }
+        .intro-m10{  top: 600px;  right: 30px;  }
+        .intro-m .bai20{  display: block;  padding-top: 30px;  font-size: 26px;  height: 60px;  text-align: center;  line-height: 60px;  }
+        .intro-m .bai20:hover{  text-decoration: none;  color: #fff;  }
+        .intro-m .bai20 span{  font-size: 18px;  vertical-align: baseline;  }
+        .intro-m .bai12{  display: block;  text-align: center;  line-height: 20px;  }
+        .intro-m .slh,.intro-m .hong12,.intro-m span.slh{  display: none;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" class="head" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+                <div class="head-num">
+                    <{data[1]}>
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--热点-->
+<div class="wrapper hot clearfix">
+    <div class="hot-l">
+        <{data[2]}>
+    </div>
+    <div class="hot-r">
+        <div class="hot-r1">
+            <div class="hot-r-mod"><{data[3]}></div>
+        </div>
+        <div class="hot-r2">
+            <div class="hot-r-mod"><{data[4]}></div>
+        </div>
+        <div class="hot-r3">
+            <div class="hot-r-mod"><{data[5]}></div>
+        </div>
+    </div>
+</div>
+<!--新品-->
+<div class="wrapper new">
+    <div class="new-t">
+        <{data[6]}>
+    </div>
+    <div class="new-list clearfix">
+        <div class="new-li new-li1"><{data[7]}></div>
+        <div class="new-li new-li2"><{data[8]}></div>
+        <div class="new-li new-li3"><{data[9]}></div>
+    </div>
+</div>
+<!--推荐-->
+<div class="wrapper intro">
+    <div class="intro-t"><{data[10]}></div>
+    <div class="intro-c">
+        <div class="intro-m intro-m1"><{data[11]}></div>
+        <div class="intro-m intro-m2"><{data[12]}></div>
+        <div class="intro-m intro-m3"><{data[13]}></div>
+        <div class="intro-m intro-m4"><{data[14]}></div>
+        <div class="intro-m intro-m5"><{data[15]}></div>
+        <div class="intro-m intro-m6"><{data[16]}></div>
+        <div class="intro-m intro-m7"><{data[17]}></div>
+        <div class="intro-m intro-m8"><{data[18]}></div>
+        <div class="intro-m intro-m9"><{data[19]}></div>
+        <div class="intro-m intro-m10"><{data[20]}></div>
+    </div>
+</div>
+
+</body></html>

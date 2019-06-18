@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    //【继承】
+    /*【原型链继承】
+    把A中的公有和私有属性全都转为B的公有属性
+    子类继承父类
+    function A() {
+        this.x = 100;
+    }
+    A.prototype.getX = function () {
+        console.log(this.x);
+    };
+    function B() {
+        this.x = 200;
+    }
+    //B也想有getX，发现A已经实现了，那么我们只需要把A中的getX继承归来用就可以了;A的实例可以使用getX方法，所以我们的B如果想继承A的方法，只需要让B的原型指向A的一个实例即可-->原型继承->结果：把A中私有的和公有的都赋值给了B中的公有的
+    B.prototype = new A;
+    //B.prototype.__proto__=A.prototype也可以实现继承,但是请注意在IE下__proto__不支持(并不代表不兼容,只不过被屏蔽了)但是使用B.prototype==A.prototype这个方法是错误的,如果用B继承完再写prototype方法给B会同时改变了A的实例,这就不是继承了,而是相同的原型;
+    var b = new B;
+    b.getX();
+    //为了防止B继承A覆盖了B原有的通过prototype添加的自身公有属性,我们应该在B继承A之后再给B添加prototype属性fb1,fb2等,这样B既继承了A内部的公有属性,又不会覆盖自身的属性;
+    //也是通过__proto__一直查找，找到A的原型上的getX并且执行-->B继承A，不是把A的东西复制一份过来，而是用的时候利用原型链的查找机制进行查找使用
+    //--> this是b->console.log(b.x) --> 200
+    //在B的原型上扩展一个叫做haha的方法-->对父类A的其他实例没有任何的影响
+    B.prototype.haha=function(){   };
+    //子类B同过原型链找到了父类A的原型，在里面增加了hehe，这样A的其他实例也会受到影响
+    B.prototype.__proto__.hehe=function(){
+    };
+    //重改父类中的getX的方法-->类的重写
+    B.prototype.__proto__.getX=function(){
+    };
+    //扩展：
+    b.xxx==xx;是在设置值->跟查找机制不同,设置的值都是对私有的设置,而不管私有是否原来存在
+    b.__proto__.xxx=xx;给公有设置只能这样*/
+    //【call继承】
+    //call继承只能继承A中的私有属性和方法变成B中的私有属性方法,但是A中的公有属性和方法不能得到->弊端
+    //在子类的函数体中,把父类当作一个普通的函数执行,让父类执行的时候里面的this变为子类的一个实例,这就相当于直接的给子类的实例增加私有属性和方法;相当于直接把父类中的私有属性和方法克隆一份给子类(而原型继承是通过原型链逐级查找到);这是call继承跟原型继承的区别;
+    /*function A() {
+        this.x = 100;
+        this.y=function(){};
+    }
+    A.prototype.getX = function () {
+        console.log(this.x);
+    };
+    function B() {
+        this.x = 200;//未执行还不能确定this是指向谁->创建实例就知道了
+        A.call(this);//把A当作普通函数执行;this表示B的实例b->在执行的时候相当于b中的x=100会把原来的x=200覆盖掉
+    }
+    var b1=new B;
+    var b2=new B;*/
+    //b1和b2中的私有方法是不一样的;
+    //【冒充对象继承】
+    //在子类的函数体重,我们创建一个父类的实例,然后把这个实例当作一个普通的对象进项遍历;继承中相当于克隆了一份继承过来的;继承过来的都是子类实例私有的属性和方法;
+    //A中的公有和私有的属性和方法->B中的私有
+    /*function A() {
+        this.x = 100;
+        this.y= function () {}
+    }
+    A.prototype.getX = function () {
+        console.log(this.x);
+    };
+    function B(){
+        var temp=new A;//temp中有A的x,y,getX等公有和私有属性和方法;
+        for(var key in temp){
+            if(key!=="constructor"){
+                this[key]=temp[key];//this表示的是B下创建的实例b,里面包含了A中的私有公有属性和方法->b中的私有;
+            }
+        }
+        temp=null;
+    }
+    var b=new B;*/
+    //【混合模式】->原型继承+call继承+冒充对象继承->
+    // 一般来说是跟call组合来进行的;三种的混合:①IE不兼容②一般只处理内置类;
+    /*function A() {
+        this.x = 100;
+        this.y=function(){};
+    }
+    A.prototype.getX = function () {
+        console.log(this.x);
+    };
+    function B() {
+        A.call(this);//call继承A中的私有属性方法->B中的私有属性方法
+    }
+    B.prototype=new A;//原型继承继承A中的公/私有属性方法->B中的公有方法
+    var b1=new B;
+    var b2=new B;*/
+    //想要实现重写只能通过原型继承和混合继承,所有在项目中原型继承是最重要的;
+</script>
+</body>
+</html>

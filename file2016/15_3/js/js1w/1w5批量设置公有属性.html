@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function F(){
+        //实现批量设置公共属性
+    }
+    //①基本方法
+    /*F.prototype.a=function(){};
+    F.prototype.b=function(){};
+    F.prototype.c=function(){};*/
+    //②给Fn.prototype起一个简短的名字，然后接下来用简短的名字来实现增加属性和方法
+    /*var pro=F.prototype;
+    pro.a=function(){};
+    pro.b=function(){};
+    pro.c=function(){};*/
+    //③自己编写一个对象把浏览器给prototype开辟的那个覆盖掉
+    F.prototype.a=function(){
+        console.log(1);
+    };
+    F.prototype={
+        constructor:F,//在使用这种方式设置的时候，一定要记住手动的给堆内存中添加constructor，指向函数本身
+        b: function () {
+            console.log(2);
+        },
+        c:function(){
+            console.log(3);
+        }
+    };//F.prototype会覆盖掉a那个私有属性,并将其销毁;
+    var f=new F;
+    /*f.a();*/
+    //这里报错,影响下面的执行->想要恢复f.a的内容
+    /*①先把var pro= F.prototype;放在定义a公有属性之后
+    ②再把for (var key in pro){F.prototype[key]=pro[key];}写在var f=new F;之前*/
+    f.b();
+    f.c();
+    console.log(f.constructor);//->F:没添加constructor:F则->输出Object
+    //只有浏览器天生给F.prototype开辟的那个堆内存才存在constructor;我们自己创建的堆内存是不会自己创建constructor;->console.log(f.constructor)==Object.prototype;所以在使用这个方法时一定要手动更改constructor:F否则会变成Object.prototype;
+    //在使用此方法批量设置公有属性方法的时候,我们会发现之前写在prototype所有的方法覆盖(需要特别注意);
+</script>
+</body>
+</html>

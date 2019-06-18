@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+同步异步:
+
+</body>
+<script>
+    var xhr=new XMLHttpRequest();
+    xhr.open('post',"data.json",false);
+    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    xhr.setRequestHeader('myName-1','wlg');
+    xhr.setRequestHeader('app-version','1.0');
+    xhr.onreadystatechange= function () {
+        if(xhr.readyState===4&&xhr.statusText==='ok'){
+            console.log(xhr.responseText);
+            console.log(xhr.getResponseHeader("Date"));
+            console.log(xhr.getAllResponseHeaders());
+        }
+    };
+    //重新server给的mime文件
+    //所有的mime类型中除了content-type响应头信息都是只读的
+    xhr.overrideMimeType('text/plain');
+    //文件上传的mimeType->application/multi-type
+    //string FormData(专门处理表单数据的一个类)
+    //send方法里传formData则request的content-Type自动变成multi-part/form-data;
+    //Array透明的;Blob不透明的；
+    //当send方法里传递二进制(ArrayBuffer;Blob用得比较少)时,request的content-type要设置为application/octet-stream
+    xhr.send(new FormData);
+    xhr.send('adad=dsds');
+
+
+</script>
+</html>

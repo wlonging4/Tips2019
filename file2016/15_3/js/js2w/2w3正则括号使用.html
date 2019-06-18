@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则</title>
+</head>
+<body>
+<script>
+    var str1="ab12345555ff";
+    var str2="xy2234552345cd";
+    var reg1=/2345+/;
+    var reg2=/(?:2345)+/;
+    //括号里?:表示匹配不捕获,防止括号里面再形成小正则表达式;不加输出结果会变成两个;
+    //括号的意义表示优先级,表示这是一个子正则,就是分组的概念;
+    console.log(str1.match(reg1));//2345555
+    console.log(str1.match(reg2));//2345
+    console.log(str2.match(reg1));//23455
+    console.log(str2.match(reg2));//2345
+</script>
+</body>
+</html>

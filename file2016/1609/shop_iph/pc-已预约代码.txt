@@ -1,0 +1,41 @@
+ .head1{  width: 1105px; height: 721px;  overflow: hidden;  position: relative;  }
+        #takein{  position: absolute;  left: 440px;  top: 520px;  text-align: center; width: 210px;  height: 20px;  color: #e5e5e5;  font: bold 14px/20px 'microsoft yahei';  }
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tbody><tr>
+        <td class="z_bj1z">&nbsp;</td>
+
+        <td width="1000">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                    <td height="100" width=""><div class="head1"><{data[1]}><div id="takein">已有 <span id="take_num">-</span> 人参与预约</div></div></td>
+                </tr>
+                </tbody></table>
+        </td>
+
+        <td class="z_bj1y">&nbsp;</td>
+    </tr>
+    </tbody></table> 
+
+
+
+<script charset="gbk">
+
+
+    function jsonpCallback(result) {  
+        //alert(result);  
+       console.log(result.number) 
+        document.getElementById('take_num').innerHTML=result.number;
+    }  
+    var JSONP=document.createElement("script");  
+    JSONP.type="text/javascript";  
+    JSONP.src="http://tuan.zol.com/index.php?c=Detail&a=AjaxGetTuanBuyNum&callback=jsonpCallback";  
+    document.getElementsByTagName("body")[0].appendChild(JSONP);
+
+
+
+
+</script>

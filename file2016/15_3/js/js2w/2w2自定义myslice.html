@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义</title>
+</head>
+<body>
+<script>
+    var ary=[12,18,16,19,13,14];
+    /*Array的原型上定义了一个slice的方法,主要是实现从指定索引之间获取数组中的某一部分
+    特殊情况: n,m [参数的初始化]
+    一个参数都不传递  n=0  m=ary.length
+    只传递一个参数 n=arguments[0] m=ary.length
+    传递两个参数 n=arguments[0] m=arguments[1]
+
+    n或者m不是有效的数字
+    第一个不是有效数字->n=0,m=arguments[1]
+    第二个不是有效数字->[]m=0
+
+    n或者m是小数
+    向下取整
+
+    n或者m是负数
+    n=ary.length+n
+    m=ary.length+m
+
+    n或者m大于数组的总长度
+    正数
+    m大于的话，截取到末尾 m=ary.length
+    n大于的话，返回的是空数组 n=ary.length
+
+    负数
+    n或者m都等于0*/
+
+
+    Array.prototype.wlgSlice=function wlgSlice(){
+        var n= 0,m=this.length,arg=arguments,newAry=[];
+        //判断n，m存在
+        arg.length>=1?n=arg[0]:null;
+        arg.length>=2?m=arg[1]:null;
+        //小数
+        n=Math.floor(n);
+        m=Math.floor(m);
+        //是否有效
+        isNaN(n)?n=0:null;
+        isNaN(m)?m=0:null;
+        //绝对值长度
+        Math.abs(n)>this.length?(n>0?n=this.length:n=0):null;
+        Math.abs(m)>this.length?(m>0?m=this.length:m=0):null;
+        //判断负数长度
+        n<0?n=this.length+n:null;
+        m<0?m=this.length+n:null;
+        for(var i=n;i<m;i++){
+            newAry[newAry.length]=this[i];
+        }//经典
+        return newAry;
+    };
+    console.log(ary.wlgSlice(2));
+    console.log(ary.wlgSlice(2.3));
+    console.log(ary.wlgSlice(1.9));
+    console.log(ary.wlgSlice(1.9,3.21));
+</script>
+</body>
+</html>

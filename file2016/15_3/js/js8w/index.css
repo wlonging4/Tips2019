@@ -1,0 +1,89 @@
+@charset "UTF-8";
+body,div,h2,span,ul,li,input{
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    -webkit-user-select: none;
+}
+ul{
+    list-style: none;
+}
+input{
+    outline: none;
+}
+.box{
+    margin: 10px auto;
+    padding: 20px;
+    width: 600px;
+    border: 1px solid green;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0 dimgray;
+}
+.box h2{
+    height: 35px;
+    line-height: 35px;
+    background: chocolate;
+    background: -webkit-linear-gradient(top right,yellowgreen,coral);
+    background: -moz-linear-gradient(top right,yellowgreen,coral);
+    background: -ms-linear-gradient(top right,yellowgreen,coral);
+    background: -o-linear-gradient(top right,yellowgreen,coral);
+    background: linear-gradient(top right,yellowgreen,coral);
+}
+.box h2 span{
+    /*inline-block中的空格和换行都是占位置的,所以使用inline-block要去掉所有的空*/
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    text-align: center;
+    font-size: 16px;
+}
+.box .list li{
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.box .list li.even{
+    background: #2489ce;
+}
+.box .list li span{
+    display: block;
+    float: left;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+.box .page{
+    margin-top: 5px;
+    float:right;
+}
+.box .page span,.box .page ul li,.box .page input{
+    float: left;
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #219161;
+    cursor: pointer;
+}
+.box .page ul{
+    float: left;
+    overflow: hidden;
+}
+.box .page span, .box .page input {
+    display: block;
+    width: 50px;
+}
+
+/*.box .page ul li {
+    width: 20px;
+}*/
+
+.box .page ul li.select {
+    background: #B1D7EF;
+    color: #fff;
+}
+

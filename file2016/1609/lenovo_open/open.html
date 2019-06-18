@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>2016年联想Open+大会专题</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00; font-weight: bold }
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .wrap{  width: 100%;  background: #eee; overflow: hidden;  }
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .wrapper2{  position: relative;  width: 1040px;  margin: 0 auto;  }
+        .zol_foot{  height: 100px;  padding-top: 60px;  background: #fff;  }
+        .zol_foot,.zol_foot a{  color: #333;  }
+
+        .t{  position: absolute; width: 39px;  height: 112px;  left: -39px;  top: 0;  }
+        .t2{  position: absolute; width: 39px;  height: 112px;  right: -39px;  top: 0;  }
+        .t-about1{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_about1.png");  }
+        .t-about2{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_about2.png");  }
+        .t-about3{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_about3.png");  }
+        .t-solve{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_solve.png");  }
+        .t-lv{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_live.png");  top: -4px; }
+        .t-meeting{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_meeting.png");  }
+        .t-lec{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_lecture.png");  }
+        .white-t{  position: absolute;  top: 0;  left: 50%;  margin-left: -38px;  width: 76px;  height: 38px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/lg_tri_white.jpg") no-repeat 0 0;  }
+        .gray-t{  position: absolute;  top: 0;  left: 50%;  margin-left: -38px;  width: 76px;  height: 38px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/lg_tri_gray.jpg") no-repeat 0 0;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/head_l.jpg") 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/head_r.jpg") 0 0;  }
+        .head-c{  width: 1000px;  height: 519px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/head_c.jpg");  }
+
+        .hotpoint{  position: relative;  height: 320px;  }
+        .hot{  position: absolute;  height: 460px;  width: 1040px;  top: -145px;  background: #fff;  border-top: 5px solid #ddd;  }
+        .hot-mod{  width: 1000px;  height: 405px;  padding: 20px 20px 0;  }
+        .hot-mod-l{  float: left;  height: 405px;  width: 480px; background: #000;  margin-right: 10px;  }
+        .hot-mod-r{  float: left;  height: 405px;  width: 510px;  }
+        .hot-mod-r1{  width: 510px;  height: 285px;  }
+        .hot-mod-r1 .ln{  line-height: 20px; background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/line_1px.png") center no-repeat;  }
+        .hot-mod-r1 .hong20{  display: block;  font: bold 20px/36px 'microsoft yahei';  }
+        .hot-mod-r1 .hui12{  display: block;  color: #333;  text-indent: 24px;  padding: 0 10px 0;  font: 12px/22px 'simsun';  }
+        .hot-mod-r2{  width: 510px;  height: 120px;  }
+
+        .flow{  position: fixed;  _position: absolute;  bottom: 250px;  left: 50%;  z-index: 9;;  margin-left: 510px;  width: 196px;  height: 326px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/flow.png");  }
+        .flow-ul{  position: absolute;  top: 15px;  left: 7px;  width: 125px;  height: 300px;  overflow: hidden;  }
+        .flow-ul li{  display: block;  width: 125px;  height: 45px;  margin-bottom: 5px;  }
+        .flow-ul li a{  display: block;  color: #fff;  text-align: center;  width: 125px;  font-family: 'microsoft yahei',Arial;  height: 45px;background: none;  }
+        .flow-ul li a .p1{  height: 30px;  font: bold 19px/35px 'microsoft yahei';  }
+        .flow-ul li a .p2{  height: 15px;  font: 12px/13px 'microsoft yahei';  }
+        .flow-ul li.act a{  color: #D2433E;  background: #fff;  }
+        .flow-ul li a:hover{  color: #D2433E;  background: #fff; text-decoration: none  }
+
+        .lecture{  height: 595px;  }
+        .lec{  height: 525px;  padding-top: 65px;  }
+        .lec-pics-box{  position: relative;  width: 1000px;  height: 378px;  }
+        .lec-pics-mod{  width: 890px;  height: 378px;  padding: 0 55px 0;  }
+        .lec-pics-mod table img{  border-bottom: 8px solid #ddd;  }
+        .lec-pics-mod table img.act{  border-bottom: 8px solid #CF3732;  }
+        .lec-art{  position: relative;  width: 1000px;  height: 140px;  overflow: hidden;  }
+        .lec-art-mod{  position: absolute;  left: 0;  width: 3000px;  height: 140px;  }
+        .lec-art-mod .hong20{  display: block;  padding-top: 25px;  font: bold 20px/24px 'microsoft yahei';  }
+        .lec-art-mod .hui12{  display: block;  color: #333;  text-indent: 24px;  padding: 10px 30px 0;  font: 12px/24px 'simsun';  }
+        .lec-pics-btn{  width: 27px;  height: 39px;  position: absolute;  top: 160px;  }
+        .lec-pics-btn1{  left: 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/lg_lec_btn.png") no-repeat 0 0;  }
+        .lec-pics-btn2{  right: 10px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/lg_lec_btn.png") no-repeat -27px 0;  }
+
+        .live{  height: 725px;  }
+        .lv{  position: relative;  padding-top: 65px;  height: 605px;  }
+        .lv-l{  position: relative;  float: left;  height: 600px;  width: 645px;  margin-right: 16px;  border-width: 4px 1px 1px;  border-style: solid;  border-color: #ddd;  }
+        .lv-r{  position: relative;  float: left;  width: 337px;  height: 605px;  }
+        .lv-r1{  width: 335px;  height: 270px;  margin-bottom: 20px;  border-width: 4px 1px 1px;  border-style: solid;  overflow-y: scroll;  overflow-x: hidden;  border-color: #ddd;  }
+        .lv-r1-mod{  width: 335px;  }
+        .lv-r1-mod table.edd{  border-collapse: collapse;  }
+        .lv-r1-mod table.edd tr td{  height: 28px; line-height: 28px; font-size: 12px;  color: #333;  border: 1px solid #ccc;  }
+        .lv-r2{  width: 335px;  height: 305px;  border-width: 4px 1px 1px;  border-style: solid;  }
+
+        .viewpoint{  height: 1085px;  }
+        .view{  height: 1020px;  }
+        .t-view{  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/t_perfect.png");  }
+        .view-pics{  width: 1000px;  height: 390px;  padding-top: 35px;  }
+        .view-pics #carousel-left596996{  bottom: 200px;  width: 20px;  height: 29px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/lg_solve_btn.png") no-repeat 0 0;  }
+        .view-pics #carousel-right596996{  bottom: 200px;  width: 20px;  height: 29px;  background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/lg_solve_btn.png") no-repeat -20px 0;  }
+        .view-mod{  padding: 55px 10px 0;  width: 980px;  height: 555px;  }
+        .view-mod .hong18{ display: block;  font-weight: bold;  font-size: 17px;  line-height: 48px;  font-family: 'microsoft yahei';  }
+
+        .solve{  height: 465px;  }
+        .solve-mod{  height: 350px;  width: 1000px;  padding-top: 65px;  }
+        .solve-mod #carousel-right596998,.solve-mod #carousel-left596998{  display: none;  }
+        .solve-mod #carousel596998 .carousel-feature .carousel-caption{  background-color: #ca3a32; opacity: 1!important;  }
+        .solve-mod .bai20{ display: block; text-align: center;  font-size: 20px; font-family: 'microsoft yahei';   }
+        .solve-mod .bai20:hover{  color: #Fff;  }
+
+        .about{  height: 440px;  }
+        .abt{  position: relative;  height: 440px;  }
+        .abt .hui12{ display: block;  color: #333;  }
+        .abt-c{  padding-top: 60px;  width: 1000px;  height: 335px;  }
+        .abt-c1{  float: left;  height: 335px;  width: 265px;  background: #fff;  margin-right: 50px;  position: relative;  }
+        .abt-c1-mod{  width: 225px;  height: 295px;  padding: 20px;  }
+        .abt-c2{  float: left;  height: 335px;  width: 345px;  background: #fff;  margin-right: 50px;  position: relative;  }
+        .abt-c2-mod{  width: 305px;  height: 295px;  padding: 20px;  }
+        .abt-c3{  float: left;  height: 335px;  width: 290px;  background: #fff;  position: relative;  }
+        .abt-c3-mod{  width: 250px;  height: 295px;  padding: 20px;  }
+        .abt-c1-mod .hui12{  text-indent: 24px;  font: 12px/20px 'simsun';  padding-top: 28px;  }
+        .abt-c2-mod .hui12{  font: 12px/30px 'simsun';  }
+        .abt-c3-mod .ln{  line-height: 15px; background: url("http://2.zol-img.com.cn/zt/tm_57e/4e651a7d96/line_1px.png") center no-repeat; }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<div class="flow">
+    <ul class="flow-ul">
+        <li class="act">
+            <a href="#hot" target="_self">
+                <p class="p1">今日头条</p>
+                <p class="p2">Today’s headlines</p>
+            </a>
+        </li>
+        <li>
+            <a href="#day" target="_self">
+                <p class="p1">大会日程</p>
+                <p class="p2">Conference schedule</p>
+            </a>
+        </li>
+        <li>
+            <a href="#live" target="_self">
+                <p class="p1">图文直播</p>
+                <p class="p2">Picture article live</p>
+            </a>
+        </li>
+        <li>
+            <a href="#view" target="_self">
+                <p class="p1">精彩看点</p>
+                <p class="p2">Marvellous view</p>
+            </a>
+        </li>
+        <li>
+            <a href="#solve" target="_self">
+                <p class="p1">解决方案</p>
+                <p class="p2">Solution</p>
+            </a>
+        </li>
+        <li>
+            <a href="#about" target="_self">
+                <p class="p1">关于联想</p>
+                <p class="p2">About Lenovo</p>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--热点-->
+<div class="wrapper2 hotpoint">
+    <div class="hot" id="hot">
+        <div class="hot-mod clearfix">
+            <div class="hot-mod-l">
+                <{data[1]}>
+            </div>
+            <div class="hot-mod-r">
+                <div class="hot-mod-r1"><{data[2]}></div>
+                <div class="hot-mod-r2"><{data[3]}></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--嘉宾-->
+<div class="wrap lecture">
+    <div class="wrapper lec">
+        <div class="white-t"></div>
+        <div class="t t-lec"></div>
+        <div class="lec-pics-box">
+            <div class="lec-pics-mod">
+                <{data[4]}>
+            </div>
+            <div class="lec-pics-btn lec-pics-btn1"></div>
+            <div class="lec-pics-btn lec-pics-btn2"></div>
+        </div>
+        <div class="lec-art">
+            <div class="lec-art-mod">
+                <{data[5]}>
+            </div>
+        </div>
+    </div>
+</div>
+<!--直播-->
+<div class="wrapper live">
+    <div class="gray-t"></div>
+    <div class="lv clearfix">
+        <div class="lv-l" id="live">
+            <div class="t t-lv"></div>
+            <{data[6]}>
+        </div>
+        <div class="lv-r" id="day">
+            <div class="t2 t-meeting"></div>
+            <div class="lv-r1">
+                <div class="lv-r1-mod"><{data[7]}></div>
+            </div>
+            <div class="lv-r2">
+                <{data[8]}>
+            </div>
+        </div>
+    </div>
+</div>
+<!--看点-->
+<div class="wrap viewpoint" id="view">
+    <div class="wrapper view">
+        <div class="t t-view"></div>
+        <div class="white-t"></div>
+        <div class="view-pics">
+            <{data[9]}>
+        </div>
+        <div class="view-mod">
+            <{data[10]}>
+        </div>
+    </div>
+</div>
+<!--解决-->
+<div class="wrapper solve" id="solve">
+    <div class="gray-t"></div>
+    <div class="t t-solve"></div>
+    <div class="solve-mod">
+        <{data[11]}>
+    </div>
+</div>
+<!--关于-->
+<div class="wrap about" id="about">
+    <div class="wrapper abt">
+        <div class="white-t"></div>
+        <div class="abt-c clearfix">
+            <div class="abt-c1">
+                <div class="abt-c1-mod"><{data[12]}></div>
+                <div class="t t-about1"></div>
+            </div>
+            <div class="abt-c2">
+                <div class="abt-c2-mod"><{data[13]}></div>
+                <div class="t t-about2"></div>
+            </div>
+            <div class="abt-c3">
+                <div class="abt-c3-mod"><{data[14]}></div>
+                <div class="t t-about3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    /*导航*/
+    $('.flow-ul li').bind('click', function () {
+        $(this).addClass('act').siblings().removeClass('act');
+    });
+
+    /*嘉宾*/
+    var btn1=$('.lec-pics-btn1'),btn2=$('.lec-pics-btn2'),pics=$('.lec-pics-mod table img'),arts=$('.lec-art-mod'),num=0;
+    pics.eq(0).addClass('act');arts.css({'left':0});
+    btn2.bind('click', function () {
+        num++;
+        if(num>=2){
+            num=2;
+        }
+        move();
+    });
+    btn1.bind('click', function () {
+        num--;
+        if(num<=0){
+            num=0;
+        }
+        move();
+    });
+    pics.bind('mouseenter', function () {
+        num=pics.index(this);
+        move();
+    });
+    function move(){
+        pics.removeClass('act').eq(num).addClass('act');
+        arts.stop().animate({"left":'-'+num*1000+'px'},300);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>shop_page</title>
+    <style type="text/css">
+        /*reset*/
+        body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0; padding:0;}
+        ul,ol{list-style:none;}
+        body{font:12px/1.5 "microsoft yahei UI",arial; color:#333; background:#f0f0f0}
+        select,input,button{vertical-align:middle;font-size:100%;}
+        fieldset,img{border:0 none;}
+        em{font-style:normal;}
+        a{ color:#333; text-decoration: none;}
+        a:hover{ color: #c00; text-decoration:underline;}
+        .clear {clear:both;display:block;height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after {content:"."; display: block; height: 0; clear: both; visibility: hidden; font-size:0}
+        .clearfix {*zoom:1}
+
+        /*style*/
+        .wrapper{  width: 1200px;  margin: 0 auto;  }
+        .shop-title{  padding: 25px 0 20px;  color: #333;  font-size: 20px;  }
+        .intro-ul{  display: block;  overflow: hidden;margin: 0 auto;  }
+        .intro-ul li{  float: left;  _display:inline;  width: 226px;  height: 378px;  background: #fff;  margin: 0 3px;  border: 4px solid #fff;  }
+        .intro-ul li:hover{  border: 4px solid #f0f0f0;  }
+        .intro-li-img{  height: 226px;  }
+        .intro-li-img img{  vertical-align: top; padding: 13px;  }
+        .intro-li-text{  width: 180px;  margin: 6px auto 0;  }
+        .intro-li-text p{  line-height: 22px;  font-size: 12px;  }
+        .intro-li-text div{  padding-top: 35px;  line-height: 26px;  font-size: 22px;  color: #ff5301;  text-align: center;  }
+
+
+        .bra-title{  position:relative; z-index:0; padding-top: 36px;  background: #fff;  border-bottom: 3px solid #f0f0f0;  }
+        .bra-title-ul{  position: relative;  float: left;  display: block;  padding-left: 24px;  }
+        .bra-title-ul li{  position: relative;  z-index: 0;  _display:inline;  float: left;  height: 45px;  line-height: 45px;  font-size: 20px;  text-align: center;  color: #333;  padding: 0 33px;  border-width: 3px 2px 3px 2px;  border-color: transparent transparent #f0f0f0 transparent;  border-style: solid;  margin-left: -2px;  margin-bottom: -3px;  cursor: pointer;  }
+        .bra-title-ul .li-hover{  z-index: 99;  border-color: #ff5301 #f0f0f0 #fff #f0f0f0;  color: #ff5301;  }
+        .bra-title-btn{  float: right;  width: 100px;  margin-right: 10px;  padding-top: 18px}
+        .bra-title-btn span{  width: 24px;  height: 20px;  line-height: 20px;  border: 1px solid #e6e6e6;  float: left;  margin-right: 10px;  cursor: pointer;  }
+        .bra-title-btn span:hover{  background-color: rgba(255, 83, 1, 0.31);  }
+        .bra-title-btn1{  background:#fff url("images/shop_page_spirit.png") 2px 1px no-repeat;  }
+        .bra-title-btn2{  background:#fff url("images/shop_page_spirit.png") -16px 1px no-repeat;  }
+
+
+        .bra-container{  background: #fff;  }
+        .bra-content{  display: none; }
+        .bra-content.bra-content-block{ display: block;}
+        .bra-content-price{  height: 23px;  padding: 30px 0;  margin-left: 40px;  }
+        .bra-content-price span{  border: 1px solid #c6c6c6;  line-height: 24px;  font-size: 14px;  padding: 2px 10px;  margin-right: 30px;  cursor: pointer;  }
+        .bra-content-price a{  color: #333;  line-height: 22px;  font-size: 14px;  margin-right: 45px;  }
+        .bra-content-price a:hover{  color: #ff5301;  text-decoration: none;  }
+        .bra-content-price span{  border: 1px solid #c6c6c6;  line-height: 24px;  font-size: 14px;  padding: 2px 10px;  margin-right: 30px;  cursor: pointer;  }
+        .bra-content-list{ border-collapse: collapse;}
+        .bra-content-list thead th{  height: 29px;  font-size: 14px;  line-height: 16px;  font-weight: 400;  color: #999;  text-align: left;  border-bottom: 1px dashed #f0f0f0;  }
+
+        .bra-content-list td{  text-align: left;  font-size: 14px;border:none;  }
+        .bra-content-list .td1{ width: 165px;padding-left: 45px }
+        .bra-content-list .td2{ width: 390px; }
+        .bra-content-list .td3{ width: 100px; }
+        .bra-content-list .td4{ width: 100px; }
+        .bra-content-list .td5{ width: 260px; }
+        .bra-content-list .td6{ width: 140px; }
+        .bra-content-list tbody tr{  height: 50px; padding-left: 45px; }
+        .bra-content-list tbody tr .tb-td4{  color: #ff5301;  }
+        .bra-content-list tbody tr td a {  color: #1e9e49;  }
+        .bra-content-foot{  padding: 40px 0 40px;  }
+        .bra-content-foot-wrap{  margin-left: 440px; }
+        .bra-content-foot-btn{  float: left;  height: 32px;  width: 40px;  margin-right: 8px;  border: 1px solid #e6e6e6;  cursor: pointer;  }
+        .bra-content-foot-btn1{  background: url("images/shop_page_spirit.png") no-repeat 0 -18px;  }
+        .bra-content-foot-btn2{  margin-right: 22px; background: url("images/shop_page_spirit.png") no-repeat 0 -50px;  }
+        .bra-content-foot-btn1:hover{  background: url("images/shop_page_spirit.png") no-repeat 0 -82px;  border: 1px solid #ff5301;  }
+        .bra-content-foot-btn2:hover{  background: url("images/shop_page_spirit.png") no-repeat 0 -114px;  border: 1px solid #ff5301;  }
+        .bra-content-foot-ul{  float: left;  display: block;  overflow: hidden;  }
+        .bra-content-foot-ul li{  _display:inline;  float: left;  height: 32px;  line-height: 32px;  width: 34px;  font-size: 12px;  color: #737272;  margin-right: 6px;  text-align: center;  border: 1px solid #e6e6e6;  cursor: pointer; }
+        .bra-content-foot-ul li:hover{  color: #ff5301;  border: 1px solid #ff5301;  }
+        .bra-content-foot-ul li.bra-content-foot-page{  border: 1px solid #ff5301;  color: #fff;  background: #ff5301;  }
+        .bra-content-foot-ul li.bra-content-foot-page:hover{  color: #fff;  }
+
+
+
+
+    </style>
+</head>
+<body>
+<div>
+    <!--推荐产品-->
+    <div id="introduce" class="wrapper">
+        <p class="shop-title">今日推荐</p>
+        <ul id="intro-ul" class="intro-ul clearfix">
+            <li>
+                <div class="intro-li-img">
+                    <a href="javascript:;">
+                        <img src="http://active.zol.com.cn/09active/front_end/images/photo.jpg" width="200" height="200" alt=""/>
+                    </a>
+                </div>
+                <div class="intro-li-text">
+                    <p><a href="javascript:;">Gigaset/集怡嘉 GS55-6Gigaset/ 集怡嘉 GS55-6</a></p>
+                    <div>￥3888.00</div>
+                </div>
+            </li>
+            <li>
+                <div class="intro-li-img">
+                    <a href="javascript:;">
+                        <img src="http://active.zol.com.cn/09active/front_end/images/photo.jpg" width="200" height="200" alt=""/>
+                    </a>
+                </div>
+                <div class="intro-li-text">
+                    <p><a href="javascript:;">Gigaset/集怡嘉 GS55-6Gigaset/ 集怡嘉 GS55-6</a></p>
+                    <div>￥3888.00</div>
+                </div>
+            </li>
+            <li>
+                <div class="intro-li-img">
+                    <a href="javascript:;">
+                        <img src="http://active.zol.com.cn/09active/front_end/images/photo.jpg" width="200" height="200" alt=""/>
+                    </a>
+                </div>
+                <div class="intro-li-text">
+                    <p><a href="javascript:;">Gigaset/集怡嘉 GS55-6Gigaset/ 集怡嘉 GS55-6</a></p>
+                    <div>￥3888.00</div>
+                </div>
+            </li>
+            <li>
+                <div class="intro-li-img">
+                    <a href="javascript:;">
+                        <img src="http://active.zol.com.cn/09active/front_end/images/photo.jpg" width="200" height="200" alt=""/>
+                    </a>
+                </div>
+                <div class="intro-li-text">
+                    <p><a href="javascript:;">Gigaset/集怡嘉 GS55-6Gigaset/ 集怡嘉 GS55-6</a></p>
+                    <div>￥3888.00</div>
+                </div></li>
+            <li>
+                <div class="intro-li-img">
+                    <a href="javascript:;">
+                        <img src="http://active.zol.com.cn/09active/front_end/images/photo.jpg" width="200" height="200" alt=""/>
+                    </a>
+                </div>
+                <div class="intro-li-text">
+                    <p><a href="javascript:;">Gigaset/集怡嘉 GS55-6Gigaset/ 集怡嘉 GS55-6</a></p>
+                    <div>￥3888.00</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--销售品牌-->
+    <div id="brand" class="wrapper">
+        <p class="shop-title">销售品牌</p>
+        <div class="bra-title clearfix">
+            <ul id="bra-title-ul" class="bra-title-ul clearfix">
+                <li class="li-hover">Gigaset</li>
+                <li>三星</li>
+                <li>LG</li>
+                <li>小米</li>
+                <li>苹果</li>
+                <li>魅族</li>
+            </ul>
+            <div class="bra-title-btn">
+                <span class="bra-title-btn1"></span>
+                <span class="bra-title-btn2"></span>
+            </div>
+        </div>
+        <div id="bra-container" class="bra-container clearfix">
+            <div class="bra-content bra-content-block">
+                <div class="bra-content-price">
+                    <span>价格筛选</span>
+                    <a href="javascript:;">不限</a>
+                    <a href="javascript:;">1000以下</a>
+                    <a href="javascript:;">1000-1999</a>
+                    <a href="javascript:;">2000-2999</a>
+                    <a href="javascript:;">3000-3999</a>
+                    <a href="javascript:;">4000-4999</a>
+                    <a href="javascript:;">5000-5999</a>
+                    <a href="javascript:;">6000-6999</a>
+                    <a href="javascript:;">7000以上</a>
+                </div>
+                <table class="bra-content-list">
+                    <thead>
+                    <tr>
+                        <th class="td1">品牌</th>
+                        <th class="td2">机型</th>
+                        <th class="td3">库存</th>
+                        <th class="td4">价格</th>
+                        <th class="td5">卖家</th>
+                        <th class="td6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="bra-content-foot">
+                    <div class="bra-content-foot-wrap clearfix">
+                        <div class="bra-content-foot-btn bra-content-foot-btn1"></div>
+                        <ul class="bra-content-foot-ul clearfix">
+                            <li class="bra-content-foot-page">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="bra-content-foot-btn bra-content-foot-btn2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bra-content">
+                <div class="bra-content-price">
+                    <span>价格筛选</span>
+                    <a href="javascript:;">不限</a>
+                    <a href="javascript:;">1000以下</a>
+                    <a href="javascript:;">1000-1999</a>
+                    <a href="javascript:;">2000-2999</a>
+                    <a href="javascript:;">3000-3999</a>
+                    <a href="javascript:;">4000-4999</a>
+                    <a href="javascript:;">5000-5999</a>
+                    <a href="javascript:;">6000-6999</a>
+                    <a href="javascript:;">7000以上</a>
+                </div>
+                <table class="bra-content-list">
+                    <thead>
+                    <tr>
+                        <th class="td1">品牌</th>
+                        <th class="td2">机型</th>
+                        <th class="td3">库存</th>
+                        <th class="td4">价格</th>
+                        <th class="td5">卖家</th>
+                        <th class="td6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td  class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="bra-content-foot">
+                    <div class="bra-content-foot-wrap clearfix">
+                        <div class="bra-content-foot-btn bra-content-foot-btn1"></div>
+                        <ul class="bra-content-foot-ul clearfix">
+                            <li class="bra-content-foot-page">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="bra-content-foot-btn bra-content-foot-btn2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bra-content">
+                <div class="bra-content-price">
+                    <span>价格筛选</span>
+                    <a href="javascript:;">不限</a>
+                    <a href="javascript:;">1000以下</a>
+                    <a href="javascript:;">1000-1999</a>
+                    <a href="javascript:;">2000-2999</a>
+                    <a href="javascript:;">3000-3999</a>
+                    <a href="javascript:;">4000-4999</a>
+                    <a href="javascript:;">5000-5999</a>
+                    <a href="javascript:;">6000-6999</a>
+                    <a href="javascript:;">7000以上</a>
+                </div>
+                <table class="bra-content-list">
+                    <thead>
+                    <tr>
+                        <th class="td1">品牌</th>
+                        <th class="td2">机型</th>
+                        <th class="td3">库存</th>
+                        <th class="td4">价格</th>
+                        <th class="td5">卖家</th>
+                        <th class="td6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="bra-content-foot">
+                    <div class="bra-content-foot-wrap clearfix">
+                        <div class="bra-content-foot-btn bra-content-foot-btn1"></div>
+                        <ul class="bra-content-foot-ul clearfix">
+                            <li class="bra-content-foot-page">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="bra-content-foot-btn bra-content-foot-btn2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bra-content">
+                <div class="bra-content-price">
+                    <span>价格筛选</span>
+                    <a href="javascript:;">不限</a>
+                    <a href="javascript:;">1000以下</a>
+                    <a href="javascript:;">1000-1999</a>
+                    <a href="javascript:;">2000-2999</a>
+                    <a href="javascript:;">3000-3999</a>
+                    <a href="javascript:;">4000-4999</a>
+                    <a href="javascript:;">5000-5999</a>
+                    <a href="javascript:;">6000-6999</a>
+                    <a href="javascript:;">7000以上</a>
+                </div>
+                <table class="bra-content-list">
+                    <thead>
+                    <tr>
+                        <th class="td1">品牌</th>
+                        <th class="td2">机型</th>
+                        <th class="td3">库存</th>
+                        <th class="td4">价格</th>
+                        <th class="td5">卖家</th>
+                        <th class="td6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="bra-content-foot">
+                    <div class="bra-content-foot-wrap clearfix">
+                        <div class="bra-content-foot-btn bra-content-foot-btn1"></div>
+                        <ul class="bra-content-foot-ul clearfix">
+                            <li class="bra-content-foot-page">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="bra-content-foot-btn bra-content-foot-btn2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bra-content">
+                <div class="bra-content-price">
+                    <span>价格筛选</span>
+                    <a href="javascript:;">不限</a>
+                    <a href="javascript:;">1000以下</a>
+                    <a href="javascript:;">1000-1999</a>
+                    <a href="javascript:;">2000-2999</a>
+                    <a href="javascript:;">3000-3999</a>
+                    <a href="javascript:;">4000-4999</a>
+                    <a href="javascript:;">5000-5999</a>
+                    <a href="javascript:;">6000-6999</a>
+                    <a href="javascript:;">7000以上</a>
+                </div>
+                <table class="bra-content-list">
+                    <thead>
+                    <tr>
+                        <th class="td1">品牌</th>
+                        <th class="td2">机型</th>
+                        <th class="td3">库存</th>
+                        <th class="td4">价格</th>
+                        <th class="td5">卖家</th>
+                        <th class="td6">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    <tr>
+                        <td class="td1">Gigaset金阶</td>
+                        <td>德国Gigaset/集怡嘉 GS57-6ME pro八核4G</td>
+                        <td>8000</td>
+                        <td class="tb-td4">￥3888</td>
+                        <td>Gigaset官方旗舰店</td>
+                        <td><a href="javascript:;">立即购买</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="bra-content-foot">
+                    <div class="bra-content-foot-wrap clearfix">
+                        <div class="bra-content-foot-btn bra-content-foot-btn1"></div>
+                        <ul class="bra-content-foot-ul clearfix">
+                            <li class="bra-content-foot-page">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <div class="bra-content-foot-btn bra-content-foot-btn2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script charset="UTF-8">
+        $(function () {
+            var bra_title_li=$('#bra-title-ul>li');
+            var bra_content_div=$('#bra-container>div');
+            bra_title_li.on('mouseenter',function (){
+                bra_title_li.eq($(this).index()).addClass("li-hover").siblings().removeClass('li-hover');
+                bra_content_div.eq($(this).index()).addClass("bra-content-block").siblings().removeClass('bra-content-block');
+            });
+        });
+
+        $(function (){
+            var aTr=$('.bra-content-list tbody tr');
+            for(var i=0;i<aTr.length;i++){
+                if(i%2==1){
+                    aTr[i].style.background='#f7f7f7';
+                }
+            }
+        });
+    </script>
+</div>
+</body>
+</html>

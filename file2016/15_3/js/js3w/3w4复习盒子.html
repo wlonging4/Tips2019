@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型复习</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            height: 200px;
+            width: 200px;
+            border: 10px solid lightgray;
+            padding: 50px;
+            background: darkgray;
+        }
+        #div2{
+            background: navajowhite;
+            border: 10px solid black;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2"></div>
+</div>
+<script type="text/javascript">
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    /*alert(oDiv2.clientHeight);
+    alert(oDiv2.offsetHeight);//先找到父亲
+    alert(oDiv2.clientTop);
+    alert(oDiv2.offsetTop);
+    alert(oDiv1.clientHeight);
+    alert(oDiv1.offsetHeight);
+    alert(oDiv1.clientTop);*/
+    /*
+    clientHeight=height+上下padding
+    clientWidth=width+作用padding
+    clientTop=上border
+    clientLeft=左border
+    clientWidth和offsetWidth的区别在那儿：带不带border
+    */
+
+    //【getComputedStyle】
+    /*window.getComputedStyle(oDiv1,null);
+    ->第一个参数表示要计算的元素
+    ->第二个参数是null表示不计算指定的伪类样式;ele;ele::before；ele::After；
+    ->返回值是一个对象,是这个元素样式集合(包含100多个属性)
+    window.getComputedStyle(oDiv,null).width;//仅仅支持标准浏览器
+    oDiv.currentStyle.width;//属性*/
+    //①
+    /*function getCss(ele,attr){
+        if(window.getComputedStyle){
+            //if(typeof window.getComputedStyle=="function")
+            //if("getComputedStyle" in window)
+            return window.getComputedStyle(ele,null)[attr];
+        }else{
+            return ele.currentStyle[attr];
+        }
+    }
+    //②
+    function getCss(ele,attr) {
+        if (typeof getComputedStyle == "function") {
+            return window.getComputedStyle(ele)[attr]
+
+        } else {
+            return ele.currentStyle[attr]
+        }
+    }
+    //③
+    function getCss(ele,attr){
+        try{
+            return getComputedStyle(ele,null)[attr];
+        }catch(e){
+            return ele.currentStyle[attr];
+        }
+    }*/
+    //if(getComputedStyle)运行在在IE678是错误的语法
+    //if(undefinded)是允许的 undefined null是一个值
+    /*一个变量未定义,可以进行写操作即赋值,但是不能进行读操作;但是一个未定义的变量,可以使用typeof去操作;可以当成一个属性进行读或者判断操作;
+    JS中的顶级作用域是global;以下方法就可能不是window的属性
+    Number,String,JSON,encodeURI;
+    window===process(ECMAScript定义的标准)
+    对应的类是__proto__: CSSStyleDeclaration*/
+
+    //【伪类和为元素】
+    /*伪类向某些选择器添加特殊的效果
+    :active :focus :hover :link :visited :first-child :lang
+    伪元素将特殊的效果添加到某些选择器->css3用双冒号
+    ::first letter ::first-line ::before ::after
+    html+css
+    <p>我是一个段落</p>
+    p{ width:400px; background:black; color:#fff; margin:1em auto;}
+    p:before{ content:"我站在站面"; background:red; color:green; clear:both;}
+    p:after{ content:"我守在尾巴上"; background:blue; color:pink;}
+    JS
+    var ele=document.getElementsByTagName("p").item(0);
+    alert(window.getComputedStyle(ele,"before").color);顺便验证使用下getComputedStyle(ele,eled的伪元素)的用法*/
+
+
+    //【偏移量】
+    /*左边滚动条overflow=auto;会被当左边框;所以offsetWidth不变但是clientWidth被挤小了;没有溢出的话scrollWidth=clientWidth也跟着变小了
+    scrollTop的最小值是0;最大值是div1.scrollHeight-div1.clientHeight;scrollHeight在没溢出的时候等于clientHeight;溢出的时候第二个于真实内容加上上padding值;
+    offset偏移量和偏移参照物;
+    layout:一般情况下写了定位之后层级会发生变化形成新的层级才可以去添加z-index属性;同样每次形成新的层级也形成了新的offsetParent,偏移参照物也发生了变化;也就是每个盒子以当前的层级做了偏移;
+    window.navigator.userAgent.indexOf("MSIE 8")>-1//->只能检查版本低于IE 11的低版本*/
+    //定时滚动
+    /*var innerH=content.innerHTML;
+    ~function(){
+        var temp=content.scrollTop;
+        content.scrollTop++;
+        if(content.scrollTop==temp){
+            content.innerHTML+=innerH;
+        }
+        window.setTimeout(arguments.callee,10);
+        //arguments.callee代表这个没名字的匿名函数本身
+    }();
+*/
+    //【callee】
+    /*function A(){
+        B();
+    }
+    function B(){
+        console.log(arguments.callee.caller);
+        //当前执行的这个函数的调用者->在这个函数的执行里,callee是B，caller是A;
+    }*/
+    //【图片的缓存机制】
+    //【图片的加载事件】
+    /*src=url+"?"+Math.random();//重新下载url地址而不是在浏览器缓存里面读取;
+    生成DOM树和浏览器中资源加载完成不是一回事;DOM树生成速度很快;*/
+</script>
+</body>
+</html>

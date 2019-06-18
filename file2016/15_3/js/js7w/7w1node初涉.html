@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>node.js</title>
+</head>
+<body>
+【什么是node】
+简单的说 Node.js 就是运行在服务端的 JavaScript,打破了前后端的语言边界，解放了前端程序员的职责约束，可以在更大的舞台上施展空间。
+Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台，是一个Javascript的运行环境。
+Node.js是一个事件驱动I/O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。
+Node.js不但可以解析JS代码，也没有所谓的兼容性问题，更没有浏览器的安全限制。还增加了许多系统API如文件读写，进程管理，网络服务等;
+越来越流行
+node.js的包管理系统已经成为世界上最大的开源库生态系统;JavaScript已经成为github上使用最多的语言;
+功能越来越强大
+
+【应用方面】
+其它语言能做的node都能做，在有些场景下会做的更好
+项目管理：npm,grunt, gulp,bower, yeoman
+桌面应用: node-webkit
+Web开发：express,ejs,hexo, socket.io, restify, cleaver, stylus, browserify,cheerio
+工具包 underscore,moment,connet,later,log4js,passport,passport(oAuth),domain,require,reap,commander,retry,PDFkit
+数据库：mysql,mongoose,redis,memcached
+异步：async,wind,eventProxy,bluebird
+部署：forever,pm2,nodemon
+测试：jasmine,karma,protractor
+跨平台：rio,tty
+内核：cluster,http,request
+模板: jade
+博客: ghost,hexo
+微信: weui
+硬件控制: NoduinoWeb
+操作系统: NodeOS
+资源
+node官网->可以看版本的变化，API的变化，新特性的加入
+    https://nodejs.org/en/
+npm官网->可以搜索需要的模块，以及模块的使用说明
+    https://www.npmjs.com/
+github->可以查找优秀的项目源码
+    https://www.github.com/
+stackoverflow->如果遇到解决不了的问题可以在此提问
+    https://www.stackoverflow.com/
+
+Node.js 【安装配置】
+偶数位为稳定版本，奇数位为非稳定版本
+稳定版本中已经发布的API是不会改变的
+
+【NPM】
+NPM 使用介绍
+NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：
+允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
+允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。 同样可以通过输入 "npm -v" 来测试是否成功安装。命令如下，出现版本提示表示安装成功:
+D:\vip_data\mygit\zhufeng_node\2.node>npm -v
+2.14.7
+如果你安装的是旧版本的 npm，可以很容易得通过 npm 命令来升级，命令如下
+npm install npm -g
+使用 npm 命令安装模块
+        npm 安装 Node.js 模块语法格式如下：
+        $ npm install <Module Name>
+        npm install express
+        安装好之后，express 包就放在了工程目录下的 node_modules 目录中，因此在代码中只需要通过 require('express') 的方式就好，无需指定第三方包路径。
+全局安装与本地安装
+全局安装
+npm 的包安装分为本地安装（local）、全局安装（global）两种，从敲的命令行来看，差别只是有没有-g而已，比如
+本地安装
+将安装包放在 ./node_modules 下（运行 npm 命令时所在的目录），如果没有 node_modules 目录，会在当前执行 npm 命令的目录下生成 node_modules 目录。
+可以通过 require('express') 来引入本地安装的包。
+npm install express # 本地安装
+全局安装
+mac全局路径 /usr/local 下 windows全局路径 C:\Users\Administrator\AppData\Roaming\npm 这个路径可以在 C:\Program Files\nodejs\node_modules\npm\npmrc 中配置 prefix=${APPDATA}\npm
+将安装包放在全局路径下。
+可以直接在命令行里使用。
+接下来我们使用全局方式安装 express-generator
+$ npm install express-generator -g   # 全局安装
+安装过程输出如下内容，第一行输出了模块的版本号及安装位置。
+你可以使用以下命令来查看所有全局安装的模块
+$ npm ls -g
+
+使用 package.json
+package.json 位于模块的目录下，用于定义包的属性。接下来让我们来看下 express 包的 package.json 文件，位于 node_modules/express/package.json 内容： Package.json 属性说明
+name - 包名。
+version - 包的版本号。
+description - 包的描述。
+homepage - 包的官网 url 。
+author - 包的作者姓名。
+contributors - 包的其他贡献者姓名。
+dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下。
+repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上。
+main - main 字段是一个模块ID，它是一个指向你程序的主要项目。就是说，如果你包的名字叫 express，然后用户安装它，然后require("express")。
+keywords - 关键字
+卸载模块
+我们可以使用以下命令来卸载 Node.js 模块。
+        $ npm uninstall express
+卸载后，你可以到 /node_modules/ 目录下查看包是否还存在，或者使用以下命令查看：
+$ npm ls
+更新模块
+我们可以使用以下命令更新模块：
+$ npm update express
+搜索模块
+使用以下来搜索模块： $ npm search express
+创建模块
+创建模块，package.json 文件是必不可少的。我们可以使用 NPM 生成 package.json 文件，生成的文件包含了基本的结果。
+npm init
+接下来我们可以使用以下命令在 npm 资源库中注册用户（使用邮箱注册）：
+npm adduser
+接下来我们就用以下命令来发布模块：
+npm publish
+如果你以上的步骤都操作正确，你就可以跟其他模块一样使用 npm 来安装。
+版本号
+使用NPM下载和发布代码时都会接触到版本号。NPM使用语义版本号来管理代码，这里简单介绍一下。
+语义版本号分为X.Y.Z三位，分别代表主版本号、次版本号和补丁版本号。当代码变更时，版本号按以下原则更新。
+如果只是修复bug，需要更新Z位。
+如果是新增了功能，但是向下兼容，需要更新Y位。
+如果有大变动，向下不兼容，需要更新X位。
+版本号有了这个保证后，在申明第三方包依赖时，除了可依赖于一个固定版本号外，还可依赖于某个范围的版本号。例如"argv": "0.0.x"表示依赖于0.0.x系列的最新版argv。
+NPM支持的所有版本号范围指定方式可以查看官方文档。
+NPM 常用命令
+除了本章介绍的部分外，NPM还提供了很多功能，package.json里也有很多其它有用的字段。 除了可以在 ://docs.npmjs.com/ 查看官方文档外，这里再介绍一些NPM常用命令。
+npm install 安装包
+npm publish 发布包
+npm help 可查看所有命令。
+使用npm help <command>可查看某条命令的详细帮助，例如 npm help install。
+在package.json所在目录下使用npm install -g 可先在本地安装当前命令行程序。
+使用npm update <package>可以把当前目录下node_modules子目录里边的对应模块更新至最新版本。
+使用npm update <package> -g可以把全局安装的对应命令行程序更新至最新版。
+使用npm cache clear可以清空NPM本地缓存，用于对付使用相同版本号发布新版本代码的人。
+使用npm unpublish <package>@<version></version>可以撤销发布自己发布过的某个版本代码。
+【服务器端】
+有一个地址;能提供服务;联网计算机需要IP地址;
+ipconfige
+端口号->http 80;ftp 21;1.1.1.1:21;
+【客户端】
+        发起请求;协议;
+        url;->协议方案名: 登录信息(认证) @ 服务器地址(转换成域名方便使用) 端号 带层次文件路径 查询字符串 片段标识符;
+【请求/响应】
+        都会发送头和正文信息 http头发送的是一些附加的信息，内容类型服务器发送的响应的日期，HTTP状态码 正文是提交的表单数据；
+【访问】
+        一个普通网站访问的过程
+        浏览器(或其它客户端如微信)向服务器发出一个 HTTP请求
+        先解析域名(chrome缓存1分钟(chrome://net-internals/#dns)->搜索操作系统缓存->读取本地host文件->发起DNS系统调用->运营商DNS缓存->找根域->com域)
+        客户端通过随机端口发起tcp三次握手,经过层层服务器进入到网卡，然后进入防火墙和TCP协议栈，建立了TCP连接
+        连接建立后浏览器就可以发送HTTP请求了
+        服务器接收到 HTTP 请求，解析请求的路径和参数，经过后台的一些处理之后生成完整响应页面
+        服务器将生成的页面作为HTTP响应的body，根据不同的处理结果生成 HTTP header，发回给客户端
+        客户端（浏览器）接收到 HTTP 响应，通常第一个请求得到的 HTTP 响应的 body 里是 HTML 代码，于是对 HTML 代码开始解析
+        解析过程中遇到引用的服务器上的资源（额外的 CSS、JS代码，图片、音视频，附件等），再向服务器发送请求
+        浏览器解析HTML包含的内容，用得到的 CSS 代码进行外观上的进一步渲染，JS 代码也可能会对外观进行一定的处理
+        用户与页面交互（点击，悬停等等）时，JS 代码对此作出一定的反应，添加特效与动画
+        交互的过程中可能需要向服务器索取或提交额外的数据（局部的刷新）,一般不是跳转就是通过 JS 代码(响应某个动作或者定时)向服务器发送请求， Web Server 再用服务器脚本进行处理（生成资源or写入数据之类的），把资源返回给客户端，客户端用得到的资源来实现动态效果或其他改变。
+【状态码】
+        1XX:请求处理中
+        2XX:成功响应
+        3XX:重定向;302 lacation
+        4XX:客户端错误;404 Not Found
+        5XX:服务器端错误
+【Header】
+        通用、请求、响应、实体、扩展五个首部;
+        HTTP协议的请求消息和响应消息的格式及其相似。提炼出它们的共性，可以指出，HTTP消息分为三个部分：
+        首行
+        头部（Header）
+        正文（Body）
+        其中，头部用来指出HTTP消息的一些属性，它们有固定的格式；正文部分是传输的实际内容，它们的格式是任意的，通常用Content-Type头来指定。首行在请求消息和响应消息中具体格式略有区别，它们表示的按理说应该是HTTP消息最基本的部分。不论是HTTP请求还是HTTP响应，首行都是有的，否则会出现不可饶恕的解析错误；然而头部和正文是可选的，不过实际过程中，多多少少都要包含一些基本的头。
+        HTTP消息主要是基于ASCII编码的消息实体。主要的意思是指首行和头部都是以ASCII编码，而正文部分的编码就显得任意了。在实际的开发中，发送的文本消息时常会碰到乱码的问题。一种解决办法是，对于文本消息，约定以UTF-8格式进行编码和解码。
+        知道的人也许知道，HTTP消息是基于TCP协议的上层应用协议。TCP协议是网络流协议的一种。抽象地讲，就是从一台主机一个字节一个字节有序地传输到另一台主机。对于HTTP协议来说，自然保持了这种有序性，即按照首行、头部、正文的顺序进行传输。首行和头部都是ASCII文本流，正文部分是字节流。一个特殊的控制结构CRLF用来控制每个部分的结束。
+        GET /simple.html HTTP/1.1<CRLF>     ----- 首行
+        Accept: text/html<CRLF>             --|
+        Accept-Language: zh-cn<CRLF>          |
+        Accept-Encoding: gzip, deflate<CRLF>  |-- 头部
+        User-Agent: Mozilla/4.0<CRLF>         |
+        Host: localhost:8080<CRLF>            |
+        Connection: Keep-Alive<CRLF>        --|
+        <>                              ----- 空白行表示头部的结束
+        ----- 接下来的内容是正文部分
+        这是一个简单的HTTP请求消息。我在其中做了一些必要的删减，以便每个头足够短都能在一行中显示。记住首行和头部是ASCII流，正文部分是字节流，它们在消息实体中是连续的片段，并不像代码中所示那样有换行的结构。
+</body>
+</html>

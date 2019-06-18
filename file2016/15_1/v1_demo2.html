@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_demo2</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app-7">
+    <div id="exam"></div>
+    为每个待办项渲染同样的文本，这看起来并不炫酷，我们应该能将数据从父作用域传到子组件。让我们来修改一下组件的定义，使之能够接受一个属性
+    可以使用 v-bind 指令将 todo 传到每一个重复的组件中
+
+    现在我们为每个 todo-item 提供 todo 对象 todo 对象是变量，即其内容可以是动态的。我们也需要为每个组件提供一个“key”，晚些时候我们会做个解释。
+    <ol>
+        <!-- 建另一个组件模板 创建一个todo-item的组件实例 -->
+        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+    </ol>
+
+    但是我们已经设法将应用分割成了两个更小的单元，子单元通过 props 接口实现了与父单元很好的解耦。我们现在可以进一步为我们的 todo-item 组件实现更复杂的模板和逻辑的改进，而不会影响到父单元。在一个大型应用中，有必要将整个应用程序划分为组件，以使开发可管理。在后续教程中我们将详述组件，不过这里有一个（假想的）使用了组件的应用模板是什么样的例子。
+
+
+</div>
+<script>
+    /*定义组件名为todo-item*/
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    });
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            groceryList: [
+                { id: 0, text: '蔬菜' },
+                { id: 1, text: '奶酪' },
+                { id: 2, text: '随便其他什么人吃的东西' },
+                { id: 3, text: '随便其他什么不吃的东西' }
+            ]
+        }
+    });
+
+    /*代理data内数据*/
+    var dat={ a:1 };
+    var vm=new Vue({
+        data:dat
+    });
+    // 设置属性也会影响到原始数据 反之亦然
+
+
+    /*除了 data 属性， Vue 实例暴露了一些有用的实例属性与方法。这些属性与方法都有前缀 $，以便与代理的 data 属性区分*/
+    var dat2 = { a: 1 };
+    var vm2 = new Vue({
+        el: '#exam',
+        data: dat2
+    });
+    console.log(vm2.$data === dat2) ;// -> true
+    console.log(vm2.$el === document.getElementById('exam'));// -> true
+    // $watch 是一个实例方法
+    vm2.$watch('a', function (newVal, oldVal) {
+        // 这个回调将在 `vm.a`  改变后调用
+    });
+
+    /*生命周期的钩子函数*/
+    var vm3=new Vue({
+        data:{
+            a:1
+        },
+        created:function () {
+            console.log('vm3的a是'+this.a);
+        }
+    })
+
+</script>
+</body>
+</html>

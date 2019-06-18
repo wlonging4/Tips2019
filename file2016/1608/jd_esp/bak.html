@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>技嘉·京东杯高校电子竞技联赛</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#777;font:12px/20px 'microsoft yahei',arial; background: #000030;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#008cd6;font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 100px; padding-top: 150px ;background: url("images/lg_foot.jpg") no-repeat top center; }
+        .zol_foot,.zol_foot a{  color: #BFBFFF;  }
+
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1160px;  height: 477px;  }
+
+        .nav-l{  background: url("images/lg_nav_l.jpg") no-repeat 100% 0;  }
+        .nav-r{  background: url("images/lg_nav_r.jpg") no-repeat 0 0;  }
+        .nav-c{  width: 1060px;  height: 51px;  overflow: hidden;  background: url("images/lg_nav_c.jpg") no-repeat 0 0;  }
+        .nav-c li{  float: left;  _display: inline;  width: 125px;  height: 51px;  margin-right: 7px;  background: url("images/lg_nav_btn.png") no-repeat 0 0;  }
+        .nav-c li a{  display: block;  width: 125px;  height: 51px;  line-height: 51px;  text-align: center;  color: #945e15;  font: bold 20px/51px 'microsoft yahei',Arial;  }
+
+        .flow{  position: fixed;  bottom: 20px;  left: 50%;  margin-left: 540px;  _position: absolute;  background: url("images/lg_flow.png") no-repeat 0 0;  width: 230px;  height: 484px;  overflow: hidden;  }
+        .flow ul{  margin: 94px auto 0;  width: 138px;  height: 364px;  }
+        .flow ul li{  width: 138px;  height: 52px;  }
+        .flow ul li a{  display: block;  height: 52px;  width: 138px;  color: #ffdc60;  text-align: center;  font: 20px/52px 'microsoft yahei',Arial;  line-height: 52px;  }
+
+        .fir-l{  background: url("images/lg_fir_l.jpg") no-repeat 100% 0;  }
+        .fir-r{  background: url("images/lg_fir_r.jpg") no-repeat 0 0;  }
+        .fir-c{  position: relative;  overflow: hidden;  width: 960px;  height: 479px;  background: url("images/lg_fir_c.jpg") no-repeat 0 0;  }
+        .fir-pic{  position: absolute;  top: 71px;  left: 2px;  width: 462px;  height: 346px;  background: #fff;  }
+        .fir-art{  position: absolute;  bottom: 80px;  right: 0;  width: 446px;  height: 280px;   }
+
+        .pre-l{  background: url("images/lg_pre_l.jpg") no-repeat 100% 0;  }
+        .pre-r{  background: url("images/lg_pre_r.jpg") no-repeat 0 0;  }
+        .pre-t{  width: 960px;  height: 56px;  }
+        .pre-c{  position: relative;  overflow: hidden;  width: 960px;  height: 614px;  background: url("images/lg_pre_c.jpg") no-repeat 0 0;  }
+        .pre-pic{  position: absolute;   top: 32px;  left: 2px;  width: 463px;  height: 340px;  background: #fff;  }
+        .pre-list-mod{  position: absolute; overflow: hidden;   top: 86px;  right: 38px;  width: 335px;  height: 90px;   }
+        .pre-list-box{  position: absolute;   width: 335px;    }
+        .pre-news{  position: absolute; overflow: hidden;   top: 240px;  right: 0;  width: 404px;  height: 122px;  }
+        .pre-pics{  position: absolute; overflow: hidden;   bottom: 55px;  left: 0;  width: 960px;  height: 167px;  }
+
+        .inter-l{  background: url("images/lg_inter_l.jpg") no-repeat 100% 0;  }
+        .inter-r{  background: url("images/lg_inter_r.jpg") no-repeat 0 0;  }
+        .inter-t{  width: 960px;  height: 56px;  }
+        .inter-c{  position: relative;  overflow: hidden;  width: 960px;  height: 579px;  background: url("images/lg_inter_c.jpg") no-repeat 0 0;  }
+        .inter-c ul{  margin: 50px auto 0;  width: 930px;  height: 38px;  overflow: hidden;  }
+        .inter-c ul li{  float: left;  _display: inline;  width: 104px;  height: 34px;  border: 2px solid #ffdc60;  margin-right: 8px;  background: #ffdc60;  color: #8a4401;  text-align: center;  cursor: pointer;  font: bold 18px/34px 'microsoft yahei';  }
+        .inter-c ul li.act{  background: #e9b600;  }
+        .inter-box{  position: relative;  top: 46px;  left: 28px;  width: 907px;  height: 341px;  }
+        .inter-mod{  position: relative; display: none;  width: 907px;  height: 341px;  }
+        .inter-mod.blk{  display: block;  }
+        .inter-m{  position: absolute;  width: 123px;  height: 54px;  }
+        .inter-m1{  top: 4px;  left: 4px;  }
+        .inter-m2{  top: 48px;  left: 314px;  }
+        .inter-m3{  top: 48px;  left: 470px;  }
+        .inter-m4{  top: 4px;  left: 780px;  }
+        .inter-m5{  top: 93px;  left: 4px;  }
+        .inter-m6{  top: 93px;  left: 780px;  }
+        .inter-m7{  top: 193px;  left: 4px;  }
+        .inter-m8{  top: 238px;  left: 314px;  }
+        .inter-m9{  top: 238px;  left: 470px;  }
+        .inter-m10{  top: 193px;  left: 780px;  }
+        .inter-m11{  top: 283px;  left: 4px;  }
+        .inter-m12{  top: 283px;  left: 780px;  }
+
+        .fin-l{  background: url("images/lg_fin_l.jpg") no-repeat 100% 0;  }
+        .fin-r{  background: url("images/lg_fin_r.jpg") no-repeat 0 0;  }
+        .fin-t{  width: 960px;  height: 56px;  }
+        .fin-c{  position: relative;  overflow: hidden;  width: 960px;  height: 535px;  background: url("images/lg_fin_c.jpg") no-repeat 0 0;  }
+        .fin-c ul{  margin: 30px auto 0;  width: 480px;  height: 38px;  overflow: hidden;  }
+        .fin-c ul li{  float: left;  _display: inline;  width: 104px;  height: 34px;  border: 2px solid #ffdc60;  margin: 0 4px 0 6px;  background: #ffdc60;  color: #8a4401;  text-align: center;  cursor: pointer;  font: bold 18px/34px 'microsoft yahei';  }
+        .fin-c ul li.act{  background: #e9b600;  }
+        .fin-box{  position: absolute;  top: 96px;  left: 0;  overflow: hidden;  width: 960px;  height: 343px;  }
+        .fin-mod{  position: absolute;  display: none;  width: 960px;  height: 343px;  }
+        .fin-mod.blk{  display: block;  }
+        .fin-art{  position: absolute;  width: 150px;  height: 28px; background: #06124a;  }
+        .fin-art1{  top: 2px;  left: 154px; width: 302px;  }
+        .fin-art2{  top: 33px;  left: 154px; width: 302px;  }
+        .fin-art3{  top: 64px;  left: 154px; width: 302px;  }
+        .fin-art4{  top: 95px;  left: 154px;  }
+        .fin-art5{  top: 95px;  left: 307px;  }
+        .fin-art6{  top: 126px;  left: 154px;  }
+        .fin-art7{  top: 126px;  left: 307px;  }
+        .fin-art8{  top: 157px;  left: 154px;  }
+        .fin-art9{  top: 157px;  left: 307px;  }
+        .fin-art10{  top: 188px;  left: 154px;  }
+        .fin-art11{  top: 188px;  left: 307px;  }
+        .fin-art12{  top: 219px;  left: 154px;  }
+        .fin-art13{  top: 219px;  left: 307px;  }
+        .fin-art14{  top: 250px;  left: 154px;  }
+        .fin-art15{  top: 250px;  left: 307px;  }
+        .fin-art16{  top: 281px;  left: 154px;  }
+        .fin-art17{  top: 281px;  left: 307px;  }
+        .fin-art18{  top: 312px;  left: 154px;  }
+        .fin-art19{  top: 312px;  left: 307px;  }
+        .fin-video{  position: absolute;  top: 2px;  right: 2px;  width: 456px;  height: 340px; background: #000  }
+
+        .year-l{  background: url("images/lg_year_l.jpg") no-repeat 100% 0;  }
+        .year-r{  background: url("images/lg_year_r.jpg") no-repeat 0 0;  }
+        .year-t{  width: 960px;  height: 56px;  }
+        .year-c{  position: relative;  overflow: hidden;  width: 960px;  height: 1015px;    }
+        .year-focus{  position: relative;  width: 960px;  height: 510px;  margin: 30px auto 0;  }
+        .year-btn{  position: absolute;  width: 69px;  height: 138px;  top: 120px;  cursor: pointer;  }
+        .year-btn1{  left: 0;  background: url("images/lg_year_btn.png") no-repeat 0 0;  }
+        .year-btn2{  right: 0;  background: url("images/lg_year_btn.png") no-repeat -70px 0;  }
+        .focus-mod{  position: absolute;  left: 50%;  overflow: hidden; margin-left: -335px;  width: 675px;  height: 510px;  border: 1px solid #526ac3;  }
+        .focus-box{  position: absolute ; height: 510px;  }
+        .year-info{  position: relative;  width: 960px;  height: 378px;  margin: 32px auto 0;  background: url("images/lg_year_info.jpg") no-repeat 0 0;  }
+        .year-art{  position: absolute;  width: 150px;  height: 28px; background: #06124a;  }
+        .year-art1{  top: 3px;  left: 154px; width: 302px;  }
+        .year-art2{  top: 34px;  left: 154px; width: 302px;  }
+        .year-art3{  top: 65px;  left: 154px; width: 302px;  }
+        .year-art4{  top: 96px;  left: 154px;  }
+        .year-art5{  top: 96px;  left: 307px;  }
+        .year-art6{  top: 127px;  left: 154px;  }
+        .year-art7{  top: 127px;  left: 307px;  }
+        .year-art8{  top: 158px;  left: 154px;  }
+        .year-art9{  top: 158px;  left: 307px;  }
+        .year-art10{  top: 189px;  left: 154px;  }
+        .year-art11{  top: 189px;  left: 307px;  }
+        .year-art12{  top: 220px;  left: 154px;  }
+        .year-art13{  top: 220px;  left: 307px;  }
+        .year-art14{  top: 251px;  left: 154px;  }
+        .year-art15{  top: 251px;  left: 307px;  }
+        .year-art16{  top: 282px;  left: 154px;  }
+        .year-art17{  top: 283px;  left: 307px;  }
+        .year-art18{  top: 313px;  left: 154px;  }
+        .year-art19{  top: 314px;  left: 307px;  }
+        .year-video{  position: absolute;  top: 3px;  right: 2px;  width: 456px;  height: 340px; background: #000;  }
+
+        .pri-t{  width: 960px;  height: 56px; margin-bottom: 40px  }
+        .pri-c{  width: 960px;  height: 347px;  margin-bottom: 40px;  overflow: hidden;  }
+        .pri-l-mod{  float: left;  width: 458px;  height: 343px;  margin-right: 36px;  background: #000;  border: 2px solid #132970;  }
+        .pri-r-mod{  float: left;  width: 458px;  height: 343px;  background: #fff;  border: 2px solid #132970;  }
+
+        .test-l{  background: url("images/lg_test_l.jpg") no-repeat 100% 0;  }
+        .test-r{  background: url("images/lg_test_r.jpg") no-repeat 0 0;  }
+        .test-t{  width: 960px;  height: 56px;  }
+        .test-c{  position: relative;  overflow: hidden;  width: 960px;  height: 409px;  background: url("images/lg_test_c.jpg") no-repeat 0 0;  }
+        .test-mod{  width: 960px;  height: 70px;  margin-top: 60px;  }
+        .test-m{  float: left;  width: 295px;  height: 70px;  margin-right: 36px;  }
+        .test-mx{  margin-right: 0;  }
+        .test-link{  position: absolute;  width: 300px;  height: 18px;  left: 100px;  bottom: 0;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" id="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1160" valign="top">
+            <div class="head-c">
+                模块内容
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<table class="nav" id="nav" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="nav-l">&nbsp;</td>
+        <td width="1060" valign="top">
+            <ul class="nav-c">
+                <li><a href="#first" target="_self">首页</a></li>
+                <li><a href="#pre" target="_self">线下预选赛</a></li>
+                <li><a href="#inter" target="_self">线上复赛</a></li>
+                <li><a href="#fin" target="_self">赛区决赛</a></li>
+                <li><a href="#year" target="_self">年度总决赛</a></li>
+                <li><a href="##" target="_self">赛场花絮</a></li>
+                <li><a href="#prize" target="_self">有奖互动</a></li>
+                <li><a href="#test" target="_self">产品评测</a></li>
+            </ul>
+        </td>
+        <td class="nav-r">&nbsp;</td>
+    </tr>
+</table>
+<!--浮动栏-->
+<div class="flow">
+    <ul>
+        <li><a href="#first" target="_self">首页</a></li>
+        <li><a href="#pre" target="_self">线下预选赛</a></li>
+        <li><a href="#inter" target="_self">线上复赛</a></li>
+        <li><a href="#fin" target="_self">赛区总决赛</a></li>
+        <li><a href="#year" target="_self">年度总决赛</a></li>
+        <li><a href="#prize" target="_self">有奖互动</a></li>
+        <li><a href="#test" target="_self">产品评测</a></li>
+    </ul>
+</div>
+<!--头条-->
+<table class="first" id="first" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="fir-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="fir-c">
+                <div class="fir-pic">模块内容</div>
+                <div class="fir-art">模块内容</div>
+            </div>
+        </td>
+        <td class="fir-r">&nbsp;</td>
+    </tr>
+</table>
+<!--线下预选赛-->
+<table class="preliminary" id="pre" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pre-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="pre-t">模块内容</div>
+            <div class="pre-c">
+                <div class="pre-pic">模块内容</div>
+                <div class="pre-list-mod">
+                    <div class="pre-list-box">
+                        模块内容
+                    </div>
+                </div>
+                <div class="pre-news">模块内容</div>
+                <div class="pre-pics">模块内容</div>
+            </div>
+        </td>
+        <td class="pre-r">&nbsp;</td>
+    </tr>
+</table>
+<!--线上复赛-->
+<table class="intermediary" id="inter" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="inter-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="inter-t">模块内容</div>
+            <div class="inter-c">
+                <ul>
+                    <li class="act">东北赛区</li>
+                    <li>华北赛区</li>
+                    <li>华东赛区</li>
+                    <li>华中赛区</li>
+                    <li>华南赛区</li>
+                    <li>江淮赛区</li>
+                    <li>西南赛区</li>
+                    <li>西北赛区</li>
+                </ul>
+                <div class="inter-box">
+                    <div class="inter-mod blk">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1">模块内容</div>
+                        <div class="inter-m inter-m2">模块内容</div>
+                        <div class="inter-m inter-m3">模块内容</div>
+                        <div class="inter-m inter-m4">模块内容</div>
+                        <div class="inter-m inter-m5">模块内容</div>
+                        <div class="inter-m inter-m6">模块内容</div>
+                        <div class="inter-m inter-m7">模块内容</div>
+                        <div class="inter-m inter-m8">模块内容</div>
+                        <div class="inter-m inter-m9">模块内容</div>
+                        <div class="inter-m inter-m10">模块内容</div>
+                        <div class="inter-m inter-m11">模块内容</div>
+                        <div class="inter-m inter-m12">模块内容</div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="inter-r">&nbsp;</td>
+    </tr>
+</table>
+<!--赛区决赛-->
+<table class="final" id="fin" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="fin-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="fin-t">模块内容</div>
+            <div class="fin-c">
+                <ul>
+                    <li class="act">东部赛区</li>
+                    <li>南部赛区</li>
+                    <li>西部赛区</li>
+                    <li>北部赛区</li>
+                </ul>
+                <div class="fin-box">
+                    <div class="fin-mod blk">
+                        <div class="fin-art fin-art1">模块内容</div>
+                        <div class="fin-art fin-art2">模块内容</div>
+                        <div class="fin-art fin-art3">模块内容</div>
+                        <div class="fin-art fin-art4">模块内容</div>
+                        <div class="fin-art fin-art5">模块内容</div>
+                        <div class="fin-art fin-art6">模块内容</div>
+                        <div class="fin-art fin-art7">模块内容</div>
+                        <div class="fin-art fin-art8">模块内容</div>
+                        <div class="fin-art fin-art9">模块内容</div>
+                        <div class="fin-art fin-art10">模块内容</div>
+                        <div class="fin-art fin-art11">模块内容</div>
+                        <div class="fin-art fin-art12">模块内容</div>
+                        <div class="fin-art fin-art13">模块内容</div>
+                        <div class="fin-art fin-art14">模块内容</div>
+                        <div class="fin-art fin-art15">模块内容</div>
+                        <div class="fin-art fin-art16">模块内容</div>
+                        <div class="fin-art fin-art17">模块内容</div>
+                        <div class="fin-art fin-art18">模块内容</div>
+                        <div class="fin-art fin-art19">模块内容</div>
+                        <div class="fin-video">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="fin-mod">
+                        <div class="fin-art fin-art1">模块内容</div>
+                        <div class="fin-art fin-art2">模块内容</div>
+                        <div class="fin-art fin-art3">模块内容</div>
+                        <div class="fin-art fin-art4">模块内容</div>
+                        <div class="fin-art fin-art5">模块内容</div>
+                        <div class="fin-art fin-art6">模块内容</div>
+                        <div class="fin-art fin-art7">模块内容</div>
+                        <div class="fin-art fin-art8">模块内容</div>
+                        <div class="fin-art fin-art9">模块内容</div>
+                        <div class="fin-art fin-art10">模块内容</div>
+                        <div class="fin-art fin-art11">模块内容</div>
+                        <div class="fin-art fin-art12">模块内容</div>
+                        <div class="fin-art fin-art13">模块内容</div>
+                        <div class="fin-art fin-art14">模块内容</div>
+                        <div class="fin-art fin-art15">模块内容</div>
+                        <div class="fin-art fin-art16">模块内容</div>
+                        <div class="fin-art fin-art17">模块内容</div>
+                        <div class="fin-art fin-art18">模块内容</div>
+                        <div class="fin-art fin-art19">模块内容</div>
+                        <div class="fin-video">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="fin-mod">
+                        <div class="fin-art fin-art1">模块内容</div>
+                        <div class="fin-art fin-art2">模块内容</div>
+                        <div class="fin-art fin-art3">模块内容</div>
+                        <div class="fin-art fin-art4">模块内容</div>
+                        <div class="fin-art fin-art5">模块内容</div>
+                        <div class="fin-art fin-art6">模块内容</div>
+                        <div class="fin-art fin-art7">模块内容</div>
+                        <div class="fin-art fin-art8">模块内容</div>
+                        <div class="fin-art fin-art9">模块内容</div>
+                        <div class="fin-art fin-art10">模块内容</div>
+                        <div class="fin-art fin-art11">模块内容</div>
+                        <div class="fin-art fin-art12">模块内容</div>
+                        <div class="fin-art fin-art13">模块内容</div>
+                        <div class="fin-art fin-art14">模块内容</div>
+                        <div class="fin-art fin-art15">模块内容</div>
+                        <div class="fin-art fin-art16">模块内容</div>
+                        <div class="fin-art fin-art17">模块内容</div>
+                        <div class="fin-art fin-art18">模块内容</div>
+                        <div class="fin-art fin-art19">模块内容</div>
+                        <div class="fin-video">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="fin-mod">
+                        <div class="fin-art fin-art1">模块内容</div>
+                        <div class="fin-art fin-art2">模块内容</div>
+                        <div class="fin-art fin-art3">模块内容</div>
+                        <div class="fin-art fin-art4">模块内容</div>
+                        <div class="fin-art fin-art5">模块内容</div>
+                        <div class="fin-art fin-art6">模块内容</div>
+                        <div class="fin-art fin-art7">模块内容</div>
+                        <div class="fin-art fin-art8">模块内容</div>
+                        <div class="fin-art fin-art9">模块内容</div>
+                        <div class="fin-art fin-art10">模块内容</div>
+                        <div class="fin-art fin-art11">模块内容</div>
+                        <div class="fin-art fin-art12">模块内容</div>
+                        <div class="fin-art fin-art13">模块内容</div>
+                        <div class="fin-art fin-art14">模块内容</div>
+                        <div class="fin-art fin-art15">模块内容</div>
+                        <div class="fin-art fin-art16">模块内容</div>
+                        <div class="fin-art fin-art17">模块内容</div>
+                        <div class="fin-art fin-art18">模块内容</div>
+                        <div class="fin-art fin-art19">模块内容</div>
+                        <div class="fin-video">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="fin-r">&nbsp;</td>
+    </tr>
+</table>
+<!--年度总决赛-->
+<table class="year" id="year" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="year-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="year-t">模块内容</div>
+            <div class="year-c">
+                <div class="year-focus">
+                    <div class="year-btn year-btn1"></div>
+                    <div class="year-btn year-btn2"></div>
+                    <div class="focus-mod">
+                        <div class="focus-box">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="year-info clearfix">
+                    <div class="year-art year-art1">模块内容</div>
+                    <div class="year-art year-art2">模块内容</div>
+                    <div class="year-art year-art3">模块内容</div>
+                    <div class="year-art year-art4">模块内容</div>
+                    <div class="year-art year-art5">模块内容</div>
+                    <div class="year-art year-art6">模块内容</div>
+                    <div class="year-art year-art7">模块内容</div>
+                    <div class="year-art year-art8">模块内容</div>
+                    <div class="year-art year-art9">模块内容</div>
+                    <div class="year-art year-art10">模块内容</div>
+                    <div class="year-art year-art11">模块内容</div>
+                    <div class="year-art year-art12">模块内容</div>
+                    <div class="year-art year-art13">模块内容</div>
+                    <div class="year-art year-art14">模块内容</div>
+                    <div class="year-art year-art15">模块内容</div>
+                    <div class="year-art year-art16">模块内容</div>
+                    <div class="year-art year-art17">模块内容</div>
+                    <div class="year-art year-art18">模块内容</div>
+                    <div class="year-art year-art19">模块内容</div>
+                    <div class="year-video">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="year-r">&nbsp;</td>
+    </tr>
+</table>
+<!--有奖互动-->
+<table class="prize" id="prize" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pri-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="pri-t">模块内容</div>
+            <div class="pri-c">
+                <div class="pri-l-mod">模块内容</div>
+                <div class="pri-r-mod">模块内容</div>
+            </div>
+        </td>
+        <td class="pri-r">&nbsp;</td>
+    </tr>
+</table>
+<!--产品评测-->
+<table class="test" id="test" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="test-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="test-t">模块内容</div>
+            <div class="test-c">
+                <div class="test-mod clearfix">
+                    <div class="test-m">模块内容</div>
+                    <div class="test-m">模块内容</div>
+                    <div class="test-m test-mx">模块内容</div>
+                </div>
+                <div class="test-link">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="test-r">&nbsp;</td>
+    </tr>
+</table>
+
+
+<script charset="gbk" src="../jquery-1.9.1.js"></script>
+<script>
+    /*选项卡切换*/
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('click', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.inter-c ul li','act','.inter-mod','blk');
+    card_chg('.fin-c ul li','act','.fin-mod','blk');
+
+    /*多图片切换*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".focus-box",".focus-box",1,".year-btn1",".year-btn2");
+</script>
+</body>
+</html>

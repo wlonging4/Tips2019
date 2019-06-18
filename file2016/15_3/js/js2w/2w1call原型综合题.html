@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //模拟实现call函数
+    /*Function.prototype.call=function(prm1){
+        //1,让当前操作函数执行,this->当前要操作的函数;
+        this();
+        //F.call调用的时候this就是F即当前操作函数
+        //2,让当前要操作的函数中的this变为第一个参数值;this(当前操作函数)中的this(F函数中的this关键字)变为prm1(类似于call中传递的第一个参数prm即this->fn2);
+    };*/
+
+
+    function fn1() {
+        console.log(1);
+        //console.log(this);
+    }
+    function fn2() {
+        console.log(2);
+    }
+    fn1.call(fn2);//->1
+    //执行fn1让fn1中的this是fn2;没有this,所以结果还是执行fn1;
+    fn1.call.call.call.call(fn2);//->2
+    fn1.call.call(fn2);//->2
+    //多个call和两个call的结果是一样的;让fn1.call这个方法执行,fn1.call就是原型上的方法?;再把里面的this变成fn2;关键要知道fn1.call是什么！查找机制fn1.call->fn1.__proto__.call->Function.prototype.call的call;就是让call中的this变为fn2;即执行fn2->2
+    //所以不管多少个call最后只执行最后一个call,前面的都仅仅到Function.prototype上把call方法拿出来执行;
+    Function.prototype.call(fn2);//无输出
+    //让Function.prototype执行,是个函数类型(并且是一个空函数Empty)即让Empty执行,并且让其中的this变为fn2,所以什么输出都没有;
+    Function.prototype.call.call.call.call(fn2);//->2
+    //这个跟===Function.prototype.call.call(fn2)===fn1.call.call(fn2)->2
+    fn1.call();//->1
+    try {
+        fn1.call.call();//->not a func
+    }catch(e){
+        throw new Error("错了");
+    }
+</script>
+</body>
+</html>

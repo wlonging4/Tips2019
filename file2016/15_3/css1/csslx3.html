@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局-单列定宽单列自适应结构</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #header,#footer{
+            height:30px;
+            background-color: #E8E8E8;
+        }
+        #container{
+            position:relative;/*添加相对定位属性使其子元素的绝对定位属性有参照物*/
+            margin:10px 0;
+        }
+        .mainbox{
+            float: left;
+            width:auto;/*设置为自动的话内容少不会被右边sidebox压住，但随着内容增多就被人家压了*/
+            margin-right: 200px;/*外补丁属性为sidebox;大小200px*/
+            color: #FF0000;
+            background-color: #333333;
+        }
+        .sidebox{
+            float: right;
+            position: absolute;/*设置绝对定位，相对于其父元素container定位*/
+            top:0;/*相对于其父元素的顶部和右部（右上角）0px定位*/
+            right:0;
+            width:200px;
+            margin-left: -200px;/*添加负边距使得sidebox向左浮动缩进；再缩小页面宽度，右边不会掉下去会压住左边的页面宽度*/
+            color:#FFFFFF;
+            background-color: #999999;
+        }
+        #container:after{
+            display: block;
+            line-height: 0;
+            font-size:0;
+            visibility: hidden;
+            clear: both;
+            content: "";
+        }/*清除内容区域的左右浮动*/
+    </style>
+</head>
+<body>
+<div id="header">顶部</div>
+<div id="container">
+    <div class="mainbox">主栏12345678901主栏12345678901主栏12345678901主栏12345678901主栏12345678901</div>
+    <div class="sidebox">侧栏</div>
+</div>
+<div id="footer">底部</div>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>ZOL手机站V6.2.1_华为中国合作伙伴精英邀请赛H5</title>
+    <meta name="keywords" content="华为中国合作伙伴精英邀请赛H5" />
+    <meta name="description" content="华为中国合作伙伴精英邀请赛H5" />
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, figure, figcaption { margin: 0; padding: 0; font-size: 32px; }
+        html, body { height: 100%; }
+        body { -webkit-tap-highlight-color: rgba(0,0,0,0); background-color: #000; color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a { color: #000; text-decoration: none; }
+        a img { border: 0 none; }
+        img { display: block; }
+        table { border-collapse: collapse; border-spacing: 0; }
+        th, td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        /*载入loading*/
+        .loading { display: block; position: absolute; z-index: 3; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==') no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url('data:image/png;base64,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') no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*下滑按钮*/
+        #swipe { position: absolute; z-index: 10; left: 50%; bottom: 40px; width: 112px; margin-left: -56px; height: 59px; overflow: hidden; color: rgba(0,0,0,0); background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHAAAAA7BAMAAABRURPXAAAAA3NCSVQICAjb4U/gAAAALVBMVEX///////////////////////////////////////////////////////////+g0jAFAAAAD3RSTlMAESIzRFVmd4iZqrvd7v/FFXkcAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADA3LzI5LzE2LMpRcAAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAGDSURBVEiJndY7TsQwEADQybIHiAT0W0QgOigQ7e5KEQhKEomSpSUdXAAJpDQ01IgjcATOwRX4+QzYySTxPzOZymPPKzIZS4bPFKZEBWKSrASIKbISCvKldA3kSuVaKL4WXIeQI1vXQbpEJ+CDJzv3A3OW7N0SYP6OyfeS5QBmb0ZKdnRpO6p0HU36nC6vWQ4gecaDX78MuTEZdnEZczEZd7rcsJyUXcnfA93lqV6kScMlhQPPnvzSdFePLqy90nK1D/qk7fwQ5S0WixerL9IFIMqLTr4a7rT2wt3aIx1XbxwYlrq7cV1QjjpTnjOcKQ90dxJ3Hqm7u7BzJNlZkuFM2cQ+wa09cm9wWRCWrmzdvVrulGFYriypue0yBssjQ5ouCg1puTDMLDm4LXWyDkI4dmXzqbNc7l9GHjWJI2muk4e9pDqUxQJl4xLlitHHly5bN2yQpSeNylwrZThsBhZnfbPoMgV9JBhS/gCu6yTfoVSx4jm8DtHBjsoJrpGTnJSxwf4Hg7uDTkyMN+4AAAAASUVORK5CYII=') no-repeat; -webkit-animation: swipe-ani infinite .5s; animation: swipe-ani infinite .5s; }
+        #swipe.last { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAgBAMAAAC8xgahAAAAA3NCSVQICAjb4U/gAAAAMFBMVEX////qZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fqZ0fJ+QCEAAAAEHRSTlMAESIzRFVmd4iZqrvM3e7/dpUBFQAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDUvMzEvMTZDgUEGAAABNklEQVQokcXPMUvDQBQH8JeahCgO+QQitbNkcE+K55yO2exY6KR0t0ONBw5Z3czuYEEEIUPdBUs/gIXuFYckWFA836VNoD3vVt9wd7kf/5d3AGtlnoGqOlcqNShtKzigNFSFw0ARRzPkca1eVw0mqdoxLkfQIIScNxwAvTnA40k5hPljA4wgYoxleylANGS8hivWWYx3EPUIaW59g/ZuE3LbI07JX3nBHv+I+jsZ37zq33o+tSveTU/7G5z5ccW1+Rw22co5vyRjDF6kAmtTG/mGXuNj7j8FBj8umxuL132Brbzkw4n7LLD2VvLIsxYCg/+xvOE29gTeZnzy5MGdALizNTYf8bkJdBPkuxZ2eALoOvCPpXVoi+/1A/tPN+llsQ4k+SK+6iGJL1tI4qEijPE2BPIw1i+7JXmnPpPEgAAAAABJRU5ErkJggg=='); }
+        #swipe @-webkit-keyframes swipe-ani {
+                   0% { -webkit-transform: translate(0,0); }
+                   50% { -webkit-transform: translate(0,-4px); }
+               }
+        @keyframes swipe-ani {
+            0% { transform: translate(0,0); }
+            50% { transform: translate(0,-4px); }
+        }
+        /*动画*/
+        .float-left, .float-right, .float-up, .float-down, .float-scale { -webkit-transition: .6s; transition: .6s; opacity: 0; }
+        .float-left { -webkit-transform: translate(30px,0); transform: translate(30px,0); }
+        .float-right { -webkit-transform: translate(-30px,0); transform: translate(-30px,0); }
+        .float-up { -webkit-transform: translate(0,30px); transform: translate(0,30px); }
+        .float-down { -webkit-transform: translate(0,-100px); transform: translate(0,-100px); }
+        .float-scale { -webkit-transform: scale(1.1); transform: translate(1.1); }
+        .float-show1 { opacity: 0; -webkit-transform:scale(0.5); transform:scale(0.5); }
+        .float-show2 { opacity: 0; -webkit-transform: rotate(60deg); transform: rotate(60deg); }
+        .flow-exh{  opacity: 0;  }
+        .current .float-left, .current .float-right, .current .float-up, .current .float-down, .current .float-scale { -webkit-transform: none; transform: none; opacity: 1; }
+        .show-fly-down1, .show-fly-down2, .show-fly-down3,.show-fly-down4 { opacity: 0; transform: translate(-20px,-5px); -webkit-transform: translate(-20px,-5px); }
+        .show-fly-up1, .show-fly-up2 { opacity: 0; transform: translate(40px,40px); -webkit-transform: translate(40px,40px); }
+        .flow-hand{  opacity: 0;  transform: translate(10px,5px);  }
+
+        @keyframes show-hide1 {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { transform: none; opacity: 1; }
+        }
+        @-webkit-keyframes show-hide1 {
+            0% { opacity: 0; -webkit-transform: scale(0.5); }
+            100% { -webkit-transform: none; opacity: 1; }
+        }
+        @keyframes show-hide2 {
+            0% { opacity: 0; transform: rotate(60deg); }
+            100% { opacity: 1; transform: rotate(0deg); }
+        }
+        @-webkit-keyframes show-hide2 {
+            0% { opacity: 0; -webkit-transform: rotate(60deg); }
+            100% { opacity: 1; -webkit-transform: rotate(0deg); }
+        }
+        @keyframes show-fly-down {
+            0% { transform: translate(-20px,-5px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+        @-webkit-keyframes show-fly-down {
+            0% { -webkit-transform: translate(-20px,-5px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up {
+            0% { transform: translate(-20px,0px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+        @-webkit-keyframes show-fly-up {
+            0% { -webkit-transform: translate(-20px,0px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up2 {
+            0% { transform: translate(0px,10px); opacity: 0; }
+            100% { transform: translate(0,0); opacity: 1; }
+        }
+        @-webkit-keyframes show-fly-up2 {
+            0% { -webkit-transform: translate(0px,10px); opacity: 0; }
+            100% { -webkit-transform: translate(0,0); opacity: 1; }
+        }
+        @keyframes show-fly-up3 {
+            0% { transform: translate(0px,10px) scale(1.02);  }
+            100% { transform: translate(0,0); scale(1)}
+        }
+        @-webkit-keyframes show-fly-up3 {
+            0% { -webkit-transform: translate(0px,10px) scale(1.02);  }
+            100% { -webkit-transform: translate(0,0) scale(1);  }
+        }
+        @-webkit-keyframes flow-exh {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes flow-exh {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes music {
+            0% { transform: rotate(0deg);  }
+            50% { transform: rotate(180deg);  }
+            100% { transform: rotate(360deg);  }
+        }
+        @-webkit-keyframes music {
+            0% { -webkit-transform: rotate(0deg); }
+            50% { -webkit-transform: rotate(180deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes flow-hand {
+            0% {  opacity: 0;  transform: translate(10px,5px);  }
+            40% {  opacity: 1;  transform: translate(0px,0px);  }
+            80% {  opacity: 0.4;  transform: translate(0px,0px);  }
+            100% {  opacity: 1;  transform: translate(0px,0px);  }
+        }
+        @-webkit-keyframes flow-hand {
+            0% {  opacity: 0;  -webkit-transform: translate(10px,5px);  }
+            40% {  opacity: 1;  -webkit-transform: translate(0px,0px);  }
+            80% {  opacity: 0.4;  -webkit-transform: translate(0px,0px);  }
+            100% {  opacity: 1;  -webkit-transform: translate(0px,0px);  }
+        }
+
+        .current .float-show1 { animation: show-hide1 0.4s ease-in 0.3s forwards; -webkit-animation: show-hide1 0.4s ease-in 0.3s forwards; }
+        .current .float-show2 { animation: show-hide1 0.4s ease-in 0.4s forwards; -webkit-animation: show-hide1 0.4s ease-in 0.4s forwards; }
+        .current .show-fly-down1 { animation: show-fly-down 0.2s ease-in 0s forwards; -webkit-animation: show-fly-down 0.2s ease-in 0s forwards; }
+        .current .show-fly-down2 { animation: show-fly-down 0.2s ease-in 0.2s forwards; -webkit-animation: show-fly-down 0.2s ease-in 0.2s forwards; }
+        .current .show-fly-down3 { animation: show-fly-down 0.2s ease-in 0.4s forwards; -webkit-animation: show-fly-down 0.2s ease-in 0.4s forwards; }
+        .current .show-fly-down4 { animation: show-fly-down 0.2s ease-in 0.6s forwards; -webkit-animation: show-fly-down 0.2s ease-in 0.6s forwards; }
+        .current .show-fly-up1 { animation: show-fly-up 0.4s ease-in 0s forwards; -webkit-animation: show-fly-up 0.4s ease-in 0s forwards; }
+        .current .show-fly-up2 { animation: show-fly-up 0.4s ease-in 0.2s forwards; -webkit-animation: show-fly-up 0.4s ease-in 0.2s forwards; }
+        .current .show-fly-up3 { animation: show-fly-up 0.4s ease-in 0.4 forwards; -webkit-animation: show-fly-up 0.4s ease-in 0.4s forwards; }
+        .current .show-fly-up4 { animation: show-fly-up 0.4s ease-in 0.6 forwards; -webkit-animation: show-fly-up 0.4s ease-in 0.6s forwards; }
+        .current .flow-exh { animation: flow-exh 0.6s ease-in 0.2s forwards; -webkit-animation: flow-exh 0.6s ease-in 0.2s forwards; }
+        .current .flow-hand { animation: flow-hand 1.6s ease-in-out 0.4s forwards; -webkit-animation: flow-hand 1.6s ease-in-out 0.4s forwards; }
+        #btn-music p.music { animation: music 4s linear infinite; -webkit-animation: music 4s linear infinite; }
+
+        /*初始页面*/
+        .main { height: 1000%; }
+        section { height: 10%; overflow: hidden; position: relative; background-size: cover; background-repeat: no-repeat; background-position: top center; }
+        #viewport { width: 640px; height: 100%; margin: 0 auto; overflow: hidden; }
+        #slide1 { background-image: url('http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_bg1.jpg'); }
+        #slide2 { background-image: url('http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_bg2.jpg'); }
+
+        /*页面结构*/
+        .p2-box.act{  display: block;  }
+        .p1-box{  position: relative;  width: 600px;  height: 480px;  margin: 20px auto 0;  }
+        .p1-logo{  margin-left: 30px;  width: 91px;  height: 91px;  background: url("http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_logo.png");  }
+        .p1-article{  position: absolute;  bottom: 0;  height: 310px;  width: 600px;  }
+        .p1-art{  text-align: center; overflow: hidden  }
+        .p1-art1{  font-size: 120px;  font-weight: bold;  height: 130px;  line-height: 130px;  width: 600px;  color: #ba1116;  margin-bottom: 30px;  }
+        .p1-art2{  font-size: 56px;  height: 150px;  width: 600px;  color: #020202;  line-height: 75px;  }
+
+        .p2-box1{  display: none; position: relative;  margin: 40px auto 0;  height: 815px;  width: 600px;  overflow: hidden;  }
+        .p2-b1-art1{  height: 140px; color: #ec3a30;  font-size: 32px;  line-height: 46px;  margin-bottom: 25px;  }
+        .p2-b1-art2{  height: 270px;  color: #000;  font-size: 28px;  font-weight: bold;  line-height: 46px;  margin-bottom: 20px;  }
+        .p2-b1-pic{  width: 614px;  height: 247px;  margin-left: -7px;  margin-bottom: 33px;  background: url("http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b1.png") no-repeat 0 0;  }
+        .p2-b1-art3{  height: 80px;  color: #ec3a30;  font-size: 28px;  font-weight: bold;  text-align: center;  line-height: 40px;  }
+
+        .p2-box2{  display: none; position: relative;  margin: 20px auto 0;  width: 640px;  height: 850px;  overflow: hidden; }
+        .p2-box2-top{  position: relative; width: 600px;  margin: 0 auto;  height: 600px;  overflow: hidden;  }
+        .p2-b2-bar{  width: 600px;  height: 48px;  overflow: hidden;  background: #ee3c30;  -webkit-border-radius: 22px;  -moz-border-radius: 22px; border-radius: 22px;  }
+        .p2-b2-bar-ul{  height: 40px;  width: 520px;  margin: 4px 40px;  }
+        .p2-b2-bar-ul li{  width: 122px;  height: 40px;  line-height: 40px;  color: #fff;  text-align: center;  font-size: 28px;  float: left;  margin: 0 4px;  -webkit-border-radius: 20px;  -moz-border-radius: 20px; border-radius: 20px;  }
+        .p2-b2-bar-ul li.selected{  background: #fff;  color: #ee3c30;  }
+        .p2-b2-slide{  position: relative;  overflow: hidden;  width: 600px;  height: 510px;  overflow: hidden;  margin: 18px auto 24px;  }
+        .p2-b2-slide-btn{  position: absolute;  top: 220px;  width: 26px;  height: 79px;  }
+        .p2-b2-slide-btn1{  left: 30px;  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAABPBAMAAAAHJ8i5AAAAA3NCSVQICAjb4U/gAAAAJFBMVEX////uPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDA9Bp6lAAAADHRSTlMAESJEVWaImbvd7v8ht4v1AAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADA3LzMxLzE21B5QLwAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAACOSURBVDiN7ZGtF4JAEAdXeIo2sslOsVvoFruFdIVit9gtdBJWGzy/mH9OCO56/Zpem3e/KTsinzeHh4JsoDU6w0EhBlZhtS1cjGooFKbQp0oLuNtwD01YbQYv05Zws2EJlcLkCjtPk7DaEU4K0XC7tVICTxtm0IXVZNBy788qjt5X4cTLGHmJ/+Lvic65NxH7to1oTEpvAAAAAElFTkSuQmCC") no-repeat;  }
+        .p2-b2-slide-btn2{  right: 30px;  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAABPBAMAAAAHJ8i5AAAAA3NCSVQICAjb4U/gAAAAJFBMVEX////uPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDDuPDA9Bp6lAAAADHRSTlMAESJEVWaImbvd7v8ht4v1AAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADA3LzMxLzE21B5QLwAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAACISURBVDiN7dArE4JAFIbhFS9oM5vMUuj8CTqFtMVip9gtdJPZJnffPyeJj+1rcdz2zJn3nJk1BVzN9CKopBB6KQBi0VN4glrawCAtnpCKZyilAzT+wzvkYgYPaQettIb3XvxKuIVOWo7/eBRvcJESeHkPV2Mohc4scrpivjNw7v2zH8+MtVbZB7PQtn6HixYaAAAAAElFTkSuQmCC") no-repeat;  }
+        .p2-b2-slide-box{  position: absolute;  top: 0;  left: 50%;  margin-left: -162px;  overflow: hidden;  width: 333px;  height: 510px;  }
+        #p2-b2-slide-mod{  width: 1000%;   }
+        #p2-b2-slide-mod li{  float: left; height: 510px;width: 10%; overflow: hidden;  }
+        .p2-b2-info{  position: relative;  width: 640px;  height: 40px;  line-height: 20px;  font-size: 30px; font-weight: bold;  color: #000;  text-align: center;  background: url("http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b2_bg.png") no-repeat bottom center;  }
+        .p2-b2-bot{  margin: 10px auto 0;  overflow: hidden;  width: 560px;  height: 210px;  }
+        .p2-b2-bot li{  float: left;  width: 256px;  height: 50px;  font-size: 20px;  color: #fff;  text-align: center;  padding: 20px 0 17px;  margin: 7px 12px 10px;  background: url("http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b2_bg2.png") no-repeat; opacity: 0 }
+
+        .p2-box3{  display: none; margin: 20px auto 0;  position: relative;  width: 100%;  height: 790px;  }
+        .p2-b3-img{  margin: 0 auto;  width: 514px;  height: 385px;  }
+        .p2-b3-art1{  text-align: center;  height: 40px;  margin-bottom: 15px;  line-height: 54px;  text-align: center;  font-size: 26px;  font-weight: bold;  color: #ec3a30;  }
+        .p2-b3-art2{  width: 100%;  height: 40px;  line-height: 38px;  font-size: 18px;  color: #000;  background: #eee;  text-align: center;  }
+        .p2-b3-art2 span{  font-weight: bolder;  color: #ec3a30;  }
+        .p2-b3-mod{  width: 600px;  height: 135px;  margin: 20px auto 0;  }
+        .aa{  display: block;  }
+        .p2-b3-mod-l{  float: left;  width: 180px;  height: 135px;  padding-right: 15px;  }
+        .p2-b3-mod-r{  float: left;  width: 405px;  height: 135px;  overflow: hidden;  }
+        .p2-b3-mod-r .p1{  font-weight: bold;  line-height: 40px;  font-size: 22px;  height: 40px;  color: #ec3a30;  }
+        .p2-b3-mod-r .p2{  line-height: 24px;  font-size: 18px;  height: 88px;  color: #000;  }
+        .p2-b3-mod-r .p2 span{  font-weight: bolder;  color: #ec3a30;  }
+
+        .p2-box4{  display: none;  margin: 20px auto 0;  width: 600px;  height: 900px;  position: relative;  }
+        .p2-b4-title{  width: 90px;  height: 28px;  margin: 6px 0 6px;  line-height: 26px;  font-size: 16px;  text-align: center;  color: #fff;  background: #ec3a30; }
+        .p2-b4-content{  font-size: 16px;  line-height: 22px;  text-align: left;  color: #000;  }
+        .p2-b4-content span{  color: #ec3a30;  }
+        .p2-b4-content span a{  color: #ec3a30;  }
+        .p2-b4-art1{  opacity: 0; width: 600px;  height: 40px;  overflow: hidden;  }
+        .p2-b4-art2{  opacity: 0; width: 600px;  height: 185px;  overflow: hidden;  }
+        .p2-b4-art3{  opacity: 0; width: 600px;  height: 160px;  overflow: hidden;  }
+        .p2-b4-art4{  opacity: 0; width: 600px;  height: 510px;  overflow: hidden;  }
+        .p2-b4-a1-l{  float: left;  width: 90px;  height: 40px;  overflow: hidden;  }
+        .p2-b4-a1-r{  float: right;  width: 500px;  height: 40px;  line-height: 40px;  text-indent: 10px;  color: #000;  font-size: 16px;  }
+        .p2-box5{ display: none; margin: 20px auto 0;  width: 640px;  height: 860px;  position: relative;  }
+        .p2-b5-ul{  width: 550px;  height: 830px;  margin: 10px auto;  overflow: hidden;  }
+        .p2-b5-ul li{  float: left;  width: 239px;  height: 393px;  margin: 17px 18px 0;  }
+        .p2-b5-fix{  display: none;  position: absolute;  overflow: hidden;  top: 260px;  left: 50%;  margin-left: -300px;  width: 600px;  height: 370px;  background: rgba(0,0,0,0.8);  border: 1px solid #ec3a30;  }
+        .p2-b5-fix-close{  position: absolute;  right: 15px;  top: 15px;  width: 63px;  height: 63px;  background: url("http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b5_close.png") no-repeat;  }
+        .p2-b5-fix-art{  text-align: center;  height: 140px;  line-height: 70px;  color: #EB3930;  font-size: 48px;  font-weight: bold;  margin: 85px auto 0;  }
+        .p2-b5-fix-btn{  width: 282px;  height: 58px;  text-align: center;  color: #fff;  background: #EB3930;  margin: 10px auto 0;  -webkit-border-radius: 29px;  -moz-border-radius: 29px;  border-radius: 29px;  }
+        .p2-b5-fix-btn a{  font-size: 28px;  line-height: 52px;  text-align: center;  color: #fff;  }
+
+
+        .p2-fix{  position: absolute;  bottom: 0;  left: 0;  width: 100%;  height: 65px;  }
+        .p2-fix li{  float: left;  margin-right: 1px;  width: 159px;  height: 65px;  text-align: center;  line-height: 60px;  color: #fff;  font-size: 28px;  background: #ec3a30;  }
+        .p2-fix li:last-child{  width: 160px;  margin-right: 0;  }
+        .p2-fix li.act{  background: #c00;  }
+    </style>
+</head>
+<body>
+<!--loading-->
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<!--content-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container main" id="main">
+        <section id="slide1">
+            <div class="p1-box">
+                <div class="p1-logo"></div>
+                <div class="p1-article">
+                    <div class="p1-art p1-art1 float-show1">
+                        匠心杯
+                    </div>
+                    <div class="p1-art p1-art2 float-up">
+                        2016华为中国合作伙伴<br/>
+                        精英邀请赛
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slide2">
+            <div class="p2-box1 p2-box act">
+                <div class="p2-b1-art1">
+                    2016年，华为中国合作伙伴大学正式成立，开启了系统性的提升合作伙伴业务能力的新篇章。
+                </div>
+                <div class="p2-b1-art2">
+                    为全面提升合作伙伴业务技能，推动联合解决方案创新，营造能力持续提升氛围，打造更加开放的合作伙伴“生态圈”，精英邀请赛活动正式启动。<br/>
+                    乐已起，幕将开，合作创新大舞台，合作伙伴精英最善良！
+                </div>
+                <div class="p2-b1-pic"></div>
+                <div class="p2-b1-art3">
+                    四大领域的业务技能和联合创新同台竞技，共<br/>同构建健康和谐生态圈。
+                </div>
+            </div>
+            <div class="p2-box2 p2-box flipview" id="p2-box"  data-loop="false">
+                <div class="p2-box2-top">
+                    <div class="p2-b2-bar">
+                        <ul class="p2-b2-bar-ul tabs clearfix" id="p2-b2-bar">
+                            <li class="p2-b2-bar-li selected">启动篇</li>
+                            <li class="p2-b2-bar-li">初赛篇</li>
+                            <li class="p2-b2-bar-li">决赛篇</li>
+                            <li class="p2-b2-bar-li">赛后篇</li>
+                        </ul>
+                    </div>
+                    <div class="p2-b2-slide" id="p2-b2-slide">
+                        <div class="p2-b2-slide-btn p2-b2-slide-btn1" id="prev"></div>
+                        <div class="p2-b2-slide-btn p2-b2-slide-btn2" id="next"></div>
+                        <div class="p2-b2-slide-box">
+                            <ul class="container clearfix" dir="left-right" id="p2-b2-slide-mod">
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b2_img1.png" alt="" width="333" height="510"/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b2_img2.png" alt="" width="333" height="510"/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b2_img3.png" alt="" width="333" height="510"/></li>
+                                <li><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b2_img4.png" alt="" width="333" height="510"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="p2-b2-info">赛事时间</div>
+                <ul class="p2-b2-bot clearfix">
+                    <li class="show-fly-down1">报名时间<br/>2016-07-01~07-15</li>
+                    <li class="show-fly-down2">初赛阶段<br/>2016-07-30</li>
+                    <li class="show-fly-down3">复赛阶段<br/>2016-08</li>
+                    <li class="show-fly-down4">复赛阶段<br/>2016-09</li>
+                </ul>
+            </div>
+            <div class="p2-box3 p2-box">
+                <div class="p2-b3-img">
+                    <a href="http://net.zol.com.cn/572/5726440.html" target="_blank">
+                        <img src="http://2.zol-img.com.cn/zt/tm_57a/1555d3b7f3/focus.jpg" width="514" height="385" alt=""/>
+                    </a>
+                </div>
+                <a class="aa" href="http://net.zol.com.cn/572/5726440.html" target="_blank">
+                    <div class="p2-b3-art1">大道同行 学用相长</div>
+                    <div class="p2-b3-art2">借助华为中国合作伙伴大学这个平台，将持续完善赋能体系...<span>【详细】</span></div>
+                </a>
+                <div class="p2-b3-mod clearfix show-fly-up1">
+                    <a class="aa" href="http://net.zol.com.cn/595/5951040.html" target="_blank">
+                        <div class="p2-b3-mod-l">
+                            <img src="http://2.zol-img.com.cn/zt/tm_57a/1555d3b7f3/huawei1.png" width="180" height="135" alt=""/>
+                        </div>
+                        <div class="p2-b3-mod-r">
+                            <p class="p1">"匠心杯"2016华为合作伙伴精英邀请赛</p>
+                            <p class="p2">"匠心杯"2016华为中国合作伙伴精英邀请赛初赛将于7月30日举办，届时，来自数千家合作伙伴的4000多位参赛选手将在全国30多个赛区同步开考。华为希望通过此次精英邀请赛...<span>【详细】</span></p>
+                        </div>
+                    </a>
+                </div>
+                <div  class="p2-b3-mod clearfix show-fly-up2">
+                    <a class='aa' href="http://net.zol.com.cn/572/5724448.html" target="_blank">
+                        <div class="p2-b3-mod-l">
+                            <img src="http://2.zol-img.com.cn/zt/tm_57a/1555d3b7f3/huawei2.jpg" width="180" height="135" alt=""/>
+                        </div>
+                        <div class="p2-b3-mod-r">
+                            <p class="p1">五年磨一剑！华为中国合作伙伴大学发布</p>
+                            <p class="p2">华为2011年正式步入企业业务领域，目标是成为中国政企行业市场的ICT领导者，想要实现这一目标，不仅需要合作伙伴助力，更需要系统地建立端到端的赋能体系，持续提升合作伙伴...<span>【详细】</span></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="p2-box4 p2-box">
+                <div class="p2-b4-art1 show-fly-up1 clearfix">
+                    <div class="p2-b4-a1-l">
+                        <div class="p2-b4-title">报名要求</div>
+                    </div>
+                    <div class="p2-b4-a1-r">每人只可选择一个专业赛项</div>
+                </div>
+                <div class="p2-b4-art2 show-fly-up2">
+                    <div class="p2-b4-title">赛项设置</div>
+                    <div class="p2-b4-content">
+                        <span>售前：</span>数通&安全、传输&接入、IT(存储&云)、UC&C、数据中心能源<br/>
+                        <span>售后：</span>数通&安全、传输&接入、IT、视讯、项目管理、服务销售<br/>
+                        <span>商务：</span>商务&供应链&财经<br/>
+                        <span>ISV：</span>下设两个组别；<br/>
+                        解决方案创新组：展示创新解决方案的成品应用或优秀创意<br/>
+                        解决方案展示组：展示成熟解决方案的合作成果
+                    </div>
+                </div>
+                <div class="p2-b4-art3 show-fly-up3">
+                    <div class="p2-b4-title">报名条件</div>
+                    <div class="p2-b4-content">
+                        <span>售前/售后/商务赛项</span><br/>
+                        华为中国地区部企业业务部认证级以上合作伙伴人员<br/>
+                        <span>ISV</span>赛项<br/>
+                        解决方案创新组：业内ISV合作伙伴组建的创新设计团队(不限人数).<br/>
+                        解决方案展示组：已有成熟解决方案的合作伙伴所推介的解决方案精英代表
+                    </div>
+                </div>
+                <div class="p2-b4-art4 show-fly-up4">
+                    <div class="p2-b4-title">比赛方式</div>
+                    <div class="p2-b4-content">
+                        <span>售前/售后/商务赛项</span><br/>
+                        <span>初赛：</span><br/>
+                        售前、售后、商务：在华为各代表处所在地通过华为E-Learning考试平台，<br/>集中参加网上考试。<br/>
+                        <span>复赛：</span><br/>
+                        售前：配置报价笔试+宣讲<br/>
+                        注：比赛地点视初赛普及情况决定，采用远程智真的形式开展。<br/>
+                        <span>决赛：</span><br/>
+                        宣讲+答辩+实操(商务)<br/><br/>
+                        <span>ISV赛项：</span><br/>
+                        <span>初赛：</span><br/>
+                        通过在当地代表处组织集中会议，以评审+宣讲答辩的形式进行。解决方案创<br/>新组最终选择10个团队入围决赛，解决方案展示组最终选择10人入围决赛。<br/>
+                        <span>决赛：</span><br/>
+                        入围决赛的团队或个人在现场进行宣讲，由评委提问并依据规则进行打分，<br/>决出获奖名单。解决方案创新组获奖的方案作品将会得到华为公司的重点资<br/>源投入直至上市发布。<br/>
+                    </div>
+                </div>
+            </div>
+            <div class="p2-box5 p2-box">
+                <div class="p2-b2-info">学习资料</div>
+                <ul class="p2-b5-ul clearfix" id="p2-b5-ul">
+                    <li class="show-fly-down1"><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b5_img1.png" width="239" height="393" alt=""/></li>
+                    <li class="show-fly-down2"><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b5_img2.png" width="239" height="393" alt=""/></li>
+                    <li class="show-fly-down3"><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b5_img3.png" width="239" height="393" alt=""/></li>
+                    <li class="show-fly-down4"><img src="http://2.zol-img.com.cn/zt/tm_579/f1215e802d/lg_p2b5_img4.png" width="239" height="393" alt=""/></li>
+                </ul>
+                <div class="p2-b5-fix" id="p2-b5-fix">
+                    <div class="p2-b5-fix-close" id="p2-b5-fix-close"></div>
+                    <div class="p2-b5-fix-art">
+                        更多学习资料请下载<br/>华为合作伙伴APP
+                    </div>
+                    <div class="p2-b5-fix-btn">
+                        <a href="http://app.huawei.com/prmmobilemanage/public/welcome.html" target="_blank">点击下载查看</a>
+                    </div>
+                </div>
+            </div>
+            <ul class="p2-fix clearfix" id="p2-fix">
+                <li>
+                    赛事介绍
+                </li>
+                <li>
+                    赛事直击
+                </li>
+                <li>
+                    比赛规则
+                </li>
+                <li>
+                    学习资料
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+<!--滑动-->
+<div id="swipe" class="first" role="button"></div>
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<!--<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" data-options="z.flipview"></script>-->
+<script charset="gbk">
+    /*loading载入*/
+    function loading() {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        }, 0);
+    }
+    loading.dismiss = function () {
+        var l = document.querySelector('.loading');
+        if (!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function () {
+            l.style.display = 'none';
+        }, 300);
+    };
+    /*载入页面*/
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.main').children[i].classList.add('current');
+    });
+    /*滑动页面*/
+    viewport/* document.getElementById('main')*/.addEventListener('changed', function (e) {
+        if (this.index == 1) {
+            swipe.style.display = "none";
+        } else {
+            swipe.style.display = "block";
+        }
+        if (e.target.tagName == 'UL') { return false }
+        var current = this.querySelector('.current');
+        var last = this.index === viewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+        e.current && e.current.classList.add('current');
+        // history.replaceState(null, document.title, this.index ? ('#' + this.index) : (location.pathname || '#'));
+        swipe.classList[last ? 'add' : 'remove']('last');
+    });
+    /*滑动模块*/
+    swipe.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    /*p2切换*/
+    var p2_slide=document.getElementById('p2-box');
+    function turnPage(i,objs){
+        var third = document.querySelector(objs);
+        var horizontalIndex = third && third.index;
+        if(horizontalIndex>=0 && horizontalIndex<=3)
+            third.index = parseInt(horizontalIndex) + i;
+    };
+    document.querySelector('#prev') && document.querySelector('#prev').addEventListener('click',function(){turnPage(-1,'.p2-box2')});
+    document.querySelector('#next') && document.querySelector('#next').addEventListener('click',function(){turnPage(1,'.p2-box2')});
+
+    /*选项卡切换*/
+    var p2_page=document.querySelectorAll('.p2-box'),p2_li=document.getElementById('p2-fix').getElementsByTagName('li');
+    console.log(p2_page);
+
+    for(var i=0;i<p2_li.length;i++) {
+        p2_li[i].xxx = i;//暂时存储i值
+        p2_li[i].addEventListener('tap', function (index) {
+            for (var j = 0; j < p2_li.length; j++) {
+                p2_li[j].classList.remove('act');
+                p2_page[j+1].classList.remove('act');
+            }
+            now_i=this.xxx;
+            p2_li[now_i].classList.add('act');
+            p2_page[0].classList.remove('act');
+            p2_page[now_i+1].classList.add('act');
+            document.getElementById('p2-box').refresh();
+        });
+    }
+
+    /*page5弹窗*/
+    var p25_page=document.getElementById('p2-b5-ul'),p25_fix=document.getElementById('p2-b5-fix'),p25_close=document.getElementById('p2-b5-fix-close');
+    p25_page.addEventListener('tap', function () {
+        p25_fix.style.display='block';
+    });
+    p25_close.addEventListener('tap', function () {
+        p25_fix.style.display='none';
+    });
+
+
+    /*分享*/
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_57a/00d1a5376f/share.jpg',
+        title: '匠心杯 2016华为中国合作伙伴精英邀请赛'
+    };
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+</body>
+</html>

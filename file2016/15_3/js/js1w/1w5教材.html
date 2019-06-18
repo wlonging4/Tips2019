@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一周周日教材课件</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+     【对象】
+     遍历对象
+     for(var attr in objectN){
+     alert(attr);//获取属性名
+     alert(objectN[attr]);//获取属性值方法1
+     alert(objectN.attr);//获取属性值方法2->性能好，但不够灵活
+     }
+     以字符形式的对象遍历输出是没有兼容性的问题的;但以数字为属性,在chrome遍历时会将数字值为属性的优先输出;
+     【面对对象编程】
+     oop:object oriented programing
+     值类型/对象类型/标识类型undefined,null/...都是对象*/
+    /*oop
+     js是编程语言->所有的编程语言都是基于面向对象的思想进行开发设计的
+     面向对象需要我们掌握的->类的继承、封装、多态
+     ①对象:泛指、抽象->万物皆对象
+     ②类:->把对象具体的细分
+     ③实例:->每一个类的具体一件事物
+     var ary1=[];
+     是Array数组类的一个实例，而我们学习的数组中的所有内容都是Array这个数组类规定好的
+     console.dir(ary1,prototype);
+     1.面向对象时，只关注对象提供的功能，不关注其内部的细节。 如JQUERY
+     2.面向对象时一种通用思想，并非只有编程中能用，任何事情都可以用。如公司里的上传下达
+     3.面向对象编程（OOP）的特点，传统的书本会说：多态，封装，继承三大特点
+        应该还能理解成抽象，封装，继承三大特点
+        抽象：抓住核心问题
+        封装：不考虑内部实现，只考虑功能使用
+        继承：从已有对象上，继承出新的对象
+     4.对象的组成
+         方法---------函数：过程，动态的
+         属性---------变量：状态，静态的
+         变量和函数是自由的，属性和方法属于一个对象
+     5.this:当前的方法属于谁，this就是指谁;除了在函数面前有new的时候
+     6.构造对象的函数称之为构造函数，不具备实际功能，只能用来构造对象
+     7.工厂方式构造对象。工厂的工作流程是这样的,首先要创建一个对象（加工），然后给对象添加方法和属性（加工），最后返回对象（出厂）。
+     8.工厂的方式有2个问题。问题一：没有new；问题二：每个对象都有一套自己的函数，极其浪费资源。
+     9.为了区别普通函数和构造函数，构造函数首字母大写。
+     10.混合写法：构造函数放属性，原型放方法。
+     11.alert(typeof Date);
+     弹出function因为Date是构造函数
+     【JS中包含哪些类】
+     ①内置类:Object(对象类,每一个对象数据类型都是他的一个实例),Array,RegExp,String,Number,Math,Function,HTMLcollection（元素集合类）,Nodelist（节点集合类）,HTMLDivElement(div标签所属的类，每一个元素标签都有自己的所属类)，HTMLElement，Document（document是他的一个实例）,Window(浏览器对象类，window是他的一个实例),Element,CSSStyleDeclaration（样式信息描述类）,Node,EventTarget...等及其子类;
+     ②自定义类:
+     */
+    //【单例模式】基于对象:->（单例形式）
+    /*创建方法可采用对象字面量;但并非所有的对象字面量都是单体;
+     如果对象字面量是用来模仿关联数组或者容纳数据的话,就显然不是单例
+     如果对象字面量是用来组织一批相关方法或属性,那就可能是单例->区别在于设计的意图
+     单例模式的产生->
+     在js只有基本数据类型的时候，描述后面的信息会把前面的信息覆盖掉->发生变量之间的冲突和全局变量的冲突
+     为了把描述同一件事物的特性放在一起;也同时避免和其他的事物发生冲突,我们引入了对象数据类型->我们把这种模式叫做"单例模式";
+     单例模式作用->
+     ①实现分组->同一个"命名空间"(开了个空间起了个名字)单例模式把描述整个事物所有的属性和方法都放在同一个命名空间下,实现了命名空间下的分组的作用
+     在单例模式中,我们把person1不仅仅叫对象名,他有一个新的叫法:"命名空间"
+     ②避免冲突->不同的命名空间是互不影响的
+     ③我们在真实的项目中,应用单例模式可以实现最简单的模块化开发->一个网站按照功能划分几大块，然后一个团队多个人协作开发，每个人负责对应部分，然后对代码进行合并,压缩,上传...组长负责合并，压缩；写公共的方法库(公共模块);
+     弊端->单次描述效率太低
+     var DOM={};
+     DOM.insertAfter=function(){};
+     DOM.prepend=function(){};
+     DOM.getIndex=function(){};*/
+    //分类的作用,静态类,命名空间
+    /*一个单例:var obj={};
+     var name="a";age=11;
+     var name="b";age=10;
+
+     var person1={
+     name="a",age=11
+     };
+     var person2={
+     name="b",age=10
+     };
+     //项目中的应用
+     var utils = {
+     sum: function () {
+     }
+     };
+     var loginModel = {
+     submit: function () {
+     utils.sum();//在自己的命名空间下调用别的命名空间下的方法
+     }
+     };
+     var searchModel = {
+     fn:function(){
+     },
+     submit: function () {
+     //this-->searchModel
+     this.fn();//调用自己命名空间下大的方法我们尽量使用this来替换命名空间的名字
+     }
+     };
+     searchModel.submit();*/
+    //【工厂模式】->其实就是一个函数
+    /*工厂模式作用:函数的封装:把实现同一个功能的相同的代码放在一个函数中,以后再想实现这个功能的时候我们只需要直接的执行函数即可;->作用:减少页面中的冗余代码,提高了代码的重复利用率,即"低耦合高内聚"
+    工厂模式弊端->不便于数据的差异化(实例识别)虽然每个实例的私有函数是相同的,但是每个函数都是不同的->想要解决这个问题->构造函数
+    PS:后台的多态包含了方法的重载和重写
+    重载:方法名相同,参数和参数的类型不一样
+    重写:子类重写父类的方法
+    JS中不可能有重载,因为不同参数同函数名的两个函数,后面会把前面的函数在预解释的时候不重复声明,但是后面的会重新定义覆盖掉前面的内容;
+    JS中存在重写->涉及到继承
+    JS中存在多态->指的是一个方法的多个形态
+        一个方法根据传递参数的不同（值不同/值类型不同/值有没有）我们实现了不一样的功能操作->我们实现了Js的多态
+        function sortAry(ary,type){
+            var newAry=ary.slice();
+            var temp=null;
+            for(var i=0;i<newAry.length-1;i++){
+                for(var j=0;j<newAry.length-1-i;j++){
+                    if(newAry[j]>newAry[j+1]){
+                        temp=newAry[j];
+                        newAry[j]=newAry[j+1];
+                        newAry[j+1]=temp;
+                    }
+                }
+            }
+            //判断是否传type值,传了从大到小,不传从小到大
+            typeof type!=="undefined"?newAry.reverse():null;
+            return newAry;
+        }*/
+    /*基于对象和面向对象的区别:面向对象是生产方式的升级,更高效的生产数据的方式
+     function Factor(mar){
+     var obj=new Object;
+     obj.mar=mar;
+     obj.a=b;
+     obj.c=d;
+     return obj;
+     }
+     var fac1=Factor();
+     var fac2=Factor();
+     var ary=[];
+     for(var i=0;i<100;i++){
+     a.push(Factor(i));
+     }*/
+    /*几个其他工厂模式
+     富士康
+     $("div1");
+     document.querySelectorAll();->又叫适配器模式,有的模式是交叉的
+     document.creatElement("div1");
+     面向对象的第一个任务:解决数据生产的问题的,基于对象可以描述比较复杂的问题,面向对象可以解决比较复杂的问题;
+     【构造函数】
+     构造函数和工厂模式比较:
+     ①简单了,函数内少了obj对象的定义,不用newObejct了，不需要写return也能返回;
+     如果自己写了return->自己手动返回一个基本数据类型值,对我们创建的实例没有任何的影响;
+     如果自己写了return->自己手动返回一个引用数据类型值,会把浏览器默认返回的实例覆盖掉,此时创建的fn1,fn2就不是fn构造函数实例了;所以一般情况不要写return;
+     ②用法有区别,不是直接运行,需要new一个实例->var 实例=new 方法名（形参值）;
+     我们在函数体重通过this.xx=xxx;给实例增加的属性都是当前实例的私有属性->因为每一个看起来类似的this.fn中的this都是代表不同的实例;
+     函数出现的私有变量把它看作是普通函数执行产生的,和我们当前实例p1...等没有任何的关系;其实例不存在这个属性,只有通过this.xxx=xx设置才是实例的私有属性;
+     ③如果在构造函数创建的时候不需要给形参传递值,后面的小括号可以加也可以不加
+     ->new fac();
+     ->new fac;
+     ④function方法的特殊性:（也包含普通函数执行的过程->私有作用域，传参，预解释等）一个方法是类还是函数,主要在于new的出现;构造函数这个类在代码执行之前会默认创建一个对象数据类型的值（而工厂模式要自己写来创建,也不需要手动返回,）字面量方式/实例创建（var obj=new Obeject();）通过new创建了Object这个类的实例;构造函数模式:通过new创建了Object类的一个实例;
+     如果是通过构造函数模式创建一个类,我们的类名的第一个首字母要大写（约定俗成,非规范强制）;
+     ⑤几个检测属性的方法
+     A:可以用hasOwnProperty():检测一个属性是否为当前对象的私有属性(不管公有属性是否存在)
+     console.log(fac1.hasOwnProperty("f"));
+     B:可以用instanceOf来检验一下:alert(fac1 instanceOf fac);
+     Object这个类是所有对象数据类型的基类:alert(fac instanceOf Object);
+     C:可以用in:用来检测某一个属性是否属于这个对象(既可以检测私有的也可以检测公有的)
+     console.log("f" in p2);->但是不知道是私有还是公有的;
+     D:实现一个检测对象公有属性的方法hasPubProperty();(无论私有属性是否存在)
+     首先用in检测返回ture来检测是当前对象的属性->再用hasOwnProperty检测返回false得到另外的公有属性
+     function hasPubProperty(attr,obj){
+     return (attr in obj)&&(!obj.hasOwnProperty(attr))
+     };
+     fac->不仅仅是个普通函数,而是构造函数了,把他称作一个类->函数数据类型;
+     fac1->不仅仅是个对象,还是构造函数fac的一个实例,属于类的实例->对象数据类型;
+
+     当【new】一个函数的时候,这个函数就是一个类,这个过程中浏览器的操作过程是:
+     (new优先级高于"=");
+     ①首先主动创建一个对象类型的数据,这个数据就是当前函数的实例,或者说,以这个函数名主动创建一个对象类型的数据。
+     ②以这个实例为上下文(context,this,当前行为发生的主体),再把构造函数当成一个方法运行,这个方法就是起一个初始化实例的作用（把浏览器默认创建的那个对象当作当前函数执行的主体（this）然后通过this.xxx=xx这样的方式给默认创建的对象增加属性名和属性值->浏览器默认创建的这个对象就是我们当前类的一个实例）
+     在构造函数模式创建一个类的时候,方法执行里面的this其实就是我们当前类的一个实例->this的第四种判断
+     ③可以通过实例来使用构造函数的属性和方法了
+     function fac(mar){
+     this.mar=mar;
+     this.a="";
+     this.b="";
+     this.c="";
+     var d=9;//这样定义的是作用域里的属性,而上面this定义的是上下文中的属性;
+     this.f=function(){
+     console.log("函数");
+     };
+     }
+     var fac1=new fac("mar1");
+     var fac2=new fac("mar2");//->用new关键字去执行一个函数,则这个函数被当成一个类来使用,这个函数就叫做构造函数;
+     ①创建一个实例,这个实例属于fac类型
+     ②再以这个实例为上下文,运行fac这个函数(这会儿fac变成了一个函数)
+     构造函数改进->可以解决实例识别的作用;
+     构造函数弊端->但是解决不了方法复用;用原型模式所有的属性不应该都是私有的,部分属性应该是公用的;
+     【原型模式】->基于构造函数的原型链模式
+     function fac(mar){
+     this.mar=mar;
+     this.a="";
+     this.b="";
+     this.c="";
+     //this.f=function(){
+     console.log("函数");//先注释掉,然后prototype添加
+     };
+     }
+     var fac1=new fac("mar1");
+     构造函数的方法:
+     1.创建fac类的实例
+     2.实例返回
+     3.以此实例为上下文运行fac函数
+     ①任何函数数据类型（实名函数、匿名函数、类）都有【prototype】属性,但它只有当成类来使用的时候才有意义,把所有的方法都保存在此属性上在在,这个属性的对应属性值是一个对象数据类型;浏览器会默认的给它开辟一个堆内存;在这个堆内存中默认的有天生自带属性constructor->存储的值是当前这个函数本身;fac.prototype是构造函数fac的原型对象;构造函数和实例的prototype都是指向同一个原型对象,原型对象的方法都可以由实例去继承;
+     公有属性都是定义在prototype上;prototype(原型)存储类中所有的公有属性和方法;
+     ②天生自带的属性constructor属性也是一个指针,指向原型对象的构造函数,即person.prototype.constructor=person;
+     console.log(fac.prototype.constructor===fac);//->true;
+     constructor属性不是一成不变的,当我们把person.prototype设置为等于一个以字面量形式创建的新对象时,此时constructor属性就不执行person,而是指向了Object;
+     console.log(fac1.__proto__===fac.prototyepe);//->true;
+     fac.prototype.f=function(){console.log("函数");}
+     var fac2=new fac("mar2");
+     alert(fac.f==fac2.f);//->true
+     ③每一个对象数据类型（普通对象、数组、正则、时间、时间、函数的prototype属性）都有一个天生自带的属性:__proto__属性（IE也存在,但是被屏蔽了,不过这是是兼容的）->指向的是当前对象所属类的prototype(原型);->但是Object是所有对象数据类型的基类,在自己的prototype上没有__proto__这个属性,即使存在也是指向自己,无意义,所以不存在;
+     ④查找过程
+     每一个实例在使用自己的属性和方法时,首先查找自己的【私有】(已定义在自身私有属性里的)属性;私有属性中存在就不再往上查找;如果不存在,浏览器默认跟__proto__查找所属prototype上的公有属性和方法;如果仍不存在,就继续通过__proto__往上找,直到找到Obeject.prototype为止;仍无,返回undefinded;
+     p1.f===p1.__proto__.f;
+     【p1.f】先找私有的,再找公有的;
+     【p1.__proto__.f】直接找公有的;
+     p1.f=p2.__proto__.f;
+     p1.f===p2.f;
+     p1.f===p.prototype.f;
+     p1.constructor===p;
+     constructor判断数据类型原理:->
+     var ary=[];
+     console.log(ary.constructor===Array);//->true
+     p1.hasOwnProperty->p1.__proto__.__proto__.hasOwnProperty->Object.property.hasOwnProperty;
+     关于【作用域链this】的查找问题
+     //1、Fn这个类中this.xxx=xxx中的this是当前Fn的一个实例
+     //2、Fn类中某些方法中的this(例如:sum这个公共方法中的this)
+     //1)首先看sum这个方法执行前有没".","."前面是谁,那么sum中的this就是谁
+     //2)执行sum中的代码,然后把this是谁用代码给描述出来
+     //3)按照原型的查找机制分析结果即可
+     function Fn() {
+     //this-->f
+     this.index = 100;
+     }
+     Fn.prototype.sum = function () {
+     console.log(this.index);
+     };
+     var f = new Fn;
+     f.sum();//this->f
+     // 等于console.log(f.index);  -->100
+     f.__proto__.sum();//this->f.__proto__
+     // 等于console.log(f.__proto__.index);  -->原型上没有index属性，则往上一级查找(私有找完找公有，公有找完一直找公有)，直到找到Object的原型为止 -->undefined
+     Fn.prototype.sum();//this->Fn.prototype
+     // 等于console.log(Fn.prototype.index); 和上面的情况一样，是直接的查找原型上的index  -->undefined
+     //f.__proto__.__proto__.sum();//（再往上找连sum定义都找不到了）Uncaught TypeError: f.__proto__.__proto__.sum is not a function
+
+
+     原型模式解决的是"类上（构造函数内）"的方法共享的问题;
+     构造函数fac下的固定属性->prototype->prototype的原始两个属性->fac.constructor和__proto__以及自定义的f方法->指向构造函数fac//循环指向
+     说明类（构造函数）上的所有的方法都要保存在原型（prototype）上,构造函数也是类上函数,所以天生的会被保存在prototype
+
+     hasOwnProperty():判断一个对象是否有你给出名称的属性或对象->此方法无法检查该对象的原型链中是否具有该属性,该属性必须是对象本身的一个成员
+     isPrototypeOf():来判断要检查其原型链的对象是否存在于指定对象实例中,是返回true,否返回false;
+     原型是任何方法天生就有的属性,只有将方法写成一个类时,原型才有作用;把方法当成一个普通方法运行,原型也没有什么用;
+     原型的实现机制: 创建完对象后又一个__proto__这个属性,这个属性是天生的原型机制,会只想原型对象,而在fac1中定义的name,age等都是他的私有属性,如果在私有作用域内找不到这个属性,则会往原型对象往上找
+     原型继承:是一种简化的继承机制,也是目前最流行的一种JS继承方式;实际上JS就是一种基于原型的语言;
+     【原型链】
+     在原型继承中,类和实例概念被淡化了,一切都是从对象的角度来考虑;定义对象->该对象被别的对象引用->这样就形成一种继承关系;引用对象我们称之为原型对象(prototype)JS可以根据原型链来查找对象之间的这种关系;
+     原型链是JS中实现集成中的基本机制
+
+     用B的原型对象继承A的实例:->B.prototype=new A(x);
+     基于原型的编程是OOP编程的一种特定的形式:不需要声明静态类,并且可以复制已存在的原型对象来实现继承关系
+
+     在fac2上添加一个方法
+     fac.toString();//可执行的
+     fac2.fn1=function(){
+     console.log(fn1);
+     }//写在了fac2上的私有地址上
+     fac2查找属性:现在自身私有属性上上找,再去自身原型上找,再去上一级一层一层找
+     想要修改原型上的属性值,先要查找到
+     类上实例的属性,如果有读或读的过程,则是先查找其私有属性有没有,如无,则再去prototype上去找
+     如果是写,则直接写在该实例的私有地址上;
+     【封装】
+     Array数组类:console.dir(Array.prototype);->我们学习数组中常用的方法都是在Array的原型prototype原型上定义的公有属性;
+     添加数组去重共有方法:把需要的方法扩展到内置类的原型prototype上（要防止覆盖原来存在的方法）->
+     起名字加前缀（简单方法）/检测是否属于(检测耗时费力)
+     ①var pro=Array.prototype;
+     var ary=[1,2,2,2,3];
+     pro.wlgdistinct=function（）{
+         //this就是我们想要操作的那个数组
+         var obj={};
+         var(i=0;i<this.length;i++){
+         var item=this[i];
+         if(obj[item]==item){
+         this[i]=this[this.lrngth-1]
+         this.length-1;
+         i--;
+         continue;
+         }
+         obj[item]=item;
+         }
+         return ary;
+         return this;//模拟内置方法的链式写法;
+     }
+     ary.wlgdistinct();
+     //链式写法:先执行sort，执行完立刻执行reverse....第一次执行之后的数组仍然是 Array得一个实例,所以还可以继续使用类原型上的方法;
+     //push返回的结果是执行完新增之后的数组长度,而不是一个数组,所以接下来就不能继续使用数组类的方法了,后面加一个pop()就会报错;
+     ary.sort(function(a,b){
+     return a-b;}).reverse().push(1000);
+     ②Array.prototype={
+     constructor:Array,
+     wlgdistinct:function(){
+     };
+     }//这种方法有危险浏览器会屏蔽这种方法,不能用;
+     【继承】
+     【原型链继承】
+     子类继承父类
+     function A() {
+     this.x = 100;
+     }
+     A.prototype.getX = function () {
+     console.log(this.x);
+     };
+     function B() {
+     this.x = 200;
+     }
+     //B也想有getX，发现A已经实现了，那么我们只需要把A中的getX继承归来用就可以了;A的实例可以使用getX方法，所以我们的B如果想继承A的方法，只需要让B的原型指向A的一个实例即可-->原型继承->结果：把A中私有的和公有的都赋值给了B中的公有的
+     B.prototype = new A;
+     //B.prototype.__proto__=A.prototype也可以实现继承,但是请注意在IE下__proto__不支持(并不代表不兼容,只不过被屏蔽了)但是使用B.prototype==A.prototype这个方法是错误的,如果用B继承完再写prototype方法给B会同时改变了A的实例,这就不是继承了,而是相同的原型;
+     var b = new B;
+     b.getX();
+     //为了防止B继承A覆盖了B原有的通过prototype添加的自身公有属性,我们应该在B继承A之后再给B添加prototype属性fb1,fb2等,这样B既继承了A内部的公有属性,又不会覆盖自身的属性;
+     //也是通过__proto__一直查找，找到A的原型上的getX并且执行-->B继承A，不是把A的东西复制一份过来，而是用的时候利用原型链的查找机制进行查找使用
+     //--> this是b->console.log(b.x) --> 200
+     //在B的原型上扩展一个叫做haha的方法-->对父类A的其他实例没有任何的影响
+     B.prototype.haha=function(){   };
+     //子类B同过原型链找到了父类A的原型，在里面增加了hehe，这样A的其他实例也会受到影响
+     B.prototype.__proto__.hehe=function(){
+     };
+     //重改父类中的getX的方法-->类的重写
+     B.prototype.__proto__.getX=function(){
+     };
+     //扩展：
+     b.xxx==xx;是在设置值->跟查找机制不同,设置的值都是对私有的设置,而不管私有是否原来存在
+     b.__proto__.xxx=xx;给公有设置只能这样
+     【构造函数继承】
+     借用构造函数继承->call/aplly(强制改变函数执行的this关键字)
+     call是function的一个方法，由一个function来执行，作用是使这个function执行，并且使这个function里的this关键字指向call方法的第一个参数，call第一个参数之后的其他参数是传给这个function使用的
+     function fn(a){
+     alert(this.innerHTML+a);
+     }
+     var innerHTML="全局window下的inner";
+     obj={
+     innerHTML:"obj的inner"
+     };
+     var oDiv=document.getElementById("div1");
+     fn(1);
+     fn.call(oDiv,2);
+     fn.call(obj,3);
+     【混合模式】:兼顾上述两种
+     构造函数:优秀的识别功能来为对象添加属性;
+     原型模式:高效的共享功能来为对象添加方法;
+     //定义
+     function car(color,doors){
+     this.color=color;
+     this.doors=doors;
+     this.drivers=new Array('Tom',"Henry")
+     }
+     car.prototype.showColor=function(){
+     alert(this.color);
+     }
+     //执行
+     var car1=new car("red",4);
+     var car2=new car("blue",4);
+     car1.showColor();
+     car2.showColor();
+     alert(car1.drivers);//->T,H
+     car1.drivers.push("steven");
+     alert(car1.drivers);//->T,H,S
+     alert(car2.drivers);//->T,H
+     alert(car1.instanceOf.car);//->true
+     总结：
+     ①使用什么模式，是按照需求来决定，不必生搬硬套
+     ②JS不需要处理大量数据,所以JS面向对象比较灵活高效,编程中没必要过分强调面向对象
+     */
+
+
+
+    /*【数组基础】
+    创建数组
+    ①数组直接量方式
+    var arr=[0,1,2,3];
+    ②构造函数方式
+    var arr=new Array(0,1,2,3);
+    数组详细方法->详询免费课jslx4.html文件
+    隐式调用:JS在处理过程中在进行某些数据类型转换时自动默认的调用该方法;
+        toString/valueOf等方法属于原型对象共有方法,都会在需要时隐式调用来完成操作;
+    显示调用:在编码过程中我们主动的调用这些方法;
+    数组方法【迭代】方法
+    【forEach】
+    Array.prototype.forEach=function(fun,context){
+    //forEach的原生JS实现兼容模式
+                 var len=this.length;
+                 var context=arguments[1];
+                 //即使为undefined，call函数也正常运行。
+                 if(typeof fun !=="function"){
+                     throw "输入正确函数!";
+                 }
+                 for(var i=0;i<len;i++){
+                     fun.call(context,this[i],i,this);
+                     //contex指上下文,即作用对象
+                     //this.i是各项元素的值
+                     //i是各项索引值
+                     //this执行该方法的主体
+                 }
+      };
+     var arr=[5,6,7];
+     arr.forEach(function(item,index,arr){
+     //item指数组每一项的内容
+     //index各项的索引值
+     //即是输入的原数组值
+     //顺序严格不能变
+     console.log(item,index,arr);
+     });
+     /①【every()】指的是item的每一项都满足条件
+     //调用every1
+     var result=ary.every(function(item,index,array){
+     return item>5;
+     });
+     alert(result);
+     //调用every2
+     /*var result=ary.every(function(item,index,array){
+     return item>-1;
+     });
+     alert(result);*/
+
+    //②【filter()】满足条件返回,不满足的抛弃
+    /*var result=ary.filter(function(item,index,array){
+     return item>3;
+     })
+     alert(result);*/
+
+    //③【forEach】遍历数组,该方法没有返回值
+
+    //④【map()】对数组中每一项运行给定函数,返回每次函数调用的结果组成的数组（返回的是数组）
+    /*var result=ary.map(function(item,index,array){
+     return ary[item]+=1;
+     });
+     console.log(result);*/
+
+    //⑤【some()】对数组每一项运行指定函数,如果该函数的任何一项都返回true,则该方法返回true;类似于every()方法,但这个是"或",every()是"与"操作
+    /*var result=ary.some(function (item,index,array) {
+     return ary[item]>6;
+     });
+     alert(result);*/
+    /*【缩小】
+    [reduce]/[reduceRight]
+    reduce:从数组第一项遍历到尾,使用制定函数来将数组的元素整合,只生成单个的值
+    第一个参数:必需,执行化简操作的函数
+    第二个参数:第二个参数是传递给函数的初始值
+        [初始值]:传给第一个函数参数执行操作的第一个值,在接下来的操作,这个值就是上一次函数的返回值
+    第二个参数不使用时,罕见函数就是使用数组的第一个元素和第二个元素作为第一个参数和第二个参数执行
+    var arr=[1,2,3,4,5,6];
+    //数组元素求和
+    var sum=arr.reduce(function (x,y) {
+        return x+y;
+    },0);//0开始加起来
+    //数组元素求积
+    var sum=arr.reduce(function (x,y) {
+        return x*y;
+    },1);//1开始乘起来
+    //求最大值
+    var sum=arr.reduce(function (x,y) {
+        return(x>y)?x:y;
+    });//从头开始比较起来
+    reduceRight按照索引从高到低处理*/
+
+
+
+</script>
+</body>
+</html>

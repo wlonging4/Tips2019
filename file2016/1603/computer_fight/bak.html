@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="GBK">
+    <title>游戏本大作战——根据游戏选本以及游戏本认证及评级体系2.0</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+
+        /*样式表*/
+        .wrapper{  width: 1000px;  margin: 0 auto;  }
+        .box{  position:relative; height:760px; overflow:hidden;  }
+        .container{ height: 3800px; width:100%; position: absolute;top: 0;}
+        .tab{  height: 760px;  overflow: hidden;  }
+
+        .tb1-l{  background: url("images/lg_bg1_l.jpg") no-repeat 100% 0;  }
+        .tb1-r{  background: url("images/lg_bg1_r.jpg") no-repeat 0 0;  }
+        .tb1-c1{  height: 270px;width: 1000px;  background: url("images/lg_bg1_c1.jpg") no-repeat 0 0;  }
+        .tab1-c1-mod{  height: 85px;  width: 660px;  padding-top: 170px;  padding-left: 170px;  }
+        .tb1-c2{  height: 400px; width: 1000px; overflow: hidden;  background: url("images/lg_bg1_c2.jpg") no-repeat 0 0;  }
+        .tab1-c2-b{  position: relative;  display: block;  float: left;  height: 400px;  width: 200px;  }
+        .btn1{  background: url("images/lg_1_c1.jpg") no-repeat 100% 0;  }
+        .btn1:hover{  background: url("images/lg_2_c1.jpg") no-repeat 100% 0 ;  }
+        .btn2{  background: url("images/lg_1_c2.jpg") no-repeat 100% 0;  }
+        .btn2:hover{  background: url("images/lg_2_c2.jpg") no-repeat 100% 0 ;  }
+        .btn3{  background: url("images/lg_1_c3.jpg") no-repeat 100% 0;  }
+        .btn3:hover{  background: url("images/lg_2_c3.jpg") no-repeat 100% 0 ;  }
+        .btn4{  background: url("images/lg_1_c4.jpg") no-repeat 100% 0;  }
+        .btn4:hover{  background: url("images/lg_2_c4.jpg") no-repeat 100% 0 ;  }
+        .btn5{  background: url("images/lg_1_c5.jpg") no-repeat 100% 0;  }
+        .btn5:hover{  background: url("images/lg_2_c5.jpg") no-repeat 100% 0 ;  }
+        .tb1-c3{  height: 90px;width: 1000px;  background: url("images/lg_bg1_c3.jpg") no-repeat 0 0;  }
+
+        .tb2-l{  background: url("images/lg_bg2_l.jpg") no-repeat 100% 0;  }
+        .tb2-r{  background: url("images/lg_bg2_r.jpg") no-repeat 0 0;  }
+        .tb2-c1{  height: 140px;  width: 1000px;  background: url("images/lg_bg2_c1.jpg") no-repeat 0 0;  }
+        .tb2-c2{  position: relative;  height: 380px;  width: 1000px;  background: url("images/lg_bg2_c2.jpg") no-repeat 0 0;  }
+        .tb2-c1-mod{  height: 25px;  width: 200px;  padding-top: 100px;  padding-left: 400px;  }
+        .tb2-c2-d{  position: absolute;  background: indianred;  }
+        .tb2-c2-d img{  border: 1px solid #ECECFB;  }
+        .tb2-c2-d1{  height: 380px;  width: 300px;  top: 0;  left: 0;  }
+        .tb2-c2-d2{  height: 180px;  width: 400px;  top: 0;  left: 320px;  }
+        .tb2-c2-d4{  height: 180px;  width: 260px;  top: 200px;  left: 320px;  }
+        .tb2-c2-d5{  height: 180px;  width: 400px;  top: 200px;  left: 600px;  }
+        .tb2-c2-d3{  height: 180px;  width: 260px;  top: 0;  left: 740px;  }
+        .tb2-c3{  height: 240px;  width: 1000px;  background: url("images/lg_bg2_c3.jpg") no-repeat 0 0;  }
+        .tab-c3-d{  margin-top: 20px;  float: left;  width: 488px;  height: 118px;  border: 1px solid #ECECFB;  }
+        .tab-c3-d img{  border: 1px solid #ECECFB;  }
+        .tab-c3-d1{  }
+        .tab-c3-d2{  margin-left: 20px;  }
+
+        .tb3-l{  background: url("images/lg_bg3_l.jpg") no-repeat 100% 0;  }
+        .tb3-r{  background: url("images/lg_bg3_r.jpg") no-repeat 0 0;  }
+        .tb3-c1{  height: 140px;  width: 1000px;  background: url("images/lg_bg3_c1.jpg") no-repeat 0 0;  }
+        .tb3-c1-mod{  height: 25px;  width: 200px;  padding-top: 100px;  padding-left: 400px;  }
+        .tb3-c2{  width: 1000px;  height: 520px;  background: url("images/lg_bg3_c2.jpg") no-repeat 0 0;  }
+        .tb3-c2-mod{  float: left;  }
+        .tb3-c2-l{  height: 518px;  width: 298px;  border: 1px solid #ECECFB;  background: #fff;  }
+        .tb3-c2-r{  height: 520px;  width: 680px;  margin-left: 20px;  }
+        .tb3-c2-l1{  height: 59px;  width: 298px;  background: url("images/lg_news.jpg") no-repeat 0 0;  }
+        .tb3-c2-l2{  height: 40px;  width: 300px;  background: url("images/lg_news1.jpg") no-repeat 0 0;  }
+        .tb3-c2-l3{  height: 80px;  width: 300px;  }
+        .tb3-c2-l4{  height: 40px;  width: 300px;  background: url("images/lg_news2.jpg") no-repeat 0 0;  }
+        .tb3-c2-l5{  height: 80px;  width: 300px;  }
+        .tb3-c2-l6 {  height: 40px;  width: 300px;  background: url("images/lg_news3.jpg") no-repeat 0 0;  }
+        .tb3-c2-l7{  height: 80px;  width: 300px;  }
+        .tb3-c2-l8 {  height: 40px;  width: 300px;  background: url("images/lg_news4.jpg") no-repeat 0 0;  }
+        .tb3-c2-l9{  height: 59px;  width: 300px;  }
+        .tb3-c2-r1{  height: 60px;  width: 680px;  background: #274B82;  }
+        .tb3-c2-r2{  height: 380px;  width: 640px;  padding: 20px;  background: #fff;  }
+        .tb3-c2-r3{  height: 40px;  width: 680px;  background: url("images/lg_tb3_r3.jpg") no-repeat 0 0;  }
+        .tb3-c2-r3 ul{  display: block;  }
+        .tb3-c2-r3 ul li{  float: left;  _display: inline;  width: 85px;  text-align: center;  line-height: 40px;  margin-top: -2px;  vertical-align: bottom;  font-weight: bolder;  font-size: 20px;  color: #fff;  cursor: pointer;  }
+        .tb3-c3{  height: 100px;  background: url("images/lg_tb3_c3.jpg") no-repeat 0 0;  }
+
+        .tb4-l{  background: url("images/lg_bg4_l.jpg") no-repeat 100% 0;  }
+        .tb4-r{  background: url("images/lg_bg4_r.jpg") no-repeat 0 0;  }
+        .tb4-c1{  height: 190px;  width: 1000px;  background: url("images/lg_bg4_c1.jpg") no-repeat 0 0;  }
+        .tb4-c2{  height: 220px;  width: 1000px;  background: url("images/lg_bg4_c2.jpg") no-repeat 0 0;  }
+        .tb4-c2-l{  display: block;  float: left;  }
+        .tb4-c2-l li{  float: left;  _display: inline;  height: 220px;  width: 140px;  margin-right: 10px;  }
+        .tb4-c2-l-li-t{  height: 40px;  width: 140px;  background: url("images/lg_tb4_c2_l.jpg") no-repeat 0 0;  }
+        .tb4-c2-l-li-b{  height: 179px;  width: 138px;  background: #fff;  border-color: #ECECFB;  border-style: solid;  border-width: 0 1px 1px;  }
+        .tb4-c2-r{  position: relative;  float: left;  height: 220px;  width: 400px;  background: url("images/lg_tb4_c2_r.jpg") no-repeat 0 0;  }
+        .tb4-c2-r-d{  position: absolute;  background: indianred;  }
+        .tb4-c2-r-d1{  width: 140px;  height: 200px;  top: 10px;  left: 10px;  }
+        .tb4-c2-r-d2{  width: 190px;  height: 80px;  top: 20px;  left: 190px;  }
+        .tb4-c2-r-d3{  width: 190px;  height: 90px;  top: 110px;  left: 190px;  }
+        .tb4-c3{  height: 80px;  width: 1000px;  background: url("images/lg_bg4_c3.jpg") no-repeat 0 0;  }
+        .tb4-c3-l{  float: left;  height: 55px;  padding-top: 25px;  width: 160px;  line-height: 30px;  color: #fff;  font-size: 24px;  text-align: center;  }
+        .tb4-c3-r{  float: left;  height: 40px;  width: 800px;  padding: 20px;  }
+        .tb4-c4{  height: 270px;  width: 1000px;  background: url("images/lg_bg4_c4.jpg") no-repeat 0 0;  }
+        .tb4-c4-mod{  width: 1000px;  height: 170px;  }
+
+        .tb5-l{  background: url("images/lg_bg5_l.jpg") no-repeat 100% 0;  }
+        .tb5-r{  background: url("images/lg_bg5_r.jpg") no-repeat 0 0;  }
+        .tb5-c1{  height: 140px;  width: 1000px;  background: url("images/lg_bg5_c1.jpg") no-repeat 0 0;  }
+        .tb5-c1-mod{  height: 25px;  width: 200px;  padding-top: 100px;  padding-left: 400px;  }
+        .tb5-c2{  height: 55px;  width: 1000px;  background: url("images/lg_bg5_c2.jpg") no-repeat 0 0;  }
+        .tb5-c2 ul{  display: block;  width: 680px;  margin: 0 auto;  }
+        .tb5-c2 li{  float: left;  _display:inline;  width: 150px;  padding-top: 10px;  height: 45px;  text-align: center;  margin-left: 20px;  line-height: 30px;  font-size: 24px;  color: #fff;  cursor: pointer;  }
+        .tb5-c2-l1{  background: url("images/lg_tb5_c21a.jpg") no-repeat 0 0;  }
+        .tb5-c2-l2{  background: url("images/lg_tb5_c22a.jpg") no-repeat 0 0;  }
+        .tb5-c2-l3{  background: url("images/lg_tb5_c23a.jpg") no-repeat 0 0;  }
+        .tb5-c2-l4{  background: url("images/lg_tb5_c24a.jpg") no-repeat 0 0;  }
+        .tb5-c2-l1.l-hover1{  background: url("images/lg_tb5_c21b.jpg") no-repeat 0 0;  }
+        .tb5-c2-l2.l-hover1{  background: url("images/lg_tb5_c22b.jpg") no-repeat 0 0;  }
+        .tb5-c2-l3.l-hover1{  background: url("images/lg_tb5_c23b.jpg") no-repeat 0 0;  }
+        .tb5-c2-l4.l-hover1{  background: url("images/lg_tb5_c24b.jpg") no-repeat 0 0;  }
+        .tb5-c3{  height: 465px;  width: 1000px;  overflow: hidden;  background: url("images/lg_tb5_c3.jpg") no-repeat 0 0;  }
+        .tb5-c3-div{  height: 465px;  width: 1000px; display: none  }
+        .tb5-c3-div.div-block{ display: block; }
+        .tb5-c3-d1{  width: 670px;  height: 45px;  padding: 10px 160px 10px 180px;  }
+        .tb5-c3-d2-l{  float: left;  width: 40px;  height: 80px;  margin: 30px 20px 30px 0;  background: url("images/lg_tb5_c3_l.png") no-repeat 0 0;  cursor: pointer;  }
+        .tb5-c3-d2-l:hover{  opacity: 0.8;  filter: alpha(opacity=80);  }
+        .tb5-c3-d2-r{  float: left;  width: 40px;  height: 80px;  margin: 30px 0 30px 20px;  background: url("images/lg_tb5_c3_r.png") no-repeat 0 0;  cursor: pointer;  }
+        .tb5-c3-d2-r:hover{  opacity: 0.8;  filter: alpha(opacity=80);  }
+        .tb5-c3-d2-c{  position:relative; float: left;  width: 880px;  height: 140px;  overflow: hidden;  }
+        .tb5-c3-d2-box{ position: absolute;left: 0 ; width: 1960px;}
+        .tb5-c3-d3{  position: relative;  height: 220px;  width: 1000px;  margin-top: 40px;  background: #274B82;  }
+        .tb5-c3-d3-flow{  position: absolute;  width: 40px;  height: 20px;  top: -20px;  left: 120px;  background: url("images/lg_flow.png") no-repeat 0 0;  }
+        .tb5-c3-d3-con{  position: relative;  height: 220px;  width: 1000px; display: none  }
+        .tb5-c3-d3-con.con-block{ display: block }
+        .tb5-c3-d3-img{  position: absolute;  height: 180px;  width: 240px;  top: 20px;  left: 20px;  background: indianred;  }
+        .tb5-c3-d3-con1{  position: absolute;  height: 70px;  width: 700px;  top: 20px;  left: 280px;  background: indianred;  }
+        .tb5-c3-d3-con2{  position: absolute;  height: 20px;  width: 420px;  top: 100px;  left: 280px;  line-height: 20px;  font-size: 18px;  color: #fff;  }
+        .tb5-c3-d3-con3{  position: absolute;  height: 75px;  width: 200px;  top: 125px;  left: 280px;  background: indianred;  }
+        .tb5-c3-d3-con4{  position: absolute;  height: 75px;  width: 200px;  top: 125px;  left: 500px;  background: indianred;  }
+        .tb5-c3-d3-con5{  position: absolute;  height: 20px;  width: 280px;  top: 100px;  left: 710px;  line-height: 20px;  font-size: 18px;  color: #fff;  }
+        .tb5-c3-d3-con6{  position: absolute;  height: 80px;  width: 200px;  top: 120px;  left: 790px;  background: indianred;  }
+        .tb5-c3-d3-con7{  position: absolute;  height: 30px;  width: 150px;  top: 0;  right: 0;  background: #3D5D8F;  }
+        .tb5-c4{  height: 100px;  width: 1000px;  background: url("images/lg_tb5_c4.jpg") no-repeat 0 0;  }
+
+        .tb6-l{  background: url("images/lg_bg6_l.jpg") no-repeat 100% 0;  }
+        .tb6-r{  background: url("images/lg_bg6_r.jpg") no-repeat 0 0;  }
+        .tb6-c1{  height: 140px;  width: 1000px;  background: url("images/lg_bg6_c1.jpg") no-repeat 0 0;  }
+        .tb6-c1-mod{  height: 25px;  width: 200px;  padding-top: 100px;  padding-left: 400px;  }
+        .tb6-c2{  width: 1000px;  height: 490px;  background: url("images/lg_bg6_c2.jpg") no-repeat 0 0;  }
+        .tb6-c2-l{  float: left;  height: 490px;  width: 325px;  margin-right: 35px;  }
+        .tb6-c2-r{  float: left;  height: 490px;  width: 640px;  }
+        .tb6-c2-r1{  height: 120px;  width: 300px;  padding:  0 0 20px 340px;  background: url("images/lg_tb6_r1.jpg") no-repeat 0 0;  }
+        .tb6-c2-r2{  height: 349px;  width: 638px;  border-width: 0 1px 1px;  border-style: solid;  border-color: #ECECFB;  }
+        .tb6-c3{  height: 130px;  background: url("images/lg_bg6_c3.jpg") no-repeat 0 0;  }
+
+
+
+        .footer{ position: relative;  height: 140px;  text-align: center;  padding-top: 60px;  color: #757584;  }
+        .footer a{ color: #757584;}
+        .footer a:hover{  color: #757584;  }
+        .footer a:visited{  color: #757584;  }
+        .menu1 ,.menu2, .menu3, .menu4, .menu5{  display: none;  position: absolute;  top: -80px;  left: 50%;  margin-left: -510px;  width: 1100px;  height: 60px;    }
+        #menu ul{  width: 1000px;  height: 60px;  display: block;  }
+        #menu ul li{  _display:inline;  float: left;  display: block;  height: 60px;  width: 200px;  cursor: pointer;  }
+        .menu.con-block{  display: block;  }
+        .menu1{ background: url("images/lg_menu_bg1.jpg") no-repeat 0 0; }
+        .menu2{ background: url("images/lg_menu_bg2.jpg") no-repeat 0 0; }
+        .menu3{ background: url("images/lg_menu_bg3.jpg") no-repeat 0 0; }
+        .menu4{ background: url("images/lg_menu_bg4.jpg") no-repeat 0 0; }
+        .menu5{ background: url("images/lg_menu_bg5.png") no-repeat 0 0; }
+    </style>
+</head>
+<body>
+<!--主要内容-->
+<div class="box">
+    <div class="container">
+        <!--p1-->
+        <table id="tab1" class="tab tab1" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="tb1-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="tb1-c1">
+                        <div class="tab1-c1-mod">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="tb1-c2 clearfix">
+                        <a class="tab1-c2-b btn1" href="##"></a>
+                        <a class="tab1-c2-b btn2" href="##"></a>
+                        <a class="tab1-c2-b btn3" href="##"></a>
+                        <a class="tab1-c2-b btn4" href="##"></a>
+                        <a class="tab1-c2-b btn5" href="##"></a>
+                    </div>
+                    <div class="tb1-c3"></div>
+                </td>
+                <td class="tb1-r">&nbsp;</td>
+            </tr>
+        </table>
+        <!--p2-->
+        <table id="tab2" class="tab tab2" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="tb2-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="tb2-c1">
+                        <div class="tb2-c1-mod">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="tb2-c2">
+                        <div class="tb2-c2-d tb2-c2-d1">
+                            模块内容
+                        </div>
+                        <div class="tb2-c2-d tb2-c2-d2">
+                            模块内容
+                        </div>
+                        <div class="tb2-c2-d tb2-c2-d3">
+                            模块内容
+                        </div>
+                        <div class="tb2-c2-d tb2-c2-d4">
+                            模块内容
+                        </div>
+                        <div class="tb2-c2-d tb2-c2-d5">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="tb2-c3 clearfix">
+                        <div class="tab-c3-d tab-c3-d1">
+                            模块内容
+                        </div>
+                        <div class="tab-c3-d tab-c3-d2">
+                            模块内容
+                        </div>
+                    </div>
+                </td>
+                <td class="tb2-r">&nbsp;</td>
+            </tr>
+        </table>
+        <!--p3-->
+        <table id="tab3" class="tab tab3" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="tb3-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="tb3-c1">
+                        <div class="tb3-c1-mod">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="tb3-c2 clearfix">
+                        <div class="tb3-c2-mod tb3-c2-l">
+                            <div class="tb3-c2-l1"></div>
+                            <div class="tb3-c2-l2">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l3">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l4">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l5">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l6">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l7">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l8">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-l9">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="tb3-c2-mod tb3-c2-r">
+                            <div class="tb3-c2-r1">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-r2">
+                                模块内容
+                            </div>
+                            <div class="tb3-c2-r3">
+                                <ul>
+                                    <li>首页</li>
+                                    <li>上一页</li>
+                                    <li>下一页</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tb3-c3"></div>
+                </td>
+                <td class="tb3-r">&nbsp;</td>
+            </tr>
+        </table>
+        <!--p4-->
+        <table id="tab4" class="tab tab4" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="tb4-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="tb4-c1"></div>
+                    <div class="tb4-c2">
+                        <ul class="tb4-c2-l clearfix">
+                            <li>
+                                <div class="tb4-c2-l-li-t">
+                                    模块内容
+                                </div>
+                                <div class="tb4-c2-l-li-b">
+                                    模块内容
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tb4-c2-l-li-t">
+                                    模块内容
+                                </div>
+                                <div class="tb4-c2-l-li-b">
+                                    模块内容
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tb4-c2-l-li-t">
+                                    模块内容
+                                </div>
+                                <div class="tb4-c2-l-li-b">
+                                    模块内容
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tb4-c2-l-li-t">
+                                    模块内容
+                                </div>
+                                <div class="tb4-c2-l-li-b">
+                                    模块内容
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="tb4-c2-r">
+                            <div class="tb4-c2-r-d tb4-c2-r-d1">
+                                模板内容
+                            </div>
+                            <div class="tb4-c2-r-d tb4-c2-r-d2">
+                                模板内容
+                            </div>
+                            <div class="tb4-c2-r-d tb4-c2-r-d3">
+                                模板内容
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tb4-c3 clearfix">
+                        <div class="tb4-c3-l">游戏本推荐</div>
+                        <div class="tb4-c3-r">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="tb4-c4">
+                        <div class="tb4-c4-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </td>
+                <td class="tb4-r">&nbsp;</td>
+            </tr>
+        </table>
+        <!--p5-->
+        <table id="tab5" class="tab tab5" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="tb5-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="tb5-c1">
+                        <div class="tb5-c1-mod">
+                            模块内容
+                        </div>
+                    </div>
+                    <div id="tb5-c2" class="tb5-c2">
+                        <ul>
+                            <li class="tb5-c2-l1 l-hover1">白金级认证</li>
+                            <li class="tb5-c2-l2">黄金级认证</li>
+                            <li class="tb5-c2-l3">白银级认证</li>
+                            <li class="tb5-c2-l4">游戏本认证</li>
+                        </ul>
+                    </div>
+                    <div id="tb5-c3" class="tb5-c3">
+                        <div class="tb5-c3-div div-block">
+                            <div class="tb5-c3-d1">
+                                模块内容
+                            </div>
+                            <div class="tb5-c3-d2 clearfix">
+                                <div class="tb5-c3-d2-l"></div>
+                                <div class="tb5-c3-d2-c">
+                                    <div class="tb5-c3-d2-box">
+                                        模块内容
+                                    </div>
+                                </div>
+                                <div class="tb5-c3-d2-r"></div>
+                            </div>
+                            <div class="tb5-c3-d3">
+                                <div class="tb5-c3-d3-flow"></div>
+                                <div class="tb5-c3-d3-con con-block">
+                                    <div class="tb5-c3-d3-img">
+                                        模块内容
+                                    </div>
+                                    <div class="tb5-c3-d3-con1">
+                                        模块内容
+                                    </div>
+                                    <div class="tb5-c3-d3-con2">
+                                        认证游戏本产品基础信息:
+                                    </div>
+                                    <div class="tb5-c3-d3-con3">
+                                        模块内容
+                                    </div>
+                                    <div class="tb5-c3-d3-con4">
+                                        模块内容
+                                    </div>
+                                    <div class="tb5-c3-d3-con5">
+                                        认证与评级:
+                                    </div>
+                                    <div class="tb5-c3-d3-con6">
+                                        模块内容
+                                    </div>
+                                    <div class="tb5-c3-d3-con7">
+                                        模块内容
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tb5-c4"></div>
+                </td>
+                <td class="tb5-r">&nbsp;</td>
+            </tr>
+        </table>
+        <!--p6-->
+        <table id="tab6" class="tab tab6" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="tb6-l">&nbsp;</td>
+                <td width="1000" valign="top">
+                    <div class="tb6-c1">
+                        <div class="tb6-c1-mod">
+                            模块内容
+                        </div>
+                    </div>
+                    <div class="tb6-c2 clearfix">
+                        <div class="tb6-c2-l">
+                            模块内容
+                        </div>
+                        <div class="tb6-c2-r">
+                            <div class="tb6-c2-r1">
+                                模块内容
+                            </div>
+                            <div class="tb6-c2-r2">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tb6-c3"></div>
+                </td>
+                <td class="tb6-r">&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!--尾部链接-->
+<div class="footer wrapper clearfix">
+    <div class="menu1" id="menu">
+        <ul class="clearfix">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    模块内容
+</div>
+<script type="text/javascript" charset="GBK">
+    /*p1波动*/
+    var $as=$('.tab1-c2-b');
+    $as.bind('mouseenter',function(){
+        $(this).stop().animate({width:"298px",opacity:"1"},500);
+        $(this).siblings().stop().animate({width:"175px",opacity:"0.9"},500);
+    });
+    $('.tb1-c2').bind('mouseleave', function () {
+        $as.stop().animate({width:"200px",opacity:"1"},500);
+    });
+
+
+    /*p5选卡*/
+    var $tb5_c2_li=$('#tb5-c2').find('li');
+    var $tb5_c3_div=$('.tb5-c3-div');
+    $tb5_c2_li.bind('mouseenter', function () {
+        $(this).addClass('l-hover1').siblings().removeClass('l-hover1');
+        $tb5_c3_div.eq($tb5_c2_li.index(this)).addClass('div-block').siblings().removeClass('div-block');
+    });
+
+    var $tb5_c3_box=$('.tb5-c3-d2-box');
+    var $tb5_c3_img=$tb5_c3_box.find('img');
+    var $flow=$('.tb5-c3-d3-flow');
+    var $tb5_c3_con=$('.tb5-c3-d3-con');
+
+    $tb5_c3_img.bind('mouseenter', function () {
+        var $i=index(this);
+        $flow.css('left','+'+(120+$i*180)+'px');
+        $tb5_c3_con.eq($tb5_c3_img.index(this)).addClass('con-block').siblings().removeClass('con-block');
+    });
+    var $l_btn=$('.tb5-c3-d2-l');
+    var $r_btn=$('.tb5-c3-d2-r');
+    var f=true;
+    if($tb5_c3_img.length>5&&f==true){
+        $r_btn.bind('click', function () {
+            if($tb5_c3_box.style.left)
+                $tb5_c3_box.animate({left:'-900px'},1000);
+            f=false;
+        });
+        $l_btn.bind('click', function () {
+            if(f==false){
+                $tb5_c3_box.animate({left:'0px'},1000);
+                f=true;
+            }
+        })
+    }
+
+    /*点击bar*/
+    var $menu=$('#menu');
+    var $menu_li=$menu.find('li');
+
+    $menu_li.bind('click', function () {
+        var $n=$(this).index();
+        v=$n+1;
+        swfn();
+    });
+    //鼠标滚动
+    function addMouseWheel(oDiv, fn)
+    {
+        oDiv.onmousewheel=fnWheel;
+        if(oDiv.addEventListener)
+        {
+            oDiv.addEventListener('DOMMouseScroll', fnWheel, false);
+        }
+        function fnWheel(ev)
+        {
+            var oEvent=ev||event;
+            var bDown=true;
+            if(oEvent.wheelDelta)
+            {
+                if(oEvent.wheelDelta<0)
+                {
+                    bDown=true;
+                }
+                else
+                {
+                    bDown=false;
+                }
+            }
+            else
+            {
+                if(oEvent.detail>0)
+                {
+                    bDown=true;
+                }
+                else
+                {
+                    bDown=false;
+                }
+            }
+            fn(bDown);
+            if(oEvent.preventDefault)
+            {
+                oEvent.preventDefault();
+            }
+            return false;
+        }
+    }
+    function bor(){
+        var b = window.navigator.userAgent;
+        if(b.indexOf("WebKit")!=-1){
+            return document.body;
+        }
+        else{
+            return document.documentElement;
+        }
+    }
+
+    var v = 0;
+    var ret = false;
+    var s = bor();
+
+    function swfn(){
+        $('.container').stop().animate({top:-760*v},800);
+        $menu.removeClass();
+        $menu.addClass('menu'+v);
+        if(v==0){
+            $menu.hide();
+        }else{
+            $menu.show();
+        }
+    }
+    addMouseWheel(document,function(wheel){
+        if(wheel){
+            if(ret){return;}
+            ret = true;
+            $(s).stop().animate({scrollTop:0},1000,function(){
+                ret = false;
+            });
+            v++;
+            if(v>=5)v=5;
+            swfn();
+        }
+        else{
+            if(ret || v==0)return;
+            ret = true;
+            $(s).stop().animate({scrollTop:0},1000,function(){
+                ret = false;
+            });
+            v--;
+            swfn();
+        }
+    });
+    //向下按钮
+    $('#down-btn1').click(function(){
+        if(v>=2){
+            v=-1;
+        };
+        v++;
+        swfn();
+    });
+</script>
+</body>
+</html>

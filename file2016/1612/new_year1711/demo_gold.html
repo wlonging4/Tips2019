@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gbk" />
+    <title>斐讯--中关村在线</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <meta name="keywords" content="斐讯,斐讯,斐讯斐讯" />
+    <meta name="description" content="斐讯斐讯斐讯斐讯斐讯" />
+    <base target="_blank" />
+
+
+
+
+
+
+
+    <meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />
+    <script>
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+
+    <style>
+        html, body, h1, h2, h3, h4, h5, p, form, ul, li,div,img,a { margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body {background-color:#fff; font:20px/1.5  "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul li { list-style-type: none; }
+        .clear {clear:both;display:block;height:0;visibility:hidden;}
+        .clearfix:after {content:"."; display: block; height: 0;clear: both; visibility: hidden; font-size:0}
+        .clearfix {*zoom:1}
+        #viewport { width: 640px; height: 100%; margin: 0 auto; overflow: hidden; }
+        .container { height: 1000%;}
+        section {width:100%;height: 10%; overflow: hidden; position:relative;background-repeat:no-repeat;background-size:cover;-webkit-background-size:cover;}
+        section img{display:block;}
+
+
+        .logo{width: 292px;height: 52px;position:absolute;top:42px;left:46px;z-index:999;}
+        #slide1{background-image:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s1_bg.jpg);display:}
+        #slide1 .ig1{width: 289px;height: 125px;margin:142px auto 22px;}
+        #slide1 .ig2{width: 341px;height: 53px;margin:0 auto 24px;}
+        #slide1 .ig3{width: 495px;height: 566px;margin:0 auto;}
+
+        #slide2,#slide3,#slide4{background-image:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s2_bg.jpg);}
+        #slide2{display:}
+        #slide2 .text{width: 528px;height: 447px;margin:162px 0px 8px 86px;}
+        #slide2 .text .ig2{margin:34px 0px 30px;}
+        #slide2 .pic{width: 635px;height: 210px;margin:0 auto;}
+
+
+        #slide3{display:}
+        #slide3 .pic1,#slide3 .pic2{position:relative;}
+        #slide3 .pic1 img,#slide3 .pic2 img,#slide5 .pic img{position:absolute;}
+        #slide3 .pic1{width:640px;height: 346px;margin:146px auto 40px;}
+        #slide3 .pic1 .ig1{left:52px;top:10px;}
+        #slide3 .pic1 .ig2{top:0px;right:0px;}
+        #slide3 .pic2{width: 640px;height: 370px;margin:0 auto;}
+        #slide3 .pic2 .ig1{left:0px;top:0px;}
+        #slide3 .pic2 .ig2{right:26px;top:14px;}
+
+
+        #slide4{display:;}
+        #slide4 .text{width: 600px;height: 354px;padding-left:40px;margin-top:142px;}
+        #slide4 .text .ig2{margin:24px 0px 46px;}
+        #slide4 .pic{width: 636px;height: 358px;margin:16px auto 0px;}
+
+
+        #slide5{background-image:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s5_bg.jpg);}
+        #slide5 .pic{width: 640px;height: 730px;margin:52px auto 10px;position:relative;}
+        #slide5 .pic .ig1{top:0px;left:0px;}
+        #slide5 .pic .ig2{bottom:0px;left:50%;margin-left:-238px;}
+        #slide5 .other{width: 348px;height: 48px;margin:0 auto;position:relative;}
+        #slide5 .other span{display:inline-block;height: 48px;}
+        #slide5 .other .start{width: 187px;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s5_btn.png) no-repeat;}
+        #slide5 .other .rules{font:28px/48px "Microsoft YaHei";color:#C16250;position:absolute;right:0px;top:0px;}
+
+        /*分享*/
+        .wechat,.weibo,.tencent-weibo,.qzone{display: inline-block;width:74px;height:74px;margin-right:14px;}
+        .wechat{background: url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_share.png) -87px 0px no-repeat;}
+        .weibo{background: url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_share.png) 0px 0px no-repeat;}
+        .tencent-weibo{background: url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_share.png) -264px 0px no-repeat;margin-right:0px;}
+        .qzone{background: url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_share.png) -175px 0px no-repeat;}
+
+        /*fenyeanniu*/
+        #btn{display:block;position:absolute;z-index:10;left:50%;bottom:6%;width:64px;margin-left:-32px;height:64px;overflow:hidden;color:rgba(0,0,0,0);background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_next.png) no-repeat;-webkit-animation:btn-ani infinite .5s;animation:btn-ani infinite .5s;}
+        #btn.last{background: url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_prev.png) no-repeat !important;}
+        @-webkit-keyframes btn-ani{0%{-webkit-transform:translate(0,0);}50%{-webkit-transform:translate(0,-4px);}}
+        @keyframes btn-ani{0%{transform:translate(0,0);}50%{transform:translate(0,-4px);}}
+
+        .ani-up,.ani-scale,.ani-down,.ani-right,.ani-left,.anir1,.anir2,.anir3{transition:all .5s;-webkit-transition:all .5s;opacity:0;}
+        .ani-up{transform: translate3d(0px,200px,0);-webkit-transform:translate3d(0px,200px,0);}
+        .ani-down{transform: translate3d(0px,-200px,0);-webkit-transform:translate3d(0px,-200px,0);}
+        .ani-right,.anir1,.anir2,.anir3{-webkit-transform: translate3D(-200px,0,0);transform: translate3D(-200px,0,0);}
+        .ani-left{-webkit-transform: translate3D(200px,0,0);transform: translate3D(200px,0,0);}
+        .ani-scale{-webkit-transform:scale(0);transform:scale(0);}
+
+
+        .current .anir1{transition:all 1s .3s;-webkit-transition:all 1s .3s;}
+        .current .anir2{transition:all 1s .5s;-webkit-transition:all 1s .5s;}
+        .current .anir3{transition:all 1s .7s;-webkit-transition:all 1s .7s;}
+        .current .ani-up,.current .ani-down,.current .ani-right,.current .ani-left,.current .anir1,.current .anir2,.current .anir3{transform: translate3d(0,0,0);-webkit-transform:translate3d(0,0,0);opacity:1;}
+
+        /*规则css*/
+        .rule,.game{height:100%;position:absolute;top:0px;left:0px;}
+        .rule{background-color:rgba(255,255,255,.64);display:none;z-index:1000;}
+        .rule .text-box{width: 517px;height: 574px;margin:160px auto 0px;background-color:#BF4735;border-radius:10px;position:relative;}
+        .rule .close,.game-over .close{display:inline-block;width: 32px;height: 32px;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_r_close.png) no-repeat;position:absolute;top:14px;right:16px;}
+        .rule .text{width: 448px;height: 496px;margin:0px 0px 0px 30px;overflow:hidden;padding-top:26px;}
+        .rule .text p{white-space:nowrap;color:#fff;font:20px/34px "Microsoft YaHei";}
+        .rule .text p.title{font-size:28px;font-weight:bold;margin-bottom:24px;}
+        .rule .text p.p2,.rule .text p.p4,.rule .text p.p9,.rule .text p.p10{margin-bottom:7px;}
+
+        /*game css*/
+        .game{display:none;z-index:998;background-image:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_bg.jpg);position:relative;}
+        .gaming{width: 640px;height: 792px;margin:122px auto 0px;position:relative;}
+        .gaming .header{width: 596px;height: 86px;margin:0 auto;position:relative;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_font1.png)no-repeat;}
+        .gaming .header span{display:inline-block;height: 54px;position:absolute;top:18px;font-size:34px;color:#fff;line-height:54px;}
+        .gaming .header .time{width: 211px;right:184px;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_bar1.png) no-repeat;text-align:right;font-size:28px;}
+        .gaming .header .time em{margin-right: 22px;}
+        .gaming .header .source{width: 177px;right:0px;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_bar2.png) no-repeat;text-align:center;}
+        .game .chicken{width: 228px;height: 374px;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_xji1.png) no-repeat;position:absolute;top:402px;left:0px;animation: movelr  4s linear infinite; -webkit-animation: movelr  4s linear infinite;}
+
+        .game .balloon { background-size: cover; -webkit-background-size: cover; background-repeat: no-repeat; background-position: 50% 0; position: absolute; top:-10%;text-align:center;}
+        .game .balloonFloat { animation: balloonFloat linear 8s; -webkit-animation: balloonFloat linear 8s;}
+        @-webkit-keyframes balloonFloat {
+            0%   {-webkit-transform: translate3D(0,0,0);}
+            100% {-webkit-transform: translate3D(0,2000%,0);}
+        }
+        @keyframes balloonFloat {
+            0%   {transform: translate3D(0,0,0);}
+            100% {transform: translate3D(0,2000%,0);}
+        }
+
+        @-webkit-keyframes movelr {
+            0%   {-webkit-transform: translate3D(0,0,0);}
+            50% {-webkit-transform: translate3D(200%,0,0);}
+            100% {-webkit-transform: translate3D(0,0,0);}
+        }
+        @keyframes movelr {
+            0%   {transform: translate3D(0,0,0);}
+            50% {transform: translate3D(200%,0,0);}
+            100% {transform: translate3D(0,0,0);}
+        }
+        .game-over{width:100%;height:100%;position:absolute;top:0px;left:0px;background:rgba(255,255,255,.65);opacity:0; visibility:hidden;}
+        .gameover,.success,.failure,.result{width: 288px;height: 274px;background-color:#BF4735;border-radius:10px;margin:160px auto 0px;position:relative;overflow:hidden;}
+        .gameover{width: 487px;height: 474px;}
+        .game-over.visible {visibility: visible;opacity: 1;pointer-events: all;}
+        .gameover .inf{width: 370px;height: 420px;margin:0 auto;padding-top:14px;overflow:hidden;}
+        .gameover .inf p.title{font-size:34px;color:#fff;white-space:nowrap;line-height:40px;}
+        .gameover .inf p.title em{color:#FFFF99;margin: 0 10px 0px 6px;}
+        .gameover .form{width: 376px;height: 264px;margin:16px auto 26px;color:#fff;font-size:26px;}
+        .gameover .form input{width: 252px;height: 48px;border:1px solid #DB897D;font-size:26px;}
+        .gameover .form .uname{margin:0px 0px 10px 0px;}
+        .gameover .form .subm{display:inline-block;width: 185px;height: 46px;background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_bar3.png) no-repeat;margin:22px 78px 44px;}
+        .gameover .other{height: 30px;position:relative;}
+        .gameover .other span{font-size:24px;color:#FFFF99;}
+        .gameover .other .restart{float:left;}
+        .gameover .other .giveup{float:right;}
+        .success,.failure{background-size:199px 204px;background-repeat:no-repeat;background-position:center center;}
+        .success{background-image:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_over1.png);display:none;}
+        .failure{background-image:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_over2.png);display:none;}
+        .result{width: 535px;height: 784px;margin:114px auto 0px;display:none;}
+        .result .title{height: 66px;padding:10px 20px 0px;font-size:36px;color:#fff;font-weight:bold;}
+        .result .list{width: 514px;height:306px;margin:0 auto;background-color:#fff;border-radius:10px;overflow:auto;overflow-x:hidden;overflow-y:auto;}
+        .result tr{color:#444444;font-size:18px;text-align:center;height: 40px;}
+        .result tr em{color:#BF4735;}
+        .result .thead{height: 50px;color:#BF4735;font-size:24px;}
+        .result .thead th{border-bottom:1px solid #CACAD9;}
+        .result tr.tbody:nth-child(odd){height: 36px;background-color:#EDEDED;}
+        .result .link{background:url(http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_img.png) no-repeat;margin:12px auto 6px;}
+        .result .link a{display:inline-block;}
+        .result .link,.result .link a{width: 188px;height: 100px;}
+        .result .share{width: 340px;height: 80px;margin-left:132px;position:relative;}
+        .result .share lable{height: 74px;line-height: 74px; color: #FFDA34;font-size: 30px;display: inline-block;position: absolute;top: 0px;left: -80px;}
+        #gamemain{position:absolute;top:0px;left:0px;}
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /*背景音乐*/
+        #video {width: 0px;height: 0px;position: absolute;z-index: -66;bottom: 0px;left: 0px;}
+        #btn-a1 {position: fixed;top: 40px;right: 10px;width: 50px; height: 50px;z-index:10000;}
+        #btn-a1 p { width: 100%;height: 100%;line-height: 9999px;overflow: hidden;}
+        #btn-a1 p#end{display:block;background: url(http://2.zol-img.com.cn/zt/tm_569/ef8b4336f3/y_audio2.png) no-repeat;}
+        #btn-a1 p#vstart {display:none;background: url(http://2.zol-img.com.cn/zt/tm_569/ef8b4336f3/y_audio2.png) 0px -60px no-repeat !important;}
+        .new{width:535px;height: 167px;margin:5px auto 10px;}
+        .new img{float:right;}
+    </style>
+</head>
+
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="logo"><img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_logo.png" alt=""></div>
+<!--活动规则 start-->
+<section class="rule">
+    <div class="text-box">
+        <span class="close"></span>
+        <div class="text">
+            <p class="title">游戏规则</p>
+            <p class="p1">1.30秒内左右滑动人物接金币，每接到一个金币加</p>
+            <p class="p2">10分， 碰到障碍物扣5分。</p>
+            <p class="p3">2.同一个用户可玩多次游戏， 最终结果按照最高分</p>
+            <p class="p4">记录。</p>
+            <p class="p5">3.奖项设置</p>
+            <p class="p6">得分第1名：获得一等奖：P680手机</p>
+            <p class="p7">得分第2-4名：获得二等奖：运动蓝牙耳机</p>
+            <p class="p8">得分第5-9名：获得三等奖：斐讯移动电源</p>
+            <p class="p9">得分第10-19名：获得参与奖：冬日暖新牌保温杯</p>
+            <p class="p10">4.活动时间：2016年1月X日到2016年X月X日</p>
+            <p class="p11">5.活动结束后， 工作人员会与中奖用户取得联系 </p>
+            <p class="p12">请您耐心等待。</p>
+        </div>
+    </div>
+</section>
+<!--活动规则 end-->
+<!--游戏 start-->
+<section class="game">
+    <div class="gaming">
+        <div class="header">
+            <span class="time" id="time"><em>TIME:30</em></span>
+            <span class="source" id="source">得分:0</span>
+        </div>
+    </div>
+    <canvas id="gamemain" width="640" height="1136"></canvas>
+    <div class="game-over">
+        <div class="gameover" id="gameover">
+            <div class="inf">
+                <p class="title">游戏已结束</p>
+                <p class="title title2">一共获得<em class="total" id="total">999</em>分</p>
+                <div class="form">
+                    姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" class="uname"></br>
+                    手机号：<input type="text" class="tel">
+                    <span class="subm"></span>
+                </div>
+                <div class="other clearfix">
+                    <span class="restart" id="restart">重玩一次</span>
+                    <span class="giveup" id="giveup">放弃机会</span>
+                </div>
+            </div>
+        </div>
+        <div class="success">
+        </div>
+        <div class="failure">
+        </div>
+        <div class="result">
+            <p class="title">排行榜</p>
+            <div class="list">
+
+            </div>
+            <div class="new clearfix"><img src="http://2.zol-img.com.cn/zt/tm_569/eeae1b2bed/y_r_addimg.png" alt=""></div>
+            <div class="link"><a href="" ></a></div>
+            <div class="share"></div>
+        </div>
+    </div>
+
+</section>
+<!--游戏 end-->
+<div id="viewport" class="flipview" data-loop="false">
+    <div class="container" id="main">
+        <section id="slide1" >
+            <div class="ig1 ani-right"><img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s1_font.png" alt=""> </div>
+            <div class="ig2 ani-left"><img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s1_font2.png" alt=""></div>
+            <div class="ig3 ani-up"><img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s1_img.png" alt=""></div>
+        </section>
+        <section id="slide2" >
+            <div class="text">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s2_font.png" alt="" class="ig1 anir1">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s2_font2.png" alt="" class="ig2 anir2">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s2_font3.png" alt="" class="ig3 anir3">
+            </div>
+            <div class="pic ani-up"><img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s2_img.png" alt=""></div>
+        </section>
+        <section id="slide3" >
+            <div class="pic1">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s3_font.png" alt="" class="ig1 ani-right">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s3_img1.jpg" alt="" class="ig2 ani-left">
+            </div>
+            <div class="pic2">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s3_img2.png" alt="" class="ig1 ani-right">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s3_font2.png" alt="" class="ig2 ani-left">
+            </div>
+        </section>
+        <section id="slide4" >
+            <div class="text">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s4_font.png" alt="" class="ig1 anir1">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s4_font2.png" alt="" class="ig2 anir2">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s4_font3.png" alt="" class="ig3 anir3">
+            </div>
+            <div class="pic ani-up"><img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s4_img.png" alt=""></div>
+        </section>
+        <section id="slide5" >
+            <div class="pic">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s5_img.png" alt="" class="ig1 ani-down">
+                <img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_s5_font.png" alt="" class="ig2 ani-up">
+            </div>
+            <div class="other ani-up">
+                <span class="start" id="start"></span>
+                <span class="rules">活动规则>></span>
+            </div>
+        </section>
+    </div>
+</div>
+<div id="btn" role="button"></div>
+<audio id="video" autoplay loop src="http://icon.zol-img.com.cn/mp3/2016/5628194.mp3" preload="auto"></audio>
+<div id="btn-a1">
+    <p id="vstart">开始</p>
+    <p id="end">结束</p>
+</div>
+<!--<img src="http://m.zol.com.cn/topic/solex/props.png" alt="" style="display:none;opacity:0" id="raiden_props" />-->
+<img src="http://2.zol-img.com.cn/zt/tm_568/f9db98f07d/y_g_icons.png" alt="" style="display:none;opacity:0" id="raiden_props" />
+<img src="http://2.zol-img.com.cn/zt/tm_569/30c398d96d/y_g_xji1.png" alt="" style="display:none;opacity:0" id="checken" />
+<img src="http://2.zol-img.com.cn/zt/tm_568/f95cf642b6/y_g_text.png" alt="" style="display:none;opacity:0" id="raiden_text" />
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/wap/js/z.flipview.js"></script>
+<!---->
+<script src='http://m.zol.com.cn/topic/services/feixun.php?c=token'></script>
+<script src="http://active.zol.com.cn/16active/0111fx/index1.js"></script>
+
+<script>
+    function loading(){
+        var l = document.querySelector('.loading');
+        if(!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function(){
+            l.style.display = 'block';
+            l.classList.add('loading-visible');
+        },0)
+    }
+    loading.dismiss = function(){
+        var l = document.querySelector('.loading');
+        if(!l) return;
+        l.classList.remove('loading-visible');
+        setTimeout(function(){
+            l.style.display = 'none';
+        },300)
+    };
+
+    window.addEventListener('load', function () {
+        loading.dismiss();
+        viewport.style.pointerEvents = 'all';
+        var i;
+        if (document.referrer && location.hash && (i = location.hash.match(/^#(\d)$/))) {
+            i = parseInt(i[1]);
+            viewport.go(i);
+        } else {
+            i = viewport.index;
+        }
+        viewport.querySelector('.container').children[i].classList.add('current');
+    });
+    var oViewport=document.querySelector('#viewport');
+    var oList=null,rTimer;
+    oViewport&&oViewport.addEventListener('changed', function (e) {
+        clearTimeout(rTimer);
+        var current = this.querySelector('.current');
+        var last = this.index === oViewport.querySelectorAll('section').length - 1;
+        current && current.classList.remove('current');
+        e.current && e.current.classList.add('current');
+        history.replaceState(null, document.title, this.index ? ('#' + this.index) : (location.pathname || '#'));
+        btn.classList[last ? 'add' : 'remove']('last');
+        console.log(this.index);
+        if(this.index==4){//自动弹出游戏规则
+            rTimer=setTimeout(function(){
+                document.querySelector('.rule').style.display='block';
+            }, 500);
+        };
+    });
+    //fanye
+    var oBtn=document.querySelector('#btn');
+    oBtn&&oBtn.addEventListener('tap', function () {
+        var last = viewport.index === viewport.querySelectorAll('section').length - 1 ;
+        viewport[last ? 'previous' : 'next'](1);
+    });
+
+    //背景音乐
+    var bObj=document.getElementById('btn-a1');
+    var video=document.getElementById('video');
+    bObj&&bObj.addEventListener('click', function(){
+        if(video!==null){
+            if(!video.paused){
+                video.pause();
+                document.getElementById('vstart').style.display='block';
+                document.getElementById('end').style.display='none';
+            }else{
+                video.play();
+                document.getElementById('vstart').style.display='none';
+                document.getElementById('end').style.display='block';
+            };
+        };
+    });
+
+    //微信分享
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_569/30c398d96d/share.jpg',
+        title: '轻客2S，开启属于你的轻装生活'
+    };
+
+    var share_title=encodeURIComponent('轻客2S，开启属于你的轻装生活');
+    var share_link=encodeURIComponent('http://m.zol.com.cn/topic/5628194.html');
+    var share_pic=encodeURIComponent('http://2.zol-img.com.cn/zt/tm_569/30c398d96d/share.jpg ');
+    var share=document.querySelector('.share');
+    var sina='http://service.weibo.com/share/share.php?url='+share_link+'&title='+share_title+'&appkey=4028615622&ralateUid=1951621751&pic='+share_pic+'&searchPic=false&refer='+share_link;
+    var tencent='http://share.v.t.qq.com/index.php?c=share&a=index&url='+share_link+'&title='+share_title+'&appkey=99d207b90670adceaaa416b63528d92c&pic='+share_pic;
+    var qzone='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+share_link+'&desc='+share_title+'&pics='+share_pic+'&summary='+share_title;
+    var share_con = '<lable>分享 :</lable> <a target="_self" class="weibo" href="'+sina+'"></a><a target="_self" class="wechat" href="#wechat" style="display:none"></a><a target="_self" class="qzone" href="'+qzone+'"></a><a target="_self" class="tencent-weibo" href="'+tencent+'"></a>';
+    share.innerHTML = share_con;
+
+</script>
+</body>
+</html>

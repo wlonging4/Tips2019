@@ -1,0 +1,521 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="gbk">
+    <title>技嘉·京东杯高校电子竞技联赛</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#777;font:12px/20px 'simsun',arial; background: #000030;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#008cd6;font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 100px; padding-top: 150px ;background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_foot.jpg") no-repeat top center; }
+        .zol_foot,.zol_foot a{  color: #BFBFFF;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1160px;  height: 477px;  }
+
+        .nav-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_nav_l.jpg") no-repeat 100% 0;  }
+        .nav-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_nav_r.jpg") no-repeat 0 0;  }
+        .nav-c{  width: 1060px;  height: 51px;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_nav_c.jpg") no-repeat 0 0;  }
+        .nav-c li{  float: left;  _display: inline;  width: 125px;  height: 51px;  margin-right: 7px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_nav_btn.png") no-repeat 0 0;  }
+        .nav-c li a{  display: block;  width: 125px;  height: 51px;  line-height: 51px;  text-align: center;  color: #945e15;  font: bold 20px/51px 'microsoft yahei',Arial;  }
+
+        .flow{  position: fixed;  bottom: 20px;  left: 50%;  margin-left: 500px;  _position: absolute;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_flow.png") no-repeat 0 0;  width: 230px;  height: 484px;  overflow: hidden;  }
+        .flow ul{  margin: 94px auto 0;  width: 138px;  height: 364px;  }
+        .flow ul li{  width: 138px;  height: 52px;  }
+        .flow ul li a{  display: block;  height: 52px;  width: 138px;  color: #ffdc60;  text-align: center;  font: 20px/52px 'microsoft yahei',Arial;  line-height: 52px;  }
+
+        .fir-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_fir_l.jpg") no-repeat 100% 0;  }
+        .fir-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_fir_r.jpg") no-repeat 0 0;  }
+        .fir-c{  position: relative;  overflow: hidden;  width: 960px;  height: 479px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_fir_c.jpg") no-repeat 0 0;  }
+        .fir-pic{  position: absolute;  top: 71px;  left: 2px;  width: 462px;  height: 346px;  background: #fff;  }
+        .fir-art{  position: absolute;  bottom: 80px;  right: 0;  width: 446px;  height: 280px;   }
+        .fir-art .cheng18{  display: block;  color: #bc9e42;padding-bottom: 10px;  font-family: 'microsoft yahei',Arial;  font-size: 18px; font-weight: bold;line-height: 30px;  }
+        .fir-art .lan12{  display: block; text-indent: 24px; padding-bottom: 30px;  color: #a0b0ff;  line-height: 24px;  }
+
+        .pre-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_pre_l.jpg") no-repeat 100% 0;  }
+        .pre-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_pre_r.jpg") no-repeat 0 0;  }
+        .pre-t{  width: 960px;  height: 56px;  }
+        .pre-c{  position: relative;  overflow: hidden;  width: 960px;  height: 614px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_pre_c.jpg") no-repeat 0 0;  }
+        .pre-pic{  position: absolute;   top: 32px;  left: 2px;  width: 463px;  height: 340px;  background: #fff;  }
+        .pre-list-mod{  position: absolute; overflow: hidden;   top: 86px;  right: 38px;  width: 335px;  height: 90px;   }
+        .pre-list-box{  position: absolute;   width: 335px;    }
+        .pre-list-box .cheng14{  display: block;  color: #efcc5d; overflow: hidden;  font-family: 'microsoft yahei',Arial;  font-size: 16px; line-height: 30px;  }
+        .pre-list-box .cheng14:hover{ text-decoration: none;  }
+        .pre-list-box .cheng14 span{  display: block;  float: left;  width: 110px;  height: 30px;  }
+        .pre-news{  position: absolute; overflow: hidden;   top: 240px;  right: 0;  width: 404px;  height: 122px;  }
+        .pre-news .lan12{  display: block;  color: #a0b0ff;  line-height: 28px;  }
+        .pre-pics{  position: absolute; overflow: hidden;   bottom: 55px;  left: 0;  width: 960px;  height: 169px;  }
+        .pre-pics table img{  border: 2px solid #1f5ac1;  }
+
+        .inter-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_inter_l.jpg") no-repeat 100% 0;  }
+        .inter-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_inter_r.jpg") no-repeat 0 0;  }
+        .inter-t{  width: 960px;  height: 56px;  }
+        .inter-c{  position: relative;  overflow: hidden;  width: 960px;  height: 579px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_inter_c.jpg") no-repeat 0 0;  }
+        .inter-c ul{  margin: 50px auto 0;  width: 930px;  height: 38px;  overflow: hidden;  }
+        .inter-c ul li{  float: left;  _display: inline;  width: 104px;  height: 34px;  border: 2px solid #ffdc60;  margin-right: 8px;  background: #ffdc60;  color: #8a4401;  text-align: center;  cursor: pointer;  font: bold 18px/34px 'microsoft yahei';  }
+        .inter-c ul li.act{  background: #e9b600;  }
+        .inter-box{  position: relative;  top: 46px;  left: 28px;  width: 907px;  height: 341px;  }
+        .inter-mod{  position: relative; display: none;  width: 907px;  height: 341px;  }
+        .inter-mod.blk{  display: block;  }
+        .inter-m{  position: absolute;  width: 123px;  height: 54px;  }
+        .inter-m .bai14{  display: block;  font:  15px/54px 'microsoft yahei',Arial;  }
+        .inter-m1{  top: 4px;  left: 4px;  }
+        .inter-m2{  top: 48px;  left: 314px;  }
+        .inter-m3{  top: 48px;  left: 470px;  }
+        .inter-m4{  top: 4px;  left: 780px;  }
+        .inter-m5{  top: 93px;  left: 4px;  }
+        .inter-m6{  top: 93px;  left: 780px;  }
+        .inter-m7{  top: 193px;  left: 4px;  }
+        .inter-m8{  top: 238px;  left: 314px;  }
+        .inter-m9{  top: 238px;  left: 470px;  }
+        .inter-m10{  top: 193px;  left: 780px;  }
+        .inter-m11{  top: 283px;  left: 4px;  }
+        .inter-m12{  top: 283px;  left: 780px;  }
+
+        .fin-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_fin_l.jpg") no-repeat 100% 0;  }
+        .fin-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_fin_r.jpg") no-repeat 0 0;  }
+        .fin-t{  width: 960px;  height: 56px;  }
+        .fin-c{  position: relative;  overflow: hidden;  width: 960px;  height: 535px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/42e06a21fc/lg_fin_c.jpg") no-repeat 0 0;  }
+        .fin-c ul{  margin: 30px auto 0;  width: 480px;  height: 38px;  overflow: hidden;  }
+        .fin-c ul li{  float: left;  _display: inline;  width: 104px;  height: 34px;  border: 2px solid #ffdc60;  margin: 0 4px 0 6px;  background: #ffdc60;  color: #8a4401;  text-align: center;  cursor: pointer;  font: bold 18px/34px 'microsoft yahei';  }
+        .fin-c ul li.act{  background: #e9b600;  }
+        .fin-box{  position: absolute;  top: 96px;  left: 0;  overflow: hidden;  width: 960px;  height: 343px;  }
+        .fin-mod{  position: absolute;  display: none;  width: 960px;  height: 343px;  }
+        .fin-mod.blk{  display: block;  }
+        .fin-table{  position: absolute;  top: 1px;  left: 152px;  width: 307px;  height: 342px;  }
+        .fin-table table td{  height: 31px;font:  16px/30px 'microsoft yahei',Arial; color: #fff; text-align: center;  }
+        .fin-video{  position: absolute;  top: 2px;  right: 2px;  width: 456px;  height: 340px; background: #000  }
+
+        .year-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_year_l.jpg") no-repeat 100% 0;  }
+        .year-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_year_r.jpg") no-repeat 0 0;  }
+        .year-t{  width: 960px;  height: 56px;  }
+        .year-c{  position: relative;  overflow: hidden;  width: 960px;  height: 1015px;    }
+        .year-focus{  position: relative;  width: 960px;  height: 510px;  margin: 30px auto 0;  }
+        .year-btn{  position: absolute;  width: 69px;  height: 138px;  top: 195px;  cursor: pointer;  }
+        .year-btn1{  left: 0;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_year_btn.png") no-repeat 0 0;  }
+        .year-btn2{  right: 0;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_year_btn.png") no-repeat -70px 0;  }
+        .focus-mod{  position: absolute;  left: 50%;  overflow: hidden; margin-left: -335px;  width: 675px;  height: 510px;  border: 1px solid #526ac3;  }
+        .focus-box{  position: absolute ; height: 510px;  }
+        .year-info{  position: relative;  width: 960px;  height: 378px;  margin: 32px auto 0;  background: url("http://2.zol-img.com.cn/zt/tm_57b/42e06a21fc/lg_year_info.jpg") no-repeat 0 0;  }
+        .year-table{  position: absolute;  top: 2px;  left: 153px;  width: 307px;  height: 342px;  }
+        .year-table table td{  height: 31px;font:  16px/30px 'microsoft yahei',Arial; color: #fff; text-align: center;  }
+        .year-video{  position: absolute;  top: 3px;  right: 2px;  width: 456px;  height: 340px; background: #000;  }
+
+        .pri-t{  width: 960px;  height: 56px; margin-bottom: 40px  }
+        .pri-c{  width: 960px;  height: 347px;  margin-bottom: 40px;  overflow: hidden;  }
+        .pri-l-mod{  float: left;  width: 458px;  height: 343px;  margin-right: 36px;  background: #000;  border: 2px solid #132970;  }
+        .pri-r-mod{  float: left;  width: 458px;  height: 343px;  background: #fff;  border: 2px solid #132970;  }
+
+        .test-l{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_test_l.jpg") no-repeat 100% 0;  }
+        .test-r{  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_test_r.jpg") no-repeat 0 0;  }
+        .test-t{  width: 960px;  height: 56px;  }
+        .test-c{  position: relative;  overflow: hidden;  width: 960px;  height: 409px;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3dd2d579d9/lg_test_c.jpg") no-repeat 0 0;  }
+        .test-mod{  width: 960px;  height: 70px;  margin-top: 60px;  }
+        .test-m{  float: left;  width: 295px;  height: 70px;  margin-right: 36px;  }
+        .test-m .hui12bi{  display: block;  color: #a0b0ff;  background: url("http://2.zol-img.com.cn/zt/tm_57b/3fd9689e16/huidot.jpg") no-repeat left center;  }
+        .test-mod .ln{  line-height: 8px;  }
+        .test-mx{  margin-right: 0;  }
+        .test-link{  position: absolute;  width: 300px;  height: 18px;  left: 100px;  bottom: 0;  }
+        .test-link .cheng12{  font-weight: bold;  font-size: 14px;  display: block;  font-style: italic;  font-family: 'microsoft yahei',Arial;  color: #fabe00;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" class="head" id="head" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1160" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--导航-->
+<table width="100%" class="nav" id="nav" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="nav-l">&nbsp;</td>
+        <td width="1060" valign="top">
+            <ul class="nav-c">
+                <li><a href="#first" target="_self">首页</a></li>
+                <li><a href="#pre" target="_self">线下预选赛</a></li>
+                <li><a href="#inter" target="_self">线上复赛</a></li>
+                <li><a href="#fin" target="_self">赛区决赛</a></li>
+                <li><a href="#year" target="_self">年度总决赛</a></li>
+                <li><a href="#detail" target="_self">赛场花絮</a></li>
+                <li><a href="#prize" target="_self">有奖互动</a></li>
+                <li><a href="#test" target="_self">产品评测</a></li>
+            </ul>
+        </td>
+        <td class="nav-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--浮动栏-->
+<div class="flow">
+    <ul>
+        <li><a href="#first" target="_self">首页</a></li>
+        <li><a href="#pre" target="_self">线下预选赛</a></li>
+        <li><a href="#inter" target="_self">线上复赛</a></li>
+        <li><a href="#fin" target="_self">赛区总决赛</a></li>
+        <li><a href="#year" target="_self">年度总决赛</a></li>
+        <li><a href="#prize" target="_self">有奖互动</a></li>
+        <li><a href="#test" target="_self">产品评测</a></li>
+    </ul>
+</div>
+<!--头条-->
+<table width="100%" class="first" id="first" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="fir-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="fir-c">
+                <div class="fir-pic"><{data[1]}></div>
+                <div class="fir-art"><{data[2]}></div>
+            </div>
+        </td>
+        <td class="fir-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--线下预选赛-->
+<table width="100%" class="preliminary" id="pre" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="pre-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="pre-t"><{data[3]}></div>
+            <div class="pre-c">
+                <div class="pre-pic"><{data[4]}></div>
+                <div class="pre-list-mod">
+                    <div class="pre-list-box">
+                        <{data[5]}>
+                    </div>
+                </div>
+                <div class="pre-news"><{data[6]}></div>
+                <div class="pre-pics"><{data[7]}></div>
+            </div>
+        </td>
+        <td class="pre-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--线上复赛-->
+<table width="100%" class="intermediary" id="inter" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="inter-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="inter-t"><{data[8]}></div>
+            <div class="inter-c">
+                <ul>
+                    <li class="act">东北赛区</li>
+                    <li>华北赛区</li>
+                    <li>华东赛区</li>
+                    <li>华中赛区</li>
+                    <li>华南赛区</li>
+                    <li>江淮赛区</li>
+                    <li>西南赛区</li>
+                    <li>西北赛区</li>
+                </ul>
+                <div class="inter-box">
+                    <div class="inter-mod blk">
+                        <div class="inter-m inter-m1"><{data[9]}></div>
+                        <div class="inter-m inter-m2"><{data[10]}></div>
+                        <div class="inter-m inter-m3"><{data[11]}></div>
+                        <div class="inter-m inter-m4"><{data[12]}></div>
+                        <div class="inter-m inter-m5"><{data[13]}></div>
+                        <div class="inter-m inter-m6"><{data[14]}></div>
+                        <div class="inter-m inter-m7"><{data[15]}></div>
+                        <div class="inter-m inter-m8"><{data[16]}></div>
+                        <div class="inter-m inter-m9"><{data[17]}></div>
+                        <div class="inter-m inter-m10"><{data[18]}></div>
+                        <div class="inter-m inter-m11"><{data[19]}></div>
+                        <div class="inter-m inter-m12"><{data[20]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[21]}></div>
+                        <div class="inter-m inter-m2"><{data[22]}></div>
+                        <div class="inter-m inter-m3"><{data[23]}></div>
+                        <div class="inter-m inter-m4"><{data[24]}></div>
+                        <div class="inter-m inter-m5"><{data[25]}></div>
+                        <div class="inter-m inter-m6"><{data[26]}></div>
+                        <div class="inter-m inter-m7"><{data[27]}></div>
+                        <div class="inter-m inter-m8"><{data[28]}></div>
+                        <div class="inter-m inter-m9"><{data[29]}></div>
+                        <div class="inter-m inter-m10"><{data[30]}></div>
+                        <div class="inter-m inter-m11"><{data[31]}></div>
+                        <div class="inter-m inter-m12"><{data[32]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[33]}></div>
+                        <div class="inter-m inter-m2"><{data[34]}></div>
+                        <div class="inter-m inter-m3"><{data[35]}></div>
+                        <div class="inter-m inter-m4"><{data[36]}></div>
+                        <div class="inter-m inter-m5"><{data[37]}></div>
+                        <div class="inter-m inter-m6"><{data[38]}></div>
+                        <div class="inter-m inter-m7"><{data[39]}></div>
+                        <div class="inter-m inter-m8"><{data[40]}></div>
+                        <div class="inter-m inter-m9"><{data[41]}></div>
+                        <div class="inter-m inter-m10"><{data[42]}></div>
+                        <div class="inter-m inter-m11"><{data[43]}></div>
+                        <div class="inter-m inter-m12"><{data[44]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[45]}></div>
+                        <div class="inter-m inter-m2"><{data[46]}></div>
+                        <div class="inter-m inter-m3"><{data[47]}></div>
+                        <div class="inter-m inter-m4"><{data[48]}></div>
+                        <div class="inter-m inter-m5"><{data[49]}></div>
+                        <div class="inter-m inter-m6"><{data[50]}></div>
+                        <div class="inter-m inter-m7"><{data[51]}></div>
+                        <div class="inter-m inter-m8"><{data[52]}></div>
+                        <div class="inter-m inter-m9"><{data[53]}></div>
+                        <div class="inter-m inter-m10"><{data[54]}></div>
+                        <div class="inter-m inter-m11"><{data[55]}></div>
+                        <div class="inter-m inter-m12"><{data[56]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[57]}></div>
+                        <div class="inter-m inter-m2"><{data[58]}></div>
+                        <div class="inter-m inter-m3"><{data[59]}></div>
+                        <div class="inter-m inter-m4"><{data[60]}></div>
+                        <div class="inter-m inter-m5"><{data[61]}></div>
+                        <div class="inter-m inter-m6"><{data[62]}></div>
+                        <div class="inter-m inter-m7"><{data[63]}></div>
+                        <div class="inter-m inter-m8"><{data[64]}></div>
+                        <div class="inter-m inter-m9"><{data[65]}></div>
+                        <div class="inter-m inter-m10"><{data[66]}></div>
+                        <div class="inter-m inter-m11"><{data[67]}></div>
+                        <div class="inter-m inter-m12"><{data[68]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[69]}></div>
+                        <div class="inter-m inter-m2"><{data[70]}></div>
+                        <div class="inter-m inter-m3"><{data[71]}></div>
+                        <div class="inter-m inter-m4"><{data[72]}></div>
+                        <div class="inter-m inter-m5"><{data[73]}></div>
+                        <div class="inter-m inter-m6"><{data[74]}></div>
+                        <div class="inter-m inter-m7"><{data[75]}></div>
+                        <div class="inter-m inter-m8"><{data[76]}></div>
+                        <div class="inter-m inter-m9"><{data[77]}></div>
+                        <div class="inter-m inter-m10"><{data[78]}></div>
+                        <div class="inter-m inter-m11"><{data[79]}></div>
+                        <div class="inter-m inter-m12"><{data[80]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[81]}></div>
+                        <div class="inter-m inter-m2"><{data[82]}></div>
+                        <div class="inter-m inter-m3"><{data[83]}></div>
+                        <div class="inter-m inter-m4"><{data[84]}></div>
+                        <div class="inter-m inter-m5"><{data[85]}></div>
+                        <div class="inter-m inter-m6"><{data[86]}></div>
+                        <div class="inter-m inter-m7"><{data[87]}></div>
+                        <div class="inter-m inter-m8"><{data[88]}></div>
+                        <div class="inter-m inter-m9"><{data[89]}></div>
+                        <div class="inter-m inter-m10"><{data[90]}></div>
+                        <div class="inter-m inter-m11"><{data[91]}></div>
+                        <div class="inter-m inter-m12"><{data[92]}></div>
+                    </div>
+                    <div class="inter-mod">
+                        <div class="inter-m inter-m1"><{data[93]}></div>
+                        <div class="inter-m inter-m2"><{data[94]}></div>
+                        <div class="inter-m inter-m3"><{data[95]}></div>
+                        <div class="inter-m inter-m4"><{data[96]}></div>
+                        <div class="inter-m inter-m5"><{data[97]}></div>
+                        <div class="inter-m inter-m6"><{data[98]}></div>
+                        <div class="inter-m inter-m7"><{data[99]}></div>
+                        <div class="inter-m inter-m8"><{data[100]}></div>
+                        <div class="inter-m inter-m9"><{data[101]}></div>
+                        <div class="inter-m inter-m10"><{data[102]}></div>
+                        <div class="inter-m inter-m11"><{data[103]}></div>
+                        <div class="inter-m inter-m12"><{data[104]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="inter-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--赛区决赛-->
+<table width="100%" class="final banners" id="fin" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="fin-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="fin-t"><{data[105]}></div>
+            <div class="fin-c">
+                <ul>
+                    <li class="act">东部赛区</li>
+                    <li>南部赛区</li>
+                    <li>西部赛区</li>
+                    <li>北部赛区</li>
+                </ul>
+                <div class="fin-box">
+                    <div class="fin-mod blk">
+                        <div class="fin-table"><{data[218]}></div>
+                        <div class="fin-video">
+                            <{data[125]}>
+                        </div>
+                    </div>
+                    <div class="fin-mod">
+                        <div class="fin-table"><{data[219]}></div>
+                        <div class="fin-video">
+                            <{data[145]}>
+                        </div>
+                    </div>
+                    <div class="fin-mod">
+                        <div class="fin-table"><{data[220]}></div>
+                        <div class="fin-video">
+                            <{data[165]}>
+                        </div>
+                    </div>
+                    <div class="fin-mod">
+                        <div class="fin-table"><{data[221]}></div>
+                        <div class="fin-video">
+                            <{data[185]}>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="fin-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--年度总决赛-->
+<table width="100%" class="year banners" id="year" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="year-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="year-t"><{data[186]}></div>
+            <div class="year-c">
+                <div class="year-focus">
+                    <div class="year-btn year-btn1"></div>
+                    <div class="year-btn year-btn2"></div>
+                    <div class="focus-mod">
+                        <div class="focus-box" style="left: 0px; width: 7425px;">
+                            <{data[187]}>
+                        </div>
+                    </div>
+                </div>
+                <div class="year-info clearfix">
+                    <div class="year-table">
+                        <{data[217]}>
+                    </div>
+                    <div class="year-video" id="detail">
+                        <{data[207]}>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="year-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--有奖互动-->
+<table width="100%" class="prize banners" id="prize" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="pri-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="pri-t"><{data[208]}></div>
+            <div class="pri-c">
+                <div class="pri-l-mod"><{data[209]}></div>
+                <div class="pri-r-mod"><{data[210]}></div>
+            </div>
+        </td>
+        <td class="pri-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--产品评测-->
+<table width="100%" class="test" id="test" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr>
+        <td class="test-l">&nbsp;</td>
+        <td width="960" valign="top">
+            <div class="test-t"><{data[211]}></div>
+            <div class="test-c">
+                <div class="test-mod clearfix">
+                    <div class="test-m"><{data[212]}></div>
+                    <div class="test-m"><{data[213]}></div>
+                    <div class="test-m test-mx"><{data[214]}></div>
+                </div>
+                <div class="test-link">
+                    <{data[215]}>
+                </div>
+            </div>
+        </td>
+        <td class="test-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+
+
+<script>
+    /*选项卡切换*/
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('click', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.inter-c ul li','act','.inter-mod','blk');
+    card_chg('.fin-c ul li','act','.fin-mod','blk');
+
+    /*多图片切换*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".focus-box",".focus-mod",1,".year-btn1",".year-btn2");
+</script>
+
+</body></html>

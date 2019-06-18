@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色2</title>
+    <style type="text/css">
+        body,div,ul,li{
+            margin:10px auto;
+            padding:0;
+            width: 720px;
+            font-family: fantasy;
+            text-align: center;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #u1{
+            padding: 5px;
+            border: 2px solid red;
+            background:-webkit-linear-gradient(top right,yellow,orangered,lawngreen);
+            border-radius: 15px;
+        }
+        #u1 li{
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .c0{
+            background-color:#D2413A;
+        }
+        .c1{
+            background-color: #219161;
+        }
+        .c2{
+            background-color: #00A000;
+        }
+        .c3{
+            background-color: #0A2200;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul id="u1">
+        <li>来了</li>
+        <li>这里</li>
+        <li>我们</li>
+        <li>一起</li>
+        <li>学习</li>
+        <li>努力</li>
+    </ul>
+</div>
+<script>
+    var ul1=document.getElementById("u1");
+    var li1=ul1.getElementsByTagName("li");
+    for(var i=0;i<li1.length;i++){
+        var li=li1[i];
+        switch(i%3){
+            case 0:
+                li.className="c0";
+                li.x="c0";
+                break;
+            case 1:
+                li.className="c1";
+                li.x="c1";
+                break;
+            default:
+            li.className="c2";
+            li.x="c2";
+        }
+        li.onmouseover=function(){
+            this.className="c3";
+        };
+        li.onmouseout=function(){
+            this.className=this.x;
+        }
+    }
+
+</script>
+</body>
+</html>

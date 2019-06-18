@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一周第二天教材及课程</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<script>
+    /*【第一周预习】：
+    登录->个人中心->我的课程->选择js课程按照时间分类->第一周预习第一周1的前四个视频和第一周2五个视频;
+    第一周的教材：
+    看完变量，预解释，闭包教材必须看完;
+    看完课程大纲;
+    预解释,作用域,this,闭包;
+    面向对象（单例模式，工厂模式，构造函数模式，原型模式，原型继承，数组高级）;
+     */
+    /*课堂纪律
+    1.考勤安排：
+    周一到周五一般情况下时间安排如下
+    周二，周三，周四：上午10-中午1点 下午3点-晚上6点
+    no late！if emergency happen,请假周老师：13041086186;
+    第六周耿讲观察者模式，第七周张,耿讲Ajax
+    周六，周日：上午10-中午1点 下午2.5点-晚上6点
+    2.考试安排：
+    全日制考试都是安排在下一周考试开课之前考试->下周二上课前10-10.5考试
+    【2,3,4,5,8,9】考试周
+    补考和周末班一起补考（题会加难度）->周日晚上
+    3.小组安排：
+    ①负责监督，鼓励，收作业，安排项目和验收项目;
+    ②第二周会进行调整小组长，负责CTO;
+
+    BAT【面试题】
+     var num=12;
+     var ary=[1,2,3,4];
+     function fn(ary){
+     ary[0]=0;
+     ary=[0];
+     ary[0]=100;
+     return ary;
+     }
+     var res=fn(ary);
+
+     console.log(ary); //地址->xxff00->[0,1,2,3]
+     console.log(res); //地址->xxff22->[100]
+     1,当浏览器开始加载页面的时候开辟一个全局代码执行环境->全局作用域（window/global）
+     2,画图->讲义第一节教材背面
+     3,作用域（栈内存）作用：
+        ①提供一个供JS代码执行的环境
+        ②存储基本数据类型的值->ary不是基本数据;num可以存;
+        ③JS中的作用域分为全局作用域（浏览器加载页面就会形成）,私有作用域（函数执行才回形成）;
+     4,代码从上到下执行
+        var num=12;->在全局作用域下定义的变量，值存储在全局作用域下
+        var ary=[];->在全局作用域下定义一个变量ary，也是一个全局变量
+            A:开辟一个新的内存空间(在堆内存里)，有一个地址，假设其为XXFF00;
+            B:把数组中的索引和对应的值，分别的存储到这个地址指向的空间中
+            c:在把空间地址赋值给我们的全局变量ary->ary=xxff00;
+            ->我们新开辟的这个内存XXFF00是用来存储值的,将其称为堆内存;
+            ->对象是把"属性名-属性值"分别的存储进去
+        var function=;->在全局作用域下定义一个函数fn，也是一个全局变量
+            A:开辟一个新的内存空间(在堆内存里)，有一个地址，假设其为xxff11;
+            B:函数fn把函数体中的代码当“字符串”存储进去
+            C:把函数空间地址赋值给我们的全局变量fn->fn=xxff11;
+            ->函数是把函数体中的代码当“字符串”存储进去,这些字符串没有执行就没任何实际意义
+        var res=fn(ary);->把函数fn执行的返回值给res这个全局变量;
+            A:执行我们的fn:->
+                a:首先开辟一个新的私有的作用域，供函数体中的代码执行，并且存储函数体中基本数据类型的值
+                b:如果fn()有形参变量，我们首先给形参赋值->给形参变量ary赋值xxff00;形参是私有变量，因为是在私有作用域下定义的变量->所以全局变量ary和fn(ary)中的ary变量是不同的，但是操作的是同一个内存地址;
+                c:执行fn(ary)这个函数，并且把全局作用域下ary存储的值传递进去->fn(xxff00);
+                d:ary[0]=0;->通过地址xxff00找到对应的内存空间,然后把索引为0的哪一项的值修改为0;引用数据类型法则;可以通过地址改掉内存空间内容;
+                f:ary=[0];->定义ary是个新数组（引用数据类型）要开辟一个新的堆内存;然后ary也指向了新地址->xxff22;内容变成0:0;
+                e:ary[0]=100;->操作了xxff22内容变成0:100;
+                g:返回地址为xxff22内存的ary->res->[100];
+            B:函数执行会形成一个私有的作用域,作用3->保护里面的私有变量(形参/函数体内var过的变量)不受外界干扰;如果外面想使用，只能通过return把需要的值返回;题中把私有变量ary的值xxff22返回到函数的外面
+
+    不管是变量的名字还是函数的名字，都是在当前作用域下起的名字;所以如果一样的话了也算冲突！
+    var fn=12;
+    function fn(){};
+    这两个fn我们只能留一个值二取一;
+
+
+    【预解释】：变量提升
+    预解释只发生在当前作用域下
+    在当前作用域下Js代码执行之前，浏览器会把所有带var和function关键字的进行提前的声明和定义
+    ->声明defined：声明一个变量没有赋值;默认undefined
+    ->定义declare：声明一个变量并且赋值;
+    带var和带function的预解释是不一样的
+    ->var:在预解释的时候只声明，未定义（只有代码执行的时候才会完成赋值定义）
+    ->function:在预解释的时候声明和定义一起完成（当代码在执行到定义的那一段时不用管）
+    在全局作用域下的预解释：var num;fn=xxff00;fn函数里还是一堆字符串;
+    所以全局预解释的时候是不管函数里面的->只有函数执行，里面的字符串变成代码的时候才会进行里面的预解释;
+    顺序执行->
+    console.log(num);//->undefined
+    var num=12;
+    function fn(){
+    console.log(num);->undefined
+    var num=13;
+    console.log(num);->13
+    }
+    fn();//->①开辟新空间②给形参赋值③私有作用域预解释④私有作用域代码顺序执行⑤一般情况下函数形成的私有作用域执行完成就销毁，包括里面声明的私有变量也销毁->这也是一个函数的生命周期->13
+    console.log();//->12
+    私有变量两种情况:
+    ①私有作用域下声明的变量或者函数
+    ②私有作用域的形参
+    在一个函数中，我们遇到一个变量，按照上述的规律看判断是否是私有变量，如果是私有变量，那么当前函数体当中此变量跟外部没有任何关系;
+    函数执行形成一个私有的作用域，保护里面的私有变量不受外界的干扰，这种机制就叫做闭包
+
+
+    */
+
+
+    //【理解带var和不带var的区别】
+    /*
+    console.log(n);//报错->n is not defined
+    n=1;
+    console.log(n);//JS错误解析机制->上报错，下不再执行
+
+    全局下加不加var区别对于全局作用域下的全局变量起作用:
+    var n=1;
+    ①一方面是定义了一个全局的变量
+    ②一方面也相当于给window增加了一个属性num;
+    n=1;
+    ①只相当于给window增加了一个属性num;->window.num=12;
+    ↓
+    n=1;//或var n=1;
+    console.log(n);->1
+    */
+    //
+    /*
+    console.log(num);//->undefined
+    var num=12;
+    function fn(){
+        console.log(num);//->12->在一个私有作用域中发现一个非私有的变量，我们顺着作用域链一直查到全局找到为止;
+        num=13;//->在私有作用域下把全局下的num值修改为13
+        console.log(num);//->13
+    }
+    fn();
+    console.log(num);//->13
+    */
+    /*
+    function fn(){
+        n=2;
+        console.log(n);//->2->私有作用域无n，往上也无n，n=2不是私有变量，所有在window下增加一个属性名：num;属性值:2;
+    }
+    fn();
+    console.log(n);//->2
+    */
+    //1.在函数作用域内加var定义的变量是局部变量（函数内部作用域变量），不加var定义的就成了全局变量。会更改覆盖了外面全局变量的值;
+    //使用var定义
+    /*var a = 'hello World';
+     function bb(){
+     var a = 'hello Bill';
+     console.log(a);
+     }
+     bb();// 'hello Bill'
+     console.log(a); // 'hello world'*/
+
+
+    //不使用var定义
+    /*var e = 'hello world';
+     function cc(){
+     e = 'hello Bill';
+     console.log(e); // 'hello Bill'
+     }
+     cc();// 'hello Bill'
+     console.log(e);// 'hello Bill'*/
+    /*2.在全局作用域下，使用var定义的变量不可以delete,没有var定义的变量可以delete.也就说明隐含全局变量(没有var进行定义的全局变量)严格来说不是真正的变量，而是全局对象的属性，因为属性可以通过delete删除，而变量不可以。*/
+    /*3.使用var定义变量还会提升变量声明*/
+    //使用var定义：
+    /*function hh(){
+     console.log(a);
+     var a = 'hello world';
+     }
+     hh();*///undefined
+
+
+    //不使用var定义：
+    /*function hh(){
+     console.log(a);
+     a = 'hello world';
+     }
+     hh();*/// 'a is not defined'
+    //这就是使用var定义的变量的声明提前。
+    //4.在ECMAScript5的'use strict'模式下，如果变量没有使用var定义，就会报错。
+
+
+
+    //【思考题】：如何区分上一级作用域
+    /*function fn1() {
+        var num = 13;
+        function f() {
+            console.log(num);
+        }
+        f();
+        return f;
+    }
+    var num = 12;
+    var aa = fn1();
+    aa();
+
+    function fn2() {
+        var num = 14;
+        var bb = fn1();
+        bb();
+    }
+    fn2();
+     */
+    //结果是：13-13-13-13
+
+
+
+    //【预解释在私有作用域】
+    // ->undefined+str
+    /*var n=9;
+     var s="str";
+     function fn(){
+     alert(n);
+     alert(s);
+     n=7;
+     var n=6;
+     }
+     fn();*/
+
+
+    //预解释机制忽视循环，忽视方法中的return和选择
+    /*f= function () {
+        return true;
+    };
+    g=function(){
+        return false;
+    };
+    (function(){
+        //单步运算符+ - ~ ！优先级最高！！！
+        //[]->toString->""->false，![]->!对象->false
+        if(g()&&[]==![]){
+            f= function f() {
+                return false;
+            };
+            function g(){
+                return true;
+            }
+        }
+    })();
+    alert(f());//弹出false
+    alert(g());//弹出false，g()这个运行跟闭包没关系的*/
+    /*if(false){
+        function fn(){}
+    }*///火狐还是看条件才决定要不要越解释
+
+
+
+    /*function fn(){
+        alert("我是全局fn方法");
+    }
+    function fn2(){
+        alert(fn);
+        fn=3;
+        return;
+
+        function fn(){
+            alert("我是定义在fn2的方法");
+        }
+    }
+    fn2();//弹出定义在fn2()内定义的这个函数体;*/
+
+
+
+    //点击弹出对应的li的索引号1
+    /*var aLis=document.getElementsByTagName("li");
+    for(var i=0;i<aLis.length;i++){
+        (function(i){
+            aLis[i].onclick=function(){
+                alert(i);
+            }
+        })(i);//执行部分一定得传进来i;
+    }*/
+    //点击弹出对应的li的索引号2
+    /*var aLis=document.getElementsByTagName("li");
+    function fn(i){
+        aLis[i].onclick= function () {
+            alert(i);
+        };
+    }
+    for(var i=0;i<aLis.length;i++){
+        fn(i);
+    }*/
+    //点击弹出对应的li的索引号3
+    /*var aLis=document.getElementsByTagName("li");
+    for(var i=0;i<aLis.length;i++) {
+        aLis[i].index=i;
+            aLis[i].onclick = function () {
+                alert(this.index);
+            }
+    }*/
+
+
+    /*【区别声明和定义的区别】*/
+    /*function a(x){
+        return(x*2);
+    }
+    alert(a);//函数体
+    alert(a());//NaN
+    alert(a(2));//4*/
+
+
+
+    /*function a(x){
+        return(x*2);
+    }
+    var a=1;
+    alert(a)//按赋值处理，弹出1;*/
+
+
+
+    /*function a(x){
+        return(x*2);
+    }
+    var a;//或写成a;去掉var 结果一样;
+    alert(a);//弹出a()函数体;*/
+
+
+
+    /*function a(x){
+        return(x*2);
+    }
+    var a=3;
+    var a=6;
+    alert(a);//弹出赋的值6;*/
+
+
+
+    /*function a(x){
+        return x*2;
+    }
+    var a="moker";
+    alert(a);//弹出在后，不用考虑预解释->moker*/
+
+
+
+    /*alert(a);
+    function a(x){
+        return x*2;
+    }
+    var a="moker";//弹出在前，需要考虑预解释->a(x)函数体;*/
+
+
+
+    //【闭包和作用域】
+   /* function fo(){
+        var i=0;
+        return function(n){
+            return n+i++;
+        }
+    }
+    //fo()(x);让fo()函数运行返回内部函数，把x值传给这个内部函数当实参再执行;跟f=fo()没关系;
+    //f不等于fo()这个作用域;f等于fo()这个作用域返回的内容;fo()返回的内容被f这个全局变量给引用了，所有fo()释放不了这个作用域;
+    var f=fo();
+    alert(fo()(15));//15;
+    alert(fo()(20));//20;
+    alert(fo()(121));//121;函数每执行一次，创建一次变量和匿名函数的作用域，作用域之间变量和值没关系，运行完成后就销毁;
+    alert(f(20));//20;i=0
+    alert(f(20));//21;i=1
+    alert(f(20));//22;i=2
+    alert(f(20));//23;i=3*/
+
+    /*【综合面试题】->
+     【闭包，作用域，预解释，this关键字】
+     this表示的是谁，和定义在哪儿没关系，只和运行在哪儿有关系
+     变量的值是哪一个，和运行在哪里没关系，只和定义在哪儿有关系*/
+    /*var number=2;//等同于window.number=2;
+     var obj={
+     number:4,//obj.number=4;
+     //自运行函数可以独立出来到全局内，然后再赋给fn1；自运行函数或者类似fn()这样前面不赋给别人的函数内部的this.都表示的是window
+     fn1:(function(){
+     this.number*=2;
+     number=number*2;
+     var number=3;
+     return function(){
+     this.number*=2;
+     number*=3;
+     alert(number);
+     }
+     })(),
+
+     db2:function(){this.number*=2}
+     };
+     var fn1=obj.fn1;
+     alert(number);//4
+     fn1();//9
+     obj.fn1();//27
+     alert(window.number);//8
+     alert(obj.number);//8？*/
+</script>
+</body>
+</html>

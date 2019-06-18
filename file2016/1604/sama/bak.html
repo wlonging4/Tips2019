@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="GBK">
+    <title>阔无疆 先马2016新品发布会</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#020204; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  width: 1000px;  margin: 0 auto;  }
+        .title{  text-indent: 15px;  height: 37px; margin: 30px 0 15px 0;  width: 1000px;  line-height: 40px;  color: #fff;  font-size: 26px;  }
+        .title span{  color: #4cd2ff;  }
+        .title em{  padding-left: 22px;  font-size: 20px;  }
+        .title1{  background: url("images/lg_tit1.png") no-repeat 0 0;  }
+        .title2{  background: url("images/lg_tit2.png") no-repeat 0 0;  }
+        .title2 em{  padding-left: 26px;  font-size: 14px;  text-align: center;  }
+        .title3{  background: url("images/lg_tit3.png") no-repeat 0 0;  }
+        .title3 em{  padding-left: 42px;  font-size: 14px;  }
+        .blk-active{ display: block }
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .live-l{  background: url("images/lg_live_l.jpg") no-repeat 100% 0;  }
+        .live-r{  background: url("images/lg_live_r.jpg") no-repeat 0 0;  }
+        .live-c{  width: 1000px;  height: 819px;  }
+        .live-on{  float: left;  width: 690px;  height: 819px;  background: #fff;  margin-right: 10px;  }
+        .live-com{  position: relative;  float: left;  width: 300px;  height: 819px;  background: #fff;  }
+        .live-c-flow{  position: absolute;  width: 142px;  height: 37px;  top: -37px;  line-height: 37px;  text-align: center;  font-size: 28px;  color: #fff;  background: url("images/lg_live_bg.png") no-repeat 0 0;  }
+        .live-c-flow span{  color: #4cd2ff;  }
+        .live-c1{  height: 90px;  width: 270px;  padding: 10px 20px 10px 10px;  background: #00649E;  }
+        .live-c2{  height: 40px;  width: 300px;  background: #004A78;  font-size: 18px;  color: #fff;  text-align: center;  line-height: 38px;  }
+        .live-c2 span{  color: #ff0;  font-size: 22px;  }
+        .live-c3{  width: 300px;  height: 669px;  }
+
+        .video-c{  width: 1000px;  height: 325px;  overflow: hidden;  }
+        .video-c1{  float: left;  width: 495px;  height: 325px;  margin-right: 10px;  }
+        .video-c2{  float: left;  width: 495px;  height: 325px;  }
+
+        .new1-c{  width: 1000px;  height: 488px;  }
+        .new1-c1{  float: left;  width: 498px;  height: 488px;  }
+        .new1-c2{  float: left;  width: 502px;  height: 488px;  }
+        .new2{  height: 386px;  margin-top: 30px;  }
+        .new2-l{  float: left;  width: 354px;  height: 386px;  }
+        .new2-r{  float: left;  width: 646px;  height: 386px;  }
+        .new3{  height: 386px;  margin-top: 30px;  margin-bottom: 50px;  }
+        .new3-l{  float: left;  width: 646px;  height: 386px;  }
+        .new3-r{  float: left;  width: 354px;  height: 386px;  }
+
+        .sum-box{  height: 470px;  width: 840px;  padding: 15px 80px 20px;  }
+        .sum-box-c{  height: 470px;  width: 840px;  display: none;  }
+        .sum-box-c.blk-active{  display: block;  }
+        .sum-ul{  width: 945px;  height: 200px;  padding: 10px 25px 15px;  }
+
+        .show-c{  position: relative;  width: 1000px;  height: 500px;  padding: 5px 0 35px;  }
+        .show-f1{  position: absolute;  height: 76px;  width: 24px;  top: 210px;  left: 10px;  background: url("images/lg_btns.png") no-repeat 0 0;  cursor: pointer;  }
+        .show-f2{  position: absolute;  height: 76px;  width: 24px;  top: 210px;  right: 10px;  background: url("images/lg_btns.png") no-repeat -26px 0;  cursor: pointer;  }
+        .show-con{  position: relative;  height: 500px;  width: 930px;  margin-left: 35px;  overflow: hidden;  }
+        .show-con-box{  position: absolute;  left: 0;  top: 0; height: 500px }
+        .show2-tit{  width: 1000px;  height: 168px;  margin-bottom: 10px;  }
+        .show2-c1{  float: left;  margin-right: 10px;  height: 178px;  width: 250px;  cursor: pointer;  }
+        .show2-c2{  float: left;  margin-right: 10px;  height: 137px;  width: 480px;  }
+        .show2-c3{  float: left;  height: 178px;  width: 250px;  cursor: pointer;  }
+        .show2-tit.c0 .show2-c1{  background: url("images/lg_jing_l.png") no-repeat 0 0;  }
+        .show2-tit.c0 .show2-c2{  background: url("images/lg_wei_c.png") no-repeat top;  }
+        .show2-tit.c0 .show2-c3{  background: url("images/lg_zhuang_r.png") no-repeat 0 0;  }
+        .show2-tit.c1 .show2-c1{  background: url("images/lg_zhuang_l.png") no-repeat 0 0;  }
+        .show2-tit.c1 .show2-c2{  background: url("images/lg_jing_c.png") no-repeat top;  }
+        .show2-tit.c1 .show2-c3{  background: url("images/lg_wei_r.png") no-repeat 0 0;  }
+        .show2-tit.c2 .show2-c1{  background: url("images/lg_wei_l.png") no-repeat 0 0;  }
+        .show2-tit.c2 .show2-c2{  background: url("images/lg_zhuang_c.png") no-repeat top;  }
+        .show2-tit.c2 .show2-c3{  background: url("images/lg_jing_r.png") no-repeat 0 0;  }
+        .show2-c{  height: 470px;  width: 1000px; margin-bottom: 10px;  }
+        .show2-con{  height: 470px;  width: 1000px;  display: none;  position: relative;  }
+        .blk-active{  display: block;  }
+        .show2-f1{  position: absolute;  height: 76px;  width: 24px;  top: 210px;  left: 10px;  background: url("images/lg_btns.png") no-repeat 0 0;  cursor: pointer;  }
+        .show2-f2{  position: absolute;  height: 76px;  width: 24px;  top: 210px;  right: 10px;  background: url("images/lg_btns.png") no-repeat -26px 0;  cursor: pointer;  }
+        .show2-cont{  position: relative;  height: 470px;  width: 836px;  margin-left: 82px;  overflow: hidden;  }
+        .show2-cont-box{  position: absolute;  left: 0;  top: 0; height: 470px;width: 100px  }
+
+        .about{  width: 1000px;  }
+        .ab-l{  float: left;  width: 255px;  margin-right: 20px;  }
+        .ab-l-c{  height: 240px;  width: 240px;  margin-top: 20px;  }
+        .ab-r{  float: left;  width: 450px;  }
+        .ab-r-c{  height: 240px;  width: 440px;  margin-top: 20px;  }
+        .ab-t{  position: relative;  height: 36px;  border-bottom: 2px solid #444;  }
+        .ab-t span{  position: absolute;  display: block;line-height: 34px;border-bottom: 4px solid #4CD2FF;color: #4CD2FF;font-size: 22px;padding: 0 5px;  }
+
+        .footer{ height: 180px; width:1000px; margin: 0 auto; text-align: center;padding-top: 70px;color: #ddd;}
+        .footer a:link{color: #ddd;}
+        .footer a:visited{color: #ddd;}
+
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img src="images/lg_head_c1.jpg" height="208" width="1000" alt=""/>
+            <img src="images/lg_head_c2.jpg" height="212" width="1000" alt=""/>
+            <img src="images/lg_head_c3.jpg" height="182" width="1000" alt=""/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--直播-->
+<table class="live banners" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="live-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="live-c clearfix">
+                <div class="live-on">
+                    模块内容
+                </div>
+                <div class="live-com">
+                    <div class="live-c-flow">
+                        <span>有奖</span>评论
+                    </div>
+                    <div class="live-c1">
+                        模块内容
+                    </div>
+                    <div class="live-c2">
+                        已有<span id="live-count">2122</span>位网友陪您看直播
+                    </div>
+                    <div class="live-c3">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="live-r">&nbsp;</td>
+    </tr>
+</table>
+<!--视频-->
+<div class="video banners wrapper">
+    <div class="title title1">
+        风雨同舟先马<span>14年</span><em>一直在路上</em>
+    </div>
+    <div class="video-c clearfix">
+        <div class="video-c1">
+            模块内容
+        </div>
+        <div class="video-c2">
+            模块内容
+        </div>
+    </div>
+</div>
+<!--新品1-->
+<div class="new1 new banners wrapper">
+    <div class="title title2">
+        现场<span>新品</span>展示<em>The new product</em>
+    </div>
+    <div class="new1-c clearfix">
+        <div class="new1-c1">
+            模块内容
+        </div>
+        <div class="new1-c2">
+            模块内容
+        </div>
+    </div>
+</div>
+<!--新品2-->
+<div class="new2 new banners wrapper clearfix">
+    <div class="new2-l">
+        模块内容
+    </div>
+    <div class="new2-r">
+        模块内容
+    </div>
+</div>
+<!--新品3-->
+<div class="new3 new banners wrapper clearfix">
+    <div class="new3-l">
+        模块内容
+    </div>
+    <div class="new3-r">
+        模块内容
+    </div>
+</div>
+<!--峰会-->
+<div class="summit banners wrapper">
+    <div class="title title2">
+        DIY论坛<span>峰会</span><em>The DIY BBS summit</em>
+    </div>
+    <div class="sum-box">
+        <div class="sum-box-c blk-active">
+            模块内容
+        </div>
+        <div class="sum-box-c">
+            模块内容
+        </div>
+        <div class="sum-box-c">
+            模块内容
+        </div>
+        <div class="sum-box-c">
+            模块内容
+        </div>
+    </div>
+    <div class="sum-ul">
+        模块内容
+    </div>
+</div>
+<!--秀场1-->
+<div class="show1 banners wrapper">
+    <div class="title title3">
+        行业<span>大咖秀</span><em>Industry higher-ups show</em>
+    </div>
+    <div id="show1" class="show-c clearfix">
+        <div class="show-f1"></div>
+        <div class="show-f2"></div>
+        <div class="show-con">
+            <div class="show-con-box">
+                模块内容
+            </div>
+        </div>
+    </div>
+</div>
+<!--秀场2-->
+<div class="show2 banners wrapper">
+    <div class="show2-tit c0 clearfix">
+        <div class="show2-c1"></div>
+        <div class="show2-c2"></div>
+        <div class="show2-c3"></div>
+    </div>
+    <div class="show2-c">
+        <div class="show2-con show2-b0 blk-active">
+            <div class="show2-f1"></div>
+            <div class="show2-f2"></div>
+            <div class="show2-cont">
+                <div class="show2-cont-box">
+                    模块内容
+                </div>
+            </div>
+        </div>
+        <div class="show2-con show2-b1">
+            <div class="show2-f1"></div>
+            <div class="show2-f2"></div>
+            <div class="show2-cont">
+                <div class="show2-cont-box">
+                    模块内容
+                </div>
+            </div>
+        </div>
+        <div class="show2-con show2-b2">
+            <div class="show2-f1"></div>
+            <div class="show2-f2"></div>
+            <div class="show2-cont">
+                <div class="show2-cont-box">
+                    模块内容
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--关于-->
+<div class="about banners wrapper clearfix">
+    <div class="ab-l">
+        <div class="ab-t">
+            <span>先马新闻速递</span>
+        </div>
+        <div class="ab-l-c">
+            模块内容
+        </div>
+    </div>
+    <div class="ab-l">
+        <div class="ab-t">
+            <span>先马产品评测</span>
+        </div>
+        <div class="ab-l-c">
+            模块内容
+        </div>
+    </div>
+    <div class="ab-r">
+        <div class="ab-t">
+            <span>企业介绍</span>
+        </div>
+        <div class="ab-r-c">
+            模块内容
+        </div>
+    </div>
+</div>
+<!--尾部-->
+<div class="footer">
+    模块内容
+</div>
+<!--<script charset="GBK" type="text/javascript" src="../jquery-1.9.1.js"></script>-->
+<script charset="GBK" type="text/javascript">
+    /*data-count*/
+    $.getJSON("http://dynamic.zol.com.cn/channel/get_broadcast_attention.php?docId=5635448&callback=?",{},function(obj){
+        $("#live-count").html(obj);
+    });
+    //图片切换
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".show-con-box",".show-con",1,".show-f1",".show-f2");
+    scrolls(".show2-cont-box",".show2-cont",1,".show2-f1",".show2-f2");
+
+    /*标题切换*/
+    var $tit_l=$('.show2-c1');
+    var $tit_r=$('.show2-c3');
+    var $show2_con=$('.show2-con');
+    var $show2_b0=$('.show2-b0');
+    var $show2_b1=$('.show2-b1');
+    var $show2_b2=$('.show2-b2');
+    $tit_l.bind('click', function () {
+        if($(this).parent().hasClass('c0')){
+            $(this).parent().removeClass('c0').addClass('c2');
+            $show2_b0.removeClass('blk-active');
+            $show2_b2.addClass('blk-active');
+        }else if($(this).parent().hasClass('c1')){
+            $(this).parent().removeClass('c1').addClass('c0');
+            $show2_b1.removeClass('blk-active');
+            $show2_b0.addClass('blk-active');
+        }else if($(this).parent().hasClass('c2')){
+            $(this).parent().removeClass('c2').addClass('c1');
+            $show2_b2.removeClass('blk-active');
+            $show2_b1.addClass('blk-active');
+        }
+    });
+    $tit_r.bind('click', function () {
+        if($(this).parent().hasClass('c0')){
+            $(this).parent().removeClass('c0').addClass('c1');
+            $show2_b0.removeClass('blk-active');
+            $show2_b1.addClass('blk-active');
+        }else if($(this).parent().hasClass('c1')){
+            $(this).parent().removeClass('c1').addClass('c2');
+            $show2_b1.removeClass('blk-active');
+            $show2_b2.addClass('blk-active');
+        }else if($(this).parent().hasClass('c2')){
+            $(this).parent().removeClass('c2').addClass('c0');
+            $show2_b2.removeClass('blk-active');
+            $show2_b0.addClass('blk-active');
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    !function (d) {
+        var q, f, b, o = document.documentElement, l = document.querySelector('meta[name="viewport"]'), k = parseInt(window.getComputedStyle(o)["font-size"]), e = document.querySelector('meta[name="zol-rem-params"]'), p = 640, g = document.getElementById("zol-rem-font-style"), n = document.getElementById("zol-rem-root-style"), a = navigator.userAgent;
+
+        function m(t) {
+            if (!t) {
+                return
+            }
+            if (t = t.content) {
+                var r = /width=(\d+)/.exec(t);
+                r &amp;&amp; r[1] &amp;&amp; (p = r[1]);
+                var u = /fonts=([^;]+)/.exec(t);
+                u &amp;&amp; u[1] &amp;&amp; (u = u[1].split(","));
+                var s = "body:{font-size:" + k * q + "px}";
+                u &amp;&amp; u.forEach(function (v) {
+                    s += '[data-dpr="1"] .f' + v + "{font-size:" + v / 2 + "px!important}";
+                    s += '[data-dpr="2"] .f' + v + "{font-size:" + v + "px!important}";
+                    s += '[data-dpr="3"] .f' + v + "{font-size:" + v / 2 * 3 + "px!important}"
+                });
+                if (u &amp;&amp; !g) {
+                    g = document.createElement("style");
+                    g.id = "zol-rem-font-style";
+                    g.innerHTML = s;
+                    document.getElementsByTagName("head")[0].appendChild(g);
+                    document.documentElement.setAttribute("data-dpr", q)
+                }
+            }
+        }
+
+        function h() {
+            var r = o.getBoundingClientRect().width;
+            r / q &gt; p &amp;&amp; (r = p * q);
+            h.rem = r * 100 / p;
+            if (!n) {
+                n = document.createElement("style");
+                n.id = "zol-rem-root-style";
+                document.getElementsByTagName("head")[0].appendChild(n)
+            }
+            n.innerHTML = "html{font-size:" + h.rem + "px;-webkit-text-size-adjust: 100%;}"
+        }
+
+        if (!q &amp;&amp; !f) {
+            var c = (d.navigator.appVersion.match(/android/gi) || d.navigator.appVersion.match(/iphone/gi));
+            q = d.devicePixelRatio;
+            q = c ? q &gt;= 3 ? 3 : q &gt;= 2 ? 2 : 1 : 1;
+            if (/android/ig.test(a) &amp;&amp; /ucbrowser/ig.test(a) || /xiaomi||mi\snote/ig.test(a)) {
+                q = 1
+            }
+            f = 1 / q;
+            f = 1 / q
+        }
+        if (!l) {
+            l = document.createElement("meta");
+            l.setAttribute("name", "viewport");
+            l.setAttribute("content", "initial-scale=" + f + ", maximum-scale=" + f + ", minimum-scale=" + f + ", user-scalable=no" + (/android/i.test(a) &amp;&amp; /zol/i.test(a) ? ", target-densitydpi=device-dpi" : ""));
+            o.firstElementChild.appendChild(l)
+        } else {
+            var j = l.getAttribute("content").match(/initial\-scale=([^\,$]+)/);
+            j &amp;&amp; (f = parseFloat(j[1]), q = parseInt(1 / f))
+        }
+        Object.defineProperty(window, "dpr", {value: q, writable: !1});
+        d.addEventListener("resize", function () {
+            clearTimeout(b), b = setTimeout(h, 300)
+        }, false);
+        d.addEventListener("pageshow", function (r) {
+            r.persisted &amp;&amp; (clearTimeout(b), b = setTimeout(h, 300))
+        }, false);
+        d.setupFontSize = function (r) {
+            2 !== d.dpr &amp;&amp; (r || (r = document.body), r = r.querySelectorAll("[data-changed]"), [].forEach.call(r, function (t) {
+                if (!t.style.fontSize) {
+                    var s = +getComputedStyle(t)["font-size"].replace(/px/, "");
+                    t.style.fontSize = s / 2 * window.dpr + "px"
+                }
+            }))
+        };
+        h();
+        m(e);
+        var i = function () {
+            setupFontSize()
+        };
+        document.readyState === "complete" ? i() : document.addEventListener("DOMContentLoaded", i, false)
+    }(window);
+</script>
+</body>
+</html>

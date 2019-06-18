@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>移动端拖拽事件</title>
+    <style type="text/css">
+        #outer{
+            width: 70%;
+            height: 100px;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        #inner{
+            width: 500%;
+            height: 100%;
+        }
+        #inner div{
+            float: left;
+            width: 20%;
+            height: 100%;
+            line-height: 100px;
+            background: cadetblue;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+            <div style="background: chocolate">1</div>
+            <div style="background: #292764">2</div>
+            <div style="background: #690e58">3</div>
+            <div style="background: #ff2e47">4</div>
+            <div style="background: forestgreen">5</div>
+        </div>
+    </div>
+    <script>
+        function start(e){
+            this.startX= e.changedTouches[0].pageX;
+        }
+        function move(e){
+            var change= e.changedTouches[0].pageX-this.startX;
+            this.parentNode.style.transform="translate("+(-this.index*this.offsetWidth+change)+"px,0)";
+            var index=this.index;
+            if(change>0){
+                this.parentNode.index=--index;
+            }else if(change<0){
+                this.parentNode.index=++index;
+            }
+        }
+        function end(e){
+            this.parentNode.style.transform="translate("+(-this.parentNode.index*this.offsetWidth)+"px,0)";
+        }
+        var oDiv=document.getElementById("inner").getElementsByTagName("div");
+        [].forEach.call(oDiv,function(ele,i){
+            ele.index=i;
+            ele.addEventListener("touchstart",start);
+            ele.addEventListener("touchmove",move);
+            ele.addEventListener("touchend",end);
+        })
+    </script>
+</body>
+</html>

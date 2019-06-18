@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取最值</title>
+</head>
+<body>
+<script type="text/javascript">
+    var ary=[1,2,4,2,5,7,9];
+    //1.数组排序,把头尾输出
+    /*ary.sort(function(a,b){
+        return a-b;
+    });
+    var max=min=0;//var max=0,min=0;
+    max=ary[ary.length-1];
+    min=ary[0];
+    console.log(max,min);*/
+    //2.假设模式->假设第一个值是最值,然后与各个比较,如果比假设值大/小,重新设置假设值;
+    /*var max=min=ary[0];
+    for(var i=0;i<ary.length;i++){
+        ary[i]>max?max=ary[i]:null;
+        ary[i]<min?min=ary[i]:null;
+    }
+    console.log(max,min);*/
+    //3.使用Math,apply
+    //var max=Math.max();使用Math传的值要逐个传递进来,不能直接传递数组;ary.toString->"..."->eval("...")->输出的是字符串最后的那个值
+    //eval()->把字符号串变为JS表达式执行:console.log(eval("1,2,3,4"));->eval中遇到","只会取最后一个->4;利用apply在执行时,指定的参数需要放在一个数组中穿起来
+    var max=Math.max.apply(null,ary);
+    var min=Math.min.apply(null,ary);
+    console.log(max,min);
+</script>
+</body>
+</html>

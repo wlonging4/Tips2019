@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>布局-两列等高结构-负边距实现</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #header,#footer{
+            width:960px;
+            height:30px;
+            background-color: #E8E8E8;
+        }
+        #container{
+            width:960px;
+            overflow: hidden;
+        }
+        .mainbox{
+            float: left;
+            width:650px;
+            background-color: #333333;
+        }
+        .sidebox{
+            float: right;
+            width:280px;
+            background-color: #AAAAAA;
+        }
+        .mainbox, .sidebox{
+            padding: 0 5px;
+            color: #FF0000;
+            margin-bottom: -9999px;
+            padding-bottom: 9999px;
+        }
+        #container:after{
+            display: block;
+            line-height: 0;
+            font-size:0;
+            visibility: hidden;
+            clear: both;
+            content: "";
+        }/*清除内容区域的左右浮动*/
+    </style>
+</head>
+<body>
+<div id="header">顶部</div>
+<div id="container">
+    <div class="mainbox">主栏<br/>主栏<br/>主栏</div>
+    <div class="sidebox">侧栏</div>
+</div>
+<div id="footer">底部</div>
+</body>
+</html>

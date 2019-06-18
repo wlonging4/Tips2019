@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map动态响应图</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .aa{
+        background: indianred;
+        height: 400px;
+        width: 800px;
+    }
+        progress
+        {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;;
+        }
+        #a3{
+            height: 200px;
+            width: 400px;
+            border:2px solid green;
+            border-bottom-width: 4px;
+            border-bottom-color: indianred;
+        }
+</style>
+</head>
+<body>
+    <progress value="10" max="50"></progress>
+    <button type="button">80%</button>
+    <div id="a3"></div>
+    <script>
+        var pro=document.getElementsByTagName("progress")[0];
+        var btn=document.getElementsByTagName("BUTTON")[0];
+        btn.onclick= function (e) {
+            pro.value=e.target.value;
+        }
+    </script>
+</body>
+</html>

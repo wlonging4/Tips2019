@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5结合的响应式媒体查询</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        article,aside,details,figure,figcaption,footer,header,hgroup,menu,nav,section{
+            display: block;
+        }
+        #page{
+            width: 980px;
+            margin: 0 auto;
+        }
+        #header{
+            height: 160px;
+        }
+        #content{
+            width: 600px;
+            float: left;
+        }
+        #side{
+            width: 380px;
+            float: right;
+        }
+        #footer{
+            clear: both;
+        }
+        @media screen and (max-width: 980px){
+            #page{
+                width: 95%;
+            }
+            #content{
+                width: 60%;
+                padding: 3% 4%;
+            }
+            #side{
+                width: 30%;
+            }
+            #side .widget{
+                padding: 8% 7%;
+                margin-bottom: 10px;
+            }
+        }
+        @media screen and (max-width: 650px){
+            #header{
+                height: auto;
+            }
+            #search{
+                position: absolute;
+                top: 5px;
+                right: 0;
+            }
+            #main-nav{
+                position: static;
+            }
+            #nav-logo{
+                position: static;
+                margin: 15px 100px 5px 0;
+            }#nav-des{
+                position: static;
+                margin:0 0 15px;
+            }
+             #content{
+                 margin: 20px 0;
+                 width: auto;
+                 float: none;
+             }
+             #side{
+                 width: 100%;
+                 float: none;
+                 margin: 0;
+             }
+        }
+        @media screen and (max-width: 480px){
+            html{
+                -webkit-text-size-adjust: none;
+            }
+            #main-nav a{
+                font-size: 90%;
+                padding: 10px 8px;
+            }
+        }
+        img{
+            max-width: 100%;
+            height: auto;
+            width: auto\9; /* ie 8 */
+        }
+        video embed,video object,video iframe{
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+        }
+
+    </style>
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="page">
+    <header id="header">
+        <hgroup>
+            <h1 id="nav-logo">DEMO</h1>
+            <h2 id="nav-des">DEMO DESCRIPTION</h2>
+        </hgroup>
+        <nav>
+            <ul id="main-nav">
+                <li>This is <a href="#">NAVIGATION</a></li>
+            </ul>
+        </nav>
+        <form action="#" id="search">
+            <input type="search"/>
+        </form>
+    </header>
+    <div id="content">
+        <article class="post">ARTICLE post</article>
+    </div>
+    <aside id="side">
+        <section class="widget">ASIDE widget</section>
+    </aside>
+    <footer id="footer">
+        FOOTER
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延时提示框-入门</title>
+    <style type="text/css">
+        #div1{
+            height: 30px;
+            line-height: 25px;
+            text-align: center;
+            font-weight: bolder;
+            width: 100px;
+            background: red;
+            cursor: pointer;
+            border-radius: 5px;
+            background: -webkit-linear-gradient(top right,gray,white);
+            box-shadow: 3px 5px lightgray;
+        }
+        #div2{
+            height: 20px;
+            line-height: 18px;
+            text-align: center;
+            width: 200px;
+            background: darkgray;
+            margin: 10px;
+            display: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        #div2 a{
+            text-decoration: none;
+            color: darkslategray;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">产品介绍</div>
+<div id="div2">
+    <a href="#">足球</a>
+    <a href="#">桌球</a>
+    <a href="#">网球</a>
+    <a href="#">篮球</a>
+</div>
+<script type="text/javascript">
+    var oDiv1=document.getElementById("div1");
+    var oDiv2=document.getElementById("div2");
+    var timer=null;
+
+    oDiv1.onmouseover=function(){
+        oDiv2.style.display="block";
+        clearTimeout(timer);
+    };
+    oDiv1.onmouseout=function(){
+        timer=setTimeout(function(){oDiv2.style.display="none";},300);
+    };
+    //setTimeout对应的是clearTimeout
+    oDiv2.onmouseover=function(){
+        oDiv2.style.display="block";
+        clearTimeout(timer);
+    };
+    oDiv2.onmouseout=function(){
+        timer=setTimeout(function(){oDiv2.style.display="none";},300);
+        //从div2移到div1会闪烁一下加timeout函数
+    }
+</script>
+</body>
+</html>

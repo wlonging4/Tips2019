@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="gbk">
+    <meta charset="UTF-8">
+    <title>视频测试</title>
+    <style type="text/css">
+        .abs{
+            width: 600px;
+            height: 400px;
+            background: gray;
+            color: #fff;
+            margin-top: 100px;
+        }
+        .aas{
+            width: 600px;
+            height: 400px;
+            display: none;
+        }
+        .aas.blk{
+            display: block;
+        }
+        .b{
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
+            font-size: 18px;
+            color: #000;
+            background: indianred;
+        }
+        .b:hover{
+            background: mediumseagreen;
+        }
+
+    </style>
+</head>
+<body>
+<div class="abs">
+    <div class="aas blk">
+        模块内容
+    </div>
+    <div class="aas">
+        模块内容
+    </div>
+</div>
+<div class="b">1</div>
+<div class="b">2</div>
+<script>
+    $('.b').bind('mouseenter', function () {
+        var $i=$('.b').index(this);
+        $('.aas').eq($i).addClass('blk').siblings().removeClass('blk');
+    })
+</script>
+</body>
+</html>

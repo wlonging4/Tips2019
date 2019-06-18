@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡排序</title>
+</head>
+<body>
+<script type="text/javascript">
+    var ary1=[1,2,9,4,3,6,8,5,7,0];
+
+    for(var i=0;i<ary1.length-1;i++) {
+        for (var j = 0; j < ary1.length - 1 - i; j++) {
+            if (ary1[j] > ary1[j + 1]) {
+                var tem = ary1[j];
+                ary1[j] = ary1[j + 1];
+                ary1[j + 1] = tem;
+            }
+        }
+    }
+    document.writeln(ary1);
+</script>
+</body>
+</html>

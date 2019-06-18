@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="GBK">
+    <title>Build 2016ms开发者大会</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*样式表*/
+        .wrapper{  width: 1000px;  margin: 0 auto;  }
+        .wrapper2{  width: 100%;  background: #0080A6;  }
+        .wrapper3{  width: 100%;  background: #000;}
+        .bg-head-l{  background: url("http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_head_l.jpg") no-repeat 100% 0;  }
+        .bg-head-r{  background: url("http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_head_r.jpg") no-repeat 0 0;  }
+        .tit{  position: relative;  top: -40px;  z-index: 4;  overflow: hidden;  }
+        .tit ul{  display: block;  width: 1002px;  }
+        .tit ul li{  _display:inline;  float: left;  width: 167px;  height: 32px;  line-height: 80px;  font-size: 20px;  padding:0 0 48px 0;  text-align: center;  background: #467BBC;  cursor: pointer;  }
+        .tit ul li:hover{  background: #3A67AA;  }
+        .tit ul li a{  color: #fff;display: block;   width: 167px;  height: 80px; }
+        .tit ul li a:hover{  text-decoration: none; background: #3A67AA; }
+
+        .focus{  height: 430px;  }
+        .focus1{  float: left;  width: 310px;  height: 430px;  background: url("http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_focus1.jpg") no-repeat 0 0;  }
+        .focus1-c{  height: 380px;  width: 290px;  margin: 40px 10px 10px;  }
+        .focus1-c .bai12{ padding-left: 5px; }
+        .focus2{  float: left;  width: 320px;  height: 430px;  padding: 0 40px 0 30px;  }
+        .focus2-t{  height: 260px;  }
+        .focus2-t .ln{ height: 22px}
+        .focus2-t .lan20{ color: #3867AB;}
+        .focus2-t .lan20:hover{ text-decoration: none;color: #3867AB; }
+        .focus2-t .hui12{ color: #9797A5; padding-top: 5px;}
+        .focus2-t .hong12{ color: #83ACDF; }
+        .focus2-b{  margin-top: 20px;  height: 150px;  }
+        .focus2-b1{  position: relative;  text-align: right;  height: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_focus2_b.jpg") no-repeat 0 0;  }
+        .focus2-b1 span{  position: absolute;  bottom: 0;  right: 0;  display: block;  }
+        .focus2-b1 span a{  color: #EAB641;  font-size: 12px;  line-height: 14px;  margin-bottom: 0;  }
+        .focus2-b2{  width: 320px;  height: 35px;  padding: 20px 0 5px;  }
+        .focuse-b2 .hui12bi{ color: #9797A5; }
+        .focus3{  background: url("http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_focus3.jpg") no-repeat 0 0;  float: left;  width: 300px;  height: 430px;  }
+        .focus3-t{  height: 50px;  width: 260px;  margin: 40px 20px 0;  }
+        .focus3-t .bai14{  line-height: 30px;  }
+        .focus3-t .bai14:hover{  text-decoration: none;  color: #fff;  }
+        .focus3-t .hong12{ color:#83ACDF; }
+        .focus3-c{  height: 80px;  width: 260px;  margin: 15px 20px 20px;  }
+        .focus3-b{  width: 255px;  height: 205px;  margin: 0 25px 20px 20px;  }
+        .focus3-b .bai12{ padding-top: 15px;}
+        .focus3-b .bai12 .hong12{ color: #83ACDF; }
+        .focus2-b .bai16{ font-weight: bold; font-family: "microsoft yahei"; }
+        .focus2-b .bai16:hover{ color: #fff; text-decoration: none;}
+
+        .live-v1{  float: left;  width: 680px;  height: 570px;  }
+        .live-v-p{  margin: 40px 0 20px;  height: 30px;  font-size: 26px;  color: #31313F;  }
+        .live-v1-video{  width: 680px;  height: 480px;  }
+        .live-v2{  float: left;  width: 300px;  height: 570px;  margin-left: 20px;  }
+        .live-v2-img{  height: 480px;  width: 300px;  }
+        .live-v2-img .hui14{ display: block; padding: 7px 0 13px; line-height: 20px;color: #9797A6;text-align: center }
+        .live-v2-img .hui14:hover{text-decoration: none;}
+
+        .live-t1{  float: left;  width: 660px;  height: 690px;  }
+        .live-t1-live{  width: 660px;  height: 600px;  }
+        .live-t2{  float: left;  width: 330px;  height: 690px;  margin-left: 10px;  }
+        .live-t2-comment{  height: 600px;  width: 330px;  }
+
+        .software{  border-bottom: 1px solid #eee;  }
+        .soft-tit{  height: 30px;  margin: 20px 0;  background: #79B84F;  line-height: 30px;  font-size: 16px;  color: #fff;  text-indent: 25px;  font-weight: bold;  }
+        .soft-con{  height: 350px;  }
+        .soft-con .lan20{ color: #3866AB; }
+        .soft-con .lan20:hover{ text-decoration: none; }
+        .soft-con .lan20 a:hover{ text-decoration: none; color: #3866AB; }
+        .soft-con .hui12{ padding-top: 25px;}
+        .soft-con .hui12 .hong12{ color: #80ACDE ;}
+        .soft-con .bai14{  text-align: center;  background: #3766AC;  opacity: 0.9;  filter: alpha(opacity=90); }
+        .soft-con1{  float: left;  width: 440px;  height: 330px;  margin: 0 0 20px 20px;  }
+        .soft-con2{  float: left;  width: 500px;  height: 330px;  margin: 0 20px 20px;  }
+        .soft-con2-t{  height: 130px;  }
+        .soft-con2-b{  margin-top: 20px;  height: 180px;  }
+
+        .hardware{  border-bottom: 1px solid #eee;  }
+        .hard-tit{  height: 30px;  margin: 20px 0;  background: #EBB642;  line-height: 30px;  font-size: 16px;  color: #fff;  text-indent: 25px;  font-weight: bold;  }
+        .hard-con{  height: 350px;  }
+        .hard-con .lan20{ color: #3866AB; }
+        .hard-con .lan20:hover{ text-decoration: none; }
+        .hard-con .lan20 a:hover{ text-decoration: none; color: #3866AB; }
+        .hard-con .hui12{ padding-top: 25px;}
+        .hard-con .hui12 .hong12{ color: #80ACDE ;}
+        .hard-con .bai14{  text-align: center;  background: #3766AC;  opacity: 0.9;  filter: alpha(opacity=90); }
+        .hard-con1{  float: left;  width: 440px;  height: 330px;  margin: 0 0 20px 20px;  }
+        .hard-con2{  float: left;  width: 500px;  height: 330px;  margin: 0 20px 20px;  }
+        .hard-con2-t{  height: 130px;  }
+        .hard-con2-b{  margin-top: 20px;  height: 180px;  }
+
+        .lec-l{  float: left;  width: 380px;  }
+        .lec-l-con{  height: 320px;  width: 340px;  padding: 10px 9px 9px;  border-width: 0 1px 1px ;  border-style: solid;  border-color: #eee;;  }
+        .lec-l-con .ln{  height: 20px;  }
+        .lec-l-con .bai14{  text-align: center;  background: #3766AC;  opacity: 0.9;  filter: alpha(opacity=90);  }
+        .lec-l-tit{  width: 360px;  height: 30px;  margin-top: 20px;  background: #3969AB;  line-height: 30px;  font-size: 16px;  color: #fff;  text-indent: 25px;  font-weight: bold;  }
+        .lec-r{  float: left;  width: 620px;  }
+        .lec-r-ul{  width: 420px;  height: 280px;  padding: 30px 100px 29px 99px;  border-width: 0 1px 1px ;  border-style: solid;  border-color: #eee;  }
+        .lec-r-ul  .ln{ height: 15px }
+        .lec-r-ul img{ margin-bottom: 15px; }
+        .lec-r-ul .hui14{ line-height: 15px; color: #A7A7B7; display: block;text-align: center;}
+        .lec-r-tit{  height: 30px;  margin-top: 20px;   background: #D03F3E;  line-height: 30px;  font-size: 16px;  color: #fff;  text-indent: 25px;  font-weight: bold;  }
+
+        .opinion{  border-bottom: 1px solid #eee;  }
+        .opinion-tit{  height: 30px;  margin-top: 20px;  background: #3969AB;  line-height: 30px;  font-size: 16px;  color: #fff;  text-indent: 25px;  font-weight: bold;  }
+        .opinion-con{  width: 980px;  height: 390px;  padding: 20px 0 20px 20px;  }
+        .opinion-con .ln{ height: 30px; }
+        .opinion-con .lan20{ padding: 0 25px; color: #3866AB;}
+        .opinion-con .lan20:hover{ text-decoration: none; }
+        .opinion-con .lan20 a:hover{ text-decoration: none; color: #3866AB; }
+        .opinion-con .hui12{ padding: 25px 25px 0;}
+        .opinion-con .hui12 .hong12{ color: #80ACDE ;}
+
+        .dateback{  margin-top: 20px;  }
+        .db-content{  width: 1000px;  margin: 0 auto;  }
+        .db-tit{  height: 30px;  padding: 10px 0;   line-height: 30px;  font-size: 16px;  color: #fff;  text-indent: 25px;  font-weight:bold;  }
+        .db-con{  height: 130px;  width: 1000px;  padding-bottom: 20px;  }
+
+        .footer{ height: 300px;text-align: center;padding-top: 100px;color: #A7A7B7;}
+        .footer a:link{color: #A7A7B7;}
+        .footer a:visited{color: #A7A7B7;}
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="bg-head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img src="http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_head_c1.jpg" width="1000" height="196" alt=""/>
+            <img src="http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_head_c2.jpg" width="1000" height="173" alt=""/>
+            <img src="http://2.zol-img.com.cn/zt/tm_56f/363a66d11e/lg_head_c3.jpg" width="1000" height="190" alt=""/>
+        </td>
+        <td class="bg-head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<div class="tit wrapper banners">
+    <ul class="clearfix">
+        <li><a href="#live-video" target="_self" name="live-video" >大会直播</a></li>
+        <li><a href="#software" target="_self" name="software">软件</a></li>
+        <li><a href="#hardware" target="_self" name="hardware">硬件</a></li>
+        <li><a href="#focus" target="_self" name="focus">看点期待</a></li>
+        <li><a href="#opinion" target="_self" name="opinion">嘉宾观点</a></li>
+        <li><a href="#databack" target="_self" name="databack">往届回顾</a></li>
+    </ul>
+</div>
+<!--聚焦-->
+<div id="focus" class="focus wrapper banners clearfix">
+    <div class="focus1">
+        <div class="focus1-c">
+            <{data[0]}>
+        </div>
+    </div>
+    <div class="focus2">
+        <div class="focus2-t">
+            <{data[1]}>
+        </div>
+        <div class="focus2-b">
+            <div class="focus2-b1">
+                <span><a href="javascript:;">more+</a></span>
+            </div>
+            <div class="focus2-b2">
+                <{data[2]}>
+            </div>
+            <div class="focus2-b2">
+                <{data[3]}>
+            </div>
+        </div>
+    </div>
+    <div class="focus3">
+        <div class="focus3-t">
+            <{data[4]}>
+        </div>
+        <div class="focus3-c">
+            <{data[5]}>
+        </div>
+        <div class="focus3-b">
+            <{data[6]}>
+        </div>
+    </div>
+</div>
+<!--视频直播-->
+<div id="live-video" class="live-video wrapper banners clearfix">
+    <div class="live-v1">
+        <p class="live-v-p">
+            Build 2016视频直播
+        </p>
+        <div class="live-v1-video">
+            <{data[7]}>
+        </div>
+    </div>
+    <div class="live-v2">
+        <p class="live-v-p">
+            精彩图集
+        </p>
+        <div class="live-v2-img">
+            <{data[8]}>
+        </div>
+    </div>
+</div>
+<!--图文直播-->
+<div id="live" class="live-txt wrapper banners clearfix">
+    <div class="live-t1">
+        <p class="live-v-p">
+            图文直播
+        </p>
+        <div class="live-t1-live">
+            <{data[21]}>
+        </div>
+    </div>
+    <div class="live-t2">
+        <p class="live-v-p">
+            网友评论
+        </p>
+        <div class="live-t2-comment">
+            <{data[9]}>
+        </div>
+    </div>
+</div>
+<!--软件-->
+<div id="software" class="software wrapper banners">
+    <div class="soft-tit">软件</div>
+    <div class="soft-con clearfix">
+        <div class="soft-con1">
+            <{data[10]}>
+        </div>
+        <div class="soft-con2">
+            <div class="soft-con2-t">
+                <{data[11]}>
+            </div>
+            <div class="soft-con2-b">
+                <{data[12]}>
+            </div>
+        </div>
+    </div>
+</div>
+<!--硬件-->
+<div id="hardware" class="hardware wrapper banners">
+    <div class="hard-tit">硬件</div>
+    <div class="hard-con clearfix">
+        <div class="hard-con1">
+            <{data[13]}>
+        </div>
+        <div class="hard-con2">
+            <div class="hard-con2-t">
+                <{data[14]}>
+            </div>
+            <div class="hard-con2-b">
+                <{data[15]}>
+            </div>
+        </div>
+    </div>
+</div>
+<!--嘉宾-->
+<div id="lecturer" class="lecturer wrapper banners clearfix">
+    <div class="lec-l">
+        <p class="lec-l-tit">
+            主要演讲嘉宾
+        </p>
+        <div class="lec-l-con">
+            <{data[16]}>
+        </div>
+    </div>
+    <div class="lec-r">
+        <p class="lec-r-tit">
+            主要演讲嘉宾
+        </p>
+        <div class="lec-r-ul">
+            <{data[17]}>
+        </div>
+    </div>
+</div>
+<!--观点-->
+<div id="opinion" class="opinion wrapper banners">
+    <div class="opinion-tit">嘉宾观点</div>
+    <div class="opinion-con">
+        <{data[18]}>
+    </div>
+</div>
+<!--回顾-->
+<div id="databack" class="dateback wrapper2 banners">
+    <div class="db-content">
+        <div class="db-tit">往届回顾</div>
+        <div class="db-con">
+            <{data[19]}>
+        </div>
+    </div>
+</div>
+<!--底部链-->
+<div class="wrapper3 footer">
+    <{data[20]}>
+</div>
+</body>
+</html>

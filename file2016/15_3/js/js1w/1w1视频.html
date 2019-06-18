@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    /*function fn(){
+     alert("fn");
+     }
+     window.setTimeout(fn,1000);//fn函数本身，该行代码运行完之后再传值（即fn）给setTimeout，1s后执行fn();
+     alert(14);//先执行弹出14,因为上面的函数是在1s之后才执行弹出;
+     // fn()返回的是个函数;
+     //fn和fn()的区别;*/
+
+
+
+    /*function fn(i){
+     alert("fn"+i);
+     }
+     window.setTimeout(fn(9),1000);
+     alert(14);*///这样执行的话，fn()要传递参数，那么当传递一个值的时候，上面的函数会立即执行，导致上面的会比下面的先弹出;
+
+
+
+    //既想传参数，又想异步执行
+    /*function fn(i){
+     alert("fn"+i);
+     }
+     window.setTimeout(function(){fn(9)},1000);
+     alert(14);*///在外部嵌套一个函数
+
+
+
+    //fn和fn()的区别
+    /*function fn(){
+     return function xn(){
+     alert("freedom");
+     }
+     }
+     alert(fn);//弹出fn函数体
+     alert(fn());//弹出fn函数体内部return的函数体
+     alert(fn(1));//弹出fn函数体内部return的函数体*/
+
+
+
+    //综合
+    //没有形参的函数传个实参是合法的，但是这个参数不操作;
+    /*function fn(i){
+     alert("fn"+i);
+     }
+     window.setTimeout(fn(8),1000);//当时就执行，运行后把fn(9)的返回值当参数给setTimeout
+     window.setTimeout(function(){fn(9)},1000);//参数是命名方法,把fn函数给setTimeout当参数;1000这个参数不写，在队列内也要等待几ms才能执行，所以是最后一个执行;
+     alert(14);*/
+
+
+
+    //去掉参数1000，下面的alert先执行，因为是异步的，不是一个队列
+    /*function fn(i){
+     alert("fn"+i);
+     }
+     window.setTimeout(function(){fn(9)},0);
+     alert(14);*///不懂不懂不懂
+
+
+
+    /*window.setTimeout(fn(),1000);//这样也可以，关键看fn()返回的类型，number无所谓,但是要是return一个方法那么就得在1s之后再执行;
+     fn();
+     alert(14);*///这个先执行,因为上面的setTime要1s才能执行完;
+
+
+    /*this->contend->上下文->一个行为发生的主体
+    作用域->在哪里发生
+    上下文->和谁发生事
+    this是谁和在那儿定义都没有关系，只和在哪儿执行有关系，定义的时候不知道this是谁，只有运行的时候才能知道this是指谁;
+    变量属于那个作用域，由它在那儿（作用域）定义有关系;
+
+
+
+     */
+    /*function fn(){
+        /!*alert(this);*!/
+    }
+    fn();//是window
+    document.documentElement.onclick=fn;
+    var obj={fn:fn};//fn都是fn对应方法的内存地址
+    obj.fn();//一个定义可以赋给不同的对象执行*/
+</script>
+</body>
+</html>

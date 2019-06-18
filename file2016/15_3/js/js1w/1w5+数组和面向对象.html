@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组和面向对象</title>
+</head>
+<body>
+<script type="text/javascript">
+    //简单去重
+    /*var a=[3,2,4,3,2,5,2,2];
+    Array.prototype.distinct=function(){
+        var a=this;
+        for(var j=0;j< a.length-1;j++){
+            var item=a[j];
+            for(var i=j+1;i< a.length;){
+                if(item===a[i]){
+                    a.splice(i,1)
+                }else{
+                    i++;
+                }
+            }
+        }
+    };
+    alert(a.distinct());
+    alert(a);*/
+
+    //包含对象的去重
+    /*var a=[8,8,{},{},3,7,2,2,3,7];
+    Array.prototype.distinct= function () {
+        var a=this;
+        var obj={};
+        for(var i=0;i< a.length;){
+            if(obj[a[i]]!=a[i]){
+                obj[a[i]]=a[i];
+                i++;
+            }else{
+                a.splice(i,1);
+            }
+        }
+    };
+    alert(a.distinct());
+    alert(a);*/
+
+    //call/aplly的使用->区别:aplly的第二个参数一定得是数组,数组中为需要传递的参数arg[i];
+    /*function fn(){
+        //->更改被执行函数内部指针this的指向
+        alert(this.i+this.j);
+    }
+    var obj={i:2,j:1};
+    fn.call(obj);*/
+
+
+    //数组方法模拟扩展->slice
+    /*Array.prototype.slice=function(s,e){
+        var arr=[];
+        e=(typeof e=="number")?e:this.length;
+        for(var i=s;i<e;i++){
+            arr.push(this[i]);
+        }
+        return arr;
+    };
+    var arr=[0,1,2,3,4,5,6,7,8,9];
+    var arr1=arr.slice();
+    alert(arr1);
+    alert(arr.slice(3,5));*/
+
+
+    //forEach方法去重
+    /*Array.prototype.distinct= function () {
+        var a=[],obj={},temp=this;
+        temp.forEach(function(value,index,temp){
+            if(!obj[typeof(value)+value]){
+                a.push(value);
+                obj[typeof (value)+value]=true;
+            }
+        });
+    return a;
+    };
+    var a=[3,2,4,3,2,5,2,2];
+    alert(a.distinct());*/
+
+
+    //解决对象去重问题
+    /*function multiType(){
+        function isEqual(obj1,obj2){
+            if(obj1===obj2){
+                return true;
+            }
+            if(typeof(obj1)=="obeject"&&typeof(obj2)=="obeject"){
+                var count=0;
+                for(var attr in obj1){
+                    count++;
+                    if(isEqual(obj1[attr],obj2[attr])){
+                        return false;
+                    }
+                }
+                for(var attr in obj2){
+                    count--;
+                }
+                return count==0;
+            }else if(typeof(obj1)=="function"&&typeof(obj2)=="function"){
+                if(obj1.toString()!==obj2.toString()){
+                    return false;
+                }
+            }else{
+                if(obj1!=obj2){
+                    return false;
+                }
+            }
+            return true;
+        }
+    var temp=arr.slice(0);
+    for(var i=0;i<temp.length;i++){
+        for(var j=i+1;j<temp.length;j++){
+            if(isEqual(temp[i],temp[j])){
+                temp.splice(j,1);
+                j--;
+            }
+        }
+    }
+    return temp;
+    }
+    var arr=[8,8,{},{},3,7,2,2,3,7];*/
+
+
+
+    //将nodelist类型的转化为数组
+    /*function listToArray(){
+        try{
+            return Array.prototype.slice.call(eles,0)
+        }catch(e){
+            var a=[];
+            for(var i=0;i<eles.length;i++){
+                a.push(eles[i]);
+            }
+            return a;
+        }
+    }*/
+
+
+
+    //字符串转化为数组去重
+    var str='222667222279992';
+    var arr=[].slice.call(str,0);
+    function stringDist(arr){
+        var obj={},a=[];
+        for(var i=0;len=arr.length;i++){
+            var temp=arr[i];
+            if(!obj.hasOwnProperty(temp)){
+                obj[temp]=1;
+                a.push(temp);
+            }else{
+                obj[temp]++;
+            }
+        }
+        return a;
+    }
+    console.log(stringDist(arr));
+
+
+
+    //数组克隆的实现
+    /*Array.prototype.clone=function(){
+        return this.slice();
+    };
+    Array.prototype.clone= function () {
+        var a=[];
+        for(var i=0;i<this.length;i++){
+            a.push(this[i]);
+        }
+        return a;
+    };
+    var a=[3,6,4];
+    var a1= a.clone();
+    alert(a1);*/
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4w补课2</title>
+</head>
+<body>
+【原型】的例子
+function Fn(name) {
+this.name = name;
+}
+Fn.prototype.name = "TEAM";
+var f = new Fn;
+//new Fn : 创建了一个Fn的类,并且创建了Fn这个类的一个实例；也和普通的函数执行一样,执行了Fn这个方法(形参赋值->预解释->代码执行->作用域的释放...)创建实例的时候完成了赋值预解释执行释放等;
+//Fn执行的时候没有传递任何的值,new Fn("demo")这样才是给name传递了值,而这里没有传递值,name这个形参的默认值是undefined
+console.log(f.name);
+//->先找实例私有的属性,私有的没有然后在通过__proto__找所属类原型上的公有属性 ->undefined
+console.log(f.__proto__.name);
+//->跳过了查找私有的,直接查找公有的 -> "TEAM"
+
+
+function Fn(name) {
+if (name) {//name->undefined 转化为布尔是false ->条件不成立 22行就不执行了,也不能给f增加name的私有属性了,也就是f没有name这个私有的属性了
+this.name = name;
+}
+}
+Fn.prototype.name = "TEAM";
+var f = new Fn;
+console.log(f.name);//->先找私有的,私有的没有,所以找到的是公有的name ->"TEAM"
+var f2 = new Fn("TOM");
+console.log(f2.name);//->"TOM"
+
+
+function Fn(name) {
+var a = 12;
+this.name = name;
+}
+Fn.prototype.name = "TEAM";
+//【类】也是函数数据类型,和普通函数的区别在于
+//【普通函数】 Fn();  类 new Fn();
+//在原型上定义的属性和方法只有在类的执行中对于类的实例才起到了作用,如果是按照普通函数执行,上面写的东西没有什么作用了
+Fn();//this->window  -> window.name=undefined;
+console.log(name);//->undefined
+//函数即使函数数据类型的也是【对象】数据类型的(var obj={name:""})
+//作为一个普通的对象的时候,只有Fn.xxx=xxx的才是它的属性；而我的形参、私有的变量只有当做函数执行的时候才有的,不是作为对象的属性
+console.log(Fn.name);//->"Fn" 这个是函数自带的name属性存储的是函数名
+console.log(Fn.a);//->undefined
+
+
+Object.prototype上的方法 【propertyIsEnumerable】 判断当前的属性是否为可枚举的
+Object.prototype.aa = function () {
+};
+var obj = {name: ""};
+console.log(obj.propertyIsEnumerable("toString"));//->false 不可枚举的
+console.log(obj.propertyIsEnumerable("aa"));//->false 不可枚举的
+console.log(Object.prototype.propertyIsEnumerable("aa"));//->true 可枚举的
+console.log(obj.propertyIsEnumerable("name"));//->true 是可枚举的
+不可枚举的一般都是浏览器内置的方法,在for in遍历的时候不会被访问到
+可枚举的一般都是我们自己手动添加的,在for in遍历的时候会被访问到
+Array.prototype.sort = function () {
+console.log("逗你玩!!")
+};
+[].sort();//->"逗你玩!!"
+
+我们自己在数组的原型上定义的方法在for in遍历的时候也会遍历到,而内置的方法是不能遍历到的 ->为了防止遍历公有的属性和方法，我们在每一次遍历的时候用hasOwnProperty来进行判断
+for (var key in ary) {
+if (ary.hasOwnProperty(key)) {
+console.log(key);
+}
+}
+【toString】
+toString -> 一个方法,一般是用来转换为字符串的
+null/undefined也是可以转换为字符串的,只不过我们浏览器给屏蔽掉了toString的使用
+但是出现了特例,关于对象调用toString,虽然也变为字符串了,但是并不是单纯的把之前的变为字符串,而是返回了自己的数据类型
+({name:'tom'}).toString() -> "[object Object]"
+//->而这个toString是在Object.prototype上定义的
+//->Object.prototype.toString 返回的是当前实例的数据类型
+//->obj.toString() toString中的this->obj 返回的是obj的数据类型 ->toString这个方法执行的时候其实是返回的里面this的数据类型
+//->只要让Object.prototype.toString执行,让里面的this变为谁,其实就是在检测谁的数据类型 -> "[object 当前值所属的类]"
+
+console.log(Object.prototype.toString.call(12));//-> "[object Number]"
+console.log(Object.prototype.toString.call("team"));//-> "[object String]"
+console.log(Object.prototype.toString.call(true));//-> "[object Boolean]"
+console.log(Object.prototype.toString.call(null));//-> "[object Null]"
+console.log(Object.prototype.toString.call(undefined));//-> "[object Undefined]"
+console.log(Object.prototype.toString.call({}));//-> "[object Object]"
+console.log(Object.prototype.toString.call([]));//-> "[object Array]"
+console.log(Object.prototype.toString.call(/^$/));//-> "[object RegExp]"
+console.log(Object.prototype.toString.call(setTimeout));//-> "[object Function]"
+
+利用toString检测数据类型,可以有效准确的判断任何值的数据类型,我们在编写类库、框架、插件的时候如果需要检测数据类型我们一般都是使用它来检测的
+/*
+* isType:基于Object.prototype.toString检测数据类型的
+* @parameter
+*   value:要检测的数据值
+*   type:[string] 要检测数据值的所属类的字符串 例如:"Array"
+* @return
+*   [boolean] true->value是type类型的  false->value不是type类型的
+*/
+//    var isType = function isType(value, type) {
+//        var reg = new RegExp("^\\[object " + type + "\\]$", "i");
+//->在构造函数模式编写正则的时候,由于第一个传递的是一个字符串,所以需要转移的字符都需要用\\来转译 -> /^\[\]$/ 字面量方式中不需要使用\\,使用\即可
+//        return reg.test(Object.prototype.toString.call(value));
+//    };
+//    var isAry = isType([], "array");
+//    console.log(isAry);//->true
+
+
+//分享一个全面的方法
+    ~function () {
+        var numObj = {
+            isNum: "Number",
+            isStr: "String",
+            isBoo: "Boolean",
+            isNul: "Null",
+            isUnd: "Undefined",
+            isObj: "Object",
+            isAry: "Array",
+            isFun: "Function",
+            isReg: "RegExp",
+            isDate: "Date"
+        };
+        var isType = function () {
+            var outerArg = arguments[0];
+            return function () {
+                var innerArg = arguments[0];
+                var reg = new RegExp("^\\[object " + outerArg + "\\]$", "i");
+                return reg.test(Object.prototype.toString.call(innerArg));
+            }
+        };
+        for (var key in numObj) {
+            if (numObj.hasOwnProperty(key)) {
+                window[key] = isType(numObj[key]);
+            }
+        }
+    }();
+
+    console.log(window.isAry([]));
+    console.log(isNum(13));
+
+
+【正则】
+//1、获取一个字符串中出现次数最多的字符和对应的次数,例如:var str = "zhufengpeixun2015yangfanqihang";问哪几个字符出现的次数最多,一共有多少次?
+var str = "zhufengpeixun2015yangfanqihang", obj = {};
+//首先统计每一个字符出现的次数
+str.replace(/\w/g, function () {
+var key = arguments[0];
+if (obj[key] >= 1) {
+obj[key]++;
+return;
+}
+obj[key] = 1;
+});
+//用假设法获取出现的最多次数
+var maxNum = 0;
+for (var key in obj) {
+if (obj.hasOwnProperty(key)) {
+obj[key] > maxNum ? maxNum = obj[key] : null;
+}
+}
+//最后在把所有出现次数为maxNum的输出
+var res = "最多出现:" + maxNum + "次  出现的字符是:";
+for (key in obj) {
+if (obj.hasOwnProperty(key)) {
+obj[key] === maxNum ? res += key + " " : null;
+}
+}
+obj = null;
+console.log(res);
+
+
+//2、模板引擎绑定数据实现的原理
+//->"my name is 葛琪，my age is 26，i com from china，i can do javascript~~";
+var ary = ["葛琪", "26", "china", "javascript"];
+str = "my name is {0}，my age is {1}，i com from {2}，i can do {3}~~";
+str = str.replace(/\{(\d+)\}/g, function () {
+return ary[arguments[1]];
+});
+console.log(str);
+
+
+//3、单词首字母大写
+str = "my name is zhou xiao tian,my age is twenty five years old~~";
+str = str.replace(/\w+/g, function () {
+var res = arguments[0];
+return res.substr(0, 1).toUpperCase() + res.substr(1);
+});
+console.log(str);
+
+
+//4、格式化时间
+//->"2015年05月03日 12时09分13秒"
+
+//    str = "2015-05-03 12:09:13";
+//    str = str.replace(/^(\d+)-(\d+)-(\d+) +(\d+):(\d+):(\d+)$/, "$1年$2月$3日 $4时$5分$6秒");
+//    console.log(str);
+String.prototype.myFormatTime = function myFormatTime() {
+var reg = /^(\d{4})(?:-|\/|\.|:)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})(?:\s+)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})(?:-|\/|\.|:)(\d{1,2})$/g, ary = [];
+this.replace(reg, function () {
+ary = Array.prototype.slice.call(arguments, 1, 7);
+});
+var format = arguments[0] || "{0}年{1}月{2}日 {3}:{4}:{5}";
+return format.replace(/{(\d+)}/g, function () {
+var val = ary[arguments[1]];
+return val.length === 1 ? "0" + val : val;
+});
+};
+str = "2015-5-3 12:9:13";
+console.log(str.myFormatTime());
+console.log(str.myFormatTime("{0}年{1}月{2}日"));
+console.log(str.myFormatTime("{1}-{2} {3}:{4}"));
+
+//5、数字转大写
+//->"贰零壹伍"
+str = "2015";
+ary = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];
+str = str.replace(/\d+?/g, function () {
+return ary[arguments[0]];
+});
+console.log(str);
+
+//6、queryURLParameter 获取地址栏中的参数
+//->http://kbs.sports.qq.com/kbsweb/game.htm?mid=1467588&age=18
+//->{mid:"1467588",age:18}
+String.prototype.queryURLParameter = function queryURLParameter() {
+var reg = /([^?&=]+)=([^?&=]+)/g, obj = {};
+this.replace(reg, function () {
+obj[arguments[1]] = arguments[2];
+});
+//        var res = reg.exec(this);
+//        while (res) {
+//            obj[RegExp.$1] = RegExp.$2;
+//            res = reg.exec(this)
+//        }
+return obj;
+};
+//var url = window.location.href;//获取当前页面的地址,下面我们假设一个地址,来看一下方法编写的正确性
+url = "http://kbs.sports.qq.com/kbsweb/game.htm?mid=1467588&age=18";
+console.log(url.queryURLParameter());
+
+</body>
+</html>

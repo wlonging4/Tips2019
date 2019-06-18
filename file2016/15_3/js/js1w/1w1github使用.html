@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+    /*
+
+    ----git简介
+    --------1,git的简史
+     Linux Torvalds在 1991 年创建了开源的 Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有 CVS 、**SVN** 这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些 集中式 的版本控制系统不但速度 慢 ，而且必须 联网 才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是 付费 的，和Linux的开源精神不符。不过，到了2002年，Linux 系统已经发展了十年了，代码库之大让 Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统 BitKeeper ，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。安定团结的大好局面在 2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发 Samba 的Andrew试图破解BitKeeper的协议，被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。
+     Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：
+     Linus花了 两周时间 自己用 C 写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！Git迅速成为最流行的分布式版本控制系统，尤其是 2008 年，**GitHub** 网站上线了，它为开源项目 免费提供Git存储 ，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。
+     历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了。
+
+
+     --------2，版本管理系统
+     GIT提供以下功能
+     备份文件
+     记录历史
+     回到过去
+     多端共享
+     团队协作
+     开源协作
+
+
+     --------3、集中式/分布式版本管理系统
+     Linus一直痛恨的CVS及SVN都是 集中式 的版本控制系统，而Git是 分布式 版本控制系统，集中式和分布式版本控制系统有什么区别呢？
+     集中式版本控制系统
+     版本库是集中存放在 中央服务器 的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。集中式版本控制系统最大的毛病就是必须 联网 才能工作，如果在局域网内还好，带宽够大，速度够快，可如果在互联网上，遇到网速慢的话，可能提交一个10M的文件就需要5分钟，这还不得把人给憋死啊。
+     分布式版本控制系统
+     与集中式版本控制系统有何不同呢？首先，分布式版本控制系统根本没有 中央服务器 ，每个人的电脑上都是一个 完整的版本库 ，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。既然每个人电脑上都有一个完整的版本库，那多个人如何协作呢？比方说你在自己电脑上改了文件A，你的同事也在他的电脑上改了文件A，这时，你们俩之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有 完整的版本库 ，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。而集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了。 在实际使用分布式版本控制系统的时候，其实很少在两人之间的电脑上推送版本库的修改，因为可能你们俩不在一个局域网内，两台电脑互相访问不了，也可能今天你的同事病了，他的电脑压根没有开机。因此，分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。
+     当然，Git的优势不单是不必联网这么简单，后面我们还会看到Git极其强大的 分支 管理，把SVN等远远抛在了后面。 CVS作为最早的开源而且免费的集中式版本控制系统，直到现在还有不少人在用。由于CVS自身设计的问题，会造成提交文件不完整，版本库莫名其妙损坏的情况。同样是开源而且免费的SVN修正了CVS的一些稳定性问题，是目前用得最多的 集中式 版本库控制系统。除了免费的外，还有收费的集中式版本控制系统，比如IBM的ClearCase（以前是Rational公司的，被IBM收购了），特点 是安装比Windows还大，运行比蜗牛还慢，能用ClearCase的一般是世界500强，他们有个共同的特点是财大气粗，或者人傻钱多。微软自己也有一个集中式版本控制系统叫VSS，集成在Visual Studio中。由于其反人类的设计，连微软自己都不好意思用了。
+     分布式版本控制系统除了Git以及促使Git诞生的BitKeeper外，还有类似Git的Mercurial和Bazaar等。这些分布式版本控制系统各有特点，但最快、最简单也最流行的依然是Git！
+
+
+     --------4、安装Git
+     最早Git是在Linux上开发的，很长一段时间内，Git也只能在Linux和Unix系统上跑。不过，慢慢地有人把它移植到了Windows上。现在，Git可以在Linux、Unix、Mac和Windows这几大平台上正常运行了。
+     一、在Windows上安装Git
+     Windows下要使用很多Linux/Unix的工具时，需要 Cygwin 这样的模拟环境，Git也一样。 Cygwin 的安装和配置都比较复杂，就不建议你折腾了。不过，有高人已经把模拟环境和Git都打包好了，名叫 msysgit ，只需要下载一个单独的exe安装程序，其他什么也不用装，绝对好用。
+     msysgit 是Windows版的Git，从 http://git-scm.com/ 下载，然后按默认选项安装即可。
+     如果下载不下来可以从百度网盘 上下载　
+     安装完成后，在开始菜单里找到“Git”->“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！
+     二、 在Mac OS X上安装Git
+     如果你正在使用Mac做开发，有两种安装Git的方法。
+     一是安装 homebrew ，然后通过homebrew安装Git。先打开网站 http://brew.sh/。 拷贝对应脚本到终端下安装homebrew.然后在终端执行 brew install git命令。
+     第二种方法更简单，也是推荐的方法，就是直接从 AppStore 安装Xcode，Xcode集成了Git，不过默认没有安装，你需要运行Xcode，选择菜单“Xcode”->“Preferences”，在弹出窗口中找到“Downloads”，选择“Command Line Tools”，点“Install”就可以完成安装了。
+     三、 在Linux上安装Git
+     首先，你可以试着输入git，看看系统有没有安装**Git**：
+     $ git
+     program 'git' is currently not installed. You can install it by typing:
+     sudo apt-get install git
+     像上面的命令，有很多Linux会友好地告诉你Git没有安装，还会告诉你如何安装**Git**。
+     如果你碰巧用**Debian**或**Ubuntu Linux**，通过一条sudo apt-get install git就可以直接完成Git的安装，非常简单。如果想查看是否安装成功，通过git --version。
+     老一点的**Debian**或**Ubuntu Linux**，要把命令改为sudo apt-get install git-core，因为以前有个软件也叫GIT（GNU Interactive Tools），结果Git就只能叫git-core了。由于Git名气实在太大，后来就把GNU Interactive Tools改成gnuit，git-core正式改为git。
+     Fedora可以用yum
+     $ sudo yum install git
+     如果是其他Linux版本，可以直接通过源码安装。先从Git官网下载源码，然后解压，依次输入：
+     ./config
+     make
+     sudo make install
+     这几个命令安装就好了。 []
+     用户设置
+     安装完成后，还需要最后一步设置，在命令行输入：
+     git config --global user.name "zfpx"
+     git config --global user.email "zfpx@126.com"
+     因为Git是分布式版本控制系统，所以每个机器都必须自报家门：你的名字和Email地址。
+     注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。在此课程中，我们配置的环境中Git已安装好，我们课程提供也是在Linux系统中命令进行操作
+
+
+
+     ----git工作流程
+     ①初始化一个仓库-把这个目录变成Git可以管理的仓库
+     里面的隐藏文件夹.git文件夹-这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了;
+     1.在指定目录打开git bush
+     2.打开$ git init ->
+     ②切换命令
+     cd /X盘符/目标文件夹(cd后面有个空格)(change directory)
+     ③输出当前工作目录
+     $ pwd (print working directory)
+     ④显示当前目录下的文件
+     $ ls (list-all)
+
+     你的本地仓库由 git 维护的三棵“树型(有层级关系)区域”组成。
+     第一个是你的 工作目录，对应你的物理目录；
+     第二个是 暂存区，临时保存你的改动；
+     第三个是 历史区，指向你最近一次提交后的结果。
+     1->2git add;
+     2->3git commit;
+     3->1git checkout;
+     .git文件夹中包括暂存区和历史区;Git和其他版本控制系统如SVN的一个不同之处就是有暂存区的概念。
+     暂存区staging area
+     工作区working directory
+     历史区history repository
+
+
+     添加提交
+     输入邮箱-$ git config --global user.email "邮箱"
+     输入户名-$ git config --global user.name "名字"
+     添加文件-$ git add demo1asus.html
+     提交文件-$ git commit demo1asus.html -m"注释"
+     查看历史-$ git log
+     查看工作区和暂存区的（红色）区别，查看暂存区和历史区的（绿色）区别-$ git status
+     用暂存区的文件覆盖历史区的文件-$ git check
+     一定要保存到 zfpxgit 目录下（子目录也行），因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件。用命令git add告诉Git，把文件添加到 仓库中的暂存区;
+     简单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。如果你没有添加-m参数的话表示会弹出一个编辑页面，可以输入你的注释然后按esc退出编辑模式，再输入:wq!退出此编辑器。工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。 Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区， 还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
+     前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：
+     第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；
+     第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
+     因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+     工作区（Working Directory）就是你在电脑里能看到的目录,版本库（Repository）工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。 Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区， 还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区；第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改. 你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+
+    远程推送拉取全过程：git remote
+    第一步：$ git remote add origin https://github.com/wlonging4/Empty.git->添加仓库只要一次
+    第二部：$ git push -u origin master->把本地的内容推送到远端的服务器只要无限执行第二句，无限推送;指令中的“-u”?
+    第三部：输入username和password->弹出来如下：
+       Counting objects: 15, done.
+       Delta compression using up to 4 threads.
+       Compressing objects: 100% (9/9), done.
+       Writing objects: 100% (15/15), 1.20 KiB | 0 bytes/s, done.
+       Total 15 (delta 0), reused 0 (delta 0)
+       To https://github.com/wlonging4/Empty.git
+       * [new branch]      master -> master
+       Branch master set up to track remote branch master from origin.
+    第四步：远程有改动的代码拉下来：git pull origin master;
+    1，异常退出造成错误去.git下面删除掉.lock文件
+    2，每次修改都要add commit push一遍
+    3，删除文件也要git add;
+       git add -A;表示把工作区所有的变化全部提交到暂存区;
+    4，推送的时候,本地至少有一个commit;
+    5，如果远程仓库地址错了->
+       git remote  rm origin(先删除原先错误的远程仓库地址)
+       git remote add origin +url;(然后再更改远程仓库地址)
+
+
+    克隆别人的文件
+    $ git clone +url;别人的
+    然后集成VCS git和webstorm
+    setting->find:git->选择路径
+    打开克隆下来的文件编辑修改
+    add->commit->push;查看！
+    Attention
+    1，Webstorm中只集成了git的常用操作，并不能完全替代命令行工具。
+
+
+
+    从生无始以来，一直处于无明烦恼之中，累劫累生，习气深厚，这些烦恼习气从未离心，所以虽发菩提心而难守持，虽欲众生而自己却被烦恼束缚，虽欲修行而障难重重。即使难敌烦恼业力，不能进步。
+
+     */
+</script>
+</html>

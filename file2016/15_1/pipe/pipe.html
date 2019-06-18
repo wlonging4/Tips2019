@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>find</title>
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <meta name="format-detection" content="telephone=no">
+    <script>
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            if (parseFloat(RegExp.$1) > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale=' + phoneScale + ', maximum-scale=' + phoneScale + ', target-densitydpi=device-dpi" />');
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+    </script>
+    <style type="text/css">
+        /*默认样式*/
+        html, body, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd,figure,figcaption{ margin: 0; padding: 0; font-size:32px; }
+        html,body{height: 100%;}
+        body {-webkit-tap-highlight-color:rgba(0,0,0,0); background-color:#000;color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; width: 640px; margin: 0 auto}
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a{ color: #000;text-decoration: none; }
+        a img { border: 0 none; }
+        img{display:block;}
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+
+        .c{  width: 640px; position: relative; overflow: hidden;  height: 100%;  background: url("http://2.zol-img.com.cn/zt/tm_595/62cb75e695/bg.jpg")no-repeat top center;  background-size: cover;  }
+        #score{  width: 100px; height: 40px; position: absolute;  text-align: center;  top: 10px;  right: 20px;  color: #00a9a7;  font: 26px/38px 'Hiragino sans GB','microsoft yahei';  }
+        .box{  width: 607px; position: relative;  height: 607px; margin: 100px auto 0; background: #620b1a;  }
+        #myCanvas{  margin: 0 auto;  }
+        #imgBox{  width: 1px;  height: 1px;  overflow: hidden;  }
+        .funnel{  position: absolute;  width: 100px;  height: 50px;  }
+        .funnel1{  top: -50px;  left: 1px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/funnel1.png") no-repeat 0 0;  }
+        .funnel2{  bottom: -50px;  right: 1px;  background: url("http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/funnel2.png") no-repeat 0 0;  }
+        .pointNo{  pointer-events: none;  }
+
+
+    </style>
+</head>
+<body>
+<div class="c">
+    <div class="box">
+        <div class="funnel funnel1"></div>
+        <div class="funnel funnel2"></div>
+        <canvas id="myCanvas" width="607"  height="607"></canvas>
+    </div>
+    <div id="score">0</div>
+    <div id="imgBox">
+        <img src="http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/11.png" id="img11" alt="">
+        <img src="http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/12.png" id="img12" alt="">
+        <img src="http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/21.png" id="img21" alt="">
+        <img src="http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/22.png" id="img22" alt="">
+        <img src="http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/23.png" id="img23" alt="">
+        <img src="http://2.zol-img.com.cn/zt/tm_5a2/a327898da8/24.png" id="img24" alt="">
+    </div>
+</div>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script charset="gbk">
+    !function (window,document) {
+
+        function PIPE(){
+            return this.init.apply(this, arguments)
+        }
+
+        PIPE.prototype= {
+            img11: document.querySelector('#img11'),
+            img12: document.querySelector('#img12'),
+            img21: document.querySelector('#img21'),
+            img22: document.querySelector('#img22'),
+            img23: document.querySelector('#img23'),
+            img24: document.querySelector('#img24'),
+            c2:document.querySelector('#myCanvas'),
+            score:document.querySelector('.score'),
+            nowImgSrc:null,
+            clickRow:null,
+            clickCol:null,
+            nowNum:0,
+            nowNumR:0,
+            time_flag:1,
+            timeNum:0,
+            arr:[
+                [11,0,0,22,12,23],
+                [21,23,0,11,0,11],
+                [0,11,0,11,22,24],
+                [0,21,12,24,11,0],
+                [0,0,0,0,21,23],
+                [0,0,0,0,0,11]
+            ],
+            arr2:[
+                [11,11,21,22,12,23],
+                [21,23,11,11,21,11],
+                [11,11,11,11,22,24],
+                [21,21,12,24,11,11],
+                [11,11,21,21,21,23],
+                [11,21,11,21,11,11]
+            ],
+
+
+            init:function () {
+                this.ca2=this.c2.getContext('2d');
+                this.arrInit(this.arr2);
+                this.arrStatic(this.arr);
+                this.timeCount();
+                this.clickCanvas();
+                this.run();
+            },
+
+            arrStatic:function (arr) {
+                var len=0;
+                      arr.forEach(function (item,index) {
+                          if(item){
+                              item.forEach(function (it,index) {
+                                  if(item[index]!=0){
+                                      len++;
+                                  }
+                              })
+                          }
+                      });
+                this.nowNum=len;
+            },
+
+            timeCount:function () {
+                    var _this=this;
+                    setInterval(function () {
+                        if(_this.time_flag){
+                            _this.timeNum++;
+                            document.querySelector('#score').innerHTML=_this.timeNum;
+                        }else{
+                            return false;
+                        }
+                    },1000);
+
+            },
+
+            arrInit:function (ars) {
+                for(var m=0;m<6;m++){
+                    for(var n=0;n<6;n++){
+                        /*随机数组*/
+                        ars[n][m]=this.randomDeg(ars[n][m]);
+                    }
+                }
+                console.log(ars)
+            },
+
+            checkArr:function (a1,a2) {
+                  var errNum=0;
+                  for(var t=0;t<6;t++){
+                      for(var r=0;r<6;r++){
+                          if(a1[r][t] && (a1[r][t]!=0)){
+                              if(a1[r][t]==a2[r][t]){
+                                  errNum++;
+                                  if(errNum==this.nowNum){
+                                      this.time_flag=0;
+                                      this.c2.classList.add('pointNo');
+                                      alert('bingo !!! your time is '+this.timeNum);
+                                  }
+                              }
+                          }
+                      }
+                  }
+            },
+
+            randomDeg:function (num) {
+                if(num==11||num==12){
+                    this.nowNumR=Math.random()>0.5?11:12;
+                }
+                if(num==21||num==22||num==23||num==24){
+                    var nowRand=Math.random();
+                    if(nowRand>=0&&nowRand<0.25){
+                        this.nowNumR=21;
+                    }else if(nowRand>=0.25&&nowRand<0.5){
+                        this.nowNumR=22;
+                    }else if(nowRand>=0.5&&nowRand<0.75){
+                        this.nowNumR=23;
+                    }else if(nowRand>=0.75&&nowRand<1){
+                        this.nowNumR=24;
+                    }
+                }
+                return this.nowNumR;
+            },
+
+            run:function(){
+                for(var p=0;p<6;p++){
+                    for(var q=0;q<6;q++){
+                        /*画小方块*/
+                        //console.log(this.arr[0][0]);
+                        this.ca2.fillStyle = "#afd2c7";
+                        this.ca2.fillRect(1+101*p,1+101*q,100,100);
+
+                        if(this.arr2[q][p]==11){
+                            this.nowImgSrc=this.img11;
+                        }
+                        if(this.arr2[q][p]==12){
+                            this.nowImgSrc=this.img12;
+                        }
+                        if(this.arr2[q][p]==21){
+                            this.nowImgSrc=this.img21;
+                        }
+                        if(this.arr2[q][p]==22){
+                            this.nowImgSrc=this.img22;
+                        }
+                        if(this.arr2[q][p]==23){
+                            this.nowImgSrc=this.img23;
+                        }
+                        if(this.arr2[q][p]==24){
+                            this.nowImgSrc=this.img24;
+                        }
+                        this.ca2.drawImage(this.nowImgSrc,1+101*p,1+101*q,100,100);
+                    }
+                }
+                var _this=this;
+                _this.checkArr(_this.arr,_this.arr2);
+            },
+
+            clickCanvas:function () {
+                var _this=this;
+                this.addEvent(this.c2,'click',function (e) {
+                    var event=window.event||e;
+                    _this.clickCol=Math.ceil((event.clientX-window.innerWidth/2+320-17)/101);
+                    _this.clickRow=Math.ceil((event.clientY-100)/101);
+                    _this.imgRotate(_this.clickRow,_this.clickCol);
+                })
+            },
+
+            imgRotate:function (i,j) {
+                var nowI=i-1,nowJ=j-1;
+               if(this.arr2[nowI][nowJ]==11){this.arr2[nowI][nowJ]=12}else
+               if(this.arr2[nowI][nowJ]==12){this.arr2[nowI][nowJ]=11}else
+               if(this.arr2[nowI][nowJ]==21){this.arr2[nowI][nowJ]=22}else
+               if(this.arr2[nowI][nowJ]==22){this.arr2[nowI][nowJ]=23}else
+               if(this.arr2[nowI][nowJ]==23){this.arr2[nowI][nowJ]=24}else
+               if(this.arr2[nowI][nowJ]==24){this.arr2[nowI][nowJ]=21}
+               this.run();
+            },
+
+            addEvent: function(obj, ev, func) {
+                if (document.attachEvent) {
+                    if (obj) {
+                        obj.attachEvent('on' + ev, func)
+                    } else {
+                        window.attachEvent('on' + ev, func)
+                    }
+                } else if (document.addEventListener) {
+                    if (obj) {
+                        obj.addEventListener(ev, func, false)
+                    } else {
+                        window.addEventListener(ev, func, false)
+                    }
+                }
+            }
+        };
+
+        new PIPE(window);
+
+    }(window,document);
+
+</script>
+</body>
+</html>

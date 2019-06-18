@@ -1,0 +1,209 @@
+<!DOCTYPE html><html><head lang="en">
+    <meta charset="gbk">
+    <title>天猫第三期</title>
+    <style type="text/css">
+        /*默认样式*/
+        body{color:#cc0;font:12px/20px 'simsun',arial; background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{color:#727284}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  height: 539px;  width: 1000px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_head_c.jpg") no-repeat 0 0;  }
+        .head-link{  position: absolute;  width: 150px;  height: 60px;  bottom: 30px;  right: 270px;  }
+        .head-link .lan20{  display: block;  font-size: 36px;  line-height: 56px;  color: #008E8C;  font-family: 'microsoft yahei';  }
+
+        .nav-l{  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_nav_s.jpg") no-repeat 100% 0;  }
+        .nav-r{  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_nav_s.jpg") no-repeat 0 0;  }
+        .nav-c{  position: relative;  background: #fff; margin-left: 1px;  height: 70px;  width: 1000px;  overflow: hidden;  }
+        .nav-c ul{  width: 996px;  height: 56px;  margin: 6px 2px 0;  overflow: hidden;  }
+        .nav-c ul li{  float: left;  _display: inline;  width: 245px;  height: 56px;  margin: 0 2px 0;  background: indianred;  }
+        .nav-c ul li a{  display: block;  width: 245px;  height: 56px;  line-height: 56px;  text-align: center;  font-size: 24px;  color: #fff;  font-family: 'microsoft yahei';  }
+        .nav-c ul .li1{background: #7D64F3}
+        .nav-c ul .li2{background: #01ACA6}
+        .nav-c ul .li3{background: #F843AB}
+        .nav-c ul .li4{background: #058DFF}
+        .nav-c ul li a:hover{  text-decoration: none;  }
+        .nav-flow{  position: absolute;  width: 23px;  height: 12px;  bottom: 8px;  left: 116px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_nav_flow.png") no-repeat;  }
+        .box{  position: relative;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_bg.jpg") repeat-y top center;  }
+        .con{  position: relative;  z-index: 3;  width: 1001px;  height: 3335px;  background: #fff;  margin: 0 auto;  overflow: hidden;  }
+        .box-flow{  position: absolute;  height: 178px;  width: 100%;  bottom: 0;  z-index: 1;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_box_flow.jpg") repeat-x bottom center;  }
+
+        .hd{  position: relative;  overflow: hidden;  height: 462px;  width: 990px;  margin: 0 5px 20px 6px;  background: #7D64F3;  }
+        .leica{  position: relative;  overflow: hidden;  height: 780px;  width: 990px;  margin: 0 5px 20px 6px;  background: #01ACA6;  }
+        .fashion{  position: relative;  overflow: hidden;  height: 1200px;  width: 990px;  margin: 0 5px 20px 6px;  background: #F843AB;  }
+        .magic{  position: relative;  overflow: hidden;  height: 815px;  width: 990px;  margin: 0 5px 20px 6px;  background: #058DFF;  }
+
+        .hd-t{  position: relative;  width: 990px;  height: 86px;  background: url("http://2.zol-img.com.cn/zt/tm_576/b46a26306a/lg_hd_t.jpg") no-repeat 0 0;  }
+        .leica-t{  position: relative;  width: 990px;  height: 104px;  background: url("http://2.zol-img.com.cn/zt/tm_576/b46a26306a/lg_leica_t.jpg") no-repeat 0 0;  }
+        .fash-t{  position: relative;  width: 990px;  height: 108px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_fash_t.jpg") no-repeat 0 0;  }
+        .magic-t{  position: relative;  width: 990px;  height: 112px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_magic_t.jpg") no-repeat 0 0;  }
+        .more-link{  position: absolute;  width: 80px;  height: 20px;  bottom: 10px;  right: 10px;  }
+        .more-link .lan14{  color: #FFFF00;  }
+
+        .bai14:hover{  color: #fff;  }
+        .hd-c{  width: 978px;  height: 350px;  margin: 0 6px 0;  }
+        .hd-c .bai14{  display: block;  padding: 20px 14px 10px;  line-height: 22px;  font-weight:  bold;  }
+        .hd-c .bai12{  display: block;  position: relative;  padding: 0 14px 20px;  line-height: 23px;  }
+        .hd-c .bai12 span{  display: block;  padding-top: 16px;  font-weight: bold;  color: #FFE500;  text-indent: 100px;  }
+        .hd-c  span.slh{  display: none;  }
+        .hd-c .hong12{  display: block;  position: absolute;  bottom: -16px;  height: 35px;  width: 198px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_btn1.jpg") no-repeat 0 0;  }
+
+        .leica-c1{  width: 978px;  height: 285px;  margin: 0 6px 20px;  }
+        .leica-c1 .bai14{  display: block;  padding: 5px 10px 5px;  line-height: 22px;  font-weight:  bold;  }
+        .leica-c1 .bai12{  display: block;  position: relative;  padding: 0 0 18px 8px;  line-height: 22px;  }
+        .leica-c1 .bai12 span{  color:#FFE500; font-weight:bold  }
+        .leica-c1  span.slh{  display: none;  }
+        .leica-c1 .hong12{  display: block;  position: absolute;  bottom: -30px;  height: 35px;  left: 3px;  width: 155px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_btn2.jpg") no-repeat top center;  }
+
+        .leica-c2{  width: 978px;  height: 345px;  margin: 0 6px 0;  }
+        .leica-c2 .bai14{  display: block;  line-height: 34px;  font-weight:  bold;  }
+        .leica-c2 .bai12{  display: block;  position: relative;  line-height: 22px;  }
+        .leica-c2 .bai12 span{  display: block;  padding-top: 16px;  font-weight: bold;  color: #FFE500;  }
+        .leica-c2  span.slh{  display: none;  }
+        .leica-c2 .hong12{  display: block;  position: absolute;  bottom: -6px;  height: 35px;  right: 0;  width: 135px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_btn3.jpg") no-repeat top center;  }
+
+        .fash-c{  width: 978px;  height: 690px;  margin: 20px 6px 0;  }
+        .fash-c .bai14{  display: block;  line-height: 34px;  font-weight:  bold;  }
+        .fash-c .bai12{  display: block;  position: relative;  line-height: 22px;  }
+        .fash-c .bai12 span{  display: block; padding-top: 16px;  font-weight: bold;  color: #FFE500;  }
+        .fash-c  span.slh{  display: none;  }
+        .fash-c .hong12{  display: block;  position: absolute;  bottom: -6px;  height: 35px;  right: 10px;  width: 198px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_btn1.jpg") no-repeat top center;  }
+        .fash-c .ln{  height: 26px;  }
+
+        .magic-c{  width: 978px;  height: 700px;  margin: 0 6px 0;  }
+        .magic-c .bai14{  display: block;  line-height: 30px;  font-weight:  bold;  }
+        .magic-c .bai12{  display: block;  position: relative;  line-height: 22px;  }
+        .magic-c .bai12 span{  display: block;  padding-top: 16px;  font-weight: bold;  color: #FFE500;  }
+        .magic-c  span.slh{  display: none;  }
+        .magic-c .hong12{  display: block;  position: absolute;  bottom: -6px;  height: 35px;  right: 10px;  width: 198px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_btn1.jpg") no-repeat top center;  }
+        .magic-c .ln{  height: 18px;  }
+
+        .zol_foot{  height: 180px;  padding-top: 30px;  background: url("http://2.zol-img.com.cn/zt/tm_576/a128522601/lg_foot.jpg") no-repeat top center;  }
+        .zol_foot,.zol_foot a{  color: #fff;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <div class="head-link">
+                    <{data[0]}>
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--导航-->
+<table class="nav" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+        <td class="nav-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="nav-c">
+                <ul>
+                    <li class="li1">
+                        <a href="#hd" target="_self">徕卡双摄</a>
+                    </li>
+                    <li class="li2">
+                        <a href="#leica" target="_self">高清画质</a>
+                    </li>
+                    <li class="li3">
+                        <a href="#fashion" target="_self">时尚美颜</a>
+                    </li>
+                    <li class="li4">
+                        <a href="#magic" target="_self">自拍神器</a>
+                    </li>
+                </ul>
+                <div class="nav-flow"></div>
+            </div>
+        </td>
+        <td class="nav-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+<!--内容-->
+<div class="box">
+    <div class="con">
+        <!--高清画质-->
+        <div class="hd" id="hd">
+            <div class="hd-t">
+                <div class="more-link">
+                    <{data[1]}>
+                </div>
+            </div>
+            <div class="hd-c">
+                <{data[2]}>
+            </div>
+        </div>
+        <!--徕卡双摄-->
+        <div class="leica" id="leica">
+            <div class="leica-t">
+                <div class="more-link">
+                    <{data[3]}>
+                </div>
+            </div>
+            <div class="leica-c1">
+                <{data[4]}>
+            </div>
+            <div class="leica-c2">
+                <{data[5]}>
+            </div>
+        </div>
+        <!--时尚美颜-->
+        <div class="fashion" id="fashion">
+            <div class="fash-t">
+                <div class="more-link">
+                    <{data[6]}>
+                </div>
+            </div>
+            <div class="hd-c">
+                <{data[7]}>
+            </div>
+            <div class="fash-c">
+                <{data[8]}>
+            </div>
+        </div>
+        <!--自拍神器-->
+        <div class="magic" id="magic">
+            <div class="magic-t">
+                <div class="more-link">
+                    <{data[9]}>
+                </div>
+            </div>
+            <div class="magic-c">
+                <{data[10]}>
+            </div>
+        </div>
+    </div>
+    <div class="box-flow"></div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    /*导航*/
+    var nav_li=$('.nav-c ul li'),nav_f=$('.nav-flow');
+    nav_li.bind('click', function () {
+        nav_f.css({'left':nav_li.index(this)*249+116+'px'});
+    });
+
+    /*详细*/
+    $('.hong12').html(' ');
+
+
+</script>
+
+</body></html>

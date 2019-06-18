@@ -1,0 +1,577 @@
+<!DOCTYPE html><html><head>
+    <title>中关村商城精简专题模板</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <style>
+        body{color:#999999; font:16px/21px Arial; background-color:#FFF;}
+        body,div,form,img,em{padding:0;margin:0;border:0}
+        body{color:#999999;}
+        em{font-style:normal;}
+        img{display:block}
+        a{color:#999999;text-decoration:none;}
+        a:hover,td a:hover{color:#f60;}
+        p{margin:0; padding:0;}
+        .foot{color:#247ACE; font:12px/22px "宋体";}
+        .foot a{color:#247ACE;}
+        .hong12{color:#E71B34;}/*背景*/
+        .market-price{display:none;}
+        .remain-time{display:none;}
+
+        /*lg_style*/
+        html body{  background: #fff;  }
+        body .header{  margin: 0 auto;  padding: 25px 0;  width: 1200px;  height: 92px;  background:#fff;  }
+        .nav-box .category-nav-title{  height: 44px;  }
+        .header{margin:0 auto !important; bckground:#fff;}
+
+        .t{  position: absolute;  top: 40px;  height: 20px;  width: 11px;  line-height: 20px;  text-align: center;  font-size: 18px;  color: #fff;  font-weight: bold;  font-family: 'microsoft yahei';  }
+        .t1{
+            left: 48px;
+        }
+        .t2{
+            left: 60px;
+        }
+        .t3{
+            left: 90px;
+        }
+        .t4{
+            left: 102px;
+        }
+        .t5{
+            left: 132px;
+        }
+        .t6{
+            left: 144px;
+        }
+        .t7{
+            left: 174px;
+        }
+        .t8{
+            left: 186px;
+        }
+        .top-l{  background: url("http://2.zol-img.com.cn/zt/tm_575/fe9ebbadec/lg_top_l.jpg") no-repeat 100% 0;  }
+        .top-r{  background: url("http://2.zol-img.com.cn/zt/tm_575/fe9ebbadec/lg_top_r.jpg") no-repeat 0 0;  }
+        .top-c{  position: relative;  height: 93px;  width: 1106px;  background: url("http://2.zol-img.com.cn/zt/tm_575/fe9ebbadec/lg_top_c.jpg") no-repeat 0 0;  }
+        .top-active{  top: 10px;  left: 225px;  position: absolute;  height: 76px;  width: 663px;  }
+        .top-link{  position: absolute;  right: 35px;  top: 23px;  width: 165px;  height: 45px;  }
+        .top-link a{  display: block;  height: 45px;  width: 165px;  line-height: 45px;  text-align: center;  color: #f00;  font-weight: bolder; font-size: 22px; font-family: 'microsoft yahei' ;  }
+
+        .z_bj2z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_04.jpg) no-repeat right top;}
+        .z_bj2y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_06.jpg) no-repeat left top;}/*图片*/
+        .z_bj3z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_07.jpg) no-repeat right top;}
+        .z_bj3y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_09.jpg) no-repeat left top;}/*图片*/
+        .z_bj4z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_10.jpg) no-repeat right top;}
+        .z_bj4y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_12.jpg) no-repeat left top;}/*图片*/
+        .z_bj5z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_13.jpg) no-repeat right top;}
+        .z_bj5y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_15.jpg) no-repeat left top;}/*图片*/
+
+        .chg1_s{  background: #5513d8;  }
+        .chg1_c{  position: relative;  height: 1190px;  width: 1106px;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_c.jpg") no-repeat 0 0;  background-color: #ffc600 ;  }
+        .chg1_ul{  width: 1107px;  height: 67px;  overflow: hidden;  }
+        .chg1_ul li{  float: left;  _display: inline;  width: 369px;  height: 67px;  line-height: 67px;   font-family: 'microsoft yahei';  font-size: 30px;  font-weight: bold;  text-align: center;  color: #d39c32;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li2.png") no-repeat 0 0;   }
+        .chg1_ul li.act{  color: #5929b9;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li1.png") no-repeat 0 0;   }
+        .chg1_con{  position: absolute;  width: 1100px;  height: 1098px;  top: 90px;  left: 3px;  overflow: hidden;  background: #fff;  }
+        .chg1_mod{  width: 1100px;  height: 1080px;  display: none;  }
+        .chg1_con .chg1_mod.blk{  display: block;  }
+
+        .z_bj8z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_22.jpg) no-repeat right top;}
+        .z_bj8y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_24.jpg) no-repeat left top;}/*图片*/
+
+        .chg2_s{  background: #3b10b6;  }
+        .chg2_c{  position: relative;  height: 845px;  width: 1106px;  background: url("http://2.zol-img.com.cn/zt/tm_576/10f45722bc/lg_chg2_c.jpg") no-repeat 0 -4px;  background-color: #ffc600 ;  }
+        .chg2_ul{  width: 740px;  height: 67px;  padding-left: 185px; overflow: hidden;  }
+        .chg2_ul li{  float: left;  _display: inline;  width: 369px;  height: 67px;  line-height: 67px;   font-family: 'microsoft yahei';  font-size: 30px;  font-weight: bold;  text-align: center;  color: #d39c32;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li2.png") no-repeat 0 0;   }
+        .chg2_ul li.act{  color: #5929b9;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li1.png") no-repeat 0 0;   }
+        .chg2_con{  position: absolute;  width: 1100px;  height: 750px;  top: 90px;  left: 3px;  overflow: hidden;  background: #fff;  }
+        .chg2_mod{  width: 1100px;  height: 750px;  display: none;  }
+        .chg2_con .chg2_mod.blk{  display: block;  }
+
+        .z_bj12z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_31.jpg) no-repeat right top;}
+        .z_bj12y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_33.jpg) no-repeat left top;}/*图片*/
+
+        .chg3_s{  background: #d82974;  }
+        .chg3_c{  position: relative;  height: 845px;  width: 1106px;  background: url("http://2.zol-img.com.cn/zt/tm_576/1122fd103f/lg_chg3_c.jpg") no-repeat 0 -4px;  background-color: #ffc600 ;  }
+        .chg3_ul{  width: 740px;  height: 67px;  padding-left: 185px; overflow: hidden;  }
+        .chg3_ul li{  float: left;  _display: inline;  width: 369px;  height: 67px;  line-height: 67px;   font-family: 'microsoft yahei';  font-size: 30px;  font-weight: bold;  text-align: center;  color: #d39c32;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li2.png") no-repeat 0 0;   }
+        .chg3_ul li.act{  color: #5929b9;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li1.png") no-repeat 0 0;   }
+        .chg3_con{  position: absolute;  width: 1100px;  height: 750px;  top: 90px;  left: 3px;  overflow: hidden;  background: #fff;  }
+        .chg3_mod{  width: 1100px;  height: 750px;  display: none;  }
+        .chg3_con .chg3_mod.blk{  display: block;  }
+
+        .z_bj15z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_40.jpg) no-repeat right top;}
+        .z_bj15y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_42.jpg) no-repeat left top;}/*图片*/
+
+        .chg4_s{  background: #4312a3;  }
+        .chg4_c{  position: relative;  height: 515px;  width: 1106px;  background: url("http://2.zol-img.com.cn/zt/tm_576/1165fa3d87/lg_chg4_c.jpg") no-repeat 0 -4px;  background-color: #ffc600 ;  }
+        .chg4_ul{  width: 1107px;  height: 67px;   overflow: hidden;  }
+        .chg4_ul li{  float: left; margin-left: -1px  _display: inline;  width: 369px;  height: 67px;  line-height: 67px;   font-family: 'microsoft yahei';  font-size: 30px;  font-weight: bold;  text-align: center;  color: #d39c32;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li2.png") no-repeat 0 0;   }
+        .chg4_ul li.act{  color: #5929b9;  background: url("http://2.zol-img.com.cn/zt/tm_576/10618bf344/lg_chg1_li1.png") no-repeat 0 0;   }
+        .chg4_con{  position: absolute;  width: 1100px;  height: 420px;  top: 90px;  left: 3px;  overflow: hidden;  background: #fff;  }
+        .chg4_mod{  width: 1100px;  height: 420px;  display: none;  }
+        .chg4_con .chg4_mod.blk{  display: block;  }
+
+        .z_bj19z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_49.jpg) no-repeat right top;}
+        .z_bj19y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_51.jpg) no-repeat left top;}/*图片*/
+        .z_bj20z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_52.jpg) no-repeat right top;}
+        .z_bj20y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_54.jpg) no-repeat left top;}/*图片*/
+        .z_bj21z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_55.jpg) no-repeat right top;}
+        .z_bj21y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_57.jpg) no-repeat left top;}/*图片*/
+        .z_bj22z{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_58.jpg) no-repeat right top;}
+        .z_bj22y{background:url(http://2.zol-img.com.cn/zt/tm_575/e470ae7dcc/shfhc-pc_60.jpg) no-repeat left top;}/*图片*/
+
+
+
+
+        .rightlayer{position: fixed; width: 170px; background:; left: 50%; top: 20%;margin-left:550px; z-index:500;}
+        .left_nv{width:200px; height:400px; position:fixed;right:50%;margin-right:510px; top:170px;}
+
+
+
+
+
+    </style>
+    <img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986120190688&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=746&_my=231&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986121252687&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=751&_my=234&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986124432958&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=677&_my=240&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986125845520&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=721&_my=239&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986127901412&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=896&_ey=208&_mx=1079&_my=233&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986139801274&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=707&_my=255&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986140884921&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=620&_my=256&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986142095525&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=158&_ey=208&_mx=425&_my=242&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986143233243&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=751&_my=242&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986144547763&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=896&_ey=208&_mx=1051&_my=226&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986145897119&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=158&_ey=208&_mx=379&_my=240&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986148522861&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=&ad_id=&tag_id=&cw=1423&ch=774&ew=369&eh=67&st=1100&js_txt=&_ex=527&_ey=208&_mx=780&_my=248&_merid=&_left_st=0" style="display: none;"><img border="0" width="1" height="1" src="http://pvc.zol.com.cn/images/pvhit0001.gif?t=1465986226627377&ip_ck=48aG7v30j7QuNDE3OTczLjE0MjUyODkyNjc=&userid=qq_12557p432277&refer=http://article.zol.com.cn/zt/template_edit.php?tid=5880645&url=javascript:save_template()&ad_id=&tag_id=doSaveTplBtn&cw=1423&ch=774&ew=101&eh=27&st=1100&js_txt=保存模板&_ex=1286&_ey=-1096&_mx=1337&_my=15&_merid=&_left_st=0" style="display: none;"></head>
+
+<body screen_capture_injected="true" chromeextension:video-tape="true">
+<{data[0]}>
+<div>
+
+    <!--顶部-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="top-l">&nbsp;</td>
+            <td width="1106">
+                <div class="top-c">
+                    <div id="t1" class="t t1">0</div>
+                    <div id="t2" class="t t2">9</div>
+                    <div id="t3" class="t t3">0</div>
+                    <div id="t4" class="t t4">5</div>
+                    <div id="t5" class="t t5">3</div>
+                    <div id="t6" class="t t6">6</div>
+                    <div id="t7" class="t t7">1</div>
+                    <div id="t8" class="t t8">1</div>
+                    <div class="top-active">
+                        <{data[162]}>
+                    </div>
+                    <div class="top-link">
+                        <a href="http://6.zol.com/" target="_blank">返回主会场</a>
+                    </div>
+                </div>
+            </td>
+            <td class="top-r">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj2z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[2]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj2y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj3z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[3]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj3y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj4z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="40px" width=""><{data[4]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj4y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj5z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[5]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj5y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+    <!--change1-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="chg1_s">&nbsp;</td>
+            <td width="1106">
+                <div class="chg1_c">
+                    <ul class="chg1_ul">
+                        <li class="act">热卖爆款</li>
+                        <li class="">千元好机</li>
+                        <li class="">手机周边</li>
+                    </ul>
+                    <div class="chg1_con">
+                        <div class="chg1_mod blk">
+                            <{data[163]}>
+                        </div>
+                        <div class="chg1_mod">
+                            <{data[164]}>
+                        </div>
+                        <div class="chg1_mod">
+                            <{data[165]}>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="chg1_s">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj8z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="146px" width=""><{data[8]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj8y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <!--change2-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="chg2_s">&nbsp;</td>
+            <td width="1106">
+                <div class="chg2_c">
+                    <ul class="chg2_ul">
+                        <li class="act">入门级</li>
+                        <li>数码配件</li>
+                    </ul>
+                    <div class="chg2_con">
+                        <div class="chg2_mod blk">
+                            <{data[166]}>
+                        </div>
+                        <div class="chg2_mod">
+                            <{data[167]}>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="chg2_s">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj12z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[12]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj12y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <!--change3-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="chg3_s">&nbsp;</td>
+            <td width="1106">
+                <div class="chg3_c">
+                    <ul class="chg3_ul">
+                        <li class="act">厨房惠选</li>
+                        <li>家电惠购</li>
+                    </ul>
+                    <div class="chg3_con">
+                        <div class="chg3_mod blk">
+                            <{data[168]}>
+                        </div>
+                        <div class="chg3_mod">
+                            <{data[169]}>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="chg3_s">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj15z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[15]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj15y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <!--change4-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="chg4_s">&nbsp;</td>
+            <td width="1106">
+                <div class="chg4_c">
+                    <ul class="chg4_ul">
+                        <li class="act">热销手机</li>
+                        <li>相机特惠</li>
+                        <li>家电专场</li>
+                    </ul>
+                    <div class="chg4_con">
+                        <div class="chg4_mod blk">
+                            <{data[176]}>
+                        </div>
+                        <div class="chg4_mod">
+                            <{data[177]}>
+                        </div>
+                        <div class="chg4_mod">
+                            <{data[178]}>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="chg4_s">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj19z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[19]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj19y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj20z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[20]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj20y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj21z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[21]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj21y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj22z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[22]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj22y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <div class="rightlayer">
+        <img src="http://zt.fd.zol-img.com.cn/g5/M00/0B/02/ChMkJ1diBYuIGXc3AACqFq9C0SwAASp1AEy908AAKou701.png" border="0" usemap="#Map">
+        <map name="Map" id="Map"><area shape="rect" coords="7,141,123,191" href="#f1" target="_self" />
+            <area shape="rect" coords="8,202,117,250" href="#f2" target="_self" />
+            <area shape="rect" coords="12,263,115,310" href="#f3" target="_self" />
+            <area shape="rect" coords="9,319,122,374" href="#f4" target="_self" />
+            <area shape="rect" coords="10,381,116,432" href="#f5" target="_self" />
+            <area shape="rect" coords="8,444,120,478" href="#f6" target="_self" />
+            <area shape="rect" coords="10,486,111,513" href="#" target="_self" />
+            <area shape="rect" coords="8,83,118,128" href="http://6.zol.com" target="_blank" />
+        </map></div>
+
+
+
+    <div class="left1_nv">
+        <img src="http://zt.fd.zol-img.com.cn/g5/M00/0B/02/ChMkJ1diE_mIH_xEAABzms73GjQAASp_ANS9KwAAHOy095.png" border="0" usemap="#Map02010" />
+        <map name="Map02010" id="Map02010">
+            <area shape="rect" coords="7,85,125,134" href="http://6.zol.com" target="_blank" />
+            <area shape="rect" coords="13,384,116,411" href="#" target="_self" /><area shape="rect" coords="10,140,119,191" href="http://go.zol.com/topic/5880645.html" target="_blank" /><area shape="rect" coords="7,199,123,252" href="http://go.zol.com/topic/5881114.html" target="_blank" /><area shape="rect" coords="13,262,110,310" href="http://geek.zol.com/" target="_blank" /><area shape="rect" coords="12,323,112,371" href="http://go.zol.com/topic/5878400.html" target="_blank" />
+        </map></div>
+
+
+    <script type="text/javascript">
+        if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+            if (window.location.href.indexOf("?via=") < 0) {
+                try {
+                    if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                        var tmp = location.href.match(/[0-9]+\/(.*)/i);
+                        window.location.href = "http://m.zol.com.cn/topic/5880645.html";
+                    }
+                } catch(e) {}
+            }
+        }
+
+        /*倒计时*/
+        //设定一个目标时间，还有当前的时间
+        //目标的时间-当前的时间 >0 还没有到达目标值，我们进行倒计时处理
+        //getTime:获取当前时间距离1970-01-01 00:00:00之间的毫秒差
+        //console.log(new Date().getTime());//-->1445764647757
+        var timer = null,arr_1=[],t1= 0,t2= 0,t3= 0,t4= 0,t5= 0,t6= 0,t7= 0,t8= 0;
+        function addZero(val) {
+            return val < 10 ? "0" + val : val;
+        }
+        function computeTime() {
+            var resStr = "00:00:00";
+            var tarTime = new Date("2016/6/25 00:00:00");
+            var nowTime = new Date();
+            //spanTime:获取的是目标时间和当前时间之间的毫秒差
+            var spanTime = tarTime.getTime() - nowTime.getTime();
+            if (spanTime > 0) {
+                //0)计算包含多少个天
+                var day = Math.floor(spanTime / (1000 * 60 * 60 * 24));
+                spanTime = spanTime - day * 60 * 60 * 1000 * 24;
+                //1)计算包含多少个小时
+                var hour = Math.floor(spanTime / (1000 * 60 * 60));
+                //2)把小时占用的毫秒数减去
+                spanTime = spanTime - hour * 60 * 60 * 1000;
+                //3)计算包含多少分钟
+                var minute = Math.floor(spanTime / (1000 * 60));
+                //4)把分钟占用的毫秒数减去
+                spanTime = spanTime - minute * 60 * 1000;
+                //5)计算包含多少秒
+                var second = Math.floor(spanTime / 1000);
+                //6)拼接我们的字符串
+                resStr = addZero(day)+":"+ addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+                var t1=addZero(day).toString().split("")[0];
+                var t2=addZero(day).toString().split("")[1];
+                var t3=addZero(hour).toString().split("")[0];
+                var t4=addZero(hour).toString().split("")[1];
+                var t5=addZero(minute).toString().split("")[0];
+                var t6=addZero(minute).toString().split("")[1];
+                var t7=addZero(second).toString().split("")[0];
+                var t8=addZero(second).toString().split("")[1];
+                $('#t1').html(t1);
+                $('#t2').html(t2);
+                $('#t3').html(t3);
+                $('#t4').html(t4);
+                $('#t5').html(t5);
+                $('#t6').html(t6);
+                $('#t7').html(t7);
+                $('#t8').html(t8);
+            } else {
+                window.clearInterval(timer);
+                timer = null;
+            }
+        }
+        computeTime();
+        timer = window.setInterval(function () {
+            computeTime();
+        }, 1000);
+
+        /*楼层切换函数*/
+        function chg(l,lc,ds,dc){
+            var lis=$(l),dis=$(ds);
+            lis.bind('click', function () {
+                var ind=lis.index(this);
+                $(this).addClass(lc).siblings().removeClass(lc);
+                dis.eq(ind).addClass(dc).siblings().removeClass(dc);
+            })
+        }
+
+        chg('.chg1_ul li','act','.chg1_mod','blk');
+        chg('.chg2_ul li','act','.chg2_mod','blk');
+        chg('.chg3_ul li','act','.chg3_mod','blk');
+        chg('.chg4_ul li','act','.chg4_mod','blk');
+
+
+
+    </script>
+
+</div>
+<script src="http://www.zol.com/js/spm.js" type="text/javascript"></script>
+
+
+
+
+</body></html>

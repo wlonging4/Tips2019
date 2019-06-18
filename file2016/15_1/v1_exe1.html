@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+MVC->MVP->MVVM
+
+MVC:
+user->controller->model->view
+
+MVP:
+model<-->presenter/controller<-->view
+presenter完全把view和model分离
+
+MVVM
+knockout,Ember,Angular,vue
+将presenter/controller改成viewModel
+view的变化会自动更新到VM上,VM上的变化也会反映到view上
+这种自然同步是因为VM中的属性实现了observer,当属性变更时都能触发对应操作
+
+vue特点:
+轻量;数据绑定;指令;插件化;
+
+对比Angular:
+相同点:
+①都支持指令(内置指令和自定义指令)
+②都支持过滤器(内置过滤器和自定义过滤器)
+③都支持双向绑定
+④都不支持低端浏览器(IE6/7/8)
+不同点:
+①Angular的学习成本高
+②在性能上,A依赖对数据做脏检查,所以watcher越多越慢。v使用基于依赖追踪的观察并且使用异步队列更新,所有的数据都是独立触发的.对于庞大的应用来说,这个优化差异还是比较明显的.
+
+对比React:
+相同点:
+①R采用JSX语法,V在组件开发中也推崇编写V特殊文件格式,对文件内容都有一些约定,两者都需要编译后使用
+②中心思想相同:一切都是组件，组件之间可以互相嵌套
+③都提供合理的钩子函数,可以让开发者定制化地去处理需求
+④都不内置类似Ajax,Router等功能到核心包,而是以其他方式（插件）加载
+⑤在组件开发中都支持mixins的特性质
+不同点:
+①R依赖virtual DOM,而V使用的是DOM模板.R采用的virtual DOM会对渲染出来的结果做脏检查
+②V在模板中提供了指令,过滤器等,可以非常方便快捷的操作DOM
+③V对于virtual DOM的支持跟R还是有区别的
+
+对比Knockout:
+轻量级兼容6+浏览器的MVVM框架
+相同点:
+①都用到了数据和DOM元素绑定
+②DOM元素都是基于模板的
+③都追求UI和数据关联，自动刷新
+④都支持依赖跟踪
+不同点:
+①knockout的所有可观测属性都需要手动用observable方法来初始化,并且需要函数调用的方式来操作数据
+②knockout没有viewModel之间的作用于继承
+
+对比Ractive.js的区别
+R和V很像,通过实例化一个R类,传一个元素和一些数据,模板等,但是它用字符串模板,数据模型和knockout一样用get和set,本身代码体积较大
+
+对比backbone.js的区别
+定位不同，V专注于view,而B除了view之外,还提供了collection，model以及router。V拥有数据绑定,而B需要手动通过事件来操作DOM
+
+<div id="didi">
+    <ul>
+        <li v-for="item in tabs">
+            {{item.t}}
+        </li>
+    </ul>
+</div>
+<script charset="gbk">
+    var v1=new Vue({
+        el:'#didi',
+        data:{
+            tabs:[
+                {t:'bus'},
+                {t:'bike'},
+                {t:'car'},
+                {t:'truck'}
+            ]
+        },
+        methods:{
+            draw:function () {
+
+            }
+        },
+        mounted:{
+
+        }
+    })
+</script>
+</body>
+</html>

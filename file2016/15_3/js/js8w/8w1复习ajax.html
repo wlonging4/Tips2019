@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="jquery-1.9.1.js"></script>
+<script>
+    //同源用ajax的四部操作
+    /*var createXHR=(function () {
+        if('XMLHttpRequest' in window){
+                return new XMLHttpRequest();
+        }
+        if(new ActiveXObject('Microsoft.XMLHTTP')){
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        if(new ActiveXObject('Microsoft.XMLHTTP')){
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        if(new ActiveXObject('Microsoft.XMLHTTP')){
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    });
+    var xhr=createXHR();
+    xhr.open('GET','./test.txt',true);
+    xhr.setRequestHeader('Content-Type','')
+    xhr.onreadystatechange= function () {
+        if(this.readyState===4&&/^2\d{2}$/.test(this.status)){
+            var value=this.responseText;
+            console.log(value);
+        }
+    };
+    //post请求中如果需要传递给后台数据,需要把json格式的字符串放在这里;
+    xhr.send();
+    console.log('ok');*/
+
+
+    //jquery实现
+    /*$.ajax({
+        url:'rest2.txt',
+        type:'get',
+        dataType:'JSON',//text->json直接把json对象化;
+        async:true,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function () {
+
+        }
+    });*/
+   /* $.ajax({
+        url:'rest2.txt',
+        type:'post',
+        data:{a:1},
+        //dataType:'JSON',//text->json直接把json对象化;
+        async:true,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function () {
+
+        }
+    });*/
+
+    //非同源策略:通过一个地址向后台传送请求;后台会把callback这个函数执行,并在前台接受数据;
+    //我们需要后台给我们的数据都在data里
+    //jsonp利用script标签不存在域和跨域的概念,所以我们可以在自己的网页中引入任何域名下的JS文件;我们把需要后台请求的数据通过callback的函数名传给后台;后台会把传递的参数解析,获取到你的方法名,并且执行这个方法,处理的数据再返回给前端;
+    //这个函数中定义的形参data其实就已经存储了我们需要的数据,接下来做数据解析,数据绑定
+    //jsonp只有get请求;
+    /*function gameList(data){
+        console.log(data);
+    }*/
+
+
+    //jquey自动加了一个随机的callback;http://matchweb.sports.qq.com/kbs/list?columnId=100000&startTime=2015-12-18&endTime=2015-12-18&callback=jQuery1910601190767949447_1450069144389&_=1450069144390
+    /*$.ajax({
+     url:'http://matchweb.sports.qq.com/kbs/list?columnId=100000&startTime=2015-12-18&endTime=2015-12-18',
+     type:'get',
+     dataType:'JSONP',//text->json直接把json对象化;
+     async:true,
+     jsonp:'a',//修改callback这个属性名为cb
+     jsonpCallback:'a',//修改cb传递值的名字
+     //这个属性可以把callback随机生成的名字替换成a;http://matchweb.sports.qq.com/kbs/list?columnId=100000&startTime=2015-12-18&endTime=2015-12-18&callback=a&_=1450069217075
+     success: function (data) {
+     console.log(data);
+     }
+     });*/
+
+
+    $.ajax({
+        url:'https://gsp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?cb=aa&wd=a&sc=hao123&_=1449994635796',
+        type:'get',
+        dataType:'JSONP',//text->json直接把json对象化;
+        async:true,
+        jsonp:'zdy',//修改callback这个属性名为cb
+        jsonpCallback:'wlg',//修改cb传递值的名字
+        //这个属性可以把callback随机生成的名字替换成a;http://matchweb.sports.qq.com/kbs/list?columnId=100000&startTime=2015-12-18&endTime=2015-12-18&callback=a&_=1450069217075
+        success: function (data) {
+            console.log(data);
+        }
+    });
+</script>
+<!--<script type="text/javascript" src="http://matchweb.sports.qq.com/kbs/list?callback=gameList&columnId=100000&startTime=2015-12-18&endTime=2015-12-18"></script>-->
+</body>
+</html>

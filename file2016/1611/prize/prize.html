@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>2016年产品评奖颁奖典礼</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#666; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#00a3d9; font-size: 12px; font-weight: bold;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* 结构样式 */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .wrap1{  background: #fbfbfb;  width: 100%;  overflow: hidden;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+        .zol_foot{  height: 90px;  padding-top: 60px; background: #fff;   }
+        .zol_foot,.zol_foot a{  color: #999;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 442px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_head_c.jpg") no-repeat 0 0;  }
+
+        .live{  height: 830px;  overflow: hidden;  margin: 20px auto 40px;  }
+        .live-l{  float: left;  width: 750px;  }
+        .live-r{  overflow: hidden;  float: left;  width: 420px;  margin-left: 30px;  }
+        .live-r1{  width: 420px;  height: 65px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_live_t.jpg") no-repeat 0 0;  }
+        .live-r2{  margin-top: 20px;  width: 420px;  height: 720px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_live_list.jpg") no-repeat 0 0;  }
+        .live-l1{  width: 745px;  height: 300px;  padding: 1px;  overflow: hidden;  border: 1px solid #ddd;  }
+        .live-l1-box{  position: relative;  width: 745px;  height: 300px;  background: #000;  overflow: hidden;  }
+        .live-l1-mod{  height: 300px;  position: absolute;  top: 0;  left: 0; }
+        .live-l-ul{  width: 270px;  height: 12px;  margin: 20px auto 10px;  }
+        .live-l-ul li{  float: left;  width: 80px;  height: 12px;  margin: 0 5px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/live_btn.png") no-repeat 0 -12px;  }
+        .live-l-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/live_btn.png") no-repeat 0 0;  }
+
+        .t{  width: 155px;  height: 95px;  text-align: right;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/t_bar.png") no-repeat 0 0;  color: #da463b;  font:  30px/38px 'Hiragino Sans GB','microsoft yahei';  }
+        .t-live{  position: absolute;  top: 0;  }
+        .t-speech{  position: absolute;  top: 0;  }
+
+        .live-l-video{  position: relative;  width: 750px;  height: 470px;  margin-top: 22px;  overflow: hidden;  }
+        .live-mod{  margin-top: 50px;  width: 750px;  height: 420px;  background: #000;  }
+
+        .speech{  height: 420px;  margin: 30px auto 50px;  overflow: hidden;  }
+        .spe{  height: 340px;  margin-top: 80px;  overflow: hidden;  }
+        .spe-l{  float: left;  width: 260px;  height: 340px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_bg_speech.jpg") no-repeat 0 0;  }
+        .spe-r{  float: left;  width: 940px;  height: 340px;  }
+        .spe-r .hong20{  font-family: 'Hiragino Sans GB','microsoft yahei';  display: block;  color: #da463b;  padding-top: 42px;  line-height: 0px;  font-size: 24px;  }
+        .spe-r .hong20:hover{  text-decoration: none;  }
+        .spe-r .hong20 span{  line-height: 110px;  font-size: 40px;  font-weight: bold;  }
+        .spe-r .hong20 em{  display: block;  margin-top: -20px;  font-size: 16px;  font-style: normal;  }
+        .spe-r .hui12{  display: block;  font-family: 'simsun';  color: #9b9b9b;  text-indent: 24px;  padding-right: 40px;  padding-top: 30px;  }
+
+        .prize{  height: 1740px;  padding: 35px 0;  }
+        .pri{  height: 1620px;  overflow: hidden;  }
+        .pri-m{  width: 1258px;  height: 1620px;  display: none;  margin-left: -30px;  }
+        .pri-m.blk{  display: block;  }
+        .pri-m .hong20{  display: block;  width: 300px;  height: 140px;  text-align: left;  line-height: 26px;  padding: 20px 30px;  font-family: 'Hiragino Sans GB','microsoft yahei';  color: #D9463A;  background: url("http://2.zol-img.com.cn/zt/tm_582/d9e2959c6b/bg_prize.jpg") no-repeat 0 0;  }
+        .pri-m .hong20 span{  display: block;  padding-top: 28px;  color: #666;  }
+        .pri-m .ln{  height: 70px;  }
+        .pri-ul{  width: 360px;  height: 12px;  margin: 0 auto 0;  }
+        .pri-ul li{  float: left;  width: 80px;  height: 12px;  margin: 0 5px;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/live_btn.png") no-repeat 0 -12px;  }
+        .pri-ul li.act{  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/live_btn.png") no-repeat 0 0;  }
+
+        .pic{  width: 100%;  position: relative;  height: 698px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/lg_pic_bg.jpg") no-repeat top center;  }
+        .pic-box{  position: relative;  width: 1000px;  height: 460px;  overflow: hidden;  background: #000;  margin: 32px auto 0;  }
+        .pic-mod{  position: absolute;  top: 0;  left: 0;  height: 460px;  }
+        .pic-btn{  position: absolute;  width: 70px;  height: 70px;  left: 50%;  top: 225px;  cursor: pointer;  }
+        .pic-btn1{  margin-left: -600px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/pic_btn.png") no-repeat 0 0;  }
+        .pic-btn2{  margin-left: 530px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/pic_btn.png") no-repeat -70px 0;  }
+        .pic-btn1:hover{  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/pic_btn.png") no-repeat 0 -70px;  }
+        .pic-btn2:hover{  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/pic_btn.png") no-repeat -70px -70px;  }
+        .pic-box2{  width: 1200px;  height: 120px;  overflow: hidden;  position: relative;  margin: 30px auto 0;  }
+        .pic-mod2{  position: absolute;  top: 0;  left: 0;  height: 120px;  }
+        .t-pic{  position: relative;  margin: 0 auto;  width: 1200px;  text-align: left;  text-indent: 35px;  }
+
+        .cop{  padding: 40px 0 0;  }
+        .cop-line{  width: 100%;  height: 1px;  background: #e6e6e6;  }
+        .brand{  width: 1200px;  height: 250px;  background: url("http://2.zol-img.com.cn/zt/tm_582/d6fba968dd/brand.jpg") no-repeat 0 0;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table width="100%" class="head" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                <{data[0]}>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--直播-->
+<div class="wrap1">
+    <div class="wrapper2 live clearfix">
+        <div class="live-l">
+            <div class="live-l1">
+                <div class="live-l1-box">
+                    <div class="live-l1-mod"><{data[1]}></div>
+                </div>
+            </div>
+            <ul class="live-l-ul">
+                <li class="act"></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="live-l-video">
+                <div class="t t-live">视频直播</div>
+                <div class="live-mod">
+                    <{data[2]}>
+                </div>
+            </div>
+        </div>
+        <div class="live-r">
+            <div class="live-r1"></div>
+            <div class="live-r2"></div>
+        </div>
+    </div>
+</div>
+<!--演讲-->
+<div class="wrapper2 speech">
+    <div class="t t-speech">主题演讲</div>
+    <div class="spe clearfix">
+        <div class="spe-l"></div>
+        <div class="spe-r"><{data[3]}></div>
+    </div>
+</div>
+<!--颁奖-->
+<div class="wrap1">
+    <div class="wrapper2 prize">
+        <div class="t">现场颁奖</div>
+        <div class="pri">
+            <div class="pri-m blk"><{data[6]}></div>
+            <div class="pri-m"><{data[7]}></div>
+            <div class="pri-m"><{data[8]}></div>
+            <div class="pri-m"><{data[9]}></div>
+        </div>
+        <ul class="pri-ul">
+            <li class="act"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<!--美图-->
+<div class="wrapper2 t t-pic">高清大图</div>
+<div class="wrap1 pic">
+    <div class="pic-box">
+        <div class="pic-mod"><{data[4]}></div>
+    </div>
+    <div class="pic-btn pic-btn1"></div>
+    <div class="pic-btn pic-btn2"></div>
+    <div class="pic-box2">
+        <div class="pic-mod2"><{data[5]}></div>
+    </div>
+</div>
+<!--合作-->
+<div class="wrapper2">
+    <div class="cop">
+        <div class="t">合作媒体</div>
+        <div class="brand"></div>
+    </div>
+</div>
+<div class="cop-line"></div>
+
+
+<script charset="gbk">
+    /*选项卡*/
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('mouseenter', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.pri-ul li','act','.pri-m','blk');
+
+    /*组图*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".pic-mod2",".pic-box2",5,".pic-btn1",".pic-btn2");
+
+    var pic_btn1=$('.pic-btn1'),pic_btn2=$('.pic-btn2'),pic_mod1=$('.pic-mod'),pic_mod2=$('.pic-mod2'),pic_b=pic_mod1.find('table img'),pic_s=pic_mod2.find('table img');
+
+    var live_mod=$('.live-l1-mod'),live_li=$('.live-l-ul li');
+
+    function chg(li,mod,num,cls){
+        li.bind('mouseenter', function () {
+            mod.stop().animate({'left':'-'+li.index(this)*num+'px'});
+            if(cls){
+                $(this).addClass(cls).siblings().removeClass(cls);
+            }
+        });
+    }
+    chg(pic_s,pic_mod1,1000);
+    chg(live_li,live_mod,745,'act');
+</script>
+</body>
+</html>

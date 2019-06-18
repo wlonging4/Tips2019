@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>99乘法表1</title>
+    <style type="text/css">
+        body,div,ul,li,span{
+            padding:0;
+            margin: 0;
+            font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+        }
+        #tab{
+            height:400px;
+            width:600px;
+            position: absolute;/*绝对定位*/
+            top:50%;
+            left:50%;
+            margin-left: -300px;
+            margin-top: -200px;
+            background:-webkit-linear-gradient(top right,greenyellow,palevioletred,#A0A000);
+            border-radius: 10px;
+            box-shadow:26px 6px #A7F7F7;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #tab li{
+            border:1px solid #219161;
+            margin: 10px;
+            height: 30px;
+            line-height: 30px;
+        }
+        #tab li span{
+            display: inline-block;/*因为span是行内标签说以要改变为块内元素；*/
+            height:30px;
+            width:60px;
+            margin-right:4px;
+            text-align: center;
+        }
+        .c1{
+            background-color: steelblue;
+        }
+        .c2{
+            background-color: greenyellow;
+        }
+        .c3{
+            background-color: firebrick;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+</div>
+<script type="text/javascript">
+    var odis=document.getElementById("tab");
+    var str="";
+
+    str+="<ul>";
+    for(var i=1;i<=9;i++){
+/*  var val="c1";
+        switch(i%3){
+            case 0:
+                val="c1";
+                break;
+            case 1:
+                val="c2";
+                break;
+            default:
+                val="c3";
+            }*/
+        str+="<li>";
+        for(var j=1;j<=i;j++){
+            str+="<span>";
+            str+=" "+j+"*"+i+"="+(i*j)+" ";
+            str+="</span>";
+        }
+        str+="</li>";
+    }
+    str+="</ul>";
+    odis.innerHTML=str;
+
+    var spans=odis.getElementsByTagName("span");
+    for(var i=0;i<=spans.length;i++){
+        spans[i].className="c"+(i%3+1);
+    }
+</script>
+</body>
+</html>

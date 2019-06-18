@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="GBK">
+    <meta http-equiv=”X-UA-Compatible” content=”IE=edge”>
+    <title></title>
+    <style>
+        html, body { height: 100%; }
+        body { color: #000; font: 12px/22px "Microsoft YaHei"; width: 100%; text-align: center; overflow: hidden; background: #000; position: relative; }
+        body, div, form, img, p, h1, h2, h3, h4, h5, h6, dl, dt, dd, ul, ol, li { padding: 0; margin: 0; }
+        input { border: none; outline: none; background: none; margin: 0; padding: 0; }
+        ul, li { list-style: none; }
+        em { font-style: normal; }
+        img { border: 0; }
+        a { color: #333; text-decoration: none; }
+        a:hover, td a:hover { text-decoration: none; }
+        .clear { clear: both; display: block; height: 0; visibility: hidden; font: 0/0 arial; }
+        .clearfix:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; font-size: 0; }
+        .clearfix { *zoom: 1; }
+
+        .box { z-index: 9; position: absolute; width: 1440px; height: 768px; margin: 0 auto; left: 50%; margin-left: -720px; top: 50%; margin-top: -384px; }
+        #again { z-index: 12; cursor: pointer; position: absolute; left: 50%; top: 50%; width: 431px; height: 266px; margin-left: -215px; margin-top: -133px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/again.png) no-repeat; background-position: 0 0; }
+        .again { -webkit-animation: countDown 3s forwards; -moz-animation: countDown 3s forwards; animation: countDown 3s forwards; }
+        .time { z-index: 6; overflow: hidden; padding: 30px 9px 6px 66px; width: 265px; height: 48px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/time.png) no-repeat right 0; position: absolute; left: 177px; bottom: 31px; }
+        .time .core { -moz-transform: translateX(340px); -ms-transform: translateX(340px); -o-transform: translateX(340px); -webkit-transform: translateX(340px); transform: translateX(340px); -moz-animation: lage 48s linear forwards; -o-animation: lage 48s linear forwards; animation: lage 48s linear forwards; -webkit-animation: lage 48s linear forwards; position: absolute; right: 6px; top: 30px; width: 340px; background: rgba(0,0,0,0.5); height: 46px; display: block; }
+
+        .rapid { z-index: 7; position: absolute; left: 70px; bottom: 10px; width: 123px; height: 127px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/rapid.png) no-repeat; }
+        .rapid span { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); -moz-transform-origin: center 48px; -ms-transform-origin: center 48px; -o-transform-origin: center 48px; -webkit-transform-origin: center 48px; transform-origin: center 48px; -moz-transition: all 1s; -o-transition: all 1s; -webkit-transition: all 1s; transition: all 1s; width: 11px; height: 53px; position: absolute; left: 50%; top: 50%; margin-top: -46px; margin-left: -6px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/needle.png) no-repeat center top; }
+
+        canvas { width: 1440px; height: 768px; position: absolute; left: 0; top: 0; z-index: 5; }
+
+        @-webkit-keyframes lage {
+            0% { -moz-transform: translateX(340px); -ms-transform: translateX(340px); -o-transform: translateX(340px); -webkit-transform: translateX(340px); transform: translateX(340px); }
+            100% { -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); -webkit-transform: translateX(0); transform: translateX(0); }
+        }
+
+        @-moz-keyframes lage {
+            0% { -moz-transform: translateX(340px); -ms-transform: translateX(340px); -o-transform: translateX(340px); -webkit-transform: translateX(340px); transform: translateX(340px); }
+            100% { -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); -webkit-transform: translateX(0); transform: translateX(0); }
+        }
+
+        @keyframes lage {
+            0% { -moz-transform: translateX(340px); -ms-transform: translateX(340px); -o-transform: translateX(340px); -webkit-transform: translateX(340px); transform: translateX(340px); }
+            100% { -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); -webkit-transform: translateX(0); transform: translateX(0); }
+        }
+
+        @-webkit-keyframes countDown {
+            0% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -276px; }
+            19% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -276px; }
+            21% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -522px; }
+            40% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -522px; }
+            60% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -522px; }
+            61% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -778px; }
+            80% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -778px; }
+            100% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -778px; }
+        }
+
+        @-moz-keyframes countDown {
+            0% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -276px; }
+            19% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -276px; }
+            21% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -522px; }
+            40% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -522px; }
+            60% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -522px; }
+            61% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -778px; }
+            80% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -778px; }
+            100% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -778px; }
+        }
+
+        @keyframes countDown {
+            0% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -276px; }
+            19% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -276px; }
+            21% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -522px; }
+            40% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -522px; }
+            60% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -522px; }
+            61% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -778px; }
+            80% { -moz-transform: scale(1,1); -ms-transform: scale(1,1); -o-transform: scale(1,1); -webkit-transform: scale(1,1); transform: scale(1,1); background-position: 0 -778px; }
+            100% { -moz-transform: scale(0,0); -ms-transform: scale(0,0); -o-transform: scale(0,0); -webkit-transform: scale(0,0); transform: scale(0,0); background-position: 0 -778px; }
+        }
+
+        .statistics { z-index: 5; position: absolute; left: 80px; top: 40px; width: 405px; height: 80px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/statistics.png) no-repeat; }
+        .statistics span { position: absolute; top: 26px; font-size: 26px; color: #fff; text-shadow: 2px 2px 1px #a54a20; font-family: "Microsoft YaHei"; }
+        .statistics .tortoise { left: 110px; }
+        .statistics .bolt { left: 340px; }
+
+        .product { z-index: 11; display: none; position: absolute; left: 0; top: 0; width: 1440px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/lgr_end_bg_img.jpg) no-repeat; }
+        .product .light-box { z-index: 1; position: absolute; width: 158px; height: 187px; left: 595px; top: 393px; overflow: hidden; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/light1.png) no-repeat; }
+        .product .backIndex { position: absolute; bottom: 15px; right: 44px; width: 113px; height: 35px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/backIndex.png) no-repeat; cursor: pointer; }
+
+
+        /* content */
+        .wrapper { z-index: 10; opacity: 0; width: 1440px; height: 768px; margin: 0 auto; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/opacity-bg.jpg) no-repeat; overflow: hidden; font-family: "Microsoft Yahei"; position: absolute; left: 0; top: 0; }
+        .result-box { width: 1284px; height: 661px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/result_bg.png) no-repeat; margin: 49px auto 0; position: relative; }
+        .result-con { position: absolute; left: 113px; top: 76px; width: 353px; height: 63px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/tips1.png) no-repeat; padding: 150px 0 0 20px; }
+        .result-box .result { width: 300px; height: 57px; border: 1px solid #ca8817; -webkit-border-radius: 10px; border-radius: 10px; text-align: center; line-height: 57px; font-size: 20px; color: #ffba00; }
+        .result-box .result span { color: #ff0400; font-size: 40px; padding: 0 10px; vertical-align: top; display: inline-block; }
+        .result-box .detail-list { position: absolute; left: 127px; top: 324px; }
+        .result-box .detail-list li { text-align: left; height: 68px; line-height: 68px; border-bottom: 1px dashed #4d453f; padding-left: 50px; width: 340px; font-size: 18px; color: #c1c4d0; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/result_icon.png) no-repeat; }
+        .result-box .detail-list li span { color: #c1c4d0; font-size: 32px; padding: 0 10px; display: inline-block; vertical-align: top; }
+        .result-box .detail-list .li1 { background-position: 0 20px; }
+        .result-box .detail-list .li2 { background-position: 0 -48px; }
+        .result-box .detail-list .li3 { background-position: 0 -116px; }
+        .result-box .detail-list .li4 { background-position: 0 -187px; }
+        .secret-btn { position: absolute; left: 737px; top: 486px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/secret_btn.png) no-repeat; width: 403px; height: 106px; cursor: pointer; }
+        .secret-box { position: absolute; left: 696px; top: 20px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/secret_box.png) no-repeat; width: 444px; height: 478px; }
+        .gear-page { position: absolute; left: 0; top: 0; width: 1440px; height: 768px; margin: 0 auto; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear_bg.jpg) no-repeat; overflow: hidden; display: none; }
+        .workshop { width: 791px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/workshop.png) no-repeat; position: relative; margin: 0 auto; }
+        .workshop-light { position: absolute; left: 22px; top: 0; width: 715px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/workshop_light.png) no-repeat; }
+        .gear-visible { display: block; -webkit-animation: sparkle 0.8s forwards; -moz-animation: sparkle 0.8s forwards; -o-animation: sparkle 0.8s forwards; animation: sparkle 0.8s forwards; }
+        .gear-visible .workshop-light { -webkit-animation: sparkle 0.6s infinite alternate; -moz-animation: sparkle 0.6s infinite alternate; -o-animation: sparkle 0.6s infinite alternate; animation: sparkle 0.6s infinite alternate; }
+        .work-mask { position: absolute; left: 0; top: 0; width: 813px; height: 768px; }
+        .work-mask .mask1, .work-mask .mask2 { position: absolute; width: 802px; }
+        .work-mask .mask1 { left: -11px; top: -2px; height: 494px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/mask1.png) no-repeat; }
+        .work-mask .mask2 { left: 0; bottom: 0; height: 470px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/mask2.png) no-repeat; }
+        .gear-visible .mask1 { -webkit-animation: float-up 1s ease-in .8s forwards; -moz-animation: float-up 1s ease-in .8s forwards; -o-animation: float-up 1s ease-in .8s forwards; animation: float-up 1s ease-in .8s forwards; }
+        .gear-visible .mask2 { -webkit-animation: float-down 1s ease-in .8s forwards; -moz-animation: float-down 1s ease-in .8s forwards; -o-animation: float-down 1s ease-in .8s forwards; animation: float-down 1s ease-in .8s forwards; }
+        .workshop .gear { position: absolute; }
+        .workshop .gear1 { left: 171px; top: 142px; width: 176px; height: 176px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear1.png) no-repeat; }
+        .workshop .gear2 { left: 503px; top: 215px; width: 140px; height: 140px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear2.png) no-repeat; }
+        .workshop .gear3, .workshop .gear4 { width: 50px; height: 50px; }
+        .workshop .gear3 { left: 308px; top: 465px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear3.png) no-repeat; }
+        .workshop .gear4 { left: 348px; top: 512px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear4.png) no-repeat; }
+        .workshop .gear5 { width: 48px; height: 48px; left: 402px; top: 466px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear5.png) no-repeat; }
+        .workshop .gear6 { width: 75px; height: 75px; left: 519px; top: 538px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/gear6.png) no-repeat; }
+
+        .gear-visible .gear1 { -webkit-animation: counter-clockwise 4s infinite linear; -moz-animation: counter-clockwise 4s infinite linear; -o-animation: counter-clockwise 4s infinite linear; animation: counter-clockwise 4s infinite linear; }
+        .gear-visible .gear2 { -webkit-animation: clockwise 3s infinite linear; -moz-animation: clockwise 3s infinite linear; -o-animation: clockwise 3s infinite linear; animation: clockwise 3s infinite linear; }
+        .gear-visible .gear3 { -webkit-animation: counter-clockwise 3s infinite linear; -moz-animation: counter-clockwise 3s infinite linear; -o-animation: counter-clockwise 3s infinite linear; animation: counter-clockwise 3s infinite linear; }
+        .gear-visible .gear4 { -webkit-animation: counter-clockwise 3s infinite linear; -moz-animation: counter-clockwise 3s infinite linear; -o-animation: counter-clockwise 3s infinite linear; animation: counter-clockwise 3s infinite linear; }
+        .gear-visible .gear5 { -webkit-animation: clockwise 3s infinite linear; -moz-animation: clockwise 3s infinite linear; -o-animation: clockwise 3s infinite linear; animation: clockwise 3s infinite linear; }
+        .gear-visible .gear6 { -webkit-animation: clockwise 4s infinite linear; -moz-animation: clockwise 4s infinite linear; -o-animation: clockwise 4s infinite linear; animation: clockwise 4s infinite linear; }
+        /* 动画部分 */
+        @-webkit-keyframes sparkle {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @-moz-keyframes sparkle {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @-webkit-keyframes float-up {
+            0% { -webkit-transform: translate(0,0); -moz-transform: translate(0,0); -ms-transform: translate(0,0); -o-transform: translate(0,0); transform: translate(0,0); opacity: 1; }
+            90% { opacity: 1; }
+            100% { -webkit-transform: translate(-50px,-500px); -moz-transform: translate(-50px,-500px); -ms-transform: translate(-50px,-500px); -o-transform: translate(-50px,-500px); transform: translate(-50px,-500px); opacity: 0; }
+        }
+
+        @-moz-keyframes float-up {
+            0% { -webkit-transform: translate(0,0); -moz-transform: translate(0,0); -ms-transform: translate(0,0); -o-transform: translate(0,0); transform: translate(0,0); opacity: 1; }
+            90% { opacity: 1; }
+            100% { -webkit-transform: translate(-50px,-500px); -moz-transform: translate(-50px,-500px); -ms-transform: translate(-50px,-500px); -o-transform: translate(-50px,-500px); transform: translate(-50px,-500px); opacity: 0; }
+        }
+
+        @keyframes float-up {
+            0% { -moz-transform: translate(0,0); -ms-transform: translate(0,0); -o-transform: translate(0,0); -webkit-transform: translate(0,0); transform: translate(0,0); opacity: 1; }
+            90% { opacity: 1; }
+            100% { -moz-transform: translate(-50px,-500px); -ms-transform: translate(-50px,-500px); -o-transform: translate(-50px,-500px); -webkit-transform: translate(-50px,-500px); transform: translate(-50px,-500px); opacity: 0; }
+        }
+
+        @-webkit-keyframes float-down {
+            0% { -webkit-transform: translate(0,0); -moz-transform: translate(0,0); -ms-transform: translate(0,0); -o-transform: translate(0,0); transform: translate(0,0); opacity: 1; }
+            90% { opacity: 1; }
+            100% { -webkit-transform: translate(50px,500px); -moz-transform: translate(50px,500px); -ms-transform: translate(50px,500px); -o-transform: translate(50px,500px); transform: translate(50px,500px); opacity: 0; }
+        }
+
+        @-moz-keyframes float-up {
+            0% { -webkit-transform: translate(0,0); -moz-transform: translate(0,0); -ms-transform: translate(0,0); -o-transform: translate(0,0); transform: translate(0,0); opacity: 1; }
+            90% { opacity: 1; }
+            100% { -webkit-transform: translate(-50px,-500px); -moz-transform: translate(-50px,-500px); -ms-transform: translate(-50px,-500px); -o-transform: translate(-50px,-500px); transform: translate(-50px,-500px); opacity: 0; }
+        }
+
+        @keyframes float-down {
+            0% { -moz-transform: translate(0,0); -ms-transform: translate(0,0); -o-transform: translate(0,0); -webkit-transform: translate(0,0); transform: translate(0,0); opacity: 1; }
+            90% { opacity: 1; }
+            100% { -moz-transform: translate(50px,500px); -ms-transform: translate(50px,500px); -o-transform: translate(50px,500px); -webkit-transform: translate(50px,500px); transform: translate(50px,500px); opacity: 0; }
+        }
+
+        @-webkit-keyframes clockwise {
+            0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+
+        @-moz-keyframes clockwise {
+            0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+
+        @keyframes clockwise {
+            0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+
+        @-webkit-keyframes counter-clockwise {
+            0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(-360deg); -moz-transform: rotate(-360deg); -ms-transform: rotate(-360deg); -o-transform: rotate(-360deg); transform: rotate(-360deg); }
+        }
+
+        @-moz-keyframes counter-clockwise {
+            0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -moz-transform: rotate(-360deg); -ms-transform: rotate(-360deg); -o-transform: rotate(-360deg); -webkit-transform: rotate(-360deg); transform: rotate(-360deg); }
+        }
+
+        @keyframes counter-clockwise {
+            0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -moz-transform: rotate(-360deg); -ms-transform: rotate(-360deg); -o-transform: rotate(-360deg); -webkit-transform: rotate(-360deg); transform: rotate(-360deg); }
+        }
+
+        .light-box { position: absolute; width: 158px; height: 187px; left: 311px; top: 284px; overflow: hidden; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/light.png) no-repeat; -webkit-animation: sparkle 0.5s infinite alternate .2s; -moz-animation: sparkle 0.5s infinite alternate .2s; -o-animation: sparkle 0.5s infinite alternate .2s; animation: sparkle 0.5s infinite alternate .2s; }
+
+        .rotateOut { -webkit-animation: rotateOut 1s forwards; -moz-animation: rotateOut 1s; -o-animation: rotateOut 1s; animation: rotateOut 1s; }
+
+        @-webkit-keyframes rotateOut {
+            0% { -webkit-transform-origin: center center; -moz-transform-origin: center center; -ms-transform-origin: center center; -o-transform-origin: center center; transform-origin: center center; -webkit-transform: translate(0,0) rotate(0) scale(1); -moz-transform: translate(0,0) rotate(0) scale(1); -ms-transform: translate(0,0) rotate(0) scale(1); -o-transform: translate(0,0) rotate(0) scale(1); transform: translate(0,0) rotate(0) scale(1); }
+            100% { -webkit-transform-origin: center center; -moz-transform-origin: center center; -ms-transform-origin: center center; -o-transform-origin: center center; transform-origin: center center; -webkit-transform: translate(-280px,70px) rotate(-180deg) scale(1.7); -moz-transform: translate(-280px,70px) rotate(-180deg) scale(1.7); -ms-transform: translate(-280px,70px) rotate(-180deg) scale(1.7); -o-transform: translate(-280px,70px) rotate(-180deg) scale(1.7); transform: translate(-280px,70px) rotate(-180deg) scale(1.7); }
+        }
+
+        @-moz-keyframes rotateOut {
+            0% { -moz-transform-origin: center center; -ms-transform-origin: center center; -o-transform-origin: center center; -webkit-transform-origin: center center; transform-origin: center center; -moz-transform: translate(0, 0) rotate(0) scale(1); -ms-transform: translate(0, 0) rotate(0) scale(1); -o-transform: translate(0, 0) rotate(0) scale(1); -webkit-transform: translate(0, 0) rotate(0) scale(1); transform: translate(0, 0) rotate(0) scale(1); }
+            100% { -moz-transform-origin: center center; -ms-transform-origin: center center; -o-transform-origin: center center; -webkit-transform-origin: center center; transform-origin: center center; -moz-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); -ms-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); -o-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); -webkit-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); }
+        }
+
+        @keyframes rotateOut {
+            0% { -moz-transform-origin: center center; -ms-transform-origin: center center; -o-transform-origin: center center; -webkit-transform-origin: center center; transform-origin: center center; -moz-transform: translate(0, 0) rotate(0) scale(1); -ms-transform: translate(0, 0) rotate(0) scale(1); -o-transform: translate(0, 0) rotate(0) scale(1); -webkit-transform: translate(0, 0) rotate(0) scale(1); transform: translate(0, 0) rotate(0) scale(1); }
+            100% { -moz-transform-origin: center center; -ms-transform-origin: center center; -o-transform-origin: center center; -webkit-transform-origin: center center; transform-origin: center center; -moz-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); -ms-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); -o-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); -webkit-transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); transform: translate(-280px, 70px) rotate(-180deg) scale(1.7); }
+        }
+
+        .pop-box { z-index: 8; width: 232px; height: 128px; position: absolute; left: 207px; margin-top: -64px; }
+        .start-title { z-index: 9; width: 573px; height: 112px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/start_title.png) no-repeat; position: absolute; left: 50%; top: 140px; margin-left: -245px; }
+        .lenovo-tit { z-index: 1000; width: 31px; height: 93px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/lenovo-title.jpg) no-repeat; position: absolute; right: 0; top: 33px; }
+        .sky-bg1 { z-index: 3; opacity: 1; position: absolute; left: 0; top: 0; width: 1440px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/bg.jpg) no-repeat; margin: 0 auto; -moz-transform-origin: center top; -ms-transform-origin: center top; -o-transform-origin: center top; -webkit-transform-origin: center top; transform-origin: center top; }
+        .sky-bg2 { z-index: 2; position: absolute; left: 0; top: 0; width: 1440px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/bg-hh.jpg) no-repeat; margin: 0 auto; -moz-transform-origin: center top; -ms-transform-origin: center top; -o-transform-origin: center top; -webkit-transform-origin: center top; transform-origin: center top; }
+        .sky-bg3 { z-index: 1; position: absolute; left: 0; top: 0; width: 1440px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/bg-ws.jpg) no-repeat; margin: 0 auto; -moz-transform-origin: center top; -ms-transform-origin: center top; -o-transform-origin: center top; -webkit-transform-origin: center top; transform-origin: center top; }
+
+        @-webkit-keyframes opacity1 {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @-moz-keyframes opacity1 {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes opacity1 {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .product-btn-box { position: absolute; right: 82px; top: 278px; width: 166px; height: 406px; }
+        .product-btn-box a { height: 57px; width: 100%; }
+        .product-btn-box .product-btn1 { position: absolute; left: 0; top: 0; }
+        .product-btn-box .product-btn2 { position: absolute; left: 0; top: 165px; }
+        .product-btn-box .product-btn3 { position: absolute; left: 0; top: 350px; }
+
+        .product-box { z-index: 2; position: absolute; left: 0; top: 0; width: 1440px; height: 768px; background: url(http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/product-bg.png) no-repeat; display: none; }
+        .product-box .product-img1 { position: absolute; left: 0; top: 0; display: none; }
+        .product-box .product-img2 { position: absolute; left: 0; top: 0; display: none; }
+        .product-box .product-img3 { position: absolute; left: 0; top: 0; display: none; }
+        .product-box .close { z-index: 9; cursor: pointer; width: 40px; height: 40px; position: absolute; left: 85px; top: 77px; }
+        .product-box .next, .product-box .back_index { cursor: pointer; width: 137px; height: 38px; position: absolute; right: 158px; bottom: 130px; }
+
+    </style>
+</head>
+
+<body>
+<div id="box" class="box">
+    <div class="sky-bg1"></div>
+    <div class="sky-bg2"></div>
+    <div class="sky-bg3"></div>
+    <div class="lenovo-tit"></div>
+    <div class="statistics">
+        <span class="bolt">0</span>
+        <span class="tortoise">0</span>
+    </div>
+    <div class="end"></div>
+    <div class="start-title"></div>
+    <div id="again"></div>
+    <div class="time">
+        <span id="core"></span>
+    </div>
+    <div class="rapid">
+        <span>&nbsp;</span>
+    </div>
+    <canvas id="canvas" width="1440" height="768"></canvas>
+    <div class="pop-box">
+        <img id="pop-img" src="" alt="" />
+    </div>
+    <div class="wrapper">
+        <div class="result-box">
+            <div class="result-con">
+                <div class="result">狂飙了<span>268</span>KM</div>
+            </div>
+            <ul class="detail-list">
+                <li class="li1">吃到了<span>5</span>个神闪电</li>
+                <li class="li2">提升了<span>30%</span>的速度</li>
+                <li class="li3">吃到了<span>4</span>个小乌龟</li>
+                <li class="li4">拖慢了<span>60%</span>的速度</li>
+            </ul>
+            <div class="secret-box">
+
+            </div>
+            <div class="secret-btn"></div>
+        </div>
+        <div class="gear-page">
+            <div class="workshop">
+                <div class="workshop-light"></div>
+                <div class="gear gear1"></div>
+                <div class="gear gear2"></div>
+                <div class="gear gear3"></div>
+                <div class="gear gear4"></div>
+                <div class="gear gear5"></div>
+                <div class="gear gear6"></div>
+                <div class="light-box"></div>
+                <div class="work-mask">
+                    <span class="mask1"></span>
+                    <span class="mask2"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product">
+        <!--弹层按钮-->
+        <div class="product-btn-box">
+            <a href="javascript:;" class="product-btn1"></a>
+            <a href="javascript:;" class="product-btn2"></a>
+            <a href="javascript:;" class="product-btn3"></a>
+        </div>
+
+        <div class="product-box">
+            <p class="close"></p>
+            <div class="product-img1">
+                <img src="http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/product-img1.png" alt="" />
+                <p class="next"></p><!--下一页-->
+            </div>
+            <div class="product-img2">
+                <img src="http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/product-img2.png" alt="" />
+                <p class="next"></p><!--下一页-->
+            </div>
+            <div class="product-img3">
+                <img src="http://2.zol-img.com.cn/zt/tm_579/1b563e86ea/product-img3.png" alt="" />
+                <a class="back_index"></a><!--下一页-->
+            </div>
+        </div>
+        <div class="light-box"></div>
+        <p class="backIndex"></p>
+    </div>
+</div>
+
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_07.mp3" autoplay="autoplay" loop="loop" id="bgMu"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_02.mp3" id="quick"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_03.mp3" id="show"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_04.mp3" id="countDown"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_05.mp3" id="firing"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_06.mp3" id="quickCar"></audio>
+<audio src="http://icon.zol-img.com.cn/active/m/id5926873_08.mp3" loop="loop" id="loop"></audio>
+
+
+
+<script>
+    $('.product-btn-box a').click(function(){
+        $('.product-box').show();
+        $('.product-box div').eq($(this).index()).show().siblings('div').hide();
+    });
+    $('.product-box div p').click(function(){
+        console.log($(this).parent().index());
+        $(this).parent().hide().siblings().eq($(this).parent().index()).show();
+    });
+
+    $('.close').click(function(){
+        $('.product-box').hide();
+    });
+    $('.secret-btn').click(function(){
+        $(this).hide();
+        $('.secret-box').addClass('rotateOut');
+        setTimeout(function(){
+            $('.gear-page').addClass('gear-visible');
+        },1000);
+        setTimeout(function(){
+            $('.product').addClass('gear-visible');;
+        },4000);
+    });
+
+    function setSize(){
+        var scale1 = ($(window).height()/768).toFixed(2),
+                scale2 = ($(window).width()/1440).toFixed(2),
+                scale = scale1>scale2 ? scale2 : scale1;
+
+        $('.box').css({
+            '-webkit-transform':'scale('+scale+')',
+            '-moz-transform':'scale('+scale+')',
+            '-ms-transform':'scale('+scale+')',
+            '-o-transform':'scale('+scale+')',
+            'transform':'scale('+scale+')'
+        });
+    }
+
+    setSize();
+
+    $(window).resize(setSize);
+
+</script>
+
+<script src="http://active.zol.com.cn/16active/0708lenovo/game.js"></script>
+</body>
+
+</html>

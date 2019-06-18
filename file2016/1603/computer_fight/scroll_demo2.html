@@ -1,0 +1,241 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#000; font:12px/22px "SimSun",Arial;background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#000; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#0078D7; font-size:14px;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        /* 背景 */
+        .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_55a/dbebed28be/m_l01.jpg) no-repeat 100% 0;}
+        .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_55a/dbebed28be/m_r01.jpg) no-repeat 0 0;}
+        .bg2-l{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_l02.jpg) no-repeat 100% 0;}
+        .bg2-r{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_r02.jpg) no-repeat 0 0;}
+        .bg2-c{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_c02.jpg) no-repeat 0 0; height:388px;}
+        .bg4-l{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_l04.jpg) no-repeat 100% 0;}
+        .bg4-r{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_r04.jpg) no-repeat 0 0;}
+        .bg4-c{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_c04.jpg) no-repeat 0 0; height:734px;}
+        .bg5-l{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_l05.jpg) no-repeat 100% 0;}
+        .bg5-r{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_r05.jpg) no-repeat 0 0;}
+        .bg5-c{background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/m_c05.jpg) no-repeat 0 0; height:497px;}
+        .bg6-l,.bg6-c,.bg6-r{background:#F0F0F0; height:500px;}
+        /* 内容 */
+        .wrapper{width:1000px; position:relative;}
+
+        .con2-box{padding:23px 30px 0; }
+        .focus-box{width:410px; height:310px; padding:8px; background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/bg01.png) no-repeat; float:left;}
+        .focus-con{width:400px; height:300px;  border:5px solid #C0C0C0; background:#fff;}
+        .con2-text{width:480px; height:344px; float:right;}
+        .con2-text .bai18{display:block; width:422px; height:45px; background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/icon1.jpg) no-repeat 20px 10px #0078D7; color:#fff; padding-left:58px; font:18px/45px "Microsoft Yahei";}
+        .con2-text .hei14{padding:10px 0; line-height:25px;}
+        .con3-mod1{width:660px; height:820px; float:left;}
+        .con3-mod2{width:330px; height:820px; float:right;}
+        .title{width:142px; height:45px; background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/icon1.jpg) no-repeat 20px 10px #0078D7; border-left:1px solid #78B4E3; font:20px/45px "Microsoft Yahei"; color:#fff; padding-left:58px;}
+        .live-box{width:658px; height:718px; border:1px solid #EFEFEF; margin-top:16px;}
+        .comment-box{width:328px; height:718px; border:1px solid #EFEFEF; margin-top:16px;}
+        .big-pic{width:790px; height:444px; border:3px solid #F3F6F9; margin:32px auto 0; position:relative; overflow:hidden;}
+        .big-pic-con,.s-pic-con{position:absolute; left:0; top:0;}
+        .s-pic{width:810px; height:160px; margin:24px auto 0; position:relative; overflow:hidden;}
+        .s-pic img{border:3px solid #fff;}
+        .prev,.next{width:39px; height:79px; cursor:pointer; position:absolute; bottom:56px;}
+        .prev{left:0; background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/prev.png) no-repeat;}
+        .next{right:0; background:url(http://2.zol-img.com.cn/zt/tm_55a/8bdad0d7c7/next.png) no-repeat;}
+        .con5-mod{width:980px; height:370px; padding:40px 10px 0;}
+        .con5-mod .ln{height:20px; line-height:20px;}
+        .con5-mod .hei14{line-height:25px;}
+        .con5-mod1{width:260px; height:370px; float:left;}
+        .con5-mod2{width:430px; height:360px; float:left; padding-left:14px;}
+        .con5-mod3{width:260px; height:370px; float:right;}
+        .con5-mod .bai16{font:16px/36px "Microsoft Yahei"; color:#FE703E}
+        .con5-mod2 .bai20{font:20px/50px "Microsoft Yahei" !important; height:50px !important; color:#fff ;}
+        .more-box{width:380px; height:503px; float:left; margin-right:37px;}
+        .more-pic{width:380px; height:430px; margin-top:25px;}
+        .more-pic .ln{height:12px; line-height:12px;}
+        .news-list{width:270px; height:490px; float:left;}
+        .news-con{width:270px; height:400px; margin-top:25px; padding-top:10px;}
+        .news-list .title,.about-box .title{margin-left:35px;}
+        .news-con .ln{height:35px; line-height:35px;}
+        .about-box{width:270px; height:422px; float:right;}
+        .about-con{width:270px; height:320px; margin-top:25px; padding-top:20px;}
+        .about-con img{margin-bottom:20px;}
+        .footer{padding-top:58px; height:171px; text-align:center; color:#666; width:100%; background:#2F2F2F;}
+        .footer a:link,.footer a:visited{color:#666;}
+        .news-con .hui12{color:#7F7F7F; line-height:24px;}
+        .news-con .hui123{color:#BEBEBE; background:url(http://2.zol-img.com.cn/zt/tm_55a/8bf024f54f/dot.jpg) no-repeat left center; padding-left:8px;}
+
+        .about-con .hui12{color:#7F7F7F}
+        .about-con .hong12{font-size:12px;}
+        .pic_507585 .pic_box_bg{height:50px !important;}
+    </style>
+
+</head>
+<body>
+<!--[if IE 6]>
+<script src=" http://active.zol.com.cn/frontend/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+    DD_belatedPNG.fix('img');
+</script>
+<![endif]-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="bg1-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg1-c">
+            <img src="http://2.zol-img.com.cn/zt/tm_55a/dbebed28be/m_t01.jpg" width="1000" height="150">
+            <img src="http://2.zol-img.com.cn/zt/tm_55a/dbebed28be/m_t02.jpg" width="1000" height="257">
+        </td>
+        <td class="bg1-r">&nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tr>
+        <td class="bg2-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg2-c">
+            <div class="con2-box">
+                <div class="focus-box">
+                    <div class="focus-con"><{data[0]}></div>
+                </div>
+                <div class="con2-text"><{data[1]}></div>
+            </div>
+        </td>
+        <td class="bg2-r">&nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tr>
+        <td>&nbsp;</td>
+        <td width="1000" valign="top" >
+            <div class="con3-mod1">
+                <div class="title">发布会直播</div>
+                <div class="live-box"><{data[2]}></div>
+            </div>
+            <div class="con3-mod2">
+                <div class="title">网友评论</div>
+                <div class="comment-box"><{data[3]}></div>
+            </div>
+        </td>
+        <td >&nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tr>
+        <td class="bg4-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg4-c">
+            <div class="wrapper">
+                <div class="title">活动现场</div>
+                <div class="big-pic"><div class="big-pic-con"><{data[4]}></div></div>
+                <span class="prev"></span>
+                <span class="next"></span>
+                <div class="s-pic"><div class="s-pic-con"><{data[5]}></div></div>
+            </div>
+        </td>
+        <td class="bg4-r">&nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tr>
+        <td class="bg5-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg5-c">
+            <div class="title">Win10新特性</div>
+            <div class="con5-mod">
+                <div class="con5-mod1"><{data[6]}></div>
+                <div class="con5-mod2"><{data[7]}></div>
+                <div class="con5-mod3"><{data[16]}></div>
+            </div>
+        </td>
+        <td class="bg5-r">&nbsp;</td>
+    </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="banners">
+    <tr>
+        <td class="bg6-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg6-c">
+            <div class="more-box">
+                <div class="title">更多推荐</div>
+                <div class="more-pic"><{data[9]}></div>
+            </div>
+            <div class="news-list">
+                <div class="title">Win10资讯</div>
+                <div class="news-con"><{data[10]}></div>
+            </div>
+            <div class="about-box">
+                <div class="title">关于Win10</div>
+                <div class="about-con"><{data[11]}></div>
+            </div>
+        </td>
+        <td class="bg6-r">&nbsp;</td>
+    </tr>
+</table>
+<div class="footer"><{data[12]}></div>
+
+<script >
+    //图片切换
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".s-pic-con",".s-pic",5,".prev",".next");
+    //对应出大图
+    $('.s-pic-con table img').bind('mouseover',function(){
+        var n=$('.s-pic-con table img').index(this);
+        $('.big-pic-con').stop().animate({left:-790*n})
+    });
+
+    $('.con5-mod1 .bai16:eq(0),.con5-mod1 .hong12:eq(0)').css('color','#FE703E');
+    $('.con5-mod1 .bai16:eq(1),.con5-mod1 .hong12:eq(1)').css('color','#00A1F1');
+    $('.con5-mod3 .bai16:eq(0),.con5-mod3 .hong12:eq(0)').css('color','#7CBB00');
+    $('.con5-mod3 .bai16:eq(1),.con5-mod3 .hong12:eq(1)').css('color','#3DC2AC');
+</script>
+</body>
+</html>

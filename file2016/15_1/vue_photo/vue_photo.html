@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>随手拍</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="applicable-device" content="mobile">
+    <link rel="canonical" href="http://www.zol.com.cn/">
+    <!--<link rel="stylesheet" href="http://10.21.95.251/work/2017/10/app/suishoupai/css/z.app.suishoupai.css">-->
+    <style type="text/css">
+        /* Resets */
+        html, body, h1, h2, h3, h4, h5, h6, form, p, div, section, ul, ol, li, dl, dt, dd, figure, figcaption { margin: 0; padding: 0; }
+        body, select, option, textarea, input { font: 16px/1.5; color: #333; }
+        body { background: #eff2f5; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        a, a:visited { color: #487de3; text-decoration: none; }
+        img { max-width: 100%; border: 0 none; vertical-align: middle; }
+        input, button, textarea, select { font-size: 16px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        input:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+        input::-webkit-input-placeholder { color: #999; }
+        textarea:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+        textarea::-webkit-input-placeholder { color: #999; }
+        input[type="button"], input[type="text"], input[type="submit"], input[type="search"], input[type="email"], input[type="number"], input[type="phone"], button { -webkit-appearance: none; -webkit-border-image: none; -o-border-image: none; border-image: none; -webkit-border-radius: 0; border-radius: 0; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        select { border: 1px solid #dfdfdf; padding-left: 10px; background: #fbfbfb; font-size: 14px; -webkit-appearance: none; -webkit-border-radius: 0; border-radius: 0; -webkit-border-image: none; -webkit-box-shadow: none; box-shadow: none; }
+        table { border-collapse:collapse; border-spacing:0; }
+        th,td { padding: 0; }
+
+
+        .pic-num{padding-left: 15px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAA/UExURUxpcbu7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u8M9/usAAAAUdFJOUwA8+hXuH/S8kwjTaCrnhd6oTsY1Bwo32gAAAIVJREFUGNON0UEWwiAMBFCggRBohda5/1lNRUWoC2f5yZvFYCQShlAUE3HJzRCsGWJBBjBTVE70HNjPyFrEMwZYuL8uX50+Vd+xZS2gtIy4bjgSVL/wTmBZCg7paAlVtLaAP7gH1Oej3/DG3SH26oa5m2rDfK41DELQRfM03c+RJbrLdzwATzMOSKpCCCUAAAAASUVORK5CYII=) no-repeat 0 50%; -webkit-background-size: 10px 10px; background-size: 10px 10px;}
+
+        .initial{display: none;}
+        .waterfall{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;overflow:hidden;padding:15px;}
+        .waterfall img{display:block;}
+        .waterfall > *{-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1;width:0;}
+        .waterfall > :nth-child(n+2){margin-left:10px;}
+        .waterfall li{background-color: white;padding-bottom: 10px;-webkit-border-radius: 5px;border-radius: 5px;}
+        .waterfall li:nth-child(n+2){margin-top:10px;}
+        .waterfall .title{padding:10px;height:3em;position:relative;font-size:13px;}
+        .waterfall .news-title{position:absolute;left:40px;right:10px;line-height:1.5em;overflow:hidden;font-size:13px;font-weight:normal;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);-o-text-overflow: ellipsis;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
+        .waterfall .pic{-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;width:100%;height: auto;position: relative;}
+        .waterfall .pic img{position: absolute;top: 0;left: 0;width: 100%;height: 100%;-webkit-border-radius: 5px 5px 0 0;border-radius: 5px 5px 0 0}
+        .waterfall .userpic{margin-top: 8px;}
+        .waterfall .userpic img{-webkit-border-radius:25px;border-radius:25px;height:25px;width:25px;}
+        .waterfall .tags{padding: 0 10px;font-size:12px;height:1.5em;line-height:1.5em;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+        .waterfall .tags span{color:#aaaaaa;margin-right:5px;}
+        .waterfall .tags span:last-child{margin-right:0;}
+        .waterfall .tags .pic-num{float:right;margin-right:0;}
+        /* .waterfall .tags .pic-num:empty{} */
+
+        .load-btn{height:50px;line-height:50px;width:100%;text-align:center;font-size:12px;color:#999;}
+        .load-btn .loading-ring{display: none;height:50px;vertical-align:top;width:16px;margin-right: 5px;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABwklEQVR42q2VzytEURTH35vBoJQQiUpBjKSaJDslpWDyB1hNkWQlSqlUNrJko5JKkVIaREqxwWYmqYhIpSSgEoSa8T117nQ73blv49Snee/MmfO+58d948ZiMcfDXHGf1G9CoVDqOh6POxmWJNWgD3SCfPa/gi2wDK5MyV1NYQCUgDowAto9lG+CNUCiLsEhJdQV/oBbcE/qWWEb6AFNhoTdDFmlcvoMgb/gGRyDKdAM8kA9ODfEt0PZjUxInzlpSqM+vYM7UCy+WwV7GEamyqUSNoJyS78obhcUab43EOEpl4KgnnDAYwCDXLpuYfChVRFRCWlFenkoJqsAc8K3CA5E38Mo3VUKC9Ik84Md4aNdHDL0uZDE+TxKnQC1wtcFvmzNVk+V1gAmhW+W18l0sl5IqY/lroMsLSBgKPURjKYRRmsTxcSTSuG8CJgBZcLXAb4t7Vlw+BySnYJsvm4BwyJ4HJxYkj3w4qd6mACfIBdsi2Bapw3Da0we14Q8y7QiS9qrShn19gxcgGnQyifGb5uy2nxakSP+sbQaMAb2wRNX0o9lDnJljt5DsihPO8kPqrK8YFfANcdSK5Lqze3+91/AH+qubE2+81VRAAAAAElFTkSuQmCC) center center no-repeat;-webkit-background-size: 10px 10px;background-size: 10px 10px;}
+        .load-btn .loading-ring > i{display:block;width: 16px;height: 50px;-webkit-animation: loaing-animation linear 1s infinite;animation: loaing-animation linear 1s infinite;background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAACQ0lEQVRIx53VS2jcVRTH8TtJJskkM4lNxzw0D2PSBKWLDJrHoi6CIATRJhRSqUaxJRQadOPSQEDQVRAURKItbVbtBwUDPhZZSDbiRuyilLhRoVn0kUqpj4hSOl38CZOS/0wyw2/z/597zvfce8+95wYhVhm9RkyYNuMNU8Z0S8Z57jZVeUS/Ec972bTXnfaOBe/7wLsmZfcCpHQ5bNioIQN6PK7TIWNesWDZimXH1RQHZHQbNKBdnd3oZ8z71g8+1hkHSEjr0COrusi+BMG4i674xlO7ASlZ7RpKBEd6zJJfrel7GJDUpEXtLveEREyFzrnpa5kCICGlOSY8HhBkrfrLewVAUlpqz8nv1JgNN+QiQEKdxthMpbQo70IEqFIff8pKasB1m/qCoFp92fmD4JK8t6LPmgrCg1PyvgxmLThUEWDIf64Gv8l7oSJAqw23g033DZesejE1WrcV/Ol/uQoBv/g7uOOe5ypaQtYtd4PL8l6tCHAQXwWfyVusCJCU0RBM+dePFZzEoFaNEDT72ZYjZYcnpCJAMB9dizJVJ6U6AnT53abxssKrpKMbFP2+7R/faykDkJaJ9m17Ol/4w5L6fXaktAMaopFtU7c113yoaR/Zm7Vq3u7dBfPTVq37vNCwi9S+TadsoX/uHHzCeT9Z8aaOIsGt+j2pbWf7fdilwRkrvvOpWaPaNUqqUSejw4CcnEGtpZ62qNfN+cRZH1kw5zXHHPWSCeOe1Su99+scBI8a9qIZs046YdK4nG6Ncb4PADSmBOUB9rOrAAAAAElFTkSuQmCC) no-repeat 50% 50%; -webkit-background-size: 16px 16px; background-size: 16px 16px;}
+        .load-btn.loading .loading-ring{display:inline-block;}
+
+        .camara{position:absolute;height:58px;width:58px;margin-left:-2px;position:fixed;bottom: 8px;right: 13px;background:url(http://icon.zol-img.com.cn/android/icons/20171019/camara.png) center center no-repeat;-webkit-background-size:contain;background-size:contain;}
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); -ms-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+            100% { -ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+<section>
+    <div id="waterfall" class="initial">
+        <div class="waterfall">
+            <ul class="column">
+                <li v-for="(item,index) in list_1">
+                    <div class="pic" v-bind:style="{paddingTop: item.pad + '%'}">
+                        <a v-bind:href="item.url"><img v-bind:src="item.firstImg" alt=""></a>
+
+                    </div>
+                    <div class="title">
+                        <figure class="userpic">
+                            <img v-bind:src="item.userphoto" alt="">
+                        </figure>
+                        <h3 class="news-title">{{item.title}}</h3>
+                    </div>
+                    <footer class="tags">
+                        <span class="pic-num">{{item.imgNum}}</span>
+                        <span>{{item.devicename}}</span>
+                    </footer>
+                </li>
+            </ul>
+            <ul class="column">
+                <li v-for="(item,index) in list_2">
+                    <div class="pic" v-bind:style="{paddingTop: item.pad + '%'}">
+                        <a v-bind:href="item.url"><img v-bind:src="item.firstImg" alt=""></a>
+
+                    </div>
+                    <div class="title">
+                        <figure class="userpic">
+                            <img v-bind:src="item.userphoto" alt="">
+                        </figure>
+                        <h3 class="news-title">{{item.title}}</h3>
+                    </div>
+                    <footer class="tags">
+                        <span class="pic-num">{{item.imgNum}}</span>
+                        <span>{{item.devicename}}</span>
+                    </footer>
+                </li>
+            </ul>
+        </div>
+        <div @click="_nextPage" v-bind:class="[{ loading: loading }, loadBtn]"><span class="loading-ring"><i></i></span>{{loadText}}</div>
+    </div>
+</section>
+<a class="camara" href="app://suiShouPai/post/0/dcbbs/0/34076"></a>
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js"></script>
+<script src="http://icon.zol-img.com.cn/app/js/lib/vue.min.js"></script>
+<!--<script src="http://10.21.95.251/work/2017/10/app/suishoupai/js/z.app.suishoupai.js"></script>-->
+<script charset="">
+    ~(function(window, document) {
+        var dataUrl = 'http://lib.wap.zol.com.cn/bbs/getSuiShouPaiList.php?v=1.0';
+
+        function getLists(num, page, callback) {
+            $.ajax({
+                url: dataUrl,
+                data: { num: num, page: page },
+                dataType: 'jsonp',
+                success: function(data) {
+                    callback(data);
+                }
+            });
+        }
+
+        var lists = document.querySelectorAll('#waterfall ul'),
+            list_1 = lists[0],
+            list_2 = lists[1],
+            container = document.getElementById('waterfall'),
+            listWidth = (window.innerWidth - 40) / 2;
+
+        list_1.cHeight = 0;
+        list_2.cHeight = 0;
+
+        var app = new Vue({
+            el: '#waterfall',
+            data: {
+                list_1: [],//鍒楄〃1鐨勬暟鎹�
+                list_2: [],//鍒楄〃2鐨勬暟鎹�
+                nowPage: 1,//婊氬姩鍔犺浇鐨勫綋鍓嶉〉鐮�
+                pageSize: 20,//婊氬姩鍔犺浇姣忔鍔犺浇澶氬皯璺�
+                loading: false,//鍔犺浇涓爣蹇椾綅
+                loadText: '\u52a0\u8f7d\u4e2d',//鍔犺浇鎸夐挳鐨勬枃妗�
+                loaded: false,//鏄笉鏄凡缁忓叏閮ㄥ姞杞藉畬鎴�
+                loadBtn: 'load-btn',//鍔犺浇鎸夐挳鐨勫熀纭€绫诲悕
+                mainPageSize: 50,//姣忛〉鍙粴鍔ㄥ姞杞藉灏戞
+                mainPage: 1//椤电爜
+            },
+            created: function() {
+                container.classList.remove('initial');
+                this._getLists();
+            },
+            methods: {
+                _getLists: function() {
+                    var _this = this;
+
+                    if (_this.loading || _this.loaded) {
+                        return;
+                    }
+
+                    if (_this.nowPage >= _this.mainPageSize * _this.mainPage) {
+                        _this.loading = false;
+                        _this.loadText = '\u70b9\u51fb\u8fdb\u5165\u4e0b\u4e00\u9875';
+                        _this.lastPage = true;
+                        return;
+                    }
+
+                    _this.loading = true;
+                    _this.loadText = '\u52a0\u8f7d\u4e2d';
+                    getLists(_this.pageSize, _this.nowPage, function(data) {
+                        if (data && data.status == 'ok') {
+                            var temp_1 = [],
+                                temp_2 = [];
+                            data.data.forEach(function(item) {
+                                item.pad = item.height / item.width * 100;
+
+                                if (list_1.cHeight <= list_2.cHeight) {
+                                    temp_1.push(item);
+                                    list_1.cHeight += (item.pad * listWidth / 100) + 97;
+                                } else {
+                                    temp_2.push(item);
+                                    list_2.cHeight += (item.pad * listWidth / 100) + 97;
+                                }
+                            });
+                            _this.list_1 = _this.list_1.concat(temp_1);
+                            _this.list_2 = _this.list_2.concat(temp_2);
+
+                            _this.nowPage += 1;
+                            _this.loadText = '';
+
+
+                        } else if (data === null) {
+                            _this.loaded = true;
+                            _this.loadText = '\u6ca1\u6709\u66f4\u591a\u4e86';
+                        }
+                        console.log(_this.list_1)
+                        console.log(_this.list_2)
+                        _this.loading = false;
+
+                    });
+                },
+                _nextPage: function() {
+                    var _this = this;
+                    if(!_this.lastPage){
+                        return;
+                    }
+                    _this.lastPage = false;
+                    _this.mainPage += 1;
+                    _this.mainPageSize = _this.mainPageSize;
+                    _this.list_1 = _this.list_2 = [];
+                    _this._getLists();
+                }
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            if (app.$el.getBoundingClientRect().bottom <= window.innerHeight + 50) {
+                app._getLists();
+            }
+        });
+    })(window, document);
+</script>
+</body>
+</html>

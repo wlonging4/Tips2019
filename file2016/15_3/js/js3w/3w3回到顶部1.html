@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部基本</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 500%;
+            background: #ffeedd;
+            background: -webkit-linear-gradient(top, #ffeedd, #FFCF78, #08BECE);
+            background: -moz-linear-gradient(top, #ffeedd, #FFCF78, #08BECE);
+            background: -ms-linear-gradient(top, #ffeedd, #FFCF78, #08BECE);
+            background: -o-linear-gradient(top, #ffeedd, #FFCF78, #08BECE);
+            background: linear-gradient(top, #ffeedd, #FFCF78, #08BECE);
+        }
+        /*#goTo {
+            display: none;
+            position: fixed;
+            right: 5px;
+            bottom: 15px;
+            width: 52px;
+            height: 52px;
+            background: #fff;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px 0 #ccc;
+        }
+        #goTo em {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -17px 0 0 -17px;
+            width: 34px;
+            height: 34px;
+            background: url("img/sprite_backtop.png") no-repeat;
+            background-position: 0 -34px;
+        }*/
+        #goTo{
+            display: none;
+            position: fixed;
+            right: 5px;
+            bottom: 10px;
+            width: 52px;
+            height: 52px;
+            background: #FFFFFF;
+            cursor: pointer;
+            border: 1px solid #cccccc;
+            border-radius: 10px;
+            box-shadow: 3px 3px 5px 0 gray;
+        }
+        #goTo em{
+            display: block;
+            width: 34px;
+            height: 34px;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            margin:-17px 0 0 -17px;
+            background: url("img/sprite_backtop.png") no-repeat;
+            background-position: 0 -34px;
+        }
+    </style>
+</head>
+<body>
+<div id="goTo">
+    <em></em>
+</div>
+<script type="text/javascript">
+    var goTo = document.getElementById("goTo");
+    //获取当前浏览器一屏幕的高度
+    var curH = document.documentElement.clientHeight || document.body.clientHeight;
+    //当我们页面滚动的时候,我们获取当前浏览器卷去的高度,如果高度大于curH,让我们的goTo显示,反之让goTo隐藏~~
+    window.onscroll= function () {
+        var curT=document.documentElement.scrollTop||document.body.scrollTop;
+        goTo.style.display=curT>curH?"block":"none";
+    };
+    //给我们的goTo绑定点击事件,当点击的时候让页面的scrollTop从当前位置变为0
+    goTo.onclick= function () {
+        var tarT=(document.documentElement.scrollTop||document.body.scrollTop)-0;
+        var step=(tarT/1000)*10;
+        var timer=window.setInterval(function () {
+            document.documentElement.scrollTop-=step;
+            document.body.scrollTop-=step;
+            if((document.documentElement.scrollTop||document.body.scrollTop)<=0){
+                clearInterval(timer);
+            }
+        },10)
+    };
+
+    //【动画基础】
+     /*在指定时间之内完成的动画
+     要素:总时间、开始位置、结束位置、每一步的长度(步长)、多长时间走一步
+     我->龚菊瑞 总距离:1000m 总时间:10000ms 我10ms走一次 求:每一次走多远?
+     一步走多远 = (总距离/总时间)*间隔时间
+     1000/10000 ->每毫秒走的距离0.1m
+     0.1*10 ->每一次走1m
+     我接下来只需要在每10ms的间隔时间内走1m，这样的话我就可以在10s中的时间内走到龚菊瑞那里
+
+     1、JS中实现动画使用的是【定时器】,JS中的定时器分为两种:setTimeout、setInterval
+     window.setTimeout([function],[interval]) 到达指定的时间执行一次function，然后定时器就结束了 ->clearTimeout
+     window.setInterval([function],[interval]) 到达指定的时间执行一次function，然后每隔这么长的时间都重新的执行一次function,除非手动停止,否则一直的执行下去 ->clearInterval
+     2、定时器都是存在返回值的,设置一个定时器,就存在返回值
+     var timer=window.setTimeout(function(){},1000);
+     timer就是它的返回值,是一个数字,代表当前是我设置的第几个定时器*/
+
+     //3、需求:每隔1s钟,累加一个数字,实现从1数到10,然后停止
+    /*var c=0;
+    var timer=window.setInterval(function () {
+        c++;
+        console.log(c);
+        if(c>=5){
+            window.clearInterval(timer);
+        }
+    },500);
+    timer;*/
+     //4、【递归】setTimeout模拟我们setInterval一直执行下去 ->"递归思想":自己执行的时候调用自己执行
+    /*var count=0;
+    var timer=null;
+    function move(){
+        window.clearInterval(timer);//每一次执行之前先把之前创建的定时器都清除掉,节省浏览器的性能
+        count++;
+        console.log("count= "+count);
+        if(count>=10){
+            return;
+        }
+        timer=window.setInterval(move,200);
+    }
+    timer=window.setInterval(move,200);*/
+
+         /*var timer = window.setTimeout(function () {
+             count++;
+             console.log(count);
+             timer = window.setTimeout(function () {
+                 count++;
+                 console.log(count);
+                 timer = window.setTimeout(function () {
+                     count++;
+                     console.log(count);
+                 }, 1000);
+             }, 1000);
+         }, 1000);
+*/
+     //5、用递归思想实现:从1+2+3...+9+10的结果
+//     sum(10) return 10+sum(9) -> sum(9) return 9+sum(8)
+//     10+9+8+7+6+5+4+3+2+1+0
+       /* function sum(num) {
+            if (num <= 0) {
+                return 0;
+            }
+            return num + sum(num - 1);
+        }
+        var total = sum(10);
+        console.log(total);*/
+    /*function mul(num){
+        if(num<=1){
+            return 1;
+        }
+        return num*mul(num-1);
+    }
+    alert(mul(4));*/
+
+    //6、【异步编程】
+       /* var count = 0;
+        var timer = window.setTimeout(function () {
+            count++;
+            console.log(count);//后输出1
+        }, 0);//5
+        console.log(count);//先输出0*/
+
+   /* 1)每一个浏览器对于定时器的间隔时间都有一个默认的最小值(谷歌5~6ms,IE10~13ms),即使我们时间设置为0也不是立即执行,而是间隔最小值的时间执行;
+    2)定时器都是异步编程的
+    同步:js; ->只有上面的事情执行完成后，下面的事情才会开始执行
+    for (var i = 0; i < 1000000000000; i++) {}
+    console.log("ok");
+    只有for循环执行完成后才会输出ok
+
+    异步:拿定时器来说,在等待执行的时间,我们继续执行下面的代码,并且只有等下面的代码执行完成后,才会返回头看定时器是否到达时间了
+    设置定时器,10ms后执行,在这个等待的时间内,我们继续执行下面的代码,不管下面需要多长时间,都是把下面所有的代码(同步执行的代码)都执行完成,才会返回看定时器是否到达时间*/
+    /*var count = 0;
+    var timer = window.setTimeout(function () {
+        count++;
+        console.log(count);
+    }, 10);
+    //执行需要100ms
+    var i = 0;
+    while (i < 1000000) {
+        i++;
+    }*/
+    //JS都是单线程的
+</script>
+</body>
+</html>

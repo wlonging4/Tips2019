@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>视口</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--理想视口-->
+    <style type="text/css">
+        body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: silver;
+        }
+        #d{
+            position: relative;
+            height: 500px;
+            width: 100%;
+            background: indianred;
+            overflow: hidden;
+        }
+        ul{
+            height: 100%;
+            width: 100%;
+            overflow:hidden ;
+            list-style: none;
+            padding-left: 0;
+        }
+        li{
+            float: left;
+            height: 100%;
+            width: 100%;
+        }
+
+        .dd1{
+            position: absolute;
+            bottom: 20px;
+            left: 70px;
+            background: mediumseagreen;
+        }
+    </style>
+</head>
+<body>
+<div id="d">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="dd1">
+        浮动起来
+    </div>
+</div>
+<script charset="UTF-8" type="text/javascript">
+    window.onload= function () {
+        var interactionMode;
+        document.onpointerdown= function (e) {
+            interactionMode= e.pointerType;
+            console.log(interactionMode);
+        };
+        document.ontouchstart= function () {
+            if(!interactionMode){
+                interactionMode="touch";
+                console.log(interactionMode);
+            }
+        };
+        document.onmousedown= function () {
+            if(!interactionMode){
+                interactionMode="mouse";
+                console.log(interactionMode);
+            }
+        };
+        document.onkeydown=function(){
+            if(!interactionMode){
+                interactionMode="keyboard";
+                console.log(interactionMode);
+            }
+        };
+    };
+    function findCoordinates(e){
+        var x,y;
+        if(e.changedTouches){
+            x= e.changedTouches[0].clientX;
+            y= e.changedTouches[0].clientY;
+        }else{
+            x= e.clientX;
+            y= e.clientY;
+        }
+        return [x,y];
+    }
+    document.ontouchmove= function (e) {
+        var currentPos=findCoordinates(),
+            newPosX=(currentPos[0]-origin[0]),
+            newPosY=(currentPos[1]-origin[1]);
+            if(Math.abs(newPosY)>Math.abs(newPosX)){
+                returnValue=true;
+            }else{
+                returnValue=false;
+                /*pos是滚动开始的x坐标;min和max是预先计算好的最小,最大的滚动距离*/
+                newPosX+=pos;
+                if(newPosX<max&&newPosY>=min){
+                    layer.style.left=newPosX+"px";
+                }
+            }
+        return returnValue;
+    }
+</script>
+</body>
+</html>

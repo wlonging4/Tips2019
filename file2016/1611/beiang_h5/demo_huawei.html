@@ -1,0 +1,486 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="gb2312">
+    <title>无标题文档</title>
+    <style>
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        img{display:inline !important;}
+        a img { border: 0 none;}
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        /* 首页 */
+        body {width:640px; margin:0 auto; background-color:#D2C6AD; color:#000;}
+        .wrapper {height:100%;  position:relative; z-index:1; margin:0 auto; overflow:hidden;}
+        .main {position:absolute; left:0; top:0; width:100%; height:1000%;}
+        .section{width:640px; height:10%; position:relative; overflow:hidden;background:url(http://2.zol-img.com.cn/zt/tm_567/90382398b4/bgimg.jpg) 50% no-repeat; float:left;background-size:cover; display:none;}
+        .visible{ display:block !important;}
+        /*动画*/
+        .float-up {-webkit-transition: .2s .2s; transition: .2s .2s; opacity: 0; -webkit-transform: translate(0, 100px); transform: translate(0, 100px); }
+        .float-down{-webkit-transition: .2s .2s; transition: .2s .2s; opacity: 0; -webkit-transform: translate(0, -100px); transform: translate(0, -100px);}
+        .float-right{-webkit-transition: .2s .2s; transition: .2s .2s; opacity: 0; -webkit-transform: translate(-100px,0); transform: translate(-100px,0);}
+        .float-left{-webkit-transition: .2s .2s; transition: .2s .2s; opacity: 0; -webkit-transform: translate(100px, 0); transform: translate(100px, 0);}
+        .current .float-up,.current .float-down,.current .float-left,.current .float-right{ opacity: 1; -webkit-transform: none; transform: none; }
+
+        .logo{ position:absolute; top:22px; left:50px; z-index:99;}
+        .hei24{font-size:24px; color:#000;}
+        .hei18{font-size:18px; color:#000;}
+
+        .section1 .phone{ position:absolute; top:80px; left:0;}
+        .section1 .follow{ position:absolute; left:80px; top:549px; font-size:60px;}
+        .section1 .getHuaWei{ position:absolute; left:80px; top:630px; font-size:30px; letter-spacing: 2px;}
+        .section1 .getHuaWei span{ font-weight:bold;}
+        .join{ width:480px; height:140px; position:absolute; top:710px; left:80px;}
+        .activity{ width:220px; height:138px; font-size:24px; color:#C52525; text-align:center; line-height:138px; float:left; border:1px solid #C52525;border-radius:10px;}
+        .examine{ width:220px; height:140px; float:right;}
+        .MyZan{ width:220px; height:60px; border-radius:5px; text-align:center; line-height:60px; font-size:24px; color:#000;border:1px solid #000;}
+        .rule{ margin-top:16px;font-weight: bold;}
+
+        .section2 p.title{ font-size:40px; margin:122px 0 0 50px; color:#211814; font-weight:bold; margin-bottom:36px;}
+        .section2 p.til{ margin-left:0;}
+        .section2 p{ font-size:26px; color:#000; margin-bottom:10px; margin-left:47px;}
+        .section2 .footer{ width:480px; margin:75px auto 0;}
+        .section2.visible{ z-index:98; left:0; top:0; position:absolute;}
+        .inject{ width:220px; height:60px; text-align:center; line-height:60px; border-radius:10px; font-size:24px;}
+        .footer-left{ float:left; border:1px solid #C52525; color:#C52525;}
+        .footer-right{ float:right; border:1px solid #000;}
+
+        .section3 .tutor{ font-size:40px; color:#211814; font-weight:bold; margin:122px 0 50px 50px; line-height:42px;}
+        .section3 .follow-activity{ width:544px; margin:0 auto 30px;}
+        .section3 .huawei-logo{ float:left; width:100px; height:100px; overflow:hidden;}
+        .section3 .tutor-con{ width:280px; float:left; margin-left:23px;}
+        .section3 .con1{ color:#221815; font-size:28px; line-height:30px; font-weight:bold; height:30px; text-align:left;}
+        .section3 .tutor-last{ float:right;}
+        .section3 .con2{ font-size:20px;color:#221815; width:280px; height:60px; overflow:hidden;margin-top: 12px; margin-left:0;}
+        .section3 .con3{ border:1px solid #221815; border-radius:8px; width:120px; height:60px; text-align:center; line-height:60px; font-size:24px; float:none;}
+        .section3 .con4{ font-size:18px; color:#000; line-height:20px;width:120px; text-align: center; margin-top: 17px;}
+
+        .section4 .part1{  margin:92px 0 0 50px; height:100px; overflow:hidden;}
+        .section4 .part1 img{ vertical-align: sub;}
+        .section4 .part2{ width:516px; height:50px; background:#BAAA8D; padding-left:24px; line-height:50px;margin:30px 0 0 50px;}
+        .section4 .part3{ margin:24px 0 0 50px;}
+        .section4 .part4{ width:480px; margin:75px auto 0;}
+        .section4 .footer-left{ border-color:#000; color:#000;}
+        .section4 .part5{ margin:50px auto 0; display:block !important;}
+        .section4 .part6{ position:absolute; left:0; top:0; width:100%; height:100%; display:none;}
+        .section4 .part6 img{width:100%; height:100%;}
+
+        .section5 .part1{  margin:92px 0 0 50px; height:100px; overflow:hidden;}
+        .part7{ margin:30px 0 0 50px; width: 560px;}
+        .section5 .join{ position:initial;margin:40px auto 0;}
+        .section5 .activity{ border-color:#000; color:#000;}
+        .section5 .rule{ font-weight:normal;}
+        .section5 .part9{ margin:30px auto 0;display:block !important;}
+        .section5 .shade{ position:absolute; width:100%; height:100%; background:rgba(0,0,0,.8); left:0; top:0; display:none;}
+        .section5 .shade-con{ width:400px; height:200px; background:url(http://2.zol-img.com.cn/zt/tm_567/90382398b4/bgimg2.png) 0 0 no-repeat; position:absolute; left:50%; margin-left:-200px; top:50%; margin-top:-100px; text-align:center;}
+        .section5 .sha1{ margin-top:55px; font-size:36px; line-height:38px; color:#000;}
+        .section5 .sha2{ font-size:24px; line-height:26px; margin-top:14px;}
+        .section5 .close{ width:40px; height:40px; background:url(http://2.zol-img.com.cn/zt/tm_567/90382398b4/bgimg3.jpg) 0 0 no-repeat; position:absolute; right:-1px; top:0;}
+        .section5 .sha3{ height:200px; line-height:200px; font-size:36px; font-weight:bold;}
+        .section5 .sha4{ font-size:36px; color:#000; line-height:38px; margin-top:30px;}
+        .section5 .sha5{ font-size:24px; color:#000; width:313px; margin:10px auto 0;}
+        .section5 .shade-con-last{ height:240px; margin-top:-220px;}
+        .section5 .sha6{ width:220px; height:60px; text-align:center; line-height:60px; font-size:24px; color:#000; border:1px solid #000; border-radius:8px; margin:5px auto 0;float: none;}
+        .section5 .ranking{ width:100%; height:100%; position:absolute; left:0; top:0; background:url(http://2.zol-img.com.cn/zt/tm_567/90382398b4/bgimg.jpg) 0 0 no-repeat;background-size:cover; z-index:100; display:none;}
+        .rank1{ margin:90px 0 50px 50px; font-size:40px; font-weight:bold; color:#000;}
+        .rank1 img{ vertical-align:sub; padding-right:10px;}
+        .rank-list{ margin:0 0 20px 50px; width:545px;}
+        .rank-con{ float:left;}
+        .con1{ height:80px; line-height:80px; text-align:center; font-size:24px;}
+        .con2{ margin-left:15px; height:80px;}
+        .con3{ float:right; height:80px; line-height:80px;}
+        .con-name{ display:inline-block; overflow:hidden; width:128px; height:80px; line-height:80px;}
+
+        .state{ width:520px;font-size: 26px;color: #000;margin-left: 50px; height:510px; overflow:hidden; overflow: auto;}
+    </style>
+</head>
+
+<body>
+<script>
+    if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+        if(parseFloat(RegExp.$1)>2.3){
+            var phoneScale = parseInt(window.screen.width)/640;
+            document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+        }else{
+            document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+        }
+    }else{
+        document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+    };
+</script>
+
+<div class="wrapper flipview" data-loop="false" id="wrapper" touch="false">
+    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/logo.png" width="170" height="40" class="logo">
+    <div class="main container" id="main" >
+        <div class="section section1 visible">
+            <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/phone.png" width="620" height="440" class="phone">
+            <p class="follow">跟随 · 达人</p>
+            <p class="getHuaWei">领取 <span>HUAWEI Mate 8</span> 试用资格</p>
+            <div class="join clearfix">
+                <div class="activity vity">参加活动</div>
+                <div class="examine">
+                    <div class="MyZan">查看我的赞</div>
+                    <div class="MyZan rule ulation">查看规则</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section2 ">
+            <p class="title">活动规则</p>
+            <div class="state">
+                <div id="state-con">
+                    <p class="til">1.&nbsp;&nbsp;&nbsp;活动时间</p>
+                    <p>试用申请：</p>
+                    <p>2015年12月21日-2015年12月30日</p>
+                    <p>试用时间</p>
+                    <p>2015年12月21日-2015年12月30日</p>
+                    <p class="til"> 2.试用选取规则：</p>
+                    <p>申请试用者自行选择战队，并在规定时间内邀请好友为自己点赞，招募结束后，各战队前19名获得免费试用资格</p>
+                    <p class="til">3获奖规则：</p>
+                    <p>五组战队内部进行试用任务PK,，试用任务由有各位导师进行发布，组内前四名每人获得一部HUAWEI	Mate8手机一部，第五名至第十名每人获得价值500元的购物卡</p>
+                    <p class="til">4.若好友为您点赞成功后，点击“我也要参加”按钮，则为您自动多获得一颗赞</p>
+                    <p class="til">5.获奖名单将于中关村在线网站（http://www.zol.com.cn/）公布，敬请留意。</p>
+                    <p class="til">6活动最终解释权归中关村在线所有</p>
+                    <p class="til">7.法律声明：</p>
+                    <p>本次活动由华为终端有限公司主办（以下简称为“活动主办方”）。</p>
+                    <p>活动主办方、关联公司及其授权的广告公司、网络合作伙伴等的员工及其家属不可参加此次活动，以示公允。</p>
+                    <p>（2）活动参与用户承诺参赛作品内容健康、不涉及任何侵权或非法信息。保证拥有参赛作品版权和其他合法权利。遵守中华人民共和国相关法律法规，不得发表上传反动、色情、暴力、恐怖或侵犯第三方合法权利的等任何形式的违法信息。</p>
+                    <p>（3）活动参与用户同意并授予活动主办方无偿使用活动参与用户作品用于活动宣传的权利，包括但不限于将作品用于网络媒体、平面媒体、印刷品、 影展、零售店、路演等活动宣传当中，活动主办方据此使用参与活动的作品时不需要再另行通知活动参与用户或征得活动参与者的同意。</p>
+                    <p>（4）每位参加活动的用户理解并同意，为联系获奖用户以及奖品发放的需要，用户须在参与活动之时提供诸如姓名、联系方式、电子邮箱、通讯地址等真实个人信息，活动主办方将仅为前述目的以及适用法律所允许的最大限度内收集和使用用户的个人信息。获奖用户须确保其提供的个人信息完整、准确。</p>
+                    <p>（5）由于获奖用户自身原因（包括但不限于活动结束后两周内未能及时填写联系信息或者填写的联系信息不准确、不全面导致主办方无法与之取得联系等）造成奖品无法派送的，将被视作获奖用户自动放弃其领奖权利。活动主办方对此将不承担任何责任，也不再进行补发。 </p>
+                    <p>（6）活动奖品图片仅供参考，所有奖品均以实物为准，不设退换服务。如遇质量问题，获奖用户请直接与奖品生产商或者指定经销商联系，并按照正常的退换货和维修规则办理，活动主办方不承担责任。 </p>
+                    <p>（7）如遇意外，无法提供指定奖品的，活动主办方有权以价值相仿的奖品替代，但所有奖品不得兑换现金或作价销售。</p>
+                    <p>（8）收到活动主办方派送的奖品后，请获奖用户当场确认奖品是否完好。若发现异常请直接与送件人员提出，若签收后发现奖品损坏，活动主办方将不承担责任。非由活动主办方故意或重大过失造成获奖者在领取和使用奖品过程中所发生的事故，活动主办方无须承担相应负责。</p>
+                    <p>（9）本次活动所产生的个人偶然所得税由获奖用户本人承担。</p>
+                    <p>（10）活动主办方不对因网络传输原因而导致参与用户提交的信息错误或延误承担任何责任。</p>
+                    <p>（11）活动参与用户须妥善保管用以参与活动的QQ账号。活动主办方不对因参与用户QQ账号被盗或遗失而无法继续参与活动或者无法获取活动奖品而承担任何法律责任。</p>
+                    <p>（12）如果发现有参加者在活动中使用任何不正当的手段参加活动，活动主办方有权在不事先通知的前提下取消其参加活动的资格。</p>
+                    <p>（13）相关的活动客服电话与客服邮箱均只回答与本次活动相关的问题，如出现故意破坏或者无端骚扰的行为，严重者活动主办方将诉诸法律解决。 </p>
+                    <p>（14）活动主办方在适用法律所允许的最大限度内对本次活动拥有解释权。如遇不可抗力因素，活动主办方拥有终止或取消本次活动的权利。</p>
+                    <p>（15）因参与本活动引起的或者与本活动有关的任何争议，应本着友好合作精神协商解决，若自开始协商之日起15日内协商不成的，双方同意将争议提交深圳市龙岗区人民法院解决。</p>
+                </div>
+            </div>
+
+
+            <div class="footer clearfix">
+                <div class="footer-left inject joinhd">参加活动</div>
+                <div class="footer-right inject back1">返回</div>
+            </div>
+        </div>
+
+        <div class="section section3 ">
+            <p class="tutor">加入导师战队</p>
+            <div class="clearfix follow-activity">
+                <div class="huawei-logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt="">
+                </div>
+                <div class="tutor-con">
+                    <p class="con1">
+                        <span class="name">嚣张卫视&nbsp;</span>
+                        <span class="phone-expert">科技达人</span>
+                    </p>
+                    <p class="con2">电视媒体人，3C数码广播节目评论人</p>
+                </div>
+                <div class="tutor-last">
+                    <div class="con3 flgo">跟随</div>
+                    <p class="con4">8888个关注者</p>
+                </div>
+            </div>
+            <div class="clearfix follow-activity">
+                <div class="huawei-logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt="">
+                </div>
+                <div class="tutor-con">
+                    <p class="con1">
+                        <span class="name">飘尘Marco&nbsp;</span>
+                        <span class="phone-expert">科技达人</span>
+                    </p>
+                    <p class="con2">户外界知名达人，环游世界专业游民</p>
+                </div>
+                <div class="tutor-last">
+                    <div class="con3 flgo">跟随</div>
+                    <p class="con4">8888个关注者</p>
+                </div>
+            </div>
+            <div class="clearfix follow-activity">
+                <div class="huawei-logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt="">
+                </div>
+                <div class="tutor-con">
+                    <p class="con1">
+                        <span class="name">原老末&nbsp;</span>
+                        <span class="phone-expert">摄影达人</span>
+                    </p>
+                    <p class="con2">独立摄影师、撰稿人</p>
+                </div>
+                <div class="tutor-last">
+                    <div class="con3 flgo">跟随</div>
+                    <p class="con4">8888个关注者</p>
+                </div>
+            </div>
+            <div class="clearfix follow-activity">
+                <div class="huawei-logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt="">
+                </div>
+                <div class="tutor-con">
+                    <p class="con1">
+                        <span class="name">吉良&nbsp;</span>
+                        <span class="phone-expert">时尚达人</span>
+                    </p>
+                    <p class="con2">时装评论人、作家，微博时尚达人</p>
+                </div>
+                <div class="tutor-last">
+                    <div class="con3 flgo">跟随</div>
+                    <p class="con4">8888个关注者</p>
+                </div>
+            </div>
+            <div class="clearfix follow-activity">
+                <div class="huawei-logo">
+                    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt="">
+                </div>
+                <div class="tutor-con">
+                    <p class="con1">
+                        <span class="name">盛博&nbsp;</span>
+                        <span class="phone-expert">娱乐达人</span>
+                    </p>
+                    <p class="con2">FM103.9北京交通广播知名主持人</p>
+                </div>
+                <div class="tutor-last">
+                    <div class="con3 flgo">跟随</div>
+                    <p class="con4">8888个关注者</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section4 ">
+            <div class="part1 hei24 clearfix">
+                <span class=""><img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt=""></span>
+                加入
+                <span class=""><img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt=""></span>
+                的战队参加
+            </div>
+            <!--<p class="part2 hei24">现已获得<strong>88</strong>个支持，排名第<strong>188</strong>名。</p>-->
+            <p class="part2 hei24">您还没有好友支持，快邀请好友来支持您吧！</p>
+            <p class="part3 hei24">申请结束时，战队内排名前19名，即可获得试用机会。快来邀请好友点赞吧！</p>
+
+            <div class="part4 clearfix">
+                <div class="inject footer-left fenx">分享</div>
+                <div class="inject footer-right dian">点赞榜</div>
+            </div>
+            <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/phone2.png" width="430" class="part5">
+            <div class="part6">
+                <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/share.png" width="640">
+            </div>
+        </div>
+
+        <div class="section section5 ">
+            <div class="part1 hei24 clearfix">
+                <span class=""><img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt=""></span>
+                加入
+                <span class=""><img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="100" alt=""></span>
+                的战队参加
+            </div>
+            <p class="part7 hei24">申请结束时，点赞排名前100名，即可获得试用机会。帮助好友点赞后，您同时也获得好友的赞一枚，快来帮好友点赞参加活动吧！</p>
+
+            <div class="join clearfix">
+                <div class="activity helpMy">帮我点赞</div>
+                <div class="examine">
+                    <div class="MyZan">查看我的赞</div>
+                    <div class="MyZan rule">活动规则</div>
+                </div>
+            </div>
+
+            <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/phone2.png" width="430" class="part9">
+
+            <div class="shade">
+                <!--	提交失败	-->
+                <!--<div class="shade-con">
+                    <p class="sha1"><strong>提交失败</strong></p>
+                    <p class="sha2">请重新提交</p>
+                    <div class="close shaClose"></div>
+                </div>-->
+                <!--	你已支持过该好友	-->
+                <!--<div class="shade-con">
+                    <p class="sha3"><strong>你已支持过该好友</strong></p>
+                    <div class="close shaClose"></div>
+                </div>-->
+                <!--	支持好友成功	-->
+                <div class="shade-con shade-con-last">
+                    <p class="sha4"><strong>支持好友成功</strong></p>
+                    <p class="sha5"><b>快来参加HUAWEI Mate 8 试用活动吧</b></p>
+                    <div class="sha6 activity shaActi">我也要参加</div>
+                    <div class="close shaClose"></div>
+                </div>
+            </div>
+
+            <div class="ranking">
+                <div class="close rankclose"></div>
+                <div class="rank1">
+                    <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                    达人点赞榜
+                </div>
+                <div class="clearfix rank-list">
+                    <div class="rank-con con1">第1名</div>
+                    <div class="rank-con con2">
+                        <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                        <span class="con-name">用户姓名</span>
+                    </div>
+                    <div class="con3">
+                        <b>88888</b>个赞
+                    </div>
+                </div>
+                <div class="clearfix rank-list">
+                    <div class="rank-con con1">第2名</div>
+                    <div class="rank-con con2">
+                        <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                        <span class="con-name">用户姓名</span>
+                    </div>
+                    <div class="con3">
+                        <b>88888</b>个赞
+                    </div>
+                </div>
+                <div class="clearfix rank-list">
+                    <div class="rank-con con1">第3名</div>
+                    <div class="rank-con con2">
+                        <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                        <span class="con-name">用户姓名</span>
+                    </div>
+                    <div class="con3">
+                        <b>88888</b>个赞
+                    </div>
+                </div>
+                <div class="clearfix rank-list">
+                    <div class="rank-con con1">第4名</div>
+                    <div class="rank-con con2">
+                        <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                        <span class="con-name">用户姓名</span>
+                    </div>
+                    <div class="con3">
+                        <b>88888</b>个赞
+                    </div>
+                </div>
+                <div class="clearfix rank-list">
+                    <div class="rank-con con1">第5名</div>
+                    <div class="rank-con con2">
+                        <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                        <span class="con-name">用户姓名</span>
+                    </div>
+                    <div class="con3">
+                        <b>88888</b>个赞
+                    </div>
+                </div>
+                <div class="clearfix rank-list">
+                    <div class="rank-con con1">第6名</div>
+                    <div class="rank-con con2">
+                        <img src="http://2.zol-img.com.cn/zt/tm_567/90382398b4/portrait.jpg" width="80">
+                        <span class="con-name">用户姓名</span>
+                    </div>
+                    <div class="con3">
+                        <b>88888</b>个赞
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script>
+    var section = document.querySelectorAll('.section');
+    var MyZan = document.querySelectorAll('.MyZan');
+    var flgo = document.querySelectorAll('.flgo');
+    var rule = document.querySelectorAll('.rule');
+
+    var vity = document.querySelector('.vity');
+    var joinhd = document.querySelector('.joinhd');
+    var fenx = document.querySelector('.fenx');
+    var part6 = document.querySelector('.part6');
+    var dian = document.querySelector('.dian');
+    var ranking = document.querySelector('.ranking');
+    var rankclose = document.querySelector('.rankclose');
+    var back1 = document.querySelector('.back1');
+
+    var helpMy = document.querySelector('.helpMy');
+    var shade = document.querySelector('.shade');
+    var shaClose = document.querySelector('.shaClose');
+    var shaActi = document.querySelector('.shaActi');
+
+
+    MyZan[0].addEventListener('click',function(){
+        sect(3);
+    });
+
+    for(var i=0;i<rule.length;i++){
+        rule[i].onclick = function(){
+            section[1].classList.add('visible');
+        }
+    }
+    MyZan[2].addEventListener('click',function(){
+        sect(3);
+    });
+    joinhd.addEventListener('click',function(){
+        sect(2);
+    });
+
+    for(var i=0;i<flgo.length;i++){
+        flgo[i].onclick = function(){
+            sect(3);
+        }
+    }
+
+    fenx.addEventListener('click',function(){
+        part6.style.display = 'block';
+    });
+    part6.addEventListener('click',function(){
+        this.style.display = 'none';
+    });
+
+    dian.addEventListener('click',function(){
+        sect(4);
+        ranking.style.display = 'block';
+    });
+
+    rankclose.addEventListener('click',function(){
+        sect(3);
+        ranking.style.display = 'none';
+    });
+
+    vity.addEventListener('click',function(){
+        sect(2);
+    });
+
+    back1.addEventListener('click',function(){
+        section[1].classList.remove('visible');
+    });
+
+    helpMy.addEventListener('click',function(){
+        shade.style.display = 'block';
+    });
+
+    shaClose.addEventListener('click',function(){
+        shade.style.display = 'none';
+    });
+
+    shaActi.addEventListener('click',function(){
+        sect(2);
+    });
+
+    function sect(n){
+        for(var i=0;i<section.length;i++){
+            section[i].classList.remove('visible');
+        }
+        section[n].classList.add('visible');
+    }
+
+
+</script>
+</body>
+</html>

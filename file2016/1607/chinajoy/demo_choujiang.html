@@ -1,0 +1,359 @@
+<!DOCTYPE html><html><head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        body{color:#545454;font:12px/22px arial; background:#FFF;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#545454;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .foot,.foot a{color:#666;}
+        .hong12{color:#B16406}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*样式表*/
+        /* CSS Document */
+        i{font-style:normal;}
+        .wrapper{width:1000px;margin:0 auto;}
+        .turntable-title{position:relative;z-index:3;}
+        .rule-btn{left:324px;top:83px;cursor:pointer}
+        .rule-box{display:none;position:absolute;left:170px;top:200px;width:700px;height:288px; padding:20px; border:1px solid #FF5357; font-size:14px;line-height:26px;color:#000; background:rgba(255,255,255,0.8); filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#ccffffff', EndColorStr='#ccffffff');}
+        :root .rule-box{filter:none;}
+        .rule-close,.tips-close{position:absolute;top:10px;right:10px;width:26px;height:26px;background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-close.png) no-repeat; text-indent:-9999px; cursor:pointer}
+        .rule-title{font:20px/50px "Microsoft Yahei"; color:#FF5257}
+
+        .user-num{position:absolute; left:466px;top:96px; width:300px;}
+        .user-num i{font-weight:bold; cursor:pointer}
+
+        .turntable-box{height:624px;background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-13.jpg) no-repeat;}
+
+        .turntable-bg{float:left; width:650px;height:624px; position:relative;}
+        .turntable-list{float:left;width:337px; padding:190px 0 0; color:#000;}
+        .turntable-list table{border-collapse:collapse;}
+        .turntable-list td{height:41px;line-height:41px;border:1px solid #dedede;text-indent:10px;}
+
+        .dial{width:528px; height:524px; margin:50px 0 0 54px; background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/dial.jpg) no-repeat; position:relative;}
+        .lottery-star {width: 235px;height: 235px;position: absolute;top: 137px;left: 50%;margin: 0 0 0 -127px;outline: none;}
+        #lotteryBtn {position: absolute;top: 0;left: 0;}
+        .rotate-btn {position: absolute;top: 50%;left: 50%;width: 120px;height: 120px;margin: -60px 0 0 -60px;cursor: pointer;}
+        .rotate-btn #startLottery{position:absolute;left:0;top:0;}
+
+        .tips{display:none;position:absolute; left:92px; top:132px;width:408px; padding:50px 20px; border:1px solid #FF5357; text-align:center;font:14px/24px "Microsoft Yahei"; color:#e0290c;background:#fff}
+        .tip-msg{font-size:16px; margin-bottom:15px;}
+        .tip-msg span{font-weight:bold;}
+        .address-info{width:352px; height:150px; margin:0 auto; overflow:hidden;}
+        .address-info dt{float:left; width:60px; height:36px; line-height:36px; padding:11px 0 0 0; text-align:right; color:#000}
+        .address-info dd{float:left; width:280px; height:36px; line-height:36px; padding:11px 0 0 12px; text-align:left}
+        .txt{width:242px; padding:0 4px; height:36px; border:1px solid #ccc; background:#fcfcfc; line-height:36px;}
+        .btn{display:inline-block; width:106px; height:33px; line-height:33px; margin:0 15px; background:#ff6d00; color:#fff; cursor:pointer; border-radius:3px;}
+        .tip-btn{margin-top:20px;}
+
+        .review-bg{background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-14a.jpg) no-repeat no-repeat center 93px; padding-bottom:210px; position:relative;}
+        .review1 img,.review2 img,.review3 img{border:1px solid #444; padding:2px;}
+        .review1 .cheng12b{display:block; width:90px;height:26px; line-height:26px; margin:10px auto 0; color:#794C11; background:url(http://2.zol-img.com.cn/zt/tm_565/8138d3cc1b/f-view.png) no-repeat}
+        .review1{height:162px;}
+        .review2{height:176px;}
+        .review2a,.review2b{float:left;width:383px; display:inline; padding:50px 0 0; margin:0 0 0 54px; background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-16.png) no-repeat top center;}
+        .review2b{float:right;margin:0 54px 0 0;}
+        .review3{height:231px;}
+        .review3a,.review3b{float:left;width:149px; display:inline; padding:50px 0 0; margin:0 0 0 168px; background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-17.png) no-repeat top center;}
+        .review3b{float:right;margin:0 168px 0 0;}
+
+        .review-bg .no1{position:absolute;width:310px; top:440px; left:340px;}
+        .review-bg .no1-icon{position:absolute;top:-40px;left:132px;border:0;padding:0;}
+
+        .word-list1{float:left; width:330px;height:600px; padding:5px 0 0 20px;}
+        .pic-list1{float:right; width:550px;height:600px; padding:5px 17px 0 0;}
+        .list1-title{line-height:80px;color:#B16406;}
+        .list1-title strong{font-size:28px; font-family:"Microsoft Yahei"; font-weight:normal}
+        .list1-more{float:right;width:80px; line-height:30px;padding:35px 0 0;text-align:right;font-family:simsun;}
+        .list1-more a{color:#B16406;}
+        .list1-con{height:280px;}
+        .list1-con1{height:140px;}
+
+        .zol_foot{height:140px; padding:71px 0 0; background:url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-foot.jpg) repeat-x; color:#fff}
+        .zol_foot a{color:#fff}
+
+        .fixed-left{width:144px;height:341px;position:fixed;_position:absolute;left:50%;margin-left:-650px;top:100px;text-align:center;}
+        .fixed-left .code{width:142px;height:185px;border:1px solid #ddd;  background:rgba(255,255,255,0.8); filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#ccffffff', EndColorStr='#ccffffff');}
+        :root .fixed-left .code{filter:none;}
+        .fixed-left img{margin:8px auto 4px}
+        .fixed-left p{font:15px/21px "Microsoft Yahei"; color:#4C4C59}
+
+        .fixed-right{width:122px;height:340px;padding:154px 0 0;position:fixed;_position:absolute;left:50%;margin-left:500px;top:100px;text-align:center;border:1px solid #222; background: url(http://2.zol-img.com.cn/zt/tm_565/823cbdbb25/f-fixed3.png) no-repeat top center; color:#D39105; font:16px/36px "Microsoft Yahei";}
+
+        .fixed-right a{display:block;height:36px;line-height:36px;color:#D39105;}
+        .fixed-right a:hover{background:#000; font-size:16px;color:#fff; text-decoration:none;}
+        .fixed-right em{display:block;line-height:35px;width:106px;margin:0 auto;border-bottom:1px solid #555;font-weight:normal;}
+
+        .nodata{text-align:center;line-height:50px;}
+
+        /*list*/
+        .list0{background-position:center 10px; padding:52px 0 0}
+        .list3-more{height:32px;line-height:32px; padding-left:602px; color:#B16407}
+        .list3-more a{color:#B16407}
+        .list3-pic{float:left;width:660px;height:332px; padding:0 0 16px 12px;}
+        .list3-info{float:right;width:303px; height:332px; padding:0 10px 0 0 }
+        .list3-link{height:120px;}
+        .list3-link a{display:block; width:303px; height:46px; margin:0 0 16px; background:url(http://2.zol-img.com.cn/zt/tm_565/81ef061e5b/f-list2.jpg) no-repeat; text-align:center; font:26px/46px "Microsoft Yahei"; color:#101010}
+
+        .list3-weibo{height:87px; padding:0 0 15px;}
+
+        .list4-pic{float:left;width:710px;height:175px;padding:0 0 20px 6px;}
+        .list4-pic img{border:1px soid #444}
+        .list4-word{float:right; width:280px;height:150px; padding:25px 0 0;}
+
+        .list5-word{float:left;width:326px; height:206px;padding:0 0 0 30px;}
+        .list5-title{ font:20px/40px "Microsoft Yahei"; color:#fff; padding:0 0 5px;}
+
+        .list5-link{float:left; width:486px; height:206px;}
+        .list5-link a{display:block; width:235px; height:47px; margin:0 7px 20px 0;background:url(http://2.zol-img.com.cn/zt/tm_565/81ef061e5b/f-list5.jpg) no-repeat; line-height:47px;text-align:center; font-size:14px;font-weight:bold; color:#fff;}
+        .list5-link a:hover{color:#fff;}
+
+        .list5-weibo{float:right; width:155px;height:144px;}
+
+        .list-bg2{background:#101010 url(http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-3a.jpg) no-repeat center 92px;}
+
+        /*list1*/
+        #page-list{padding:15px 30px; text-align:right;}
+        #page-list span{display:inline-block; height:26px; line-height:26px;padding:0 10px; border:1px solid #555;margin:0 4px; vertical-align:top; color:#666;cursor:pointer}
+        #page-list .act{font-weight:bold;border:1px solid #101010}
+
+    </style>
+    <link href="http://active.zol.com.cn/15active/1127zj/style.css" rel="stylesheet" type="text/css">
+    <script src="http://active.zol.com.cn/js/cookie.js"></script>
+    <script src="http://active.zol.com.cn/11active/0309login/user_login.js"></script>
+</head>
+<div class="wrapper banners" id="t8">
+    <div class="turntable-title">
+        <img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/f-12.jpg" width="1000" height="153">
+        <div class="rule-btn">活动规则</div>
+        <div class="user-num">hi，<em id="username">wxqsq1218</em>，你现在有 <span id="usernum">5</span> 次抽奖机会</div>
+        <div class="rule-box">
+            <div class="rule-close">close</div>
+            <div class="rule-title">活动规则</div>
+            <p>众多精彩好礼，等你来抢，更有七彩虹千元级游戏显卡在等你！</p>
+
+            <p>12月1日-12月28日，ZOL注册用户每人每天5次机会哦！</p>
+
+            <p>硬货抢回家，2015年度攒机大赛等你来转！</p>
+
+        </div>
+    </div>
+    <div class="turntable-box clearfix">
+        <div class="turntable-bg">
+
+            <div class="dial">
+                <div class="lottery-star">
+                    <img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/rotate-arrow.png" id="lotteryBtn">
+                    <div class="rotate-btn"><img src="http://2.zol-img.com.cn/zt/tm_565/7cab1dac66/rotate-btn.png" id="startLottery" style="transform: rotate(0deg);"></div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <div class="tips-close">close</div>
+                <div class="tip-msg">恭喜，你中了<span>&nbsp;</span>，<br>告诉我你的地址和电话，等着快递敲门吧!!</div>
+                <dl class="address-info">
+                    <dt>地址：</dt><dd><input id="address" type="text" value="" class="txt"> *</dd>
+                    <dt>电话：</dt><dd><input id="tel" type="text" value="" class="txt"> *</dd>
+                    <dt>收货人：</dt><dd><input id="name" type="text" value="" class="txt"> *</dd>
+                </dl>
+                <div class="tip-btn"><span class="btn" id="postinfo">确 认</span></div>
+            </div>
+
+
+        </div>
+        <div class="turntable-list" id="turntable-list"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td>恭喜qq****</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜qq****5045sy230</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜qq****3a854x30l</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜da****210</td><td>七彩虹iGame950 烈焰战神U-2GD5</td></tr><tr><td>恭喜89****6a3714fr3</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜tc****5128</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜yu****</td><td>血手B-080鼠标垫（大号）</td></tr><tr><td>恭喜ba****2418044u5</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜si****17o851345</td><td>狼蛛情蛊鼠标</td></tr><tr><td>恭喜si****17o851345</td><td>血手B-080鼠标垫（大号）</td></tr></tbody></table></div>
+    </div>
+</div>
+
+
+<script src="../jquery-1.9.1.js"></script>
+<script src="http://active.zol.com.cn/14active/141029Proscenic/j.easing.min.js"></script>
+<script src="http://active.zol.com.cn/14active/141029Proscenic/jRotate.2.2.js"></script>
+<!--<script src="http://active.zol.com.cn/15active/1127zj/script.js"></script>-->
+<!--<script src="http://active.zol.com.cn/15active/1127zj/zjlist.js"></script>-->
+<script>
+    /*new_list();*/
+    /*抽奖*/
+    /*初始信息*/
+    var lottery_json = 'http://comment.zol.com.cn/?c=Api_CuanjiLottery&callback=?';
+    var zolid = readCookie('zol_userid');
+
+    function init(){
+        if(!zolid){
+            $(".user-num").html('亲，您还没有登录哦，请 <i onclick="user_login();">登录</i> 后再参与活动吧~')
+        }else{
+            $(".user-num").html('hi，<em id="username">'+zolid+'</em>');
+        }
+        $.getJSON(lottery_json,{a:"UserInfo"},function(obj){
+            if(obj.chance){
+                $(".user-num").html('hi，<em id="username">'+obj.userinfo.userid+'</em>，你现在有 <span id="usernum">'+obj.chance+'</span> 次抽奖机会');
+                nums = obj.chance;
+                tokenstr = obj.userinfo.token;
+            }
+        });
+
+    }
+    init()
+
+
+    // dial
+    var timeOut = function(){  //超时函数
+        $("#lotteryBtn").rotate({
+            angle:0,
+            duration: 10000,
+            animateTo: 2160,
+            callback:function(){
+                alert('网络超时')
+            }
+        });
+    };
+    var cur=true;
+    var rotateFunc = function(awards,angle,x,cont,n,number){
+
+        if(cur){
+            cur=false;
+            $('#lotteryBtn').stopRotate();
+            $("#lotteryBtn").rotate({
+                angle:0,
+                duration: 5000,
+                animateTo: angle+1440,
+                callback:function(){
+                    if(awards > 0){
+                        $(".tips .tip-msg span").html(cont);
+                        $(".tips").show();
+                    }
+                    cur=true;
+                    sign=true;
+                }
+
+            });
+
+        }
+    };
+
+    var sign=true;
+    $("#startLottery").rotate({
+        bind:
+        {
+            click: function(){
+                /*alert('活动已结束~');
+                return false;
+                if(!zolid){
+                    user_login();
+                    return false;
+                }*/
+                if(nums==0){
+                    alert('您今天的抽奖次数已经用完了，明天再来吧~~');
+                    return false;
+                }
+
+                if(sign == true){
+                    sign=false;
+                    LuckyDraw();
+                }
+            }
+        }
+
+    });
+
+
+    //getData
+    function LuckyDraw(){
+        var win=[160,60,210,330,250];
+        var angle = [290,18,112];
+        angle = angle[Math.floor(Math.random()*angle.length)]
+        $.getJSON(lottery_json,{a:"Roll"},function(obj){
+            init();
+            //对应到转盘
+            obj.awards = obj.awards-1;
+            console.log(obj);
+            switch(obj.info){
+                case "error":
+                    rotateFunc(0,angle,1,obj.msg,null,nums)
+                    break;
+                case "ok":
+                    if(obj.lv == 0){
+                        rotateFunc(0,angle,1,obj.msg,null,nums)
+                    }else{
+                        rotateFunc(obj.lv,win[obj.lv-1],2,obj.msg,obj.lv,nums);
+                    }
+                    break;
+
+            }
+            //显示次数
+            setTimeout(function(){
+                init();
+            },3500)
+
+        })
+
+    }
+
+
+    String.prototype.trim=function() {
+        return this.replace(/(^\s*)|(\s*$)/g,'');
+    }
+
+    $(".tip-btn .btns").click(function(){
+        $(".tips").hide();
+        init();
+    })
+
+    $("#postinfo").click(function(){
+        var address = $("#address").val();
+        var tel = $("#tel").val();
+        var name = $("#name").val();
+        if(address.trim() == '' || tel.trim() == '' || name.trim() == '' ){
+            alert("请完整填写信息，便于邮寄奖品~~");
+            return false;
+        }
+        $(".tips").hide();
+        $.getJSON(lottery_json,{a:"RecordPersonInfo",token:tokenstr,signName:name,signTele:tel,address:address},function(obj){
+            alert(obj.msg);
+        })
+    })
+
+
+    $('.rule-btn').click(function(){
+        $('.rule-box').show();
+    })
+
+    $('.rule-close').click(function(){
+        $('.rule-box').hide();
+    })
+
+    $('.tips-close').click(function(){
+        $('.tips').hide();
+    })
+
+
+
+    /*中奖信息*/
+    function user_list(){
+        $.getJSON(lottery_json,{a:"WinList"},function(obj){
+            var str = '';
+            if(obj){
+                str += '<table width="100%" border="0" cellspacing="0" cellpadding="0">';
+                for(var i=0; i<obj.length; i++){
+                    if(i<10){
+                        str +='<tr><td>恭喜'+obj[i].userid+'</td><td>'+obj[i].desc+'</td></tr>';
+                    }
+                }
+                str += '</table>';
+
+            }else{
+                str = '<p>现在还没有数据,快来参与活动吧~~</p>';
+            }
+            $("#turntable-list").html(str);
+        });
+    }
+    user_list()
+</script>
+</body>
+</html>

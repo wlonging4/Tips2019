@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多div运动</title>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            margin-top: 5px;
+            background-color: forestgreen;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    window.onload=function() {
+        var aDiv = document.getElementsByTagName("div");
+        i = 0;
+        for (i=0; i < aDiv.length; i++) {
+            aDiv[i].timer=null;
+            aDiv[i].onmouseover = function () {
+                Move(this,300);
+            };
+            aDiv[i].onmouseout = function () {
+                Move(this,100);
+            }
+        }
+    };
+    function Move(obj,iTarget){
+        clearInterval(obj.timer);
+        obj.timer=setInterval(function(){
+            iSpeed=(iTarget-obj.offsetWidth)/8;
+            iSpeed=iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+            if(obj.offsetWidth==iTarget){
+                clearInterval(obj.timer);
+            }else{
+                obj.style.width=obj.offsetWidth+iSpeed+"px";
+            }
+        },50);
+    };
+</script>
+</body>
+</html>

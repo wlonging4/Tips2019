@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔试题-定义函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    function sum(){
+        var total=null;
+        for(var i=0;i<arguments.length;i++){
+            var cur=Number(arguments[i]);
+            if(!isNaN(cur)){
+                total+=cur;
+            }
+        }
+        return total;
+    }
+
+    var li=sum(1,4,"9",1,"surpise");
+    document.writeln(li);
+</script>
+</body>
+</html>

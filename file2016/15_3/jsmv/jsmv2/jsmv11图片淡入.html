@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片淡入淡出</title>
+    <style type="text/css">
+        #img1{
+            filter:alpha(opacity:30);/*给IE和chrome使用*/
+            opacity: 0.3;/*给火狐使用*/
+        }
+    </style>
+</head>
+<body>
+<img id="img1" src="4.jpg" alt="嘎嘎嘎"/>
+<script type="text/javascript">
+
+    var timer=null;
+    var alpha=30;
+    var oImg=document.getElementById("img1");
+
+    oImg.onmouseover= function () {
+        move(100);
+    };
+    oImg.onmouseout= function () {
+        move(30);
+    };
+
+    function move(iTar){
+        clearInterval(timer);
+
+        timer=setInterval(function(){
+            iSpe=0;
+            if(alpha<iTar){
+                iSpe=10;
+            }else{
+                iSpe=-10;
+            }
+
+            if(alpha==iTar){
+                clearInterval(timer);
+            }else{
+                alpha+=iSpe;
+                oImg.style.filter='alpha(opacity:'+alpha+')';
+                oImg.style.opacity=alpha/100;
+                document.title=alpha;
+            }
+        },30);
+    }
+</script>
+</body>
+</html>

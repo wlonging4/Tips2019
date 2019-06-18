@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓动</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            border: 1px solid green;
+            position: relative;
+            overflow: hidden;
+            height: 30px;
+            width: 150px;
+        }
+        ul{
+            position: absolute;
+            list-style: none;
+            margin-top: 0;
+            margin-left: 30px;
+        }
+        li{
+            height: 28px;
+            width: 100%;
+            line-height: 28px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li>111111111</li>
+        <li>222222222</li>
+        <li>333333333</li>
+        <li>444444444</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    var oDiv=document.getElementsByTagName("div")[0];
+    var oUl=document.getElementsByTagName("ul")[0];
+    var num = 0;
+    var timer = window.setInterval(function(){
+        num++;
+        if(num>=4){
+            num=0;
+//            window.clearInterval(timer);
+        }
+        oUl.style.webkitTransform = "translate(0,-"+num*28+"px)";
+    },2000)
+</script>
+</body>
+</html>

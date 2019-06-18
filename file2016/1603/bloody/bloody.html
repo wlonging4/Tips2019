@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <title>Bloody</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "SimSun",Arial; background-color:#000; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*样式表*/
+        .wrapper{  width: 100%;  background: #141414;  }
+        .wrapper2{  width: 1000px;  margin:0 auto;}
+        .bg-top-l{background: url("images/lg_bg_top_l.jpg") 100% 0 no-repeat;}
+        .bg-top-r{background: url("images/lg_bg_top_r.jpg") 0 0 no-repeat;}
+        .top-center-div{  position: relative;  }
+        .top-center-div-a{  position: absolute;  top: 208px;  left: 438px;  line-height: 36px;  font-size: 32px;  color: #c5c5c5;  }
+        .top-center-div-a a:hover{  text-decoration: none;  }
+
+        .comment{  height: 479px;  background: url("images/lg_bg_comment.jpg") no-repeat 0 0;  }
+        .comment-l{  float: left;  height: 480px;  width: 580px;  }
+        .comment-l-video{  height: 405px;  width: 540px;  margin-top: 25px;  margin-left: 33px;  color: #fff;  }
+        .comment-r{  float: left;  height: 480px;  width: 420px;  }
+        .comment-r-list{  height: 400px;  width: 400px;  margin-top: 25px;  margin-left: 12px;  background-color: #222;  }
+
+        .new-product{  position: relative;  }
+        .new{  background: #000;  }
+        .new-title{  height: 73px;  /*margin-top: -1px;*/  background: url("images/lg_new_title.jpg") no-repeat 0 0;  }
+        .new1{  position: relative;  height: 311px;  /*margin-top: -1px;*/  background: url("images/lg_new1.jpg") no-repeat 0 0;  }
+        .new1-txt{  position: absolute;  height: 85px;  width: 380px;  top: 140px;  left: 540px;  }
+        .new2{  position: relative;  height: 309px;  /*margin-top: -1px;*/  background: url("images/lg_new2.jpg") no-repeat 0 0;  }
+        .new2-txt{  position: absolute;  height: 95px;  width: 380px;  top: 140px;  left: 90px;  }
+        .bg-con-l{  background: url("images/lg_bg_con_l.jpg") 100% 0 no-repeat;  }
+        .bg-con-r{  background: url("images/lg_bg_con_r.jpg") 0 0 no-repeat;  }
+        .new3-tab{  margin-top: -1px;  }
+        .new3{  position: relative;  }
+        .new3-txt{  position: absolute;  top: 155px;  right: 85px;  width: 380px;  height: 85px;  }
+
+        .bg-converse-l{  background: url("images/lg_conver_l.jpg") 100% 0 no-repeat;  }
+        .bg-converse-r{  background: url("images/lg_conver_r.jpg") 0 0 no-repeat;  }
+        .conversation{  position: relative;  }
+        .converse-txt{  position: absolute;  height: 250px;  width: 440px;  top: 140px;  right: 32px;  }
+        .converse-img{  position: absolute;  top: 130px;  left:33px;  height: 250px;  width: 450px;  border: 5px solid #444;  }
+        .converse-txt1{  margin: 0 auto;  height: 60px;  line-height: 60px;  width: 380px;  font-size: 24px;  background: #E0681F;  text-align: center;  }
+        .converse-txt1 a{  color: #000;  font-weight: 600;  }
+        .converse-txt1 a:hover{  color: #fff;  cursor: pointer;  }
+        .converse-txt2{  margin-top: 10px;  width: 440px;  height: 185px;  }
+
+        .live_bg{  background: url("images/lg_live_img.jpg") no-repeat 0 0;  }
+        .live-carousel{  height: 430px;  width: 920px;  margin: 25px 40px 35px;  }
+        .kb-title{  height: 90px;  background: url("images/lg_keyboard_title.jpg") no-repeat 0 0;  }
+        .kb-content{  height: 430px;  }
+        .kb-content-txt{  float: left;  height: 400px;  width: 400px;  margin-left: 30px;  }
+        .kb-content-video{  float: left;  height: 365px;  width: 540px;  margin-left: 10px;  margin-top: 35px;  }
+        .kb-img-title{  height: 64px;  background: url("images/lg_keyboard_img_title.jpg") no-repeat 0 0;  }
+        .kb-compare{  height: 456px;  }
+        .earPiece-l{  background: url("images/lg_ear_l.jpg") no-repeat 100% 0;  }
+        .earPiece-r{  background: url("images/lg_ear_r.jpg") no-repeat 0 0;  }
+        .earpiece-c-title{  height: 71px;  background: url("images/lg_ear_c_title.jpg") no-repeat 0 0;  }
+        .earpiece-c-images{  height: 247px;  }
+        .earPiece-c-media{  height: 468px;  }
+        .earPiece-c-media-video{  float: left;  height: 370px;  width: 540px;  margin-left: 24px;  margin-top: 55px;  }
+        .earPiece-c-media-txt{  float: left;  height: 400px;  width: 400px;  margin-left: 15px;  margin-top: 20px;  }
+
+        .kb-his-l{  background: url("images/lg_kb_l.jpg") no-repeat 100% 0;  }
+        .kb-his-r{  background: url("images/lg_kb_r.jpg") no-repeat 0 0;  }
+        .kb-his-c{  }
+        .kb_his_title{  height: 87px;  background: url("images/lg_kb_history_title.jpg") no-repeat 0 0;  }
+        .kb_his_content{  position: relative;  height: 907px;  background: url("images/lg_kb_c.jpg") no-repeat 0 0;  }
+        .kb-his-content1{  width: 280px;  height: 330px;  position: absolute;  top: 25px;  left: 160px;  }
+        .kb-his-content2{  width: 280px;  height: 330px;  position: absolute;  top: 380px;  left: 160px;  }
+        .kb-his-content3{  width: 280px;  height: 330px;  position: absolute;  top: 170px;  right: 140px;  }
+        .kb-his-content4{  width: 280px;  height: 330px;  position: absolute;  top: 530px;  right: 140px;  }
+
+        .code-l{  background: url("images/lg_code_l.jpg") no-repeat 100% 0;  }
+        .code-r{  background: url("images/lg_code_r.jpg") no-repeat 0 0;  }
+        .code-c{  }
+        .code-c-bg{  position: relative;  height: 394px;  background: url("images/lg_code_c_bg.jpg");  }
+        .code-c1{  position: absolute;  height: 215px;  width: 200px;  top: 155px;  left: 30px;  }
+        .code-c2{  position: absolute;  height: 215px;  width: 200px;  top: 155px;  left: 295px;  }
+        .code-c3{  position: absolute;  height: 215px;  width: 200px;  top: 155px;  left: 550px;  }
+    </style>
+</head>
+<body>
+<!--header-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="bg-top-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg1-c">
+            <div class="top-center-div">
+                <img src="images/lg_bg_top_c1.jpg" width="1000" height="192">
+                <img src="images/lg_bg_top_c2.jpg" width="1000" height="185">
+                <img src="images/lg_bg_top_c3.jpg" width="1000" height="75">
+                <div class="top-center-div-a">
+                    <a href="javascript:;">光轴电竞&魔磁新品发布会>>></a>
+                </div>
+            </div>
+        </td>
+        <td class="bg-top-r">&nbsp;</td>
+    </tr>
+</table>
+<!--comment-->
+<div class="wrapper banners">
+    <div class="comment wrapper2 clearfix">
+        <div class="comment-l">
+            <div class="comment-l-video">
+                模块内容
+            </div>
+        </div>
+        <div class="comment-r">
+            <div class="comment-r-list">
+                模块内容
+            </div>
+        </div>
+    </div>
+</div>
+<!--new_product-->
+<div class="new-product new wrapper banners">
+    <div class="new-title wrapper2"></div>
+    <div class="new1 wrapper2">
+        <div class="new1-txt">
+            模块内容
+        </div>
+    </div>
+    <div class="new2 wrapper2">
+        <div class="new2-txt">
+            模块内容
+        </div>
+    </div>
+    <table class="new3-tab" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bg-con-l">&nbsp;</td>
+            <td width="1000" valign="top" class="bg1-c">
+                <div class="new3">
+                    <img src="images/lg_bg_con_c.jpg" width="1000" height="366">
+                    <div class="new3-txt">
+                        模块内容
+                    </div>
+                </div>
+            </td>
+            <td class="bg-con-r">&nbsp;</td>
+        </tr>
+    </table>
+</div>
+<!--conversation-->
+<table class="banners" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="bg-converse-l">&nbsp;</td>
+        <td width="1000" valign="top" class="bg-converse-c">
+            <div class="conversation">
+                <img src="images/lg_conver_c.jpg" width="1000" height="460">
+                <div class="converse-img">
+                    模板内容
+                </div>
+                <div class="converse-txt">
+                    <div class="converse-txt1">
+                        <a href="javascript:;">现场访谈标题 现场访谈标题</a>
+                    </div>
+                    <div class="converse-txt2">
+                        模块内容
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-converse-r">&nbsp;</td>
+    </tr>
+</table>
+<!--live_img-->
+<div class="live wrapper2 banners">
+    <div class="live_bg">
+        <img src="images/lg_live_img.jpg"  width="1000" height="85" alt="">
+    </div>
+    <div class="live-carousel">
+        模块内容
+    </div>
+</div>
+<!--analysis_keyboard-->
+<div class="keyboard wrapper banners">
+    <div class="wrapper2">
+        <div class="kb-title"></div>
+        <div class="kb-content clearfix">
+            <div class="kb-content-txt">
+                模块内容
+            </div>
+            <div class="kb-content-video">
+                模块内容
+            </div>
+        </div>
+        <div class="kb-img-title"></div>
+        <div class="kb-compare">
+            模块内容
+        </div>
+    </div>
+</div>
+<!--analysis_ear-->
+<table class="earPiece banners" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="earPiece-l">&nbsp;</td>
+        <td width="1000" valign="top" class="earPiece-c">
+            <div class="earpiece-c-title"></div>
+            <div class="earpiece-c-images">
+                模块内容
+            </div>
+            <div class="earPiece-c-media clearfix">
+                <div class="earPiece-c-media-video">
+                    模块内容
+                </div>
+                <div class="earPiece-c-media-txt">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="earPiece-r">&nbsp;</td>
+    </tr>
+</table>
+<!--keyboard_history-->
+<table class="kb-history banners" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="kb-his-l">&nbsp;</td>
+        <td width="1000" valign="top" class="kb-his-c">
+            <div class="kb_his_title"></div>
+            <div class="kb_his_content">
+                <div class="kb-his-content1">
+                    模块内容
+                </div>
+                <div class="kb-his-content2">
+                    模块内容
+                </div>
+                <div class="kb-his-content3">
+                    模块内容
+                </div>
+                <div class="kb-his-content4">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="kb-his-r">&nbsp;</td>
+    </tr>
+</table>
+<!--2D code_scan-->
+<table class="code-scan banners"  width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="code-l">&nbsp;</td>
+        <td width="1000" valign="top" class="code-c" >
+            <div class="code-c-bg">
+                <div class="code-c1">
+                    模块内容
+                </div>
+                <div class="code-c2">
+                    模块内容
+                </div>
+                <div class="code-c3">
+                    模块内容
+                </div>
+            </div>
+        </td>
+        <td class="code-r">&nbsp;</td>
+    </tr>
+</table>
+<!--footer-->
+<!--底部链接-->
+<div class="wrapper footer">
+    模块内容
+</div>
+</body>
+</html>

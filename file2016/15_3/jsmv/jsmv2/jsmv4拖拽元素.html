@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽元素</title>
+    <style type="text/css">
+        #div1{
+            height: 100px;
+            width: 100px;
+            background-color: #00A000;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("div1");
+    var disX = 0;
+    var disY = 0;
+
+    oDiv.onmousedown = function (ev) {
+        var oEvent = ev || event;
+        disX = oEvent.clientX - oDiv.offsetLeft;//不加px
+        disY = oEvent.clientY - oDiv.offsetTop;
+
+        /*oDiv.onmousemove = function (ev) {
+            var oEvent = ev || 5w4event;
+            oDiv.style.left = oEvent.clientX - disX + 'px';
+            oDiv.style.top = oEvent.clientY - disY + 'px';
+        };
+
+        oDiv.onmouseup = function () {
+            oDiv.onmousemove = null;
+            oDiv.onmouseup = null;
+        };*/
+        document.onmousemove = function (ev) {
+            var oEvent = ev || event;
+            var x=oEvent.clientX - disX;
+            var y=oEvent.clientY - disY;
+            if(x<0){
+                x=0;
+            }
+            else if(x>document.documentElement.clientWidth-oDiv.offsetWidth){
+                x=document.documentElement.clientWidth-oDiv.offsetWidth;
+            }
+            if(y<0){
+                y=0;
+            }
+            else if(y>document.documentElement.clientHeight-oDiv.offsetHeight){
+                y=document.documentElement.clientHeight-oDiv.offsetHeight;
+            }
+            oDiv.style.left = x + 'px';
+            oDiv.style.top = y + 'px';
+        };
+
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+        return false;
+    };
+</script>
+</body>
+</html>

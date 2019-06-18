@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>自动轮播</title>
+    <style type="text/css">
+        body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            border: none;
+        }
+        .banner {
+            position: relative;
+            margin: 10px auto;
+            width: 700px;
+            height: 300px;
+            overflow: hidden;
+        }
+        #bannerImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3500px;
+            height: 300px;
+        }
+
+        #bannerImg img {
+            float: left;
+            width: 700px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div id="bannerImg">
+        <img src="1.JPG" alt=""/>
+        <img src="2.JPG" alt=""/>
+        <img src="3.JPG" alt=""/>
+        <img src="4.JPG" alt=""/>
+        <img src="1.JPG" alt=""/>
+    </div>
+</div>
+<script type="text/javascript" src="wlgjs-1.0.min.js"></script>
+<script type="text/javascript">
+    var bannerImg = document.getElementById("bannerImg");
+    var index = 0;
+    function move(duration,interval){
+        var _this=this;
+        window.clearInterval(_this.autoTimer);
+        var tarL=utils.css(_this,"left")-700;
+        var step=(-700/duration)*interval;
+        ~function _move() {
+            window.clearTimeout(_this.timer);
+            var curL=utils.css(_this,"left");
+            if(curL+step<=tarL){
+                utils.css(_this,"left",tarL);
+                if(index>=4){
+                    index=0;
+                    _this.style.left=0+"px";
+                }
+                _this.autoTimer=window.setInterval(autoMove,3000);
+                return;
+            }
+            utils.css(_this,"left",curL+step);
+            _this.timer=window.setTimeout(_move,interval);
+        }();
+    }
+    //实现的是每隔三秒钟变换下一张图片，为了避免第二张是隔两秒就切换的，我们在每一次执行move的时候首先把autoTimer先清除掉,当每一张切换完成在重新的设置下一张隔3秒中切换
+    function autoMove() {
+        index++;
+        move.call(bannerImg, 1000, 10);
+    }
+    bannerImg.autoTimer = window.setInterval(autoMove, 3000);
+</script>
+</body>
+</html>

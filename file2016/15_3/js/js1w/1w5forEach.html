@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>迭代</title>
+</head>
+<body>
+<script type="text/javascript">
+    //原生兼容模式下的forEach函数
+    Array.prototype.forEach=function(fun,context){
+        var len=this.length;
+        var context=arguments[1];
+        if(typeof fun!=="function"){
+            throw "请输入正确函数！";
+        }
+        for(var i=0;i<len;i++){
+            fun.call(context,this[i],i,this);
+        }
+    };
+    var ary=[0,1,2,3,4,5,6,7];
+    //调用forEach
+    /*ary.forEach(function(item,index,arr){
+        console.log(item,index,arr);
+    });*/
+
+    //①every()指的是item的每一项都满足条件
+    //调用every1
+    var result=ary.every(function(item,index,array){
+        return item>5;
+    });
+    alert(result);
+    //调用every2
+    /*var result=ary.every(function(item,index,array){
+        return item>-1;
+    });
+    alert(result);*/
+
+    //②filter()满足条件返回,不满足的抛弃
+    /*var result=ary.filter(function(item,index,array){
+        return item>3;
+    })
+    alert(result);*/
+
+    //③forEach遍历数组,该方法没有返回值
+
+    //④map()对数组中每一项运行给定函数,返回每次函数调用的结果组成的数组（返回的是数组）
+    /*var result=ary.map(function(item,index,array){
+        return ary[item]+=1;
+    });
+    console.log(result);*/
+
+    //⑤对数组每一项运行指定函数,如果该函数的任何一项都返回true,则该方法返回true;类似于every()方法,但这个是"或",every()是"与"操作
+    /*var result=ary.some(function (item,index,array) {
+        return ary[item]>6;
+    });
+    alert(result);*/
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400" style="border:1px solid #f00"></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.strokeStyle='#000';
+
+    var ball = {
+        x: 100,
+        y: 100,
+        num: 0,
+        radius: 25,
+        color: 'blue',
+        draw: function draws() {
+            var num=this.num;
+            num++;
+            console.log(num);
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI*num/30, true);
+            ctx.closePath();
+            //ctx.fillStyle = this.color;
+            ctx.fill();
+            if(num<60){
+                t&&clearTimeout(t);
+                var t=setTimeout(draws,200);
+            }
+        }
+    };
+
+    ball.draw()
+</script>
+</body>
+</html>

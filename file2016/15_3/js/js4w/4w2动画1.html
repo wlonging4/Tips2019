@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画基础</title>
+    <style type="text/css">
+        body,div{
+            margin:0;
+            padding: 0;
+        }
+        div{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: firebrick;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script type="text/javascript" src="wlgjs-1.0.min.js"></script>
+<script type="text/javascript">
+    /*总距离:结束位置-起始位置->target
+    总时间:多长时间完成->duration
+    步长:每一步走多远->step
+    速度:多长时间走一步->interval
+    linear匀速;ease减速;ease-out渐隐(减速);ease-in渐现(渐现);ease-in-out;*/
+    var oDiv=document.getElementById("div1");
+    var target=utils.win("clientWidth")-oDiv.offsetWidth;
+    //①setInterval方法;
+    /*var timer=window.setInterval(function () {
+        //这个方法中this指向window;
+        var curL=utils.offset(oDiv).l;
+        if(curL>=target){
+            window.clearInterval(timer);
+            return;
+        }
+        utils.css(oDiv,"left",curL+10);
+    },13);*/
+    //②setTimeout方法->真是项目中需要控制的多用setTimeout
+    //如果使用setTimeout实现轮询动画,我们的原理是基于递归思想的->每一次执行完成都重新的设置一个新的定时器来完成下一次的操作->这样下去定时器会重复的一直累加下去,影响页面的性能;
+    //【优化定时器1】->清除之前的定时器
+    /*var timer=null;
+    function A(){
+        window.clearTimeout(timer);
+        <js code>;
+        timer=window.setTimeout(move,13);
+    }
+    move();*/
+    //【优化定时器2】
+    //设置多个运动元素的定时器每一次把设置的定时器存储到全局变量timer中,会造成相互的污染和冲突->解决办法:把timer设置为当前要操作元素的自定义属性,这样就避免了全局变量的冲突;
+    //把timer设置为元素的自动一属性,那么当前的元素只能存储一个timer，遇到一个元素多个动画的时候,可以快速的把之前运动的动画都结束;执行当前动画即可;
+    /*var timer=null;
+     function A(){
+     window.clearTimeout(oDiv.timer);
+     <js code>;
+     oDiv.timer=window.setTimeout(move,13);
+     }
+     move();*/
+    //在严格模式下禁止使用arguments.callee.caller；自执行函数也可以起个名字->~function A(){}();
+    /*var timer=null;
+    function move(){
+        var curL=utils.css(oDiv,"left");
+        if(curL>=target){
+            return;
+        }
+        utils.css(oDiv,"left",curL+20);
+        timer=window.setTimeout(move,15);
+    }
+    move();*/
+    //加速减速->通过step或者时间因子改变速度变化;
+    var timer=null;
+    var step=5;
+    var step2=1;
+    function move(){
+        var curL=utils.css(oDiv,"left");
+        var curT=utils.css(oDiv,"top");
+        //step+=10;
+        //step-=10;
+        if(curL>=target){
+            return;
+        }
+        utils.css(oDiv,"left",curL+step);
+        utils.css(oDiv,"top",curT+step2);
+        timer=window.setTimeout(move,15);
+    }
+    move();
+</script>
+</body>
+</html>

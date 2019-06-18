@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+#div1{ width:300px; height:100px; background:red;}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>
+<script>
+var ele=document.getElementById("div1");
+function fn1(){
+	alert(1);
+	this.innerHTML="只要是文字出现在DIV里，this问题就解决了";
+	
+};
+function fn2(){alert(2);}
+var n=0;
+function fn3(){
+	alert(3);
+	n++;
+	if(n==2){
+		unbind(ele,"click",fn3);
+	}
+
+}
+function fn4(){alert(4);}
+function bind(ele,type,fn){
+	if(ele.addEventListener){
+		ele.addEventListener(type,fn,false);
+	}else {
+		if(!ele.tempFn){
+			ele.tempFn=[];
+		}
+		function tempFn(){fn.call(ele);}
+		tempFn.photo=fn;
+		ele.tempFn.push(tempFn);
+		/*ele.tempFn=function(){fn1.call(ele);}
+		ele.tempFn=function(){fn2.call(ele);}*/
+		
+		//为什么把这个经过“化装”的方法赋值给这个唯一的属性不行呢？当bind执行四次，这个ele.tempFn会是谁呢？
+		
+		//用call来调用执行的方法，功能和原来一样，功能不变，只是this的指向被强制改变了
+		var a=ele.tempFn;
+		//这个数组ele.tempFn里确实保存着被绑定的方法呢，但是我怎么确定第二个方法是我要移动的那个fn3呢？
+		//如果让真正的fn3和数组里的经过改造之后的fn3关联上（就是识别出来），在fn3和上一个方法里的tempFn之间缺少一个识别的关联符号
+		ele.attachEvent("on"+type,tempFn);
+		
+		// ele.attachEvent("on"+type,function(){fn.call(ele);});
+		//ele.attachEvent("on"+type,fn.call(ele));//这样不可以，因类fn就立马执行了
+	}
+}
+
+function unbind(ele,type,fn){
+	if(ele.removeEventListener){
+		ele.removeEventListener(type,fn,false);	
+	}else{
+		var a=ele.tempFn;
+		if(a){
+			for(var i=0;i<a.length;i++){
+				if(a[i].photo==fn){
+					a[i];
+					ele.detachEvent("on"+type,a[i]);
+						
+				}
+			
+			}	
+		}
+		//ele.detachEvent("on"+type,ele.tempFn);
+		
+	}
+	
+}
+bind(ele,"mouseover",fn3);
+bind(ele,"click",fn1);
+bind(ele,"click",fn2);
+bind(ele,"click",fn3);
+bind(ele,"click",fn4);
+bind(ele,"click",fn3);
+//重复绑定的问题，在标准浏览器中，同一个事件，只有第一次绑定有效
+ele.tempFn=[fn3,fn1,fn2,fn3,fn4]
+
+</script>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="GBK">
+    <title>Microsoft Azure</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "microsoft yahei",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#f60;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .side1{  background: #2291E6;  }
+        .side2{  background: #323A45;  }
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd3bce2e59/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd3bce2e59/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  position: relative;  width: 1200px;  height: 355px;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd3bce2e59/lg_head_c.jpg") no-repeat 0 0;  }
+        .head-con{  position: absolute;  width: 345px;  height: 50px;  left: 235px;  top: 226px; cursor: pointer }
+        .head-con .hui20{  display: block;  line-height: 50px;  text-align: center;  font-size: 30px;  color: #8C4600;  }
+        .head-con .hui20:hover{  color: #2291E6; text-decoration: none }
+
+        .info-c{  width: 1200px;  height: 418px;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_info_c.jpg") no-repeat 0 0;  }
+        .info-con{  width: 975px;  height: 353px;  padding: 30px 75px 35px  150px;  }
+        .info-con-l{  position: relative;  float: left;  height: 353px;  width: 560px;  overflow: hidden;  }
+        .info-con-l-box{  position: absolute;  height: 353px;  top: 0;  left: 0;  }
+        .info-con-r{  float: left;  height: 354px;  width: 415px;  }
+        .info-mod{  width: 415px;  height: 41px;  overflow: hidden;  cursor: pointer;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_info_bar2.png") no-repeat 0 0;  }
+        .info-mod.active{  height: 149px;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_info_bar1.png") no-repeat 0 0;  }
+        .info-mod.active .lan14{  color: #FF7F00; font-size: 18px }
+        .info-mod .lan14{  font-size: 16px;  display: block;  text-indent: 24px;  line-height: 40px;  color: #79BDEE;  }
+        .info-mod .lan14:hover{   text-decoration: none;  }
+        .info-mod .hui12{  display: block;  padding:10px 30px 0 15px;  }
+
+        .view-l{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_view_l.jpg") no-repeat 100% 0;  }
+        .view-c{  position: relative;  width: 1200px;  height: 480px;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_view_c.jpg") no-repeat 0 0;  }
+        .view-c-l{  position: absolute;  width: 450px;  height: 315px;  top: 103px;  left: 18px;  }
+        .view-c-l .ln{  height: 9px;  }
+        .view-c-l .bai14{  display: block;   font-size: 16px;   padding-left: 17px; line-height: 24px ; }
+        .view-c-l .bai14 span{  font-size: 28px;  line-height: 32px; font-weight: bolder }
+        .view-c-l .bai14:hover{  text-decoration: none;  }
+        .view-c-l .bai12{  padding: 0 0 0 17px;  color: #ececec }
+        .view-c-r{  position: absolute;  width: 730px;  height: 315px;  top: 102px;  left: 468px;  }
+        .view-c-r .bai14{  font-size: 16px; display: block;  padding-left: 70px;  line-height: 30px;  }
+        .view-c-r .bai12{  font-size: 14px; color: #ececec;  display: block;  padding: 8px 10px 0 70px;  }
+        .view-c-r .bai14:hover{  text-decoration: none  }
+        .view-c-r .ln{  height: 34px;  }
+
+        .basic-c{  height: 350px;  width: 1200px;  }
+        .basic-title{  height: 140px;  width: 1200px;  background: url('http://2.zol-img.com.cn/zt/tm_571/de9b908fbf/lg_basic_t.jpg') no-repeat 0 0;  }
+        .basic-img{  height: 185px;  width: 1152px;  padding: 0 24px 35px;  }
+        .basic-c .hui12{  color: #666;  }
+
+        .share-l{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_share_l.jpg") no-repeat 100% 0;  }
+        .share-r{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_share_r.jpg") no-repeat 0 0;  }
+        .share-c{  position: relative;  height: 572px;  width: 1200px;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_share_c.jpg") no-repeat 0 0;  }
+        .share-con{  position: absolute;  height: 425px;  width: 1160px;  top: 129px;  left: 20px;  }
+        .share-con .ln{  height: 10px;  }
+
+        .about-l{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_about_l.jpg") no-repeat 100% 0;  }
+        .about-r{  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_about_r.jpg") no-repeat 0 0;  }
+        .about-c{  position: relative;  width: 1200px;  height: 376px;  background: url("http://2.zol-img.com.cn/zt/tm_571/dd2e4853e8/lg_about_c.jpg") no-repeat 0 0;  }
+        .abt-c1{  position: absolute;  width: 300px;  height: 251px;  top: 103px;  left: 27px;  }
+        .abt-c1 .ln{  height: 12px;  }
+        .abt-c2{  position: absolute;  width: 255px;  height: 240px;  top: 112px;  left: 388px;  }
+        .abt-c2 .bai12bi:hover{  color: #2291E6;  }
+        .abt-c3{  position: absolute;  width: 415px;  height: 200px;  top: 90px;  left: 727px;  }
+        .abt-c3 .bai12{  padding-top: 15px;  }
+        .abt-c3 .hong12{  color: #2291E6;  }
+
+        .footer{  text-align: center; margin: 0 auto; background: #323A45; height: 110px;  width: 1200px; padding-top: 45px;; color: #ccc }
+        .footer a{  color: #ccc   }
+        .footer a:hover{  color: #ccc   }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="head-c">
+                <div class="head-con">
+                    <{data[0]}>
+                </div>
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--信息-->
+<table class="info" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="info-c">
+                <div class="info-con clearfix">
+                    <div class="info-con-l">
+                        <div class="info-con-l-box">
+                            <{data[1]}>
+                        </div>
+                    </div>
+                    <div class="info-con-r">
+                        <div class="info-mod active"><{data[10]}></div>
+                        <div class="info-mod"><{data[11]}></div>
+                        <div class="info-mod"><{data[12]}></div>
+                        <div class="info-mod"><{data[13]}></div>
+                        <div class="info-mod"><{data[14]}></div>
+                        <div class="info-mod"><{data[15]}></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+<!--观点-->
+<table class="view" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="view-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="view-c">
+                <div class="view-c-l">
+                    <{data[2]}>
+                </div>
+                <div class="view-c-r">
+                    <{data[3]}>
+                </div>
+            </div>
+        </td>
+        <td class="side1">&nbsp;</td>
+    </tr>
+</table>
+<!--入门-->
+<table class="basic" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td>&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="basic-c">
+                <div class="basic-title"></div>
+                <div class="basic-img">
+                    <{data[4]}>
+                </div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+<!--分享-->
+<table class="share" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="share-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="share-c">
+                <div class="share-con">
+                    <{data[5]}>
+                </div>
+            </div>
+        </td>
+        <td class="share-r">&nbsp;</td>
+    </tr>
+</table>
+<!--相关-->
+<table class="about" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="about-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="about-c">
+                <div class="abt-c1">
+                    <{data[6]}>
+                </div>
+                <div class="abt-c2">
+                    <{data[7]}>
+                </div>
+                <div class="abt-c3">
+                    <{data[8]}>
+                </div>
+            </div>
+        </td>
+        <td class="about-r">&nbsp;</td>
+    </tr>
+</table>
+<!--尾部-->
+<table class="foot" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td class="side2">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="footer">
+                <{data[9]}>
+            </div>
+        </td>
+        <td class="side2">&nbsp;</td>
+    </tr>
+</table>
+
+<script charset="GBK">
+    var $mod=$('.info-mod');
+    $mod.bind('mouseenter', function () {
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.info-con-l-box').css({'left':'-'+$(this).index()*560+'px'});
+    })
+</script>
+</body>
+</html>

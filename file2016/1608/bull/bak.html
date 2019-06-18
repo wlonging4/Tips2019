@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>公牛专题</title>
+    <style type="text/css">
+        body{color:#018c39;font:12px/20px 'simsun',arial; background: #fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0;margin:0;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block;border:0}
+        a{color:#000;text-decoration:none}
+        a:hover,td a:hover{color:#f60;text-decoration:underline}
+        .hong12{ color: #018c39; font-weight: bold;}
+        .clear{clear:both;display:block;height:0;visibility:hidden;font:0/0 arial;}
+        .clearfix:after{content:".";display:block;visibility:hidden;clear:both;height:0;font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrap1{  background: #efeff1;  width: 100%; overflow: hidden  }
+        .wrapper{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .head-c  .sys_btn img{  position: absolute;  top: 50px;  }
+        .zol_foot{  height: 110px; padding-top: 55px ;background: #000 }
+        .zol_foot,.zol_foot a{  color: #4D4D4D;  }
+
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .head-c{  width: 1000px;  height: 454px;   }
+
+        .lead{  height: 325px;  padding-top: 80px;  overflow: hidden;  }
+        .lead-pic{  position: relative;  overflow: hidden;  width: 710px;  height: 325px;  float: left;  }
+        .lead-box{  position: absolute;  height: 325px;  }
+        .lead-ul{  position: absolute;  width: 180px;  bottom: 25px;  left: 260px;  overflow: hidden;  }
+        .lead-ul li{  float: left;  cursor: pointer;  _display:inline;  width: 50px;  height: 5px;  margin: 0 5px;  background: #018c39;  }
+        .lead-ul li.act{  background: #333;  }
+        .lead-art{  float: left;  width: 283px;  border: 1px solid #CCCCCC;  margin-left: 5px; height: 323px;  overflow: hidden;  background: url("images/lg_lead_r.jpg") no-repeat top center;  }
+        .lead-art1{  width: 265px;  height: 258px;  margin: 8px auto 0;  }
+        .lead-art2{  width: 150px;  height: 40px;  margin: 0 auto;  }
+
+        .ac-l{  background: url("images/lg_act_l.jpg") no-repeat 100% 0;  }
+        .ac-r{  background: url("images/lg_act_r.jpg") no-repeat 0 0;  }
+        .ac-c{  position: relative;  width: 1000px;  height: 505px;  overflow: hidden;  background: url("images/lg_act_c.jpg") no-repeat 0 0;  }
+        .ac-pic{  position: absolute;  top: 90px;  left: 0;  width: 207px;  height: 250px;  }
+        .ac-pics{  position: absolute;  top: 357px;  left: 0;  width: 710px;  height: 95px; }
+        .ac-art{  position: absolute;  top: 220px;  width: 120px;  height: 120px;  }
+        .ac-art1{ left: 240px }
+        .ac-art2{ left: 405px }
+        .ac-art3{ left: 573px }
+        .ac-rule1{  position: absolute;  width: 225px;height: 180px;  right: 30px;  top: 115px;  }
+        .ac-rule2{  position: absolute;  width: 245px;height: 50px;  right: 20px;  top: 310px;  }
+        .ac-rule3{  position: absolute;  width: 170px;  height: 49px;  right: 55px;  top: 380px;  }
+
+        .demo{  width: 1000px;  height: 334px;  margin-top: 52px;  overflow: hidden;  }
+        .demo li{  position: relative; width: 90px;  float: left;  _display: inline;  overflow: hidden;  height: 330px;  border-color: #d1d1d1;  border-style: solid;  border-width: 2px;  margin-left: -2px; cursor: pointer;  }
+        .demo li.li-first{  margin-left: 0;  }
+        .demo li .li-l{  position: absolute;left: 0;  width: 90px;  overflow: hidden;  height: 330px;    }
+        .demo li .li-art{  position: absolute;  width: 25px;  height: 220px;  color: #666;  text-align: center;  font: 20px/21px 'microsoft yahei',Arial;  }
+        .demo li .li-art11{  top: 117px;  left: 20px;  }
+        .demo li .li-art12{  top: 127px;  left: 47px;  }
+        .demo li .li-art2{  top: 84px;  left: 32px;  }
+        .demo li .li-art3{  top: 110px;  left: 35px;  }
+        .demo li .li-r{  position: absolute;left: 90px;  width: 670px; height: 250px; padding: 40px 50px 40px 0;  }
+        .demo li.act{  z-index: 2;  border-color: #009b48; width: 810px;  }
+        .demo li.act .li-l{  background: #f0f0f0;  }
+        .demo li.act .li-art{  color: #009b48;  }
+
+        .pic-t{  width: 1000px;  height: 166px;  }
+        .pic-c{  height: 305px;  width: 1000px;  }
+
+        .in-t{  height: 160px;  width: 1000px;   }
+        .in1{  width: 100%;  background: url("images/lg_in1_c.jpg") no-repeat top center;  }
+        .in1-mod{  position: relative;  margin: 0 auto;  width: 1000px;  height: 533px;  }
+        .in1-m{  position: absolute;  top: 35px;  width: 416px;  height: 450px;  }
+        .in1-m1{  left: 0;  }
+        .in1-m2{  right: 3px;  }
+        .in2-l{  background: url("images/lg_in2_l.jpg") no-repeat 100% 0;  }
+        .in2-r{  background: url("images/lg_in2_r.jpg") no-repeat 0 0;  }
+        .in2-c{  position: relative;  width: 1000px; height: 1262px;  overflow: hidden;  background: url("images/lg_in2_c.jpg") no-repeat 0 0;  }
+        .in2-m{  position: absolute; }
+        .in2-m1{  width: 505px;height: 370px;top: 55px;left: 0;  }
+        .in2-m2{  width: 500px;height: 365px;top: 332px;left: 0;  }
+        .in2-m3{  width: 435px;height: 310px;top: 55px;right: 0;  }
+        .in2-m4{  width: 435px;height: 310px;top: 388px;right: 0;  }
+        .in2-m5{  width: 515px;height: 430px;bottom: 36px;left: 0;  }
+        .in2-m6{  width: 515px;height: 430px;bottom: 30px;right: 0;  }
+
+        .about{  height: 300px;  }
+        .abt1{  float: left;  height: 300px;  width: 355px;  overflow: hidden;  }
+        .abt2{  float: left;  height: 300px;  width: 260px;  margin-right: 40px;  overflow: hidden;  }
+        .abt3{  float: left;  height: 300px;  width: 345px;  overflow: hidden;  }
+        .abt-t{  width: 200px;  height: 84px;  }
+        .abt1-c{  width: 320px;  height: 180px;  margin: 0 auto;  }
+        .abt2-c{  width: 255px;  height: 150px;  margin-top: 20px;  }
+        .abt3-c{  width: 345px;  height: 150px;  margin-top: 20px;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="head-c">
+                模块内容
+            </div>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--领导-->
+<div class="wrap1">
+    <div class="wrapper lead clearfix">
+        <div class="lead-pic">
+            <div class="lead-box">
+                模块内容
+            </div>
+            <ul class="lead-ul">
+                <li class="act"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="lead-art">
+            <div class="lead-art1">模块内容</div>
+            <div class="lead-art2">模块内容</div>
+        </div>
+    </div>
+</div>
+<!--活动-->
+<table class="activity" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="ac-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="ac-c">
+                <div class="ac-pic">模块内容</div>
+                <div class="ac-pics">模块内容</div>
+                <div class="ac-art ac-art1">模块内容</div>
+                <div class="ac-art ac-art2">模块内容</div>
+                <div class="ac-art ac-art3">模块内容</div>
+                <div class="ac-rule1">模块内容</div>
+                <div class="ac-rule2">模块内容</div>
+                <div class="ac-rule3">模块内容</div>
+            </div>
+        </td>
+        <td class="ac-r">&nbsp;</td>
+    </tr>
+</table>
+<!--demo-->
+<ul class="wrapper demo">
+    <li class="act li-first clearfix">
+        <div class="li-l li11">
+            <div class="li11-pic"><img src="images/lg_demo_li11.png" alt="" width="90" height="115"/></div>
+            <div class="li-art li-art11">公牛自动防过冲</div>
+            <div class="li-art li-art12">U<br/>S<br/>B<br/>充电器</div>
+        </div>
+        <div class="li-r">模块内容</div>
+    </li>
+    <li class="clearfix">
+        <div class="li-l li11">
+            <div class="li11-pic"><img src="images/lg_demo_li21.png" alt="" width="90" height="80"/></div>
+            <div class="li-art li-art2">公牛车载U<br/>S<br/>B<br/>充电器</div>
+        </div>
+        <div class="li-r">模块内容</div>
+    </li>
+    <li class="clearfix">
+        <div class="li-l li11">
+            <div class="li11-pic"><img src="images/lg_demo_li31.png" alt="" width="90" height="110"/></div>
+            <div class="li-art li-art3">公牛U<br/>S<br/>B充电器</div>
+        </div>
+        <div class="li-r">模块内容</div>
+    </li>
+</ul>
+<!--美图-->
+<div class="wrapper pic">
+    <div class="pic-t">模块内容</div>
+    <div class="pic-c">模块内容</div>
+</div>
+<!--智能-->
+<div class="wrapper in-t">
+    模块内容
+</div>
+<div class="in1">
+    <div class="in1-mod">
+        <div class="in1-m in1-m1">模块内容</div>
+        <div class="in1-m in1-m2">模块内容</div>
+    </div>
+</div>
+<table class="in2" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="in2-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="in2-c">
+                <div class="in2-m in2-m1">模块内容</div>
+                <div class="in2-m in2-m2">模块内容</div>
+                <div class="in2-m in2-m3">模块内容</div>
+                <div class="in2-m in2-m4">模块内容</div>
+                <div class="in2-m in2-m5">模块内容</div>
+                <div class="in2-m in2-m6">模块内容</div>
+            </div>
+        </td>
+        <td class="in2-r">&nbsp;</td>
+    </tr>
+</table>
+<!--相关-->
+<div class="wrapper about">
+    <div class="abt1 clearfix">
+        <div class="abt-t">模块内容</div>
+        <div class="abt1-c">模块内容</div>
+    </div>
+    <div class="abt2 clearfix">
+        <div class="abt-t">模块内容</div>
+        <div class="abt2-c">模块内容</div>
+    </div>
+    <div class="abt3 clearfix">
+        <div class="abt-t">模块内容</div>
+        <div class="abt3-c">模块内容</div>
+    </div>
+</div>
+
+<script src="../jquery-1.9.1.js"></script>
+<script charset="gbk">
+    /*轮播*/
+    var pic_l=$('.lead-ul li'),pic_b=$('.lead-box');
+    pic_l.bind('mouseenter', function () {
+        $(this).addClass('act').siblings().removeClass('act');
+        pic_b.stop().animate({left:'-'+710*(pic_l.index(this))+'px'},200);
+    });
+
+    /*滑动切换demo*/
+    var lis=$('.demo li'),li_rs=lis.find('.li-r');
+    lis.on('mouseenter', function () {
+        $(this).stop().animate({'width':810+'px'},500);
+        $(this).siblings().stop().animate({'width':90+'px'},500);
+        $(this).addClass('act').siblings().removeClass('act');
+    });
+
+
+</script>
+</body>
+</html>

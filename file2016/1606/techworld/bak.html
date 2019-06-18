@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>第二届联想科技创新大会 让想象力生长</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper1{  width: 100%;  background: #fbfbfe;  }
+        .wrapper1-f{  width: 100%;  background: #333;  }
+        .wrapper2{  width: 1000px;  margin: 0 auto;  }
+        .wrapper3{  width: 980px;  margin: 0 auto;  }
+
+        .head-l{  background: url("images/lg_head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("images/lg_head_r.jpg") no-repeat 0 0;  }
+        .nav{  height: 80px;  overflow: hidden;  }
+        .nav ul{  width: 1000px;  height: 40px;  margin-top: 20px;  overflow: hidden;  }
+        .nav ul li{  float: left;  _display:inline;;  height: 40px;  width: 180px;  margin: 0 10px;  }
+        .nav ul li a{  display: block;  height: 40px;  line-height: 40px;  font-size: 18px;  text-align: center;  font-family: 'Hiragino Sans GB','microsoft yahei';  width: 180px;  font-weight: bold;  color: #fff;  cursor: pointer;  background: url("images/lg_nav_bg.png") no-repeat 0 -40px;  }
+        .nav ul li a:hover{  text-decoration: none;  background: url("images/lg_nav_bg.png") no-repeat 0 0;  }
+        .nav ul li .a-act{  background: url("images/lg_nav_bg.png") no-repeat 0 0;  }
+
+        .pic{  height: 560px;  overflow: hidden;  }
+        .pic-big{  position: relative;  width: 980px;  height: 400px;  overflow: hidden;  margin: 0 10px 10px;  }
+        .pic-big-mod{  position: absolute;top: 0; left: 0; height: 400px;  }
+        .pic-small{  margin-top: 10px;  width: 1010px;  height: 130px;  margin-left: -10px;  }
+
+        .live{  height: 800px;  overflow: hidden;  }
+        .live-l{  float: left;  width: 660px;  margin-right: 20px;  height: 800px;  }
+        .live-l-t{  height: 70px;  width: 660px;  background: url("images/lg_live_l_t.jpg") no-repeat 0 0;  }
+        .live-l-c1{  width: 660px;  height: 110px;  }
+        .live-l-c2{  width: 658px;  height: 598px;  background: #fff;  border: 1px solid #ECECFB;  }
+        .live-r{  float: left;  width: 300px;  height: 800px;  }
+        .live-r-t{  height: 70px;  width: 300px;  background: url("images/lg_live_r_t.jpg") no-repeat  0 0;  }
+        .live-r-c1{  width: 278px;  height: 248px;  padding: 10px;  border: 1px solid #ececfb;  margin-bottom: 20px;  background: #fff;  }
+        .live-r-c2{  width: 278px;  height: 108px;  padding: 10px;  border: 1px solid #ececfb;  background: #fff;  }
+
+        .inter{  height: 390px;  overflow: hidden;  }
+        .inter-t{  height: 70px;  width: 220px;  background: url("images/lg_inter_t.jpg") no-repeat 0 0;  }
+        .inter-c{  position: relative;  height: 300px;  overflow: hidden;  }
+        .inter-c-l{  float: left;  width: 555px;  height: 300px;  margin-right: 25px;  }
+        .inter-c-r{  float: left;  width: 400px;  height: 300px;  }
+        .inter-c-flow{  position: absolute;  top: 10px;  left: 240px;  width: 300px;  height: 70px;  }
+
+        .comment{  height: 590px;  overflow: hidden;  }
+        .com-t{  height: 70px;  width: 240px;  background: url("images/lg_com_t.jpg") no-repeat 0 0;  }
+        .com-c{  height: 470px;  width: 960px;  background: #fff;  padding: 9px;  border: 1px solid #ececfb;  }
+        .com-l{  float: left;  width: 300px;  height: 470px;  margin-right: 10px;  }
+        .com-l .ln{  height: 10px;  }
+        .com-r{  position: relative;  width: 650px;  height: 470px;  overflow: hidden;  }
+        .com-r-mod{  position: absolute;  top: 0;  left: 0;  width: 650px;  height: 470px;  }
+
+        .exhibit{  height: 490px;  overflow: hidden;  }
+        .exh-t{  height: 70px;  width: 200px;  background: url("images/lg_exh_t.jpg") no-repeat 0 0;  }
+        .exh-c{  width: 980px;  height: 420px;  }
+
+        .media-t{  height: 70px;  background: url("images/lg_media_t.jpg") no-repeat 0 0;  }
+        .media-c{  width: 980px;  min-height: 510px;  }
+        .media-c .ln{  height: 20px;  }
+        .media-c table table{  padding: 9px 29px 9px 9px;  border: 1px solid #ececfb;  background: #fff;  }
+        .media-btn{  width: 980px;  height: 40px;  padding-bottom: 20px;  cursor: pointer;  background: url("images/lg_media_btn1.jpg") no-repeat 0 0;  }
+        .media-btn.act{  background: url("images/lg_media_btn2.jpg") no-repeat 0 0;  }
+
+        .foot{  height: 80px;  padding-top: 20px;  text-align: center;  color: #646473;  }
+        .foot a{  color: #646473;  }
+        .foot a:hover{  color: #646473;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<table class="head" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img src="images/lg_head_c.jpg" alt="" width="1000" height="259"/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--导航-->
+<div class="wrapper2 nav">
+    <ul>
+        <li>
+            <a class="a-act" href="#live" target="_self">图文直播回顾</a>
+        </li>
+        <li>
+            <a href="#interview" target="_self">高端访谈</a>
+        </li>
+        <li>
+            <a href="#comment" target="_self">现场上手快评</a>
+        </li>
+        <li>
+            <a href="#exhibit" target="_self">现场展台图赏</a>
+        </li>
+        <li>
+            <a href="#media" target="_self">最新资讯</a>
+        </li>
+    </ul>
+</div>
+<!--图赏-->
+<div class="wrapper2 pic">
+    <div class="pic-big">
+        <div class="pic-big-mod">
+            模块内容
+        </div>
+    </div>
+    <div class="pic-small">
+        模块内容
+    </div>
+</div>
+<!--直播-->
+<div class="wrapper1">
+    <div id="live" class="wrapper3 live">
+        <div class="live-l">
+            <div class="live-l-t"></div>
+            <div class="live-l-c1">
+                模块内容
+            </div>
+            <div class="live-l-c2">
+                模块内容
+            </div>
+        </div>
+        <div class="live-r">
+            <div class="live-r-t"></div>
+            <div class="live-r-c1">
+                模块内容
+            </div>
+            <div class="live-r-c1">
+                模块内容
+            </div>
+            <div class="live-r-c2">
+                模块内容
+            </div>
+        </div>
+    </div>
+</div>
+<!--访谈-->
+<div class="wrapper3 inter" id="interview">
+    <div class="inter-t"></div>
+    <div class="inter-c clearfix">
+        <div class="inter-c-l">
+            模块内容
+        </div>
+        <div class="inter-c-r">
+            模块内容
+        </div>
+        <div class="inter-c-flow">
+            模块内容
+        </div>
+    </div>
+</div>
+<!--快评-->
+<div class="wrapper1">
+    <div class="wrapper3 comment" id="comment">
+        <div class="com-t"></div>
+        <div class="com-c clearfix">
+            <div class="com-l">
+                模块内容
+            </div>
+            <div class="com-r">
+                <div class="com-r-mod">
+                    模块内容
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--展图-->
+<div class="wrapper3 exhibit" id="exhibit">
+    <div class="exh-t"></div>
+    <div class="exh-c">
+        模块内容
+    </div>
+</div>
+<!--资讯-->
+<div class="wrapper1">
+    <div class="wrapper3 media" id="media">
+        <div class="media-t"></div>
+        <div class="media-c">
+            模块内容
+        </div>
+        <div class="media-btn"></div>
+    </div>
+</div>
+<!--尾部-->
+<div class="wrapper1-f">
+    <div class="foot wrapper3">
+        模块内容
+    </div>
+</div>
+
+<script charset="gbk" src='../jquery-1.9.1.js'></script>
+<script charset="gbk">
+    /*导航*/
+    var nav_a=$('.nav ul li a');
+    nav_a.bind('click', function () {
+        nav_a.removeClass('a-act');
+        $(this).addClass('a-act');
+    });
+
+    /*美图*/
+    var pic_s=$('.pic-small table img'),pic_b=$('.pic-big-mod');
+    pic_s.bind('click', function () {
+        pic_b.css({'left':'-'+pic_s.index(this)*980+'px'});
+    });
+
+    /*评价*/
+    var com_tab=$('.com-l table table'),com_mod=$('.com-r-mod');
+    com_tab.bind('mouseenter', function () {
+        com_mod.css({'left':'-'+com_tab.index(this)*650+'px'});
+    });
+
+    /*资讯*/
+    var media_btn=$('.media-btn'),media_len=$('.media-c table img').length;
+    console.log(media_len);
+    media_btn.bind('click', function () {
+        $(this).hasClass('act')?$(this).removeClass('act'):$(this).addClass('act');
+        if($(this).hasClass('act')){
+            $('.media-c').animate({'height':media_len*170+'px'},200);
+        }else{
+            $('.media-c').animate({'height':510+'px'},200);
+        }
+    })
+</script>
+</body>
+</html>

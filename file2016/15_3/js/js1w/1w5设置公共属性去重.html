@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置公共属性去重</title>
+</head>
+<body>
+<script>
+    //我们学习的数组中的常用方法其实都是在Array的原型上定义的公有方法
+    var pro=Array.prototype;
+    pro.wlgDistinct=function wlgDistinct(){
+        //function添加了wlgDistinct函数名就不再匿名->输出dir.Array->wlgDistinct: wlgDistinct();
+        //this就是我们想要操作的那个数组
+        var obj={};
+        for(var i=0;i<this.length;i++){
+            var item=this[i];
+            if(obj[item]==item){
+                this[i]=this[this.length-1];
+                this.length--;
+                i--;
+                continue;
+            }
+            obj[item]=item;
+        }
+        return ary;
+    };
+    var ary=[1,2,2,2,3,9,6,7,7,5,4,3,2,1];
+    console.log(ary.wlgDistinct());
+    //链式写法:先执行sort，执行完立刻执行reverse....第一次执行之后的数组仍然是 Array得一个实例,所以还可以继续使用类原型上的方法;
+    //push返回的结果是执行完新增之后的数组长度,而不是一个数组,所以接下来就不能继续使用数组类的方法了,后面加一个pop()就会报错;
+    console.log(ary.wlgDistinct().sort());//因为是0-10,所以不具体写sort函数
+    console.log(ary.wlgDistinct().sort(function (a, b) {
+        return a - b;
+    }));//展开sort可以输入0-10之外的其他数字
+    console.log(ary.wlgDistinct().sort(function (a, b) {
+        return a - b;
+    }).reverse().push(1));//链式写法：增加一个reverse方法
+    //后面不能再添加pop()->push返回的结果是执行完新增之后的数组长度,而不是一个数组,所以接下来就不能继续使用数组类的方法了,后面加一个pop()就会报错;
+    console.dir(Array.prototype);//查看数组类详细的方法
+</script>
+</body>
+</html>

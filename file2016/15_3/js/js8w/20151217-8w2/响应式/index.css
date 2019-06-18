@@ -1,0 +1,165 @@
+*{
+    margin:0;
+    padding:0
+}
+ul{
+    list-style: none;
+}
+a{
+    color: #333;
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+body{
+    font:16px/1.5 Helvetica,Arial
+}
+.headerLayout{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    box-shadow: 0 1px 10px rgba(0,0,0,.3);
+    position: fixed;
+    background: #fff;
+}
+.header{
+    overflow: hidden;
+    zoom: 1;
+}
+.logo{
+    float: left;
+    margin-top: 10px;
+}
+.header ul{
+    float: right;
+}
+.header ul li{
+    float: left;
+    margin: 0 8px;
+}
+@media screen  and (min-width: 1001px){
+     .header{
+         width: 1000px;
+         margin: 0 auto;
+     }
+}
+.channel{
+    text-align: center;
+    padding-top:100px;
+    padding-bottom: 50px;
+}
+.channel ul li{
+    display: inline-block;
+    max-width: 23%;
+    margin: 0 1%;
+
+}
+.channel ul li img{
+    width: 100%;
+}
+
+.service{
+    background: #f0f0f0;
+    text-align: center;
+}
+.service h3{
+    font-size: 2.3em;
+    padding: 1em 0 0.7em 0;
+}
+.service .info{
+    padding: 0 20px 2em 20px;
+}
+.service ul li{
+    width: 263px;
+    display: inline-block;
+    background: #fff;
+    vertical-align: top;
+    border-right:1px solid #f0f0f0 ;
+    border-bottom: 1px solid #f0f0f0 ;
+}
+.service h5{
+    font-size: 1.2em;
+    padding: 0.5em 0;
+}
+.service ul li p{
+    text-align: left;
+    padding: 10px;
+}
+@media screen and (max-width: 1000px) {
+    body{
+        font-size: 14px;
+    }
+    .channel ul li.watch img,.channel ul li.phone img{
+        max-width: 50px;
+    }
+    .service ul li {
+        max-width: 32%;
+    }
+    .service ul li img{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 480px) {
+    body{
+        font-size: 12px;
+    }
+    .headerLayout{
+        position: absolute;
+        height:50px;
+        line-height: 50px;
+        background: palegreen;
+        box-shadow: none;
+    }
+    .header ul{
+        width: 100%;
+        background: palegreen;
+        display: none;
+    }
+    .header ul li{
+        float: none;
+
+    }
+    .header ul li a{
+        display: block;
+        color: #fff;
+    }
+    .logo{
+        margin: 0;
+        line-height: 0;
+        padding-top: 10px;
+    }
+    .header:after{
+        width: 50px;
+        height: 50px;
+        content: "";
+        background: url(images/btn.png);
+        background-size:100% 100% ;
+        position: absolute;
+        right: 10px;
+        top:0;
+    }
+    .channel ul li{
+        width: 46%;
+        margin: 0 2%;
+        max-width: 100%;
+    }
+    .service ul li{
+        width: 100%;
+        max-width: 100%;
+    }
+    .service {
+        text-align: left;
+    }
+    .service h3{
+        text-align: center;
+    }
+    .service ul li img{
+        width: 25px;
+        height: 25px;
+        float: left;
+        margin: 5px 10px 0 10px;
+    }
+
+
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax_demo1</title>
+</head>
+<body>
+<div>
+    <button>apple</button>
+    <button>banana</button>
+    <button>orange</button>
+</div>
+<div id="target">
+    Press Button
+</div>
+<script>
+    var eles=document.getElementsByTagName("button");
+    for(var i=0;i<eles.length;i++){
+        eles[i].onclick=pressFunc;
+    }
+    function pressFunc(){
+        var xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=resFunc;
+        xhr.open("get", e.target.html()+"be pressed!");
+        xhr.send();
+    }
+    function resFunc(){
+        if(e.target.readyState==4&& e.target.status==200){
+            document.getElementById("target").innerHTML= e.target.responseText;
+        }
+    }
+</script>
+</body>
+</html>

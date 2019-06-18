@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多物体淡入淡出</title>
+    <style type="text/css">
+        div{
+            height: 200px;
+            width: 200px;
+            margin:10px;
+            background: green;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div4"></div>
+<script type="text/javascript">
+    function css(curEle,attr){
+        if("getComputedStyle" in window){
+            return parseFloat(getComputedStyle(curEle,null)[attr]);
+        }else {
+            return parseFloat(curEle.currentStyle[attr]);
+        }
+    }
+    //淡入淡出
+    function fadeInOut(ele,target,duration,callBack){
+        duration=duration||600;
+        var begin=css(ele,"opacity");
+        var change=target-begin;
+        var times=0;
+        var interval=15;
+        window.clearInterval(ele.timer);
+        function step(){
+            times+=interval;
+            if(times<duration){
+                ele.style.opacity=times/duration*change+begin;
+            }else{
+                ele.style.opacity=target;
+                window.clearInterval(ele.timer);
+                if(typeof callBack==="function"){
+                    callBack.call(ele);
+                }
+            }
+        }
+        ele.timer=window.setInterval(step,interval);
+    }
+    //①自动淡入淡出
+    /*function fadeIn(){
+     fadeInOut(ele,1,1000,fadeout);
+     }
+     function fadeout(){
+     fadeInOut(ele,0,1000,fadeIn);
+     }
+     document.documentElement.onclick= fadeout;*/
+
+    //加给网页或者文档一个click事件最好要用这个方法;不能是body
+    //区别body的宽高可以设置为0固定;但是documentElement几乎跟element几乎是一样的就是整个html;
+    //②点击淡入淡出
+    /*document.documentElement.onclick= function () {
+        if(css(ele,"opacity")<0.5){
+            fadeInOut(ele,1,2000);
+        }else{
+            fadeInOut(ele,0,2000);
+        }
+    }*/
+    var oDivs=document.getElementsByTagName("div");
+    for(var i=0;i<oDivs.length;i++){
+        oDivs[i].onclick= function(){fadeInOut(this,0.5,1800, function () {
+            this.style.backgroundColor = "black";
+            })
+        }
+    }
+</script>
+</body>
+</html>

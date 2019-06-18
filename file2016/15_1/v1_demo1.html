@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_demo1</title>
+    <!-- author:昌维 代码之美 https://zhuanlan.zhihu.com/codes -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" name="" value="" placeholder="在这里输入文字，下面会跟着变化" v-model="message">
+    <p>{{ message }}</p>
+</div>
+<hr>
+<div id="app-2">
+  <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>
+<hr>
+<div id="app-3">
+    <p v-if="seen">现在你看到我了</p>
+</div>
+<hr>
+<div id="app-4">
+    <ol>
+        <li v-for="txt in txts">
+            {{ txt.text }}
+        </li>
+    </ol>
+</div>
+<hr>
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+</div>
+<hr>
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+
+
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    });
+
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()+'  讷~'
+        }
+    });
+
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
+    });
+
+    var app4 = new Vue({
+        el: '#app-4',
+        /*app4.txts.push({ text: '新项目' })*/
+        data: {
+            txts: [
+                { text: '学习 JavaScript' },
+                { text: '学习 Vue' },
+                { text: '学习 react' }
+            ]
+        }
+    });
+
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    });
+
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPP拖拽</title>
+    <style type="text/css">
+        #div1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100px;
+            background: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script src="event.js"></script>
+<script>
+    var div1=document.getElementById("div1");
+    /*面向对象【OOP】
+    对象化,世界观,方法论
+    先理解对象->对象是复合的数据承载体,它上面承载着值和行为(就是对象上有属性和方法)
+    面向对象->以对象数据类型这种复合的数据载体为导向的编程方式->(导向)就是把所有共同的属性和行为的数据(对象)归纳成一个类来统一管理
+    从一个具体的数据-->从而抽象成一个类(这是一个归纳的行为);把所有共同特征的数据,形成抽象形成一个类,然后通过这个类对所有共性的东西进行管理
+    【单例模式】基于对象->对一个实例进行修改,而不涉及到创造;
+    【工厂模式】面向对象->批量生产;共性的抽象出来;
+    【构造函数】面向对象->解决实例识别的问题
+    【原型模式】面向对象->解决方法复用的问题,并且可以实现继承
+    jQuery重新把DOM元素给封装成一个新类
+    this-->数据载体(承载所有找到的DOM元素)
+    $("div");
+    jQuery.fn.init.prototype.x在原型上容易扩展
+    */
+    function Drag(ele){
+        //拖拽看成一个动作或者行为,不仅如此还可以承载这个行为的载体
+        //①它是如何承载行为,②它是如何进行管理的
+        //ele是被拖拽的元素,this是谁?原来在拖拽里的this都是指当前被拖拽的元素;现在面向对象的this都是当前类的实例
+        //上下文应该是当前这个拖拽活动的主题对象,也就是当前所有行为都发生在上下文上(this,或者说当前实例上)
+        this.ele=ele;
+        this.x=null;
+        this.y=null;
+        this.mx= null;
+        this.my= null;
+        //这样绑定,this和我们规定的原则冲突;
+        //事件绑定原则->方法绑定给哪个元素,方法在运行的时候,this.down就指向这个元素ele
+        //面向对象原则->类上的方法里的this应该指向当前类的实例
+        //on(ele,"onmousedown",this.down);
+        //事件绑定中的原则->方法绑定给那个元素,方法在运行的时候,this指向当前的这个元素
+        //让processThis把this.down改造一下;返回一个新方法,让this.down在执行的时候强制this指向当前这个this,就是当前类的实例；
+        this.DOWN=processThis(this,this.down);
+        this.MOVE=processThis(this,this.move);
+        this.UP=processThis(this,this.up);
+        //this.down->表示指针指向,并不调用运行函数;和this.down()->函数调用返回结果;
+        /*this.DOWN=this.down.bind(this);
+        this.MOVE=this.move.bind(this);
+        this.UP=this.up.bind(this);*/
+        on(ele,"mousedown",this.DOWN);
+        //上面等于on(this.ele,"mousedown",this.DOWN);
+        //把拖拽这个行为看成一个"对象"他还有很对具体的小行为就成为他的属性(方法类型的属性),并且还容易拓展;以后在拖拽上所有的操作都是以Drag类的实例为上下文的(为发生的主体,或叫承载体);我们见到上面方法的this都是当前类的实例;如果出现了偏差则用processThis方法来解决;
+
+    }
+    Drag.prototype.down= function (e) {
+        this.x=this.ele.offsetLeft;
+        this.y=this.ele.offsetTop;
+        this.mx= e.pageX;
+        this.my= e.pageY;
+        if(this.ele.setCapture){
+            on(this.ele,"mousemove",this.MOVE);
+            on(this.ele,"mouseup",this.UP);
+            this.ele.setCapture();
+        }else{
+            on(document,"mousemove",this.MOVE);
+            on(document,"mouseup",this.UP);
+        }
+        e.preventDefault();
+    };
+    Drag.prototype.move= function (e) {
+        this.ele.style.left=this.x+ e.pageX-this.mx+"px";
+        this.ele.style.top=this.y+ e.pageY-this.my+"px";
+    };
+    Drag.prototype.up= function (e) {
+        if(this.ele.releaseCapture){
+            this.ele.releaseCapture();
+            off(this.ele,"mousemove",this.MOVE);
+            off(this.ele,"mouseup",this.UP);
+        }else{
+            off(document,"mousemove",this.MOVE);
+            off(document,"mouseup",this.UP);
+        }
+    };
+    new Drag(div1);
+    //承载了许多与拖拽相关的行为;
+</script>
+</body>
+</html>

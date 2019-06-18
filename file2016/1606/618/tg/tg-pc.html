@@ -1,0 +1,433 @@
+<!DOCTYPE html><html><head>
+    <title>中关村商城精简专题模板</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <style>
+        body{color:#999999; font:16px/21px Arial; background-color:#FFF;}
+        body,div,form,img,em{padding:0;margin:0;border:0}
+        body{color:#999999;}
+        em{font-style:normal;}
+        img{display:block}
+        a{color:#999999;text-decoration:none;}
+        a:hover,td a:hover{color:#f60;}
+        p{margin:0; padding:0;}
+        .foot{color:#247ACE; font:12px/22px "宋体";}
+        .foot a{color:#247ACE;}
+        .hong12{color:#E71B34;}/*背景*/
+        .market-price{display:none;}
+        .remain-time{display:none;}
+
+        /*lg_style*/
+        .t{  position: absolute;  top: 40px;  height: 20px;  width: 11px;  line-height: 20px;  text-align: center;  font-size: 18px;  color: #fff;  font-weight: bold;  font-family: 'microsoft yahei';  }
+        .t1{
+            left: 48px;
+        }
+        .t2{
+            left: 60px;
+        }
+        .t3{
+            left: 90px;
+        }
+        .t4{
+            left: 102px;
+        }
+        .t5{
+            left: 132px;
+        }
+        .t6{
+            left: 144px;
+        }
+        .t7{
+            left: 174px;
+        }
+        .t8{
+            left: 186px;
+        }
+        .top-l{  background: url("http://2.zol-img.com.cn/zt/tm_575/fe9ebbadec/lg_top_l.jpg") no-repeat 100% 0;  }
+        .top-r{  background: url("http://2.zol-img.com.cn/zt/tm_575/fe9ebbadec/lg_top_r.jpg") no-repeat 0 0;  }
+        .top-c{  position: relative;  height: 93px;  width: 1106px;  background: url("http://2.zol-img.com.cn/zt/tm_575/fe9ebbadec/lg_top_c.jpg") no-repeat 0 0;  }
+        .top-active{  top: 10px;  left: 225px;  position: absolute;  height: 76px;  width: 663px;  }
+        .top-link{  position: absolute;  right: 35px;  top: 23px;  width: 165px;  height: 45px;  }
+        .top-link a{  display: block;  height: 45px;  width: 165px;  line-height: 45px;  text-align: center;  color: #f00;  font-weight: bolder; font-size: 22px; font-family: 'microsoft yahei' ;  }
+
+        .z_bj1z{background:url(http://2.zol-img.com.cn/zt/tm_575/cda85d1572/a1.jpg) no-repeat right top;}
+        .z_bj1y{background:url(http://2.zol-img.com.cn/zt/tm_575/cda85d1572/a3.jpg) no-repeat left top;}/*图片*/
+        .z_bj2z{background:url(http://2.zol-img.com.cn/zt/tm_575/cda85d1572/b1.jpg) no-repeat right top;}
+        .z_bj2y{background:url(http://2.zol-img.com.cn/zt/tm_575/cda85d1572/b3.jpg) no-repeat left top;}/*图片*/
+        .z_bj3z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_07.jpg) no-repeat right top;}
+        .z_bj3y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_09.jpg) no-repeat left top;}/*图片*/
+        .z_bj4z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_10.jpg) no-repeat right top;}
+        .z_bj4y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_12.jpg) no-repeat left top;}/*图片*/
+        .z_bj5z{background:url(http://2.zol-img.com.cn/zt/tm_573/593ed1f620/smfsj_50.jpg) no-repeat right top;}
+        .z_bj5y{background:url(http://2.zol-img.com.cn/zt/tm_573/593ed1f620/smfsj_50.jpg) no-repeat left top;}/*图片*/
+        .z_bj6z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_16.jpg) no-repeat right top;}
+        .z_bj6y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_18.jpg) no-repeat left top;}/*图片*/
+        .z_bj7z{background:url(http://2.zol-img.com.cn/zt/tm_573/593ed1f620/smfsj_50.jpg) no-repeat right top;}
+        .z_bj7y{background:url(http://2.zol-img.com.cn/zt/tm_573/593ed1f620/smfsj_50.jpg) no-repeat left top;}/*图片*/
+        .z_bj8z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_22.jpg) no-repeat right top;}
+        .z_bj8y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_24.jpg) no-repeat left top;}/*图片*/
+        .z_bj9z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_25.jpg) no-repeat right top;}
+        .z_bj9y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_27.jpg) no-repeat left top;}/*图片*/
+        .z_bj10z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_28.jpg) no-repeat right top;}
+        .z_bj10y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_30.jpg) no-repeat left top;}/*图片*/
+        .z_bj11z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_31.jpg) no-repeat right top;}
+        .z_bj11y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_33.jpg) no-repeat left top;}/*图片*/
+        .z_bj12z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_34.jpg) no-repeat right top;}
+        .z_bj12y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_36.jpg) no-repeat left top;}/*图片*/
+        .z_bj13z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_37.jpg) no-repeat right top;}
+        .z_bj13y{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_39.jpg) no-repeat left top;}/*图片*/
+        .z_bj14z{background:url(http://2.zol-img.com.cn/zt/tm_573/54aa3e2d6b/smfsj_40.jpg) no-repeat right top;}
+        .z_bj14y{background:url(http://2.zol-img.com.cn/zt/tm_573/5555d58312/smfsj_42.jpg) no-repeat left top;}/*图片*/
+        .rightlayer{position: fixed; width: 170px; background:; left: 50%; top: 25%;margin-left:550px; z-index:500;}
+
+
+    </style>
+</head>
+
+<body screen_capture_injected="true" chromeextension:video-tape="true"  >
+<{data[0]}>
+<div>
+
+    <!--顶部-->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="top-l">&nbsp;</td>
+            <td width="1106">
+                <div class="top-c">
+                    <div id="t1" class="t t1">0</div>
+                    <div id="t2" class="t t2">0</div>
+                    <div id="t3" class="t t3">0</div>
+                    <div id="t4" class="t t4">0</div>
+                    <div id="t5" class="t t5">0</div>
+                    <div id="t6" class="t t6">0</div>
+                    <div id="t7" class="t t7">0</div>
+                    <div id="t8" class="t t8">0</div>
+                    <div class="top-active">
+                        <{data[162]}>
+                    </div>
+                    <div class="top-link">
+                        <a href="http://6.zol.com/" target="_blank">返回主会场</a>
+                    </div>
+                </div>
+            </td>
+            <td class="top-r">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj1z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[1]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj1y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj2z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[2]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj2y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj3z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[3]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj3y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj4z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100px" width=""><{data[4]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj4y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj5z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[5]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj5y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj6z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="50" width=""><{data[6]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj6y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj7z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[7]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj7y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj8z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="50" width=""><{data[8]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj8y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj9z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[9]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj9y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj10z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[10]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj10y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj11z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[11]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj11y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj12z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[12]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj12y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj13z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[13]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj13y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj14z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[14]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj14y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <div class="rightlayer">
+        <img src="http://2.zol-img.com.cn/zt/tm_573/5788f2d0b9/XF.png" usemap="#m_XF">
+        <map name="m_XF" id="m_XF">
+            <area shape="rect" coords="20,133,142,190" href="#RX" target="_self">
+            <area shape="rect" coords="22,196,141,250" href="#MD" target="_self">
+            <area shape="rect" coords="19,292,142,325" href="#SJ" target="_self">
+            <area shape="rect" coords="19,329,141,367" href="#BJB" target="_self">
+            <area shape="rect" coords="21,373,139,431" href="#WS" target="_self">
+            <area shape="rect" coords="21,435,140,502" href="#JD" target="_self">
+            <area shape="rect" coords="33,510,126,538" href="#TOP" target="_self">
+        </map>
+    </div>
+
+    <script type="text/javascript">
+        if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+            if (window.location.href.indexOf("?via=") < 0) {
+                try {
+                    if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                        var tmp = location.href.match(/[0-9]+\/(.*)/i);
+                        window.location.href = "http://m.zol.com.cn/topic/5878400.html";
+                    }
+                } catch(e) {}
+            }
+        }
+
+        /*倒计时*/
+        //设定一个目标时间，还有当前的时间
+        //目标的时间-当前的时间 >0 还没有到达目标值，我们进行倒计时处理
+        //getTime:获取当前时间距离1970-01-01 00:00:00之间的毫秒差
+        //console.log(new Date().getTime());//-->1445764647757
+        var timer = null,arr_1=[],t1= 0,t2= 0,t3= 0,t4= 0,t5= 0,t6= 0,t7= 0,t8= 0;
+        function addZero(val) {
+            return val < 10 ? "0" + val : val;
+        }
+        function computeTime() {
+            var resStr = "00:00:00";
+            var tarTime = new Date("2016/6/25 00:00:00");
+            var nowTime = new Date();
+            //spanTime:获取的是目标时间和当前时间之间的毫秒差
+            var spanTime = tarTime.getTime() - nowTime.getTime();
+            if (spanTime > 0) {
+                //0)计算包含多少个天
+                var day = Math.floor(spanTime / (1000 * 60 * 60 * 24));
+                spanTime = spanTime - day * 60 * 60 * 1000 * 24;
+                //1)计算包含多少个小时
+                var hour = Math.floor(spanTime / (1000 * 60 * 60));
+                //2)把小时占用的毫秒数减去
+                spanTime = spanTime - hour * 60 * 60 * 1000;
+                //3)计算包含多少分钟
+                var minute = Math.floor(spanTime / (1000 * 60));
+                //4)把分钟占用的毫秒数减去
+                spanTime = spanTime - minute * 60 * 1000;
+                //5)计算包含多少秒
+                var second = Math.floor(spanTime / 1000);
+                //6)拼接我们的字符串
+                resStr = addZero(day)+":"+ addZero(hour) + ":" + addZero(minute) + ":" + addZero(second);
+                var t1=addZero(day).toString().split("")[0];
+                var t2=addZero(day).toString().split("")[1];
+                var t3=addZero(hour).toString().split("")[0];
+                var t4=addZero(hour).toString().split("")[1];
+                var t5=addZero(minute).toString().split("")[0];
+                var t6=addZero(minute).toString().split("")[1];
+                var t7=addZero(second).toString().split("")[0];
+                var t8=addZero(second).toString().split("")[1];
+                $('#t1').html(t1);
+                $('#t2').html(t2);
+                $('#t3').html(t3);
+                $('#t4').html(t4);
+                $('#t5').html(t5);
+                $('#t6').html(t6);
+                $('#t7').html(t7);
+                $('#t8').html(t8);
+            } else {
+                window.clearInterval(timer);
+                timer = null;
+            }
+        }
+        computeTime();
+        timer = window.setInterval(function () {
+            computeTime();
+        }, 1000);
+    </script>
+</div>
+<script src="http://www.zol.com/js/spm.js" type="text/javascript"></script>
+</body>
+</html>

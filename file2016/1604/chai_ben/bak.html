@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="GBK">
+    <title>拆本办</title>
+    <style type="text/css">
+        /* 通用样式 */
+        body{color:#777; font:12px/22px "microsoft yahei",Arial; background-color:#eee; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .wrapper{  width: 1000px;  margin: 0 auto;  }
+        .wrapper2{  width: 960px;  padding: 0 20px 0;  }
+        .wrapper3{  width: 960px;  margin: 0 20px 0;  }
+        .wrapper4{  width: 960px;  margin: 0 27px 0;  }
+        .head-logo{  float: left;  margin: 22px 0 10px;  height: 75px;  width: 159px;  background: url("images/lg_logo.png") no-repeat 0 0;  }
+        .head-link{  float: right;  padding-top: 50px;  }
+        .head-link a{  color: #333;  }
+        .head-link a:hover{  color: #333;  }
+
+        .c{  box-shadow: 0 0 2px 2px #D4D4D4;  background: #fff;  }
+        .info-title{  height: 42px;  background: #f2f2f2;  border-top: 1px solid #fff;  border-bottom: 1px solid #fff;  }
+        .info-title a{  margin-left: 20px;  color: #535353;  line-height: 42px;  }
+        .info-con{  padding-top: 35px;  background: #fff;  border-top: 1px solid #ddd;  }
+        .info-con-l{  float: left;  height: 360px;  width: 622px;  }
+        .info-con-l-txt1{  height: 215px;  background: url("images/lg_info_l_bg.jpg") no-repeat 0 0;  }
+        .info-con-l-share{  width: 620px;  height: 35px;  border-top: 1px solid #ddd;  border-bottom: 1px solid #ddd;  }
+        .info-share-vote{  float: left;  width: 40px;  height: 15px;  padding: 10px;  }
+        .info-share-com{  float: left;  width: 23px;  height: 18px;  margin: 8px 5px 9px;  background: url("images/lg_spirit.png") no-repeat -6px -85px;  }
+        .info-share-com a{  display: block;  width: 23px;  height: 18px;  cursor: pointer;  }
+        .info-share-wei{  float: right;  width: 120px;  height: 35px;  }
+        .info-share-wei1{  float: left;  width: 40px;  line-height: 35px;  font-size: 12px;  color: #535353;  }
+        .info-share-wei2{  float: left;  width: 80px;  height: 30px;  }
+        .info-share-wei2 .bdsharebuttonbox .bds_tsina{  margin-left: 8px;  width: 10px;  height: 22px;  background: url("images/lg_spirit.png") no-repeat -42px -126px;  }
+        .info-share-wei2 .bdsharebuttonbox .bds_weixin{  margin-left: 4px;  width: 10px;  height: 22px;  background: url("images/lg_spirit.png") no-repeat -42px -158px;  }
+        .info-con-l-txt2{  width: 600px;  height: 60px;  padding: 30px 10px 20px;  }
+        .info-con-r{  float: left;  height: 360px;  width: 330px;  margin-left: 8px;  }
+        .info-con-r-img{  height: 260px;  background: indianred;  }
+        .info-con-r-detail{  color: #ccc;  margin-left: -10px;  padding: 20px 0 15px;  text-align: left;  }
+        .info-con-r-detail a{  font-size: 12px;  color: #0071CC;  margin: 0 10px;  }
+        .info-con-r-detail a:hover{  color: #F57D7D;  text-decoration: none;  }
+        .info-con-r-price{  font-size: 12px;  color: #0071CC;  }
+        .info-con-r-price span{  color: #F26565;  }
+        .info-con-r-price span em{  font-size: 16px;  }
+
+        .media{  height: 340px;  padding-bottom: 12px;  }
+        .media-l{  float: left;  width: 590px;  height: 340px;  margin-left: 15px;  background: indianred;  }
+        .media-r{  float: left;  width: 330px;  height: 340px;  margin-left: 25px;  background: #eee;  }
+        .media-r-c{  padding: 0 10px;  }
+        .media-r-c-p{  height: 35px;  line-height: 35px;  font-size: 14px;  color: #777;  }
+        .media-r-c-img{  height: 300px;  }
+
+        .adv{  height: 90px;  background: #eee;  }
+
+        .step{  height: 462px;  padding-top: 10px;  border-bottom: 1px solid #ebebeb;  }
+        .step-l{  float: left;  margin-left: 15px;  height: 442px;  width: 590px;  border: 1px solid #ebebeb;  overflow: hidden;  }
+        .step-r{  float: left;  width: 330px;  height: 444px;  margin-left: 22px;  }
+        .step-r-ul{  width: 330px;  height: 74px;  margin-left: -6px;  }
+        .step-r-ul li{  float: left;  height: 74px;  width: 102px;  margin-left: 6px;  border: 1px solid #eee;  }
+        .step-r-tit{  height: 25px;  padding: 15px 0;  }
+        .step-r-tit-l{  float: left;  }
+        .step-r-tit-l .hei16{  color: #545454;  }
+        .step-r-tit-l .hei16:hover{  color: #545454;  text-decoration: none;  }
+        .step-r-tit-r{  float: right;  height: 25px;  width: 25px;  background: url("images/lg_spirit.png") no-repeat -6px -85px;  }
+        .step-r-tit-r{  display: block;  height: 25px;  width: 25px;  cursor: pointer;  }
+        .step-r-p1{  height: 45px;  }
+        .step-r-p2{  height: 145px;  width: 300px;  padding: 0 10px 0 20px;  }
+        .step-r-p3{  height: 125px;  }
+
+        .comment{  height: 840px;  padding-top: 5px;  padding-bottom: 5px;  }
+
+        .backup{  width: 945px;  height: 114px;  background: #eee;  }
+        .backup-c{  padding: 12px 15px 0;  height: 89px;  width: 915px;  }
+    </style>
+</head>
+<body>
+<!--头部-->
+<div class="head wrapper clearfix">
+    <div class="head-logo"></div>
+    <div class="head-link">
+        <a href="http://www.zol.com.cn/" target="_blank">首页</a>&nbsp;|&nbsp;
+        <a href="http://detail.zol.com.cn/" target="_blank">产品报价</a>&nbsp;|&nbsp;
+        <a href="http://bbs.zol.com.cn/" target="_blank">论坛</a>&nbsp;|&nbsp;
+        <a href="http://topic.zol.com.cn/" target="_blank">专题</a>&nbsp;|&nbsp;
+        <a href="http://news.zol.com.cn/" target="_blank">新闻</a>&nbsp;|&nbsp;
+        <a href="http://v.zol.com.cn/" target="_blank">视频</a>&nbsp;|&nbsp;
+        <a href="http://sj.zol.com.cn/" target="_blank">手机软件</a>&nbsp;|&nbsp;
+        <a href="http://xiazai.zol.com.cn/" target="_blank">软件下载</a>&nbsp;|&nbsp;
+        <a href="http://www.zol.com.cn/help/iphone.html" target="_blank">ZOL客户端</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎您,&nbsp;
+        <a href="javascript:;" id="admin_id" target="_blank">yanhaiyanyan</a>
+    </div>
+</div>
+<!--内容-->
+<div class="c wrapper">
+    <!--信息-->
+    <div class="info">
+        <div class="info-title">
+            &nbsp;&nbsp;<a href="javascript:;"><< 返回联想YOGA 4 Pro拆解&nbsp;</a>
+        </div>
+        <div class="info-con wrapper2 clearfix">
+            <div class="info-con-l">
+                <div class="info-con-l-txt1">
+                    模块内容
+                </div>
+                <div class="info-con-l-share clearfix">
+                    <div class="info-share-vote">模块内容</div>
+                    <div class="info-share-com">
+                        <a href="#comment" target="_self"></a>
+                    </div>
+                    <div class="info-share-wei">
+                        <div class="info-share-wei1">分享：</div>
+                        <div class="info-share-wei2">
+                            <div class="bdsharebuttonbox">
+                                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-con-l-txt2">
+                    模块内容
+                </div>
+            </div>
+            <div class="info-con-r">
+                <div class="info-con-r-img">
+                    模块内容
+                </div>
+                <div class="info-con-r-detail">
+                    <a href="javascript:;" target="_blank">产品综述</a>|
+                    <a href="javascript:;" target="_blank">图片(<em id="img-count">355</em>)</a>|
+                    <a href="javascript:;" target="_blank">参数</a>|
+                    <a href="javascript:;" target="_blank">报价</a>|
+                    <a href="javascript:;" target="_blank">点评(<em id="img-comment">15</em>)</a>
+                </div>
+                <div class="info-con-r-price">
+                    本地参考底价：&nbsp;&nbsp;<span><em id="img-price">11499.00</em>&nbsp;元</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--影音-->
+    <div class="media banners wrapper2 clearfix">
+        <div class="media-l">
+            模块内容
+        </div>
+        <div class="media-r">
+            <div class="media-r-c">
+                <p class="media-r-c-p">步骤</p>
+                <p class="media-r-c-img">
+                    模块内容
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--广告-->
+    <div class="adv banners wrapper3">
+        模块内容
+    </div>
+    <!--步骤1-->
+    <div class="step step1 banners wrapper2 clearfix">
+        <div class="step-l">
+            模块内容
+        </div>
+        <div class="step-r">
+            <ul class="step-r-ul clearfix">
+                <li></li><li></li><li></li>
+            </ul>
+            <div class="step-r-tit clearfix">
+                <div class="step-r-tit-l">
+                    模块内容
+                </div>
+                <div class="step-r-tit-r">
+                    <a href="#comment" target="_self"></a>
+                </div>
+            </div>
+            <div class="step-r-p1">
+                模块内容
+            </div>
+            <div class="step-r-p2">
+                模块内容
+            </div>
+            <div class="step-r-p3">
+                模块内容
+            </div>
+        </div>
+    </div>
+    <!--步骤2-->
+    <div class="step step2 banners wrapper2 clearfix">
+        <div class="step-l">
+            模块内容
+        </div>
+        <div class="step-r">
+            <ul class="step-r-ul clearfix">
+                <li></li><li></li><li></li>
+            </ul>
+            <div class="step-r-tit clearfix">
+                <div class="step-r-tit-l">
+                    模块内容
+                </div>
+                <div class="step-r-tit-r">
+                    <a href="#comment" target="_self"></a>
+                </div>
+            </div>
+            <div class="step-r-p1">
+                模块内容
+            </div>
+            <div class="step-r-p2">
+                模块内容
+            </div>
+            <div class="step-r-p3">
+                模块内容
+            </div>
+        </div>
+    </div>
+    <!--步骤3-->
+    <div class="step step3 banners wrapper2 clearfix">
+        <div class="step-l">
+            模块内容
+        </div>
+        <div class="step-r">
+            <ul class="step-r-ul clearfix">
+                <li></li><li></li><li></li>
+            </ul>
+            <div class="step-r-tit clearfix">
+                <div class="step-r-tit-l">
+                    模块内容
+                </div>
+                <div class="step-r-tit-r">
+                    <a href="#comment" target="_self"></a>
+                </div>
+            </div>
+            <div class="step-r-p1">
+                模块内容
+            </div>
+            <div class="step-r-p2">
+                模块内容
+            </div>
+            <div class="step-r-p3">
+                模块内容
+            </div>
+        </div>
+    </div>
+    <!--评论-->
+    <div class="comment banners wrapper2">
+        模块内容
+    </div>
+    <!--备用-->
+    <div class="backup banners wrapper4">
+        <div class="backup-c">
+            模块内容
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    /*百度分享*/
+    window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "16"
+        }, "share": {}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+</script>
+</body>
+</html>

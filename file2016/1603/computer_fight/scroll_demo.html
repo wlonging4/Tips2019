@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>无标题文档</title>
+    <style>
+        /*通用样式*/
+        body{color:#444; font:12px/22px "SimSun",Arial;background:#fff;}
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#444; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#F84340;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+        .fl{float:left;}
+        .foot{width:100%;height:125px;text-align:center;padding-top:64px;color:#C3C3C3;background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/foot.jpg) no-repeat;}
+        .foot a{color:#C3C3C3;}
+        .fr{float:right;}
+        .head_white{text-align:center;background:#fff;}
+        .head_white table{margin:0 auto;}
+        a{display:inline-block;}
+        /*背景*/
+        .bg1-l{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_l1.jpg) no-repeat 100% 0 ;}
+        .bg1-r{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_r1.jpg) no-repeat 0 0 ;}
+        .bg2-l{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_l2.jpg) no-repeat 100% 0 ;}
+        .bg2-r{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_r2.jpg) no-repeat 0 0 ;}
+        .bg3-l{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_l3.jpg) no-repeat 100% 0 ;}
+        .bg3-r{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_r3.jpg) no-repeat 0 0 ;}
+        .bg4-l{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_l4.jpg) no-repeat 100% 0 ;}
+        .bg4-r{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_r4.jpg) no-repeat 0 0 ;}
+        .bg5-l{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_l5.jpg) no-repeat 100% 0 ;}
+        .bg5-r{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_r5.jpg) no-repeat 0 0 ;}
+        .foot-l{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/foot_l.jpg) no-repeat 100% 0 ;}
+        .foot-r{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/foot_r.jpg) no-repeat 0 0 ;}
+
+        /*内容*/
+        .big-box{width:1920px; position:relative; height:670px; overflow:hidden; margin-left:-960px; left:50%;}
+        .big-dw{position:absolute; left:0; top:0; width:100%; overflow:hidden;}
+        .big-dw>table{overflow:hidden;height:670px;}
+        .wrapper{width:1000px; position:relative;}
+        .footer{position:absolute;left:0;top:710px;background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_foot.jpg) repeat-x;}
+        .bg1-c, .bg2-c, .bg3-c, .bg4-c, .bg5-c{position:relative;}
+        .btn1{width:64px;height:37px;cursor:pointer;position:absolute;left:50%;top:650px;margin-left:-32px;}
+        .next{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_next.png) no-repeat;}
+        .prev{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j_prev.png) no-repeat;}
+        .ul1{width:310px;height:450px;position:absolute;left:55px;top:120px;}
+        .ul1 li{font:21px/58px 'Microsoft Yahei';cursor:pointer;position:relative;color:#4983BA;background:url(http://2.zol-img.com.cn/zt/tm_567/140f88a9f5/2.png) no-repeat;width:310px;height:62px;margin-bottom:28px;text-align:center;}
+        .ul1 .active{background:url(http://2.zol-img.com.cn/zt/tm_567/140f88a9f5/1.png) no-repeat;color:#E00014;}
+        .mod3{width:550px;height:420px;position:absolute;left:370px;top:120px;border:1px solid #D6D6D6;display:none;}
+        .show{display:block;}
+        .mod3 table img{border-bottom:1px solid #D6D6D6;padding:1px;}
+        .mod3 .hui12{text-indent:2em;color:#646464;padding:21px 30px 0 25px;line-height:24px;}
+        .m4-1{width:370px;height:360px;position:absolute;left:0;top:150px;}
+        .m4-1 .hui12 i{font:16px/28px 'Microsoft Yahei';font-style:normal;color:#447FB8;display:block;}
+        .m4-1 .lan16{font:23px/40px 'Microsoft Yahei';color:#fff;margin:-2px 0 0 0px;padding-left:10px;width:175px;height:40px;background:url(http://2.zol-img.com.cn/zt/tm_566/ff254f33aa/6.jpg) no-repeat;}
+        .m4-1 .hui12{color:#646464;padding:0 15px 0 16px;background:#fff;}
+        .m4-1 .ln{height:80px;}
+
+        .m4-2{width:370px;height:360px;position:absolute;right:0;top:150px;}
+        .m4-2 .hui12 i{font:16px/28px 'Microsoft Yahei';font-style:normal;color:#447FB8;display:block;}
+        .m4-2 .lan16{font:23px/40px 'Microsoft Yahei';height:40px;color:#fff;margin:-2px 0 0 0;background:url(http://2.zol-img.com.cn/zt/tm_566/ff254f33aa/7.jpg) no-repeat;padding-left:19px;width:170px;}
+        .m4-2 .hui12{color:#646464;padding:0 16px 0 15px;background:#fff;}
+        .m4-2 .ln{height:80px;}
+        .btn2{width:291px;height:62px;cursor:pointer;position:absolute;left:150px;top:456px;}
+        .ul2{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/5.png) no-repeat;width:212px;height:383px;position:absolute;left:50%;top:150px;margin-left:510px;}
+        .ul2 li{cursor:pointer;width:194px;height:66px;text-align:center;font:18px/68px 'Microsoft Yahei';color:#fff;margin-left:5px;}
+        .ul2 .active2{background:url(http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/3.png) no-repeat;color:#DF1C1B;}
+        .ul2 .li2{margin-top:10px;}
+        .btn3{width:64px;height:37px;cursor:pointer;position:absolute;left:50%;top:609px;margin-left:-32px;z-index:3;}
+        .weix{width:129px;height:128px;position:absolute;left:305px;top:308px;}
+        .ul1 li span{font:23px/40px 'Impact';color:#fff;position:absolute;left:8px;top:-5px;}
+
+    </style>
+
+
+    <script>
+        $(function(){
+            $('.ul2 li').click(function(){
+                $('.ul2 li').removeClass('active2');
+                var d=$('.ul2 li').index(this);
+                $('.ul2 li:eq('+d+')').addClass('active2');
+                $('.big-dw').stop().animate({top:-670*d},'solw');
+                if(d>=4){
+                    $('.btn1').removeClass('next');
+                    $('.btn1').addClass('prev');
+                }
+                else{
+                    $('.btn1').removeClass('prev');
+                    $('.btn1').addClass('next');
+                }
+                v=d;
+            });
+
+            $('.ul1 li').click(function(){
+                $('.ul1 li').removeClass('active');
+                $('.mod3').removeClass('show');
+                var x=$('.ul1 li').index(this);
+                $('.ul1 li:eq('+x+')').addClass('active');
+                $('.mod3:eq('+x+')').addClass('show');
+            });
+
+
+            $('.next').click(function(){
+                var h=$('.big-dw').offset().top;
+                var n=Math.abs(h/670);
+                var m1=Math.round(n);
+                var m2=m1+1;
+                $('.big-dw').stop().animate({top:-670*m2},800);
+                $('.ul2 li').removeClass('active2');
+                $('.ul2 li:eq('+m2+')').addClass('active2');
+                if(m2>=4){m2=4;
+                    $('.btn1').removeClass('next');
+                    $('.btn1').addClass('prev');
+                }
+                else{
+                    $('.btn1').removeClass('prev');
+                    $('.btn1').addClass('next');
+                }
+            });
+
+            $('.btn3').click(function(){
+                $('.ul2 li').removeClass('active2');
+                var h=$('.big-dw').offset().top;
+                var n=Math.abs(h/670);
+                var m1=Math.round(n);
+                console.log(m1);
+                var m2=m1-1;
+                $('.big-dw').stop().animate({top:-670*m2},800);
+                $('.ul2 li:eq('+m2+')').addClass('active2');
+                $('.btn1').removeClass('prev');
+                $('.btn1').addClass('next');
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+<div class="big-box">
+    <div class="big-dw">
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td class="bg1-l">&nbsp;</td>
+                <td class="bg1-c" valign="top" width="1000">
+                    <div class="wrapper">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j1_c1.jpg" width="1000" height="240">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j1_c2.jpg" width="1000" height="227">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j1_c3.jpg" width="1000" height="203">
+                    </div>
+                </td>
+                <td class="bg1-r">&nbsp;</td>
+            </tr>
+            </tbody></table>
+
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td class="bg2-l">&nbsp;</td>
+                <td class="bg2-c" valign="top" width="1000">
+                    <div class="wrapper">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j2_c1.jpg" width="1000" height="240">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j2_c2.jpg" width="1000" height="227">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j2_c3.jpg" width="1000" height="203">
+                    </div>
+
+
+                </td>
+                <td class="bg2-r">&nbsp;</td>
+            </tr>
+            </tbody></table>
+
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td class="bg3-l">&nbsp;</td>
+                <td class="bg3-c" valign="top" width="1000">
+                    <div class="wrapper">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j3_c1.jpg" width="1000" height="240">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j3_c2.jpg" width="1000" height="227">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j3_c3.jpg" width="1000" height="203">
+                        <ul class="ul1">
+                            <li class="active"><span>1</span>非凡设计 品味个性之选</li>
+                            <li class=""><span>2</span>预约时间 清洗自己做主</li>
+                            <li class=""><span>3</span>随时添衣 大容量照单全收</li>
+                            <li class=""><span>4</span>全面呵护 转速调节加漂洗</li>
+                            <li class=""><span>5</span>7大个性程序 5大快洗程序</li>
+                        </ul>
+                        <div class="mod3 show"><{data[0]}></div>
+                        <div class="mod3"><{data[1]}></div>
+                        <div class="mod3"><{data[2]}></div>
+                        <div class="mod3"><{data[3]}></div>
+                        <div class="mod3"><{data[4]}></div>
+                    </div>
+
+                </td>
+                <td class="bg3-r">&nbsp;</td>
+            </tr>
+            </tbody></table>
+
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td class="bg4-l">&nbsp;</td>
+                <td class="bg4-c" valign="top" width="1000">
+                    <div class="wrapper">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j4_c1.jpg" width="1000" height="240">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j4_c2.jpg" width="1000" height="227">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j4_c3.jpg" width="1000" height="203">
+                        <div class="m4-1"><{data[5]}></div>
+                        <div class="m4-2"><{data[6]}></div>
+                    </div>
+                </td>
+                <td class="bg4-r">&nbsp;</td>
+            </tr>
+            </tbody></table>
+
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tbody><tr>
+                <td class="bg5-l">&nbsp;</td>
+                <td class="bg5-c" valign="top" width="1000">
+                    <div class="wrapper">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j5_c1.jpg" width="1000" height="240">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j5_c2.jpg" width="1000" height="227">
+                        <img src="http://2.zol-img.com.cn/zt/tm_566/fef94d6f57/j5_c3.jpg" width="1000" height="203">
+                        <a href="http://taiwan.tmall.com/item/521174551465.htm?spm=a1z10.1-b.w10920083-11623501308.1.nVjVJk&id=521174551465 " class="btn2"></a>
+                        <span class="btn3"></span>
+                        <div class="weix"><{data[15]}></div>
+                    </div>
+
+                </td>
+                <td class="bg5-r">&nbsp;</td>
+            </tr>
+            </tbody></table>
+
+
+    </div>
+</div>
+
+<table class="footer" border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tbody><tr>
+        <td class="foot-l">&nbsp;</td>
+        <td class="bg6-c" valign="top" width="1000">
+            <div class="foot"><{data[14]}></div>
+        </td>
+        <td class="foot-r">&nbsp;</td>
+    </tr>
+    </tbody></table>
+
+<div class="btn1 next"></div>
+
+<ul class="ul2">
+    <li class="li1 active2" style='margin-top:16px;'>首页</li>
+    <li class="li2">静观其变</li>
+    <li class="li3">高效洗护</li>
+    <li class="li4">选购必读</li>
+    <li class="li5">一键购买</li>
+</ul>
+
+
+
+
+</body>
+</html>
+
+<script>
+
+    //鼠标滚动
+    function addMouseWheel(oDiv, fn)
+    {
+        oDiv.onmousewheel=fnWheel;
+
+        if (window.navigator.userAgent.toLowerCase().indexOf('firefox') != -1)
+        {
+            oDiv.addEventListener('DOMMouseScroll', fnWheel, false);
+        }
+        /*else
+         {
+         oDiv.attachEvent('DOMMouseScroll', fnWheel);
+         }*/
+
+
+        function fnWheel(ev)
+        {
+            var oEvent=ev||event;
+
+            var bDown=true;
+
+            if(oEvent.wheelDelta)
+            {
+                if(oEvent.wheelDelta<0)
+                {
+                    bDown=true;
+                }
+                else
+                {
+                    bDown=false;
+                }
+            }
+            else
+            {
+                if(oEvent.detail>0)
+                {
+                    bDown=true;
+                }
+                else
+                {
+                    bDown=false;
+                }
+            }
+
+            fn(bDown);
+
+            if(oEvent.preventDefault)
+            {
+                oEvent.preventDefault();
+            }
+            return false;
+        }
+    }
+
+    function bor(){
+        var b = window.navigator.userAgent;
+        if(b.indexOf("WebKit")!=-1){
+
+
+
+            return document.body;
+        }
+        else{
+            return document.documentElement;
+        }
+    }
+
+    var v = 0;
+    var ret = false;
+    var s = bor();
+
+    function swfn(){
+
+        $('.ul2 li').removeClass('active2');
+        $('.ul2 li:eq('+v+')').addClass('active2');
+        console.log(v);
+
+        $('.big-dw').stop().animate({top:-670*v},800);
+
+        if(v>=4){
+            $('.btn1').removeClass('next');
+            $('.btn1').addClass('prev');
+        }
+        else{
+            $('.btn1').removeClass('prev');
+            $('.btn1').addClass('next');
+        }
+
+    }
+
+
+    addMouseWheel(document,function(wheel){
+
+        if(wheel){
+            if(ret){return;}
+            ret = true;
+            $(s).stop().animate({scrollTop:0},1000,function(){
+                ret = false;
+            });
+            v++;
+            if(v>=4){
+                v=4;
+            };
+
+            swfn()
+        }
+        else{
+            if(ret || v==0)return;
+            ret = true;
+            $(s).stop().animate({scrollTop:0},1000,function(){
+                ret = false;
+            });
+            v--;
+            swfn()
+        }
+
+    })
+
+    $('.mouse').animate({'opacity':'0'},3000)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

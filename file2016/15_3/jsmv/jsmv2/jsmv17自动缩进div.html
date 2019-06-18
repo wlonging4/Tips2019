@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>有意思-自动缩进div-width与offsetWidth</title>
+    <style type="text/css">
+        #div1{
+            width: 500px;
+            height: 100px;
+            margin-top: 5px;
+            background-color: forestgreen;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    //offset帮助建立运动概念，实际使用不建议
+    function getStyle(obj,attr) {
+        if (obj.currentStyle) {
+            return obj.currentStyle[attr];
+        } else {
+            return getComputedStyle(obj, false)[attr];
+        }
+    }
+
+    setInterval(function(){
+        var oDiv=document.getElementById("div1");
+        oDiv.style.width=parseInt(getStyle(oDiv,"width"))-1+"px";
+    },10)
+</script>
+</body>
+</html>

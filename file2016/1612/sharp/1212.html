@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>夏普商城双12促销</title>
+    <style type="text/css">
+        /* reset */
+        body{color:#ccc; font:12px/22px "simsun",Arial; background:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#92D6FF; font-size: 12px; font-weight: bold;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /* structure */
+        .head-c  .sys_btn img{  position: absolute;  top: 60px;  }
+        .wrap1{  background: #f0f0f0;  width: 100%;  overflow: hidden;  }
+        .wrap2{  background: #f7f7f7;  width: 100%;  overflow: hidden;  }
+        .wrapper1{  position: relative;  width: 1000px;  margin: 0 auto;  }
+        .wrapper2{  position: relative;  width: 1200px;  margin: 0 auto;  }
+
+        .head-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/head_l.jpg") no-repeat 100% 0;  }
+        .head-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/head_r.jpg") no-repeat 0 0;  }
+
+        .pro45-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro45_l.jpg") no-repeat 100% 0;  }
+        .pro45-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro45_r.jpg") no-repeat 0 0;  }
+        .pro45-c{  width: 1000px;  height: 717px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro45_c.jpg") no-repeat 0 0;  }
+        .pro45-ul{  width: 914px;  height: 496px;  overflow: hidden;  margin: 124px auto 0;  }
+        .pro45-ul li,.pro60-ul li{  float: left;  width: 445px;  height: 496px;  margin: 0 6px 12px;  }
+        .pro45-ul li a,.pro60-ul li a{  display: block;  width: 445px;  height: 496px;  }
+
+        .pro60-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro60_l.jpg") no-repeat 100% 0;  }
+        .pro60-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro60_r.jpg") no-repeat 0 0;  }
+        .pro60-c{  width: 1000px;  height: 562px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro60_c.jpg") no-repeat 0 0;  }
+        .pro60-c a{ display: block;  width: 906px;  height: 343px;  overflow: hidden;  margin: 114px auto 0;  }
+
+        .pro76-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro76_l.jpg") no-repeat 100% 0;  }
+        .pro76-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro76_r.jpg") no-repeat 0 0;  }
+        .pro76-c{  width: 1000px;  height: 585px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro76_c.jpg") no-repeat 0 0;  }
+        .pro76-c a{  display: block;  width: 906px;  height: 358px;  }
+        .pro76_m1{  margin: 120px auto 0;  }
+
+        .lottery-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_l.jpg") no-repeat 100% 0;  }
+        .lottery-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_r.jpg") no-repeat 0 0;  }
+        .lottery-c{  width: 1000px;  height: 852px;  position: relative;   background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_c.jpg") no-repeat 0 0;  }
+
+        .service-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/service_l.jpg") no-repeat 100% 0;  }
+        .service-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/service_r.jpg") no-repeat 0 0;  }
+        .service-c{  width: 1000px;  height: 296px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/service_c.jpg") no-repeat 0 0;  }
+
+        .connect-l{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/connect_l.jpg") no-repeat 100% 0;  }
+        .connect-r{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/connect_r.jpg") no-repeat 0 0;  }
+        .connect-c{  width: 1000px;  height: 268px;  position: relative;  overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/connect_c.jpg") no-repeat 0 0;  }
+
+        .nav{  width: 174px;  height: 422px;  position: fixed;  _position: absolute;  z-index: 4;   bottom: 100px;  right: 20px;   overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/nav.png") no-repeat 0 0;  }
+        .nav-ul{  width: 105px;  height: 276px;  margin: 104px 0 0 41px;  overflow: hidden;  }
+        .nav-ul li{  cursor: pointer;  width: 104px;  height: 46px;  }
+        .nav-ul li a{  display: block;  width: 104px;  height: 46px;  }
+
+        .path{  width: 146px;  height: 181px;  position: fixed;  _position: absolute;  bottom: 50px;  left: 20px; z-index: 4;    overflow: hidden;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/path.png") no-repeat 0 0;  }
+        #path_btn{  width: 110px;  height: 135px;  margin: 30px auto 0;  cursor: pointer;  }
+
+        .lot_box{  position: absolute;  top: 150px;  left: 0;  width: 563px;  height: 588px;  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_box.png") no-repeat 0 0;  }
+        #lot_start{  position: absolute;  display: block;  z-index: 99;  top: 170px;  left: 50%;  margin-left: -112px;  width: 222px; height: 222px;  cursor: pointer;  }
+        .lot_pic{  position: absolute;  display: block;  top: 103px; z-index: 10; left: 50%;  margin-left: -181px; width: 358px;  height: 358px;  }
+        .lot_list{  position: absolute;  width: 390px;  height: 190px;  top: 242px;  right: 0; overflow: hidden;  }
+        .lot_lis{  width: 390px;position: relative;  }
+        .lottery-rule{  width: 431px;  height: 186px;  position: absolute;  top: 490px;  right: -22px; background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_rule.png")  }
+        .lot_list table td.td1{  color: #fff;  font: 18px/33px 'microsoft yahei';  }
+        .lot_list table td.td2{  color: #fff;  font: 18px/33px 'microsoft yahei';text-align: center;  }
+        .lot_list table td.td2 span{  color: #f5da25; }
+
+        .shadow{  display: none;  width: 100%;  height: 100%;  position: fixed;  _position: absolute;  top: 0;  left: 0;  z-index: 999; background: rgba(0,0,0,0.8);  filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#cc000000,endcolorstr=#cc000000,gradientType=1)  }
+        .alert-box{  display: none;  position: absolute;  width: 816px;  height: 391px;  top: 50%;  left: 50%;  margin: -195px 0 0 -408px;  }
+        #alert-no{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/alert_no.png") no-repeat 0 0;  }
+        #alert-useup{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/alert_useup.png") no-repeat 0 0;  }
+        #alert-ok{  background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/alert_ok.png") no-repeat 0 0;  }
+        #alert-submit{ /*display: block; */ background: url("http://2.zol-img.com.cn/zt/tm_584/a75010ef95/alert_submit.png") no-repeat 0 0; overflow: hidden;  }
+        .alert-close{  position: absolute;  width: 50px;  height: 50px;  top: 10px;  right: 10px;  cursor: pointer;  }
+        .als_p1{  margin: 25px auto 0;  text-align: center;  height: 40px;  color: #f20c0c;  font: bold 30px/40px 'microsoft yahei';  }
+        .als_form{  width: 380px;  height: 240px;  overflow: hidden;  position: relative;  margin: 30px 0 0 45px;  }
+        .als_form label{  width: 380px;  height: 42px;  display: block;  color: #1c1c1c;  font: bold 24px/42px 'microsoft yahei';  margin-bottom: 38px;  }
+        .als_form label input{  display: block;  float: right;  width: 240px;  padding: 6px 20px;  height: 30px;  font: 24px/30px 'microsoft yahei';  outline: none;  background: #cfcfcf;  }
+        .als_btn{  width: 280px;  height: 42px;  text-align: center;  margin-left: 100px;  font: 24px/42px 'microsoft yahei';  background: #f20c0c;  color: #fff;  cursor: pointer;  }
+    </style>
+</head>
+<body>
+<!--head-->
+<table width="100%" class="head" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="head-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <img src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/head_c1.jpg" alt="" width="1000" height="425"/>
+            <img src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/head_c2.jpg" alt="" width="1000" height="326"/>
+        </td>
+        <td class="head-r">&nbsp;</td>
+    </tr>
+</table>
+<!--nav-->
+<div class="nav">
+    <ul class="nav-ul">
+        <li><a href="#p40" target="_self"></a></li>
+        <li><a href="#p40" target="_self"></a></li>
+        <li><a href="#p60" target="_self"></a></li>
+        <li><a href="#p76" target="_self"></a></li>
+        <li><a href="#lot" target="_self"></a></li>
+        <li id="top"></li>
+    </ul>
+</div>
+<!--path-->
+<div class="path">
+    <div id="path_btn"></div>
+</div>
+<!--pro45-->
+<table width="100%" class="pro45" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pro45-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div id="p40" class="pro45-c">
+                <ul class="pro45-ul clearfix">
+                    <li>
+                        <a id="pro_link" href="http://tuan.zol.com/27728.html" target="_blank"><img id="pro_img" src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro45_1.jpg" width="444" height="496" alt=""/></a>
+                    </li>
+                    <li id="p50">
+                        <a href="http://tuan.zol.com/27735.html" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro45_2.jpg" width="444" height="496" alt=""/></a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="pro45-r">&nbsp;</td>
+    </tr>
+</table>
+<!--pro60-->
+<table width="100%" class="pro60" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pro60-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div id="p60" class="pro60-c">
+                <a href="http://tuan.zol.com/27737.html" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro60_1.png" width="906" height="343" alt=""/></a>
+            </div>
+        </td>
+        <td class="pro60-r">&nbsp;</td>
+    </tr>
+</table>
+<!--pro76-->
+<table width="100%" class="pro76" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="pro76-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div id="p76" class="pro76-c">
+                <a class="pro76_m1" href="http://tuan.zol.com/27758.html" target="_blank"><img src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro76_1.png" width="906" height="358" alt=""/></a>
+            </div>
+        </td>
+        <td class="pro76-r">&nbsp;</td>
+    </tr>
+</table>
+<!--lottery-->
+<table id="lot" width="100%" class="lottery" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="lottery-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="lottery-c">
+                <div class="lot_box">
+                    <div class="lot_pic">
+                        <img id="lot_point" src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_point.png" width="358" height="358" alt=""/>
+                    </div>
+                    <div id="lot_start1">
+                        <img id="lot_start" src="http://2.zol-img.com.cn/zt/tm_584/a75010ef95/lot_start.png" width="222" height="222" alt=""/>
+                    </div>
+                </div>
+                <div class="lot_list">
+                    <div class="lot_lis">
+                        <table width="100%" class="lot_ul" id="lot_table">
+                            <tr><td class="td1">暂无数据,快来参与吧</td><td class="td2"></td></tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="lottery-rule"></div>
+            </div>
+        </td>
+        <td class="lottery-r">&nbsp;</td>
+    </tr>
+</table>
+<div class="shadow">
+    <div class="alert-box" id="alert-no"><div class="alert-close"></div></div>
+    <div class="alert-box" id="alert-useup"><div class="alert-close"></div></div>
+    <div class="alert-box" id="alert-submit">
+        <div class="alert-close"></div>
+        <p class="als_p1">恭喜您,抽中<span id="als_p11">微信红包100元</span></p>
+        <div class="als_form">
+            <label>姓名 <input class="als_txt1" maxlength="5" type="text"/></label>
+            <label>手机号 <input class="als_txt2" maxlength="11" type="text"/></label>
+            <div class="als_btn">提交</div>
+        </div>
+    </div>
+    <div class="alert-box" id="alert-ok"><div class="alert-close"></div></div>
+</div>
+<!--service-->
+<table width="100%" class="service" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="service-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="service-c"></div>
+        </td>
+        <td class="service-r">&nbsp;</td>
+    </tr>
+</table>
+<!--connect-->
+<table width="100%" class="connect" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="connect-l">&nbsp;</td>
+        <td width="1000" valign="top">
+            <div class="connect-c"></div>
+        </td>
+        <td class="connect-r">&nbsp;</td>
+    </tr>
+</table>
+<div style="font:0/0 arial">
+    <script src="http://search.zol.com.cn/assess/get_hits_new.php?document_id=6187972"></script>
+    <script src="http://icon.zol-img.com.cn/topic/js/ztmirror.js"></script>
+    <script src="http://icon.zol-img.com.cn/public/js/web_foot.js"></script>
+</div>
+
+<script src="http://icon.zol-img.com.cn/js/jquery-1.7.1.min.js"></script>
+<script src="http://active.zol.com.cn/14active/141029Proscenic/j.easing.min.js"></script>
+<script src="http://active.zol.com.cn/14active/141029Proscenic/jRotate.2.2.js"></script>
+<script src="http://icon.zol-img.com.cn/m/js/clickStat.js"></script>
+<script charset="gbk">
+    /*1212change*/
+    var oD=new Date(),oDY=oD.getFullYear(),oDM=oD.getMonth()+1,oDD=oD.getDate();
+    if(oDY==2016&&oDM==12&&oDD==12){
+        $('#pro_link').attr({'href':'http://tuan.zol.com/27781.html'});
+        $('#pro_img').attr({'src':'http://2.zol-img.com.cn/zt/tm_584/a75010ef95/pro45_11.jpg'});
+    }
+
+    /*backToTop*/
+    $('#top').on('click', function () {
+        $('html,body').stop().animate({scrollTop:0},400);
+    });
+
+    /*comeToPrize*/
+    var hgt_lot=$('#lot').position().top;
+    $('#path_btn').on('click', function () {
+        $('html,body').stop().animate({scrollTop:hgt_lot},400);
+    });
+
+    /*lottery*/
+    var lot_arr=['&nbsp;<span>100元</span>&nbsp;微信红包','&nbsp;<span>200元</span>&nbsp;微信红包','&nbsp;<span>500元</span>&nbsp;微信红包','&nbsp;<span>USB迷你音响</span>','&nbsp;<span>1000元</span>&nbsp;微信红包'];
+    var lot_ag=[0,60,120,180,240,300];
+    var now_go=null,verifyTk=null;
+    var lot_json='http://m.zol.com.cn/topic/services/sharp.php?&callback=?';
+    var lot_start=$('#lot_start'),
+            lot_point=$('#lot_point'),
+            alert_ok=$('#alert-ok'),
+            alert_no=$('#alert-no'),
+            alert_useup=$('#alert-useup'),
+            alert_submit=$('#alert-submit'),
+            lot_table=$('#lot_table'),
+            als_p11=$('#als_p11'),
+            lot_list=$('.lot_list'),
+            lot_lis=$('.lot_lis'),
+            lot_shadow=$('.shadow');
+    /*转动转盘*/
+    var timeOut = function(){
+        //超时函数
+        lot_point.rotate({
+            angle:0, duration: 10000, animateTo: 2160,
+            callback:function(){
+                alert('网络超时,请重新参与！')
+            }
+        });
+    };
+    var cur=true;
+    var rotateFunc = function(awards,angle,x,cont,n,number){
+        if(cur){
+            cur=false;
+            lot_point.stopRotate();
+            lot_point.rotate({
+                angle:0, duration: 5000, animateTo: angle+1440,
+                callback:function(){
+                    /*if(awards > 0){
+                     $(".tips .tip-msg span").html(cont);
+                     $(".tips").show();
+                     }*/
+                    cur=true;
+                    sign=true;
+                }
+            });
+        }
+    };
+
+    var sign=true;
+    lot_start.rotate({
+        bind:
+        {
+            click: function(){
+                if(sign == true){
+                    if(!getCookie('lottery')){
+                        setCookie('lottery',1,last_time());
+                    }else{
+                        var now_cookie=parseInt(getCookie('lottery'));
+                        now_cookie++;
+                        if(now_cookie>=4){
+                            now_cookie=3;
+                            setCookie('lottery',now_cookie,last_time());
+                            alert_useup.css({'display':'block'});
+                            lot_shadow.css({'display':'block'});
+                            return false;
+                        }
+                        setCookie('lottery',now_cookie,last_time());
+                    }
+                    sign=false;
+                    LuckyDraw();
+                }
+            }
+        }
+    });
+    //获取转动
+    function LuckyDraw(){
+        $.ajax({
+            url:lot_json,
+            type:'get',
+            async:true,
+            data:{act:'getPrize'},
+            dataType:'jsonp',
+
+            success:function(obj){
+                if(obj.result==-98){
+                    alert('活动还未开始,敬请期待!');
+                    return false;
+                }
+                if(obj.result==-99){
+                    alert('活动已结束');
+                    return false;
+                }
+                //console.log('aa');
+                //objectForClickStat.imgStat('m_article_6187972');
+                zol_niux_tongji('data_statistics_sharp1212pc','http://shop.sharp.cn/');
+
+
+                if(obj.result==-2){
+                    rotateFunc(-2,lot_ag[1],-2,null,null,null);
+                    setTimeout(function () {
+                        alert_no.css({'display':'block'});
+                        lot_shadow.css({'display':'block'});
+                    },3900);
+                }
+                if(obj.result.prize){
+                    now_go=obj.result.prize;
+                    if(now_go==1){
+                        als_p11.html(lot_arr[0]);
+                        rotateFunc(1,lot_ag[2],1,null,null,null);
+                    }
+                    if(now_go==2){
+                        als_p11.html(lot_arr[1]);
+                        rotateFunc(2,lot_ag[5],2,null,null,null);
+                    }
+                    if(now_go==3){
+                        als_p11.html(lot_arr[3]);
+                        rotateFunc(2,lot_ag[4],2,null,null,null);
+                    }
+                    setTimeout(function () {
+                        alert_submit.css({'display':'block'});
+                        lot_shadow.css({'display':'block'});
+                    },3900);
+                }
+
+            }
+        });
+    }
+
+    /*close remind*/
+    var alert_close=$('.alert-close');
+    alert_close.bind('click', function () {
+        $(this).parent().css({'display':'none'});
+        lot_shadow.css({'display':'none'});
+    });
+
+    /*statistics*/
+    function zol_niux_tongji(event,url) {
+        var ip_ck = '';
+        if(typeof(getCookie("ip_ck")) != "undefined"){
+            ip_ck = getCookie("ip_ck");
+        }else{
+            ip_ck='not_exist';
+        }
+        var pv_stat_src = "http://pvtest.zol.com.cn/images/pvevents.gif?t=" + new Date().getTime() + "&event=" + event + "&ip_ck=" + ip_ck + "&url=" + url;
+        var imgObj = new Image();
+        imgObj.src = pv_stat_src;
+    }
+
+    /*cookie storage*/
+    String.prototype.trim = function() {
+        return this.replace(/(^\s*)|(\s*$)/g, '');
+    };
+
+    function setCookie(cname,cvalue,exhours)
+    {
+        var d = new Date();
+        d.setTime(d.getTime()+(exhours*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+
+    function last_time(){
+        return (23-(new Date().getHours()))*60+(59-(new Date().getMinutes()));
+    }
+
+    /*reg_mobile number*/
+    function reg_switch(arr){
+        var arr1=arr.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+        return arr1;
+    }
+
+    /*bind data*/
+    $.ajax({
+        url:lot_json,
+        type:'get',
+        async:true,
+        data:{act:"getList"},
+        dataType:'jsonp',
+
+        success:function(obj){
+            var str='';
+            for(var i=0;i<obj.length;i++){
+                var bind_li=null;
+                if(obj[i].prize==1){
+                    bind_li=lot_arr[0];
+                }
+                if(obj[i].prize==2){
+                    bind_li=lot_arr[1];
+                }
+                if(obj[i].prize==3){
+                    bind_li=lot_arr[3];
+                }
+                if(obj[i].prize==4){
+                    bind_li=lot_arr[2];
+                }
+                if(obj[i].prize==5){
+                    bind_li=lot_arr[4];
+                }
+                str+='<tr><td class="td1">'+obj[i].tel+'</td><td class="td2">抽中'+bind_li+'</td></tr>';
+            }
+            lot_table.html(str);
+
+            var lis_height=parseInt($('.lot_lis').css('height'));
+            if(lis_height>190){
+                function scr(){
+                    lot_lis.stop().animate({"margin-top":"-35px"},function(){
+                        $("#lot_table tr:eq(0)").appendTo($("#lot_table"));
+                        lot_lis.css({"margin-top":0})
+                    })
+                }
+                setInterval(scr,1000);
+            }
+        }
+    });
+
+    /*submit information*/
+    var als_btn=$('.als_btn');
+    als_btn.on('click', function () {
+        var als_name= $.trim($('.als_txt1').val()),als_tel=$.trim($('.als_txt2').val());
+        if(!als_name){
+            alert('请正确填写您得姓名！');
+            return false;
+        }
+        if (!als_tel || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(als_tel))) {
+            alert('请正确填写您得手机号！');
+            return false;
+        }
+        getToken(function () {
+            $.ajax({
+                url:lot_json,
+                type:'get',
+                async:true,
+                data:{act:"addUser",username:als_name,tel:als_tel,prize:now_go,token:verifyTk},
+                dataType:'jsonp',
+
+                success:function(obj){
+                    alert_submit.css({'display':'none'});
+                    alert_ok.css({'display':'block'});
+                }
+            });
+        })
+    });
+
+    /*session check*/
+    function getToken(fn){
+        $.ajax({
+            'type':'get',
+            'dataType':'jsonp',
+            'data':{},
+            'url':'http://m.zol.com.cn/topic/services/session.php?callback=?',
+            'async':true,
+            'success':function(response){
+                if(response && response.result){
+                    if(typeof fn === 'function'){
+                        verifyTk=response.result;
+                        fn();
+                    }else{
+                        alert('session验证未通过，再来一次吧！');
+                    }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

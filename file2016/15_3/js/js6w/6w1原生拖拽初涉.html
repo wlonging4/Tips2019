@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生拖拽事件</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            background: forestgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" draggable="true"></div>
+<script>
+    var ele=document.getElementById("div1");
+    ele.ondragstart=function(e){//拖拽开始的时候的事件
+        this.x=this.offsetLeft;
+        this.y=this.offsetTop;
+        this.mx=e.pageX;
+        this.my=e.pageY;
+    };
+    ele.ondrag=function(e){//拖拽进行的时候的事件
+        this.style.left=this.x+e.pageX-this.mx+"px";
+        this.style.top=this.y+e.pageY-this.my+"px";
+    };
+    ele.ondragend=function(e){//拖拽结束的时候的事件
+        this.style.left=this.x+e.pageX-this.mx+"px";
+        this.style.top=this.y+e.pageY-this.my+"px";
+    }
+</script>
+</body>
+</html>

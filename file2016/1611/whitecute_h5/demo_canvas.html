@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #c{
+            display: block;
+        }
+        #b{
+            -webkit-box-reflect: below 5px linear-gradient(transparent,transparent 50%,rgba(0,0,0,.3));;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c" width="300" height="300"></canvas>
+<img src="https://sf-sponsor.b0.upaiyun.com/45751d8fcd71e4a16c218e0daa265704.png" id="a" alt=""/>
+<img src="../4.jpg" id="b" alt=""/>
+<script>
+    document.getElementById("b").onload=function(){
+    function d(){
+        var c=document.getElementById('c');
+        var cx= c.getContext('2d');
+        if(c==null){
+            alert('aa');
+        }
+        var oImg=document.getElementById('b');
+        cx.drawImage(oImg,0,0);
+    }
+    d();
+//
+//    var c=document.getElementById("c");
+//    var ctx=c.getContext("2d");
+//    var img=document.getElementById("b");
+//    ctx.drawImage(img,90,130,90,80);
+};
+</script>
+</body>
+</html>

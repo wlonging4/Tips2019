@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="gbk">
+    <title>打印机横评</title>
+    <style>
+        /* 通用样式 */
+        body{color:#CCCCCC; font:12px/22px "simsun",Arial; background-color:#fff; }
+        body,div,form,img,p,h1,h2,dl,dt,dd,ul,li,h3{padding:0; margin:0;}
+        input{border:none;}
+        ul,li{list-style:none;}
+        em{font-style:normal;}
+        img{display:block; border:0}
+        a{color:#CCCCCC; text-decoration:none}
+        a:hover,td a:hover{color:#f60; text-decoration:underline}
+        .hong12{color:#c00;}
+        .clear{clear:both; display:block; height:0; visibility:hidden; font:0/0 arial;}
+        .clearfix:after{content:".";display:block; visibility:hidden; clear:both; height:0; font-size:0;}
+        .clearfix{*zoom:1;}
+
+        /*lg_style*/
+        .pn{  display: none;  }
+        .pn-act{  display: table;  }
+        .bg-l{  background: url("images/lg_bg_l.jpg") no-repeat 100% 0;  }
+        .bg-r{  background: url("images/lg_bg_r.jpg") no-repeat 0 0;  }
+        .bg-c{  width: 1200px; overflow: hidden;  position: relative;  background: url("images/lg_bg_c.jpg") no-repeat 0 0;  }
+        .flow{  width: 135px;  height: 660px;  position: fixed;  top: 40px; left: 50%; margin-left: 466px; z-index: 9;  _position: absolute;;  background: url("images/lg_flow_bg.jpg") no-repeat 3px  0; overflow: hidden  }
+        .flow.hid{  display: none;  }
+        .flow ul{  margin-top: 5px;  overflow: hidden;  }
+        .flow ul li{  display: block;  overflow: hidden;  width: 135px;  height: 45px;  margin-bottom: 10px;  background: url("images/lg_flow_li1.jpg") no-repeat 0 0;  }
+        .flow ul li a{  display: block;  padding: 3px 0 0 45px;  width: 90px;  height: 45px;  color: #DFBBD8;  font-size: 17px;  line-height: 19px;  font-weight: bold;  font-family: 'microsoft yahei';  }
+        .flow ul li a:hover{  text-decoration: none;  }
+        .flow ul li.flow-nor a{  line-height: 36px;  }
+        .flow ul li.flow-li-act{  background: url("images/lg_flow_li2.jpg") no-repeat 0 0;  }
+        .flow ul li.flow-li-act a{  color: #8D579F;  }
+        .return-top{  text-align: center;  text-indent: 3px;  font-size: 20px;  font-weight: bold;  font-family: 'microsoft yahei';  }
+        .return-top a{  color: #fff;  }
+        .return-top a:hover{  text-decoration: none;  }
+        .flow-code{  width: 120px;  height: 115px;  background: #fff;  margin-top: 10px;  margin-left: 9px;  }
+
+        .p0-l{  background: url("images/lg0_head_l.jpg") no-repeat 100% 0;  }
+        .p0-r{  background: url("images/lg0_head_r.jpg") no-repeat 0 0;  }
+        .p0-head{  width: 1200px;  height: 504px;  background: url("images/lg0_head_c.jpg") no-repeat 0 0; }
+        .p0-nav{  overflow: hidden;  height: 157px;  width: 1200px;  background: url("images/lg0_nav_c.jpg") no-repeat  0 0;  }
+        .p0-nav ul{  height: 157px;  width: 1170px;  }
+        .p0-nav ul li{  position: relative;  float: left;  _display: inline;  overflow: hidden;  background: url("images/lg0_nav_circle1.png") no-repeat 50px 53px;  }
+        .p0-nav ul li.nav-act{  background: url("images/lg0_nav_circle2.png") no-repeat 50px 53px;  }
+        .p0-nav ul li p{  height: 54px;  width: 130px;  line-height: 54px;  font-size: 30px; color: #744784;  font-family: 'Agency FB','microsoft yahei';  text-align: center;  }
+        .p0-nav ul li.nav-act p{  color: #fff;  }
+        .p0-nav ul li a{  display: block;  margin-top: 20px;  width: 130px;  height: 74px;  line-height: 74px;  font-size: 16px;  color: #744784;  text-align: center;  font-weight: bold;  font-family: "microsoft yahei";  }
+        .p0-nav ul li.nav-act a{  color: #fff;  }
+        .p0-nav ul li.nav-a-act a{  background: url("images/lg0_nav_a_bg.png") no-repeat 22px 50px;  }
+
+        .p1-c1{  width: 1052px;  height: 305px;margin-top: 18px;  background: #fff;  overflow: hidden;  }
+        .p1-c1-l{  float: left;  width: 550px;  height: 240px;  padding: 30px;  }
+        .p1-c1-r{  float: left;  height: 240px;  width: 395px;  margin: 30px 30px 35px 0;  background: url("images/lg1_c1_line.png") no-repeat 0 110px;  }
+        .p1-c2{  height: 64px;  width: 1052px;  position: relative;  background: url("images/lg1_p1_c2.jpg") no-repeat 0 0;  }
+        .p1-c2-mod1{  position: absolute;  height: 40px;  top: 0;  left: 64px;  width: 195px;  }
+        .p1-c2-mod2{  position: absolute;  height: 40px;  top: 0;  left: 290px;  width: 250px;  }
+        .p1-c2-mod3{  position: absolute;  height: 40px;  top: 0;  left: 570px;  width: 245px;  }
+        .p1-c2-mod4{  position: absolute;  height: 40px;  top: 0;  left: 855px;  width: 200px;  }
+        .p1-c3{  width: 1052px;  height: 274px;  position: relative;  background: url("images/lg1_c3_bg.png") no-repeat 0 20px;  }
+        .p1-c3-box{  width: 815px;  height: 195px;  position: absolute;  top: 55px;  right: 0;  overflow: hidden;  }
+        .p1-c3-mod{  position: absolute;  width: 815px;  height: 195px;  }
+
+        .investigate{
+            position: fixed;
+            _position: absolute;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: -webkit-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+        -moz-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+        -o-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+        linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+            filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#66000000,endcolorstr=#66000000,gradientType=1);
+        }
+        .investigate.hid{
+            display: none;
+        }
+        .inv{
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            margin-left: -302px;
+            width: 603px;
+            height: 410px;
+            background: url("images/lg_invest_bg.jpg") no-repeat 0 0;
+        }
+        .inv-close{
+            position: absolute;
+            width: 25px;height: 25px;top: 14px;right: 10px;cursor: pointer;
+        }
+        .inv-c{
+            position: absolute;
+            width: 600px;
+            height: 330px;
+            left: 2px;
+            top: 70px;
+        }
+        .inv-c table tr{
+            height: 12px;
+        }
+        .inv-c table td{
+            color: #666;
+            padding: 0;
+            font-family: 'microsoft yahei';
+        }
+        .inv-c .iii{
+            width: 455px;
+            height: 42px;
+            background: url("images/lg_invest_btn.jpg") no-repeat 0 0;
+        }
+
+
+        .con-box{  width: 1000px;  height: 390px;  margin: 20px 25px 0;  overflow: hidden;  }
+        .cont{  width: 1000px;  height: 390px;  display: none;  }
+        .cont.blk{  display: block;  }
+        .cont-l{  float: left;  height: 390px;  width: 520px;  }
+        .cont-r{  float: left;  width: 360px;  height: 390px;  margin-left: 100px;  }
+
+        .p2-c1{  margin-top: 30px;  width: 1052px;  height: 370px;  overflow: hidden;  }
+        .p2-c1-l{  float: left;  width: 615px;  height: 370px;  margin-right: 40px;  background: #000;  }
+        .p2-c1-r{  float: left;  width: 380px;  height: 370px;  overflow: hidden;  background: url("images/lg2_c1_r.png") no-repeat 0 20px;  }
+        .p2-c1-r-mod{  width: 380px;  height: 80px;  padding-top: 280px;  }
+        .p2-c2{  width: 1052px;  height: 478px;  overflow: hidden;  position: relative;  background: #fff;  margin-top: 22px;  }
+        .p2-c2 ul{  height: 50px;  overflow: hidden;  border-bottom: 1px solid #ebeff7;  }
+        .p2-c2 ul li{  float: left;  height: 47px;  line-height: 50px;  width: 150px;  text-align: center;  font-size: 20px;  color: #444;  font-weight: bold;  font-family: 'microsoft yahei', "黑体";  margin: 0 30px;  cursor: pointer;  border-bottom: 3px solid transparent;  }
+        .p2-c2 ul li.li-act{  color: #3AA7DF;  border-bottom: 3px solid #3AA7DF;  }
+        .p2-c3{  width: 1052px;  height: 180px;  overflow: hidden;  position: relative;  margin: 30px 0 50px;  }
+        .p2-c3-btn{  position: absolute;  top: 65px;  width: 24px;  height: 64px;  cursor: pointer;  }
+        .p2-c3-btnl{  left: 5px;  background: url("images/lg_pics_btns.png") no-repeat 0 0;  }
+        .p2-c3-btnr{  right: 5px;  background: url("images/lg_pics_btns.png") no-repeat -26px 0;  }
+        .p2-c3-box{  position: absolute;  width: 960px;  height: 180px;  top: 0;  left: 45px;  overflow: hidden;  }
+        .p2-c3-mod{  position: absolute;  width: 960px;  height: 180px;  top: 0;  left: 0;  }
+
+        .p3-c1{  margin-top: 30px;  width: 1052px;  height: 370px;  overflow: hidden;  }
+        .p3-c1-l{  float: left;  width: 615px;  height: 370px;  margin-right: 40px;  background: #000;  }
+        .p3-c1-r{  float: left;  width: 380px;  height: 370px;  overflow: hidden;  background: url("images/lg3_c1_r.png") no-repeat 0 20px;  }
+        .p3-c1-r-mod{  width: 380px;  height: 80px;  padding-top: 280px;  }
+        .p3-c2{  width: 1052px;  height: 478px;  overflow: hidden;  position: relative;  background: #fff;  margin-top: 22px;  }
+        .p3-c2 ul{  height: 50px;  overflow: hidden;  border-bottom: 1px solid #ebeff7;  }
+        .p3-c2 ul li{  float: left;  height: 47px;  line-height: 50px;  width: 170px;  text-align: center;  font-size: 20px;  color: #444;  font-weight: bold;  font-family: 'microsoft yahei', "黑体";  margin: 0 42px;  cursor: pointer;  border-bottom: 3px solid transparent;  }
+        .p3-c2 ul li.li-act{  color: #3AA7DF;  border-bottom: 3px solid #3AA7DF;  }
+        .p3-c3{  width: 1052px;  height: 180px;  overflow: hidden;  position: relative;  margin: 30px 0 50px;  }
+
+        .p4-c1{  margin-top: 30px;  width: 1052px;  height: 370px;  overflow: hidden;  }
+        .p4-c1-l{  float: left;  width: 615px;  height: 370px;  margin-right: 40px;  background: #000;  }
+        .p4-c1-r{  float: left;  width: 380px;  height: 370px;  overflow: hidden;  background: url("images/lg4_c1_r.png") no-repeat 0 20px;  }
+        .p4-c1-r-mod{  width: 380px;  height: 80px;  padding-top: 280px;  }
+        .p4-c2{  width: 1052px;  height: 478px;  overflow: hidden;  position: relative;  background: #fff;  margin-top: 22px;  }
+        .p4-c2 ul{  height: 50px;  overflow: hidden;  border-bottom: 1px solid #ebeff7;  }
+        .p4-c2 ul li{  float: left;  height: 47px;  line-height: 50px;  width: 170px;  text-align: center;  font-size: 20px;  color: #444;  font-weight: bold;  font-family: 'microsoft yahei', "黑体";  margin: 0 80px;  cursor: pointer;  border-bottom: 3px solid transparent;  }
+        .p4-c2 ul li.li-act{  color: #3AA7DF;  border-bottom: 3px solid #3AA7DF;  }
+        .p4-c3{  width: 1052px;  height: 180px;  overflow: hidden;  position: relative;  margin: 30px 0 50px;  }
+
+        .p5-c1{  margin-top: 30px;  width: 1052px;  height: 370px;  overflow: hidden;  }
+        .p5-c1-l{  float: left;  width: 615px;  height: 370px;  margin-right: 40px;  background: #000;  }
+        .p5-c1-r{  float: left;  width: 380px;  height: 370px;  overflow: hidden;  background: url("images/lg5_c1_r.png") no-repeat 0 20px;  }
+        .p5-c1-r-mod{  width: 380px;  height: 80px;  padding-top: 280px;  }
+        .p5-c2{  width: 1052px;  height: 478px;  overflow: hidden;  position: relative;  background: #fff;  margin-top: 22px;  }
+        .p5-c2 ul{  height: 50px;  overflow: hidden;  border-bottom: 1px solid #ebeff7;  }
+        .p5-c2 ul li{  float: left;  height: 47px;  line-height: 50px;  width: 170px;  text-align: center;  font-size: 20px;  color: #444;  font-weight: bold;  font-family: 'microsoft yahei', "黑体";  margin: 0 80px;  cursor: pointer;  border-bottom: 3px solid transparent;  }
+        .p5-c2 ul li.li-act{  color: #3AA7DF;  border-bottom: 3px solid #3AA7DF;  }
+        .p5-c3{  width: 1052px;  height: 180px;  overflow: hidden;  position: relative;  margin: 30px 0 50px;  }
+
+        .p6-c1{  height: 75px;  width: 1000px;  padding-top: 50px;  margin: 42px  25px 24px;  background: url("images/lg6_c1.png") no-repeat 0 0;  }
+        .p6-c2{  width: 1052px;  height: 478px;  position: relative;  overflow: hidden;  margin-bottom: 10px;  background: #fff url("images/lg6_c2_t.png") no-repeat 30px 15px;  }
+        .p6-c2-con{  width: 1000px;  height: 390px;  margin: 70px 25px 0;  }
+        .p6-c2-con-l{  float: left;  height: 390px;  width: 520px;  }
+        .p6-c2-con-r{  float: left;  width: 360px;  height: 390px;  margin-left: 100px;  }
+
+        .p7-c1{  height: 75px;  width: 1000px;  padding-top: 50px;  margin: 42px  25px 24px;  background: url("images/lg7_c1.png") no-repeat 0 0;  }
+        .p7-c2{  width: 1052px;  height: 478px;  overflow: hidden;  position: relative;  background: #fff;  margin-top: 22px; margin-bottom: 10px;  }
+        .p7-c2 ul{  height: 50px;  overflow: hidden;  border-bottom: 1px solid #ebeff7;  }
+        .p7-c2 ul li{  float: left;  height: 47px;  line-height: 50px;  width: 150px;  text-align: center;  font-size: 20px;  color: #444;  font-weight: bold;  font-family: 'microsoft yahei', "黑体";  margin: 0 30px;  cursor: pointer;  border-bottom: 3px solid transparent;  }
+        .p7-c2 ul li.li-act{  color: #3AA7DF;  border-bottom: 3px solid #3AA7DF;  }
+
+        .p8-t{  width: 115px;  height: 25px;  margin: 45px 0 22px 30px;  background: url("images/lg8_t.png") no-repeat 0 0;  }
+        .p8-c1{  height: 1435px;  width: 1080px;  margin-left: -15px;  margin-bottom: 25px;  }
+        .p8-c2{  width: 1018px;  height: 214px;  padding: 60px 18px 34px;  margin-bottom: 42px;  background: #fff url("images/lg8_c2.png") no-repeat 28px 28px;  }
+        .p8-c2-tab tr td{  border-bottom: 1px solid #fff;  }
+        .p8-td1{  width: 143px;  height: 42px;  line-height: 42px;  font-family: 'microsoft yahei';  font-size: 18px;  font-weight: bold;  text-align: left;  text-indent: 10px;  color: #000;  }
+        .p8-td11{  background: #E3EDF7;  }
+        .p8-td12{  background: #FEECE4;  }
+        .p8-td2{  width: 108px;  height: 42px;  line-height: 42px;  text-align: left;  font-size: 14px;  color: #666;  text-indent: 5px;  }
+        .p8-td21{  background: #EEF5FA;  }
+        .p8-td22{  background: #FEF6F9;  }
+        .p8-td3{  width: 108px;  height: 42px;  font-family: 'microsoft yahei';  font-size: 18px;  font-weight: bold;  text-align: left;  text-indent: 10px;  color: #3AA7DF;  }
+
+        .p9-t-box{  width: 615px;  height: 370px;  position: relative;  overflow: hidden;  margin: 35px 0 45px 230px;  background: #000;  }
+        .p9-b{  width: 1052px;  height: 180px;  overflow: hidden;  position: relative;  margin: 30px 0 45px;  }
+        .p9-b-btn{  position: absolute;  top: 65px;  width: 24px;  height: 64px;  cursor: pointer;  }
+        .p9-b-btnl{  left: 5px;  background: url("images/lg_pics_btns.png") no-repeat 0 0;  }
+        .p9-b-btnr{  right: 5px;  background: url("images/lg_pics_btns.png") no-repeat -26px 0;  }
+        .p9-b-box{  position: absolute;  width: 960px;  height: 185px;  top: 0;  left: 45px;  overflow: hidden;  }
+        .p9-b-mod{  position: absolute;  width: 960px;  height: 185px;  top: 0;  left: 0;  }
+    </style>
+</head>
+<body>
+<!--右导航栏-->
+<div class="flow hid">
+    <ul>
+        <li class="flow-li-act flow-nor tar tar1">
+            <a href="#p1">横评启动</a>
+        </li>
+        <li class="tar tar2">
+            <a href="#p2">工作效率<br/>测试</a>
+        </li>
+        <li class="tar tar3">
+            <a href="#p3">印品质量<br/>测试</a>
+        </li>
+        <li class="tar tar4">
+            <a href="#p4">使用可靠性<br/>测试</a>
+        </li>
+        <li class="tar tar5">
+            <a href="#p5">环保指标<br/>测试</a>
+        </li>
+        <li class="tar tar6">
+            <a href="#p6">使用成本<br/>测试</a>
+        </li>
+        <li class="tar tar7">
+            <a href="#p7">横评<br/>终极报告</a>
+        </li>
+        <li class="flow-nor tar tar8">
+            <a href="#8">先看后买</a>
+        </li>
+        <li class="flow-nor tar tar9">
+            <a href="#p9">花絮</a>
+        </li>
+    </ul>
+    <div class="return-top">
+        <a class="tar tar0" href="#p0">返回首页</a>
+    </div>
+    <div class="flow-code">
+        模块内容
+    </div>
+</div>
+<!--p0首页-->
+<table class="pn p0 pn-act" id="p0" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="p0-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="p0-head"></div>
+            <div class="p0-nav">
+                <ul class="p0-ul">
+                    <li class="nav-act tars tars1">
+                        <p>6.16</p>
+                        <a href="#p1">横评启动</a>
+                    </li>
+                    <li class="nav-a-act tars tars2">
+                        <p>7.01</p>
+                        <a href="#p2">工作效率测试</a>
+                    </li>
+                    <li class="tars tars3">
+                        <p>7.15</p>
+                        <a href="#p3">印品质量测试</a>
+                    </li>
+                    <li class="tars tars4">
+                        <p>7.25</p>
+                        <a href="#p4">使用可靠性测试</a>
+                    </li>
+                    <li class="tars tars5">
+                        <p>8.05</p>
+                        <a href="#p5">环保指标测试</a>
+                    </li>
+                    <li class="tars tars6">
+                        <p>8.16</p>
+                        <a href="#p6">使用成本测试</a>
+                    </li>
+                    <li class="tars tars7">
+                        <p>8.20</p>
+                        <a href="#p7">横评终极报告</a>
+                    </li>
+                    <li class="tars tars8">
+                        <p>8.21</p>
+                        <a href="#8">先看后买</a>
+                    </li>
+                    <li class="tars tars9">
+                        <p>8.22</p>
+                        <a href="#p9">花絮</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="p0-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p1横评启动-->
+<table class="p1 pn" id="p1" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p1-c1 clearfix">
+                    <div class="p1-c1-l">
+                        模块内容
+                    </div>
+                    <div class="p1-c1-r">
+                        模块内容
+                    </div>
+                </div>
+                <div class="p1-c2">
+                    <div class="p1-c2-mod p1-c2-mod1">模块内容</div>
+                    <div class="p1-c2-mod p1-c2-mod2">模块内容</div>
+                    <div class="p1-c2-mod p1-c2-mod3">模块内容</div>
+                    <div class="p1-c2-mod p1-c2-mod4">模块内容</div>
+                </div>
+                <div class="p1-c3">
+                    <div class="p1-c3-box">
+                        <div class="p1-c3-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p2工作效率测试-->
+<table class="p2 pn" id="p2" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p2-c1 clearfix">
+                    <div class="p2-c1-l p-video">
+                        模块内容
+                    </div>
+                    <div class="p2-c1-r">
+                        <div class="p2-c1-r-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="p2-c2">
+                    <ul>
+                        <li class="li-act">安装便捷性</li>
+                        <li>使用便捷性</li>
+                        <li>文件处理能力</li>
+                        <li>硬件配置</li>
+                        <li>解决方案价值</li>
+                    </ul>
+                    <div class="con-box">
+                        <div class="cont clearfix blk">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p2-c3">
+                    <div class="p2-c3-btn p2-c3-btnl"></div>
+                    <div class="p2-c3-btn p2-c3-btnr"></div>
+                    <div class="p2-c3-box">
+                        <div class="p2-c3-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p3印品质量测试-->
+<table class="p3 pn" id="p3" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p3-c1 clearfix">
+                    <div class="p3-c1-l p-video">
+                        模块内容
+                    </div>
+                    <div class="p3-c1-r">
+                        <div class="p3-c1-r-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="p3-c2">
+                    <ul>
+                        <li class="li-act">初始印品质量</li>
+                        <li>潮态复印品质</li>
+                        <li>多代复印品质</li>
+                        <li>试验结束印品</li>
+                    </ul>
+                    <div class="con-box">
+                        <div class="cont clearfix blk">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p3-c3">
+                    <div class="p2-c3-btn p2-c3-btnl"></div>
+                    <div class="p2-c3-btn p2-c3-btnr"></div>
+                    <div class="p2-c3-box">
+                        <div class="p2-c3-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p4使用可靠性测试-->
+<table class="p4 pn" id="p4" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p4-c1 clearfix">
+                    <div class="p4-c1-l p-video">
+                        模块内容
+                    </div>
+                    <div class="p4-c1-r">
+                        <div class="p4-c1-r-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="p4-c2">
+                    <ul>
+                        <li class="li-act">抗潮态能力</li>
+                        <li>卡纸故障率</li>
+                        <li>纸张适用性</li>
+                    </ul>
+                    <div class="con-box">
+                        <div class="cont clearfix blk">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p4-c3">
+                    <div class="p2-c3-btn p2-c3-btnl"></div>
+                    <div class="p2-c3-btn p2-c3-btnr"></div>
+                    <div class="p2-c3-box">
+                        <div class="p2-c3-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p5环保指标测试-->
+<table class="p5 pn" id="p5" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p5-c1 clearfix">
+                    <div class="p5-c1-l p-video">
+                        模块内容
+                    </div>
+                    <div class="p5-c1-r">
+                        <div class="p5-c1-r-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+                <div class="p5-c2">
+                    <ul>
+                        <li class="li-act">能耗</li>
+                        <li>排放和噪声</li>
+                    </ul>
+                    <div class="con-box">
+                        <div class="cont clearfix blk">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p5-c3">
+                    <div class="p2-c3-btn p2-c3-btnl"></div>
+                    <div class="p2-c3-btn p2-c3-btnr"></div>
+                    <div class="p2-c3-box">
+                        <div class="p2-c3-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p6使用成本测试-->
+<table class="p6 pn" id="p6" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p6-c1">
+                    模块内容
+                </div>
+                <div class="p6-c2">
+                    <div class="p6-c2-con">
+                        <div class="p6-c2-con-l">
+                            模块内容
+                        </div>
+                        <div class="p6-c2-con-r">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p7横评终极报告-->
+<table class="p7 pn" id="p7" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p7-c1">
+                    模块内容
+                </div>
+                <div class="p7-c2">
+                    <ul>
+                        <li class="li-act">工作效率</li>
+                        <li>印品质量</li>
+                        <li>使用可靠性</li>
+                        <li>环保指标</li>
+                        <li>使用成本</li>
+                    </ul>
+                    <div class="con-box">
+                        <div class="cont clearfix blk">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                        <div class="cont clearfix">
+                            <div class="cont-l">
+                                模块内容
+                            </div>
+                            <div class="cont-r">
+                                模块内容
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p8先看后买-->
+<table class="p8 pn" id="p8" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p8-t"></div>
+                <div class="p8-c1">
+                    模块内容
+                </div>
+                <div class="p8-c2">
+                    <table class="p8-c2-tab" width="1018" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="p8-td1 p8-td11">性价比最高</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td3 p8-td21">模块内容</td>
+                        </tr>
+                        <tr>
+                            <td class="p8-td1 p8-td12">工作效率最高</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td3 p8-td22">模块内容</td>
+                        </tr>
+                        <tr>
+                            <td class="p8-td1 p8-td11">打印质量最强</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td3 p8-td21">模块内容</td>
+                        </tr>
+                        <tr>
+                            <td class="p8-td1 p8-td12">使用最可靠</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td2 p8-td22">模块内容</td>
+                            <td class="p8-td3 p8-td22">模块内容</td>
+                        </tr>
+                        <tr>
+                            <td class="p8-td1 p8-td11">最环保</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td2 p8-td21">模块内容</td>
+                            <td class="p8-td3 p8-td21">模块内容</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--p9花絮-->
+<table class="p9 pn" id="p9" width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="bg-l">&nbsp;</td>
+        <td width="1200" valign="top">
+            <div class="bg-c">
+                <div class="p9-t-box">
+                    <div class="p9-t-mod"></div>
+                </div>
+                <div class="p9-b">
+                    <div class="p9-b-btn p9-b-btnl"></div>
+                    <div class="p9-b-btn p9-b-btnr"></div>
+                    <div class="p9-b-box">
+                        <div class="p9-b-mod">
+                            模块内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="bg-r">&nbsp;</td>
+    </tr>
+</table>
+<!--投票弹窗-->
+<div class="investigate hid" id="invest">
+    <div class="inv">
+        <div class="inv-close"></div>
+        <div class="inv-c">
+            <table align=center width='80%'>
+                <form name=form1 method=post action='http://service.zol.com.cn/survey_new/votesave.php?voteid=6806' onsubmit='return check(this)' target='votewin'>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33086' id='q'>
+                            买了复印机什么时候才能都用上</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33097' id='q'>
+                            A3的细线能打印出来吗</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33087' id='q'>
+                            复印身份证容易吗</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33098' id='q'>
+                            复印100份，每一份都一样吗</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33088' id='q'>
+                            打印大文件慢吗</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33099' id='q'>
+                            公司存档多代复印，差别大吗</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33089' id='q'>
+                            复印的清楚吗</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33100' id='q'>
+                            梅雨天潮湿对复印影响大吗</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33090' id='q'>
+                            复印机固定资产折旧怎么计算</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33101' id='q'>
+                            待机到底要多少电</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33092' id='q'>
+                            都有哪些易耗件?要多少钱</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33102' id='q'>
+                            工作起来多少瓦</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33093' id='q'>
+                            每页彩色打印到底要多少钱</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33103' id='q'>
+                            工作排放多少臭氧</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33094' id='q'>
+                            使用五年的得花多少钱</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33104' id='q'>
+                            会泄露出多少PM2.5</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33095' id='q'>
+                            用多了卡纸吗</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33105' id='q'>
+                            机器会结露短路吗</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33096' id='q'>
+                            天气潮湿机器能用吗</td>
+                        <td>
+                            <input type='checkbox' name='q[]' value='33106' id='q'>
+                            厚纸能复印么</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type=hidden name=itemnum value='21'>
+                            <input type=submit class="iii" name=submit value='提交'>
+                            <input type="hidden" name="backurl" value="http://www.baidu.com"/>
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="../jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://icon.zol-img.com.cn/topic/js/vote.js"></script>
+<script>vote.config.sequence = vote.sequenceType.ARSORT;vote.init("vote_6806","6806");</script>
+<script>
+    /*初始化提交按钮*/
+    $('.inv-c .iii').attr({'value':''});
+
+    /*切换各页面*/
+    var ham=$('.tar'),ham2=$('.tars a'),pn=$('.pn');
+    var url_now=window.location.href;
+    var show=new Date(),show_y=show.getFullYear(),show_m=show.getMonth()+ 1,show_date=show.getDate();
+
+    var inv_flag=1;
+    if(url_now.indexOf('article')>-1){
+        ham.bind('click', function () {
+            pn.eq(ham.index(this)+1).addClass('pn-act').siblings().removeClass('pn-act');
+            $('.flow').removeClass('hid');
+            if((0<=ham.index(this)<=7)&&inv_flag===1){
+                $('.investigate').removeClass('hid');
+                $('.inv-close').bind('click', function () {
+                    $('.investigate').addClass('hid');
+                    inv_flag=0;
+                });
+            }
+        });
+        ham2.bind('click', function () {
+            pn.eq(ham2.index(this)+1).addClass('pn-act').siblings().removeClass('pn-act');
+            $('.flow').removeClass('hid');
+            if((0<=ham2.index(this)<=7)&&inv_flag===1){
+                $('.investigate').removeClass('hid');
+                $('.inv-close').bind('click', function () {
+                    $('.investigate').addClass('hid');
+                    inv_flag=0;
+                });
+            }
+        });
+    }else{
+        if(show_y>=2016&&show_m>=8&&show_date>=22){
+            $('.tars:lt(9)').addClass('pass nav-act');
+            $('.tar:lt(9)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=8&&show_date>=21){
+            $('.tars:lt(8)').addClass('pass nav-act');
+            $('.tar:lt(8)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=8&&show_date>=20){
+            $('.tars:lt(7)').addClass('pass nav-act');
+            $('.tar:lt(7)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=8&&show_date>=16){
+            $('.tars:lt(6)').addClass('pass nav-act');
+            $('.tar:lt(6)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=8&&show_date>=5){
+            $('.tars:lt(5)').addClass('pass nav-act');
+            $('.tar:lt(5)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=7&&show_date>=25){
+            $('.tars:lt(4)').addClass('pass nav-act');
+            $('.tar:lt(4)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=7&&show_date>=15){
+            $('.tars:lt(3)').addClass('pass nav-act');
+            $('.tar:lt(3)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=7&&show_date>=1){
+            $('.tars:lt(2)').addClass('pass nav-act');
+            $('.tar:lt(2)').addClass('pas');
+        }else if(show_y>=2016&&show_m>=6){
+            $('.tars:lt(1)').addClass('pass nav-act');
+            $('.tar:lt(1)').addClass('pass');
+        }
+        var t_pass=$('.pass'),t_pas=$('.pas');
+        t_pas.bind('click', function () {
+            pn.eq(t_pas.index(this)+1).addClass('pn-act').siblings().removeClass('pn-act');
+            $('.flow').removeClass('hid');
+            if((0<=t_pas.index(this)<=7)&&inv_flag===1){
+                $('.investigate').removeClass('hid');
+                $('.inv-close').bind('click', function () {
+                    $('.investigate').addClass('hid');
+                    inv_flag=0;
+                });
+            }
+        });
+        t_pass.bind('click', function () {
+            pn.eq(t_pass.index(this)+1).addClass('pn-act').siblings().removeClass('pn-act');
+            $('.flow').removeClass('hid');
+            if((0<=t_pass.index(this)<=7)&&inv_flag===1){
+                $('.investigate').removeClass('hid');
+                $('.inv-close').bind('click', function () {
+                    $('.investigate').addClass('hid');
+                    inv_flag=0;
+                });
+            }
+        });
+    }
+    $('.tar0').bind('click', function () {
+        pn.eq(0).addClass('pn-act').siblings().removeClass('pn-act');
+        $('.flow').addClass('hid');
+    });
+
+
+    /*斗鱼直播*/
+    $('.pass').slice(1,5).addClass('nav-a-act');
+
+
+    /*右导航*/
+    var flws=$('.flow ul li.pas');
+    flws.bind('click', function () {
+        $(this).addClass('flow-li-act').siblings().removeClass('flow-li-act');
+    });
+
+    /*选项卡*/
+    function card_chg(lii,lii_active,dii,dii_active){
+        var lis=$(lii),dis=$(dii);
+        lis.bind('click', function () {
+            $(this).addClass(lii_active).siblings().removeClass(lii_active);
+            var chg_index=lis.index(this);
+            dis.eq(chg_index).addClass(dii_active).siblings().removeClass(dii_active)
+        })
+    }
+    card_chg('.p2-c2 ul li','li-act','.p2-c2 .con-box .cont','blk');
+    card_chg('.p3-c2 ul li','li-act','.p3-c2 .con-box .cont','blk');
+    card_chg('.p4-c2 ul li','li-act','.p4-c2 .con-box .cont','blk');
+    card_chg('.p5-c2 ul li','li-act','.p5-c2 .con-box .cont','blk');
+    card_chg('.p7-c2 ul li','li-act','.p7-c2 .con-box .cont','blk');
+
+    /*美图欣赏*/
+    function scrolls(div1,div2,num,p,n){
+        var page = 1;
+        var i = num;
+        var $v_show = $(div1);
+        var $v_content = $(div2);
+        var v_width = $v_content.width();
+        var len = $v_show.find("img").length;
+        var page_count = Math.ceil(len/i);
+        $v_show.css("width",v_width*page_count + "px");
+
+        $v_show.css("left","0px");
+        $(n).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        });
+        $(p).click(function(){
+            if(!$v_show.is(":animated")){
+                if(page == 1){
+                    $v_show.animate({left:"-="+v_width*(page_count-1)},"slow");
+                    page = page_count;
+                }else{
+                    $v_show.animate({left:"+="+v_width},"slow");
+                    page--;
+                }
+            }
+        });
+        function auto_play()
+        {
+            if(!$v_show.is(":animated")){
+                if(page == page_count){
+                    $v_show.animate({left:"0px"},"slow");
+                    page = 1;
+                }else{
+                    $v_show.animate({left:"-="+v_width},"slow");
+                    page++;
+                }
+            }
+        }
+        //setInterval(auto_play,5000);
+    }
+    scrolls(".p2-c3 .p2-c3-mod",".p2-c3 .p2-c3-box",4,".p2-c3 .p2-c3-btnl",".p2-c3 .p2-c3-btnr");
+    scrolls(".p3-c3 .p2-c3-mod",".p3-c3 .p2-c3-box",4,".p3-c3 .p2-c3-btnl",".p3-c3 .p2-c3-btnr");
+    scrolls(".p4-c3 .p2-c3-mod",".p4-c3 .p2-c3-box",4,".p4-c3 .p2-c3-btnl",".p4-c3 .p2-c3-btnr");
+    scrolls(".p5-c3 .p2-c3-mod",".p5-c3 .p2-c3-box",4,".p5-c3 .p2-c3-btnl",".p5-c3 .p2-c3-btnr");
+    scrolls(".p9-b .p9-b-mod",".p9-b .p9-b-box",3,".p9-b .p9-b-btnl",".p9-b .p9-b-btnr");
+
+    /*花絮切换*/
+    var detail_big=$('.p9-t-mod'),detail_img=$('.p9-b-mod table img');
+    detail_img.bind('mouseenter', function () {
+        detail_big.css({'left':'-'+detail_img.index(this)*615+'px'});
+    });
+</script>
+</body>
+</html>

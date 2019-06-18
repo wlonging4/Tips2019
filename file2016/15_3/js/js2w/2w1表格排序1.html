@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM对象-表格排序</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+            font-size: 20px;
+            font-weight: bolder;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+        }
+        ul{
+            height: 400px;
+            width: 200px;
+            background: -webkit-linear-gradient(top left,yellowgreen,forestgreen,orangered);
+            border-radius: 10px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -200px;
+            margin-left: -100px;
+        }
+        ul li{
+            list-style: none;
+            height:40px;
+            width: 180px;
+            border-bottom: 1px dashed mediumpurple;
+            border-radius: 10px;
+            margin:5px 8px;
+            text-align: center;
+        }
+        ul li:last-child{
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>3</li>
+    <li>2</li>
+    <li>6</li>
+    <li>8</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>7</li>
+</ul>
+<script type="text/javascript">
+   /* var oLis=document.getElementsByTagName("li");
+    var ary=[];
+    for(var i=0;i<oLis.length;i++){
+        ary.push(oLis[i]);
+    }
+    ary.sort(function(a,b){
+        return a.innerHTML- b.innerHTML;
+    });
+    for(var i=0;i<oLis.length;i++){
+        alert(i);
+        ary[i].parentNode.appendChild(ary[i]);
+    }*/
+   //类数组->数组1
+   var oLis=document.getElementsByTagName("li");
+   var ary=[].slice.call(oLis,0);
+   //相当于复制转化,第二个参数是0相当于->slice(0);
+   //var ary=Array.prototype.slice.call(oLis,0);->arguments类数组兼容所有的浏览器,元素集合或节点集合调用这种方式;但是oLis在IE下这样不兼容;所有要想全都兼容,就得用最基本的方法一个一个的循环进去->可以先封装一个含输,以后用来调用;封装判定兼容可以用try-catch;
+   ary.sort(function(a,b){
+       return a.innerHTML- b.innerHTML;
+   });
+   var oUl=document.getElementsByTagName("ul")[0];
+   for(var i=0;i<ary.length;i++) {
+       alert(i);
+       oUl.appendChild(ary[i]);
+   }
+   //类数组->数组2
+</script>
+</body>
+</html>

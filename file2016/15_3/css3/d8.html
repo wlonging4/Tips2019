@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag and pull</title>
+    <style>
+        #src>*{
+            float: left;
+        }
+        #src{
+            display: table;
+        }
+        #src img{
+            margin-right: 10px;
+            border: 1px solid green;
+            height: 100px;
+        }
+        #tar{
+            height: 100px;
+            width: 100px;
+            border:1px solid green;
+            display: table-cell;
+
+        }
+        img.dragged{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+<div id="src">
+    <img src="pic01.jpg" draggable="true" width="100px" alt=""/>
+    <img src="pic01.jpg" draggable="true" width="100px" alt=""/>
+    <img src="pic01.jpg" draggable="true" width="100px" alt=""/>
+    <div id="tar"><p id="dra">drag here</p></div>
+    <script>
+        var src=document.getElementById("src");
+        var tar=document.getElementById("tar");
+        var dra=document.getElementById("dra");
+
+        src.ondragstart= function (e) {
+            e.target.classList.add("dragged");
+        };
+        src.drag= function (e) {
+            dra.innerText= e.target.id;
+        };
+        src.draggend= function (e) {
+            e.target.classList.remove("dragged");
+            dta.innerHTML="drop here";
+        };
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312">
+    <title>专题</title>
+    <style type="text/css">
+        body {
+            color: #000;
+            font: 12px/18px arial;
+            background: #FFF url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_bg.jpg) repeat center top;
+        }
+
+        body, div, form, img, p, h1, h2, dl, dt, dd, ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        img {
+            display: block;
+            border: 0
+        }
+
+        a {
+            color: #000;
+            text-decoration: none
+        }
+
+        a:hover, td a:hover {
+            color: #f60;
+            text-decoration: underline
+        }
+
+        .foot, .foot a {
+            color: #666;
+        }
+
+        .hong12 {
+            color: #f5000f
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .clearfix {
+            display: inline-block;
+        }
+
+        * html .clearfix {
+            height: 1%;
+        }
+
+        .clearfix {
+            display: block;
+        }
+
+        .clear {
+            clear: both;
+            height: 0;
+            font: 0/0 Arial;
+            visibility: hidden;
+        }
+
+        #photowrap376408 .photobox {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #photowrap376408 .photowrap {
+            width: 100%;
+            margin: 0 auto;
+            height: 710px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #photowrap376408 .photocon {
+            height: 710px;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        #photowrap376408 .photocon li {
+            width: 100%;
+            height: 710px;
+            overflow: hidden;
+            float: left;
+            position: relative;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_bg2.jpg) no-repeat top center;
+        }
+
+        #photowrap376408 .photocon .bg {
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_bg1.jpg) no-repeat top center;
+        }
+
+        #photowrap376408 .photoprev, #photowrap376408 .photonext {
+            position: absolute;
+            width: 105px;
+            height: 62px;
+            z-index: 2;
+            top: 282px;
+            cursor: pointer;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_prev.gif) no-repeat;
+        }
+
+        #photowrap376408 .photoprev {
+            left: 40px;
+        }
+
+        #photowrap376408 .photonext {
+            right: 40px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_next.gif) no-repeat;
+        }
+
+        .photonav {
+            height: 166px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n.jpg) repeat-x center top;
+            text-align: center;
+        }
+
+        .photonav ul {
+            width: 1100px;
+            margin: 0 auto;
+        }
+
+        .photonav li {
+            float: left;
+            width: 152px;
+            height: 46px;
+            text-indent: -9999px;
+            cursor: pointer;
+        }
+
+        #d1 {
+            width: 152px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n1.jpg) no-repeat;
+        }
+
+        #d2 {
+            width: 127px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n2.jpg) no-repeat;
+        }
+
+        #d3 {
+            width: 146px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n3.jpg) no-repeat;
+        }
+
+        #d4 {
+            width: 236px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n4.jpg) no-repeat;
+        }
+
+        #d5 {
+            width: 144px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n5.jpg) no-repeat;
+        }
+
+        #d6 {
+            width: 295px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n6.jpg) no-repeat;
+        }
+
+        #d2.act {
+            width: 127px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n2a.jpg) no-repeat;
+        }
+
+        #d3.act {
+            width: 146px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n3a.jpg) no-repeat;
+        }
+
+        #d4.act {
+            width: 236px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n4a.jpg) no-repeat;
+        }
+
+        #d5.act {
+            width: 144px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n5a.jpg) no-repeat;
+        }
+
+        #d6.act {
+            width: 295px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_n6a.jpg) no-repeat;
+        }
+
+        .wrapper {
+            width: 1100px;
+            margin: 0 auto;
+        }
+
+        .f_h2a {
+            height: 85px;
+            padding: 110px 520px 0 90px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h2a.jpg) no-repeat;
+        }
+
+        .f_h3a {
+            height: 365px;
+            padding: 0 0 0 93px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h3a.jpg) no-repeat;
+        }
+
+        .f_h3a .video {
+            float: left;
+            width: 478px;
+            border: 1px solid #000;
+            border-top: 15px solid #000;
+        }
+
+        .f_h3a .pic-list {
+            float: left;
+            width: 450px;
+            padding-left: 10px;
+        }
+
+        .f_h3a .pic-list img {
+            border: 1px solid #000;
+        }
+
+        .f_h2b {
+            height: 413px;
+            padding: 0 0 0 96px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h2b.jpg) no-repeat;
+        }
+
+        .f_h2b .video {
+            float: left;
+            width: 440px;
+            border: 1px solid #000;
+            border-top: 15px solid #000;
+            border-bottom: 15px solid #000;
+        }
+
+        .f_h2b .pic-list {
+            float: left;
+            width: 422px;
+            padding-right: 35px;
+        }
+
+        .f_h2b .pic-list img {
+            border: 1px solid #000;
+        }
+
+        .info {
+            height: 85px;
+            padding-top: 8px;
+        }
+
+        .f_h2c {
+            height: 85px;
+            padding: 110px 520px 0 90px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5397275b02/f_h2c.jpg) no-repeat;
+        }
+
+        .f_h3c .video {
+            border-bottom: 15px solid #000;
+        }
+
+        .f_h2d {
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h2d.jpg) no-repeat;
+        }
+
+        .f_h2d .pic-list {
+            padding: 0 0 0 35px;
+        }
+
+        .f_h2e {
+            height: 85px;
+            padding: 110px 97px 0 515px;
+            background: url(http://2.zol-img.com.cn/zt/tm_524/5397275b02/f_h2e.jpg) no-repeat;
+        }
+
+        .author {
+            width: 990px;
+            margin: 0 auto;
+            padding: 40px 0 10px;
+            text-align: right
+        }
+
+        body:nth-of-type(1) .wrapper {
+            padding-right: 1px;
+        }
+    </style>
+
+
+</head>
+<body>
+<{data[17]}>
+
+<div class="photobox" id="photowrap376408">
+    <div class="photowrap">
+        <ul class="photocon" style="width: 11172px; left: -9310px; ">
+
+            <li class="bg" style="width: 1862px; ">
+                <div class="wrapper">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h1.jpg" width="1100" height="150">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h2.jpg" width="1100" height="150">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h3.jpg" width="1100" height="150">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h4.jpg" width="1100" height="150">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h5.jpg" width="1100" height="110">
+                </div>
+            </li>
+            <li style="width: 1862px; ">
+                <div class="wrapper">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h1a.jpg" width="1100" height="150">
+
+                    <div class="f_h2a"><{data[0]}></div>
+                    <div class="f_h3a clearfix">
+                        <div class="video"><{data[1]}></div>
+                        <div class="pic-list"><{data[2]}></div>
+                    </div>
+                </div>
+            </li>
+            <li style="width: 1862px; ">
+                <div class="wrapper">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h1b.jpg" width="1100" height="17">
+
+                    <div class="f_h2b clearfix">
+                        <div class="pic-list">
+                            <div class="info"><{data[3]}></div>
+                            <{data[4]}>
+                        </div>
+                        <div class="video"><{data[5]}></div>
+                    </div>
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h3b.jpg" width="1100" height="150">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h4b.jpg" width="1100" height="130">
+                </div>
+            </li>
+
+            <li style="width: 1862px; ">
+                <div class="wrapper">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h1c.jpg" width="1100" height="150">
+
+                    <div class="f_h2c"><{data[6]}></div>
+                    <div class="f_h3a f_h3c clearfix">
+                        <div class="video"><{data[7]}></div>
+                        <div class="pic-list"><{data[8]}></div>
+                    </div>
+                </div>
+            </li>
+
+            <li style="width: 1862px; ">
+                <div class="wrapper">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h1d.jpg" width="1100" height="17">
+
+                    <div class="f_h2b f_h2d clearfix">
+                        <div class="video"><{data[9]}></div>
+                        <div class="pic-list">
+                            <div class="info"><{data[10]}></div>
+                            <{data[11]}>
+                        </div>
+                    </div>
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h3d.jpg" width="1100" height="150">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/5373ff2919/f_h4d.jpg" width="1100" height="130">
+                </div>
+            </li>
+
+            <li style="width: 1862px; ">
+                <div class="wrapper">
+                    <img src="http://2.zol-img.com.cn/zt/tm_524/53cd77bcb2/f_h1e.jpg" width="1100" height="150">
+
+                    <div class="f_h2e"><{data[12]}></div>
+                    <div class="f_h3a clearfix">
+                        <div class="video"><{data[13]}></div>
+                        <div class="pic-list"><{data[14]}></div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+        <div class="photoprev"></div>
+        <div class="photonext"></div>
+    </div>
+</div>
+<div class="photonav foot">
+    <ul class="clearfix">
+        <li id="d1" class="">首页</li>
+        <li id="d2" class="">渥太华</li>
+        <li id="d3" class="">阿岗昆</li>
+        <li id="d4" class="">蓝山度假村</li>
+        <li id="d5" class="">多伦多</li>
+        <li id="d6" class="act">尼亚加拉大瀑布</li>
+    </ul>
+    <div class="author"><{data[15]}></div>
+    <{data[16]}>
+</div>
+
+
+<script>
+    photowrap("#photowrap376408", "#photowrap376408 .photocon", "#photowrap376408 .photocon li", ".photonav li", "#photowrap376408 .photoprev", "#photowrap376408 .photonext");
+
+    function photowrap(wrap, con, con_li, nav_span, prev, next) {
+        function showPics(index) {
+            var nowLeft = -index * sWidth;
+            $(con).stop(!0, !1).animate({left: nowLeft}, 300, function () {
+            }), $(nav_span).removeClass("act").eq(index).addClass("act")
+        }
+
+        function fullScreen(wrap, con_li) {
+            var ssWidth = $(wrap).width();
+            $(con_li).width(ssWidth)
+        }
+
+        var sWidth = $(wrap).width(), len = $(con_li).length, index = 0, picTimer;
+        $(con).css("width", sWidth * len), $(window).resize(function () {
+            fullScreen(wrap, con_li), sWidth = $(wrap).width(), $(con).css("width", sWidth * len), showPics(index)
+        }), fullScreen(wrap, con_li), $(con_li).width(sWidth), $(nav_span).mouseenter(function () {
+            index = $(nav_span).index(this), showPics(index)
+        }).eq(0).trigger("mouseenter"), $(wrap).hover(function () {
+            clearInterval(picTimer)
+        }, function () {
+            picTimer = setInterval(function () {
+                showPics(index), index++, index == len && (index = 0)
+            }, 6e3)
+        }).trigger("mouseleave"), $(prev).click(function () {
+            index--, index < 0 && (index = len - 1), showPics(index)
+        }), $(next).click(function () {
+            index++, index == len && (index = 0), showPics(index)
+        })
+    }
+</script>
+
+</body>
+</html>

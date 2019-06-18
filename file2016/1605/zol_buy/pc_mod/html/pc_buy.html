@@ -1,0 +1,582 @@
+<!DOCTYPE html><html><head>
+    <title>中关村商城精简专题模板</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <style>
+        body{color:#999999; font:16px/21px 'microsoft yahei'; background-color:#FFF;}
+        body,div,form,img,em{padding:0;margin:0;border:0}
+        body{color:#999999;}
+        em{font-style:normal;}
+        img{display:block}
+        a{color:#999999;text-decoration:none;}
+        a:hover,td a:hover{color:#f60;}
+        p{margin:0; padding:0;}
+        .foot{color:#247ACE; font:12px/22px "宋体";}
+        .foot a{color:#247ACE;}
+        .hong12{color:#E71B34;}/*背景*/
+        .market-price{display:none;}
+        .remain-time{display:none;}
+
+        /*lg_style*/
+        body{font-family: "Microsoft YaHei","\5FAE\8F6F\96C5\9ED1";}
+        .sale-block{table-layout: fixed; border-collapse: collapse; height: 646px;}
+        .sale-block td{vertical-align: top;}
+        .sale-block .sale-cell1{width: 409px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/bg1.png) no-repeat;}
+        .sale-block .sale-cell2{width: 1100px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/bg3.png) no-repeat;}
+        .sale-block .sale-cell3{width: 410px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/bg2.png) no-repeat;}
+        .sale-block .sale-tab{position: relative; width: 1100px; height: 170px;}
+        .sale-status .sale-tab-morning{cursor:pointer; position:absolute; top:0; left:0; width: 149px; height: 167px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab0.png) no-repeat;}
+        .sale-block .sale-tab-line{position:absolute; top:60px; left:117px; width: 323px; height: 91px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/line.png) no-repeat;}
+        .sale-status .sale-tab-afternoon{cursor:pointer; position:absolute; top:0; left:443px; width: 208px; height: 167px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab2.png) no-repeat;}
+        .sale-block .sale-line2{position:absolute; top:60px; left:627px; width: 323px; height: 91px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/line.png) no-repeat;}
+        .sale-status .sale-tab-evening{cursor:pointer; position:absolute; top:0; right:-6px; width: 156px; height: 170px; background:url(http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab4.png) no-repeat;}
+
+        .sale-list{margin: 16px 0 0 -3px;}
+        .sale-list li{float: left;_display:inline-block; display: block; background:#fff; margin: 3px 0 0 3px; width: 364px ;height: 195px; padding-bottom: 27px }
+        .sale-list li .hei18{
+
+            display: block;
+            color: #373737;
+            padding-top: 40px;
+            padding-right: 20px;
+            font-weight: bold;
+            text-align: right;
+        }
+        .sale-list li .hei18:hover{
+            text-decoration: none;
+        }
+        .sale-list li .hei16{
+            position: relative;
+            display: block;
+            color: #373737;
+            padding-right: 20px;
+            text-align: right;
+        }
+        .sale-list li span{
+            display: block;
+            padding-top: 40px;
+            padding-left: 20px;
+            text-align: left;
+            color: #FE3045;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .sale-list li span em{
+            font-size: 26px;
+            font-family: 'microsoft yahei';
+        }
+        .sale-list li .hong12{
+            position: absolute;
+            top: 100px;
+            left: 110px;
+            width: 85px;
+            height: 24px;
+            line-height: 22px;
+            font-size: 16px;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            color: #fff;
+            display: block;
+            text-align: center;
+            background: #FE3045;
+        }
+        .sale-goods-detail{float: right; }
+        .sale-goods-name{font-size: 20px; *font-size:18px; line-height: 22px; color: #373737; white-space: normal; margin: 15px 0 5px 0;}
+        .sale-goods-des{font-size: 16px; color: #303030; line-height: 24px; text-align: right;}
+        .sale-goods-price{text-align: right; margin-top: 10px;}
+        .sale-goods-price .price{color: #fc3343; font-size: 28px; font-weight: bold;}
+        .sale-goods-price .price em{font-size: 18px;}
+        .sale-goods-price .btn{width: 84px; height: 27px; font-size: 16px; color:#fff; background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/btnbg.png') no-repeat; text-align: center; line-height: 26px; margin-top: 4px;}
+        .sale-goods-price span{display: inline-block; *zoom:1; vertical-align: middle;}
+        .sale-list-icon{position: absolute; display:block; width: 34px; height: 54px; background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/blockbg.png') no-repeat; top:0; left: 9px; z-index: 2; font-size: 18px; color: #fff; text-align: center; line-height: 18px; font-style: normal; padding-top:4px;}
+
+        .sale-status1 .sale-list-afternoon{display: none;}
+        .sale-status1 .sale-list-evening{display: none;}
+        .sale-status1 .sale-list-morning{display: block;}
+
+        .sale-status2 .sale-list-morning{display: none;}
+        .sale-status2 .sale-list-evening{display: none;}
+        .sale-status2 .sale-list-afternoon{display: block;}
+        .sale-status2 .sale-tab-morning{background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab1.png') no-repeat;}
+        .sale-status2 .sale-tab-afternoon{background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab3.png') no-repeat;}
+        .sale-status2 .sale-tab-evening{background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab4.png') no-repeat;}
+
+        .sale-status3 .sale-list-morning{display: none;}
+        .sale-status3 .sale-list-evening{display: block;}
+        .sale-status3 .sale-list-afternoon{display: none;}
+        .sale-status3 .sale-tab-morning{background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab1.png') no-repeat;}
+        .sale-status3 .sale-tab-afternoon{background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab2.png') no-repeat;}
+        .sale-status3 .sale-tab-evening{background:url('http://2.zol-img.com.cn/zt/tm_572/32262cdf5d/tab5.png') no-repeat;}
+
+        /*style_sheet*/
+        .z_bj1z{background:url(http://2.zol-img.com.cn/zt/tm_572/313375c292/1_r1_c1.jpg) no-repeat right top;}
+        .z_bj1y{background:url(http://2.zol-img.com.cn/zt/tm_572/313375c292/1_r1_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj2z{background:url(http://2.zol-img.com.cn/zt/tm_572/85ad664f04/1_r3_c1.jpg) no-repeat right top;}
+        .z_bj2y{background:url(http://2.zol-img.com.cn/zt/tm_572/85ad664f04/1_r3_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj3z{background:url(http://2.zol-img.com.cn/zt/tm_572/85b1d3226f/1_r4_c1.jpg) no-repeat right top;}
+        .z_bj3y{background:url(http://2.zol-img.com.cn/zt/tm_572/85bd1d9a72/1_r4_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj4z{background:url(http://2.zol-img.com.cn/zt/tm_572/85b1d3226f/1_r5_c1.jpg) no-repeat right top;}
+        .z_bj4y{background:url(http://2.zol-img.com.cn/zt/tm_572/85c5d4aab6/1_r5_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj5z{background:url(http://2.zol-img.com.cn/zt/tm_572/85b1d3226f/1_r6_c1.jpg) no-repeat right top;}
+        .z_bj5y{background:url(http://2.zol-img.com.cn/zt/tm_572/85b1d3226f/1_r6_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj6z{background:url(http://2.zol-img.com.cn/zt/tm_572/85e0d182f3/1_r8_c1.jpg) no-repeat right top;}
+        .z_bj6y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r8_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj7z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r9_c1.jpg) no-repeat right top;}
+        .z_bj7y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r9_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj8z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r11_c1.jpg) no-repeat right top;}
+        .z_bj8y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r11_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj9z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r12_c1.jpg) no-repeat right top;}
+        .z_bj9y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r12_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj10z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r14_c1.jpg) no-repeat right top;}
+        .z_bj10y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r14_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj11z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r15_c1.jpg) no-repeat right top;}
+        .z_bj11y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r15_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj12z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r16_c1.jpg) no-repeat right top;}
+        .z_bj12y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r16_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj13z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r17_c1.jpg) no-repeat right top;}
+        .z_bj13y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r17_c3.jpg) no-repeat left top;}/*图片*/
+        .z_bj14z{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r18_c1.jpg) no-repeat right top;}
+        .z_bj14y{background:url(http://2.zol-img.com.cn/zt/tm_572/85d010d927/1_r18_c3.jpg) no-repeat left top;}/*图片*/
+
+
+
+        .rightlayer{position: fixed; width: 170px; background:; left: 50%; top: 20%;margin-left:550px; z-index:500;}
+
+    </style>
+</head>
+
+<body>
+<{data[0]}>
+<div>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj1z">&nbsp;</td>
+
+            <td width="1000">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[1]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj1y">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <!--lg_modify-->
+    <table class="sale-block">
+        <tbody>
+        <tr>
+            <td class="sale-cell1"></td>
+            <td class="sale-cell2">
+                <div class="sale-status sale-status1">
+                    <div class="sale-tab">
+                        <div class="sale-tab-morning"></div>
+                        <div class="sale-tab-line"></div>
+                        <div class="sale-tab-afternoon"></div>
+                        <div class="sale-tab-line sale-line2"></div>
+                        <div class="sale-tab-evening"></div>
+                    </div>
+
+                    <ul class="sale-list clearfix sale-list-morning">
+                        <li>
+                            <div class="lg_i">
+                                <{data[144]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[145]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[146]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[147]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[148]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[149]}>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <ul class="sale-list clearfix sale-list-afternoon">
+                        <li>
+                            <div class="lg_i">
+                                <{data[150]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[151]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[152]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[153]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[154]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[155]}>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="sale-list clearfix sale-list-evening">
+                        <li>
+                            <div class="lg_i">
+                                <{data[156]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[157]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[158]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[159]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[160]}>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lg_i">
+                                <{data[161]}>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td class="sale-cell3"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj2z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[2]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj2y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj3z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[3]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj3y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj4z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100px" width=""><{data[4]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj4y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj5z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="100" width=""><{data[5]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj5y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj6z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="50" width=""><{data[6]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj6y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj7z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[7]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj7y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj8z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="50" width=""><{data[8]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj8y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj9z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[9]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj9y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj10z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[10]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj10y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj11z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[11]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj11y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj12z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[12]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj12y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj13z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[13]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj13y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tbody><tr>
+            <td class="z_bj14z">&nbsp;</td>
+
+            <td width="900">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td height="30" width=""><{data[14]}></td>
+                    </tr>
+                    </tbody></table>
+            </td>
+
+            <td class="z_bj14y">&nbsp;</td>
+        </tr>
+        </tbody></table>
+
+
+
+    <div class="rightlayer">
+        <img src="http://2.zol-img.com.cn/zt/tm_572/861e02bd58/DH.png" usemap="#m_201">
+        <map name="m_201" id="m_201">
+            <area shape="rect" coords="58,485,139,548" href="#top" target="_self" title="top" alt="top" />
+            <area shape="rect" coords="40,443,167,469" href="#DP" target="_self" title="DP" alt="DP" />
+            <area shape="rect" coords="40,391,160,431" href="#XJ" target="_self" title="XJ" alt="XJ" />
+            <area shape="rect" coords="40,346,160,376" href="#DIY" target="_self" title="DIY" alt="DIY" />
+            <area shape="rect" coords="40,301,167,329" href="#DN" target="_self" title="DIY" alt="DN" />
+            <area shape="rect" coords="40,251,167,285" href="#SJ" target="_self" title="SJ" alt="SJ" />
+            <area shape="rect" coords="40,204,167,234" href="#XD" target="_self" title="XD" alt="XD" />
+            <area shape="rect" coords="40,155,167,189" href="#MQ" target="_self" title="MQ" alt="MQ" />
+        </map>
+    </div>
+
+
+    <script type="text/javascript">
+        if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+            if (window.location.href.indexOf("?via=") < 0) {
+                try {
+                    if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                        var tmp = location.href.match(/[0-9]+\/(.*)/i);
+                        window.location.href = "http://m.zol.com.cn/topic/5808439.html";
+                    }
+                } catch(e) {}
+            }
+        }
+    </script>
+
+
+
+</div>
+
+
+
+<{data[48]}>
+
+</div>
+
+<!--<script src="http://www.zol.com/js/spm.js" type="text/javascript"></script>-->
+<script>
+    $(function(){
+        var now=new Date().getHours();
+        var tab1=$(".sale-tab-morning");
+        var tab2=$(".sale-tab-afternoon");
+        var tab3=$(".sale-tab-evening");
+        var status=$(".sale-status");
+
+        if(now>=8&&now<=10){
+            status.removeClass("sale-status3").removeClass("sale-status2").addClass("sale-status1");
+        }else if(now>=11&&now<=17){
+            status.removeClass("sale-status3").removeClass("sale-status1").addClass("sale-status2");
+        }else if((now>=17&&now<=23)||(now>=0&&now<=7)){
+            status.removeClass("sale-status1").removeClass("sale-status2").addClass("sale-status3");
+        }
+
+        tab2.click(function(){
+            status.removeClass("sale-status3").removeClass("sale-status1").addClass("sale-status2");
+        });
+
+        tab3.click(function(){
+            status.removeClass("sale-status1").removeClass("sale-status2").addClass("sale-status3");
+        });
+
+        tab1.click(function(){
+            status.removeClass("sale-status3").removeClass("sale-status2").addClass("sale-status1");
+        })
+    })
+
+    /*绑定内容*/
+    $('.lg_i').find('.hong12').html('点此抢购');
+    $('.lg_i').find('.slh').css({'display':'none'});
+</script>
+</body>
+</html>

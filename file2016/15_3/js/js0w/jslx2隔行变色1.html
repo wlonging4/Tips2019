@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隔行变色</title>
+    <style type="text/css">
+        body,div,ul,li{
+            margin:15px;
+            padding:0;
+            font-family:fantasy;
+            text-align: center;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #ul1{
+            margin:30px auto;
+            padding:20px;
+            width: 400px;
+            border:1px solid greenyellow;
+            border-radius: 20px;
+            background: -webkit-linear-gradient(top right,darkred,yellowgreen,salmon);
+        }
+        #ul1 li{
+            height: 30px;
+            line-height: 30px;//一定要保证height和行高一样，不然内容文字会漂移出去；
+            cursor: pointer;
+        }
+        .c0 {
+            background: darkcyan;
+        }
+
+        .c1 {
+            background: goldenrod;
+        }
+
+        .c2 {
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<div>
+<ul id="ul1">
+    <li>不要说话</li>
+    <li>好久不见</li>
+    <li>最佳损友</li>
+    <li>K歌之王</li>
+    <li>孤独患者</li>
+    <li>开始懂了</li>
+    <li>我怀念的</li>
+    <li>白玫瑰</li>
+    <li>红玫瑰</li>
+    <li>天黑黑</li>
+    <li>单车</li>
+    <li>逆光</li>
+    <li>绿光</li>
+    <li>遇见</li>
+    <li>浮夸</li>
+</ul>
+</div>
+<script>
+    var oU1 = document.getElementById("ul1");
+    var oLi = oU1.getElementsByTagName("li");
+
+    for (var i = 0; i < oLi.length; i++) {
+        var oL = oLi[i];//通过所以类数组得到对应索引号i的那列的内容给oli,可以直接对oli修改得到效果
+        i % 2 === 0 ? (oL.className = "c0",oL.xy = "c0") : (oL.className = "c1",oL.xy = "c1");//对于c背景颜色赋值的同时把这个值也先赋值给一个xy的变量；留着鼠标离开位置恢复时的颜色先短暂保存起来。
+
+        oL.onmouseover = function () {
+            this.className = "c2";
+        };
+        oL.onmouseout = function () {
+            var vL=this.xy;
+            this.className=vL;
+        };
+    }
+
+/*    var oU1=document.getElementById("ul1");
+    var oLi=oUi.getElementsByTagName("li");*/
+    //类数组，以数字作为索引从0开始逐级递增，索引从零开始，length代表长度；
+    //用className设置元素的class属性的值->oLi[0].className="c1";
+/*    for(var i=0;i<oLi.length;i++){
+    var oL=oLi[i];
+    i%2===0?(oL.className="c1",oL.xy="c1"):(oL.className="c2",oL.xy="c2");
+    oL.onmouseover=function(){
+    this.className="c3";
+    }
+    oL.onmouseout=function(){
+    var vl=this.xy;
+    this.className=vl;
+    }
+    }*/
+
+   /* //if，else判断隔行变色；还没实现恢复*!/
+    var oU=document.getElementById("ul1");
+    var oL=oU.getElementsByTagName("li");
+    for(var i=0;i<oL.length;i++){
+    if(i%2===0){
+    oL[i].className="c0";
+    }else{
+    oL[i].className="c1";
+    }
+    }
+*/
+/*    /!*两个高大上方法，还未实现恢复；*!/
+    var oU=document.getElementById("ul1");
+    var oL=oU.getElementsByTagName("li");
+    for(var i=0;i<oL.length;i++){
+    oL[i].className="c"+i%2;
+    }*/
+
+
+</script>
+</body>
+</html>

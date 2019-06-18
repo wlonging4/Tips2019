@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>多图片按需加载无bug</title>
+    <style type="text/css">
+        img{ width:200px; height:200px; display:block; margin:20px;}
+    </style>
+</head>
+<body style="height:5000px;">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466924.jpg" src="img/default.gif">
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466925.jpg" src="img/default.gif">
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466926.jpg" src="img/default.gif">
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466927.jpg" src="img/default.gif">
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466928.jpg" src="img/default.gif">
+</body>
+</html>
+<script>
+    //offset函数定义
+    function offset(ele){
+        var l=ele.offsetLeft;
+        var t=ele.offsetTop;
+        var p=ele.offsetParent;
+        while(p){
+            if(window.navigator.userAgent.indexOf("MSIE 8")>-1){
+                l+=p.offsetLeft;
+                t+=p.offsetTop;
+            }else{
+                l+=p.offsetLeft+p.clientLeft;
+                t+=p.offsetTop+p.clientTop;
+            }
+            p=p.offsetParent;
+        }
+        return {l:l,t:t}
+    }
+    //getWin函数
+    function getWin(attr) {
+        return document.documentElement[attr] || document.body[attr];
+    }
+    //实现
+    window.onload=function(){
+        var oImgs=document.getElementsByTagName("img");
+        for(var i=0;i<oImgs.length;i++){
+            var oImg=oImgs.item(i);
+            oImg.posBot=offset(oImg).t+oImg.clientHeight;
+        }
+        window.onscroll=function(){
+            var winBot=getWin("scrollTop")+getWin("clientHeight");
+            for(var i=0;i<oImgs.length;i++){
+                var oImg=oImgs.item(i);
+                if(!oImg.loadFlag&&oImg.posBot<winBot){
+                    loadImg(oImg);
+                }
+            }
+        }
+    }
+    //load函数
+    function loadImg(oImg){//只负责正确加载图片
+        var newImg=new Image;
+        newImg.src=oImg.getAttribute("realImg")+"?"+Math.random();
+        newImg.onload=function(){
+            oImg.src=this.src;
+            oImg.loadFlag=true;//增加一个自定义属性，用来标识图片是否已经成功加载过。
+        }
+        oImg.src="img/o_loading.gif";
+    }
+</script>
+>

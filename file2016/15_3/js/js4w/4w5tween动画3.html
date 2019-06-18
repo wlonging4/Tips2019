@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tween自动点击轮播</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 500px;
+            height: 240px;
+            overflow: hidden;
+            margin: 50px auto;
+            position: relative;
+            -webkit-user-select: none;
+        }
+        #inner{
+            width: 2500px;
+            height: 240px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #inner div{
+            float: left;
+            width: 500px;
+            height: 240px;
+            line-height: 240px;
+            font-size: 100px;
+            text-align: center;
+            background: red;
+            font-weight: bold;
+        }
+        #btn{
+            position: absolute;
+            right: 50px;
+            list-style: none;
+            bottom: 10px;
+            padding: 0;
+            width: 260px;
+            height: 50px;
+        }
+        #btn li{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            margin: 10px;
+            float: left;
+            background: chocolate;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0.2;
+        }
+        img{
+            width: 500px;
+            height: 240px;
+        }
+        #btn li.current{
+            color: black;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <!--<div style="background: lightcoral"><img src="1.JPG" alt=""/></div>
+        <div style="background: limegreen"><img src="2.JPG" alt=""/></div>
+        <div style="background: midnightblue"><img src="3.JPG" alt=""/></div>
+        <div style="background: #FF5500"><img src="4.JPG" alt=""/></div>
+        <div style="background: #404040;color: white"><img src="1.JPG" alt=""/></div>-->
+        <div style="background: lightcoral">1</div>
+        <div style="background: limegreen">2</div>
+        <div style="background: midnightblue">3</div>
+        <div style="background: #FF5500">4</div>
+        <div style="background: #404040;color: white">5</div>
+    </div>
+    <ul id="btn">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+    </ul>
+</div>
+<script src="tween.js"></script>
+<script src="utils.js"></script>
+<script>
+    var oInner=document.getElementById("inner");
+    var oLis=document.getElementById("btn").getElementsByTagName("li");
+    for(var i=0;i<oLis.length;i++){
+        oLis.item(i).i=i;
+        oLis.item(i).onclick= function () {
+            animate(oInner,{left:-this.i*500},700,3);
+            selectCurrent(this);
+            //给选定的li添加样式
+            /*for(var i=0;i<oLis.length;i++){
+             oLis.item[i].className="";
+             }
+             this.className="current";*/
+        }
+    }
+    function selectCurrent(ele){
+        utils.addClass(ele,"current");
+        var siblings=utils.siblings(ele);
+        for(var i=0;i<siblings.length;i++){
+            utils.removeClass(siblings[i],"current");
+        }
+    }
+    //自动+绑定li
+    var step=0;
+    function autoMove(){
+        step++;
+        if(step>=5){
+            step=0;
+        }
+        animate(oInner,{left:-left*500},600,2);
+        selectCurrent(oLis.item(step));
+    }
+    window.setInterval(autoMove,2000);
+</script>
+</body>
+</html>

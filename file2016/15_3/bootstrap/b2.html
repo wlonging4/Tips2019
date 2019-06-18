@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bs实战</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <link rel="stylesheet" href="bootstrap-theme.css"/>
+    <style>
+        .row div{
+            background: indianred;
+        }
+    </style>
+</head>
+<body>
+1
+<h1 class="btn btn-success btn-large">
+    <i class="icon-user icon-white">Hello 你好</i>
+</h1>
+
+<br/>2
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab">Tab1</a></li>
+    <li><a href="#tab2" data-toggle="tab">Tab2</a></li>
+    <li><a href="#tab3" data-toggle="tab">Tab3</a></li>
+    <li><a href="#tab4" data-toggle="tab">Tab4</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="tab1"><img width=400 src="1.jpg" alt=""/></div>
+    <div class="tab-pane" id="tab2"><img width=400 src="2.jpg" alt=""/></div>
+    <div class="tab-pane" id="tab3"><img width=400 src="3.jpg" alt=""/></div>
+    <div class="tab-pane" id="tab4"><img width=400 src="4.jpg" alt=""/></div>
+</div>
+
+<br/>3
+<div class="container">
+    <div class="hero-unit"></div>
+    <div class="row">
+        <div class="span3">3</div>
+        <div class="span7">3</div>
+        <div class="span2">3</div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2"></div>
+        <div class="span10"></div>
+    </div>
+</div>
+
+<script src="jquery-1.9.1.js"></script>
+<script src="bootstrap.js"></script>
+<!--js代码实现响应式布局-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(window).bind("resize",resizeWindow);
+        function resizeWindow(e){
+            var windowWidth=$(window).width();
+            if(windowWidth>600){
+                $("link[rel=stylesheet]").attr({href:"great.css"});
+            }else if(windowWidth<600){
+                $("link[rel=stylesheet]").attr({href:"little.css"});
+            }
+        }
+    })
+</script>
+</body>
+</html>

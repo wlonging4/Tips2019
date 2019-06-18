@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="gb2312">
+    <title>title</title>
+    <script>
+
+
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            if(parseFloat(RegExp.$1)>2.3){
+                var phoneScale = parseInt(window.screen.width)/640;
+                document.write('<meta name="viewport" content="width=640, minimum-scale='+ phoneScale +', maximum-scale='+ phoneScale +', target-densitydpi=device-dpi" />');
+            }else{
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=640,user-scalable=no, target-densitydpi=device-dpi" />');
+        }
+
+    </script>
+    <style type="text/css">
+        /* Reset & Global */
+        html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select { margin: 0; padding: 0; font-size: 32px; font-weight: 400; }
+        html, body { height: 100%; overflow:hidden; -webkit-tap-highlight-color:rgba(0,0,0,0); }
+        body, select, input, option { color: #000; font: 32px/1.5 "Microsoft YaHei",Arial; -webkit-text-size-adjust: none; }
+        ul, ol, li { list-style-type: none; }
+        em, i { font-style: normal; }
+        input, button, textarea { font-size: 32px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-appearance:none;}
+        a, a:visited { color: #000; }
+        a { text-decoration: none; }
+        a img { border: 0 none; }
+        .clearfix:after { content: ""; display: block; height: 0; overflow: hidden; clear: both; visibility: hidden; }
+        input:focus::-webkit-input-placeholder { color: rgba(0,0,0,0); }
+        input::-webkit-input-placeholder { color: #999; }
+        input:focus::-moz-placeholder { color: rgba(0,0,0,0); }
+        input::-moz-placeholder { color: #999; }
+        input:focus:-ms-input-placeholder { color: rgba(0,0,0,0); }
+        input:-ms-input-placeholder { color: #999; }
+        /* loading */
+        .loading { display: block; position: absolute; z-index: 10; opacity: 0; pointer-events: none; width: 160px; height: 140px; left: 50%; top: 50%; margin: -70px 0 0 -80px; -webkit-border-radius: 8px; border-radius: 8px; background: rgba(0,0,0,.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAVFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////+UMeA9AAAAG3RSTlMAAgQQIDA9QEpMUGBwfICQlKCssMDE0Nzg8PQ1V+FjAAABn0lEQVR4Xq3W227DIBAE0HWA0rrYNIFSHP7/P3sxLsrOkiKlI0V5yYnG1nIhKWYNudTk4AwNRftcWLLXfzIbi5ho7zLdGFKN4Gm5pJ9cy51cU81b6/f9WWMZy/bS4PHtwvY3nC2De4w757vuTBy26Nc+zopBHjX7JEFLCBHjG/MEUI7jRW/gS9cZKHoD37swYVGi5XC29NwqFCVKR9fYg5YVNbVG3J0uHajYJKy//fd59z3ob12iA9ZnzQjlog3m+sZFqDYsWuH+J64DAxZt0NUfCG4WijYY9kcsg0UbzERURMiGO/JxIpoQ4mxvmsOJThLUrKgjDk8A5aKDcIWiY9AULIpwQpigKMKJCKDHoghhAHC2ZxJghpGDRRhIggGGHIoqETpYVjMUFaHhC1ltUFSCGbaOAEVF6PlmhUVlqNn2yGfbkwwj35Aj7L8ytOwIcHBQyFnYoTNYFI+5BEXH4ApFx6ApPHG1A1AlgIgRstkGrLrQlvtJflYSZIuwjzk8VzCGG3xORz765iPVXJYHLroPXK0fvsxjptNXJvr3fAJQqYYOskEC/AAAAABJRU5ErkJggg==) no-repeat 50% 50%; -webkit-transition: opacity .3s; transition: opacity .3s; }
+        .loading-ring { display: block; position: absolute; width: 96px; height: 96px; left: 50%; top: 50%; margin: -48px 0 0 -48px; -webkit-animation: loaing-animation linear 1s infinite; animation: loaing-animation linear 1s infinite; background: url(data:image/png;base64,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) no-repeat 0 0; -webkit-background-size: 100% 100%; background-size: 100% 100%; }
+        .loading-visible { opacity: 1; }
+
+        @-webkit-keyframes loaing-animation {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes loaing-animation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        /* 首页 */
+        body {width:640px; margin:0 auto; position: relative;}
+        .home{width:100%; height:100%; position:absolute; overflow:hidden; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/bg1.jpg) no-repeat 50% 0; -webkit-background-size: cover; background-size: cover;}
+        .home .logo{position: absolute; width: 116px; height: 36px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/logo.png) no-repeat; left: 20px; top: 24px;}
+        .test-btn{position: absolute; left: 50%; top:780px; width: 269px; margin-left: -135px; height: 81px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/btn1.png) no-repeat; }
+        .home-con{position: absolute; top: 450px; width: 100%; }
+        .home-con p{text-align: center; font-size: 30px; color: #E54C39; margin-top: 30px;}
+        .info-box li{height: 72px; margin-bottom: 10px;}
+        .info-box li *{display: inline-block; vertical-align: top;}
+        .info-box li label{ width: 222px; height: 72px; margin-right: 10px;  background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/text1.png) no-repeat; text-indent: -9999em; overflow: hidden; }
+        .info-box li:nth-child(1) label{background-position: 100% 0 ;}
+        .info-box li:nth-child(2) label{background-position: 100% -70px ;}
+        .info-box li input{width: 382px; height: 70px; border: 1px solid #ddd; line-height: 70px; padding: 0 15px;}
+        .pop-box{position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 10; display: none}
+        .pop-box .pop{position: absolute; left: 50%; top: 50%; width: 600px; display: none; -webkit-transform: translate(-50%,-50%); transform: translate(-50%,-50%);}
+        .zol-pop{  height: 530px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/pop1.png) no-repeat; }
+        .test-fail{height: 585px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/pop2.png) no-repeat;}
+        .pop-box .close{position: absolute; top: 25px; right: 22px; width: 60px; height: 60px;}
+        .test-fail .text{position: absolute; left: 57px; top: 375px; width: 494px; height: 149px; font-size: 38px; color: #fff; text-align: center; line-height: 40px;}
+        .test-fail .text span{font-size: 50px; line-height: 88px;}
+        .pop-box .end{width: 640px; height: 600px; background: url(http://2.zol-img.com.cn/zt/tm_578/eef6c6d9d1/end.jpg) no-repeat;}
+
+        .disabled{pointer-events: none;}
+        @media screen and (max-width:640px) and (max-height: 900px) {
+            .home-con{top: 380px;}
+            .test-btn{top: 700px;}
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="loading loading-visible"><span class="loading-ring"></span></div>
+<div class="pop-box" >
+    <div class="zol-pop pop"><span class="close"></span></div>
+    <div class="end pop" ></div>
+    <div class="test-fail pop" >
+        <span class="close"></span>
+        <p class="text">
+            <span>很抱歉!非ZOL员工！</span><br/>不能参加本次抽奖活动哦！
+        </p>
+    </div>
+</div>
+<!--<script>
+if(location.href.indexOf("article") == -1){
+	
+	var nA = navigator.userAgent,
+	    zol = /zol/ig.test(nA),
+	    ios = /iPhone|iPad|iPod|iTouch/i.test(nA), 
+		webkit = /webkit/i.test(nA),
+		android = /android/i.test(nA) || (webkit && !ios);
+	if(!zol){
+		document.querySelector('.pop-box').style.display = document.querySelector('.zol-pop').style.display = 'block';
+		setTimeout(function(){
+			location.href = 'app://'
+			openTimeout = setTimeout(function () {
+				location.href = (ios || android) ? 'http://a.app.qq.com/o/simple.jsp?pkgname=com.zol.android' : (ios ? 'https://itunes.apple.com/cn/app/zhong-guan-cun-zai-xianiphone/id539824445?mt=8' : (android ? 'http://sj.zol.com.cn/down.php?softid=20061&subcateid=106&site=11&server=111&w=1&m=0' : 'http://www.windowsphone.com/zh-cn/store/app/%E4%B8%AD%E5%85%B3%E6%9D%91%E5%9C%A8%E7%BA%BF/cbff8656-4fcc-4052-a5f1-6eab30f59570'));
+			}, 500);
+		},1000)
+	}
+
+}
+</script>-->
+<div class="home">
+    <span class="logo"></span>
+    <div class="home-con">
+        <ul class="info-box">
+            <li><label>姓名</label><input type="text" class="name"></li>
+            <li><label>手机号</label><input type="tel" class="mobile" maxlength="11"></li>
+        </ul>
+        <p>请输入您的姓名和手机号验证您的员工身份</p>
+    </div>
+
+    <span class="test-btn"></span>
+</div>
+
+
+
+<script src="http://icon.zol-img.com.cn/wap/js/z.min.js" ></script>
+
+
+<script type="text/javascript">
+
+    window.addEventListener('load', function() {
+        //wrapper.style.visibility = "visible";
+        document.querySelector('.loading').classList.remove('loading-visible');
+    });
+
+    var popBox = document.querySelector('.pop-box'),
+            zolPop = document.querySelector('.zol-pop'),
+            testFail = document.querySelector('.test-fail'),
+            endPop = document.querySelector('.end'),
+            testBtn = document.querySelector('.test-btn');
+
+    //popBox.style.display = zolPop.style.display = 'block';
+
+    //开始验证
+    testBtn.addEventListener('tap',function(){
+        var _this = this;
+        var mobileVal = document.querySelector('.mobile').value,
+                nameVal = document.querySelector('.name').value.trim();
+        if(!nameVal || nameVal.length>=10){
+            // 请正确填写您的姓名
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u59D3\u540D');
+            return false;
+        }
+        if (!mobileVal || !(/^1(([38]\d)|(4[57])|(5[012356789])|(7[0678]))\d{8}$/.test(mobileVal))) {
+            // 请正确填写您的手机号码。
+            alert('\u8BF7\u6B63\u786E\u586B\u5199\u60A8\u7684\u624B\u673A\u53F7\u7801');
+            return false;
+        }
+        _this.classList.add('disabled');
+
+        $.ajax({
+            type:'get',
+            url: 'http://m.zol.com.cn/topic/services/2016halfyear.php?callback=?',
+            data:{action:'validateUsers',name:nameVal,phone:mobileVal},
+            dataType: 'json',
+            success: function (result) {
+                if(result.errCode == '10000'){//验证成功
+                    var jiamiName  = result.jiamiName,
+                            jiami_phone = result.jiami_phone;
+
+                    location.href="http://m.zol.com.cn/topic/5945073.html?userName="+jiamiName+"&userPhone="+jiami_phone;
+
+                }else if(result.errCode =='10037'){ //活动已结束
+                    popBox.style.display = endPop.style.display = 'block';
+                }else if(result.errCode =='11002'){ //验证未通过
+                    popBox.style.display = testFail.style.display = 'block';
+                }else{
+                    alert(result.msg);
+                }
+                _this.classList.remove('disabled');
+            }
+
+        });
+
+    })
+
+
+    //关闭按钮
+    document.querySelectorAll('.close').addEventListener('tap',function(){
+        shielded();
+        this.parentNode.style.display = popBox.style.display = 'none';
+    })
+    function shielded(obj){
+        if(!obj) obj = document.body;
+        shielded.timer && clearTimeout(shielded.timer);
+        obj.style.pointerEvents = 'none';
+        shielded.timer = setTimeout(function(){
+            obj.style.pointerEvents = 'all';
+        },350);
+    };
+
+
+
+    /* end 微信分享图片和文字设置 */
+    window.WeixinShareData = {
+        icon: 'http://2.zol-img.com.cn/zt/tm_578/f10183e5ba/weixin.jpg',
+        title: '移动聚力 创新无限 2016年中关村在线半年度总结会活动入口'
+    };
+
+</script>
+<script src="http://icon.zol-img.com.cn/m/js/wechat-share.1.1.js"></script>
+
+</body>
+</html>

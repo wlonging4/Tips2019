@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .u-box{
+            width: 1000px;
+            height: 500px;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 0;
+            border: 1px solid green;
+            margin: -250px 0 0 -500px;
+            transition: all .1s linear;
+        }
+        .u-box.as{
+
+        }
+        .u-box li{
+            list-style-type: none;
+            float: left;
+            width: 220px;
+            height: 220px;
+            margin: 14px 14px 0;
+            background: #fff;
+            border: 1px solid red;
+        }
+        .u-box li.act{
+            background: #000;
+        }
+
+    </style>
+</head>
+<body>
+<ul class="u-box" id="ubx">
+    <li class="act"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script src="../../1711/jquery-1.9.1.js"></script>
+<script>
+    var ub=$('.u-box');
+    var ubx=document.querySelector('#ubx');
+    $('.u-box li').bind('mouseenter',function (e) {
+        $(this).addClass('act').siblings().removeClass('act');
+    });
+    winWidth=Math.ceil($(document).innerWidth()/2);
+    winHeight=Math.ceil($(document).innerHeight()/2);
+    //console.log(winWidth);
+    //console.log(winHeight);
+
+
+        requestAnimationFrame(
+            function () {
+                ub.bind('mousemove',function (e) {
+                    //console.log(e.pageX-e.offset('left'));
+                x=-(winWidth-e.pageX)/400;
+                y=(winHeight-e.pageY)/200;
+                /*if(y>0&&x>0){x=-x}
+                 if(y<0&&x<0){x=-x}*/
+                console.log(x);
+                console.log(y);
+
+                ubx.style.transform='perspective(1000px) rotate3d('+x+','+y+',0,10deg)';
+                //ubx.style.transform='translate('+x+'px,'+y+'px)';
+                //ubx.style.webkitTransform='translate('+x+'px,'+y+'px)';
+                });
+            }
+        );
+
+
+        /*tt&&clearTimeout(tt);
+        var tt=setTimeout(function () {
+
+            x=-(winWidth-e.pageX)/400;
+            y=(winHeight-e.pageY)/200;
+            /!*if(y>0&&x>0){x=-x}
+             if(y<0&&x<0){x=-x}*!/
+            console.log(x);
+            console.log(y);
+
+            ubx.style.transform='perspective(1000px) rotate3d('+x+','+y+',0,10deg)';
+            //ubx.style.transform='translate('+x+'px,'+y+'px)';
+            //ubx.style.webkitTransform='translate('+x+'px,'+y+'px)';
+
+        },30);*/
+
+
+</script>
+</body>
+</html>

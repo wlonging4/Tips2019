@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>第一周第二天免费课</title>
+</head>
+<body>
+<script>
+    /*
+     【三个判断】
+     ①if,else if,else
+     var num=7;
+     if(num<=0){
+     console.log(num);
+     }else if(num>=1 && num<=10)
+     {
+     console.log("1-10");
+     }else
+     {
+     console.log(">10");
+     }
+     alert是将要输出的内容转换为字符串再输出；
+     if后面紧跟的是条件，我们是看起是否转换为布尔类型是真还是假；
+     如果是真，执行对应的操作语句；如果是假，则继续向下执行；条件可以有多个子条件组成，中间可以用&&（并且，两者皆为真才为真）及||（两个条件有一个为真，整体就为真）隔开；
+     if(1){
+     console.log("ok");
+     }->ok;
+     ->只有一个值是一个值的时候，看其真假，转换为布尔类型之是真是假；
+     if("3px"*3){
+     console.log("0k");
+     }->3px变成NaN,然后看NaN的布尔类型为真还是假->false条件不成立，所以不输出来；
+     if,else is,else可以处理JS中所有的判断需求，最常用的判断语句；
+     ②三元运算符：（条件）？条件成立执行1：条件不成立执行2；
+     三元运算符只是应用于if else里面的一种情况，只是简单的情况；
+     var num=7;
+     if(num>=0){
+     num++;
+     }else{
+     num--;}等于var num=7;num>=0?num++ : num--;
+     num>=0 && num<=20?(num>=10?num++:num--):(num<=-10?num++:num--);
+     reform code:快捷键ctrl+alt+l;
+     回去看一下四种输出；document.writeln;alert;console;.....
+     ③switch case应用于一个变量在不同值的情况下，不同的操作；
+     var num=7;
+     if(num==0){
+     console.log(0)}
+     else if(num==5){
+     console.log(5)}
+     else if(num==10){
+     console.log(10);
+     }else{
+     console.log(num);}
+     转化为一个switch case判断：
+     switch(num){
+     case 0:
+     console.log(0);
+     break;
+
+     case 5:
+     console.log(5);
+     break;
+
+     case 10:
+     console.log(10);
+     break;
+
+     default:
+     console.log(num);
+     }
+     default结尾了不需要添加break;但每一个case都得加上break;
+     case 5:
+     case 10:
+     console.log(10);
+     break;这种情况是指当case等于5或者10的时候都可以输出10；
+     case判定和if else的区别；case默认是case中的每一种情况都是采用三个等号进行比较的，而if else中是两个等号进行判定的，所以在if else 中“2”与2的结果是一样的，但是在switch case中是不能一样的；一个等号是赋值；
+     两个等号是比较大小，两个等号是要求数据值大小一样并且要求数据类型的转换，然后再同样的数据类型下进行比较；
+     三个等号比较，不会默认的进行数据类型的转换；所以“5”===5->false;
+     数据类型不一样的两个值是不一样的，没有可比性；
+     【比较】
+     两个等号进行比较的时候：两个转化的规律如下：
+     ①对象==对象；比较的事引用的地址，一般情况下不相等{}=={}-->false;[]==[]-->false;
+     ②对象==字符串；对象先转化为字符串调用toString，然后比较；[]=={}-->true
+     ③对象==布尔；两边都转换为数字，对象toString->Number比较Boolean;Number('')=0;强制转空数组结果为0；
+     ④对象==数字；对象转换为字符串，字符串转化为数字再比较；[]==1->false
+     ⑤数字==布尔；true==2;->false
+     ⑥字符串==布尔：都转换为数字了""==false->true;
+     ⑦字符串==数字：字符串转化为数字；
+     ⑧null==undefined->true;
+     ⑨null和undefined和其他类型：和其他类型比较都是false，因为这两个对象是没有toString的；null==0;->false和undefined==0->false;
+     ⑩NaN==NaN->false;NaN和任何数据类型的值都不相等；
+     ⑪[]==false;![]==true;
+
+     【三个循环】
+     ①for循环；设置初始值var i=0;设置循环执行条件i<10;执行循环体的内容（~~）；执行最后的累加操作i++；
+     for(var i=0;i<5;i++){
+     console.log(i);->输出0,1,2,3,4
+     }
+     console.log(i);->最终的输出为5
+     for循环中的continue和break;
+     两者的共同点就是循环体中遇到下面循环体的代码就不再执行了；但是遇到continue的话跳出当前循环体继续执行++，然后执行下一轮的循环；break整个循环直接结束，i++也不执行了；
+     BAT面试题
+     for(var i=0;i<10;i++){
+       if(i<=5){
+         i++;
+         continue;
+       }else{
+         i+=2;
+         break;
+       }
+         i+=3;
+         console.log(i);
+         }
+         console.log(i);
+     ->8
+     ②for in循环，遍历一个对象中的属性名和属性值的，有多少个属性，就循环多少次；*/
+/*     var obj={name:"Tim",age:16,height:"179cm",0:10};
+     for (var key in obj){
+     //console.log("ok")}
+     //循环的时候先循环数字属性名，然后再循环字母；在for in循环中想获取我们的属性名，只能用[]，不能用.,因为不能确定是否存在数字属性名；
+      console.log("key:" +key+ "value:" +obj[key]);}
+
+      四：【function】函数数据类型；
+      函数，方法，功能，计划；
+      函数的创建方法：
+      ①字面量方式
+      ②实例创建方式（一般不用）;
+      function sum(){
+      var total=10+25;
+      console.log(total);
+      }打开控制台，没有显示内容了；函数数据类型包含两部分：定义+执行；
+      执行：把指定的方法执行，从而实现相应的功能；
+      var total=0/null的区别:对累加操作没区别;0代表数字值0，跟空字符串""一样占用内存位置,null是空不占任何位置。
+
+      【全局作用域】:当浏览器加载我们的页面的时候，首先会提供让JS运行的环境;
+      对象：1.开辟一个新的存储空间；2、把属性名和属性值放在该空间里；3、讲对象的地址指向该内存空间。
+      函数：1.开辟一个新的内存空间；2、把函数体中的代码当作字符串存储进空间（定义函数的时候，函数存储的只是一堆字符串；函数只定义不执行，就没有任何的意义）；3.把空间的地址赋值给我们的函数名；但是函数还有执行的一步:函数执行的目的，让之前存储的字符串变成JS代码，从而实现对应的功能，这就是函数执行的目的;
+      当函数执行的时候，首先会提供一个供里面代码执行的环境---我们称之为似有作用域；初始化页面的那个作用域叫做全局作用域；
+      形参：形式参数；作用是当制定函数的时候，里面所需的原材料，事先还不知道，只有执行的时候，你传递给我后，我才知道，这样的话我们就用形参提供一个入口
+      如果定义两个形参，只传入一个数，第二个未传进去，值为undefined； number+undefined=undefined;
+      任意数求和，参数不固定；
+      function sum（）{
+      arguments//函数内置的，天生自带的，用来接受函数执行的时候参数值的集合；arguments中存储了我们所有传递进来的参数值；
+      }console.dir(arguments);
+      sum(23,12,54,20,21);
+      arguments获得的结果也是一个类数组；还有个length属性来了解其长度；arguments[0]参数值；arguments.length传递进来的参数个数；还有一个属性callee:代表的是当前函数本身；
+      function sum(){
+      var total=0;
+      for(var i=0;i<arguments.length;i++){
+      var cur=Number(arguments[i]);//强制转化
+      if(isNaN(cur)==true){
+      continue;
+      }//判断是否是number类型
+      total+=cur;
+      }
+      console.log(total);
+      }可以传进去的形参个数不固定；①并且要强制转化非number类型的数据，cur=Number("arguments[i]");为了防止是按照字符串拼接的方式处理的，可以将其转化为数字再相加；②还要再过滤掉非有效的数字；
+      void 0;null;undefined在三元运算符中的else这一步可用这些代表各类空操作；
+      【函数的功能】：
+      ①创建函数，实现功能，方便调用，增加效率->函数封装：低耦合高内聚->减少代码冗余，提高代码的使用效率。
+      ②
+      0和null的区别：0是数值，占内存；null是空的，不占用内存；
+      当函数执行的时候，是成一个私有的作用域，在这个作用域里面定义的变量也是里面自己独有的，这个区域是外界获取不到的，这样形成的保护机制叫做闭包；
+      如果函数没写return，我们在外面获取的默认值是undefined；在函数体当中，跟break和continue差不多作用，遇到return后面都不执行了！
+      console.log(sum);输出函数的代码;
+      console.log(sum());输出函数的结果;
+      函数很重要！！！
+
+
+      前端：通常表现在网站的表现层和结构层，包括与后端交互。JS用来操作前端页面，是页面与用户的交互；node.js用来操作文件和架设服务器；html+css+js+移动端+node.js；
+      */
+
+     //作业：开关灯实现三种循环的多种颜色切换；
+     //作业：隔五行变色；鼠标滑过可以改变背景颜色；
+</script>
+</body>
+</html>
