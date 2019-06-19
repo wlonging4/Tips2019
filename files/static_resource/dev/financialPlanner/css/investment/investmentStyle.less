@@ -1,0 +1,709 @@
+*{ margin: 0; padding: 0;font-family: arial;}
+@baseSize: 75;
+ul,li{ list-style: none;}
+img{border:none}
+a,li,div,select{  text-decoration: none;text-decoration: none;-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color:transparent;}
+input{-webkit-tap-highlight-color:transparent;}
+.clear{content: "."; display: block;height: 0;clear: both;visibility: hidden; }
+::-webkit-scrollbar {
+    display: none;
+}
+.bottomBorder{
+    background-image: linear-gradient(to bottom,#e5e5e5 50%, transparent 50%);
+    background-image: -webkit-linear-gradient(bottom ,#e5e5e5 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.rightBorder{
+    background-image: linear-gradient(to right,transparent 50%,#e5e5e5 50%);
+    background-image: -webkit-linear-gradient( right, transparent 50%,#e5e5e5 50%);
+    background-size:1px 100% ;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+body{
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    &.bgGray{
+        background: #f4f4f4;
+    }
+    &.bodyFixed{
+        height:120rem/@baseSize
+    }
+}
+.listMain{
+    .listCon{
+        padding: 20rem/@baseSize 40rem/@baseSize 20rem/@baseSize 40rem/@baseSize;
+        
+        .country{
+            font-weight: bold;
+            padding: 16rem/@baseSize 0 14rem/@baseSize 0;
+            line-height: 38px;
+            color: #2e2b2d;
+            font-size: 38rem/@baseSize;
+           
+        }
+        
+        
+        .item{
+            margin-bottom: 20rem/@baseSize;
+            width: 100%;
+            height: 120px;
+            height: 32vw;
+            border-radius: 5rem/@baseSize;
+            overflow: hidden;
+            
+            .itemCon{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                .imgBox{
+                    background: url(../../images/investment/defaultImg.jpg) no-repeat center;
+                    background-size: 670rem/@baseSize 240rem/@baseSize;
+                    background-color: #e5e5e5;
+                }
+                .imgBox,.infoBox{
+                   width: 100%;
+                   height: 100%;
+                    display: block;
+                    position: absolute;
+                    z-index: 1;
+                    top:0;
+                    left: 0;
+                    img{
+                        display: none;
+                        width: 100%;
+                        height: 100%;
+                        &.show{
+                            background: #ffffff;
+                            display: inline-block;
+                        }
+                    }
+                    
+                }
+                
+                .infoBox{
+                    z-index: 2;
+                    background: url(../../images/investment/investment_list_item_infoBg.png) repeat-x left bottom;
+                    background-size:1px 89rem/@baseSize;
+                    
+                    .infoWord{
+                        color: #ffffff;
+                        width: 100%;
+                        box-sizing: border-box;
+                        overflow: hidden;
+                        word-break:keep-all;
+                        white-space:nowrap;
+                        text-overflow:ellipsis;
+                        font-size: 28rem/@baseSize;
+                        line-height: 44rem/@baseSize;
+               
+                        height: 53rem/@baseSize;
+                        padding: 0 20rem/@baseSize 15rem/@baseSize 20rem/@baseSize;
+                        position: absolute;
+                        bottom:0;
+                        left: 0;
+                       
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+.detailsMain{
+    /*padding-top: 15rem/@baseSize;*/
+    .tabsBox{
+        display: none;
+        position: absolute;
+        padding-top:15rem/@baseSize;
+        width: 100%;
+        top:0;
+        left: 0;
+        z-index: 9999;
+        background: #f4f4f4;
+    }
+    .tabsContent{
+        display: none;    
+    }
+    
+    .tabs{
+        
+       height:90rem/@baseSize; 
+       background: #FFFFFF;
+       position: relative;
+       .bottomBorder;
+       
+       .tabsCon{
+         /*  padding: 22rem/@baseSize 15rem/@baseSize;*/
+         /*  position: relative;*/
+           .itemList{
+               .tabItem{
+                   display: inline-block;
+                   width: 49%;
+                   text-align: center;
+                   height: 46rem/@baseSize;
+                   line-height: 46rem/@baseSize;
+                   color: #adadad;
+                   font-size: 30rem/@baseSize;
+                   .rightBorder;
+                   
+                   &:last-child{
+                       background: none;
+                   }
+                   
+                   &.active{
+                      color: #de9226;
+                   }
+               }
+           }
+           .activeLine{
+               width: 160rem/@baseSize;
+               height: 2px;
+               background:#de9226;
+               position: absolute;
+               bottom:0; 
+               left:115rem/@baseSize ;
+           }
+       }
+    }
+    
+    .contentItem{
+        background: #FFFFFF;
+        &:after,&:before{
+            .clear
+        }
+        .backgroundConfigurationCon{
+            min-height: 80vh;
+            
+        }
+        &.empty{
+            display: none;
+            background: none;
+        }
+        
+        &.active{
+            display: block;
+        }
+        &.tabLink{
+            margin-top: 15rem/@baseSize;
+        }
+        
+        .materialLink{
+            padding: 0 25rem/@baseSize;
+            .item{
+                .bottomBorder;
+                .itemCon{
+                    line-height: 44rem/@baseSize;
+                    height: 44rem/@baseSize;
+                    padding:22rem/@baseSize 0;
+                    position: relative;
+                }
+                .word{
+                    padding-right: 50rem/@baseSize;
+                    width: 100%;
+                    box-sizing: border-box;
+                    height: 100%;
+                    color: #444444;
+                    font-size: 32rem/@baseSize;
+                    overflow: hidden;
+                    word-break:keep-all;
+                    white-space:nowrap;
+                    text-overflow:ellipsis;
+                    
+                }
+                .arrowIcon{
+                    background: url(../../images/investment/investment_list_arrowIcon.png) no-repeat;
+                    background-size: 14rem/@baseSize  26rem/@baseSize;
+                    position: absolute;
+                    width:14rem/@baseSize;
+                    height: 26rem/@baseSize;
+                    right: 0;
+                    top:30rem/@baseSize;
+                    
+                }
+                &:last-child{
+                    background: none;
+                }
+            }
+        }
+        
+        .emptyBox{
+            padding-top: 200rem/@baseSize;
+            text-align: center;
+            
+            .emptyIcon{
+                background: url(../../images/investment/investment_list_emptyIcon.png) no-repeat center;
+                background-size: 200rem/@baseSize 200rem/@baseSize;
+               
+                height: 200rem/@baseSize;
+                margin-bottom: 50rem/@baseSize;
+            }
+            .word{
+                font-size: 30rem/@baseSize;
+                line-height: 40rem/@baseSize;
+                color: #999999;
+            }
+        }
+    }
+}
+
+.fixedFooter{
+    position: fixed;
+    width: 100%;
+    height:115rem/@baseSize ;
+    left: 0;
+    bottom:0;
+    box-shadow: 0px -3rem/@baseSize 16rem/@baseSize 0px rgba( 9, 2, 4 ,0.1);
+    background: rgba(255,255,255,0.95);
+    z-index: 9999;
+    
+    .contactInfo{
+        padding-top: 15rem/@baseSize;
+        text-align: center;
+        color:#ccaa76 ;
+        font-size: 28rem/@baseSize;
+        line-height: 44rem/@baseSize;
+        span.word{
+            display: inline-block;
+            padding:20rem/@baseSize 0;
+            font-size: 30rem/@baseSize;
+            line-height: 44rem/@baseSize;
+            
+        }
+        span.iphoneIcon{
+            background: url(../../images/investment/investment_list_iphoneIcon.png) no-repeat center;
+            display: inline-block;
+            background-size: 80rem/@baseSize 80rem/@baseSize;
+            width: 84rem/@baseSize;
+            height:84rem/@baseSize;
+            line-height:84rem/@baseSize;
+            margin-left: 30rem/@baseSize;
+        }
+    }
+    
+    
+    
+    
+}
+
+.materialMain .materialCon,.contentItem .backgroundConfigurationCon{
+    padding: 20rem/@baseSize 40rem/@baseSize;
+    
+    width: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling : touch;
+    box-sizing: border-box;
+    font-size:28rem/@baseSize;
+    word-wrap:break-word; 
+    word-break:break-all; 
+   /* margin-bottom: 120rem/@baseSize;*/
+    *{
+        max-width: 100%;
+    }
+    img{
+        display: inline-block;
+    }
+    
+}
+
+/*以px为单位*/
+body.shareBody{
+    padding-bottom: 80px;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+.shareBox{  /*display: none;*/ position: relative; padding: 10px 15px 0 12px; box-sizing: border-box; background: rgba(255,255,255,0.95); width: 100%; height: 80px; position: fixed; bottom: 0; z-index: 9999; box-shadow: 0.47px 0.171px 1px 0px rgba( 148, 148, 148,0.3 );}
+.shareBox .colseBtn{ display: block; background: url(../../images/investment/investment_list_item_shareCloseBtnBg.png) no-repeat center center; background-size: 15px 15px;width:20px;height: 20px; position: absolute; top:7.5px; right: 12px;}
+.shareHeadImg{ width: 50px; height: 50px; float: left;margin-right: 8px; border-radius: 50px; overflow: hidden; background: url(../../images/captainInvite/defaultHeadPortrait.png) no-repeat center;
+                    background-size: 50px 50px;
+                    background-color: #e5e5e5;}
+.shareHeadImg img{ display: none; width: 100%; height: 100%; border-radius: 100%; border:1px solid #e6e6e6; overflow: hidden; }
+.shareHeadImg img.show{display: block;}
+.shareContent{ width: 55%; float: left;}
+.topWord{ color: #444444; font-size: 14px; line-height: 24px; padding-top: 4px;}
+.bottomWord{color: #929292; font-size: 12px; line-height:24px;}
+.shareBtn{ float: right; width: 80px;height: 30px;}
+.shareBtn a,.shareBtn span{ float: left; display: inline-block; position: relative;top:15px;  width: 100%; height: 30px; color: #FFFFFF; line-height: 30px; text-align: center; border-radius: 5px; font-size: 15px; background: #de9226;}
+@media screen and (max-width: 360px) {
+    .shareBtn{width: 65px;}
+    .shareBtn a{width: 65px;}
+}
+.sharePage{ padding-bottom: 287px;}
+.sharePage .shareBox{ display: block;}
+.sharePage footer{position: absolute; bottom:90px; }
+.sharePage .index_count{ margin-bottom: 10px;}
+.sharePage  #cash-tabBox ul.tabs{ margin-top: 0;}
+
+/*以px为单位:end*/
+
+/*水印*/
+.watermarkBox{ position:absolute; top:0; left: 0; width: 100%; height: 0; z-index: 99999;}
+.watermark{-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color:transparent; position: absolute;width:100%; text-align:center;height:100px; color: rgba(204,170,118,0.5);  font-size: 25px;-webkit-transform-origin:  center center;  transform: rotate( -25deg)  ;-webkit-transform: rotate( -25deg); perspective:200px; z-index: 2; word-spacing:5px;}
+
+
+.watermark{top:-300px}
+
+.watermark:nth-of-type(1){ top:550rem/@baseSize;}
+.watermark:nth-of-type(2){ top:1500rem/@baseSize;}
+.watermark:nth-of-type(3){ top:2500rem/@baseSize;}
+.watermark:nth-of-type(4){ top:3500rem/@baseSize;}
+.watermark:nth-of-type(5){ top:4500rem/@baseSize;}
+.watermark:nth-of-type(6){ top:5500rem/@baseSize;}
+.watermark:nth-of-type(7){ top:6500rem/@baseSize;}
+.watermark:nth-of-type(8){ top:7500rem/@baseSize;}
+.watermark:nth-of-type(9){ top:8500rem/@baseSize;}
+.watermark:nth-of-type(10){ top:9500rem/@baseSize;}
+.watermark:nth-of-type(11){ top:10500rem/@baseSize;}
+.watermark:nth-of-type(12){ top:11500rem/@baseSize;}
+.watermark:nth-of-type(13){ top:12500rem/@baseSize;}
+.watermark:nth-of-type(14){ top:13500rem/@baseSize;}
+.watermark:nth-of-type(15){ top:14500rem/@baseSize;}
+.watermark:nth-of-type(16){ top:15500rem/@baseSize;}
+.watermark:nth-of-type(17){ top:16500rem/@baseSize;}
+.watermark:nth-of-type(18){ top:17500rem/@baseSize;}
+.watermark:nth-of-type(19){ top:18500rem/@baseSize;}
+.watermark:nth-of-type(20){ top:19500rem/@baseSize;}
+.watermark:nth-of-type(21){ top:20500rem/@baseSize;}
+.watermark:nth-of-type(22){ top:21500rem/@baseSize;}
+.watermark:nth-of-type(23){ top:22500rem/@baseSize;}
+.watermark:nth-of-type(24){ top:23500rem/@baseSize;}
+.watermark:nth-of-type(25){ top:24500rem/@baseSize;}
+.watermark:nth-of-type(26){ top:25500rem/@baseSize;}
+.watermark:nth-of-type(27){ top:26500rem/@baseSize;}
+.watermark:nth-of-type(28){ top:27500rem/@baseSize;}
+.watermark:nth-of-type(29){ top:28500rem/@baseSize;}
+.watermark:nth-of-type(30){ top:29500rem/@baseSize;}
+.watermark:nth-of-type(31){ top:30500rem/@baseSize;}
+.watermark:nth-of-type(32){ top:31500rem/@baseSize;}
+.watermark:nth-of-type(33){ top:32500rem/@baseSize;}
+.watermark:nth-of-type(34){ top:33500rem/@baseSize;}
+.watermark:nth-of-type(35){ top:34500rem/@baseSize;}
+.watermark:nth-of-type(36){ top:35500rem/@baseSize;}
+.watermark:nth-of-type(37){ top:36500rem/@baseSize;}
+.watermark:nth-of-type(38){ top:37500rem/@baseSize;}
+.watermark:nth-of-type(39){ top:38500rem/@baseSize;}
+.watermark:nth-of-type(40){ top:39500rem/@baseSize;}
+.watermark:nth-of-type(41){ top:40500rem/@baseSize;}
+.watermark:nth-of-type(42){ top:41500rem/@baseSize;}
+.watermark:nth-of-type(43){ top:42500rem/@baseSize;}
+.watermark:nth-of-type(44){ top:43500rem/@baseSize;}
+.watermark:nth-of-type(45){ top:44500rem/@baseSize;}
+.watermark:nth-of-type(46){ top:45500rem/@baseSize;}
+.watermark:nth-of-type(47){ top:46500rem/@baseSize;}
+.watermark:nth-of-type(48){ top:47500rem/@baseSize;}
+.watermark:nth-of-type(49){ top:48500rem/@baseSize;}
+.watermark:nth-of-type(50){ top:49500rem/@baseSize;}
+.watermark:nth-of-type(51){ top:50500rem/@baseSize;}
+.watermark:nth-of-type(52){ top:51500rem/@baseSize;}
+.watermark:nth-of-type(53){ top:52500rem/@baseSize;}
+.watermark:nth-of-type(54){ top:53500rem/@baseSize;}
+.watermark:nth-of-type(55){ top:54500rem/@baseSize;}
+.watermark:nth-of-type(56){ top:55500rem/@baseSize;}
+.watermark:nth-of-type(57){ top:56500rem/@baseSize;}
+.watermark:nth-of-type(58){ top:57500rem/@baseSize;}
+.watermark:nth-of-type(59){ top:58500rem/@baseSize;}
+.watermark:nth-of-type(60){ top:59500rem/@baseSize;}
+
+/*水印:end*/
+
+
+
+body {
+    background:#fff;
+    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size:12px;
+}
+.img img {
+    width:100%;
+    display:block;
+}
+#top {
+    position:absolute;
+    top:0;
+    z-index:5;
+    width:100%;
+    background:#fff;
+}
+#top .addr {
+    height:36px;
+    margin:0 auto;
+    display:block;
+}
+#top .search {
+    position:absolute;
+    top:0;
+    right:0;
+    height:36px;
+    display:block;
+}
+#nav .swiper-wrapper{
+  padding: 22rem/@baseSize 15rem/@baseSize;
+}
+#nav .swiper-slide span{
+   /* margin:0 5px;*/
+    text-align:center;
+    display:block;
+    height: 46rem/@baseSize;
+   line-height: 46rem/@baseSize;
+   color: #adadad;
+   font-size: 30rem/@baseSize;
+    .rightBorder;
+ /*   line-height:2.5;
+    font-size:14px;
+    color:#333333;*/
+}
+#nav .swiper-slide:last-child span{
+    background: none;
+}
+.swiper-wrapper,.swiper-container,.swiper-slide{
+    position: static;
+}
+#nav .bar {
+    width:50px;
+    height:3px;
+    position:absolute;
+    bottom:0px;
+    left: 0;
+}
+#nav .bar .color {
+    width:40%;
+    margin:0 auto;
+    height:2px;
+    background:#de9226;
+}
+.banner img {
+    width:100%;
+    display:block;
+}
+.banner .swiper-pagination {
+    left:auto;
+    right:7px;
+    bottom:7px;
+    width:auto;
+    padding:2px 7px;
+    border-radius:10px;
+    color:#fff;
+    background:rgba(0,0,0,.3);
+}
+#page {
+    margin-bottom:50px;
+    height:100%;
+}
+#page .slidepage {
+    height:100%;
+}
+.scroll {
+    height:100%;
+}
+.slidescroll {
+    height:auto;
+}
+#footer {
+    position:fixed;
+    bottom:0;
+    z-index:5;
+}
+.contactInfoBox{
+    display: none;
+}
+.swiper-container-android .swiper-slide, .swiper-wrapper{
+    -webkit-transform: none; 
+    transform: none; 
+}
+/*.swiper-slide, .swiper-wrapper{
+    height: 100vh;
+    width: 100%;
+}*/
+/*lend */
+.finance{
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    .detailsMain .swiper-slide:first-child .contentItem{
+        min-height: 100%;
+    }
+    .detailsMain .contentItem .backgroundConfigurationCon{
+        min-height: auto;
+    }
+    .tabsBox,.tabsContent,.financePhone{
+        display: block;
+    }
+    #page{
+        height: 100vh;
+        margin-bottom: 0;
+    }
+    .tabsContent .swiper-slide{
+        height: 1200rem/@baseSize;
+        height: 100vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling : touch;
+        box-sizing: border-box;
+        padding:100rem/@baseSize 0 125rem/@baseSize ;
+
+    }
+}
+
+.lend{
+    .detailsMain .contentItem .backgroundConfigurationCon{
+        height: 100vh;
+        box-sizing: border-box;
+        min-height: auto;
+        overflow: scroll;
+        padding-bottom: 130rem/@baseSize;
+    }
+    #page{
+        height: 100vh;
+        margin-bottom: 0;
+    }
+    .tabsContent,.lendPhone{
+        display: block;
+        
+    }
+
+}
+.listMain{
+     .emptyBox{
+        display: none;
+        padding-top: 200rem/@baseSize;
+        text-align: center;
+        
+        .emptyIcon{
+            background: url(../../images/investment/investment_list_emptyIcon.png) no-repeat center;
+            background-size: 200rem/@baseSize 200rem/@baseSize;
+           
+            height: 200rem/@baseSize;
+            margin-bottom: 50rem/@baseSize;
+        }
+        .word{
+            font-size: 30rem/@baseSize;
+            line-height: 40rem/@baseSize;
+            color: #999999;
+        }
+    }
+}
+body.listEmpty{
+    background: #F4F4F4;
+    .emptyBox{
+       display: block;
+   } 
+}
+.materialMain{
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+.materialMain .materialCon{
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #666;
+    padding: 14px;
+    background: #FFFFFF;
+    word-wrap: break-word;
+  
+}
+.shareBody{
+    .materialMain .materialCon,.detailsCon{
+          padding-bottom: 90px;
+    }
+}
+
+/*底部加载更多*/
+.loadingBox{
+    display: none;
+    height: 80rem/@baseSize;
+    line-height: 90rem/@baseSize;
+    text-align: center;
+    font-size: 24rem/@baseSize;
+    color: #999999;
+    position: relative;
+    &.show{
+        display: block;
+    }
+    &.hide{
+        display:none;
+    }
+    .loading{
+        position: relative;
+        display: inline-block;
+        padding-left: 70rem/@baseSize;
+        &:after{
+            content: " ";
+            width: 50rem/@baseSize;
+            height:80rem/@baseSize;
+            display: inline-block;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            background:url(../../images/redEnvelope/loadingLogo.gif) center  no-repeat;
+            background-size: 50rem/@baseSize 80rem/@baseSize;
+        }
+    }
+    
+    
+    
+}
+.noMoreTips {
+    width: 100%;
+    text-align: center;
+    font-size: 24rem/@baseSize;
+    line-height: 30rem/@baseSize;
+    height: 30rem/@baseSize;
+    color: #cccccc;
+    margin-bottom:20rem/@baseSize;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    &.hide{
+        display: none;
+    }
+    &.show{
+        display: block;
+    }
+    .noMoreTipsWord{
+        background: #FFFFFF;
+        display: inline-block;
+        position: relative;
+        width: 150rem/@baseSize;
+        z-index: 2;
+    }
+    .noMoreLine{
+        content: " ";
+        position: absolute;
+        height: 15rem/@baseSize;
+        display: block; 
+        top:0;
+        left:-50rem/@baseSize;
+        z-index: 1;
+        .bottomBorder;
+         width: 300rem/@baseSize;
+         left: 50%;
+         transform-origin:left top; 
+         -webkit-transform-origin:left top; 
+         transform: translateX(-50%);
+         -webkit-transform: translateX(-50%);
+        
+    }
+}
+/*加载转表样式*/
+.loadingDiv{ 
+     width: 100%; height: 100%; position: fixed; top:0; left: 0;z-index: 3; background:url(../../images/captainInvite/xinghuoloading.gif) no-repeat center center rgba(255,255,255,0.4);
+    
+    &.show{
+        display: block;
+    }
+    &.hidden{
+        display: none;
+    }
+}
+/*加载转表样式：end*/

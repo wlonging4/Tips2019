@@ -1,0 +1,329 @@
+@base:75;
+.xhModal{
+  &.ui-dialog{
+    border-width: 0;
+    border-radius: 12rem/@base;
+    overflow: hidden;
+  }
+  .ui-dialog-header{
+    border-bottom: none;
+    .ui-dialog-close{
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      opacity: 1;
+      &:focus,&:hover{
+        opacity: 1;
+        color: transparent;
+      }
+    }
+  }
+  .ui-dialog-title{
+    color: #444042;
+    font-size: 36rem/@base;
+    padding-top: 40rem/@base;
+    padding-bottom: 20rem/@base;
+    text-align: center;
+    box-sizing: content-box;
+    line-height: 40rem/@base;
+    height: 40rem/@base;
+    min-height: 40rem/@base;
+  }
+  .ui-dialog-body{
+    padding: 30rem/@base 50rem/@base 30rem/@base 50rem/@base;
+
+  }
+  .ui-dialog-content{
+    line-height: 46rem/@base;
+    font-size: 30rem/@base;
+    color: #6F6C6D;
+    text-align: center;
+  }
+  .ui-dialog-footer{
+    padding: 0;
+    //border-top: 1px solid #ebebeb;
+    position: relative;
+    &:after{
+      content: ".";
+      text-indent: -9999px;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 1px;
+      transform: scale(1,0.5);
+      width: 100%;
+      background: #ebebeb;
+    }
+  }
+  .ui-dialog-button{
+    float: none;
+    display: flex;
+    button{
+      color: #6F6C6D;
+      flex: 1;
+      border: none;
+      margin: 0;
+      font-size: 30rem/@base;
+      padding: 0;
+      //height: 48rem/@base;
+      line-height: 100rem/@base;
+      border-radius: 0;
+      box-shadow: none;
+      outline: none;
+      &:focus{
+        background: none;
+        outline: none;
+      }
+      &:active{
+        box-shadow: none;
+        background: none;
+        outline: none;
+      }
+    }
+    .ui-dialog-autofocus{
+      background: transparent;
+      color: #C4A06C;
+      border-left: 1rem/@base solid #ebebeb;
+      &:focus{
+        background: transparent;
+        color: #C4A06C;
+        border: none;
+        border-left: 1rem/@base solid #ebebeb;
+      }
+    }
+
+    [i-id='button-confirm']{
+      border-left: 1rem/@base solid #ebebeb;
+      color: #C4A06C;
+    }
+  }
+}
+
+//计算器弹窗
+.calculator{
+  &.ui-dialog{
+    //position: fixed;
+    //bottom: 0;
+    //left: 0;
+    //width: 80%;
+    border-width: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    .calculatorItem{
+      height: 100rem/@base;
+      font-size: 28rem/@base;
+      line-height: 100rem/@base;
+      color: #6f6c6d;
+      padding: 0 40rem/@base;
+      text-align: left;
+      dt{
+        display: inline-block;
+      }
+      dd{
+        height: 100rem/@base;
+        //line-height: 100rem/@base;
+        float: right;
+        -webkit-tap-highlight-color:transparent;
+        &.red{
+            color: #d12020;
+        }
+        strong{
+          font-size: 32rem/@base;
+          margin-right: 15rem/@base;
+        }
+      }
+      &.inputItem{
+        dd{
+          //width: 520rem/@base;
+          position: relative;
+          width: 76%;
+          border-bottom: 2rem/@base solid #f2f2f2;
+          text-align: right;
+          box-sizing: border-box;
+          align-items: baseline;
+          &.select{
+            cursor: pointer;
+          }
+        }
+        input{
+          border: none;
+          text-align: right;
+          font-weight: 600;
+          color: #2e2b2d;
+          font-size: 32rem/@base;
+          outline: none;
+          padding: 0rem/@base;
+          width: 70%;
+          //width: 250rem/@base;
+          //height: 98rem/@base;
+          //line-height: 98rem/@base;
+          //vertical-align: middle;
+          //display: block;
+          //float: right;
+          caret-color:#c4a06c;
+          margin-right: 5rem/@base;
+          //padding-bottom: 4rem/@base;
+          &::placeholder {
+            color: #cbcbcb;
+            font-weight: normal;
+            font-size: 28rem/@base;
+          }
+
+        }
+        span.unit{
+          display: inline-block;
+          float: right;
+        }
+        span.select-val{
+          margin-right: 15rem/@base;
+          color: #c4a06c;
+          cursor: pointer;
+        }
+        i.input-del{
+          display: inline-block;
+          float: right;
+          width: 26rem/@base;
+          height: 26rem/@base;
+          background: url("../../images/form/btn-del.png") center center no-repeat;
+          background-size: 26rem/@base 26rem/@base;
+          vertical-align: middle;
+          box-sizing: content-box;
+          padding: 10rem/@base;
+          margin-top: 25rem/@base;
+          display: none;
+        }
+        i.arrow{
+            display: inline-block;
+            width: 18rem/@base;
+            height: 18rem/@base;
+            border-color:#cbcbcb;
+            border-width: 0 0 4rem/@base 4rem/@base;
+            border-style: solid;
+            transform:rotateZ(-45deg);
+            &.active{
+              transform:rotateZ(135deg);
+            }
+        }
+      }
+
+    }
+    .submitBox{
+      padding: 0 40rem/@base 10rem/@base;
+      a{
+        display: block;
+        height: 88rem/@base;
+        line-height: 88rem/@base;
+        font-size: 34rem/@base;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 6rem/@base;
+        overflow: hidden;
+        background: linear-gradient(to right, #EAD2A2, #C19E6E);
+        outline: none;
+      }
+    }
+
+  }
+  .ui-dialog-header{
+    border-bottom: none;
+    position: relative;
+    .ui-dialog-close{
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      font-weight: normal;
+      color: transparent;
+      background: url("../../images/modal/btn_close.png") center center no-repeat;
+      text-indent: -9999px;
+      width: 40rem/@base;
+      height: 40rem/@base;
+      background-size: 36rem/@base 36rem/@base;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      box-sizing: content-box;
+      padding: 4px;
+      opacity: 1;
+      &:focus,&:hover{
+        opacity: 1;
+        color: transparent;
+      }
+    }
+  }
+  .ui-dialog-title{
+    color: #444042;
+    font-size: 36rem/@base;
+    padding-top: 40rem/@base;
+    padding-bottom: 20rem/@base;
+    text-align: center;
+    box-sizing: content-box;
+    line-height: 40rem/@base;
+    height: 40rem/@base;
+    min-height: 40rem/@base;
+    font-weight: normal;
+  }
+  .ui-dialog-body{
+    padding: 30rem/@base 50rem/@base 30rem/@base 50rem/@base;
+
+  }
+  .ui-dialog-content{
+    line-height: 46rem/@base;
+    font-size: 30rem/@base;
+    color: #6F6C6D;
+    text-align: center;
+  }
+  .ui-dialog-footer{
+    display: none;
+    padding: 0;
+    border-top: 1px solid #ebebeb;
+
+  }
+  .ui-dialog-button{
+    float: none;
+    display: flex;
+    button{
+      color: #6F6C6D;
+      flex: 1;
+      border: none;
+      margin: 0;
+      font-size: 30rem/@base;
+      padding: 0;
+      //height: 48rem/@base;
+      line-height: 100rem/@base;
+      border-radius: 0;
+      box-shadow: none;
+      &:focus{
+        box-shadow: none;
+        background: none;
+      }
+      &:active{
+        box-shadow: none;
+        background: none;
+      }
+    }
+    .ui-dialog-autofocus{
+      background: transparent;
+      color: #C4A06C;
+      border-left: 1rem/@base solid #ebebeb;
+      &:focus{
+        background: transparent;
+        color: #C4A06C;
+        border: none;
+        border-left: 1rem/@base solid #ebebeb;
+      }
+    }
+
+    [i-id='button-confirm']{
+      border-left: 1rem/@base solid #ebebeb;
+      color: #C4A06C;
+    }
+  }
+}
+
+
+//蒙版的透明度
+.ui-popup-backdrop{
+  opacity: 0.7!important;
+}

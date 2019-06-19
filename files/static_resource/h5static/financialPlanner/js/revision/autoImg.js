@@ -1,0 +1,1 @@
+$(document).ready(function(){var i=$(".li-img").width(),g=$(".li-img").height(),h=$(".li-img").find("img");g/i>341/750?h.height(g):h.width(i)});

@@ -1,0 +1,496 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+}
+ul,
+li {
+  list-style: none;
+}
+a,
+li,
+div,
+select {
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+.clear {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+body {
+  background: #F4F4F4;
+}
+body.headerFixed {
+  padding-top: 7.306666666666667rem;
+}
+body.bgWhite {
+  background: #ffffff;
+}
+.topBorder {
+  background-image: linear-gradient(to top, #e5e5e5 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(top, #e5e5e5 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.bottomBorder {
+  background-image: linear-gradient(to bottom, #e5e5e5 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(bottom, #e5e5e5 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.mainBg {
+  position: fixed;
+  top: 0;
+  width: 10rem;
+  height: 17.786666666666665rem;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  z-index: -1;
+}
+.mainBg .bgTop {
+  background: url(../../images/redEnvelope/redEnvelopeDetails_bgMain.jpg) top center no-repeat;
+  background-size: 10rem 12.666666666666666rem;
+  width: 10rem;
+  height: 12.666666666666666rem;
+  margin: 0 auto;
+}
+.mainBg .bgBottom {
+  background: url(../../images/redEnvelope/redEnvelopeDetails_bgBottom.jpg) top center no-repeat #fafafa;
+  background-size: 10rem 5.333333333333333rem;
+  width: 10rem;
+  min-height: 5.12rem;
+}
+.main .mainTop {
+  /*background: url(../../images/redEnvelope/redEnvelopeDetails_bgMain.jpg) top center no-repeat ;
+        background-size: 750rem/@baseSize 950rem/@baseSize;
+        width: 750rem/@baseSize; 
+        height:950rem/@baseSize;*/
+  margin: 0 auto;
+}
+.main .mainBottom {
+  /*background: url(../../images/redEnvelope/redEnvelopeDetails_bgBottom.jpg) top center no-repeat #fafafa;
+        background-size: 750rem/@baseSize 384rem/@baseSize;
+        width: 750rem/@baseSize; 
+        min-height:384rem/@baseSize;*/
+  margin: 0 auto;
+}
+.main .mainTop {
+  padding-top: 2.3333333333333335rem;
+  box-sizing: border-box;
+}
+.main .mainTit {
+  /*  background: url(../../images/redEnvelope/redEnvelopeDetails_titile.png) no-repeat;
+        background-size:394rem/@baseSize 71rem/@baseSize;
+        width: 394rem/@baseSize;
+        height: 71rem/@baseSize;
+        margin: 0 auto 75rem/@baseSize auto;*/
+  font-size: 0.6933333333333334rem;
+  color: #ffffdc;
+  padding: 0 0.13333333333333333rem;
+  line-height: 0.9066666666666666rem;
+  text-align: center;
+  text-shadow: 0.03333333333333333rem 0.05773333333333333rem 0.10666666666666667rem #663f1a;
+  margin: 0 auto 1rem auto;
+  /*  -moz-transform: matrix( 1.08000004291534,0,0,1.08,0,0);
+          -webkit-transform: matrix( 1.08000004291534,0,0,1.08,0,0);
+          -ms-transform: matrix( 1.08000004291534,0,0,1.08,0,0);*/
+  width: 100%;
+  box-sizing: border-box;
+}
+/*  .星火奖励红包 {
+  
+ 
+  position: absolute;
+  left: 195.383px;
+  top: 273.001px;
+  z-index: 28;
+}*/
+.main .box {
+  width: 100%;
+}
+.main .box .top {
+  background: url(../../images/redEnvelope/redEnvelopeDetails_top.png);
+  background-size: 8.8rem 4.4rem;
+  width: 8.8rem;
+  height: 4.4rem;
+  margin: 0 auto;
+  padding-top: 0.4rem;
+  box-sizing: border-box;
+}
+.main .box .center {
+  background: url(../../images/redEnvelope/redEnvelopeDetails_center.png) repeat;
+  background-size: 8.8rem 0.8rem;
+  width: 8.8rem;
+  height: auto;
+  margin: -2px auto 0 auto;
+  min-height: 0.5333333333333333rem;
+  box-sizing: border-box;
+}
+.main .box .bottom {
+  background: url(../../images/redEnvelope/redEnvelopeDetails_bottom.png) no-repeat;
+  background-size: 8.8rem 3.2rem;
+  width: 8.8rem;
+  height: 3.2rem;
+  margin: -1px auto 0 auto;
+  box-sizing: border-box;
+}
+.main .box .top .tit {
+  color: #ac6a2a;
+  font-size: 0.3466666666666667rem;
+  text-align: center;
+  line-height: 0.6133333333333333rem;
+}
+.main .box .top .amount {
+  text-align: center;
+  padding-top: 0.2rem;
+  color: #d5353d;
+  font-size: 0.48rem;
+  line-height: 1.3333333333333333rem;
+}
+.main .box .top .amount .unit {
+  position: relative;
+  bottom: 0.06666666666666667rem;
+}
+.main .box .top .amount .num {
+  font-size: 1.3333333333333333rem;
+}
+.main .box .top .timeDate {
+  text-align: center;
+  font-size: 0.37333333333333335rem;
+  color: #ac6a2a;
+}
+.main .box .center {
+  padding: 0 1.3333333333333333rem;
+  text-align: center;
+}
+.main .box .center .info {
+  color: #ac6a2a;
+  font-size: 0.32rem;
+  line-height: 0.5333333333333333rem;
+  min-height: 0.5333333333333333rem;
+  padding-top: 0.13333333333333333rem;
+}
+.main .box .bottom {
+  position: relative;
+}
+.main .box .bottom .bottomCon {
+  position: absolute;
+  left: 0;
+  bottom: 0.5333333333333333rem;
+  width: 100%;
+}
+.main .box .bottom .bottomCon .time {
+  color: #f8d199;
+  font-size: 0.32rem;
+  text-align: center;
+}
+.main .box .bottom .logoIcon {
+  background: url(../../images/redEnvelope/redEnvelopeDetails_logo.png) no-repeat;
+  background-size: 1.2266666666666666rem 1.24rem;
+  width: 1.2266666666666666rem;
+  height: 1.24rem;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  top: -1.4666666666666666rem;
+}
+.main .mainBottom {
+  padding-top: 0.6666666666666666rem;
+  box-sizing: border-box;
+}
+.main .mainBottom .mainBottomCon {
+  width: 8.8rem;
+  margin: 0 auto;
+}
+.main .mainBottom .redEnNum {
+  color: #ac6a2a;
+  font-size: 0.3466666666666667rem;
+  text-align: center;
+  line-height: 0.5333333333333333rem;
+  margin-bottom: 0.4rem;
+}
+.main .mainBottom .redEnNum.disabled {
+  color: #929292;
+}
+.main .mainBottom .btnBox .btn {
+  display: block;
+  border-radius: 0.26666666666666666rem;
+  background-image: -moz-linear-gradient(90deg, #ca333d 0%, #db3c47 100%);
+  background-image: -webkit-linear-gradient(90deg, #ca333d 0%, #db3c47 100%);
+  background-image: -ms-linear-gradient(90deg, #ca333d 0%, #db3c47 100%);
+  box-shadow: 0.013333333333333334rem 0.023093333333333334rem 0.05333333333333334rem 0px #6a2b2f;
+  font-size: 0.4533333333333333rem;
+  color: #ffffff;
+  line-height: 1.2666666666666666rem;
+  width: 100%;
+  height: 1.2666666666666666rem;
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+.main .mainBottom .btnBox .btn.disabled {
+  background-image: -moz-linear-gradient(90deg, #9e9e9e 0%, #9c9c9c 100%);
+  background-image: -webkit-linear-gradient(90deg, #9e9e9e 0%, #9c9c9c 100%);
+  background-image: -ms-linear-gradient(90deg, #9e9e9e 0%, #9c9c9c 100%);
+  box-shadow: 0.013333333333333334rem 0.023093333333333334rem 4px 0rem #626262;
+}
+.main .tips {
+  padding-left: 5em;
+  position: relative;
+  color: #cda784;
+  font-size: 0.32rem;
+  line-height: 0.5333333333333333rem;
+  padding-bottom: 0.5333333333333333rem;
+}
+.main .tips .tipslab {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0.5333333333333333rem;
+  line-height: 0.5333333333333333rem;
+}
+.main .tips .tipsCon2 {
+  color: #ac6a2a;
+  text-indent: 1rem;
+}
+/*使用明细页*/
+.userList {
+  width: 10rem;
+  margin: 0 auto;
+}
+.userList .fixBox {
+  position: fixed;
+  top: 0;
+  background: #F4F4F4;
+}
+.userList .header {
+  background: url(../../images/redEnvelope/redEnvelopeUseList_bg.jpg) top center no-repeat;
+  background-size: 10rem 4.266666666666667rem;
+  width: 10rem;
+  height: 4.266666666666667rem;
+  position: relative;
+  text-align: center;
+  margin: 0 auto 1.8666666666666667rem auto;
+}
+.userList .headerInfo {
+  padding-top: 0.6666666666666666rem;
+}
+.userList .redAmount {
+  margin-bottom: 0.13333333333333333rem;
+}
+.userList .redAmount span {
+  display: inline-block;
+}
+.userList .redAmount .num {
+  font-size: 0.8533333333333334rem;
+  height: 1.0666666666666667rem;
+  line-height: 1.0666666666666667rem;
+  color: #ffffff;
+  margin-right: 0.13333333333333333rem;
+}
+.userList .redAmount .unit {
+  font-size: 0.4rem;
+  color: #FFFFFF;
+}
+.userList .fullCutAmount {
+  height: 0.56rem;
+  overflow: hidden;
+}
+.userList .fullCutCon {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 0.5866666666666667rem;
+  line-height: 0.8266666666666667rem;
+  padding: 0rem 0.26666666666666666rem;
+  border-radius: 0.5333333333333333rem;
+  border: 1px solid #FFFFFF;
+  transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  transform-origin: top center;
+  -webkit-transform-origin: top center;
+  white-space: pre;
+}
+.userList .date {
+  font-size: 0.3466666666666667rem;
+  line-height: 0.6666666666666666rem;
+  color: #ac6a2a;
+  margin-bottom: 0.26666666666666666rem;
+}
+.userList .linkDetails {
+  display: block;
+  background: url(../../images/redEnvelope/redEnvelopeUseList_arrow.png) top center no-repeat;
+  background-size: 0.18666666666666668rem 0.3466666666666667rem;
+  width: 1.0666666666666667rem;
+  height: 1.0666666666666667rem;
+  position: absolute;
+  right: 0.13333333333333333rem;
+  top: 1.4666666666666666rem;
+}
+.userList .useInfo {
+  padding: 0 0.4rem;
+}
+.userList .useInfo .useInfoCon {
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0.02666666666666667rem 0.04618666666666667rem 0.13333333333333333rem 0rem #d4d4d4;
+  border-radius: 0.13333333333333333rem;
+  text-align: center;
+  height: 2.1333333333333333rem;
+  box-sizing: border-box;
+  padding-top: 0.4rem;
+}
+.userList .useInfo .useInfoCon .item {
+  display: inline-block;
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+.userList .useInfo .useInfoCon .item .num {
+  color: #ac6a2a;
+  font-size: 0.5066666666666667rem;
+  line-height: 0.6666666666666666rem;
+  margin-bottom: 0.13333333333333333rem;
+}
+.userList .useInfo .useInfoCon .item .tit {
+  font-size: 0.3466666666666667rem;
+  color: #adadad;
+  line-height: 0.4rem;
+}
+.userList .listTitle {
+  width: 100%;
+  background-image: linear-gradient(to top, #e5e5e5 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(top, #e5e5e5 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: #ffffff;
+}
+.userList .listTitle .listTitleCon {
+  background-image: linear-gradient(to bottom, #e5e5e5 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(bottom, #e5e5e5 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding: 0 0.37333333333333335rem;
+  height: 1.1733333333333333rem;
+}
+.userList .listTitle .tit {
+  display: inline-block;
+  width: 24%;
+  font-size: 0.4rem;
+  color: #adadad;
+  line-height: 1.1733333333333333rem;
+  text-align: center;
+}
+.userList .listCon {
+  background-color: #FFFFFF;
+  padding: 0 0.37333333333333335rem;
+  margin-bottom: 0.26666666666666666rem;
+}
+.userList .listCon .item {
+  background-image: linear-gradient(to bottom, #e5e5e5 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(bottom, #e5e5e5 50%, transparent 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.userList .listCon .item:last-child {
+  background: none;
+}
+.userList .listCon .item .con {
+  width: 24%;
+  text-align: center;
+  display: inline-block;
+  height: 1.1733333333333333rem;
+  line-height: 1.1733333333333333rem;
+  color: #444444;
+  font-size: 0.4rem;
+}
+.userList .listTitle .tit1,
+.userList .listCon .item .con1 {
+  width: 20%;
+}
+.userList .listTitle .tit2,
+.userList .listCon .item .con2 {
+  width: 33%;
+}
+.userList .listTitle .tit3,
+.userList .listCon .item .con3 {
+  width: 21%;
+}
+.userList .listTitle .tit4,
+.userList .listCon .item .con4 {
+  width: 21%;
+}
+/*使用明细页:end*/
+/*底部加载更多*/
+.loadingBox {
+  display: none;
+  height: 1.0666666666666667rem;
+  line-height: 1.2rem;
+  text-align: center;
+  font-size: 0.32rem;
+  color: #999999;
+  position: relative;
+}
+.loadingBox.show {
+  display: block;
+}
+.loadingBox.hide {
+  display: none;
+}
+.loadingBox .loading {
+  position: relative;
+  display: inline-block;
+  padding-left: 0.9333333333333333rem;
+}
+.loadingBox .loading:after {
+  content: " ";
+  width: 0.6666666666666666rem;
+  height: 1.0666666666666667rem;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background: url(../../images/redEnvelope/loadingLogo.gif) center no-repeat;
+  background-size: 0.6666666666666666rem 1.0666666666666667rem;
+}
+/*屏幕宽度 大于720*/
+/*背景100%*/
+/*@media screen and (min-width:700px){*/
+.mainBg {
+  width: 100%;
+}
+.mainBg .bgTop {
+  background-size: 100% 12.666666666666666rem;
+  width: 100%;
+}
+.mainBg .bgBottom {
+  background-size: 100% 5.333333333333333rem;
+  width: 100%;
+}
+.userList {
+  width: 100%;
+} /*}*/
+/*背景100%:end*/
+.userList .header {
+  background-size: 100% 4.266666666666667rem;
+  width: 100%;
+}
+.userList .fixBox {
+  width: 100%;
+}
+/*# sourceMappingURL=redEnvelope.css.map */

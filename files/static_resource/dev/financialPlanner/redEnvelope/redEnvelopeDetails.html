@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>抢满减券/发满减券</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	    <meta name="format-detection" content="telephone=no" />
+		<link rel="shortcut icon" href="../../common/images/favicon.ico" type="image/x-icon" />
+		<link type="text/css" href="../../financialPlanner/css/redEnvelope/dialog.css" rel="stylesheet"/>
+		<link type="text/css" href="../../financialPlanner/css/redEnvelope/redEnvelope.css" rel="stylesheet"/>
+    	<script type="text/javascript" src="../../common/js/flexible.js"></script>
+	</head>
+	<body class="bgWhite">
+		<div class="mainBg">
+			<div class="bgTop"></div>
+			<div class="bgBottom"></div>
+		</div>
+		
+		<div class="main">
+			<div class="mainCon">
+				
+				<div class="mainTop  js_detail">
+					<div class="mainTit">&emsp;<!--标题标题文字文字--></div>
+					
+					<div class="box js_detail">
+						<div class="top">
+							<div class="tit">
+								<!--满1000元可用-->
+							</div>
+							<div class="amount">
+								<!--<span class="unit">¥</span>
+								<span class="num">80</span>-->
+							</div>
+							<div class="timeDate"><!--有效期至：2018-10-30--></div>
+						</div>
+						
+						<div class="center">
+							<div class="info">
+								<!--可向每位客户最多发放2个-->
+							</div>
+						</div>
+						
+						<div class="bottom">
+							<div class="bottomCon">
+								<div class="logoIcon">&nbsp;</div>
+								<div class="time"><!--2018-05-10至2018-08-20&nbsp;每日上午10：00开抢--></div>
+							</div>
+							
+						</div>
+					</div>
+					<!-- box:end -->
+				</div>
+				<!-- mainTop:end -->
+				
+					
+				
+				<div class="mainBottom js_mainBottom">
+					<!--<div class="mainBottomCon">
+					<div class="redEnNum">可抢10个</div>
+						<div class="redEnNum disabled">可抢0个</div>
+						<div class="redEnNum">还可发放3个，已发7个</div>
+						<div class="btnBox">
+							<a href="javascript:void(0);" class="btn">立即抢/立即发放</a>
+							<a href="javascript:void(0);" class="btn disabled">抢光了</a>
+							<a href="javascript:void(0);" class="btn timeDisabled">距离开抢&nbsp;<span class="countdown">05:12:00</span></a>
+						</div>
+						
+						<div class="tips">
+							<label class="tipslab">适用产品：</label>
+							<div class="tipsCon">
+								星火燃梦004、星火燃梦004、星火星星火燃梦004、星火燃梦004、星火燃梦004、火燃梦004
+							</div>
+						</div>
+					</div>-->
+				</div>
+				<!-- mainBottom:end -->
+				
+				
+			</div>
+			
+		</div>
+		<!-- 满减券模板 -->
+		<script type="text/template" id="detailTop">
+			<div class="mainTit"><%= item.redName%></div>
+				
+			<div class="box">
+				<div class="top">
+					<div class="tit">
+						<%= item.fullCutAmount%>
+					</div>
+					<div class="amount">
+						<span class="unit">¥</span>
+						<span class="num"><%= item.redAmount%></span>
+					</div>
+					<div class="timeDate">有效期至：<%= item.effectiveEndTimeStr%></div>
+				</div>
+				
+				<div class="center">
+					<div class="info">
+						<% if (item.types=="grab") { %>
+							每位理财师一次可抢<%= item.repeatManagerCanGetCount%>个<!--，最多可抢<%= item.canGetTotalCount%>个--><br/>
+						<% } %>
+						可向每位客户最多发放<%= item.lenderCanGetCount%>个
+					</div>
+				</div>
+				
+				<div class="bottom">
+					<div class="bottomCon">
+						<div class="logoIcon">&nbsp;</div>
+						<div class="time"><%= item.activityExplain%></div>
+					</div>
+					
+				</div>
+			</div>
+		</script>
+		<!-- 满减券模板:end -->
+		
+		
+		<!-- 满减券模板 -->
+		<script type="text/template" id="detailBottom">
+			<div class="mainBottomCon">
+				<!--<div class="redEnNum">可抢10个</div>
+				<div class="redEnNum disabled">可抢0个</div>-->
+				
+				<% if (item.types=="grab") { %>
+					<div class="redEnNum <%= item.btnClass%>">可抢<%= item.canGetCount%>个</div>
+                <% } else if(item.types=="sent") {%>
+                      <div class="redEnNum  <%= item.btnClass%>">还可发<%= item.remainingNum%>个，已发<%= item.putCount%>个</div>
+                <% } %>
+				
+
+				<div class="btnBox">
+					<a href="javascript:void(0);" class="btn <%= item.btnClass%>" onclick="<%= item.onclickFn%>"><%= item.btnWord%></a>
+				<!--	<a href="javascript:void(0);" class="btn disabled">已过期/抢光了/已抢</a>
+					<a href="javascript:void(0);" class="btn timeDisabled">距离开抢&nbsp;<span class="countdown">05:12:00</span></a>-->
+				</div>
+				<% if(item.productNames){%>
+				<div class="tips">
+					<label class="tipslab">适用产品：</label>
+					<div class="tipsCon">
+						<%= item.productNames %>
+					</div>
+				</div>
+				<% }else{ %>
+				<div class="tips">
+					<div class="tipsCon2">适用支持满减券的全部产品</div>
+				</div>
+				<% } %>
+			</div>
+		</script>
+		<!-- 满减券模板:end -->
+
+
+        <!-- 满减券模板只满减券使用列表跳转 -->
+        <script type="text/template" id="detailBottomHideBtn">
+            <div class="mainBottomCon">
+                <% if(item.productNames){%>
+                <div class="tips">
+                    <label class="tipslab">适用产品：</label>
+                    <div class="tipsCon">
+                        <%= item.productNames %>
+                    </div>
+                </div>
+                <% }else{ %>
+                <div class="tips">
+                    <div class="tipsCon2">适用支持满减券的全部产品</div>
+                </div>
+                <% } %>
+            </div>
+        </script>
+        <!-- 满减券模板-:end -->
+
+		<script type="text/javascript" src="../../common/js/jquery.js"></script>
+		<script type="text/javascript" src="../../financialPlanner/js/redEnvelope/redEnvelope.js"></script>
+		<script type="text/javascript" src="../../financialPlanner/js/redEnvelope/redEnvelopeDetails.js"></script>
+	</body>
+</html>

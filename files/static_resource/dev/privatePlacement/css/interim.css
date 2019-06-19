@@ -1,0 +1,266 @@
+@charset "UTF-8";
+/*
+*interim.less 过渡页面样式
+*——————引用：mixin.less 和reset.less
+*******author:yanzhong1@creditease.cn
+*update:20170327
+*/
+/**/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+select {
+  margin: 0;
+  padding: 0;
+}
+html {
+  -webkit-text-size-adjust: none;
+}
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+em {
+  font-style: normal;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+  padding: 0;
+  border: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+img {
+  vertical-align: top;
+  border: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+i,
+em {
+  font-weight: normal;
+  font-style: normal;
+}
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+em {
+  font-style: normal;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+  padding: 0;
+  border: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+.relative {
+  position: relative;
+}
+@-webkit-keyframes toLeft {
+  0% {
+    -webkit-transform: rotate(-180deg);
+  }
+}
+@-moz-keyframes toLeft {
+  0% {
+    -moz-transform: rotate(-180deg);
+  }
+}
+@-ms-keyframes toLeft {
+  0% {
+    -ms-transform: rotate(-180deg);
+  }
+}
+@keyframes toLeft {
+  0% {
+    transform: rotate(-180deg);
+  }
+}
+/*公共变量*/
+/*move*/
+@-moz-keyframes rotate {
+  0% {
+    -moz-transform: rotate(-360deg);
+  }
+  100% {
+  	-moz-transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(-360deg);
+  }
+  100% {
+  	-webkit-transform: rotate(-0deg);
+  }
+}
+@-moz-keyframes rotate {
+  0% {
+  	-moz-transform: rotate(-360deg);
+  }
+  100% {
+  	-moz-transform: rotate(0deg);
+  }
+}
+@-o-keyframes rotate {
+  0% {
+  	-o-transform: rotate(-360deg);
+  }
+  100% {
+    -o-transform: rotate(0deg);
+  }
+}
+@-ms-keyframes rotate {
+  0% {
+    -ms-transform: rotate(-360deg);
+  }
+  100% {
+    -ms-transform: rotate(0deg);
+  }
+}
+/**/
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: relative;
+}
+.interimMain {
+  position: fixed;
+  background: #0096e0;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  width: 6.48rem;
+  height: 6.48rem;
+  margin: -4.90666667rem 0 0 -3.24rem;
+  z-index: 100;
+}
+.interimBox {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+  background: white;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  margin: -3rem 0 0 -3rem;
+  z-index: 2;
+  text-align: center;
+}
+.interimBox img {
+  position: absolute;
+  width: 4.62666667rem;
+  height: 2.74666667rem;
+  top: 50%;
+  left: 50%;
+  margin: -1.37333333rem 0 0 -2.31333333rem;
+  z-index: 3;
+}
+.interim-bar {
+  -moz-animation: rotate 2s ease 1;
+  -webkit-animation: rotate 2s ease 1;
+  animation: rotate 2s ease 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6.48rem;
+  height: 6.48rem;
+  margin: -3.24rem 0 0 -3.24rem;
+  z-index: 3;
+}
+.interim-bar img {
+  width: 0.92rem;
+  height: 0.36rem;
+  position: absolute;
+  bottom: 0;
+  left: 2.29333333rem;
+}
+.interim-line {
+  width: 2px;
+  height: 2.66666667rem;
+  background: #0096e0;
+  position: absolute;
+  left: 50%;
+  bottom: -2.4rem;
+  margin-left: -1px;
+}
+.interim-time {
+  position: absolute;
+  left: 50%;
+  margin-left: -0.8rem;
+  font-size: 0.66666667rem;
+  bottom: -3.33333333rem;
+  color: #0096e0;
+}
+.interim-time span {
+  margin-right: 10px;
+}
+@media (min-device-width: 769px) and (max-width: 800px) {
+  .interimMain {
+    margin: -8.50666667rem 0 0 -3.24rem;
+  }
+}
+@media (min-device-width: 1280px) and (max-device-width: 1600px) {
+  .interimMain {
+    margin: -4.90666667rem 0 0 -3.24rem;
+  }
+}
+@media (min-width: 1600px) and (max-device-width: 1800px) {
+  .interimMain {
+    margin: -20rem 0 0 -3.24rem;
+  }
+}
+.puzeImgBox img{width: 3.0667rem; height:2.7467rem;margin: -1.3734rem 0 0 -1.5334rem;}
+.hainanImgBox img{ width: 5.0933rem; height:2.8rem;margin: -1.4rem 0 0 -2.5rem;}

@@ -1,0 +1,247 @@
+@baseSize: 75;
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+     font-size: 62.5%;
+}
+body{
+    background: #f4f4f4;
+    font-family: arial;
+    &.wap{
+        padding-top: 48px;
+        header{
+            display: block;
+        }
+    }
+}
+a{text-decoration: none;-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color:transparent;}
+img{border:none;}
+ul,li{ list-style: none;}
+.clear{content: "."; display: block;height: 0;clear: both;visibility: hidden; }
+
+.loanList{
+    padding-top: 16rem/@baseSize;
+    .item{
+        background: #FFFFFF;
+        padding: 24rem/@baseSize 28rem/@baseSize;
+        margin-bottom: 16rem/@baseSize;
+        position: relative;
+        ul li{
+             line-height: 48rem/@baseSize;
+             display: flex;
+             display:  -webkit-flex;
+             flex-direction: row ;
+             -webkit-flex-direction: row;
+             justify-content: flex-start;
+             -webkit-justify-content: flex-start;
+
+             span{
+                 font-size: 28rem/@baseSize;
+                 color: #444444;
+                 flex-shrink:1;
+                 &.tit{
+                     color: #bcbcbc;
+                     flex-shrink:0;
+                 }
+             }
+             &:after{
+                 .clear;
+             }
+        }
+
+        .arrowIcon{
+            border-top:1px solid #b9b9b9;
+            border-right: 1px solid #b9b9b9;
+            position: absolute;
+            right: 35rem/@baseSize;
+            height: 20rem/@baseSize;
+            width: 20rem/@baseSize;
+            top:50%;
+            transform-origin:left top;
+            -webkit-transform-origin:left top;
+            transform: translateY(-50%) rotateZ(45deg);
+            -webkit-transform: translateY(-50%) rotateZ(45deg);
+
+        }
+    }
+}
+.loanDetails{
+    background: #FFFFFF;
+    margin-top: 16rem/@baseSize;
+    margin-bottom: 16rem/@baseSize;
+    padding: 20rem/@baseSize 28rem/@baseSize;
+    ul li{
+        position: relative;
+        div{
+            font-size: 26rem/@baseSize;
+            line-height: 36rem/@baseSize;
+            min-height: 36rem/@baseSize;
+            padding:10rem/@baseSize 0;
+            a{
+                color: #c9a358;
+            }
+            &.tit{
+                float: left;
+                color: #bcbcbc;
+                position: absolute;
+                top:0;left: 0;
+            }
+            &.word{
+                text-align: right;
+                padding-left: 300rem/@baseSize;
+                color: #444444;
+
+
+            }
+        }
+    }
+}
+/*底部加载更多*/
+.loadingBox{
+    display: none;
+    height: 80rem/@baseSize;
+    line-height: 90rem/@baseSize;
+    text-align: center;
+    font-size: 24rem/@baseSize;
+    color: #999999;
+    position: relative;
+    &.show{
+        display: block;
+    }
+    &.hide{
+        display:none;
+    }
+    .loading{
+        position: relative;
+        display: inline-block;
+        padding-left: 70rem/@baseSize;
+        &:after{
+            content: " ";
+            width: 50rem/@baseSize;
+            height:80rem/@baseSize;
+            display: inline-block;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            background:url(../images/loadingLogo.gif) center  no-repeat;
+            background-size: 50rem/@baseSize 80rem/@baseSize;
+        }
+    }
+
+
+
+}
+
+
+/*加载转表样式*/
+.loadingDiv{
+     width: 100%; height: 100%; position: fixed; top:0; left: 0;z-index: 3; background:url(../images/xinghuoloading.gif) no-repeat center center rgba(255,255,255,0.4);
+
+    &.show{
+        display: block;
+    }
+    &.hidden{
+        display: none;
+    }
+}
+/*加载转表样式：end*/
+
+
+/*弱提示框样式*/
+.tipsOvrly{ display:none; position: fixed; width: 100%; height: 100%; left: 0; top:0;  }
+.tipsOvrlyShow{  display: block;}
+.ovrlyWordBox{ position: absolute;top:45%;left: 0; width: 100%;z-index: 20;}
+.tipsOvrly .ovrlyWord{opacity:0;margin:0 auto;border-radius: 5px;margin: 0 auto;color: #ffffff;font-size: 30rem/@baseSize;left: 15%;line-height: 40rem/@baseSize;padding: 15rem/@baseSize 10rem/@baseSize;text-align: center;width: 185rem/@baseSize;background: rgba(0,0,0,0.7);}
+.tipsOvrlyShow  .ovrlyWord{ animation:mymove 2s  ease-in-out 0s 1 alternate forwards;-webkit-animation:mymove 2s  ease-in-out 0s 1 alternate forwards; opacity: 1;}
+@keyframes mymove
+{
+    0%{background:rgba(0,0,0,0) ;}
+    25% { background: rgba(0,0,0,0.7);}
+    75% { background: rgba(0,0,0,0.7);}
+    100% {background:rgba(0,0,0,0) ;}
+}
+@-webkit-keyframes mymove
+{
+    0%{background:rgba(0,0,0,0) ;}
+    25% { background: rgba(0,0,0,0.7);}
+    75% { background: rgba(0,0,0,0.7);}
+    100% {background:rgba(0,0,0,0) ;}
+}
+
+/*弱提示框样式*/
+.dialog{ width: 100%; position: relative; border-radius: 5px; background: #FFFFFF; box-sizing: border-box; }
+.dialog:after{ content: "."; display: block;height: 0;clear: both;visibility: hidden;}
+.dialogTitle{background-image: -moz-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -webkit-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -ms-linear-gradient(transparent  50%, #e5e5e5 50%); background-size: 100% 1px;background-position: left bottom;background-repeat: no-repeat; line-height: 26px; padding: 15px 15px; color:#444; text-align: center; position: relative; font-size: 16px;}
+
+.dialogTitle .closeBtn{ background: url(../images/dialogCloseBtn_bg.png) center center no-repeat; background-size:14px 14px; display: inline-block; width: 30px; height: 30px; position: absolute; top:12px; right: 15px;}
+.bottomBorder{ margin-bottom: 10px;
+    background-image: -moz-linear-gradient(#e5e5e5 50%, transparent  50%);background-image: -webkit-linear-gradient(#e5e5e5 50%, transparent  50%);background-image: -ms-linear-gradient(#e5e5e5 50%, transparent  50%);background-size: 100% 1px;background-position: left bottom;background-repeat: no-repeat;
+}
+.topBorder{
+    background-image: -moz-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -webkit-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -ms-linear-gradient(transparent  50%, #e5e5e5 50%); background-size: 100% 1px;background-position: left top;background-repeat: no-repeat;
+}
+.dialogConBox{padding: 0 25px 0 25px; margin-bottom: 25px; color: #929292; font-size: 13px; line-height: 22px; overflow-y: scroll;-webkit-overflow-scrolling: touch; }
+.dialogConBox iframe{overflow-y: scroll;-webkit-overflow-scrolling: touch;border:none;height: 100%;}
+.ovrly { display: none; background: rgba(0, 0, 0, 0.7);z-index: 10;position: fixed;width: 100%;height: 100%;top: 0;left: 0;}
+.dialogBox{ display: none; position: fixed; z-index: 11;}
+.bottomBtn .closeBtn,.bottomBtn .twoBtn{ display: inline-block; width: 100%; height:44px; line-height: 44px; text-align: center; color:#c9a358; font-size: 16px; text-align: center;}
+.bottomBtn .twoBtn{
+    width: 50%;float: left;
+    background-image: -moz-linear-gradient(right,#e5e5e5 50%, transparent  50%);
+    background-image: -webkit-linear-gradient(right,#e5e5e5 50%, transparent  50%);
+    background-image: -ms-linear-gradient(right,#e5e5e5 50%, transparent  50%);
+    background-size:1px 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+    }
+
+.bottomBtn .twoBtn:last-child{ background: none;}
+.bottomBtn .twoBtn.touchbtn{ background:#e0c689; color: #FFFFFF;}
+.bottomBtn .twoBtn.disable{ background-color: #ccc; color: #FFFFFF;}
+.bottomBtn:after{ content: "."; display: block;height: 0;clear: both;visibility: hidden;}
+.outsideBtn{ width: 100%; margin-top: 20px;}
+.outsideBtn .btn{ margin:20px 0;}
+
+.dialog1{ width: 300px; top:50%; left: 50%; transform:  translate(-50%,-50%) ;-webkit-transform:  translate(-50%,-50%);}
+.dialog1 .dialogConBox{ padding: 0 25px; text-align: justify; height: auto; overflow-y:scroll;overflow-x:hidden;height: 300px;}
+/*弹窗css：end*/
+
+.loantitle {
+    background: #f2f2f2;
+    color: #e5ab58;
+    font-size: 26rem/@baseSize;
+    padding: 5px 5px 5px 28rem/@baseSize;
+}
+/*空白ui*/
+.emptyBox{
+    padding-top: 200rem/@baseSize;
+    text-align: center;
+    display: none;
+    
+    .emptyIcon{
+        background: url(../../financialPlanner/images/investment/investment_list_emptyIcon.png) no-repeat center;
+        background-size: 200rem/@baseSize 200rem/@baseSize;
+       
+        height: 200rem/@baseSize;
+        margin-bottom: 50rem/@baseSize;
+    }
+    .word{
+        font-size: 30rem/@baseSize;
+        line-height: 40rem/@baseSize;
+        color: #999999;
+    }
+}
+body.emptyBody{
+    .emptyBox{
+        display: block;
+      
+        
+    }
+    .loanDetails{
+        display: none;
+    }
+}
+/*空白ui:end*/
+        

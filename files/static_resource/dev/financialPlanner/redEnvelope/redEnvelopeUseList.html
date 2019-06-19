@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	    <meta name="format-detection" content="telephone=no" />
+		<link rel="shortcut icon" href="../../common/images/favicon.ico" type="image/x-icon" />
+		<link type="text/css" href="../../financialPlanner/css/redEnvelope/dialog.css" rel="stylesheet"/>
+		<link type="text/css" href="../../financialPlanner/css/redEnvelope/redEnvelope.css" rel="stylesheet"/>
+    	<script type="text/javascript" src="../../common/js/flexible.js"></script>
+	</head>
+	<body class="headerFixed">
+		<div class="userList">
+			<!-- fixedBox -->
+			<div class="fixBox">
+				<div class="header js_header">
+					
+					<div class="headerInfo">
+						<div class="redAmount"><span class="num">&emsp;</span><span class="unit">&emsp;</span></div>
+						<div class="fullCutAmount">
+							<div class="fullCutCon">&emsp;</div>
+						</div>
+						<div class="date">&emsp;</div>
+						
+						<a href="" class="linkDetails">&nbsp;</a>
+					</div>
+					
+					<div class="useInfo">
+						<div class="useInfoCon">
+							<div class="item">
+								<div class="num">&emsp;</div>
+								<div class="tit">已发放数量</div>
+							</div>
+							<div class="item">
+								<div class="num">&emsp;</div>
+								<div class="tit">已使用数量</div>
+							</div>
+							<div class="item">
+								<div class="num">&emsp;</div>
+								<div class="tit">总数量</div>
+							</div>
+						</div>
+						
+					</div>
+					<!-- useInfo:end -->
+			
+				</div>
+				<!-- header:end -->
+				<div class="listTitle">
+					<div class="listTitleCon">
+						<div class="tit tit1">姓名</div>
+						<div class="tit tit2">发放时间</div>
+						<div class="tit tit3">发放数量</div>
+						<div class="tit tit4">使用数量</div>
+					</div>
+				</div>
+				<!-- listTitle:end -->
+			</div>
+			
+			<!-- fixedBox:end -->
+				
+			
+			<div class="listBox">
+				<div class="listCon js_list"><!-- js_list 模板循环 -->
+				</div>
+				
+				<!-- 加载更多 -->
+				<div class="loadingBox">
+					<div class="loading">加载更多&nbsp;.&nbsp;.&nbsp;.</div>
+				</div>
+				<!-- 加载更多：end -->
+			</div>
+			<!-- listBox:end -->
+			
+		</div>
+		<script type="text/template" id="js_headerTmpl">
+			<div class="headerInfo">
+				<div class="redAmount"><span class="num"><%= item.redAmount%></span><span class="unit">元</span></div>
+				<div class="fullCutAmount">
+					<% if ( item.fullCutAmount == 0 || item.fullCutAmount == null ) { %>
+						<div class="fullCutCon">不限金额</div>
+					<% } else { %>
+						<div class="fullCutCon">满<%= item.fullCutAmount%>元可用</div>
+					<% } %>
+					
+					
+				</div>
+				<div class="date">有效期至：<%= item.effectiveEndTimeStr%></div>
+				<a href="redEnvelopeDetails.html?btnState=noBtn&redPacketStoreId=<%= item.redPacketStoreId%>" class="linkDetails">&nbsp;</a>
+			</div>
+			
+			<div class="useInfo">
+				<div class="useInfoCon">
+					<div class="item">
+						<div class="num"><%= item.putCount%></div>
+						<div class="tit">已发放数量</div>
+					</div>
+					<div class="item">
+						<div class="num"><%= item.useCount%></div>
+						<div class="tit">已使用数量</div>
+					</div>
+					<div class="item">
+						<div class="num"><%= item.redCount%></div>
+						<div class="tit">总数量</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</script>
+		
+		<script type="text/template" id="js_listTmpl">
+			<% for (var i=0; i<items.length ; i++){ %>
+			<div class="item">
+				<div class="con con1">
+					<%= items[i].realName%>
+				</div>
+				<div class="con con2">
+					<%= items[i].lastGetTime%>
+				</div>
+				<div class="con con3">
+					<%= items[i].getCount%>
+				</div>
+				<div class="con con4">
+					<%= items[i].useCount%>
+				</div>
+			</div>
+			<% } %>
+		</script>
+		
+		<script type="text/javascript" src="../../common/js/jquery.js"></script>
+		<script type="text/javascript" src="../../financialPlanner/js/redEnvelope/redEnvelope.js"></script>
+		<script type="text/javascript" src="../../financialPlanner/js/redEnvelope/redEnvelopeUseList.js"></script>
+	</body>
+</html>

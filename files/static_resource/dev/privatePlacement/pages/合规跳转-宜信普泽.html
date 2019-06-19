@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <title>宜信惠民</title>
+    <link href="../../privatePlacement/css/interim.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"  src="../../privatePlacement/js/public/flexible.js"></script>
+</head>
+<body onload="showtime(2)">
+<div class="interimMain">
+    <div class="interimBox puzeImgBox">
+        <img src="../../privatePlacement/images/interim-puze.png"/>
+    </div>
+    <div class="interim-bar"><img src="../../privatePlacement/images/interim-t.png"/></div>
+    <div class="interim-time"><span id="interimTime">2</span>sec</div>
+    <b class="interim-line"></b>
+</div>
+<script>
+    function showtime(t){
+        for(i=1;i<=t;i++) {
+            window.setTimeout("update_p(" + i + ","+t+")", i * 1000);
+        }
+    }
+    function update_p(num,t) {
+        var timeObj=document.getElementById("interimTime");
+        if(num == t) {
+            timeObj.innerHTML = '1';
+           /* window.location.href="xinghuo://goBackApp";*/
+        }
+        else {
+            printnr = t-num;
+            timeObj.innerHTML = printnr;
+        }
+    }
+</script>
+</body>
+</html>

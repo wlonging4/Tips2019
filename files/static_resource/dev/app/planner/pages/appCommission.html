@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>推荐服务费计算及结算规则</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="shortcut icon" href="<%=require('../../../common/images/favicon.ico')%>" type="image/x-icon" />
+	    <link type="text/css" href="<%=require('../../../app/planner/css/appCommission.less?link')%>" rel="stylesheet"/>
+	</head>
+	<body>
+	<div class="richRule">
+	    <h2 class="title"><div class="diamond"><div class="diamondIcon"></div>推荐服务费显示时间</div></h2>
+	    <!--<p class="content" style="text-indent: 0;">-->
+	      <!--  • 优质债权，客户出借成功后即可显示；<br/>-->
+	        <!--• 网贷服务，客户出借成功后即可显示；<br/>
+	        • 星系列，交易单状态为已付款时即可显示。<br/><br/>-->
+	    <!--</p>-->
+	    <ul class="richUl">
+	    	<li>自动投标，客户出借成功后即可显示；</li>
+	    	<li>星系列，交易单状态为已付款时即可显示。</li>
+	    	<li>自选标，交易单状态变成出借成功后第1个自然日计算，第2个自然日显示。</li>
+	    </ul>
+	
+	    <h2 class="title"><div class="diamond"><div class="diamondIcon"></div>推荐服务费结算方式</div></h2>
+	    <table class="richTable">
+	    	<colgroup width="25%"></colgroup>
+	    	<colgroup width="30%"></colgroup>
+	    	<colgroup width="45%"></colgroup>
+	        <tr>
+	            <th>产品</th>
+	            <th>锁定期</th>
+	            <th>推荐服务费结算方式</th>
+	        </tr>
+	      <!--  <tr>
+	            <td>零投宝-星火燎原系列</td>
+	            <td>固定到期日</td>
+	            <td>锁定期推荐服务费<p>按月结算并支付</p></td>
+	      </tr>-->
+	        <tr>
+	            <td>零投宝-星火睿选系列</td>
+	            <td>固定到期日</td>
+	            <td>锁定期推荐服务费<p>一次性结算并支付</p></td>
+	        </tr>
+	       <!-- <tr>
+	            <td>随心宝</td>
+	            <td>锁定期结束后<br/>可提现</td>
+	            <td>以用户每天持有资产(单产品)按日计算，按月支付；</p>单个用户每日推荐服务费不足1分钱不予展示和结算</td>
+	        </tr>-->
+	        <tr>
+	            <td>月盈宝系列</td>
+	            <td>固定期限，<p>每期回款</p></td>
+	            <td>推荐服务费一次性结算<p>并支付</p></td>
+	        </tr>
+	       <!-- <tr>
+	            <td>定期宝</td>
+	            <td>固定出借期限</td>
+	            <td>锁定期推荐服务费一次性结算并支付</td>
+	        </tr>-->
+	       <!-- <tr>
+	            <td>变现通</td>
+	            <td>可变现日期之间<br/>随时变现</td>
+	            <td>以用户每天持有的出借本金（单产品）按日计算，按月支付；<br/>单个用户每日推荐服务费不足1分钱不予展示；</td>
+	        </tr>-->
+			<tr>
+	            <td>定制产品</td>
+	            <td>固定出借期限</td>
+	            <td>锁定期推荐服务费一次性结算并支付</td>
+	        </tr>
+	        <tr>
+	            <td>星系列</td>
+	            <td>固定出借期限</td>
+	            <td>锁定期推荐服务费一次性结算并支付</td>
+	        </tr>
+	        <!--<tr>
+	            <td>定制产品</td>
+	            <td>固定出借期限</td>
+	            <td>锁定期推荐服务费一次性结算并支付</td>
+	        </tr>-->
+	        
+	        <tr>
+	            <td>自选标</td>
+	            <td>债权转让日期间内可按规则转让</td>
+	            <td>以用户每天持有的出借本金（单产品）按日计算，按月支付；<br/>
+	            	单个用户每日推荐服务费不足1分钱不展示和结算
+	            </td>
+	        </tr>
+	    </table>
+	    <h2 class="title"><div class="diamond"><div class="diamondIcon"></div>推荐服务费支付时间</div></h2>
+	    <p class="content">星火于每月10日前核对上个月（自然月）的结算账目、经系统确认无误后，每月20日支付至理财师在星火绑定的银行账户。 (如遇节假日和法定休息日顺延至下一工作日支付，结算金额不足100元，累计至下一期结算)。 </p>
+	    <h2 class="title"><div class="diamond"><div class="diamondIcon"></div>推荐服务费计算方式</div></h2>
+	    <table class="richTable">
+	    	<colgroup width="30%"></colgroup>
+	    	<colgroup width="70%"></colgroup>
+	        <tr>
+	            <th>产品系列</th>
+	            <th>推荐服务费计算公式</th>
+	        </tr>
+	        <tr>
+	            <td>零投宝</td>
+	            <td>
+	                <p class="alignL">推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=交易金额*（1/365）*出借天数</p>
+	            </td>
+	        </tr>
+	        <!--<tr>
+	            <td>随心宝</td>
+	            <td>
+	                <p class="alignL">每日推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=每日持有资产*（1/365）* 1</p>
+	            </td>
+	        </tr>-->
+	        <tr>
+	            <td>月盈宝</td>
+	            <td>
+	                <p class="alignL">每月推荐服务费=推荐付费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=每期出借资金 *（1/365）*每期出借天数</p>
+	            </td>
+	        </tr>
+	        <!--<tr>
+	            <td>定期宝</td>
+	            <td>
+	                <p class="alignL">推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=交易金额*（1/365）*出借天数</p>
+	            </td>
+	        </tr>-->
+	        <!--<tr>
+	            <td>变现通</td>
+	            <td>
+	                <p class="alignL">每日推荐服务费=推荐服务费基数 * 费率 * 费率系数</p>
+	                <p class="alignL">推荐服务费基数=每日持有的出借本金 *(1/365)*1</p>
+	            </td>
+	        </tr>-->
+	        <tr>
+	            <td>定制产品</td>
+	            <td>
+	                <p class="alignL">推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=交易金额*（1/365）*出借天数</p>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>星系列</td>
+	            <td>
+	                <p class="alignL">推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=交易金额*（1/12）*投资期限（月）</p>
+	            </td>
+	        </tr>
+	      <!--  <tr>
+	            <td>定制产品</td>
+	            <td>
+	                <p class="alignL">推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=交易金额*（1/365）*出借天数</p>
+	            </td>
+	        </tr>-->
+	        
+	        <tr>
+	            <td>自选标</td>
+	            <td>
+	                <p class="alignL">每日推荐服务费=推荐服务费基数*费率*费率系数</p>
+	                <p class="alignL">推荐服务费基数=每日持有的出借本金（1/365）*1</p>
+	            </td>
+	        </tr>
+	    </table>
+	    <ul class="richUl">
+	        <li>客户交易金额：是指客户单笔成功支付的出借资金 </li>
+	        <li>客户出借天数：自出借人通过支付机构成功支付出借资金的次日（工作日）至用户出借资金到期日的前一日，即客户出借资金的整个锁定期间。 </li>
+	        <li>费率：若存在浮动费率，则以基础费率+浮动费率计算。 </li>
+	    </ul>
+	    <h2 class="title"><div class="diamond"><div class="diamondIcon"></div>推荐服务费扣税说明</div></h2>
+	    <p class="content">根据国家规定，推荐服务费总额超过800时需扣除个人劳务所得税。具体扣税公式如下：</p>
+	    <table class="richTable">
+	        <tr>
+	            <th>星火当月推荐服务费</th>
+	
+	            <th colspan="2">星火扣税计算方法</th>
+	        </tr>
+	        <tr>
+	            <td>当月推荐服务费&lt;=800时</td>
+	            <td colspan="2">扣税额 = 0</td>
+	        </tr>
+	        <tr>
+	            <td>800&lt;当月推荐服务费&lt;=4000时</td>
+	            <td colspan="2">扣税额 = （收入-800）×20% - 0</td>
+	        </tr>
+	        <tr>
+	            <td>4000&lt;当月推荐服务费&lt;=20000时</td>
+	            <td colspan="2">扣税额 = 收入×（1-20%）×20% - 0</td>
+	        </tr>
+	        <tr>
+	            <td rowspan="4">20000&lt;当月推荐服务费&lt;=103000时</td>
+	            <td colspan="2">应纳税所得额 = 收入×（1-20%）</td>
+	        </tr>
+	        <tr>
+	            <td>应纳税所得额&lt;=20000</td>
+	            <td>扣税额 = 应纳税所得额×20% - 0</td>
+	        </tr>
+	        <tr>
+	            <td>20000&lt;应纳税所得额&lt;=50000</td>
+	            <td>扣税额 = 应纳税所得额×30% - 2000</td>
+	        </tr>
+	        <tr>
+	            <td>应纳税所得额&gt;50000</td>
+	            <td>扣税额 = 应纳税所得额×40% - 7000</td>
+	        </tr>
+	        
+	        <tr>
+	            <td rowspan="7">103000&lt;当月推荐服务费时</td>
+	            <td colspan="2">增值税 = 当月推荐服务费/1.03×3%<br>城建税 = 增值税×7%</td>
+	        </tr>
+	        <tr>
+	            <td>当月推荐服务费/1.03&lt;=100000</td>
+	            <td>教育费附加&地方教育费附加 = 0</td>
+	        </tr>
+	        <tr>
+	            <td>当月推荐服务费/1.03&gt;100000</td>
+	            <td>教育费附加&地方教育费附加= 增值税×5%</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2">扣除增值税及附加后收入 = 当月推荐服务费 – （增值税+城建税+教育费附加&地方教育费附加）<br>应纳税所得额 = 扣除增值税及附加后收入×（1-20%）</td>
+	        </tr>
+	        <tr>
+	            <td>20000&lt;应纳税所得额&lt;=50000</td>
+	            <td>所得税 = 应纳税所得额×30% - 2000</td>
+	        </tr>
+	        <tr>
+	            <td>50000&lt;应纳税所得额</td>
+	            <td>所得税 = 应纳税所得额×40% - 7000</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2">扣税额 = 增值税及附加+所得税</td>
+	        </tr>
+	    </table>
+	    <p class="content"></p>
+	</div>
+</body>
+</html>

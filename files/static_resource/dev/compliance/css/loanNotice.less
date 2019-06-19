@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #f4f4f4;
+    font-size:14px ;
+    font-family: arial;
+}
+a{text-decoration: none;-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color:transparent;}
+img{border:none;}
+ul,li{ list-style: none;}
+.clear{content: "."; display: block;height: 0;clear: both;visibility: hidden; }
+.noticeMain{
+    padding-top: 14px;
+}
+.backWord,.grayWord{
+    padding: 0 14px;
+    font-size: 13px;
+    
+}
+.backWord{
+    color: #070707;
+    font-size: 13px;
+    line-height:24px ;
+}
+.grayWord{
+    color: #929292;
+    white-space:normal;
+    line-height: 14px;
+    margin-bottom: 8px;
+    &:after{
+        .clear
+    }
+   
+    .left{
+        float: left;
+    }
+    .right{
+        float: right;
+
+    }
+}
+.nlistInfo .grayWord:last-child{ margin-bottom: 0;}
+.nlistInfo .grayWord{}
+.infoList{
+    background: #FFFFFF;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    ul li span{
+        font-size: 14px;
+        color:#444444 ;
+        line-height: 24px;
+        &.tit{
+            color:#bcbcbc ;
+        }
+    }
+    
+    .btnBox{
+        text-align: right;
+        a{
+            font-size: 13px;
+            color: #c9a358;
+        }
+    }
+  
+}
+.nheader,.nlistInfo{
+    margin-bottom: 10px;
+}
+.mainTit{
+    color: #444444;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    padding: 20px 0;
+}
+.periodMain{
+    
+    padding-top: 8px;
+    .periodList{
+        background: #FFFFFF;
+        padding: 0 14px;
+       /* margin-bottom: 10px; */
+        ul li{
+            /*padding: 10px 0;
+            line-height: 24px;*/
+           padding: 10px 0;
+           line-height: 22px;
+            background-image: -webkit-linear-gradient(bottom,transparent 50%,#e5e5e5 50%);
+           background-image: linear-gradient(to bottom,transparent 50%,#e5e5e5 50%);
+           background-repeat: no-repeat;
+           background-position: bottom ;
+           background-size: 100% 1px;
+            &:after{
+                .clear;
+            }
+            span{
+                color:444444 ;
+                /*font-size: 15px;*/
+                font-size: 13px;
+                &.tit{
+                    color:#bcbcbc ;
+                    float: left;
+                    width: 72%;
+                }
+                &.word{
+                    text-align: right;
+                    width: 28%;
+                    float: right;
+                }
+            }
+            &:last-child{
+                background: none;
+            }
+        }
+    }
+}
+
+
+/*弹窗样式*/
+body.modal-open {
+    position: fixed;
+    width: 100%;
+}
+.dialogBox{ position: fixed;}
+.dialog{ width: 100%; position: relative; border-radius: 5px; background: #FFFFFF; box-sizing: border-box; }
+.dialog:after{ content: "."; display: block;height: 0;clear: both;visibility: hidden;}
+.dialogTitle{background-image: -moz-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -webkit-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -ms-linear-gradient(transparent  50%, #e5e5e5 50%); background-size: 100% 1px;background-position: left bottom;background-repeat: no-repeat; line-height: 26px; padding: 15px 15px; color:#444; text-align: center; position: relative; font-size: 16px;}
+
+.dialogTitle .closeBtn{ background: url(../images/dialogCloseBtn_bg.png) center center no-repeat; background-size:14px 14px; display: inline-block; width: 30px; height: 30px; position: absolute; top:12px; right: 15px;}
+.bottomBorder{ margin-bottom: 10px;
+    background-image: -moz-linear-gradient(#e5e5e5 50%, transparent  50%);background-image: -webkit-linear-gradient(#e5e5e5 50%, transparent  50%);background-image: -ms-linear-gradient(#e5e5e5 50%, transparent  50%);background-size: 100% 1px;background-position: left bottom;background-repeat: no-repeat;
+}
+.topBorder{
+    background-image: -moz-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -webkit-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -ms-linear-gradient(transparent  50%, #e5e5e5 50%); background-size: 100% 1px;background-position: left top;background-repeat: no-repeat;
+}
+.dialogConBox{ padding: 0 25px 0 25px; margin-bottom: 25px; color: #929292; font-size: 13px; line-height: 22px; overflow-y: scroll;-webkit-overflow-scrolling: touch; }
+.bottomBtn .closeBtn,.bottomBtn .twoBtn{ display: inline-block; width: 100%; height:44px; line-height: 44px; text-align: center; color:#c9a358; font-size: 16px; text-align: center;}
+.bottomBtn .twoBtn{ 
+    width: 50%;float: left;
+    background-image: -moz-linear-gradient(right,#e5e5e5 50%, transparent  50%);
+    background-image: -webkit-linear-gradient(right,#e5e5e5 50%, transparent  50%);
+    background-image: -ms-linear-gradient(right,#e5e5e5 50%, transparent  50%);
+    background-size:1px 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+    }
+
+.bottomBtn .twoBtn:last-child{ background: none;}
+.bottomBtn .twoBtn.touchbtn{ background:#e0c689; color: #FFFFFF;}
+.bottomBtn .twoBtn.disable{ background-color: #ccc; color: #FFFFFF;}
+.bottomBtn:after{ content: "."; display: block;height: 0;clear: both;visibility: hidden;}
+.outsideBtn{ width: 100%; margin-top: 20px;}
+.outsideBtn .btn{ margin:20px 0;}
+
+.ovrly { display: none; background: rgba(0, 0, 0, 0.7);z-index: 10;position: fixed;width: 100%;height: 100%;top: 0;left: 0;}
+.dialogBox{ display: none; position: fixed; z-index: 11;}
+
+
+.dialog1{ width: 300px; top:50%; left: 50%; transform:  translate(-50%,-50%) ;-webkit-transform:  translate(-50%,-50%);}
+.dialog1 .dialogConBox{ padding: 0 25px; text-align: justify; height: auto; overflow: hidden;}
+
+/*弹窗样式：end*/

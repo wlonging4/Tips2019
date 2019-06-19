@@ -1,0 +1,519 @@
+*{ margin: 0; padding: 0;font-family: arial;}
+@baseSize: 75;
+ul,li{ list-style: none;}
+a,li,div,select{  text-decoration: none;text-decoration: none;-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color:transparent;}
+input{-webkit-tap-highlight-color:transparent;}
+.clear{content: "."; display: block;height: 0;clear: both;visibility: hidden; }
+body{
+    background: #F4F4F4;
+    
+    &.headerFixed{
+        padding-top:548rem/@baseSize ;
+    }
+    &.bgWhite{
+        background: #ffffff;
+    }
+}
+.topBorder{
+    background-image: linear-gradient(to top,#e5e5e5 50%,transparent 50%);
+    background-image: -webkit-linear-gradient(top ,#e5e5e5 50% ,transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+.bottomBorder{
+    background-image: linear-gradient(to bottom,#e5e5e5 50%,transparent 50%);
+    background-image: -webkit-linear-gradient(bottom ,#e5e5e5 50%,transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+.mainBg{
+    position:fixed;
+    top:0;
+    width: 750rem/@baseSize;
+    height: 1334rem/@baseSize;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    z-index: -1;
+    .bgTop{
+        background: url(../../images/redEnvelope/redEnvelopeDetails_bgMain.jpg) top center no-repeat ;
+        background-size: 750rem/@baseSize 950rem/@baseSize;
+        width: 750rem/@baseSize; 
+        height:950rem/@baseSize;
+        margin: 0 auto;
+    }
+    .bgBottom{
+        background: url(../../images/redEnvelope/redEnvelopeDetails_bgBottom.jpg) top center no-repeat #fafafa;
+        background-size: 750rem/@baseSize 400rem/@baseSize;
+        width: 750rem/@baseSize; 
+        min-height:384rem/@baseSize;
+    }
+}
+.main{
+    .mainTop{
+        /*background: url(../../images/redEnvelope/redEnvelopeDetails_bgMain.jpg) top center no-repeat ;
+        background-size: 750rem/@baseSize 950rem/@baseSize;
+        width: 750rem/@baseSize; 
+        height:950rem/@baseSize;*/
+        margin: 0 auto;
+    }
+    .mainBottom{
+        /*background: url(../../images/redEnvelope/redEnvelopeDetails_bgBottom.jpg) top center no-repeat #fafafa;
+        background-size: 750rem/@baseSize 384rem/@baseSize;
+        width: 750rem/@baseSize; 
+        min-height:384rem/@baseSize;*/
+        margin: 0 auto;
+    }
+    
+    .mainTop{
+        padding-top: 175rem/@baseSize;
+        box-sizing: border-box;
+    }
+    .mainTit{
+      /*  background: url(../../images/redEnvelope/redEnvelopeDetails_titile.png) no-repeat;
+        background-size:394rem/@baseSize 71rem/@baseSize;
+        width: 394rem/@baseSize;
+        height: 71rem/@baseSize;
+        margin: 0 auto 75rem/@baseSize auto;*/
+      
+  
+          font-size: 52rem/@baseSize;
+          color: #ffffdc;
+          padding: 0 10rem/@baseSize;
+          line-height:68rem/@baseSize;
+          text-align: center;
+          text-shadow: 2.5rem/@baseSize 4.33rem/@baseSize 8rem/@baseSize #663f1a;
+          margin: 0 auto 75rem/@baseSize auto;
+         /*  -moz-transform: matrix( 1.08000004291534,0,0,1.08,0,0);
+          -webkit-transform: matrix( 1.08000004291534,0,0,1.08,0,0);
+          -ms-transform: matrix( 1.08000004291534,0,0,1.08,0,0);*/
+          width: 100%;
+          box-sizing: border-box;
+        
+    }
+  /*  .星火奖励红包 {
+  
+ 
+  position: absolute;
+  left: 195.383px;
+  top: 273.001px;
+  z-index: 28;
+}*/
+
+    .box{
+        width: 100%;
+        .top{
+            background: url(../../images/redEnvelope/redEnvelopeDetails_top.png);
+            background-size:660rem/@baseSize 330rem/@baseSize;
+            width: 660rem/@baseSize;
+            height: 330rem/@baseSize;
+            margin: 0 auto;
+            padding-top: 30rem/@baseSize;
+            box-sizing: border-box;
+        }
+        .center{
+            background: url(../../images/redEnvelope/redEnvelopeDetails_center.png) repeat;
+            background-size:660rem/@baseSize 60rem/@baseSize;
+            width: 660rem/@baseSize;
+            height: auto;
+            margin: -2px auto 0 auto;
+            min-height: 40rem/@baseSize;
+            box-sizing: border-box;
+        }
+        .bottom{
+            background: url(../../images/redEnvelope/redEnvelopeDetails_bottom.png) no-repeat;
+            background-size:660rem/@baseSize 240rem/@baseSize;
+            width: 660rem/@baseSize;
+            height: 240rem/@baseSize;
+            margin:-1px auto 0 auto;
+            box-sizing: border-box;
+        }
+        
+        .top{
+            .tit{
+                color: #ac6a2a;
+                font-size: 26rem/@baseSize;
+                text-align: center;
+                line-height: 46rem/@baseSize;
+            }
+            .amount{
+                text-align: center;
+                padding-top: 15rem/@baseSize;
+                color:#d5353d;
+                font-size: 36rem/@baseSize;
+                line-height: 100rem/@baseSize;
+                .unit{
+                    position: relative;
+                    bottom: 5rem/@baseSize;
+                }
+                .num{
+                    font-size: 100rem/@baseSize;
+                }
+            }
+            .timeDate{
+                text-align: center;
+                font-size: 28rem/@baseSize;
+                color: #ac6a2a;
+            }
+        }
+        
+        .center{
+            padding: 0 100rem/@baseSize;
+            text-align: center;
+            .info{
+                color: #ac6a2a;
+                font-size: 24rem/@baseSize;
+                line-height: 40rem/@baseSize;
+                min-height:40rem/@baseSize;
+                padding-top: 10rem/@baseSize;
+                
+            }
+        }
+        
+        .bottom{
+            position: relative;
+            .bottomCon{
+                position: absolute;
+                left: 0;
+                bottom:40rem/@baseSize;
+                width: 100%;
+                
+                .time{
+                    color: #f8d199;
+                    font-size: 24rem/@baseSize;
+                    text-align: center;
+                }
+            }
+            .logoIcon{
+                background:url(../../images/redEnvelope/redEnvelopeDetails_logo.png) no-repeat; 
+                background-size:92rem/@baseSize 93rem/@baseSize ;
+                width: 92rem/@baseSize;
+                height: 93rem/@baseSize;
+                box-sizing: border-box;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                top:-110rem/@baseSize
+            }
+        }
+    }
+    
+    .mainBottom{
+        padding-top: 50rem/@baseSize;
+        box-sizing: border-box;
+        .mainBottomCon{
+            width: 660rem/@baseSize;
+            margin: 0 auto;
+        }
+        .redEnNum{
+            color:#ac6a2a ;
+            font-size: 26rem/@baseSize;
+            text-align: center;
+            line-height: 40rem/@baseSize;
+            margin-bottom: 30rem/@baseSize;
+            
+            &.disabled{
+                color: #929292;
+            }
+        }
+        .btnBox{
+            
+            .btn{
+                display: block;
+                 border-radius: 20rem/@baseSize;
+                  background-image: -moz-linear-gradient( 90deg, rgb(202,51,61) 0%, rgb(219,60,71) 100%);
+                  background-image: -webkit-linear-gradient( 90deg, rgb(202,51,61) 0%, rgb(219,60,71) 100%);
+                  background-image: -ms-linear-gradient( 90deg, rgb(202,51,61) 0%, rgb(219,60,71) 100%);
+                  box-shadow: 1rem/@baseSize 1.732rem/@baseSize 4rem/@baseSize 0px rgb( 106, 43, 47 );
+                  font-size: 34rem/@baseSize;
+                  color: #ffffff;
+                  line-height: 95rem/@baseSize;
+                  width: 100%;
+                  height: 95rem/@baseSize;
+                  text-align: center;
+                  margin-bottom: 45rem/@baseSize;
+                  &.disabled{
+                    background-image: -moz-linear-gradient( 90deg, rgb(158,158,158) 0%, rgb(156,156,156) 100%);
+                    background-image: -webkit-linear-gradient( 90deg, rgb(158,158,158) 0%, rgb(156,156,156) 100%);
+                    background-image: -ms-linear-gradient( 90deg, rgb(158,158,158) 0%, rgb(156,156,156) 100%);
+                    box-shadow: 1rem/@baseSize 1.732rem/@baseSize 4px 0rem/@baseSize rgb( 98, 98, 98 );
+                  }
+                
+            }
+           
+
+            
+        }
+        
+    }
+    
+    .tips{
+        padding-left: 5em;
+        position: relative;
+        
+        color: #cda784;
+        font-size: 24rem/@baseSize;
+        line-height: 40rem/@baseSize;
+        padding-bottom: 40rem/@baseSize;
+        .tipslab{
+            position: absolute;
+            left: 0;
+            top:0;
+            height: 40rem/@baseSize;
+            line-height: 40rem/@baseSize;
+        }
+    }
+    .tips{
+        .tipsCon2{
+            color:#ac6a2a;
+            text-indent: 75rem/@baseSize;
+        }
+    }
+    
+	
+}
+
+/*使用明细页*/
+.userList{
+    width: 750rem/@baseSize;
+    margin: 0 auto;
+    
+    .fixBox{
+        position: fixed;
+        top:0;
+        background: #F4F4F4;
+    }
+    .header{
+        background:url(../../images/redEnvelope/redEnvelopeUseList_bg.jpg) top center no-repeat;
+        background-size: 750rem/@baseSize 320rem/@baseSize;
+        width:  750rem/@baseSize;
+        height: 320rem/@baseSize;
+        position: relative;
+        text-align: center;
+        margin: 0 auto 140rem/@baseSize auto;
+        
+    }
+    .headerInfo{
+        padding-top: 50rem/@baseSize;
+    }
+    .redAmount{
+        margin-bottom: 10rem/@baseSize;
+        span{
+            display: inline-block;
+        }
+        .num{
+            font-size: 64rem/@baseSize;
+            height: 80rem/@baseSize;
+            line-height: 80rem/@baseSize;
+            color: #ffffff;
+            margin-right: 10rem/@baseSize;
+        }
+        .unit{
+           
+          
+            font-size: 30rem/@baseSize;
+            color: #FFFFFF;
+            
+        }
+        
+        
+    }
+    .fullCutAmount{
+        height: 42rem/@baseSize;
+        overflow: hidden;
+    }
+    .fullCutCon{
+        display: inline-block;
+        color: #ffffff;
+        font-size: 44rem/@baseSize;
+        line-height:62rem/@baseSize;
+        padding:0rem/@baseSize 20rem/@baseSize;
+        border-radius:40rem/@baseSize;
+        border:1px solid #FFFFFF;
+        transform: scale(0.5);
+        -webkit-transform: scale(0.5);
+        transform-origin: top center;
+        -webkit-transform-origin: top center;
+        white-space: pre;
+    }
+    .date{
+        font-size: 26rem/@baseSize;
+        line-height: 50rem/@baseSize;
+        color: #ac6a2a;
+        margin-bottom: 20rem/@baseSize;
+    }
+    
+    .linkDetails{
+        display:block;
+        background: url(../../images/redEnvelope/redEnvelopeUseList_arrow.png) top center no-repeat;
+        background-size: 14rem/@baseSize 26rem/@baseSize;
+        width: 80rem/@baseSize;
+        height: 80rem/@baseSize;
+        position: absolute;
+        right:10rem/@baseSize;
+        top:110rem/@baseSize;
+    }
+    .useInfo{
+        padding: 0 30rem/@baseSize;
+        .useInfoCon{
+            width: 100%;
+            background: #FFFFFF;
+            box-shadow: 2rem/@baseSize 3.464rem/@baseSize 10rem/@baseSize 0rem/@baseSize rgb( 212, 212, 212 );
+            border-radius: 10rem/@baseSize;
+            text-align: center;
+            height:160rem/@baseSize;
+            box-sizing: border-box;
+            padding-top: 30rem/@baseSize;
+            .item{
+                display: inline-block;
+                width: 33%;
+                float: left;
+                text-align: center;
+                .num{
+                    color: #ac6a2a;
+                    font-size: 38rem/@baseSize;
+                    line-height: 50rem/@baseSize;
+                    margin-bottom: 10rem/@baseSize;
+                }
+                
+                .tit{
+                    font-size: 26rem/@baseSize;
+                    color: #adadad;
+                    line-height: 30rem/@baseSize;
+                }
+            }
+            
+        }
+    }
+    
+    .listTitle{
+        width: 100%;
+        .topBorder;
+        .listTitleCon{
+            .bottomBorder;
+            padding: 0 28rem/@baseSize;
+            height: 88rem/@baseSize;
+        }
+        background-color:#ffffff;
+        
+        .tit{
+            display: inline-block;
+            width: 24%;
+            font-size: 30rem/@baseSize;
+            color: #adadad;
+            line-height: 88rem/@baseSize;
+            text-align: center;
+       
+            
+        }
+    }
+    
+    .listCon{
+        background-color: #FFFFFF;
+        padding: 0 28rem/@baseSize;
+        margin-bottom: 20rem/@baseSize;
+        .item{
+            .bottomBorder;
+            
+            &:last-child{
+                background: none;
+            }
+            
+            .con{
+                width: 24%;
+                text-align: center;
+                display: inline-block;
+                height: 88rem/@baseSize;
+                line-height: 88rem/@baseSize;
+                color: #444444;
+                font-size: 30rem/@baseSize;
+            }
+        }
+    }
+    
+    .listTitle .tit1,.listCon .item .con1{ width: 20%;}
+    .listTitle .tit2,.listCon .item .con2{ width: 33%;}
+    .listTitle .tit3,.listCon .item .con3{ width: 21%;}
+    .listTitle .tit4,.listCon .item .con4{ width: 21%;}
+}
+/*使用明细页:end*/
+
+
+/*底部加载更多*/
+.loadingBox{
+    display: none;
+    height: 80rem/@baseSize;
+    line-height: 90rem/@baseSize;
+    text-align: center;
+    font-size: 24rem/@baseSize;
+    color: #999999;
+    position: relative;
+    &.show{
+        display: block;
+    }
+    &.hide{
+        display:none;
+    }
+    .loading{
+        position: relative;
+        display: inline-block;
+        padding-left: 70rem/@baseSize;
+        &:after{
+            content: " ";
+            width: 50rem/@baseSize;
+            height:80rem/@baseSize;
+            display: inline-block;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            background:url(../../images/redEnvelope/loadingLogo.gif) center  no-repeat;
+            background-size: 50rem/@baseSize 80rem/@baseSize;
+        }
+    }
+    
+    
+    
+}
+/*屏幕宽度 大于720*/
+/*背景100%*/
+/*@media screen and (min-width:700px){*/
+   .mainBg{
+        width:100%;
+        .bgTop{
+            background-size: 100% 950rem/@baseSize;
+            width: 100%; 
+
+        }
+        .bgBottom{
+         
+            background-size:100% 400rem/@baseSize;
+            width:100%; 
+       
+        }
+    }
+    
+    .userList{
+        width:100%;
+       
+        
+        
+        .header{
+            background-size: 100% 320rem/@baseSize;
+            width:  100%;
+            
+        }
+        
+        .fixBox{
+            width: 100%;
+        }
+    }
+    
+   
+    
+/*}*/
+/*背景100%:end*/
+
+

@@ -1,0 +1,664 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+img {
+  display: block;
+  border: none;
+}
+.clear {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+body {
+  background: #f4f4f4;
+  font-family: arial;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+.bottomBorder {
+  background-image: linear-gradient(to bottom, transparent 50%, #e5e5e5 50%);
+  background-image: -webkit-linear-gradient(bottom, transparent 50%, #e5e5e5 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.inviteMain .header {
+  background: #FFFFFF;
+  padding: 0.5333333333333333rem 1.2666666666666666rem;
+  text-align: left;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.inviteMain .header:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.inviteMain .headPortrait {
+  display: inline-block;
+  float: left;
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+  margin-right: 1.6rem;
+}
+.inviteMain .headPortrait .imgBox {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 3px solid #e1be93;
+  border-radius: 50%;
+  margin-bottom: 0.2rem;
+  background: #FFFFFF;
+}
+.inviteMain .headPortrait .imgBox img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.inviteMain .headPortrait .nickName {
+  font-size: 0.3466666666666667rem;
+  color: #444444;
+  line-height: 30px;
+  text-align: center;
+}
+.inviteMain .captainInfo {
+  display: inline-block;
+  float: left;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  min-width: 55%;
+}
+.inviteMain .captainInfo .tit {
+  color: #444444;
+  font-size: 0.4266666666666667rem;
+  height: 0.9333333333333333rem;
+  line-height: 0.9333333333333333rem;
+}
+.inviteMain .captainInfo .cList ul li {
+  text-align: left;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row;
+  -webkit-flex-flow: row;
+}
+.inviteMain .captainInfo .cList ul li label,
+.inviteMain .captainInfo .cList ul li span,
+.inviteMain .captainInfo .cList ul li div {
+  display: inline-block;
+  line-height: 0.5333333333333333rem;
+  font-size: 0.4rem;
+  color: #444444;
+}
+.inviteMain .captainInfo .cList ul li label {
+  color: #adadad;
+}
+.inviteMain .captainInfo .cList ul li span {
+  color: #ac6a2a;
+}
+.inviteMain .btnBox {
+  padding: 0.5333333333333333rem 0.37333333333333335rem;
+}
+.inviteMain .btnBox a {
+  display: block;
+  width: 100%;
+  background: #de9226;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+  font-size: 0.48rem;
+  color: #FFFFFF;
+  border-radius: 0.13333333333333333rem;
+}
+.inviteMain .inviteListBox {
+  background: #FFFFFF;
+  padding: 0 0.37333333333333335rem;
+  margin-bottom: 0.5333333333333333rem;
+}
+.inviteMain .inviteListBox .inviteList .item {
+  padding: 0.2rem 0;
+  text-align: left;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  background-image: linear-gradient(to bottom, transparent 50%, #e5e5e5 50%);
+  background-image: -webkit-linear-gradient(bottom, transparent 50%, #e5e5e5 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.inviteMain .inviteListBox .inviteList .item:last-child {
+  background: none;
+}
+.inviteMain .inviteListBox .inviteList .item:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.inviteMain .inviteListBox .inviteList .item .itemCon {
+  float: left;
+  display: inline-block;
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+  position: relative;
+}
+.inviteMain .inviteListBox .inviteList .item .itemCon:last-child {
+  float: right;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+}
+.inviteMain .inviteListBox .inviteList .item .imgBox {
+  width: 1.0933333333333333rem;
+  height: 1.0933333333333333rem;
+  border: 2px solid #e1be93;
+  border-radius: 50%;
+  background: #FFFFFF;
+  margin-right: 0.3466666666666667rem;
+}
+.inviteMain .inviteListBox .inviteList .item .imgBox img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.inviteMain .inviteListBox .inviteList .item .nickName,
+.inviteMain .inviteListBox .inviteList .item .inviteStatus {
+  color: #444444;
+  font-size: 0.4266666666666667rem;
+  line-height: 0.6933333333333334rem;/*52*/
+}
+.inviteMain .inviteListBox .inviteList .item .phoneNum,
+.inviteMain .inviteListBox .inviteList .item .inviteAction {
+  color: #444444;
+  font-size: 0.3466666666666667rem;
+  line-height: 0.48rem;/*38*/
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.inviteMain .inviteListBox .inviteList .item .inviteStatus,
+.inviteMain .inviteListBox .inviteList .item .inviteAction {
+  text-align: right;
+}
+.inviteMain .inviteListBox .inviteList .item .inviteAction {
+  color: #de9226;
+}
+.inviteMain .inviteListBox .inviteList .item .inviteAction span {
+  position: absolute;
+  display: inline-block;
+  min-width: 50%;
+  right: 0;
+  padding-top: 0.6933333333333334rem;
+  top: 0;
+}
+/*弹窗*/
+.dialogBox {
+  display: none;
+  overflow: hidden;
+}
+/*&.hide{
+          display: none;
+      }*/
+.dialogBox:hover {
+  width: 20px;
+  overflow: hidden;
+}
+.dialogBox.show {
+  display: block;
+  width: 540px;
+}
+.dialogBox .dialog .content .statusList li.s1,
+.dialogBox .dialog .content .statusList li.s2,
+.dialogBox .dialog .content .statusList li.s3,
+.dialogBox .dialog .content .statusList li.s4 {
+  display: none;
+}
+.dialogBox.statu1 .dialog .content .statusList li.s1,
+.dialogBox.statu2 .dialog .content .statusList li.s2,
+.dialogBox.statu3 .dialog .content .statusList li.s3,
+.dialogBox.statu4 .dialog .content .statusList li.s4 {
+  display: flex;
+  display: -webkit-flex;
+}
+.dialogBox.statu1 .dialog .content .statusList .s1:nth-child(-n+1) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox.statu1 .dialog .content .statusList .s1:nth-child(-n+1) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox.statu2 .dialog .content .statusList .s2:nth-child(-n+3) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox.statu2 .dialog .content .statusList .s2:nth-child(-n+3) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox.statu3 .dialog .content .statusList .s3:nth-child(-n+5) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox.statu3 .dialog .content .statusList .s3:nth-child(-n+5) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox.statu4 .dialog .content .statusList .s4:nth-child(-n+7) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox.statu4 .dialog .content .statusList .s4:nth-child(-n+7) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox .dialogMash {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+.dialogBox .dialog {
+  background: #FFFFFF;
+  border-radius: 0.2rem;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform-origin: left top;
+  -webkit-transform-origin: left top;
+}
+.dialogBox .dialog .dialogCon {
+  width: 7.2rem;
+}
+.dialogBox .dialog .content {
+  padding: 0.4rem;
+}
+.dialogBox .dialog .content .statusList {
+  padding-left: 0.4rem;
+  padding-top: 0.4rem;
+}
+.dialogBox .dialog .content .statusList.statu1 li:nth-child(-n+1) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox .dialog .content .statusList.statu1 li:nth-child(-n+1) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox .dialog .content .statusList.statu2 li:nth-child(-n+2) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox .dialog .content .statusList.statu2 li:nth-child(-n+2) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox .dialog .content .statusList.statu3 li:nth-child(-n+3) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox .dialog .content .statusList.statu3 li:nth-child(-n+3) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox .dialog .content .statusList.statu4 li:nth-child(-n+4) .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox .dialog .content .statusList.statu4 li:nth-child(-n+4) .icon:after {
+  background-position: 0 0;
+}
+.dialogBox .dialog .content .statusList li {
+  text-align: left;
+  display: flex;
+  display: -webkit-flex;
+  margin-bottom: 0.29333333333333333rem;
+}
+.dialogBox .dialog .content .statusList li:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.dialogBox .dialog .content .statusList .icon {
+  float: left;
+  height: 0.6666666666666666rem;
+  width: 0.6666666666666666rem;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 0.3466666666666667rem;
+  background-image: -moz-linear-gradient(90deg, #cecece 0%, #ececec 100%);
+  background-image: -webkit-linear-gradient(90deg, #cecece 0%, #ececec 100%);
+  background-image: -ms-linear-gradient(90deg, #cecece 0%, #ececec 100%);
+}
+.dialogBox .dialog .content .statusList .icon:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(../../images/captainInvite/checkmarkIcon.png) no-repeat;
+  background-size: 0.6666666666666666rem 1.3333333333333333rem;
+  background-position: 0 -0.6666666666666666rem;
+}
+.dialogBox .dialog .content .statusList .word {
+  float: left;
+  color: #adadad;
+  font-size: 0.4266666666666667rem;
+  line-height: 0.6666666666666666rem;
+}
+.dialogBox .dialog .content .statusList .active .icon {
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+}
+.dialogBox .dialog .content .statusList .active .icon:after {
+  background-position: 0 0;
+}
+.dialogBox .dialog .content .statusList .active .word {
+  color: #929292;
+}
+.dialogBox .dialog .dialogBtnBox {
+  text-align: center;
+  background-image: linear-gradient(to top, transparent 50%, #e5e5e5 50%);
+  background-image: -webkit-linear-gradient(top, transparent 50%, #e5e5e5 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: top;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row;
+  -webkit-flex-flow: row;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+.dialogBox .dialog .dialogBtnBox a {
+  display: inline-block;
+  flex-grow: 1;
+  height: 1.1733333333333333rem;
+  line-height: 1.1733333333333333rem;
+  color: #de9226;
+  font-size: 0.4266666666666667rem;
+  text-align: center;
+  background-image: linear-gradient(to right, transparent 50%, #e5e5e5 50%);
+  background-image: -webkit-linear-gradient(right, transparent 50%, #e5e5e5 50%);
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.dialogBox .dialog .dialogBtnBox a:last-child {
+  background: none;
+}
+/*弹窗：end*/
+.addMemberMain .header {
+  padding: 1rem 0.37333333333333335rem 0.8666666666666667rem 0.37333333333333335rem;
+}
+.addMemberMain .stepBox {
+  text-align: center;/*安卓兼容*/
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+.addMemberMain .stepBox .stepItem {
+  display: inline-block;/*安卓兼容*/
+  text-align: center;
+  height: 2.933333333333333rem;
+  width: 3.2rem;
+}
+.addMemberMain .stepBox .icon,
+.addMemberMain .stepBox .middleArrow {
+  display: inline-block;
+  border-radius: 50%;
+  width: 1.8666666666666667rem;
+  height: 1.8666666666666667rem;
+  background-image: -moz-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -webkit-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  background-image: -ms-linear-gradient(90deg, #decca9 0%, #f5ebcb 100%);
+  margin-bottom: 0.4666666666666667rem;
+  position: relative;
+}
+.addMemberMain .stepBox .icon.icon1:after,
+.addMemberMain .stepBox .middleArrow.icon1:after {
+  background-position: 0 0;
+}
+.addMemberMain .stepBox .icon.icon2:after,
+.addMemberMain .stepBox .middleArrow.icon2:after {
+  background-position: 0 -3.7333333333333334rem;
+}
+.addMemberMain .stepBox .icon:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+.addMemberMain .stepBox .icon:after,
+.addMemberMain .stepBox .middleArrow {
+  background: url(../../images/captainInvite/captainInviteStepIcon.png) no-repeat;
+  background-size: 1.8666666666666667rem 5.6rem;
+}
+.addMemberMain .stepBox .middleArrow {
+  width: 1.8666666666666667rem;
+  background-position: 0 -1.8666666666666667rem;
+}
+.addMemberMain .stepBox .word {
+  color: #ac6a2a;
+  font-size: 0.37333333333333335rem;
+  line-height: 0.5333333333333333rem;
+  text-align: center;
+}
+.addMemberMain .content .formBox {
+  background: #FFFFFF;
+  padding: 0 0.37333333333333335rem;
+  margin-bottom: 1.0666666666666667rem;
+}
+.addMemberMain .content .formBox .inputBox {
+  padding: 0.26666666666666666rem 0;
+  height: 0.5866666666666667rem;
+  line-height: 0.5866666666666667rem;
+  position: relative;
+  padding-left: 2.6666666666666665rem;
+  background-image: linear-gradient(to bottom, transparent 50%, #e5e5e5 50%);
+  background-image: -webkit-linear-gradient(bottom, transparent 50%, #e5e5e5 50%);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.addMemberMain .content .formBox .inputBox label {
+  display: inline-block;
+  color: #444444;
+  font-size: 0.4266666666666667rem;
+  width: 2.6666666666666665rem;
+  position: absolute;
+  left: 0;
+  top: 0.26666666666666666rem;
+}
+.addMemberMain .content .formBox .inputBox input {
+  border: none;
+  outline: none;
+  height: 0.5866666666666667rem;
+  line-height: 0.5866666666666667rem;
+  font-size: 0.4266666666666667rem;
+  color: #666666;
+  width: 100%;
+}
+.addMemberMain .content .formBox .inputBox input:-moz-placeholder,
+.addMemberMain .content .formBox .inputBox input::-moz-placeholder {
+  color: #BCBCBC;
+}
+.addMemberMain .content .formBox .inputBox input:-ms-input-placeholder {
+  color: #BCBCBC;
+}
+.addMemberMain .content .formBox .inputBox input::-webkit-input-placeholder {
+  color: #BCBCBC;
+}
+.addMemberMain .content .formBox .inputBox:last-child {
+  background: none;
+}
+.addMemberMain .btnBox {
+  padding: 0 0.37333333333333335rem 0.5333333333333333rem;
+}
+.addMemberMain .btnBox a {
+  display: block;
+  width: 100%;
+  background: #de9226;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  text-align: center;
+  font-size: 0.48rem;
+  color: #FFFFFF;
+  border-radius: 0.13333333333333333rem;
+}
+.rulesMain {
+  padding: 0.4rem 0.5333333333333333rem 0.9333333333333333rem 0.8rem;
+}
+.rulesMain .ruleList .item {
+  position: relative;
+}
+.rulesMain .ruleList .item .tit {
+  font-size: 0.37333333333333335rem;
+  color: #444444;
+  line-height: 0.48rem;
+  margin-bottom: 0.3333333333333333rem;
+}
+.rulesMain .ruleList .item .tit:after {
+  content: " ";
+  display: block;
+  background-color: #f9bf57;
+  width: 1.8666666666666667rem;
+  height: 1.8666666666666667rem;
+  position: absolute;
+  top: 0.13333333333333333rem;
+  left: -0.38666666666666666rem;
+  border-radius: 100%;
+  transform: scale(0.1);
+  -webkit-transform: scale(0.1);
+  transform-origin: top left;
+  -webkit-transform-origin: top left;
+}
+.rulesMain .ruleList .item .imgBox {
+  margin-bottom: 0.4666666666666667rem;
+  box-shadow: 0rem 0rem 0.13333333333333333rem #e4e4e4;
+}
+.rulesMain .ruleList .item .imgBox img {
+  width: 100%;
+  height: auto;
+}
+/*加载转表样式*/
+.loadingDiv {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background: url(../../images/captainInvite/xinghuoloading.gif) no-repeat center center rgba(255, 255, 255, 0.4);
+}
+.loadingDiv.show {
+  display: block;
+}
+.loadingDiv.hidden {
+  display: none;
+}
+/*加载转表样式：end*/
+/*弱提示框样式*/
+.tipsOvrly {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.tipsOvrlyShow {
+  display: block;
+}
+.ovrlyWordBox {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: auto;
+  z-index: 20;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+.tipsOvrly .ovrlyWord {
+  white-space: pre;
+  opacity: 0;
+  border-radius: 5px;
+  margin: 0 auto;
+  color: #ffffff;
+  font-size: 0.4rem;
+  left: 15%;
+  line-height: 0.5333333333333333rem;
+  padding: 0.2rem 0.2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+.tipsOvrlyShow .ovrlyWord {
+  animation: mymove 2s ease-in-out 0s 1 alternate forwards;
+  -webkit-animation: mymove 2s ease-in-out 0s 1 alternate forwards;
+  opacity: 1;
+}
+@keyframes mymove {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  25% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  75% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+@-webkit-keyframes mymove {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  25% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  75% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+} /*弱提示框样式*/
+/*# sourceMappingURL=captainInviteStyle.css.map */

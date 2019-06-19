@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹窗</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui" />  
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/privatePlacement.css"  type="text/css"/>
+	</head>
+	<body>
+		
+		<!--<div class="ovrly" style="display: block;">
+		</div>
+		
+		<div class="dialogBox dialog4">
+			<div class="dialog">
+				<div class="dialogTitle bottomBorder">
+					<div class="titWord">您的风险偏好类型为</div>
+					
+				</div>
+				<div class="dialogConBox">
+					<div class="dialogCon txtAlignCenter">
+						<div class="orangeWord">
+							激进型
+						</div>
+						
+					</div>
+				</div>
+				<div class="bottomBtn topBorder">
+					<a href="javascript:void(0);" class="twoBtn">取&emsp;消</a>
+					<a href="javascript:void(0);" class="twoBtn">转 &emsp;入</a>
+				</div>
+			
+			</div>
+			
+		</div>-->
+        <script type="text/javascript" src="../js/public/jquery.js"></script>
+        <script type="text/javascript" src="../js/public/modalJs.js"></script>
+       <script type="text/javascript">
+            $(document).ready(function(){
+               var walletenterBool=true
+               var mymodal = new Modal({
+                                    title:"您的风险偏好类型为",
+                                    wrapperClass:'dialog4',
+                                    contentText : "<div class='orangeWord'>" +"aaaaa" + "</div>",/*+ result.detailRemark*/
+                                    isPromptbtn:true,
+                     				conisPromptText:["转入","取消"],
+                     				conisPromptLink:[walletenterBool?"xinghuo://RiskWalletEnter":"","xinghuo://RiskWalletCancle"],  /*取消（取消之后进入钱包页）：xinghuo://RiskWalletCancle转入（转入之后进入转入页）：xinghuo://RiskWalletEnter*/
+                     				conisPromptClass:[walletenterBool?"":"disable",""]
+                           
+                                });
+                                mymodal.open();
+                                
+                    [].slice.call(document.querySelectorAll(".twoBtn")).forEach(function(thisObj,index){
+						thisObj.addEventListener("click",function(){
+							thisObj.classList.add("touchbtn");
+							setTimeout(function(){
+								thisObj.classList.remove("touchbtn");
+							}, 500);
+						},false);
+					});            
+                
+            });
+        </script>
+	</body>
+</html>

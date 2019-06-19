@@ -1,0 +1,85 @@
+*{ margin: 0; padding: 0;}
+a{text-decoration: none;-webkit-touch-callout: none;-webkit-user-select: none;-webkit-tap-highlight-color:transparent;}
+input{ outline: none;-webkit-tap-highlight-color:transparent; }
+img{ border: none; display: inline-block;}
+ul,li{list-style: none;}
+
+body{ background: #F4F4F4;position: relative}
+body.fixedBottomBady{ padding-bottom:82px ;}
+body.modal-open {
+	position: fixed;
+	width: 100%;
+}
+.txtAlignCenter{ text-align: center;padding: 14px 14px 14px 14px;box-sizing:border-box;margin-top: 10px; margin-bottom: 82px; min-height: 85vh; background: #FFFFFF;}
+.txtAlignCenter img{max-width: 100%;}
+
+.ovrly{ position: fixed; top:0; left: 0; background: rgba(0,0,0,0.4); width: 100%; height: 100%; z-index: 1001;}
+.dialogBox{ width: 270px;  position: fixed;z-index:1002;  background: #FFFFFF; border-radius: 5px; left: 50%; top:48%; transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);}
+
+.footerFixed .btn,.bottomBtn .btn{ width: 100%; padding: 0; height: 45px; line-height: 45px; color: #FFFFFF; display: inline-block; text-align: center; border-radius: 5px; background: #de9226; font-size: 18px; /*border:1px solid #000;*/ }
+.footerFixed .btn.disabled,.bottomBtn .btn.disabled{ background:#c5c5c5;border:0;}
+.buttonBom a.disabled{ background:#c5c5c5 ; border-color:#c5c5c5 ;}
+.dialogTitle{position: relative; padding: 15px 20px; text-align: center; line-height: 26px; color: #444444; font-size: 17px;}
+
+
+.topBorder{
+	background-image: -moz-linear-gradient(transparent  50%,#ececec 50%);
+	background-image: -webkit-linear-gradient(transparent  50%,#ececec 50%);
+	background-image: -ms-linear-gradient(transparent  50%, #ececec 50%); 
+	background-size: 100% 1px;background-position: left top;
+	background-repeat: no-repeat;
+}
+.bottomBorder{
+	background-image: -moz-linear-gradient(#ececec 50%, transparent  50%);
+	background-image: -webkit-linear-gradient(#ececec 50%, transparent  50%);
+	background-image: -ms-linear-gradient(#ececec 50%, transparent  50%);
+	background-size: 100% 1px;
+	background-position: left bottom;
+	background-repeat: no-repeat;
+}
+
+.formBox { border: none; padding: 0 20px; margin-bottom: 20px;}
+.inputBox{height: 55px; position: relative; padding: 18px 0;padding-left: 40px; box-sizing: border-box;}
+.formBox input{border: none; background: transparent; line-height: 20px; height: 20px; color: #444444; font-size: 16px;}
+.formBox input.errorInput,.errorInfo{color: #cc0000;}
+.errorInfo{ color: #cc0000; font-size: 14px; padding: 13px; line-height: 20px; text-align: center; margin-top: -20px;}
+.dialogBox .formBox input.error{
+    color: #cc0000;
+}
+.dialogBox .formBox input.error::-webkit-input-placeholder{
+    color: #cc0000;
+}
+.dialogBox .formBox input.error::-moz-placeholder{
+    color: #cc0000;
+}
+.dialogBox .formBox input.error:-ms-input-placeholder{
+    color: #cc0000;
+}
+.formBox .inputIcon{ width: 20px; height: 20px; position: absolute;left: 0; top:20px}
+.formBox .inputIcon,.dialogTitle .closeBtn{ background: url(../images/dialogIcon_bg.png) no-repeat; display: inline-block; background-size:20px 80px;}
+.inputIcon.icon1{ background-position: 0 -3px;}
+.inputIcon.icon2{ background-position: 0 -28px;}
+.dialogTitle .closeBtn{ background-position: 4px -48px; position: absolute; right: 10px; top:13px; width: 30px; height: 30px; }
+.dialog .bottomBtn{ padding: 0 30px; margin-bottom: 15px;}
+.dialog .btn{ height: 40px; line-height: 40px; font-size: 18px;padding: 0;}
+.dialogInfo{ padding: 0 30px; color: #adadad; font-size: 13px; text-align: center; line-height: 22px; margin-bottom: 20px;}
+
+.footerFixed{position: fixed; bottom: 0; left: 0; padding:14px ; width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.95);}
+
+.tips{/* box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1);*/display:none;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%); position: fixed; z-index: 10003; left: 50%; top:49%; padding: 15px 15px; line-height:30px ; color: #000; font-size: 16px; background: #FFFFFF; border-radius: 5px; text-align: center; white-space: nowrap;}
+.tips.hide{display: none;}
+.tips.show{animation:mymove 2.5s normal; display: block;}
+@keyframes mymove
+{
+    0%{background: rgba(255,255,255,0) ;}
+    25% { background:  rgba(255,255,255,0.9);}
+    65% { background:  rgba(255,255,255,0.9);}
+    100% {background: rgba(255,255,255,0) ;}
+}
+@-webkit-keyframes mymove
+{
+    0%{background: rgba(255,255,255,0) ;}
+    25% { background:  rgba(255,255,255,0.9);}
+    65% { background:  rgba(255,255,255,0.9);}
+    100% {background: rgba(255,255,255,0) ;}
+}

@@ -1,0 +1,1 @@
+window.onload=function(){[].slice.call(document.querySelectorAll(".footerItem  a")).forEach(function(t,e){t.addEventListener("touchstart",function(){t.classList.add("active")},!1),t.addEventListener("touchend",function(){t.classList.remove("active")},!1)})};

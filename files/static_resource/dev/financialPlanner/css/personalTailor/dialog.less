@@ -1,0 +1,141 @@
+@baseSize:75;
+.clear{content: "."; display: block;height: 0;clear: both;visibility: hidden; }
+/*加载转表样式*/
+.loadingDiv{ 
+     width: 100%; height: 100%; position: fixed; top:0; left: 0;z-index: 3;background:rgba(255,255,255,0.4);/* background:url(../../images/personalTailor/xinghuoloading.gif) no-repeat center center rgba(255,255,255,0.4)*/;
+    
+    &.show{
+        display: block;
+    }
+    &.hidden{
+        display: none;
+    }
+    &:after{
+        content: " ";
+        position: absolute;
+        top:38%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform-origin: left top; 
+        -webkit-transform-origin: left top; 
+        width: 200rem/@baseSize;
+        height:200rem/@baseSize;
+        border-radius: 10px;
+        background:url(../../images/personalTailor/xinghuoloading.gif) no-repeat center center rgba(255,255,255,1);
+        background-size: 64rem/@baseSize 64rem/@baseSize;
+    }
+    
+}
+/*加载转表样式：end*/
+
+/*弱提示框样式*/
+.tipsOvrly{ display:none; position: fixed; width: 100%; height: 100%; left: 0; top:0;  } 
+.tipsOvrlyShow{  display: block;}
+.ovrlyWordBox{ position: absolute;top:400rem/@baseSize;left: 50%; width:auto;z-index: 20; transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+.tipsOvrly .ovrlyWord{white-space: pre; opacity:0;margin:0 auto;border-radius: 5px;margin: 0 auto;color: #ffffff;font-size: 30rem/@baseSize;left: 15%;line-height: 40rem/@baseSize;padding: 15rem/@baseSize 15rem/@baseSize;text-align: center;background: rgba(0,0,0,0.7);}
+.tipsOvrlyShow  .ovrlyWord{ animation:mymove 2s  ease-in-out 0s 1 alternate forwards;-webkit-animation:mymove 2s  ease-in-out 0s 1 alternate forwards; opacity: 1;}
+@keyframes mymove
+{
+    0%{background:rgba(0,0,0,0) ;}
+    25% { background: rgba(0,0,0,0.7);}
+    75% { background: rgba(0,0,0,0.7);}
+    100% {background:rgba(0,0,0,0) ;}
+}
+@-webkit-keyframes mymove
+{
+    0%{background:rgba(0,0,0,0) ;}
+    25% { background: rgba(0,0,0,0.7);}
+    75% { background: rgba(0,0,0,0.7);}
+    100% {background:rgba(0,0,0,0) ;}
+}
+
+/*弱提示框样式*/
+
+/*弹窗*/
+.dialogBox{
+    display: none;
+   /* overflow: hidden;*/
+      /*&.hide{
+          display: none;
+      }*/
+     &:hover{
+     /*    width: 20px;*/
+         display: none;
+       /*  overflow: hidden;*/
+     }
+      &.show{
+          display: block;
+          width: 540px;
+      }
+    .dialogMash{
+        position: absolute;
+        right:0;
+        bottom:-100px;
+        left: 0;
+        top:0;
+        background: rgba(0,0,0,0.7);
+    }
+    .dialog{
+        background: #FFFFFF;
+        border-radius: 15rem/@baseSize;
+        position: fixed;
+        top:45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform-origin: left top; 
+        -webkit-transform-origin: left top; 
+        .dialogTitle{background-image: -moz-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -webkit-linear-gradient(transparent  50%,#e5e5e5 50%);background-image: -ms-linear-gradient(transparent  50%, #e5e5e5 50%); background-size: 100% 1px;background-position: left bottom;background-repeat: no-repeat; line-height: 26px; padding: 15rem/@baseSize 15rem/@baseSize; color:#444; text-align: center; position: relative; font-size: 28rem/@baseSize;}
+        .content{ 
+            left: 0; top:0; width: 100%; box-sizing: border-box; font-size: 28rem/@baseSize; color: #666; padding: 28rem/@baseSize; background: #FFFFFF; word-wrap: break-word;
+            span.orange{
+                color: #C4A06C;
+            }
+        }
+        .dialogCon{
+            width: 540rem/@baseSize;
+        }
+        .content{
+            padding:30rem/@baseSize ;
+        }
+        .dialogBtnBox{
+            text-align: center;
+            background-image: linear-gradient(to top,transparent 50%,#e5e5e5 50%);
+            background-image: -webkit-linear-gradient(top , transparent 50%,#e5e5e5 50%);
+            background-size: 100% 1px;
+            background-repeat: no-repeat;
+            background-position: top;
+            display: flex;
+            display:-webkit-flex;
+            flex-flow: row;
+            -webkit-flex-flow: row;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            a{
+                display: inline-block;
+                flex-grow:1 ;
+                height: 88rem/@baseSize;
+                line-height: 88rem/@baseSize;
+                color: #C4A06C;
+                font-size: 32rem/@baseSize;
+                text-align: center;
+                
+                
+                background-image: linear-gradient(to right,transparent 50%,#e5e5e5 50%);
+                background-image: -webkit-linear-gradient(right , transparent 50%,#e5e5e5 50%);
+                background-size: 1px 100%;
+                background-repeat: no-repeat;
+                background-position: right;
+                &:last-child{
+                    background: none;
+                }
+            }
+        }
+        
+    }
+}
+
+/*弹窗：end*/
+
+

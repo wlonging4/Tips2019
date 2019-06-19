@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".expand").on("click",function(){$(this).siblings(".hide").toggle(),$(this).hasClass("active")?$(this).removeClass("active"):$(this).addClass("active")})});
