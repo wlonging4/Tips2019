@@ -1,0 +1,242 @@
+<div ng-controller="arrangement as showCase">
+    <h3 class="page-title">
+        分配管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">查询</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                    <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-6">
+                            <label>分配时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startAllocationTime" ng-model="form.startAllocationTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endAllocationTime" ng-model="form.endAllocationTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>支持人员姓名</label>
+                            <input name="supportName" ng-model="form.supportName" class="form-control" placeholder="请输入支持人员姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="financialId" ng-model="form.financialId" class="form-control" placeholder="请输入理财经理Id">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名</label>
+                            <input name="realname" ng-model="form.realname" class="form-control" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>联系电话</label>
+                            <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入联系电话">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>宜信员工</label>
+                            <select name="yixinstatus" ng-model="form.yixinstatus" class="form-control" ng-change="action.showSelect()">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in yixinstatusList" value="{{item.key}}" >{{item.value}}</option>
+                            </select>
+                            <select name="yixintype" ng-model="form.yixintype" class="form-control" ng-show="showSelect">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in yixintypeList" value="{{item.key}}" >{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>在宜信是否销售岗</label>
+                            <select name="isSales" ng-model="form.isSales" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>级别</label>
+                            <select name="levelid" ng-model="form.levelid" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in levelList" value="{{item.levelId}}" >{{item.levelName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>等级</label>
+                            <input name="hierarchy" ng-model="form.hierarchy" class="form-control" placeholder="请输入等级关键字">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>地区</label>
+                            <input name="district" ng-model="form.district" class="form-control" placeholder="请输入地区">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>开店时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="starttimefirst"
+                                       ng-model="form.starttimefirst">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="starttimeEnd" ng-model="form.starttimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否团队长</label>
+                            <select name="isRegimental" ng-model="form.isRegimental" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>业务类型</label>
+                            <select name="businessType" ng-model="form.businessType" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in businesstypeList" value="{{item.key}}" >{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title" style="margin-right: 200px">理财经理数据：</span>
+                    <span class="panel-heading-title">支持人员总数：<span class="ui_red" ng-bind="recordsTotal"></span>人</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <!--<a id="js_whiteList_download" action="/mt/exportManageLeaderTemplates.shtml" href="javascript:;" class="btn btn-danger btn-sm">下载模板</a>-->
+                    <a id="arrangeImport" action="/mt/importManageLeader.shtml" ng-click="action.import();" href="javascript:;" class="btn btn-success btn-sm">导入</a>
+                    <a id="arrangeTrans" action="/mt/importManageLeader.shtml" ng-click="action.transArrange()" href="javascript:;" class="btn btn-success btn-sm">转分配</a>
+                    <a id="arrangeExport" action="fiancial/exportFinancial.json" href="javascript:;" class="btn btn-warning btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns"
+                       dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true"
+                       class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="importTemplate.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">导入</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form id="importManagerListForm" role="form" class="form-horizontal">
+                    <div class="form-group col-lg-12">
+                        <h4>导入说明：</h4>
+                        <p>需按照导入模板格式导入数据</p>
+                        <p>每次只可导入一个表格</p>
+                        <p>若导入的数据有误，需调整数据后重新导入整个表格</p>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <a href="javascript:;" action="fiancial/downloadTemplate.shtml" ng-click="downloadTemplate($event)">下载导入模板</a>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="col-sm-9">
+                            <input type="file" name="inputfile" ng-model="form.inputfile" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()" >确定</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="transArrange.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">转分配理财经理</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <label class=" control-label">理财经理姓名：</label>
+                <span ng-bind="listString"></span>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="control-label" >转分配至：</label><span ng-show="ifBlank" style="color:red">支持人员姓名不能为空</span>
+                <input placeholder="输入支持人员姓名" class="form-control" ng-change="search()"  ng-model="inputValue">
+                <div class="selectOptions" style="margin:0 10px" ng-show="selectShow">
+                    <p style="margin: 0;font-size:15px;" ng-mouseover="mouseOver($event)" ng-mouseleave="mouseLeave($event)" ng-click="optionsClick($event)" ng-repeat="item in searchList" ng-bind="item.text" data-id={{item.supportId}}></p>
+                </div>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <button class="btn btn-primary" ng-click="transConfirm()">确定</button>
+                <button class="btn btn-danger" ng-click="close()">取消</button>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="importSuccess.html">
+        <div class="modal-header" style="text-align: center;margin-bottom: 20px;">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">导入成功</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12" style="text-align: center;">
+                <i class="fa fa-check-circle-o" style="font-size:60px;color:green"></i>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <p ng-bind="msg" style="font-size:20px;font-weight: bold;"></p>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <button class="btn btn-primary" ng-click="close()">确定</button>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="importFail.html">
+        <div class="modal-header" style="text-align: center;margin-bottom: 20px;">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">导入失败</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12" style="text-align: center;">
+                <i class="fa fa-close" style="font-size:30px;color:red"></i>
+                <span style="font-size:30px;font-weight: bold;" >请调整数据后重新导入</span>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: left;padding-left:25%">
+                <label class=" control-label">错误信息如下：</label>
+                <p ng-bind-html="wrongMsg" style="font-size:15px;"></p>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <button class="btn btn-primary" ng-click="close()">确定</button>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="transConfirm.html">
+        <div class="modal-header" style="text-align: center;">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms" >提示</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <label class="control-label" >确定转分配至：</label>
+                <span ng-bind="inputValue" style="color:#CC6633"></span>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <button class="btn btn-primary" ng-click="submit()">确定</button>
+                <button class="btn btn-danger" ng-click="close()">取消</button>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

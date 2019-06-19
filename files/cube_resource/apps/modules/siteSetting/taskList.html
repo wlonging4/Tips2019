@@ -1,0 +1,65 @@
+<div ng-controller="taskListController">
+    <h3 class="page-title">
+        定时任务执行
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">定时任务执行</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table class="table table-striped row-border table-hover">
+                    <tr>
+                        <th width="190">任务名称</th>
+                        <th>code</th>
+                        <th>描述</th>
+                        <th>执行表达式</th>
+                        <th>创建时间</th>
+                        <th>创建者</th>
+                        <th>更新时间</th>
+                        <th>更新者</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr ng-repeat="item in taskList">
+                        <td>{{item.name}}</td>
+                        <td>{{item.code}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.execExpr}}</td>
+                        <td>{{item.createTime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                        <td>{{item.createBy}}</td>
+                        <td>{{item.updateTime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                        <td>{{item.updateBy}}</td>
+                        <td><button class="btn btn-primary btn-sm js-exec" data-code="{{item.code}}" ng-click="show($event)">执行</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="execTaskModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">×</button>
+            <h4 class="modal-title fn-ms">任务执行</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form role="form" class="form-horizontal" id="js_execTask_form">
+                    <input type="hidden" name="id" value="">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">执行日期：</label>
+                        <div class="col-sm-10">
+                            <input class="form-control form-control-inline input-medium date-picker" name="dateTime" size="16" type="text" value="" data-date-format="yyyy-mm-dd"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer" ng-init="init()">
+            <button type="button" class="btn btn-primary fn-ms" style="width:25%;" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok($event)">保存</button>
+        </div>
+    </script>
+</div>

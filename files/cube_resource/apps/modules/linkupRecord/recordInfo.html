@@ -1,0 +1,446 @@
+<div ng-controller="recordInfo">
+    <h3 class="page-title">
+        沟通记录详情
+    </h3>
+    <div class="well">
+        <h4 class="m-b-30">线索客户基本信息</h4>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">线索ID：</label>
+                    <div  class="col-xs-7 text-left">{{info.clueId}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">客户姓名：</label>
+                    <div  class="col-xs-7 text-left">{{info.userName}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">手机号：</label>
+                    <div  class="col-xs-7 text-left">{{info.userMobile}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">实名认证时间：</label>
+                    <div  class="col-xs-7 text-left">{{info.certificationTime}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">渠道：</label>
+                    <div  class="col-xs-7 text-left">{{info.channel}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">地区：</label>
+                    <div  class="col-xs-7 text-left">{{info.district}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">城市：</label>
+                    <div  class="col-xs-7 text-left">{{info.city}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">线索类型：</label>
+                    <div  class="col-xs-7 text-left">{{info.clueType}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">预约产品：</label>
+                    <div  class="col-xs-7 text-left">{{info.appointProd}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">预约时间：</label>
+                    <div  class="col-xs-7 text-left">{{info.appointTime}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                <div class="row">
+                    <label class="col-xs-5 text-right">订单状态：</label>
+                    <div  class="col-xs-7 text-left">{{info.orderStatus}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">登录状态：</label>
+                    <div  class="col-xs-7 text-left">{{info.loginStatus}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">了解宜信渠道：</label>
+                    <div  class="col-xs-7 text-left">{{info.screenCommuDetail.firstScreenChannel}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-lg-9 col-xs-6">
+                            <span class="panel-heading-title">初筛人：{{info.firstScreenUser}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <dl>
+                        <dt class="note note-info"><h4>初筛人第一次沟通记录</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通日期：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenFirstDate}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通时间：</label>
+                                        <div class="col-sm-12"><span ng-if="info.screenCommuDetail.firstScreenFirstBegintime">{{info.screenCommuDetail.firstScreenFirstBegintime + '-' + info.screenCommuDetail.firstScreenFirstEndtime}}</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通方式：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenFirstWay}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">初筛第一次沟通标签：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenFirstLab}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenFirstNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="note note-info"><h4>初筛人第二次沟通记录</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通日期：</label>
+                                        <div class="col-sm-12" ng-if="">{{info.screenCommuDetail.firstScreenSecondDate}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通时间：</label>
+                                        <div class="col-sm-12"><span ng-if="info.screenCommuDetail.firstScreenSecondBegintime">{{info.screenCommuDetail.firstScreenSecondBegintime + '-' + info.screenCommuDetail.firstScreenSecondEndtime}}</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通方式：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenSecondWay}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">初筛第二次沟通标签：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenSecondLab}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenSecondNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="note note-info"><h4>初筛人第三次沟通记录</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通日期：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenThirdDate}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通时间：</label>
+                                        <div class="col-sm-12"><span ng-if="info.screenCommuDetail.firstScreenThirdBegintime">{{info.screenCommuDetail.firstScreenThirdBegintime + '-' + info.screenCommuDetail.firstScreenThirdEndtime}}</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通方式：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenThirdWay}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">初筛第三次沟通标签：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenThirdLab}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenThirdNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="note note-info"><h4>初筛沟通结果</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">初筛结果：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenFilterResLab}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">后续联系方式：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenContact}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">是否加微信：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenWechatDesc}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.screenCommuDetail.firstScreenNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr style="border: 1px dashed #dddddd" />
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">转交理财师：</label>
+                                        <div class="col-sm-12">{{info.financial}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">转交时间：</label>
+                                        <div class="col-sm-12">{{info.secondDistributionTime}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel panel-info">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-lg-9 col-xs-6">
+                            <span class="panel-heading-title">理财师：{{info.financial}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <dl>
+                        <dt class="note note-info"><h4>理财师第一次沟通记录</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通日期：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenFirstDate}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通时间：</label>
+                                        <div class="col-sm-12"><span ng-if="info.finanCommuDetail.secondScreenFirstBegintime">{{info.finanCommuDetail.secondScreenFirstBegintime + '-' + info.finanCommuDetail.secondScreenFirstEndtime}}</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通方式：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenFirstWay}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">理财师第一次沟通标签：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenFirstLab}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenFirstNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="note note-info"><h4>理财师第二次沟通记录</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通日期：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenSecondDate}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通时间：</label>
+                                        <div class="col-sm-12"><span ng-if="info.finanCommuDetail.secondScreenSecondBegintime">{{info.finanCommuDetail.secondScreenSecondBegintime + '-' + info.finanCommuDetail.secondScreenSecondEndtime}}</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通方式：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenSecondWay}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">理财师第二次沟通标签：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenSecondLab}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenSecondNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="note note-info"><h4>理财师第三次沟通记录</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通日期：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenThirdDate}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通时间：</label>
+                                        <div class="col-sm-12"><span ng-if="info.finanCommuDetail.secondScreenThirdBegintime">{{info.finanCommuDetail.secondScreenThirdBegintime + '-' + info.finanCommuDetail.secondScreenThirdEndtime}}</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通方式：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenThirdWay}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">理财师第三次沟通标签：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenThirdLab}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">沟通备注：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenThirdNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt class="note note-info"><h4>理财师沟通结果</h4></dt>
+                        <dd>
+                            <div class="row">
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">最终确认：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenFilterResLab}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">后续联系方式：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenContact}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">是否加微信：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenWechatDesc}}</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <div class="row">
+                                        <label class="col-sm-12 control-label">最终备注：</label>
+                                        <div class="col-sm-12">{{info.finanCommuDetail.secondScreenNote}}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--通知栏-->
+<div class="notification-bar" notification-bar></div>

@@ -1,0 +1,188 @@
+<div ng-controller="tradeSheet as showCase">
+    <h3 class="page-title">
+        交易单查询
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">查询</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a
+                        href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span
+                        ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>客户姓名</label>
+                            <input name="lenderName" ng-model="form.lenderName" class="form-control" placeholder="请输客户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>客户ID</label>
+                            <input name="lenderId" ng-model="form.lenderId" class="form-control" placeholder="请输客户ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>产品名称</label>
+                            <input name="productName" ng-model="form.productName" class="form-control" placeholder="请输产品名称">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>产品类别</label>
+                            <select name="category" ng-model="form.category" class="form-control" ng-change="action.changeSelect()">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in categoryList" value="{{item.key}}" ng-selected="item.selected">{{item.value}} </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3 multiSelect">
+                            <label>交易状态</label>
+                            <div id="multi_select" selectstatus="" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>出借/投资日期</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="investStartTime"
+                                       ng-model="form.investStartTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="investEndTime" ng-model="form.investEndTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名</label>
+                            <input name="userName" ng-model="form.userName" class="form-control" placeholder="请输理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="userId" ng-model="form.userId" class="form-control" placeholder="请输理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>认购金额</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="amountStart" ng-model="form.amountStart"
+                                       class="form-control js_validator_int" placeholder="请输入积分数量" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="amountEnd" ng-model="form.amountEnd"
+                                       class="form-control js_validator_int" placeholder="请输入积分数量" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财经理联系电话</label>
+                            <input name="userMobile" ng-model="form.userMobile" class="form-control" placeholder="请输产品名称">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否红包支付</label>
+                            <select name="isRedPaper" ng-model="form.isRedPaper" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>到期日</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="caEndDateStart"
+                                       ng-model="form.caEndDateStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="caEndDateEnd" ng-model="form.caEndDateEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否开通星火钱包</label>
+                            <select name="isOpenWallet" ng-model="form.isOpenWallet" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否支持返现</label>
+                            <select name="canCash" ng-model="form.canCash" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否联系</label>
+                            <select name="isContact" ng-model="form.isContact" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title" style="margin-right:150px">交易单数据</span>
+                    <span class="panel-heading-title">交易总额：<span class="ui_red" ></span>元</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns"
+                       dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true"
+                       class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="riskEvaluation.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">P2P风险测评结果：{{form.riskEvaluation}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-7">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-12 control-label">风险等级与可购买金额对应值：</label>
+                </div>
+                <div class="form-group col-lg-12">
+                    <p class="col-sm-12 control-label" ng-bind-html="msg" style="font-size:15px;font-weight: bold;"></p>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="ifContact.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">联系备注</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <label class=" control-label">是否联系：</label>
+                <input type="radio" value="1" name="isContact" ng-model="isContact">是</input>
+                <input type="radio" value="0" name="isContact" ng-model="isContact">否</input>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="control-label">备注：</label>
+                <textarea placeholder="0-30字" class="form-control" ng-model="contactRemark"></textarea>
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <button class="btn btn-primary" ng-click="submitRemark()">保存</button>
+                <button class="btn btn-warning" ng-click="close()">取消</button>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+
+    });
+</script>

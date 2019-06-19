@@ -1,0 +1,198 @@
+<div ng-controller="linkUpController as showCase">
+    <h3 class="page-title">
+        客户线索池管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">客户线索池管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                    <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>线索ID</label>
+                            <input name="clueId" ng-model="form.clueId"  class="form-control" placeholder="请输入线索ID">
+                            <!--<div id="multi_select" selectstatus="" style="position:relative;"></div>-->
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>线索类型</label>
+                            <select name="type" ng-model="form.type" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="开户未绑定">开户未绑定</option>
+                                <option value="预约产品">预约产品</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>客户姓名</label>
+                            <input name="userName" ng-model="form.userName" class="form-control" value="" placeholder="请输入客户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>客户手机号</label>
+                            <input name="userMobile" ng-model="form.userMobile" value="" class="form-control" placeholder="请输入客户手机号">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>地区</label>
+                            <input name="district" ng-model="form.district" value="" class="form-control" placeholder="请输入地区">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>城市</label>
+                            <input name="city" ng-model="form.city" value="" class="form-control" placeholder="请输入城市">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>导入时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="starttime" ng-model="form.starttime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endtime" ng-model="form.endtime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>初筛分配时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startFilter" ng-model="form.startFilter">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endFilter" ng-model="form.endFilter">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否分配初筛人</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isDistribution" value="0">未分配
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isDistribution" value="1">已分配
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛人</label>
+                            <input name="firstScreenUser" ng-model="form.firstScreenUser" value="" class="form-control" placeholder="请输入初筛人">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛第一次沟通标签</label>
+                            <div class="linkupTag_first" selectstatus="filter1Lab" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛第二次沟通标签</label>
+                            <div class="linkupTag_first" selectstatus="filter2Lab" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛第三次沟通标签</label>
+                            <div class="linkupTag_first" selectstatus="filter3Lab" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛结果标签</label>
+                            <div class="linkupTag_first" selectstatus="filterResLab" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否转交理财师</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isTrans" value="0">未转交
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isTrans" value="1">已转交
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>理财师沟通人</label>
+                            <input name="financial" ng-model="form.financial" value="" class="form-control" placeholder="请输入理财师沟通人">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师第一次沟通标签：</label>
+                            <div class="linkupTag_financial" selectstatus="finan1Lab" style="position:relative;"></div>
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师第二次沟通标签：</label>
+                            <div class="linkupTag_financial" selectstatus="finan2Lab" style="position:relative;"></div>
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师第三次沟通标签：</label>
+                            <div class="linkupTag_financial" selectstatus="finan3Lab" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>最终确认：</label>
+                            <div class="linkupTag_financialLast" selectstatus="endResult" style="position:relative;"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-8 col-xs-8">
+                    <span class="panel-heading-title"><b>客户线索池</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 未分配：<span class="ui_red" ng-bind="tableinfo.recordsFiltered"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $('.linkupTag_first').multiSel({
+            'data': [
+                {"text": "需要理财师对接", "value": "0", "default": false},
+                {"text": "客户忙需要时间另约", "value": "1", "default": false},
+                {"text": "发资料先了解", "value": "2", "default": false},
+                {"text": "宜信同事", "value": "3", "default": false},
+                {"text": "不需要", "value": "4", "default": false},
+                {"text": "客户已有绑定理财师", "value": "5", "default": false},
+                {"text": "贷款需求", "value": "6", "default": false},
+                {"text": "小额投资", "value": "9", "default": false},
+                {"text": "无人接听", "value": "9", "default": false},
+                {"text": "交流障碍", "value": "9", "default": false},
+                {"text": "空号", "value": "9", "default": false},
+                {"text": "挂断/网络繁忙", "value": "9", "default": false},
+                {"text": "财富管理同行", "value": "9", "default": false},
+                {"text": "信贷同行", "value": "9", "default": false}
+            ]
+        });
+        $('.linkupTag_financial').multiSel({
+            'data': [
+                {"text": "合格潜客", "value": "0", "default": false},
+                {"text": "发资料先了解", "value": "1", "default": false},
+                {"text": "客户忙需要花时间另约", "value": "2", "default": false},
+                {"text": "宜信同事", "value": "3", "default": false},
+                {"text": "不需要", "value": "4", "default": false},
+                {"text": "贷款需求", "value": "6", "default": false},
+                {"text": "财富管理同行", "value": "9", "default": false},
+                {"text": "信贷同行", "value": "9", "default": false},
+                {"text": "小额投资", "value": "9", "default": false},
+                {"text": "无人接听", "value": "9", "default": false},
+                {"text": "挂断/网络繁忙", "value": "9", "default": false}
+            ]
+        });
+        $('.linkupTag_financialLast').multiSel({
+            'data': [
+                {"text": "合格潜客", "value": "0", "default": false},
+                {"text": "疑似合格", "value": "1", "default": false},
+                {"text": "放弃", "value": "2", "default": false}
+            ]
+        });
+    })
+</script>

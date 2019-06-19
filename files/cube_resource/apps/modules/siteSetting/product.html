@@ -1,0 +1,99 @@
+<div ng-controller="productController">
+    <h3 class="page-title">
+        特殊产品天数配置
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">特殊产品天数配置</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.build($event)">新增产品</a><a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.drawTable()">查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>产品名称</label>
+                            <input name="productName" ng-model="form.productName" class="form-control" placeholder="请输入产品名称">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table class="table table-striped row-border table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>产品名称</th>
+                        <th>天数</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>修改人</th>
+                        <th>修改时间</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr ng-repeat="item in tableData">
+                        <td>{{item.id}}</td>
+                        <td>{{item.productName}}</td>
+                        <td>{{item.days}}</td>
+                        <td>{{item.createdBy}}</td>
+                        <td>{{item.createTime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                        <td>{{item.updatedBy}}</td>
+                        <td>{{item.updateTime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                        <td>
+                            <div class="text-center">
+                                <a href="javascript:;" data-obj="{{item}}" class="btn btn-success btn-xs" ng-click="action.build($event,item)">修改</a>
+                                <a href="javascript:;" class="btn btn-warning btn-xs" ng-click="action.del($event,item.id,$index)">删除</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">×</button>
+            <h4 class="modal-title fn-ms">产品配置</h4>
+        </div>
+        <div class="modal-body clearfix" ng-init="init()">
+            <div class="col-lg-12">
+                <form role="form" class="form-horizontal" id="js_modify_product_form">
+                    <input type="hidden" name="id" value="">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">产品名称：</label>
+                        <div class="col-sm-10">
+                            <input name="productName" ng-model="form.productName" type="text" class="form-control" placeholder="参数名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">天数：</label>
+                        <div class="col-sm-10">
+                            <input name="days" ng-model="form.days" type="text" class="form-control" placeholder="参数值">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms" style="width:25%;" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()">保存</button>
+        </div>
+    </script>
+    <div ng-init="action.load()"></div>
+</div>

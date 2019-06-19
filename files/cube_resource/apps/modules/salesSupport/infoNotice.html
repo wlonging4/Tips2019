@@ -1,0 +1,86 @@
+<div ng-controller="infoNoticeController as showCase">
+    <h3 class="page-title">
+        新消息提醒
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">查询</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                    <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input class="form-control" name="financialId" ng-model="form.financialId" placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>姓名</label>
+                            <input class="form-control" name="realname" ng-model="form.realname" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>联系电话</label>
+                            <input class="form-control" name="mobile" ng-model="form.mobile" placeholder="请输入理财经理联系电话">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>消息类型</label>
+                            <select class="form-control" name="type" ng-model="form.type">
+                                <option value="">请选择</option>
+                                <option value="1">用户注册提醒</option>
+                                <option value="2">用户交易失败</option>
+                                <option value="3">理财师创建私人定制</option>
+                                <!--<option ng-repeat="item in select.channel" value="{{item.key}}">{{item.value}}</option>-->
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>提示时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="remindTimeBegin" ng-model="form.remindTimeBegin">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="remindTimeEnd" ng-model="form.remindTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>消息状态</label>
+                            <select class="form-control" name="type" ng-model="form.readStatus">
+                                <option value="">请选择</option>
+                                <option value="1">已读</option>
+                                <option value="0">未读</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-8 col-xs-8">
+                    <span class="panel-heading-title">
+                        搜索结果
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper" style="font-size: 13px;">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

@@ -1,0 +1,350 @@
+<div ng-controller="logManage as showCase">
+    <h3 class="page-title">
+        日志管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">查询</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a
+                        href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span
+                        ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>沟通时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="connectStartTime"
+                                       ng-model="form.connectStartTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="connectEndTime"
+                                       ng-model="form.connectEndTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="financialId" ng-model="form.financialId" class="form-control"
+                                   placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名</label>
+                            <input name="financialName" ng-model="form.financialName" class="form-control"
+                                   placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>联系电话</label>
+                            <input name="financialMobile" ng-model="form.financialMobile" class="form-control"
+                                   placeholder="请输入联系电话">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>日志标题</label>
+                            <input name="title" ng-model="form.title" class="form-control" placeholder="请输入日志标题关键字">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>级别</label>
+                            <select name="level" ng-model="form.level" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">星钻</option>
+                                <option value="1">金星</option>
+                                <option value="2">银星</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>地区</label>
+                            <input name="area" ng-model="form.area" class="form-control" placeholder="请输入地区">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>沟通方式</label>
+                            <select name="connectType" ng-model="form.connectType" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in selectList" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否提交</label>
+                            <select name="isSubmit" ng-model="form.isSubmit" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">已提交</option>
+                                <option value="0">未提交</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>支持人员姓名</label>
+                            <input name="supportUserName" ng-model="form.supportUserName" class="form-control"
+                                   placeholder="请输支持人员姓名">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">日志数据：</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <!--<a id="js_whiteList_download" action="/mt/exportManageLeaderTemplates.shtml" href="javascript:;" class="btn btn-danger btn-sm">下载模板</a>-->
+                    <a id="addLog" ng-click="action.addLog();"
+                       href="javascript:;" class="btn btn-success btn-sm">新增</a>
+                    <a id="logSubmit" ng-click="action.submitLog()"
+                       href="javascript:;" class="btn btn-warning btn-sm">提交</a>
+                    <a id="logExport" action="log/exportLog.json" href="javascript:;"
+                       class="btn btn-primary btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns"
+                       dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true"
+                       class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="logDetail.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">日志详情:</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12" style="border-bottom: 1px dashed grey;margin-bottom: 20px;">
+                <div class="form-group col-lg-4">
+                    <label class=" control-label">理财经理姓名：</label>
+                    <label ng-bind="data.financialName"></label>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">联系电话：</label>
+                    <label ng-bind="data.financialMobile"></label>
+                </div>
+                <div class="form-group col-lg-2">
+                    <label class=" control-label">级别：</label>
+                    <label ng-bind="data.levelName"></label>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">地区：</label>
+                    <label ng-bind="data.district"></label>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group col-lg-4">
+                    <label class=" control-label">沟通时间：</label>
+                    <label ng-bind="data.connectTime"></label>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">沟通方式：</label>
+                    <label ng-bind="data.connectTypeName"></label>
+                </div>
+                <div class="form-group col-lg-2">
+                    <label class=" control-label" ng-bind="data.isSubmitName" style="color:#990066"></label>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class=" control-label">支持人员：</label>
+                    <label ng-bind="data.supportUserName"></label>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="control-label">日志标题：</label>
+                    <label ng-bind="data.title"></label>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="control-label">日志内容：</label>
+                    <label ng-bind="data.content"></label>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="addLog.html">
+        <div class="modal-header">
+            <label class="modal-title fn-ms" style="float:left;font-size: 30px;">新增日志</label>
+            <div class="ui_right">
+                <a class="btn btn-primary" ng-click="action.search()">搜索</a>
+                <a class="btn btn-success" ng-click="action.save()">保存</a>
+                <a class="btn btn-success" ng-click="action.saveAndSubmit()">保存并提交</a>
+                <a class="btn btn-warning" ng-click="action.cancel()">取消</a>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <form role="form" id="js_form_lite">
+                    <div class="form-group col-lg-2" style="line-height: 32px;text-align: right">
+                        <label class=" control-label" style="font-size: 14px;">理财经理手机号:</label>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <input name="mobile" maxlength="11" ng-model="searches.mobileSearch" class="form-control js_validator_int" placeholder="请输入理财经理手机号">
+                    </div>
+                    <div class="form-group col-lg-2" style="line-height: 32px;text-align: right">
+                        <label class=" control-label" style="font-size: 14px;">理财经理姓名:</label>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <input name="realnameSearch" maxlength="20" ng-model="searches.realnameSearch" class="form-control" placeholder="请输入理财经理姓名">
+                    </div>
+                </form>
+            </div>
+            <!--搜索表格-->
+            <div class="panel panel-info col-lg-12">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-8 col-xs-8"><span class="panel-heading-title">搜索结果</span></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper" style="font-size: 13px;">
+                        <table datatable dt-options="logModal.dtOptions" dt-columns="logModal.dtColumns" dt-instance="logModal.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-lg-7">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通时间：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <div class="input-group date form_datetime">
+                        <input type="text" size="16" ng-model="data.connectTime " name="connectTime " class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通方式：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <select name="productType" ng-model="data.connectType" class="form-control">
+                        <option value="">请选择</option>
+                        <option ng-repeat="item in selectList" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2"><label class="control-label">日志标题：</label></div>
+                <div class="col-lg-9">
+                    <input type="text" name="logTitle" class="form-control logTitle" ng-model="data.title" placeholder="0-20字" ng-change="action.titleChange()" maxlength="20"/>
+                </div>
+                <div class="col-lg-1" style="font-size:20px">
+                    <span class="titleCount" style="font-size:20px" ng-bind="titleCount"></span><span style="font-size:20px">/20</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2">
+                    <label class="control-label">日志内容：</label>
+                </div>
+                <div class="col-lg-9">
+                    <textarea type="text" name="logContent" class="form-control logContent" ng-model="data.content" maxlength="500" ng-change="action.contentChange()"></textarea>
+                </div>
+                <div style="position: absolute;right: 20px;bottom:0;font-size:20px">
+                    <span class="contentCount" ng-bind="contentCount"></span>/500
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="editLog.html">
+        <div class="modal-header">
+            <label class="modal-title fn-ms" style="float:left;font-size: 30px;">编辑日志</label>
+            <div class="ui_right">
+                <a class="btn btn-success" ng-click="action.save()">保存</a>
+                <a class="btn btn-success" ng-click="action.saveAndSubmit()">保存并提交</a>
+                <a class="btn btn-warning" ng-click="action.cancel()">取消</a>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12" style="border-bottom: 1px dashed grey;">
+                <div class="form-group col-lg-3">
+                    <label class="control-label">理财经理姓名：</label>
+                    <label ng-bind="data.financialName" class="control-label"></label>
+                </div>
+                <div class="form-group col-lg-3">
+                    <label class="control-label">联系电话：</label>
+                    <label ng-bind="data.financialMobile" class="control-label"></label>
+                </div>
+                <div class="form-group col-lg-2">
+                    <label class="control-label">级别：</label>
+                    <label ng-bind="data.levelName" class="control-label "></label>
+                </div>
+                <div class="form-group col-lg-2">
+                    <label class="control-label">地区：</label>
+                    <label ng-bind="data.district"></label>
+                </div>
+                <div class="form-group col-lg-2" style="padding: 0;">
+                    <label class="control-label">支持人员：</label>
+                    <label ng-bind="data.supportUserName"></label>
+                </div>
+            </div>
+            <div class="form-group col-lg-7">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通时间：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <div class="input-group date form_datetime">
+                        <input type="text" size="16" ng-model="data.connectTime " name="connectTime " class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通方式：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <select name="productType" ng-model="data.connectType" class="form-control" id="editSelect">
+                        <option ng-repeat="item in selectList" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2"><label class="control-label">日志标题：</label></div>
+                <div class="col-lg-9">
+                    <input type="text" name="logTitle" class="form-control logTitle" ng-model="data.title" placeholder="0-20字" ng-change="action.titleChange()"/>
+                </div>
+                <div class="col-lg-1" style="font-size:20px">
+                    <span class="titleCount" style="font-size:20px" ng-bind="titleCount"></span><span style="font-size:20px">/20</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2">
+                    <label class="control-label">日志内容：</label>
+                </div>
+                <div class="col-lg-9">
+                    <textarea type="text" name="logTitle" class="form-control logContent" ng-model="data.content" ng-change="action.contentChange()"></textarea>
+                </div>
+                <div style="position: absolute;right: 20px;bottom:0;font-size:20px">
+                    <span class="contentCount" ng-bind="contentCount"></span>/500
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="alertModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms" ng-bind="modalHead" style="text-align: center"></h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12" ng-bind="modalContent" style="text-align: center;margin:20px 0; font-size:20px">
+            </div>
+            <div class="form-group col-lg-12" style="text-align: center">
+                <button class="btn btn-primary" ng-show="confirmShow" ng-click="confirmBtn()">确定</button>
+                <button class="btn btn-danger" ng-click="close()">取消</button>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function () {
+        ComponentsPickers.init();
+    });
+</script>

@@ -1,0 +1,350 @@
+<div ng-controller="dataManage as showCase">
+    <h3 class="page-title">
+        理财经理数据管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">查询</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                   <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="financialId" ng-model="form.financialId" class="form-control" placeholder="请输入理财师ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>姓名</label>
+                            <input name="realname" ng-model="form.realname" class="form-control" placeholder="请输入姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>联系电话</label>
+                            <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入联系电话">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>宜信员工</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;border:none;">
+                                    <select name="yixinstatus" ng-model="form.yixinstatus" ng-change="action.chooseStatus()" class="form-control" style="padding: 0px 2px;">
+                                        <option value="">请选择</option>
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;border:none;" ng-if="form.yixinstatus === '1'">
+                                    <select name="yixintype" ng-model="form.yixintype" class="form-control" style="padding: 0px 2px; min-width:70px;border-left: none;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.yixintype">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;border:none;" ng-if="form.yixinstatus !== '1'">
+                                    <select readonly="true"  class="form-control" style="padding: 0px 2px; min-width:70px;border-left: none;">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>在宜信是否销售岗</label>
+                            <select name="isSales" ng-model="form.isSales" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>级别</label>
+                            <select name="levelid" ng-model="form.levelid" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.levelId}}" ng-repeat="item in select.levelid">{{item.levelName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>现在是否销售岗</label>
+                            <select name="isSalesNow" ng-model="form.isSalesNow" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>等级</label>
+                            <input name="hierarchy" ng-model="form.hierarchy" class="form-control" placeholder="请输入等级">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>地区</label>
+                            <input name="district" ng-model="form.district" class="form-control" placeholder="请输入地区">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>开店时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="starttimefirst" ng-model="form.starttimefirst">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="starttimeEnd" ng-model="form.starttimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>分配时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startAllocationTime" ng-model="form.startAllocationTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endAllocationTime" ng-model="form.endAllocationTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否团长</label>
+                            <select name="isRegimental" ng-model="form.isRegimental" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>业务类型</label>
+                            <select name="businessType" ng-model="form.businessType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.businesstype">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">理财经理数据</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">修改基础信息</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <form id="editForm">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label>联系电话</label>
+                                <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否加微信</label>
+                        <select name="isAddWechat" ng-model="form.isAddWechat" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>微信号</label>
+                        <input name="wechatNumber" ng-model="form.wechatNumber" class="form-control" placeholder="请输入微信号">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否删微信</label>
+                        <select name="isDeleteWechat" ng-model="form.isDeleteWechat" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否屏蔽微信</label>
+                        <select name="isShieldWechat" ng-model="form.isShieldWechat" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>现在是否销售岗</label>
+                        <select name="isSalesNow" ng-model="form.isSalesNow" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>活跃度</label>
+                        <select name="liveness" ng-model="form.liveness" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="{{item.key}}" ng-repeat="item in select.liveness" ng-selected="form.liveness == item.key">{{item.value}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否在毕业生群里</label>
+                        <select name="isGraduateGroup" ng-model="form.isGraduateGroup" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>从事行业</label>
+                        <input name="goodat" ng-model="form.goodat" class="form-control" placeholder="请输入从事行业">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>所在机构</label>
+                        <input name="organization" ng-model="form.organization" class="form-control" placeholder="请输入所在机构">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>所在机构产品类型</label>
+                        <input name="orgProductType" ng-model="form.orgProductType" class="form-control" placeholder="请输入所在机构产品类型">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否与星火产品有重合</label>
+                        <select name="isRepeatProduct" ng-model="form.isRepeatProduct" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>工作年限</label>
+                        <input name="workYears" ng-model="form.workYears" class="form-control" placeholder="请输入工作年限">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>地区</label>
+                        <input name="district" ng-model="form.district" class="form-control" placeholder="请输入地区">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>电子邮箱</label>
+                        <input name="email" ng-model="form.email" class="form-control" placeholder="请输入电子邮箱">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>生日</label>
+                        <input name="birthday" ng-model="form.birthday" class="form-control" placeholder="请输入生日">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>收货地址</label>
+                        <input name="receiveAddress" ng-model="form.receiveAddress" class="form-control" placeholder="请输入收货地址">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>备注</label>
+                        <textarea name="remark" ng-model="form.remark"  rows="6" class="form-control"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" id="confirmBtn" ng-click="ok()">保存</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="addLog.html">
+        <div class="modal-header">
+            <label class="modal-title fn-ms" style="float:left;font-size: 30px;">新增日志</label>
+            <div class="ui_right">
+                <span class="btn" style="background: #ccc" disabled="true">搜索</span>
+                <a class="btn btn-success" ng-click="action.save()">保存</a>
+                <a class="btn btn-success" ng-click="action.saveAndSubmit()">保存并提交</a>
+                <a class="btn btn-warning" ng-click="action.cancel()">取消</a>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <div class="form-group col-lg-2" style="line-height: 32px;text-align: right">
+                    <label class=" control-label" style="font-size: 14px;">理财经理手机号:</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <input name="phoneNumber" ng-disabled="true" readonly ng-model="data.mobile" class="form-control" placeholder="">
+                </div>
+                <div class="form-group col-lg-2" style="line-height: 32px;text-align: right">
+                    <label class=" control-label" style="font-size: 14px;">理财经理姓名:</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <input name="realName" ng-disabled="true" readonly ng-model="data.realname" class="form-control" placeholder="">
+                </div>
+            </div>
+            <!--搜索表格-->
+            <div class="panel panel-info col-lg-12">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-8 col-xs-8"><span class="panel-heading-title">搜索结果</span></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper" style="font-size: 13px;">
+                        <table datatable dt-options="logModal.dtOptions" dt-columns="logModal.dtColumns" dt-instance="logModal.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-lg-7">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通时间：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <div class="input-group date form_datetime">
+                        <input type="text" size="16" ng-model="data.connectTime " name="connectTime " class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通方式：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <select name="productType" ng-model="data.connectType" class="form-control">
+                        <option value="">请选择</option>
+                        <option ng-repeat="item in selectList" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2"><label class="control-label">日志标题：</label></div>
+                <div class="col-lg-9">
+                    <input type="text" name="logTitle" class="form-control logTitle" ng-model="data.title" placeholder="0-20字" ng-change="action.titleChange()" maxlength="20"/>
+                </div>
+                <div class="col-lg-1" style="font-size:20px">
+                    <span class="titleCount" style="font-size:20px" ng-bind="titleCount"></span><span style="font-size:20px">/20</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2">
+                    <label class="control-label">日志内容：</label>
+                </div>
+                <div class="col-lg-9">
+                    <textarea type="text" name="logContent" class="form-control logContent" ng-model="data.content" maxlength="500" ng-change="action.contentChange()"></textarea>
+                </div>
+                <div style="position: absolute;right: 20px;bottom:0;font-size:20px">
+                    <span class="contentCount" ng-bind="contentCount"></span>/500
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

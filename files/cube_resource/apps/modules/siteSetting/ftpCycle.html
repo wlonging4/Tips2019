@@ -1,0 +1,91 @@
+<div ng-controller="ftpCycle">
+    <h3 class="page-title">
+        FTP周期配置
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">FTP周期配置</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-4">
+                        <label>年份</label>
+                        <select name="year" ng-model="form.year" ng-change="action.search()" class="form-control">
+                            <option value="">请选择要添加的年份</option>
+                            <option ng-repeat="year in select.years" value="{{year}}">{{year}}年</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">{{form.year?form.year + '年':'全部' }}FTP周期配置</span>
+                </div>
+                <!--<div class="col-lg-6 col-xs-6 ui_right">-->
+                    <!--<a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.save()">保存设置</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table class="table table-striped row-border table-hover">
+                    <thead>
+                        <tr><th width="5%">序号</th><th width="25%">年份</th><th width="25%">起始月</th><th width="25%">截止月</th><th>操作</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ftplist">
+                            <td>{{$index + 1}}</td>
+                            <td> {{item.year}}</td>
+                            <td>
+                                <span ng-show="$index != action.editIndex">{{item.startMonth}}</span>
+                                <input type="text" maxlength="2" class="form-control" ng-model="item.startMonth" ng-keyup="action.checkVal($index, 'startMonth')" ng-show="$index == action.editIndex">
+                            </td>
+                            <td>
+                                <span ng-show="$index != action.editIndex">{{item.endMonth}}</span>
+                                <input type="text" maxlength="2" class="form-control" ng-model="item.endMonth" ng-keyup="action.checkVal($index, 'endMonth')" ng-show="$index == action.editIndex">
+                            </td>
+                            <td>
+                                <button ng-click="action.showEdit($index, $event)" ng-paste="action.showEdit($index, $event)" class="btn btn-warning btn-sm" ng-show="$index != action.editIndex">修改</button>
+                                <button ng-click="action.saveEdit($index, $event)" ng-paste="action.showEdit($index, $event)" class="btn btn-danger  btn-sm" ng-show="$index == action.editIndex">保存</button>
+                                <span style="color:red" ng-show="$index == action.editErrorIndex">{{editErrortips}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <select name="year" ng-model="form.otherYear" ng-if="!form.year" ng-change="action.showMonth()" class="form-control">
+                                    <option value="">请选择要添加的年份</option>
+                                    <option ng-repeat="year in select.years" value="{{year}}">{{year}}年</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="startMonth" ng-model="form.startMonth" ng-change="action.setEndMonth()" class="form-control">
+                                    <option value="">请选择起始月</option>
+                                    <option ng-repeat="item in select.startMonth" value="{{item}}">{{item}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="endMonth" ng-model="form.endMonth" class="form-control">
+                                    <option value="">请选择截止月</option>
+                                    <option ng-repeat="item in select.endMonth" value="{{item}}">{{item}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button ng-click="action.add()" class="btn btn-primary btn-md">确定</button><span style="color:red">{{errortips}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

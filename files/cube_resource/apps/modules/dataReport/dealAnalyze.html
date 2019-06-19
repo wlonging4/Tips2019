@@ -1,0 +1,215 @@
+<div ng-controller="dataReportDealAnalyzeController">
+    <h3 class="page-title">
+        交易分析
+    </h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="/dataReport-DealAnalyze.html#overview_1" data-toggle="tab" aria-expanded="false">昨天</a>
+                </li>
+                <li class="">
+                    <a href="/dataReport-DealAnalyze.html#overview_2" data-toggle="tab" aria-expanded="true">前天</a>
+                </li>
+                <li class="">
+                    <a href="/dataReport-DealAnalyze.html#overview_3" data-toggle="tab" aria-expanded="false">最近7天</a>
+                </li>
+                <li class="">
+                    <a href="/dataReport-DealAnalyze.html#overview_4" data-toggle="tab" aria-expanded="false">最近30天</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="overview_1">
+                    <div class="row padding">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="col-lg-1">类型：<span class="ui_red">*</span></label>
+                                <div class="radio-list col-lg-11 mul-list">
+                                    <label class="radio-inline"><input type="radio" name="report1productName" ng-model="report1.productName" value="全部" /> 全部 </label>
+                                    <label class="radio-inline" ng-repeat="item in select.reportType1"><input type="radio" name="report1productName" ng-model="report1.productName" value="{{item}}" /> {{item}} </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 margin-top-15">
+                            <div class="form-group">
+                                <label class="col-lg-1">对比：</label>
+                                <div class="checkbox-list col-lg-4 mul-list">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="beforeDay" ng-model="report1.beforeDay" ng-true-value="1" /> 前一日 </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="beforeWeek" ng-model="report1.beforeWeek" ng-true-value="1" /> 上周同期 </label>
+                                </div>
+                                <div class="col-lg-1"><a ng-click="action.redraw(1,$event)" href="javascript:;" class="btn btn-success btn-sm">查询</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 margin-top-15"><div class="flot-chart-content" id="chart1" style='margin-bottom:1px;padding-bottom:0;border-bottom-width:0;width: 100%;height: 350px'></div></div>
+                </div>
+                <div class="tab-pane" id="overview_2">
+                    <div class="row padding">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="col-lg-1">类型：<span class="ui_red">*</span></label>
+                                <div class="radio-list col-lg-11 mul-list">
+                                    <label class="radio-inline"><input type="radio" name="report2productName" ng-model="report2.productName" value="全部" /> 全部 </label>
+                                    <label class="radio-inline" ng-repeat="item in select.reportType2"><input type="radio" name="report2productName" ng-model="report2.productName" value="{{item}}" /> {{item}} </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 margin-top-15">
+                            <div class="form-group">
+                                <label class="col-lg-1">对比：</label>
+                                <div class="checkbox-list col-lg-4 mul-list">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="beforeDay" ng-model="report2.beforeDay" ng-true-value="1" /> 前一日 </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="beforeWeek" ng-model="report2.beforeWeek" ng-true-value="1" /> 上周同期 </label>
+                                </div>
+                                <div class="col-lg-1"><a ng-click="action.redraw(2,$event)" href="javascript:;" class="btn btn-success btn-sm">查询</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 margin-top-15"><div class="flot-chart-content" id="chart2" style='margin-bottom:1px;padding-bottom:0;border-bottom-width:0;width: 100%;height: 350px'></div></div>
+                </div>
+                <div class="tab-pane" id="overview_3">
+                    <div class="row padding">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="col-lg-1">类型：<span class="ui_red">*</span></label>
+                                <div class="radio-list col-lg-10 mul-list">
+                                    <label class="radio-inline"><input type="radio" name="report3productName" ng-model="report3.productName" value="全部" /> 全部 </label>
+                                    <label class="radio-inline" ng-repeat="item in select.reportType3"><input type="radio" name="report3productName" ng-model="report3.productName" value="{{item}}" /> {{item}} </label>
+                                </div>
+                                <div class="col-lg-1"><a ng-click="action.redraw(3,$event)" href="javascript:;" class="btn btn-success btn-sm">查询</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12"><div class="flot-chart-content" id="chart3" style='margin-bottom:1px;padding-bottom:0;border-bottom-width:0;width: 100%;height: 350px'></div></div>
+                </div>
+                <div class="tab-pane" id="overview_4">
+                    <div class="row padding">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="col-lg-1">类型：<span class="ui_red">*</span></label>
+                                <div class="radio-list col-lg-10 mul-list">
+                                    <label class="radio-inline"><input type="radio" name="report4productName" ng-model="report4.productName" value="全部" /> 全部 </label>
+                                    <label class="radio-inline" ng-repeat="item in select.reportType4"><input type="radio" name="report4productName" ng-model="report4.productName" value="{{item}}" /> {{item}} </label>
+                                </div>
+                                <div class="col-lg-1"><a ng-click="action.redraw(4,$event)" href="javascript:;" class="btn btn-success btn-sm">查询</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12"><div class="flot-chart-content" id="chart4" style='margin-bottom:1px;padding-bottom:0;border-bottom-width:0;width: 100%;height: 350px'></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">星火周报</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <span class="btn btn-success btn-sm" ng-click="action.reportWeekDetail()">导出周报明细</span>
+                    <span class="btn btn-success btn-sm" ng-click="action.reportWeekAll()">导出周报汇总</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row padding">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <select name="year" class="form-control" ng-model="reportWeek.year" ng-change="action.showWeek()">
+                            <option value="">请选择年份</option>
+                            <option ng-repeat="year in select.years" value="{{year}}">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <select name="week" class="form-control" ng-model="reportWeek.week">
+                            <option value="">请选择周</option>
+                            <option ng-repeat="week in select.weeks" value="{{week.value}}">{{week.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        <div class="radio-list col-lg-12">
+                            <label class="radio-inline"><input type="radio" name="type" ng-model="reportWeek.type" value="1" /> 按产品名称 </label>
+                            <label class="radio-inline"><input type="radio" name="type" ng-model="reportWeek.type" value="0" /> 按产品期限 </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"><a ng-click="action.reportTable($event)" href="javascript:;" class="btn btn-success btn-sm">查询</a></div>
+            </div>
+            <div class="dataTable_wrapper">
+                <table class="table table-striped row-border table-hover" ng-if="withName">
+                    <tr>
+                        <th>产品名称</th>
+                        <th>交易额</th>
+                        <th>新增交易额</th>
+                        <th>利率</th>
+                        <th>累计交易笔数</th>
+                        <th>日均AUM</th>
+                        <th>AUM占比</th>
+                    </tr>
+                    <tr ng-repeat="item in reportTables">
+                        <td>{{item.productName}}</td>
+                        <td>{{item.totalAmount}}</td>
+                        <td>{{item.amount}}</td>
+                        <td>{{item.annualRate}}</td>
+                        <td>{{item.totalDealCount}}</td>
+                        <td>{{item.avgDayAum}}</td>
+                        <td>{{item.aumProportion}}</td>
+                    </tr>
+                </table>
+                <table class="table table-striped row-border table-hover" ng-if="!withName">
+                    <tr>
+                        <th>期限</th>
+                        <th>交易额</th>
+                        <th>日均AUM</th>
+                    </tr>
+                    <tr ng-repeat="item in reportTables">
+                        <td>{{item.period}}</td>
+                        <td>{{item.amount}}</td>
+                        <td>{{item.avgDayAum}}</td>
+                    </tr>
+                </table>
+                <div ng-if="noResult" style="text-align: center;font-size: 16px;">数据结果为空</div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">星火月报</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row padding">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <select name="year" class="form-control" ng-model="reportMonth.year">
+                            <option value="">请选择年份</option>
+                            <option ng-repeat="year in select.years" value="{{year}}">{{year}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <select name="week" class="form-control" ng-model="reportMonth.month">
+                            <option value="">请选择月</option>
+                            <option ng-repeat="month in select.months" value="{{month}}">{{month}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-1"><a ng-click="action.reportMonth()" href="javascript:;" class="btn btn-success btn-sm">导出月报明细</a></div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="action.load()"></div>
+</div>

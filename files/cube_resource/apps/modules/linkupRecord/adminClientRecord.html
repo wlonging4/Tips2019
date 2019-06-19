@@ -1,0 +1,271 @@
+<div ng-controller="adminLinkUpController as showCase">
+    <h3 class="page-title">
+        客户线索池管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">查询</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                    <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>线索ID</label>
+                            <input name="clueId" ng-model="form.clueId"  class="form-control" placeholder="请输入线索ID">
+                            <!--<div id="multi_select" selectstatus="" style="position:relative;"></div>-->
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>线索类型</label>
+                            <select name="clueType" ng-model="form.clueType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="（空）">（空）</option>
+                                <option value="开户未绑定">开户未绑定</option>
+                                <option value="预约产品">预约产品</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>客户姓名</label>
+                            <input name="userName" ng-model="form.userName" class="form-control" value="" placeholder="请输入客户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>客户手机号</label>
+                            <input name="userMobile" ng-model="form.userMobile" value="" class="form-control" placeholder="请输入客户手机号">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>地区</label>
+                            <input name="district" ng-model="form.district" value="" class="form-control" placeholder="请输入地区">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>城市</label>
+                            <input name="city" ng-model="form.city" value="" class="form-control" placeholder="请输入城市">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>导入时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="importTimeStart" ng-model="form.importTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="importTimeEnd" ng-model="form.importTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>初筛分配时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="firstScreenTimeStart" ng-model="form.firstScreenTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="firstScreenTimeEnd" ng-model="form.firstScreenTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否分配初筛人</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isDistribution" ng-model="form.isDistribution" value="0">未分配
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isDistribution" ng-model="form.isDistribution" value="1">已分配
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛人</label>
+                            <input name="firstScreenUser" ng-model="form.firstScreenUser" value="" class="form-control" placeholder="请输入初筛人">
+                            <input type="hidden" name="firstScreenUserInitial" value="true">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛第一次沟通标签</label>
+                            <select name="firstScreenFirstLab" ng-model="form.firstScreenFirstLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.fLab">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛第二次沟通标签</label>
+                            <select name="firstScreenSecondLab" ng-model="form.firstScreenSecondLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.fLab">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛第三次沟通标签</label>
+                            <select name="firstScreenThirdLab" ng-model="form.firstScreenThirdLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.fLab">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>初筛结果标签</label>
+                            <select name="firstScreenFilterResLab" ng-model="form.firstScreenFilterResLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.fLab">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否转交理财师</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isTrans" ng-model="form.isTrans" value="0">未转交
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="isTrans" ng-model="form.isTrans" value="1">已转交
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>理财师沟通人</label>
+                            <input name="financial" ng-model="form.financial" value="" class="form-control" placeholder="请输入理财师沟通人">
+                            <input type="hidden" name="financialInitial" value="true">
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师第一次沟通标签：</label>
+                            <select name="secondScreenFirstLab" ng-model="form.secondScreenFirstLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.mLab">{{item.value}}</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师第二次沟通标签：</label>
+                            <select name="secondScreenSecondLab" ng-model="form.secondScreenSecondLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.mLab">{{item.value}}</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师第三次沟通标签：</label>
+                            <select name="secondScreenThirdLab" ng-model="form.secondScreenThirdLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.mLab">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>最终确认：</label>
+                            <select name="secondScreenFilterResLab" ng-model="form.secondScreenFilterResLab" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.text}}" ng-repeat="item in select.mLabResult">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                    <input type="hidden" name="oldUserInitial" value="{{oldUser}}">
+                    <input type="hidden" name="oldFinancial" value="{{oldFinancial}}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-8 col-xs-8">
+                    <span class="panel-heading-title">
+                        <b>客户线索池</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 未分配：<span class="ui_red" ng-bind="tableinfo"></span>
+                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><i style="color: red;position: relative;top:2px;" class="glyphicon glyphicon-record"></i> 为提醒沟通的客户</span>-->
+                    </span>
+                </div>
+                <div class="col-lg-4 col-xs-4 ui_right">
+                    <form id="js_trade_form" method="post">
+                        <a ng-click="action.toLeadClient()" key_ajax_lock="open" href="javascript:;" class="btn btn-primary btn-sm">导入</a>
+                        <a ng-click="action.allocation()" href="javascript:;" class="btn btn-danger btn-sm">分配</a>
+                        <a id="js_client_export" action="customerClue/exportCustomerClue.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                        <!--<a href="/FZadmin/report_20170418_zhongyan/index.html#/personnelManage.html" class="btn btn-info btn-sm">人员管理</a>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="toLeadClientCtrl.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">导入线索</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form id="js_upload_settle_form" role="form" class="form-horizontal" action="customerClue/importCustomerClue.json">
+                <div class="form-group col-lg-12">
+                    <h4>导入说明：</h4>
+                    <p> 需导入 xlsx格式文件</p>
+                    <p>每次只可导入一个表格</p>
+                    <p>同一张表中若复导入重复数据，只会保留一条</p>
+                </div>
+                <div class="form-group col-lg-12">
+                    <a href="javascript:;" action="customerClue/downloadTemplate.shtml" ng-click="dowmloadTemplate($event)">线索客户导入模板</a>
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="col-sm-9">
+                        <input type="file" name="file">
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="importConfirmBtn" ng-click="ok()" >确定</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="allocationCtrl.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">分配任务</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <form role="form" class="form-horizontal" id="allocationForm">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-12">
+                        <p>可分配客户人数：{{userNum}}</p>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group col-lg-6">
+                            <h4>初筛人</h4>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <h4>分配比例</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 js-checked-list" ng-repeat="item in list">
+                        <div class="form-group col-lg-6">
+                            <label class="js-label">
+                                <input type="checkbox" ng-click="selectFilter($event)" data-names="{{item.realname}}" data-id="{{item.id}}" ng-model="item.flag">{{item.realname}}
+                            </label>
+                        </div>
+                        <div class="form-group col-lg-5">
+                            <input maxlength="3" ng-keyup="verifyNum($event)" type="text" data-names="{{item.realname}}" data-id="{{item.id}}" class="form-control" placeholder="输入正整数" ng-if="item.flag">
+                            <input type="text" class="form-control" placeholder="输入正整数" readonly ng-if="!item.flag">
+                        </div>
+                        <div class="form-group col-lg-1"><h4>&nbsp;%</h4></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="clientUserSave" ng-click="ok()">确认</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>
+<!--通知栏-->
+<div class="notification-bar" notification-bar></div>

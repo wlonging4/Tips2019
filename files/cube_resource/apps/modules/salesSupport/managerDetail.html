@@ -1,0 +1,701 @@
+<div ng-controller="managerDetail as showCase">
+    <h3 class="page-title">
+        {{basicInfo.realname}}
+    <small><strong>（{{basicInfo.genderStr}}）&nbsp;&nbsp;&nbsp;&nbsp;理财经理ID：{{basicInfo.financialId}}&nbsp;&nbsp;&nbsp;&nbsp;联系电话：{{basicInfo.mobile}}&nbsp;&nbsp;&nbsp;&nbsp;<strong style="cursor: pointer" ng-click="action.manageerLevel()"><i class="fa fa-diamond font-blue" aria-hidden="true"></i>{{basicInfo.hierarchy}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;支持人员：{{basicInfo.supportName}}（{{basicInfo.allotTime}}分配）</strong></small>
+    </h3>
+    <div class="tabbable tabbable-tabdrop">
+        <ul class="nav nav-tabs" id="tabs" ng-click="action.tab($event)">
+            <li class="active">
+                <a href="javascript:void(0)" data-target="tab1" data-action="basic">基本信息</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)" data-target="tab2" data-action="sale">销售数据</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)" data-target="tab3" data-action="customer">客户数据</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)" data-target="tab4" data-action="team">团队数据</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)" data-target="tab5" data-action="red">红包使用数据</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)" data-target="tab6" data-action="record">日志记录</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="panel panel-info form-horizontal">
+                    <div class="panel-heading" style="position: relative;">基础信息<a href="javascript:void(0);" class="btn btn-danger btn-sm" ng-click="action.edit()" style="position: absolute;right:10px;top:5px;">修改</a></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 p-t-7">是否加微信：{{basicInfo.isAddWechatStr}}</div>
+                            <div class="col-md-3 p-t-7">微信号：{{basicInfo.wechatNumber}}</div>
+                            <div class="col-md-3 p-t-7">是否已删微信：{{basicInfo.isDeleteWechatStr}}</div>
+                            <div class="col-md-3 p-t-7">是否已屏蔽微信：{{basicInfo.isShieldWechatStr}}</div>
+                            <div class="col-md-3 p-t-7">现在是否销售岗：{{basicInfo.isSalesNowStr}}</div>
+                            <div class="col-md-3 p-t-7">活跃度：{{basicInfo.livenessStr}}</div>
+                            <div class="col-md-3 p-t-7">是否在毕业生群里：{{basicInfo.isGraduateGroupStr}}</div>
+                            <div class="col-md-3 p-t-7">从事行业：{{basicInfo.goodat}}</div>
+                            <div class="col-md-3 p-t-7">所在机构：{{basicInfo.organization}}</div>
+                            <div class="col-md-3 p-t-7">所在机构产品类型：{{basicInfo.orgProductType}}</div>
+                            <div class="col-md-3 p-t-7">是否与星火产品有重合：{{basicInfo.isRepeatProductStr}}</div>
+                            <div class="col-md-3 p-t-7">工作年限：{{basicInfo.workYears}}</div>
+                            <div class="col-md-3 p-t-7">地区：{{basicInfo.district}}</div>
+                            <div class="col-md-3 p-t-7">电子邮箱：{{basicInfo.email}}</div>
+                            <div class="col-md-3 p-t-7">生日：{{basicInfo.birthday}}</div>
+                            <div class="col-md-12 p-t-7">邮寄地址：{{basicInfo.receiveAddress}}</div>
+                            <div class="col-md-12 p-t-7">备注：{{basicInfo.remark}}</div>
+                        </div>
+                        <div class="row"><hr style="border-top:1px dashed #eee"></div>
+                        <div class="row">
+                            <div class="col-md-3 p-t-7">注册手机号：{{basicInfo.regMobile}}</div>
+                            <div class="col-md-3 p-t-7">开店时间：{{basicInfo.starttime}}</div>
+                            <div class="col-md-3 p-t-7">上次登录时间：{{basicInfo.lastLoginTime}}</div>
+                            <div class="col-md-3 p-t-7">业务类型：{{basicInfo.businessTypeStr}}</div>
+                            <div class="col-md-3 p-t-7">自主发放红包当前结果：{{basicInfo.redpacketSendSelectionStr}}</div>
+                            <div class="col-md-3 p-t-7">自主发红包生效结果：{{basicInfo.redpacketSendEffectionStr}}</div>
+                            <div class="col-md-3 p-t-7">自主发放红包更新时间：{{basicInfo.redpacketSendUpdatetime}}</div>
+                            <div class="col-md-3 p-t-7">团队：{{basicInfo.team }}</div>
+                        </div>
+                    </div>
+                    <div class="panel-heading">宜信工作信息</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 p-t-7">在宜信是否销售岗：{{basicInfo.isSalesStr}}</div>
+                            <div class="col-md-3 p-t-7">级别：{{basicInfo.levelname}}</div>
+                            <div class="col-md-3 p-t-7">宜信员工：{{basicInfo.yixinstatusStr}}</div>
+                            <div class="col-md-3 p-t-7">离职时间：{{basicInfo.leaveTime}}</div>
+                            <div class="col-md-12 p-t-7">所在部门：{{basicInfo.department}}</div>
+                        </div>
+                    </div>
+                    <div class="panel-heading">店铺信息</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 p-t-7"><img src="{{basicInfo.headUrl || 'https://file.yixin.com/xh_pic/100100562550/mine_avatar_default_icon@2x.png'}}" alt="" width="80" height="80"></div>
+                            <div class="col-md-3 p-t-7">店铺ID：{{basicInfo.storecode}}</div>
+                            <div class="col-md-3 p-t-7">店铺名称：{{basicInfo.storename}}</div>
+                            <div class="col-md-3 p-t-7">店铺URL：<a href="{{basicInfo.storeUrl}}" target="_blank">{{basicInfo.storeUrl}}</a></div>
+                            <div class="col-md-3 p-t-7">昵称：{{basicInfo.nickname}}</div>
+                            <div class="col-md-3 p-t-7" ng-if="basicInfo.auditmethod == 3">入驻资格认证：<a href="javascript:void (0)" ng-click="action.card($event)" data-url="{{basicInfo.auditmethodUrl}}">{{basicInfo.auditmethodStr}}</a></div>
+                            <div class="col-md-3 p-t-7" ng-if="basicInfo.auditmethod != 3">入驻资格认证：{{basicInfo.auditmethodStr}}</div>
+                            <div class="col-md-9 p-t-7">简介：{{basicInfo.introduction}}</div>
+                        </div>
+                    </div>
+                    <div class="panel-heading">身份信息</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 p-t-7">证件类型：{{basicInfo.documenttypestr}}</div>
+                            <div class="col-md-3 p-t-7">证件号码：{{basicInfo.documentno}}</div>
+                        </div>
+                    </div>
+                    <div class="panel-heading">银行卡信息</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 p-t-7">银行卡号：{{basicInfo.cardno}}</div>
+                            <div class="col-md-3 p-t-7">开户行：{{basicInfo.bankname}}</div>
+                            <div class="col-md-3 p-t-7">持卡人姓名：{{basicInfo.realname}}</div>
+                            <div class="col-md-3 p-t-7">验证结果：{{basicInfo.cardvalidatedstr}}</div>
+                            <div class="col-md-3 p-t-7">验证时间：{{basicInfo.cardvalidatetime}}</div>
+                            <div class="col-md-3 p-t-7">详细开户行名称：{{basicInfo.branchbankname}}</div>
+                            <div class="col-md-3 p-t-7">开户行所在省：{{basicInfo.province}}</div>
+                            <div class="col-md-3 p-t-7">开户行所在市：{{basicInfo.city}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 销售数据 start -->
+            <div class="tab-pane" id="tab2">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <div class="row">
+                            <div class="col-lg-9 col-xs-6">
+                                <span class="panel-heading-title">查询</span>
+                            </div>
+                            <div class="col-lg-3 col-xs-6 ui_right">
+                                <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="sale.searchInfo()">查询</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="form-cot">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group col-lg-6">
+                                    <label>选择时间</label>
+                                    <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control" name="startTime" ng-model="sale.startTime">
+                                        <span class="input-group-addon">to </span>
+                                        <input type="text" class="form-control" name="endTime" ng-model="sale.endTime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-6">
+                                <span class="panel-heading-title">销售数据</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper table-responsive">
+                            <table  class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th>销售总额</th>
+                                    <th>P2P销售总额</th>
+                                    <th>类固收销售总额</th>
+                                    <th>到期资金对接率</th>
+                                </tr>
+                                <tr>
+                                    <!--<td><a href="#/tradeSheet.html?userId={{basicInfo.financialId}}&status=1,2,3,4,5" target="_blank">{{sale.info.totalSales}}</a></td>-->
+                                    <!--<td><a href="#/tradeSheet.html?userId={{basicInfo.financialId}}&category=1&status=1,2,3,4,5" target="_blank">{{sale.info.p2PTotal}}</a></td>-->
+                                    <!--<td><a href="#/tradeSheet.html?userId={{basicInfo.financialId}}&category=2&status=1,2,3,4,5" target="_blank">{{sale.info.sesameTotal}}</a></td>-->
+
+                                    <td>{{sale.info.totalSales}}</td>
+                                    <td>{{sale.info.p2PTotal}}</td>
+                                    <td>{{sale.info.sesameTotal}}</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 销售数据 end -->
+            <!-- 客户数据 start -->
+            <div class="tab-pane " id="tab3">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <div class="row">
+                            <div class="col-lg-9 col-xs-6">
+                                <span class="panel-heading-title">查询</span>
+                            </div>
+                            <div class="col-lg-3 col-xs-6 ui_right">
+                                <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="customer.searchInfo()">查询</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group col-lg-6">
+                                    <label>选择时间</label>
+                                    <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control" name="startTime" ng-model="customer.startTime">
+                                        <span class="input-group-addon">to </span>
+                                        <input type="text" class="form-control" name="endTime" ng-model="customer.endTime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-6">
+                                <span class="panel-heading-title">客户数据</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper table-responsive">
+                            <table  class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th>注册客户数</th>
+                                    <th>成功交易客户数</th>
+                                    <th>新增注册并成功交易客户数</th>
+                                    <th>客户在投金额</th>
+                                </tr>
+                                <tr>
+                                    <td>{{customer.info.userCount}}</td>
+                                    <td>{{customer.info.successUser}}</td>
+                                    <td>{{customer.info.newSuccessUser}}</td>
+                                    <td>{{customer.info.totalAmount}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 客户数据 end -->
+            <!-- 团队数据 start -->
+            <div class="tab-pane " id="tab4">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <div class="row">
+                            <div class="col-lg-9 col-xs-6">
+                                <span class="panel-heading-title">查询</span>
+                            </div>
+                            <div class="col-lg-3 col-xs-6 ui_right" ng-if="team.info.teamType == 1">
+                                <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="team.searchInfo()">查询</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" ng-if="team.info.teamType == 1">
+                            <div class="col-lg-12">
+                                <div class="form-group col-lg-4">
+                                    <label>团队：{{team.info.team}}</label>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>业务类型：{{team.info.bussType}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="team.info.teamType == 2">
+                            <div class="col-lg-12">
+                                <div class="form-group col-lg-4">
+                                    <label>团队：{{team.info.team}}</label>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>业务类型：{{team.info.bussType}}</label>
+                                </div>
+                                <div class="form-group col-lg-4">
+                                    <label>团队长姓名：<a href="javascript:void(0)" ng-click="team.showCaptain($event)" data-captain="{{team.info.leaderUserId}}">{{team.info.teamName}}</a></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="team.info.teamType == 1">
+                            <div class="col-lg-12">
+                                <div class="form-group col-lg-6">
+                                    <label>开店时间</label>
+                                    <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control" name="starttimeFirst" ng-model="team.starttimeFirst">
+                                        <span class="input-group-addon">to </span>
+                                        <input type="text" class="form-control" name="starttimeEnd" ng-model="team.starttimeEnd">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-3">
+                                    <div class="col-lg-12" style="padding:0;">
+                                        <label>销售额(元)</label>
+                                    </div>
+                                    <div class="col-lg-5" style="padding:0;">
+                                        <input type="text" name="sumamountStart" ng-model="team.sumamountStart" class="form-control js_validator_int" placeholder="请输入销售额" maxlength="10">
+                                    </div>
+                                    <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                        <span>—</span>
+                                    </div>
+                                    <div class="col-lg-5" style="padding:0;">
+                                        <input type="text" name="sumamountEnd" ng-model="team.sumamountEnd" class="form-control js_validator_int" placeholder="请输入销售额" maxlength="10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="team.info.teamType == 3">
+                            <div class="col-lg-12 text-center">
+                                暂无团队数据
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info" ng-if="team.info.teamType == 1">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-6">
+                                <span class="panel-heading-title">团队员数：{{team.info.memberCount}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销售额（元）：{{team.info.sumamountTotal}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper table-responsive">
+                            <table  class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th>序号</th>
+                                    <th>团队员ID</th>
+                                    <th>团队员姓名</th>
+                                    <th>开店时间</th>
+                                    <th>销售额（元）</th>
+                                </tr>
+                                <tbody ng-if="team.info.list.length && team.info.list.length > 0">
+                                    <tr ng-repeat="item in team.info.list">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{item.memberId}}</td>
+                                        <td>{{item.memberName}}</td>
+                                        <td>{{item.startTime}}</td>
+                                        <td>{{item.sumAmount}}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody ng-if="!team.info.list.length || team.info.list.length == 0">
+                                    <tr>
+                                        <td colspan="5" class="text-center">暂无数据</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 团队数据 end -->
+            <!-- 红包使用数据 start -->
+            <div class="tab-pane " id="tab5">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <div class="row">
+                            <div class="col-lg-9 col-xs-6">
+                                <span class="panel-heading-title">查询</span>
+                            </div>
+                            <div class="col-lg-3 col-xs-6 ui_right">
+                                <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="red.searchInfo()">查询</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group col-lg-6">
+                                    <label>选择时间</label>
+                                    <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control" name="startTime" ng-model="red.startTime">
+                                        <span class="input-group-addon">to </span>
+                                        <input type="text" class="form-control" name="endTime" ng-model="red.endTime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-6">
+                                <span class="panel-heading-title">红包使用数据</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper table-responsive">
+                            <table  class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th width="33%">理财经理抢红包总数量</th>
+                                    <th width="33%">理财经理发放红包数量</th>
+                                    <th>客户使用红包数量</th>
+                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>{{red.info.robTotal}}</td>
+                                        <td>{{red.info.grantTotal}}</td>
+                                        <td>{{red.info.customerUsedTotal}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table  class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th width="33%">星火发红包至店铺总数量</th>
+                                    <th width="33%">理财经理发放红包数量</th>
+                                    <th>客户使用红包数量</th>
+
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td>{{red.info.storeRedPaperTotal}}</td>
+                                    <td>{{red.info.storeGrantTotal}}</td>
+                                    <td>{{red.info.storeCustomerUsedTotal}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table  class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <th width="50%">星火发红包至客户总数量</th>
+                                    <th width="50%">客户使用红包数量</th>
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td>{{red.info.xhGrantTotal}}</td>
+                                    <td>{{red.info.xhCustomerUsedTotal}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 红包使用数据 end -->
+            <!-- 日志记录 start -->
+            <div class="tab-pane " id="tab6">
+                <div class="time-line-wrapper" id="time-line-wrapper">
+                    <a href='javascript:void(0)' style="margin-bottom: 20px" class='btn btn-sm btn-primary addLog' data-id={{basicInfo.financialId}}
+                       data-mobile={{basicInfo.mobile}} data-realname={{basicInfo.realname}}>添加日志</a>
+                    <ul class="time-line" ng-if="record.info.length && record.info.length > 0">
+                        <li ng-repeat="item in record.info">
+                            <div class="row">
+                                <div class="col-md-3 p-t-7">沟通时间：{{item.connectTime}}</div>
+                                <div class="col-md-3 p-t-7">沟通方式：{{item.connectTypeName}}</div>
+                                <div class="col-md-3 p-t-7">{{item.isSubmitName}}</div>
+                                <div class="col-md-3 p-t-7">支持人员：{{item.supportUserName}}</div>
+                                <div class="col-md-12 p-t-7">日志标题：{{item.title}}</div>
+                                <div class="col-md-12 p-t-7">日志内容：{{item.content}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="no-info" ng-if="!record.info.length || record.info.length == 0">暂无记录</div>
+                </div>
+                <div class="clearfix" ng-show="record.total > 0">
+                    <div class="pull-left" style="padding-top: 17px;" id="pagination-info">当前 {{record.currentPage}} 到 {{record.sumpage}}， 共 {{record.total}} 条数据</div>
+                    <ul class="pagination pull-right" id="pagination"></ul>
+                </div>
+            </div>
+            <!-- 日志记录 end -->
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">修改基础信息</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <form id="editForm">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label>联系电话</label>
+                                <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否加微信</label>
+                        <select name="isAddWechat" ng-model="form.isAddWechat" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>微信号</label>
+                        <input name="wechatNumber" ng-model="form.wechatNumber" class="form-control" placeholder="请输入微信号">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否删微信</label>
+                        <select name="isDeleteWechat" ng-model="form.isDeleteWechat" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否屏蔽微信</label>
+                        <select name="isShieldWechat" ng-model="form.isShieldWechat" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>现在是否销售岗</label>
+                        <select name="isSalesNow" ng-model="form.isSalesNow" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>活跃度</label>
+                        <select name="liveness" ng-model="form.liveness" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="{{item.key}}" ng-repeat="item in select.liveness" ng-selected="form.liveness == item.key">{{item.value}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否在毕业生群里</label>
+                        <select name="isGraduateGroup" ng-model="form.isGraduateGroup" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>从事行业</label>
+                        <input name="goodat" ng-model="form.goodat" class="form-control" placeholder="请输入从事行业">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>所在机构</label>
+                        <input name="organization" ng-model="form.organization" class="form-control" placeholder="请输入所在机构">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>所在机构产品类型</label>
+                        <input name="orgProductType" ng-model="form.orgProductType" class="form-control" placeholder="请输入所在机构产品类型">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>是否与星火产品有重合</label>
+                        <select name="isRepeatProduct" ng-model="form.isRepeatProduct" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>工作年限</label>
+                        <input name="workYears" ng-model="form.workYears" class="form-control" placeholder="请输入工作年限">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>地区</label>
+                        <input name="district" ng-model="form.district" class="form-control" placeholder="请输入地区">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>电子邮箱</label>
+                        <input name="email" ng-model="form.email" class="form-control" placeholder="请输入电子邮箱">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>生日</label>
+                        <input name="birthday" ng-model="form.birthday" class="form-control" placeholder="请输入生日">
+                    </div>
+                    <!--<div class="form-group col-lg-12">
+                        <label>收货地址</label>
+                        <input name="receiveAddress" ng-model="form.receiveAddress" class="form-control" placeholder="请输入收货地址">
+                    </div>-->
+                    <div class="form-group col-lg-12">
+                        <label>备注</label>
+                        <textarea name="remark" ng-model="form.remark"  rows="6" class="form-control"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" id="confirmBtn" ng-click="ok()">保存</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="cardModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">名片</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <img src="{{cardUrl}}" alt="" style="max-width: 100%;max-height: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <script type="text/ng-template" id="managerModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">等级记录</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="form-group col-lg-12">
+                    <table class="table table-striped table-bordered table-hover">
+                        <tr><th>等级</th>
+                            <th>星星数</th>
+                            <th>活动时间</th>
+                            <th>更新时间</th>
+                        </tr>
+                        <tr ng-repeat="item in levelList">
+                            <td>{{item.starLevel}}</td>
+                            <td>{{item.starNum}}</td>
+                            <td><span ng-if="item.activeTimeStart || item.activeTimeEnd">{{(item.activeTimeStart || "") + ' 到 ' + (item.activeTimeEnd || "")}}</span></td>
+                            <td>{{item.updateTime}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </script>
+    <script type="text/ng-template" id="addLog.html">
+        <div class="modal-header">
+            <label class="modal-title fn-ms" style="float:left;font-size: 30px;">新增日志</label>
+            <div class="ui_right">
+                <span class="btn" style="background: #ccc" disabled="true">搜索</span>
+                <a class="btn btn-success" ng-click="action.save()">保存</a>
+                <a class="btn btn-success" ng-click="action.saveAndSubmit()">保存并提交</a>
+                <a class="btn btn-warning" ng-click="action.cancel()">取消</a>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <div class="form-group col-lg-2" style="line-height: 32px;text-align: right">
+                    <label class=" control-label" style="font-size: 14px;">理财经理手机号:</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <input name="phoneNumber" ng-disabled="true" readonly ng-model="data.mobile" class="form-control" placeholder="">
+                </div>
+                <div class="form-group col-lg-2" style="line-height: 32px;text-align: right">
+                    <label class=" control-label" style="font-size: 14px;">理财经理姓名:</label>
+                </div>
+                <div class="form-group col-lg-4">
+                    <input name="realName" ng-disabled="true" readonly ng-model="data.realname" class="form-control" placeholder="">
+                </div>
+            </div>
+            <!--搜索表格-->
+            <div class="panel panel-info col-lg-12">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-lg-8 col-xs-8"><span class="panel-heading-title">搜索结果</span></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper" style="font-size: 13px;">
+                        <table datatable dt-options="logModal.dtOptions" dt-columns="logModal.dtColumns" dt-instance="logModal.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover"></table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-lg-7">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通时间：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <div class="input-group date form_datetime">
+                        <input type="text" size="16" ng-model="data.connectTime " name="connectTime " class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
+                    <label class="control-label">沟通方式：</label>
+                </div>
+                <div class="form-group col-lg-8">
+                    <select name="productType" ng-model="data.connectType" class="form-control">
+                        <option value="">请选择</option>
+                        <option ng-repeat="item in selectList" value="{{item.key}}">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2"><label class="control-label">日志标题：</label></div>
+                <div class="col-lg-9">
+                    <input type="text" name="logTitle" class="form-control logTitle" ng-model="data.title" placeholder="0-20字" ng-change="action.titleChange()" maxlength="20"/>
+                </div>
+                <div class="col-lg-1" style="font-size:20px">
+                    <span class="titleCount" style="font-size:20px" ng-bind="titleCount"></span><span style="font-size:20px">/20</span>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="col-lg-2">
+                    <label class="control-label">日志内容：</label>
+                </div>
+                <div class="col-lg-9">
+                    <textarea type="text" name="logContent" class="form-control logContent" ng-model="data.content" maxlength="500" ng-change="action.contentChange()"></textarea>
+                </div>
+                <div style="position: absolute;right: 20px;bottom:0;font-size:20px">
+                    <span class="contentCount" ng-bind="contentCount"></span>/500
+                </div>
+            </div>
+        </div>
+    </script>
+
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

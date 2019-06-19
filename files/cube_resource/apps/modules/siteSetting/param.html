@@ -1,0 +1,88 @@
+<div ng-controller="paramsController as showCase">
+    <h3 class="page-title">
+        参数配置
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">参数配置</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.build($event)">新增参数</a><a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.reset()">重置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>参数</label>
+                            <input name="code" ng-model="form.code" class="form-control" placeholder="请输入参数">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>参数名称</label>
+                            <input name="name" ng-model="form.name" class="form-control" placeholder="请输入参数名称">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">×</button>
+            <h4 class="modal-title fn-ms">参数配置</h4>
+        </div>
+        <div class="modal-body clearfix" ng-init="init()">
+            <div class="col-lg-12">
+                <form role="form" class="form-horizontal" id="js_modify_params_form">
+                    <input type="hidden" name="id" value="">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">参数：</label>
+                        <div class="col-sm-10">
+                            <input name="code" ng-model="form.code" type="text" class="form-control"  placeholder="参数">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">参数名称：</label>
+                        <div class="col-sm-10">
+                            <input name="name" ng-model="form.name" type="text" class="form-control" placeholder="参数名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">参数值：</label>
+                        <div class="col-sm-10">
+                            <input name="value" ng-model="form.value" type="text" class="form-control" placeholder="参数值">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">参数描述：</label>
+                        <div class="col-sm-10">
+                            <textarea name="description" ng-model="form.description" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms" style="width:25%;" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()">保存</button>
+        </div>
+    </script>
+</div>

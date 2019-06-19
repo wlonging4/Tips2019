@@ -1,0 +1,92 @@
+<div ng-controller="dataReportEhrInfoController as showCase">
+    <h3 class="page-title">
+        宜信员工
+    </h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="/ehrinfo.html#overview_1" data-toggle="tab" aria-expanded="false">最近7天</a>
+                </li>
+                <li class="">
+                    <a href="/ehrinfo.html#overview_2" data-toggle="tab" aria-expanded="false">最近30天</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="overview_1">
+                    <div class="col-lg-12"><div class="flot-chart-content" id="chart1" style='margin-bottom:1px;padding-bottom:0;border-bottom-width:0;width: 100%;height: 350px'></div></div>
+                </div>
+                <div class="tab-pane" id="overview_2">
+                    <div class="col-lg-12"><div class="flot-chart-content" id="chart2" style='margin-bottom:1px;padding-bottom:0;border-bottom-width:0;width: 100%;height: 350px'></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">宜信员工</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.reset()">重置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>员工编号</label>
+                            <input name="empno" ng-model="form.empno" class="form-control" placeholder="请输入员工编号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>员工姓名</label>
+                            <input name="empname" ng-model="form.empname" class="form-control" placeholder="请输入员工姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>星火处理部门</label>
+                            <select ng-model="form.xinghuodept" name="xinghuodept" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="dept_caiyi">财富管理一部</option>
+                                <option value="dept_caier">财富管理二部</option>
+                                <option value="dept_other">其他部门</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="row">
+                                <label class="col-lg-12 control-label">离职日期</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="starttime" ng-model="form.starttime">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="endtime" ng-model="form.endtime">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_trade_form" method="post">
+                        <a id="js_ehr_export" action="ehrinfo/download.json" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="action.load()"></div>
+</div>

@@ -1,0 +1,86 @@
+<div ng-controller="addftpController">
+    <h3 class="page-title">
+        FTP配置
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">FTP配置</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-4">
+                        <label>周期</label>
+                        <select name="year" ng-model="form.cycleId" ng-change="action.search()" class="form-control">
+                            <option value="">请选择要添加的周期</option>
+                            <option ng-repeat="item in select.years" value="{{item.id}}">{{item.year}}年 {{item.startMonth}}月-{{item.endMonth}}月</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info" ng-if="form.year">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">{{form.year}}年FTP配置</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.save()">保存设置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table class="table table-striped row-border table-hover">
+                    <thead>
+                        <tr><th>序号</th><th>起始月</th><th>截止月</th><th>值</th><th>操作</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ftplist">
+                            <td width="5%">{{$index + 1}}</td>
+                            <td width="20%">
+                                {{item.startMonth}}
+                            </td>
+                            <td width="20%">
+                                {{item.endMonth}}
+                            </td>
+                            <td width="20%">
+                                {{item.value}}
+                            </td>
+                            <td>
+                                <button ng-click="action.del($index,$event)" class="btn btn-warning btn-sm">删除</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td width="10%">
+                                <select name="startMonth" ng-model="form.startMonth" ng-change="action.setEndMonth()" class="form-control">
+                                    <option value="">请选择起始月</option>
+                                    <option ng-repeat="item in select.startMonth" value="{{item}}">{{item}}</option>
+                                </select>
+                            </td>
+                            <td width="10%">
+                                <select name="endMonth" ng-model="form.endMonth" class="form-control">
+                                    <option value="">请选择截止月</option>
+                                    <option ng-repeat="item in select.endMonth" value="{{item.value}}">{{item.name}}</option>
+                                </select>
+                            </td>
+                            <td width="20%">
+                                <input name="value" ng-focus="action.removeError()" ng-model="form.value" class="form-control" placeholder="请输入值">
+                            </td>
+                            <td>
+                                <button ng-click="action.add()" class="btn btn-primary btn-md">确定</button><span style="color:red">{{errortips}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

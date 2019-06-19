@@ -1,0 +1,513 @@
+<div ng-controller="editWealthManager">
+    <h3 class="page-title">
+        理财师沟通记录
+    </h3>
+    <div class="well">
+        <h4 class="m-b-30">线索客户基本信息</h4>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">线索ID：</label>
+                    <div  class="col-xs-7 text-left">{{info.clueId}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">客户姓名：</label>
+                    <div  class="col-xs-7 text-left">{{info.userName}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">手机号：</label>
+                    <div  class="col-xs-7 text-left">{{info.userMobile}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">实名认证时间：</label>
+                    <div  class="col-xs-7 text-left">{{info.certificationTime}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">渠道：</label>
+                    <div  class="col-xs-7 text-left">{{info.channel}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">地区：</label>
+                    <div  class="col-xs-7 text-left">{{info.district}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">城市：</label>
+                    <div  class="col-xs-7 text-left">{{info.city}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">线索类型：</label>
+                    <div  class="col-xs-7 text-left">{{info.clueType}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">预约产品：</label>
+                    <div  class="col-xs-7 text-left">{{info.appointProd}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">预约时间：</label>
+                    <div  class="col-xs-7 text-left">{{info.appointTime}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 ">
+                <div class="row">
+                    <label class="col-xs-5 text-right">订单状态：</label>
+                    <div  class="col-xs-7 text-left">{{info.orderStatus}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">登录状态：</label>
+                    <div  class="col-xs-7 text-left">{{info.loginStatus}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">了解宜信渠道：</label>
+                    <div  class="col-xs-7 text-left">{{info.screenCommuDetail.firstScreenChannel}}</div>
+                </div>
+            </div>
+        </div>
+        <hr style="border: 1px dashed #dddddd" />
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">初筛人：</label>
+                    <div  class="col-xs-7 text-left">{{info.firstScreenUser}}</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12 clearfix">
+                <div class="row">
+                    <label class="col-xs-5 text-right">转交时间：</label>
+                    <div  class="col-xs-7 text-left">{{info.firstScreenTime}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="well">
+        <h4 class="m-b-30">初筛沟通结果</h4>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">初筛结果：</label>
+                    <div  class="col-xs-7 text-left">{{info.screenCommuDetail.firstScreenFilterResLab}}</div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">后续联系方式：</label>
+                    <div  class="col-xs-7 text-left">{{info.screenCommuDetail.firstScreenContact}}</div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">是否加微信：</label>
+                    <div  class="col-xs-7 text-left">{{info.screenCommuDetail.firstScreenWechatDesc}}</div>
+                </div>
+
+            </div>
+            <div class="col-xs-10">
+                <div class="row">
+                    <label class="col-lg-2 col-sm-3 col-xs-6 text-right">沟通备注：</label>
+                    <div  class="col-sm-8 col-xs-6 text-left">{{info.screenCommuDetail.firstScreenNote}}</div>
+                </div>
+
+            </div>
+        </div>
+        <hr style="border: 1px dashed #dddddd" />
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">转交理财师：</label>
+                    <div  class="col-xs-7 text-left">{{info.financial}}</div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="row">
+                    <label class="col-xs-5 text-right">转交时间：</label>
+                    <div  class="col-xs-7 text-left">{{info.secondDistributionTime}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <form class="form-horizontal" id="screenForm">
+        <div class="panel panel-info">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">理财师沟通记录</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <dl>
+                    <dt class="m-b-30"><h4>理财师第一次沟通记录</h4></dt>
+                    <dd>
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通日期：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                            <input type="text" name="finanCommuDetail.secondScreenFirstDate" class="form-control"  ng-model="form.finanCommuDetail.secondScreenFirstDate">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通时间：</label>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker timepicker-24" name="finanCommuDetail.secondScreenFirstBegintime" ng-model="form.finanCommuDetail.secondScreenFirstBegintime">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 text-center p-t-7">to</div>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker timepicker-24" name="finanCommuDetail.secondScreenFirstEndtime" ng-model="form.finanCommuDetail.secondScreenFirstEndtime">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通方式：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenFirstWay" ng-model="form.finanCommuDetail.secondScreenFirstWay">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.communication" ng-selected="value == form.finanCommuDetail.secondScreenFirstWay">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">理财师第一次沟通标签：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenFirstLab" ng-model="form.finanCommuDetail.secondScreenFirstLab">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.impression" ng-selected="value == form.finanCommuDetail.secondScreenFirstLab">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">后续沟通提醒：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date form_exact_datetime">
+                                            <input type="text" size="16" name="finanCommuDetail.secondScreenFirstRemind"   class="form-control" ng-model="form.finanCommuDetail.secondScreenFirstRemind">
+                                            <span class="input-group-btn">
+                                                <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">沟通备注：</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="finanCommuDetail.secondScreenFirstNote"  class="form-control" cols="30" rows="4" ng-model="form.finanCommuDetail.secondScreenFirstNote"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="m-b-30"><h4>理财师第二次沟通记录</h4></dt>
+                    <dd>
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通日期：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                            <input type="text" class="form-control"  name="finanCommuDetail.secondScreenSecondDate" ng-model="form.finanCommuDetail.secondScreenSecondDate">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通时间：</label>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker timepicker-24" name="finanCommuDetail.secondScreenSecondBegintime" ng-model="form.finanCommuDetail.secondScreenSecondBegintime">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 text-center p-t-7">to</div>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker timepicker-24" name="finanCommuDetail.secondScreenSecondEndtime" ng-model="form.finanCommuDetail.secondScreenSecondEndtime">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通方式：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenSecondWay" ng-model="form.finanCommuDetail.secondScreenSecondWay">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.communication" ng-selected="value == form.finanCommuDetail.secondScreenSecondWay">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">理财师第二次沟通标签：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenSecondLab" ng-model="form.finanCommuDetail.secondScreenSecondLab">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.impression" ng-selected="value == form.finanCommuDetail.secondScreenSecondLab">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">后续沟通提醒：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date form_exact_datetime">
+                                            <input type="text" size="16" name="finanCommuDetail.secondScreenSecondRemind"   class="form-control" ng-model="form.finanCommuDetail.secondScreenSecondRemind">
+                                            <span class="input-group-btn">
+                                                <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">沟通备注：</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="finanCommuDetail.secondScreenSecondNote"  class="form-control" cols="30" rows="4" ng-model="form.finanCommuDetail.secondScreenSecondNote"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="m-b-30"><h4>理财师第三次沟通记录</h4></dt>
+                    <dd>
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通日期：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                            <input type="text" class="form-control"  name="finanCommuDetail.secondScreenThirdDate" ng-model="form.finanCommuDetail.secondScreenThirdDate">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通时间：</label>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker timepicker-24" name="finanCommuDetail.secondScreenThirdBegintime" ng-model="form.finanCommuDetail.secondScreenThirdBegintime">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 text-center p-t-7">to</div>
+                                    <div class="col-sm-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control timepicker timepicker-24" name="finanCommuDetail.secondScreenThirdEndtime" ng-model="form.finanCommuDetail.secondScreenThirdEndtime">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">沟通方式：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenThirdWay" ng-model="form.finanCommuDetail.secondScreenThirdWay">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.communication" ng-selected="value == form.finanCommuDetail.secondScreenThirdWay">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">理财师第三次沟通标签：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenThirdLab" ng-model="form.finanCommuDetail.secondScreenThirdLab">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.impression" ng-selected="value == form.finanCommuDetail.secondScreenThirdLab">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">后续沟通提醒：</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group date form_exact_datetime">
+                                            <input type="text" size="16" name="finanCommuDetail.secondScreenThirdRemind"  class="form-control" ng-model="form.finanCommuDetail.secondScreenThirdRemind">
+                                            <span class="input-group-btn">
+                                                <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">沟通备注：</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="secondScreenThirdNote"  class="form-control" cols="30" rows="4" ng-model="form.finanCommuDetail.secondScreenThirdNote"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="m-b-30"><h4>最终结果</h4></dt>
+                    <dd>
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">最终确认：</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" name="finanCommuDetail.secondScreenFilterResLab" ng-model="form.finanCommuDetail.secondScreenFilterResLab">
+                                            <option value="">请选择</option>
+                                            <option value="{{value}}" ng-repeat="(key, value) in select.impressionResult" ng-selected="value == form.finanCommuDetail.secondScreenFilterResLab">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">后续联系方式：</label>
+                                    <div class="col-sm-8">
+                                        <div id="multi_select" style="position:relative;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-4 control-label">是否加微信：</label>
+                                    <div class="col-sm-8">
+                                        <div class="radio-list">
+                                            <label class="radio-inline"><input type="radio" name="finanCommuDetail.secondScreenWechat" value="0" ng-checked="form.finanCommuDetail.secondScreenWechat == 0">是</label>
+                                            <label class="radio-inline"><input type="radio" name="finanCommuDetail.secondScreenWechat" value="1" ng-checked="form.finanCommuDetail.secondScreenWechat == 1">否</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label">最终备注：</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="finanCommuDetail.finanResRemark"  class="form-control" cols="30" rows="4" ng-model="form.finanCommuDetail.secondScreenNote"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <div class="row text-center">
+                    <button class="btn btn-success btn-md" ng-click="action.save()">保 存</button>
+                    <button class="btn btn-warning btn-md" ng-click="action.cancel();">取消</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+        $('#multi_select').multiSel({
+            'name':'finanCommuDetail.secondScreenContact',
+            'data': [
+                {"text": "电话", "value": "1", "default": false},
+                {"text": "邮件", "value": "2", "default": false},
+                {"text": "微信", "value": "3", "default": false},
+                {"text": "QQ", "value": "4", "default": false},
+                {"text": "视频", "value": "5", "default": false},
+                {"text": "面谈", "value": "6", "default": false}
+            ]
+        });
+    });
+</script>
+<!--通知栏-->
+<div class="notification-bar" notification-bar></div>

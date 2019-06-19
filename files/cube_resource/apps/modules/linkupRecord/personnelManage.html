@@ -1,0 +1,89 @@
+<div ng-controller="personnelManage">
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix" style="line-height: 34px;font-size: 18px;"> <button  type="button" class="pull-right btn btn-primary" ng-click="action.staff()">添加人员</button>人员管理</div>
+        <table class="table">
+            <tr>
+                <td>
+                    <ul class="list-group">
+                        <li class="list-group-item active">管理员</li>
+                        <li class="list-group-item" ng-repeat="item in list">
+                            <span class="pull-right js-pm-del" data-id="{{item.id}}" ng-click="action.personDelete()"><i class="glyphicon glyphicon-trash" ></i></span>
+                            管理员1:{{item.name}}
+                        </li>
+                    </ul>
+                <td>
+                    <ul class="list-group">
+                        <li class="list-group-item active">初筛人</li>
+                        <li class="list-group-item">
+                            <span class="pull-right js-pm-del" data-del="2" ng-click="action.personDelete()"><i class="glyphicon glyphicon-trash"></i></span>
+                            初筛人1:A
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right js-pm-del" ng-click="action.personDelete()"><i class="glyphicon glyphicon-trash"></i></span>
+                            初筛人2:B
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list-group">
+                        <li class="list-group-item active">理财师</li>
+                        <li class="list-group-item">
+                            <span class="pull-right js-pm-del" ng-click="action.personDelete()"><i class="glyphicon glyphicon-trash"></i></span>
+                            理财师1:A
+                        </li>
+                        <li class="list-group-item">
+                            <span class="pull-right js-pm-del" ng-click="action.personDelete()"><i class="glyphicon glyphicon-trash"></i></span>
+                            理财师3:B
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/ng-template" id="staffCtrl.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">添加人员</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="form-group col-lg-12">
+                    <label>角色</label>
+                    <select class="form-control" ng-model="result.type">
+                        <option value="">请选择</option>
+                        <option value="1">管理员</option>
+                        <option value="2">初筛人</option>
+                        <option value="3">理财师</option>
+                    </select>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>添加人员姓名</label>
+                    <input ng-model="result.name" ng-blur="verifyName($event)" type="text" class="form-control" placeholder="请输入人员姓名">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>添加邮箱</label>
+                    <input ng-model="result.Email" ng-blur="verifyMail($event)" type="text" class="form-control" placeholder="请输入添加人员对应邮箱">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;"  ng-click="ok()">确认</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="personDeleteCtrl.html">
+        <div class="modal-header">
+            <!--<button type="button" class="close" ng-click="close()">×</button>-->
+            <h4 class="modal-title fn-ms">温馨提示</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <p>是否删除{{del}}?</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="del-confirmBtn" ng-click="ok()">确认</button>
+        </div>
+    </script>
+</div>
