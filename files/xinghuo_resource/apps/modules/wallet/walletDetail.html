@@ -1,0 +1,188 @@
+<div ng-controller="walletDetail as showCase">
+    <h3 class="page-title">
+        星火钱包_明细
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">星火钱包转入转出明细</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>编号</label>
+                            <input name="no" ng-model="form.no" class="form-control" placeholder="请输入编号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户ID</label>
+                            <input name="userid" ng-model="form.userid" class="form-control" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>状态</label>
+                            <select name="opstatuArr" ng-model="form.opstatuArr" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">失败</option>
+                                <option value="2">处理中</option>
+                                <option value="3">成功</option>
+                                <!--<option value="3">转入成功</option>-->
+                                <!--<option value="4">转出成功</option>-->
+                                <!--<option value="5">出借成功</option>-->
+                                <!--<option value="6">赎回成功</option>-->
+                                <!--<option value="7">退款成功</option>-->
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>渠道</label>
+                            <select name="terminal" ng-model="form.terminal" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">pc</option>
+                                <option value="1">wap</option>
+                                <option value="2">app</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>转入/转出时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input name="starttime" ng-model="form.starttime" type="text" class="form-control">
+                                <span class="input-group-addon">to </span>
+                                <input name="endtime" ng-model="form.endtime" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>明细类型</label>
+                            <select name="optype" ng-model="form.optype" class="form-control js-optype">
+                                <option value="">请选择</option>
+                                <option value="1">转入</option>
+                                <option value="2">转出</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3" id="js-view" style="display: none;">
+                            <label class="js-subtypeTitle">转入/转出类型</label>
+                            <select name="subtype" ng-model="form.subtype" class="form-control js-subtype">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">转入总额(元)：<em class="text-danger" style="font-style: normal;">{{firstSumTotal}}</em></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="panel-heading-title">转出总额(元)：<em class="text-danger" style="font-style: normal;">{{secondSumTotal}}</em></span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_reds_btns_form" method="post" enctype="multipart/form-data">
+                        <a action="/xinghuowallet/exportWalletManager.shtml" href="javascript:;" class="btn btn-success btn-sm js_export">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <!-- 转入详情 -->
+    <script type="text/ng-template" id="walletDetailInto.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">转入详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td colspan="3">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td>转入编号：{{info.no}}</td>
+                        <td>转入时间：{{info.optime}}</td>
+                    </tr>
+                    <tr>
+                        <td>用户ID：{{info.userid}}</td>
+                        <td>用户姓名：{{info.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td>状态：{{info.opstatus}}</td>
+                        <td>转入金额：{{info.amount}}</td>
+                    </tr>
+                    <tr>
+                        <td>转入银行：{{info.bankname}}</td>
+                        <td>转入银行卡号：{{info.cardno}}</td>
+                    </tr>
+                    <tr>
+                        <td>转入类型：{{info.subtypeString}}</td>
+                        <td>转入银行预留手机号：{{info.mobilenum}}</td>
+                    </tr>
+                    <tr>
+                        <td>转入渠道：{{info.terminal}}</td>
+                        <td>订单号：{{info.txid}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+    <!-- 转出详情 -->
+    <script type="text/ng-template" id="walletDetailOut.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">转出详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td colspan="3">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td>转出编号：{{info.no}}</td>
+                        <td>转出时间：{{info.optime}}</td>
+                    </tr>
+                    <tr>
+                        <td>用户ID：{{info.userid}} </td>
+                        <td>用户姓名：{{info.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td>状态：{{info.opstatus}}</td>
+                        <td>转出金额：{{info.amount}}</td>
+                    </tr>
+                    <tr>
+                        <td>转出至银行：{{info.bankname}}</td>
+                        <td>转出至银行卡号：{{info.cardno}}</td>
+                    </tr>
+                    <tr>
+                        <td>转出类型：{{info.subtypeString}}</td>
+                        <td>产品名称：{{info.productname}}</td>
+                    </tr>
+                    <tr>
+                        <td>转出渠道：{{info.terminal}}</td>
+                        <td>订单号：{{info.txid}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

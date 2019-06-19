@@ -1,0 +1,238 @@
+﻿<div ng-controller="redemptionController as showCase">
+    <h3 class="page-title">
+        赎回单管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">赎回单管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>赎回单ID</label>
+                            <input name="appRedeemId" ng-model="form.appRedeemId" class="form-control" placeholder="请输入赎回单ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>交易单号</label>
+                            <input name="appOrderId" ng-model="form.appOrderId" class="form-control" value="" placeholder="请输入交易单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>出借人ID</label>
+                            <input name="lenderId" value="" ng-model="form.lenderId" class="form-control" placeholder="请输入出借人ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>结算金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="repayAmountStart" ng-model="form.repayAmountStart" class="form-control js_validator_int" placeholder="请输入结算金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="repayAmountEnd" ng-model="form.repayAmountEnd" class="form-control js_validator_int" placeholder="请输入结算金额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>申请时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="applyTimeStart" ng-model="form.applyTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="applyTimeEnd" ng-model="form.applyTimeEnd">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>赎回状态</label>
+                            <select name="redeemStatus" ng-model="form.redeemStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.redeem_status">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>回款类型</label>
+                            <select name="receivedType" ng-model="form.receivedType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.received_type">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>到期日</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="repayDateStart" ng-model="form.repayDateStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="repayDateEnd" ng-model="form.repayDateEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>选择产品：</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="category" ng-model="form.category" id="js_category" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" source="{{item.value2}}" ng-repeat="item in select.proFirstList">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="series" ng-model="form.series" ng-change="action.chooseThirdPro()" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.series">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="productNameCode" ng-model="form.productNameCode" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.productNameCode">{{item.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>变现申请时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="cashTimeStart" ng-model="form.cashTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="cashTimeEnd" ng-model="form.cashTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否托管</label>
+                            <select name="isTrusteeship" ng-model="form.isTrusteeship" class="form-control">
+                                <option value="">全部</option>
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>回款结算类型</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <select name="payChannel" ng-model="form.payChannel" class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="0">银行卡</option>
+                                        <option value="1">星火钱包</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6">
+                                    <select name="redeem_settlement_type" ng-model="form.redeem_settlement_type" class="form-control">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.redeem_settlement_type">{{item.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-4 col-xs-4">
+                    <span class="panel-heading-title">赎回总金额：<span class="ui_red" ng-bind="tableinfo.totalRedeemSum"></span></span>
+                </div>
+                <div class="col-lg-8 col-xs-8 ui_right">
+                    <a ng-click="action.changeAmount()" href="javascript:;" class="btn btn-primary btn-sm">修改赎回金额</a>
+                    <a action="/xinghuodeal/exportRedemptions.shtml" href="javascript:;" class="btn btn-success btn-sm js_export">导出</a>
+                    <a href="javascript:;" class="btn btn-danger btn-sm" id="js_redempt_settle_selected">结算选中赎回单</a>
+                    <a ng-click="action.searchList()" href="javascript:;" class="btn btn-warning btn-sm" id="js_redempt_settleall">结算搜索赎回单</a>
+                    <a href="javascript:;" class="btn btn-info btn-sm" id="js_redempt_fail" ng-click="action.resettle()">结算失败赎回单</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">{{modalTitle}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12" ng-show="showFlag">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">赎回单号:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="redeemNo" ng-model="form.redeemNo" placeholder="请输入赎回单号">
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">实际赎回金额:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="amount" ng-model="form.amount" placeholder="请输入实际赎回金额">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" ng-show="!showFlag">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">赎回单号:</label>
+                    <div class="col-sm-9">
+                        {{form.redeemNo}}
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">实际赎回金额:</label>
+                    <div class="col-sm-9">
+                        <span class="text-red">{{form.amount}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="cancel()" ng-show="!showFlag">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()" ng-show="!showFlag">确认</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmInfo" ng-click="confirmInfo()" ng-show="showFlag">确认</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="myModalResettle.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">{{modalTitle}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12 form-group" ng-if="submitFlag">
+                <label class="col-sm-12 control-label">请录入需要重新结算赎回单号</label>
+                <div class="col-sm-12">
+                    <textarea type="text" class="form-control" name="redeemNo" ng-model="form.redeemNo" placeholder="请输入赎回单号" rows="8"></textarea>
+                </div>
+            </div>
+
+            <div class="col-lg-12" ng-if="errorFlag">
+                <div style="line-height: 150%;max-height: 200px;padding: 6px 12px;font-size: 14px;color: #333;">
+                    {{errorInfo}}
+                </div>
+            </div>
+            <div class="col-lg-12 form-group" ng-if="payFlag">
+                <label class="col-sm-12 control-label">结算总笔数：<strong class="text-red" style="margin-right: 20px;">{{sum}}</strong>结算总额：<strong class="text-red">{{amount}}</strong>（元）</label>
+                <div class="col-sm-12">
+                    <textarea type="text" class="form-control" name="redeemNo" ng-bind="result" rows="8" readonly></textarea>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" ng-if="submitFlag" ng-click="ok()" id="reSettleSubmit">提交</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" ng-if="payFlag" ng-click="pay()" id="reSettlePay">确认付款</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

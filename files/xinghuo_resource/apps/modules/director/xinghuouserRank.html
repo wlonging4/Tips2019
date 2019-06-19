@@ -1,0 +1,48 @@
+<div ng-controller="xinghuouserRankController as showCase">
+    <h3 class="page-title">
+        理财经理级别管理
+    </h3>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" id="js_add">添加</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="js_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top: 35%">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title fn-ms">理财经理级别</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="js_rank_form" role="form" class="form-horizontal" action="/xinghuouser/modifyUserlevel.shtml">
+                        <input type="text" class="ui_hide">
+                        <div class="form-group">
+                            <label for="levelname" class="col-sm-2 control-label">级别名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="levelname" id="levelname" placeholder="级别名称">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary fn-ms" data-dismiss="modal" style="width:25%;">取消</button>
+                    <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="js_rank_save">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

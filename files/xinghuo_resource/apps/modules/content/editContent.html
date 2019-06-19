@@ -1,0 +1,363 @@
+<div ng-controller="editContent as showCase">
+    <h3 class="page-title">
+        内容管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageTitle}}</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save()">保存</a><a ng-click="cancel()" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="js_webcms_add_form">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">标题<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <input type="hidden" name="id" ng-model="form.id" ng-if="!!form.id">
+                            <input name="title" type="text" ng-model="form.title" class="form-control" placeholder="请输入标题" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">分类<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <select name="type" value="" ng-model="form.type" ng-change="chooseType()" id="js_webcms_product_selector" class="form-control">
+                                <option value="{{item.key}}" ng-repeat="item in select.webcmstype">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="(9 < form.type && form.type < 13) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">二级分类<span class="text-red" ng-if="(form.type == 10) || (form.type == 47)">*</span>：</label>
+                        <div class="col-sm-9">
+                            <select name="subtype" ng-model="form.secondaryCategory" id="js_sub_webcms_product_selector" class="form-control"><!--跟子分类不一样 name值一样-->
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.secondaryCategories" ng-selected="item.key == form.secondaryCategory">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 22">
+                        <label class="col-sm-2 control-label">发布时间：</label>
+                        <div class="col-sm-4">
+                            <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                                <input name="createtime" ng-model="form.createtime" class="form-control" readonly="readonly">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 22">
+                        <label class="col-sm-2 control-label">主讲人：</label>
+                        <div class="col-sm-9">
+                            <input name="speaker" ng-model="form.speaker" type="text" value="" class="form-control" placeholder="请输入主讲人">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 22">
+                        <label class="col-sm-2 control-label">期数：</label>
+                        <div class="col-sm-9">
+                            <input name="periods" ng-model="form.periods" type="text" value="" class="form-control" placeholder="请输入期数">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="(form.type == 1) || (6 < form.type && form.type < 13) || (form.type == 22) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">渠道<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <select name="newssrc" ng-model="form.newssrc" id="js_webcms_newssrc" class="form-control">
+                                <option value="{{item.key}}" ng-repeat="item in select.newssrc" ng-selected="item.key == form.newssrc">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <!--<div class="col-sm-9">-->
+                            <!--<label class="checkbox-inline" ng-repeat="item in select.newssrc">-->
+                                <!--<input type="checkbox" name="newssrc"  ng-checked="newssrcArr.indexOf(item.key) > -1" value="{{item.key}}" >{{item.value}}-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="(form.type == 2) || (form.type == 3) || (4 < form.type && form.type < 13) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">理财经理级别：</label>
+                        <div class="col-sm-9">
+                            <select name="levelid" ng-model="form.levelid" id="js_webcms_levelid" class="form-control" >
+                                <option value="">请选择</option>
+                                <option value="{{item.id}}" ng-repeat="item in select.userlevels"  ng-selected="item.id == form.levelid">{{item.levelname}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 10">
+                        <label class="col-sm-2 control-label">导语<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="articleLead" ng-model="form.articleLead" type="text" value="" class="form-control" placeholder="请输入导语">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="form.type == 1">
+                        <label class="col-sm-2 control-label">子分类：</label>
+                        <div class="col-sm-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="consultationSubtype_" data-name="dianpu" ng-checked="consultation(1);" value="1" >店铺资讯
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="consultationSubtype_" data-name="gonggao" ng-checked="consultation(2);" value="2" >首页_公告
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="consultationSubtype_" data-name="xinghuo" ng-checked="consultation(4);" value="4" >首页_星火资讯
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="consultationSubtype_" data-name="tips" ng-checked="consultation(8);" value="8" >首页_理财小知识
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-show="9 < form.type && form.type < 12 ">
+                        <label class="col-sm-2 control-label">上传图片<span class="text-red">*</span>：</label>
+                        <div class="col-sm-8 ui_left" style="height:34px;line-height:34px;">
+                            大图：<input name="bigImageFile" fileread="form.bigImageFile" id="bigImageFile" onchange="angular.element(this).scope().checkSize(this)" type="file" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp"><a ng-if="img.bigImage" style="margin: 0 5px;" href="{{img.bigImage}}" target="_blank">查看</a><span style="color:red">尺寸建议：664*347</span>
+                        </div>
+                        <div class="col-sm-8 ui_left col-sm-offset-2" style="height:34px;line-height:34px;" >
+                            小图<span class="text-red">*</span>：<input name="smallImageFile" fileread="form.smallImageFile" id="smallImageFile" onchange="angular.element(this).scope().checkSize(this)"  type="file" style="display:inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp"><a ng-if="img.smallImage" style="margin: 0 5px;" href="{{img.smallImage}}" target="_blank">查看</a><span style="color:red">尺寸建议：150*100</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 7|| form.type == 47">
+                        <label class="col-sm-2 control-label ">活动图片<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="uploadImg" fileread="form.uploadImg" type="file" style="height: 34px;padding-top:5px;display: inline;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                            <a ng-if="img.uploadImg" href="{{img.uploadImgHref}}" target="_blank">查看</a>
+                            <span style="color:red">尺寸建议：664*347</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="(form.type == 7) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">活动时间：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_exact_datetime" id="startTime">
+                                        <input type="text" size="16" name="startTime" ng-model="form.startTime" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 text-center">
+                                    <label class=" control-label">至</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_exact_datetime" id="endTime">
+                                        <input type="text" size="16" name="endTime" ng-model="form.endTime" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 4">
+                        <label class="col-sm-2 control-label">别称<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="desciption" ng-model="form.desciption" type="text" class="form-control" id="" placeholder="别称">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="(form.type == 3) || (form.type == 4)">
+                        <label class="col-sm-2 control-label">选择产品<span class="text-red" ng-if="(form.type == 3)" >*</span>：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select id="selectProduct" name="productid" ng-model="form.productid" ng-change="chooseSubProduct();" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.products" ng-selected="item.key == form.productid">{{item.value}}</option>
+                                    </select>
+                                    <input id="productname" name="productname" ng-model="form.productname" type="hidden"/>
+                                </div>
+                                <select id="selectSubProduct" name="subproductid" ng-model="form.subproductid" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.key}}" ng-repeat="item in select.subProduct" ng-selected="item.key == form.subproductid">{{item.value}}</option>
+                                </select>
+                                <input id="subproductname" name="subproductname" ng-model="form.subproductname" type="hidden"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group col-lg-12" ng-if="(form.type == 7) || (8 < form.type && form.type < 13) || (form.type == 22) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">使用外部URL：</label>
+                        <div class="col-sm-1">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="useOutUrl" value="0" ng-model="form.useOutUrl" ng-change="useOutUrl();" ng-checked="form.useOutUrl">是
+                            </label>
+                        </div>
+                        <div class="col-sm-8" ng-if="form.useOutUrl">
+                            <input type="text" class="form-control" id="outUrl" name="outUrl" ng-model="form.outUrl" placeholder="请输入外部URL(确认输入地址带有http://或https://)">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="form.useOutUrl">
+                        <label class="col-sm-2 control-label">URL类型：</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 1" ng-checked="form.status" value="1" checked>页面
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 2" value="2">视频
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 3" value="3">图片
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 4" value="4">文件
+                            </label>
+                        </div>
+                    </div>
+                    <!--<div class="form-group col-lg-12" ng-if="form.type == 7">-->
+                        <!--<label class="col-sm-2 control-label">序列号：</label>-->
+                        <!--<div class="col-sm-9">-->
+                            <!--<input name="order" ng-model="form.order" type="text" class="form-control" id="actOrder" placeholder="请输入序列号，序列号小的在前">-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="form-group col-lg-12" ng-if="form.type == 6">
+                        <label class="col-sm-2 control-label">子分类<span class="text-red">*</span>:</label>
+                        <div class="col-sm-9">
+                            <select name="subtype" ng-model="form.subcategory" id="subCmsType" class="form-control">
+                                <option value="-1">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.subcategories" ng-selected="form.subcategory == item.key ">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12" ng-if="(form.type == 6) || (form.type == 7) || (8 < form.type && form.type < 13) || (form.type == 22) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">序列号<span class="text-red" ng-if="(form.type == 6)" >*</span>：</label>
+                        <div class="col-sm-9">
+                            <input id="sortidx" name="sortidx" ng-model="form.sortidx" type="text" class="form-control" placeholder="请输入序列号，序列号小的在前">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="(form.type == 10) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">标签：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input  type="text" class="form-control" ng-model="label.l1" maxlength="5" placeholder="标签1">
+                                </div>
+                                <div class="col-sm-4">
+                                    <input  type="text" class="form-control" ng-model="label.l2" maxlength="5" placeholder="标签2">
+                                </div>
+                            </div>
+                            <input name="strategyLable" value="{{form.strategyLable}}" type="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="(form.type == 7) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">预约截止时间<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_exact_datetime">
+                                        <input type="text" size="16" name="orderEndTime" ng-model="form.orderEndTime" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="(form.type == 10) || (form.type == 7)">
+                        <label class="col-sm-2 control-label">推荐：</label>
+                        <div class="col-sm-9">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="recommendIndex" ng-model="form.recommendIndex" ng-checked="form.recommendIndex == 1" value="{{form.recommendIndex == 1 ? 1 : 0}}" >推荐至首页
+                            </label>
+                            <label class="checkbox-inline" ng-if="form.type != 7">
+                                <input type="checkbox" name="recommendInvestHot" ng-model="form.recommendInvestHot" ng-checked="form.recommendInvestHot == 1" value="{{form.recommendInvestHot == 1 ? 1 : 0}}" >推荐至投资热点
+                            </label>
+                            <label class="checkbox-inline" ng-if="form.type != 7">
+                                <input type="checkbox" name="showTop" ng-model="form.showTop" ng-checked="form.showTop == 1" value="{{form.showTop == 1 ? 1 : 0}}" >置顶显示
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-show="form.type < 13 && form.type != 10 && form.type != 7">
+                        <label class="col-sm-2 control-label">状态：</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline content-radio">
+                                <input type="radio" name="status" value="0" ng-checked="status(0)">有效
+                            </label>
+                            <label class="radio-inline content-radio">
+                                <input type="radio" name="status" value="1" ng-checked="status(1)">无效
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="form.type < 13 && form.type != 10 && form.type != 7">
+                        <label class="col-sm-2 control-label">业务系统：</label>
+                        <div class="col-sm-9">
+                            <select name="bizSysRoute" id="js_biz_sys_route" class="form-control" ng-model="form.bizSysRoute">
+                                <option value="{{item.key}}" ng-repeat="item in select.biz_sys_route | filter:filerSource" ng-selected="item.key == form.bizSysRoute">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="(form.type == 7) || (form.type == 47)">
+                        <label class="col-sm-2 control-label">活动简介<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <textarea name="intro" ng-model="form.intro" id="intro" class="form-control" rows="4" style="resize: none;" maxlength="150"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-show="(form.type < 13) || (form.type == 47) ">
+                        <label class="col-sm-2 control-label">内容<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <div id="summernote" name="content"></div>
+                            <div class="text-right">
+                                <a href="javascript:void (0)" class="btn btn-primary btn-sm" ng-click="preview()">预览</a>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="content" value="{{form.content}}">
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="previewModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">预览</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div ng-bind-html="content" class="preview-container"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >关闭</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        }).on("changeDate", function (ev) {
+            $(ev.target).find("input").attr("flag", true);
+        }).on("hide", function(ev){
+            if( $(ev.target).find("input").attr("flag") == "true"){
+                var t = $(ev.target).find("input").val();
+                $(ev.target).find("input").val(t + ":00");
+            }
+        });
+    });
+</script>

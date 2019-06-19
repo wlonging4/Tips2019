@@ -1,0 +1,77 @@
+<div ng-controller="serviceChargeCreateController">
+    <h3 class="page-title">
+        服务费使用
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">服务费使用</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" id="js_create_red_modify">
+                            <input type="hidden" value="" name="prizeid" ng-model="form.prizeid">
+                            <div class="form-group col-lg-10">
+                                <label for="" class="col-sm-2 control-label ui_right"><em class="ui_red">*</em> 费用类型：</label>
+                                <div class="col-sm-6">
+                                    <select name="feeType" ng-model="form.feeType" class="form-control">
+                                        <option value="2">返现</option>
+                                        <option value="3">体验金</option>
+                                        <option value="4">渠道补偿客户</option>
+                                        <option value="5">客户补偿渠道</option>
+                                        <option value="6">退款(服务费入金)</option>
+                                        <option value="101">其他(服务费出金)</option>
+                                        <option value="102">其他(服务费入金)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label for="" class="col-sm-2 control-label ui_right"><em class="ui_red">*</em> 证件类型：</label>
+                                <div class="col-sm-6">
+                                    <select name="idCardType" ng-model="form.idCardType" class="form-control">
+                                        <option value="1">身份证</option>
+                                        <option value="6">台胞证</option>
+                                        <option value="7">普通护照</option>
+                                        <option value="9">港澳居民来往内地通行证</option>
+                                        <option value="101">学生证</option>
+                                        <option value="2">工作证</option>
+                                        <option value="3">军官证</option>
+                                        <option value="4">其他证书</option>
+                                        <option value="8">营业执照</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label class="col-sm-2 control-label ui_right"><em class="ui_red">*</em> 证件号码：</label>
+                                <div class="col-sm-6">
+                                    <input name="idCardNo" ng-model="form.idCardNo" type="text" class="form-control" placeholder="请输入证件号码">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label class="col-sm-2 control-label ui_right"><em class="ui_red">*</em> 金额(元)：</label>
+                                <div class="col-sm-6">
+                                    <input name="amount" ng-model="form.amount" type="text" class="form-control" placeholder="请输入金额">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label class="col-sm-2 control-label ui_right"><em class="ui_red">*</em>交易单号：</label>
+                                <div class="col-sm-6">
+                                    <input name="appOrderId" ng-model="form.appOrderId" type="text" class="form-control" placeholder="请输入交易单号">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

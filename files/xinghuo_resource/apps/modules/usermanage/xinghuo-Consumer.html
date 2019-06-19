@@ -1,0 +1,184 @@
+<div ng-controller="xinghuoConsumerController as showCase">
+    <h3 class="page-title">
+        普通用户管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">普通用户管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>用户ID</label>
+                            <input class="form-control" name="id" ng-model="form.id" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>用户姓名</label>
+                            <input class="form-control" name="username" ng-model="form.username" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>手机号</label>
+                            <input class="form-control" name="mobile" ng-model="form.mobile" placeholder="请输入查询手机号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>证件类型&号码</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;" name="documenttype" ng-model="form.documenttype">
+                                        <option value="">请选择</option>
+                                        <option ng-repeat="item in select.documenttype" value="{{item.key}}">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <input class="form-control" name="documentno" ng-model="form.documentno" placeholder="请输入证件号码">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <label>注册时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startcreatetime" ng-model="form.startcreatetime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="createtime" ng-model="form.createtime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>星火注册用户</label>
+                            <select class="form-control" name="islocalreg" ng-model="form.islocalreg">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.islocalreg" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>实名认证</label>
+                            <select class="form-control" name="docvalidated" ng-model="form.docvalidated">
+                                <option value="">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否绑定银行卡</label>
+                            <select class="form-control" name="cardvalidated" ng-model="form.cardvalidated">
+                                <option value="">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>注册来源</label>
+                            <select class="form-control" name="regfrom" ng-model="form.regfrom">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.regfrom" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>业务系统来源：</label>
+                            <select name="bizSysRoute" id="biz_sys_route" ng-model="form.bizSysRoute" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.bizSysRoute" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12">
+                                <div class="col-sm-7" style="margin-left: -30px"><label style="font-weight: bolder">存管开户：</label></div>
+                                <div class="col-sm-5"><label style="font-weight: bolder">开户渠道：</label></div>
+                            </div>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:50%;">
+                                    <select name="cgbType" ng-model="form.cgbType" id="js_cgb1" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="0">惠民_广发存管</option>
+                                        <option value="1">宜人贷_广发存管</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="cgbChannel" id="js_cgb2" ng-model="form.cgbChannel" class="form-control" style="height:32px;padding:0px 2px;min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="1" ng-if="cgbShow">星火</option>
+                                        <option value="2" ng-if="cgbShow">非星火</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否已开通存管户</label>
+                            <select class="form-control" name="cgbStatus" ng-model="form.cgbStatus">
+                                <option value="">请选择</option>
+                                <option value="0">否</option>
+                                <option value="2">是</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财师ID</label>
+                            <input class="form-control" name="financialId" ng-model="form.financialId" placeholder="请输入理财师ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否填写邮寄地址</label>
+                            <select name="isMailAddress" ng-model="form.isMailAddress" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-3 col-xs-3">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-9 col-xs-9 ui_right">
+                    <form id="js_consumer_form" method="post" enctype="multipart/form-data" style="float:right;">
+                        <a href="javascript:void(0);" class="btn btn-success btn-sm" ng-click="action.export()">导出用户</a>
+                        <a href="#/xinghuouser-addUsers.html" class="btn btn-warning btn-sm">录入用户</a>
+                        <a id="js_consumer_export" action="/xinghuouser/exportUser.shtml" href="javascript:;" class="btn btn-primary btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper" style="font-size: 13px;">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="exportModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">导出用户</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <form action="" id="exportForm">
+                <div class="form-group col-lg-12">
+                    <label>时间</label>
+                    <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control" name="startTime" ng-model="startTime">
+                        <span class="input-group-addon">to </span>
+                        <input type="text" class="form-control" name="endTime" ng-model="endTime">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fn-ms" id="confirmBtn" ng-click="ok()">确认</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

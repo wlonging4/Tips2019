@@ -1,0 +1,84 @@
+<div ng-controller="report as showCase">
+    <h3 class="page-title">
+        报表管理
+    </h3>
+    <form role="form" id="js_caier_report_forms_form" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">报表导出</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="export($event)" data-href="/caierreport/export.shtml">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+
+                    <div class="col-lg-12">
+                        <label class="col-lg-3 text-right">当前使用邮件列表更新时间：</label>
+                        <div class="col-lg-8 fn-ms">{{updateTime}}</div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label class="col-lg-3 text-right">总条数：</label>
+                        <div class="col-lg-8 fn-ms">{{count}}</div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">上传报表发送邮件列表</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="upload()" id="js_caier_report_forms_upFile">上传</a>
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="export($event)" data-href="/caierreport/downloadOrgEmails.shtml">导出机构列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <label class="col-sm-3 text-right">上传文件：</label>
+                    <div class="col-sm-9 fn-ms"><input name="files" style="display: inline" type="file"><a href="javascript:;" ng-click="downloadTemplate()" id="js_report_forms_down_tem" data-href="/caierreport/downloadTemplate.shtml">下载模板</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">设置发送时间</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="setTime()" id="js_caier_report_forms_site">设置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <label class="col-sm-3 text-right">发送时间：</label>
+                    <div class="col-sm-6 fn-ms input-group">
+                        <div class="input-group-addon" style="padding:0;width:auto;">
+                            <select name="hour" ng-model="form.hour" ng-change="action.choosePro()" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                <option value="{{item}}" ng-repeat="item in select.hour" ng-selected="item == form.hour">{{item}}</option>
+                            </select>
+                        </div>
+                        <div class="input-group-addon" style="padding:0;width:auto;">
+                            <select name="minute" ng-model="form.minute" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                <option value="{{item}}" ng-repeat="item in select.minute" ng-selected="item == form.minute">{{item}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

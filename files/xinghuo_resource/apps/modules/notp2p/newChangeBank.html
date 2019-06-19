@@ -1,0 +1,244 @@
+<div ng-controller="newChangeBank as showCase">
+    <h3 class="page-title">
+        银行卡变更管理-新增变更申请
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">银行卡变更管理-新增变更申请</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save()" id="saveBtn">提交</a><a href="#/sesame-changeBank.html" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">交易订单号<span class="text-red">*</span>：</label>
+                        <div class="col-sm-3">
+                            <input name="tradeApplyNo" type="text" ng-model="tradeApplyNo" class="form-control" placeholder="请输入交易订单号 ">
+                        </div>
+                        <div class="col-sm-4"><a href="javascript:void(0)" class="btn btn-primary" ng-click="searchInfo()">确定</a></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">协议编号<span class="text-red">*</span>：</label>
+                        <div class="col-sm-3">
+                            <input name="contractno" type="text" ng-model="info.contractno" class="form-control" readonly>
+                        </div>
+                        <label class="control-label col-sm-2 text-right">用户姓名<span class="text-red">*</span>:</label>
+                        <div class="col-sm-3">
+                            <input name="userName" type="text" ng-model="info.userName" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">用户手机号<span class="text-red">*</span>：</label>
+                        <div class="col-sm-3">
+                            <input name="userPhone" type="text" ng-model="info.userPhone" class="form-control" readonly>
+                        </div>
+                        <label class="control-label col-sm-2 text-right">ECIFID<span class="text-red">*</span>:</label>
+                        <div class="col-sm-3">
+                            <input name="ecifid" type="text" ng-model="info.ecifid" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">项目名称<span class="text-red">*</span>：</label>
+                        <div class="col-sm-3">
+                            <input name="productName" type="text" ng-model="info.productName" class="form-control" readonly>
+                        </div>
+                        <label class="control-label col-sm-2 text-right">理财经理姓名<span class="text-red">*</span>:</label>
+                        <div class="col-sm-3">
+                            <input name="financialUserName" type="text" ng-model="info.financialUserName" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">用户银行卡信息<span class="text-red">*</span>：</label>
+                        <div class="col-sm-8">
+                            <input name="originCardMsg" type="text" ng-model="info.originCardMsg" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <form id="changeBankForm">
+                <input type="hidden" name="tradeApplyNo" value="{{tradeApplyNo}}">
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <h3>变更银行卡：</h3>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">持卡人<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3">
+                                <input name="userName" type="text" ng-model="info.userName" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">银行名称<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3">
+                                <select name="bankCode" ng-model="form.bankCode" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.bankCodeEx}}" ng-repeat="item in select.banks">{{item.bankName}}</option>
+                                </select>
+                                <input type="hidden" name="bankName" value="{{form.bankName}}">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">银行卡号<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3">
+                                <input name="cardNo" type="text" ng-model="form.cardNo" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">确认卡号<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3">
+                                <input name="cardNo2" type="text" ng-model="form.cardNo2" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">开户行所属地区<span class="text-red">*</span>：</label>
+                            <div class="col-sm-8">
+                                <label><input name="bankRegion" type="radio" value="0" checked>境内</label>
+                                <label><input name="bankRegion" type="radio" value="1" disabled>境外</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">开户所在省市<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" name="provinceName" value="{{form.provinceName}}">
+                                <select id="id-province" ng-change="selectProvince(form.provinceCode)" name="provinceCode" ng-model="form.provinceCode" class="form-control" style="width: 50%; float: left;">
+                                    <option value="">请选择省份</option>
+                                    <option ng-repeat="(key,item) in select.province" value="{{item.code}}">{{item.name}}</option>
+                                </select>
+                                <input type="hidden" name="cityName" value="{{form.cityName}}">
+                                <select id="id-city"  name="cityCode" ng-model="form.cityCode" class="form-control" style="width: 50%; float: right;" ng-change="selectCity(form.cityCode)">
+                                    <option value="">请选择市</option>
+                                    <option ng-repeat="item in select.city" value="{{item.code}}">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">支行名称<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3 ">
+                                <div class="input-group dropup">
+                                    <input name="branchName" type="text" ng-model="form.branchName" class="form-control">
+                                    <input name="unionCode" type="hidden" value="{{form.unionCode}}">
+                                    <span class="input-group-addon" ng-click="searchBranch()">查询</span>
+                                    <ul class="dropdown-menu" id="branchDown">
+                                        <li ng-click="selectBranch(item.branchName, item.unionCode)" ng-repeat="item in select.branchs"><a href="javascript:;">{{item.branchName}}</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">变更原因<span class="text-red">*</span>：</label>
+                            <div class="col-sm-8">
+                                <textarea name="changeApplyReason" ng-model="form.changeApplyReason"  cols="30" rows="5" class="form-control" maxlength="200"></textarea>
+                            </div>
+                            <div class="col-sm-2">{{form.reason.length || 0}}/200</div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">申请时间<span class="text-red">*</span>：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group date form_exact_datetime">
+                                    <input type="text" size="16" name="applyTime" ng-model="form.applyTime" readonly class="form-control">
+                                    <span class="input-group-btn">
+                                <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">用户证件<span class="text-red">*</span>：</label>
+                            <div class="col-sm-8">
+                                <!--<input name="userCertificatesFile" fileread="form.userCertificatesFile" type="file" style="height: 34px;padding-top:5px;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">-->
+                                <input name="userCertificatesFile" fileread="form.userCertificatesFile" type="file" style="height: 34px;padding-top:5px;" >
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">变更协议<span class="text-red">*</span>：</label>
+                            <div class="col-sm-8">
+                                <input name="changeProtocolFile" fileread="form.changeProtocolFile" type="file" style="height: 34px;padding-top:5px;">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label text-right">银行卡复印件或开户行证明<span class="text-red">*</span>：</label>
+                            <div class="col-sm-8">
+                                <input name="bankCardCertifyFile" fileread="form.bankCardCertifyFile" type="file" style="height: 34px;padding-top:5px;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

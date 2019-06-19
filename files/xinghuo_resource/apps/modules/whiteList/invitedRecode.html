@@ -1,0 +1,173 @@
+<div ng-controller="invitedRecode as showCase">
+    <h3 class="page-title">
+        团队员管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">团队员管理</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>团队员ID</label>
+                            <input name="userId" ng-model="form.userId" class="form-control" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>团队员姓名</label>
+                            <input name="realname" ng-model="form.realname" class="form-control" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>团队员手机号</label>
+                            <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入用户手机号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>团队员邀请状态</label>
+                            <select name="memberstatus" ng-model="form.memberstatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.memberstatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>注册时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="regiestStartTime" ng-model="form.regiestStartTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="regiestEndTime" ng-model="form.regiestEndTime">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>团队长ID</label>
+                            <input name="leaderUserId" ng-model="form.leaderUserId" class="form-control" placeholder="请输入邀请人ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>团队长手机号</label>
+                            <input name="leaderMobile" ng-model="form.leaderMobile" class="form-control" placeholder="请输入邀请人手机号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>团队长姓名</label>
+                            <input name="leaderRealName" ng-model="form.leaderRealName" class="form-control" placeholder="请输入邀请人姓名">
+                        </div>
+                        <!--<div class="form-group col-lg-3">-->
+                            <!--<label>来源</label>-->
+                            <!--<input name="inviteway" ng-model="form.inviteway" class="form-control" placeholder="请输入来源">-->
+                        <!--</div>-->
+                        <div class="form-group col-lg-3">
+                            <label>是否为宜信员工</label>
+                            <select name="yixinstatus" ng-model="form.yixinstatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>业务类型</label>
+                            <select name="businessType" ng-model="form.businessType" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="(key,value) in select.buyType" value="{{key}}">{{value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+            <!--<span class="panel-heading-title">搜索结果</span>-->
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a ng-click="action.changeInvitedType();" href="javascript:;" class="btn btn-success btn-sm">变更业务类型</a>
+                    <a id="js-invited-export" action="/mt/exportManageMembers.shtml"  href="javascript:;" class="btn btn-warning btn-sm">导出</a>
+                </div>
+                </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="changeInvitedType.html">
+        <form class="form-inline" role="form" name="formBox" novalidate ng-submit="submitForm()">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">变更业务类型</h4>
+        </div>
+        <div class="modal-body">
+
+
+            <div class="form-group" ng-class="{'has-error':formBox.userId.$invalid && formBox.userId.$touched || fmError,'has-success':fmList }">
+                <label>理财经理ID：</label>
+                <input name="userId"
+                       ng-model="userData.userId"
+                       type="text"
+                       class="form-control"
+                       required
+                       ng-blur="fmVerityId($event)"
+                       placeholder="请输入理财经理ID">
+                <span id="fmUndefine" class="control-label" ng-show="formBox.userId.$error.required && formBox.userId.$touched">理财经理ID不能为空！</span>
+                <span ng-if="fmError" class="control-label">理财经理ID输入错误，请重新输入！</span>
+            </div>
+            <div ng-show="fmList" style="padding-top: 20px;">
+                <p><label>理财经理姓名：</label>{{info.realname}}</p>
+                <p><label>现业务类型：</label>{{info.businessType}}</p>
+                <p><label>是否为团队长：</label>{{info.teamLeader === '1'?"是":"否"}}</p>
+            </div>
+            <br/>
+            <div class="form-group" style="padding-top: 20px;">
+                <label>新业务类型：</label>
+                <select name="businessType" ng-change="typeChang()" ng-model="userData.businessType" class="form-control" style="width: 173px;">
+                    <option value="">请选择</option>
+                    <option ng-repeat="(key,value) in buyType"  value="{{key}}">{{value}}</option>
+                </select>
+                <span id="typeUndefine" class="control-label" style="color:#a94442;display: none;">新业务类型不能为空！</span>
+            </div>
+            <hr id="teamline" size="1" style="display: none;"/>
+            <div id="teamBox" class="form-group" style="display: none;"
+                 ng-class="{'has-error':formBox.leaderUserId.$invalid && formBox.leaderUserId.$touched || teamError,'has-success':teamList }">
+                <label>团队长ID：</label>
+                <input name="leaderUserId"
+                       ng-model="userData.leaderUserId"
+                       type="text"
+                       class="form-control"
+                       required
+                       ng-blur="teamVerityId($event)"
+                       placeholder="请输入理财经理ID">
+                <span class="control-label" ng-if="teamError">
+                    该ID对应的理财师不是团队长，请重新输入！
+                </span>
+                <span id="teamUndefine" class="control-label"
+                      ng-show="formBox.leaderUserId.$error.required
+                    && formBox.leaderUserId.$touched">团队长ID不能为空！</span>
+            </div>
+            <div style="padding-top: 20px;" ng-show="teamList">
+                <p><label>团队长姓名：</label>{{team.realname}}</p>
+                <p><label>团队长业务类型：</label>{{team.businessType}}</p>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="invitedSave">保存</button>
+            <button type="button" class="btn btn-success" ng-click="close()">取消</button>
+        </div>
+        </form>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

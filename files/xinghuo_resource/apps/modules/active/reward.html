@@ -1,0 +1,156 @@
+<div ng-controller="reward as showCase">
+    <h3 class="page-title">
+        活动奖励列表
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">活动奖励列表查询</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>活动条件</label>
+                            <select name="code" ng-model="form.code" class="form-control" ng-change="action.codeFilter(form.code)">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.code">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>活动来源</label>
+                            <select name="type" ng-model="form.type" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.type" >{{item.value}}</option>
+                            </select>
+                        </div>
+                            
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="userId" ng-model="form.userId" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>计提月份</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select ng-model="date.js_q_year" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;" ng-change="action.setDate(date.js_q_year,date.js_q_month)">
+                                        <option value="{{item}}" ng-repeat="item in select.js_q_year" ng-selected="item == date.js_q_year">{{item}}年</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select ng-model="date.js_q_month" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;" ng-change="action.setDate(date.js_q_year,date.js_q_month)">
+                                        <option value="{{item}}" ng-repeat="item in select.js_q_month" ng-selected="item == date.js_q_month">{{item}}月</option>
+                                    </select>
+                                </div>
+                                <!--<input type="hidden" id="js_yixinstatus" name="q_yixinstatus" value="0">-->
+                                <input type="hidden" name="month" value="" >
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-5">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>奖励金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="startAmount" ng-model="form.startAmount" class="form-control js_validator_int" placeholder="请输入奖励金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-1" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="endAmount" ng-model="form.endAmount" class="form-control js_validator_int" placeholder="请输入奖励金额" maxlength="10">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label>奖励时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startTime" ng-model="form.startTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endTime" ng-model="form.endTime">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12 ui_right">
+                    <a id="js_reward_import" ng-click="action.importRw()" href="javascript:void(0);" class="btn btn-primary btn-sm">导入奖励佣金</a>
+                    <a action="/xinghuoinviteuser/exportReward.shtml" href="javascript:;" class="btn btn-success btn-sm js_export">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table width-100 table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="rwImport.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">导入奖励佣金</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form role="form" class="js_upload_reward_form form-horizontal">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-4 control-label text-right">上传文件:</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="inputfile"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"><a ng-href="{{ importExcel }}" target="_blank">下载导入模版</a></div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-4 control-label text-right">最高奖励佣金:</label>
+                        <div class="col-sm-8">
+                            <input name="maxAmount" ng-model="form.maxAmount" class="col-sm-9 form-control " placeholder="本次导入佣金中奖励佣金最高额">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-4 control-label text-right">奖励金额计算月份:</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="amountSettleMonth" class="col-sm-9 form-control" name="amountSettleMonth" ng-readonly="true" style="border: none;outline:none;background: #fff;">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="importConfirmBtn" ng-click="ok()" >保存</button>
+        </div>
+        <!-- <div class="modal-content">
+            <div class="modal-header">
+                <button id="js_dialog_passport_settle_close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title fn-ms">导入积分</h4>
+            </div>
+            <div class="modal-body" style="max-height:300px; overflow-y: auto;font-size: 14px;"><br> + excel导入总笔数:data.data.allsize<br>
+            导入成功笔数: ' + data.data.rightsize+<br>
+            失败笔数:'+data.data.wrongsize + errorMsg
+            </div>
+        </div> -->
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>
+    

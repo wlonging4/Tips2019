@@ -1,0 +1,112 @@
+<div ng-controller="xinghuohuodongHuodongController as showCase">
+    <h3 class="page-title">
+        活动管理
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">活动管理</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" id="js_form">
+                            <input name="awardtype" value="1" type="hidden"/>
+                            <div class="form-group col-lg-4">
+                                <label>活动名称：</label>
+                                <input name="activityname" ng-model="form.activityname" class="form-control" placeholder="请输入活动名称">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动时间：</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="p_startstarttime" ng-model="form.p_startstarttime">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="p_endstarttime" ng-model="form.p_endstarttime">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动对象：</label>
+                                <select class="form-control" name="activityobject" ng-model="form.activityobject">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.activityobject" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>参与用户：</label>
+                                <select class="form-control" name="participant" ng-model="form.participant">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.participant" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动状态：</label>
+                                <select class="form-control" name="status" ng-model="form.status">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.status" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>参与方式：</label>
+                                <select class="form-control" name="participantway" ng-model="form.participantway">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.participantway" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>业务系统来源：</label>
+                                <select class="form-control" id="biz_sys_route" name="bizSysRoute" ng-model="form.bizSysRoute">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.bizSysRoute" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <span class="panel-heading-title">搜索结果</span>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 ui_right">
+                        <form id="js_unsettle_btns_form"  method="post">
+                            <div class="col-lg-6 col-xs-6">
+                                <label for="" class="" style="margin: 0; line-height: 32px; height:32px;">参与方式<em class="ui_red">*</em>：</label>
+                            </div>
+                            <div class="col-lg-4 col-xs-4" style="padding: 0;">
+                                <select class="form-control" name="participantway" style="height:32px;padding: 0px 2px;" autocomplete="off">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.participantway" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-xs-2 ui_right" style="padding: 0;">
+                                <a id="js_huodong_add" action="/xinghuohuodong/toAddHuodong.shtml" href="javascript:;" class="btn btn-success btn-sm">新建活动</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper table-responsive">
+                    <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

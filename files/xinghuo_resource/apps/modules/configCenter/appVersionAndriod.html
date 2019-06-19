@@ -1,0 +1,129 @@
+<style>
+    #inputList input{margin-bottom: 6px;display: none;}
+    #inputList input.act{display: block;}
+    #inputAdd{margin-top: 0;}
+</style>
+<div ng-controller="appVersionAndriodController as showCase">
+    <h3 class="page-title" id="t1">
+        新增APP版本
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title" id="t2">新增APP版本</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right"></div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" id="appVersionAndriod">
+                            <input type="hidden" value="" name="prizeid" ng-model="form.prizeid">
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">APP：</label>
+                                <div class="col-lg-6">
+                                    <span style="font:20px/40px 'microsoft yahei'" id="title1"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">版本号<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="versionNo" ng-model="form.versionNo" maxlength="50" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入版本号">
+                                </div>
+                                <div class="col-lg-3 text-left small" style="padding-top: 15px">上个版本号: {{form.versionNo2}}</div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">版本编号<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="versionCode"  ng-model="form.versionCode" required value="" type="text" class="form-control js_validator_int" maxlength="9" placeholder="请输入版本编号">
+                                </div>
+                                <div class="col-lg-3 text-left small" style="padding-top: 15px">例如：11  (格式: 数字)</div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">更新类型<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <select class="form-control" name="updateType" id="updateType" ng-model="form.updateType" ng-disabled="form.checkDisable1" ng-selected="item.key == form.updateType">
+                                        <option value="">请选择</option>
+                                        <option ng-repeat="item in select.updatetypeenum" value="{{item.key}}">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 text-left small" style="padding-top: 15px"></div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">更新文案<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6" id="inputList" style="position: relative">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid act" placeholder="请输入第一行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第二行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第三行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第四行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第五行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第六行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第七行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第八行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第九行更新文案">
+                                    <input name="inputLi" maxlength="200" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入第十行更新文案">
+                                    <span id="inputAdd" style="display:block;position:absolute;bottom:4px;right:-10px;font:bold 30px/40px 'simHei';height:40px;cursor: pointer">+
+                                    </span>
+                                    <span id="inputDelete" style="display:block;position:absolute;bottom:4px;right:-30px;font:bold 30px/40px 'simHei';height:40px;cursor: pointer">-
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">上传包文件<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6 text-left small" style="padding-top: 15px;">
+                                    <input name="file"  ng-disabled="!form.checkDisable1" id="packageFile" fileread="" type="file" style="margin-top: -8px;">
+                                </div>
+                                </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">APP地址<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-9">
+                                    <span style="font:13px/40px 'microsoft yahei'">{{form.packageUrl}}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">文件MD5值：</label>
+                                <div class="col-lg-6">
+                                    <input name="fileMD5" ng-model="form.fileMD5" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入文件MD5值">
+                                </div>
+                                <div class="col-lg-3 text-left small" style="padding-top: 15px"></div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">RN热更新版本号：</label>
+                                <div class="col-lg-6">
+                                    <input name="rnVersionName" ng-model="form.rnVersionName" value="" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="请输入RN热更新版本号">
+                                </div>
+                                <div class="col-lg-3 text-left small" style="padding-top: 15px">上个版本号: {{form.rnVersionName2}}</div>
+                            </div>
+                            <div class="col-lg-12" style="height: 1px;background: #ccc;margin-bottom: 20px"></div>
+                        </form>
+
+                        <div class="col-lg-12" style="text-align: right;overflow: hidden">
+                            <div class="col-sm-9">
+                                <a style="width: 20%;height: 38px;line-height: 31px;font-size: 16px;display: inline-block;margin-right: 20px;" href="javascript:history.back(-1);" class="btn btn-success btn-sm">取消</a>
+                                <a style="width: 20%;height: 38px;line-height: 31px;font-size: 16px;display: inline-block;margin-right: 18px;" href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

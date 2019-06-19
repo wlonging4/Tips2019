@@ -1,0 +1,105 @@
+<div ng-controller="xinghuodataRedController as showCase">
+    <h3 class="page-title">
+        红包活动
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">红包活动</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID：</label>
+                            <input name="p_storeuserid" ng-model="form.p_storeuserid" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名：</label>
+                            <input name="p_realname" ng-model="form.p_realname" class="form-control" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理手机号：</label>
+                            <input name="p_mobile" ng-model="form.p_mobile" class="form-control" placeholder="请输入理财经理手机号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>活动类型：</label>
+                            <select name="p_activitytype" ng-model="form.p_activitytype" class="form-control" autocomplete="off">
+                                <option value="1">红包活动</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>新注册用户数：</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="p_startvaliddealnum" ng-model="form.p_startvaliddealnum" class="form-control js_validator_int" placeholder="请输入新注册用户数" maxlength="5">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="p_endvaliddealnum" ng-model="form.p_endvaliddealnum" class="form-control js_validator_int" placeholder="请输入新注册用户数" maxlength="5">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>新注册交易红包数量：</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="p_startdealre" ng-model="form.p_startdealre" class="form-control js_validator_int" placeholder="请输入新注册交易红包数量" maxlength="5">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="p_enddealre" ng-model="form.p_enddealre" class="form-control js_validator_int" placeholder="请输入新注册交易红包数量" maxlength="5">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>红包总额：</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="p_startallred" ng-model="form.p_startallred" class="form-control js_validator_int" placeholder="请输入红包总额" maxlength="5">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="p_endallred" ng-model="form.p_endallred" class="form-control js_validator_int" placeholder="请输入红包总额" maxlength="5">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-10 col-xs-10">
+                    <span class="panel-heading-title">红包总额：<span class="ui_red">{{tableinfo.fmallred}}</span>元,&nbsp;&nbsp;新注册交易用户数：<span class="ui_red">{{tableinfo.validdealnum}}</span></span>
+                </div>
+                <div class="col-lg-2 col-xs-2 ui_right">
+                    <form id="js_data_red_btns_form" method="post" enctype="multipart/form-data">
+                        <a id="js_data_red_export_btn" action="/xinghuodata/exportRedActivityExcel.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

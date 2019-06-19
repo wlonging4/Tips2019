@@ -1,0 +1,77 @@
+<div ng-controller="site as showCase">
+    <h3 class="page-title">
+        站点配置
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">交易单自动取消时间设置</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form_config_site">
+                        <div class="form-group col-lg-4">
+                            <label>选择产品：</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="q_productid" ng-model="form.q_productid" ng-change="action.choosePro()" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.q_productid">{{item.value}}</option>
+                                    </select>
+                                    <input id="productname" name="productname" type="hidden">
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="q_subproductid" ng-model="form.q_subproductid" class="form-control" ng-change="action.chooseSubPro()" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.q_subproductid">{{item.value}}</option>
+                                    </select>
+                                    <input id="subproductname" name="subproductname" type="hidden">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-2">
+                            <label>&nbsp;</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.configBtn()" id="js_site_config_btn">配置</a>
+                            </div>
+                        </div>
+                    </form>
+
+                        <div class="form-group col-lg-4">
+                            <label>系统自动取消时间间隔：(分钟)</label>
+                            <input name="scaninterval" id="scaninterval" ng-model="form.scaninterval" class="form-control" placeholder="请输入系统自动取消时间间隔">
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label>&nbsp;</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.update()" id="js_site_update">更新</a>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.clearCache()" id="js_site_clear_protol_cache">清除交易单协议缓存</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

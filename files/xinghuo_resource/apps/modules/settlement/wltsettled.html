@@ -1,0 +1,129 @@
+<div ng-controller="wltsettled as showCase">
+    <h3 class="page-title">
+        万里通已结算
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">万里通已结算</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <input type="hidden" name="ids" id="js_ids" value="">
+                        <div class="form-group col-lg-4">
+                            <label>理财经理ID</label>
+                            <input name="userid" ng-model="form.userid" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>付款时间</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select ng-model="date.js_q_year" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="{{item}}" ng-repeat="item in select.js_q_year" ng-selected="item == date.js_q_year">{{item}}年</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select ng-model="date.js_q_month" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="{{item}}" ng-repeat="item in select.js_q_month" ng-selected="item == date.js_q_month">{{item}}月</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" name="status">
+                                <input type="hidden" name="month" value="{{form.month}}">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4" ng-if="isYX">
+                            <label>员工编号</label>
+                            <input name="q_yixinno" ng-model="form.q_yixinno" class="form-control" placeholder="请输入员工编号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财经理姓名</label>
+                            <input name="q_realname" ng-model="form.q_realname" class="form-control" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>税前结算总额</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="sumunsettledstart" ng-model="form.sumunsettledstart" class="form-control js_validator_int" placeholder="请输入税前结算金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="sumunsettledend" ng-model="form.sumunsettledend" class="form-control js_validator_int" placeholder="请输入税前结算金额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>结算状态</label>
+                            <select name="status" ng-model="form.status" class="form-control">
+                                <option value="3">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.status | filter:filerStatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财经理类型</label>
+                            <select name="q_yixinusertype" ng-model="form.q_yixinusertype" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.q_yixinusertype">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否有支行信息</label>
+                            <select name="q_hasbranchbank" ng-model="form.q_hasbranchbank" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>积分协议电签状态</label>
+                            <select name="protocolStatus" ng-model="form.protocolStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.protocol_status">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>积分通道协议签约时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="signtimestart" ng-model="form.signtimestart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="signtimeend" ng-model="form.signtimeend">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12 ui_right">
+                    <a id="js_settled_export" action="/xinghuowltsettle/exportWltSettled.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                    <a id="settleProtocol" href="javascript:;" class="btn btn-info btn-sm">协议批量下载</a>
+                    <a id="js_settled_settleall" action="/xinghuowltsettle/processWltSettled.shtml" href="javascript:;" class="btn btn-danger btn-sm">结算所有结算单</a>
+                    <a id="js_settled_settle_selected" action="/xinghuowltsettle/processWltSettled.shtml" href="javascript:;" class="btn btn-warning btn-sm">结算选中结算单</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

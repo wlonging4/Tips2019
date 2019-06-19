@@ -1,0 +1,98 @@
+<div ng-controller="xinghuohuodongTradeController as showCase">
+    <h3 class="page-title">
+        活动交易单
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">活动交易单查询</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" id="js_form">
+                            <div class="form-group col-lg-4">
+                                <label>订单号：</label>
+                                <input name="dealno" ng-model="form.dealno" class="form-control" placeholder="请输入订单号">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>用户ID：</label>
+                                <input name="lenderid" ng-model="form.lenderid" class="form-control" placeholder="请输入用户ID">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动名称：</label>
+                                <input name="activityname" ng-model="form.activityname" class="form-control" placeholder="请输入活动名称">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>理财经理ID：</label>
+                                <input name="userid" ng-model="form.userid" class="form-control" placeholder="请输入理财经理ID">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>交易状态：</label>
+                                <div id="multi_select" selectstatus="" style="position:relative;"></div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>交易时间：</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="p_startcreatetime" ng-model="form.p_startcreatetime">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="p_endcreatetime" ng-model="form.p_endcreatetime">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>业务系统来源：</label>
+                                <select class="form-control" id="biz_sys_route" name="bizSysRoute" ng-model="form.bizSysRoute">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.bizSysRoute" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <span class="panel-heading-title">活动交易单</span>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 ui_right">
+                        <a id="js_huodong_trade_export" action="/xinghuohuodong/exportHuodongTrade.shtml" href="javascript:;" class="btn btn-success btn-sm">导出活动交易单</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper table-responsive">
+                    <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $('#multi_select').multiSel({
+            'name': 'p_dealstatus',
+            'data': [
+                {"text": "待付款", "value": "0", "default": false},
+                {"text": "已付款", "value": "1", "default": false},
+                {"text": "认购中", "value": "2", "default": false},
+                {"text": "认购成功", "value": "3", "default": false},
+                {"text": "赎回中", "value": "4", "default": false},
+                {"text": "赎回成功", "value": "5", "default": false},
+                {"text": "交易结束", "value": "6", "default": false},
+                {"text": "待取消", "value": "9", "default": false}
+            ]
+        });
+    })
+</script>

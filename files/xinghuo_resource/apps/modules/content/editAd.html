@@ -1,0 +1,170 @@
+<div ng-controller="editAd as showCase">
+    <h3 class="page-title">
+        广告管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">上传广告</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save()" id="saveBtn">保存</a><a href="#xinghuocontent-ad.html" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="js_upload_add_form">
+                    <input name="photo" value="{{form.photo}}" type="hidden"/>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">广告图片：</label>
+                        <div class="col-sm-8">
+                            <input type="hidden" name="id" value="{{form.id}}" ng-if="form.id">
+                            <input name="adphoto" type="file" fileread="form.adphoto" style="height: 34px; padding-top:5px;">
+                            <a href="{{img.href}}" target="_blank" ng-if="img.name">{{img.name}}</a>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">版位：</label>
+                        <div class="col-sm-8">
+                            <select name="layout" ng-model="form.layout" class="form-control">
+                                <option value="{{item.key}}" ng-repeat="item in select.layout" ng-selected="item.key == form.layout">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">渠道：</label>
+                        <div class="col-sm-8">
+                            <select name="source" ng-model="form.source" class="form-control" ng-change="changeSource()">
+                                <option value="{{item.value}}" ng-repeat="item in select.source" ng-selected="item.key == form.source">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">业务系统：</label>
+                        <div class="col-sm-8">
+                            <select name="bizSysRoute" ng-model="form.bizSysRoute" class="form-control">
+                                <option value="{{item.key}}" ng-repeat="item in select.bizSysRoute | filter:filerSource" ng-selected="item.key == form.bizSysRoute">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">起始时间：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-language="zh-CN">
+                                <input name="startdate" ng-model="form.startdate" class="form-control" readonly="readonly">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">结束时间：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-language="zh-CN">
+                                <input name="enddate" ng-model="form.enddate" class="form-control" readonly="readonly">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8" ng-if="form.source == '理财经理APP' || form.source == '客户APP'">
+                        <label class="col-sm-3 control-label">移动端：</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline editAd-radio" ng-repeat="item in select.platformType">
+                                <input type="radio" name="platformType"  ng-model="form.platformType" ng-value="item.key" ng-change="form.platformType = item.key">{{item.value}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8" ng-if="form.source == '理财经理APP' || form.source == '客户APP'">
+                        <label class="col-sm-3 control-label">登录状态：</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline editAd-radio" ng-repeat="item in select.loginStatus">
+                                <input type="radio" name="loginStatus" ng-model="form.loginStatus" ng-value="item.key" ng-change="form.loginStatus = item.key">{{item.value}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8" ng-if="form.loginStatus == 2">
+                        <label class="col-sm-3 control-label">关联参数：</label>
+                        <div class="col-sm-8">
+                            <input name="otherRelate" ng-model="form.otherRelate" type="text" class="form-control" placeholder="关联参数">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">广告名称：</label>
+                        <div class="col-sm-8">
+                            <input name="adname" ng-model="form.adname" type="text" class="form-control"  placeholder="广告名称">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">广告SEO：</label>
+                        <div class="col-sm-8">
+                            <input name="adseo" ng-model="form.adseo" type="text" class="form-control" placeholder="广告SEO">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">广告URL：</label>
+                        <div class="col-sm-8">
+                            <input name="url" ng-model="form.url" type="text" class="form-control" placeholder="广告URL">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">URL类型：</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 1" value="1" checked>页面
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 2" value="2">视频
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 3" value="3">图片
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="urlType" ng-checked="form.urlType == 4" value="4">文件
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">显示顺序：</label>
+                        <div class="col-sm-8">
+                            <input name="priority" ng-model="form.priority" type="text" class="form-control" placeholder="显示顺序">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">状态：</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="status" ng-checked="form.status" value="0" checked>有效
+                            </label>
+                            <label class="radio-inline editAd-radio">
+                                <input type="radio" name="status" ng-checked="!form.status" value="1">删除
+                            </label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".date").datepicker({
+            language: 'zh-CN',
+            autoclose: true
+        }).on('changeDate', function(e) {
+            $("#js_upload_add_form [name='startdate']").Validator({hmsg: "请选择起始时间", regexp: /^\d{4}\-\d{2}\-\d{2}$/, showok: false, style: {placement: "top"}, emsg: "起始时间不能为空", rmsg: "起始时间不合法"});
+            $("#js_upload_add_form [name='enddate']").Validator({hmsg: "请选择结束时间", regexp: /^\d{4}\-\d{2}\-\d{2}$/, showok: false, style: {placement: "top"}, emsg: "结束时间不能为空", rmsg: "结束时间不合法", fn: function (v, tag) {
+                var val1 = $("#js_upload_add_form [name='startdate']").val().replace(/-/g, "/");
+                var val2 = v.replace(/-/g, "/");
+                return ((Date.parse(val1) - Date.parse(val2))<0);
+            }, fnmsg: "活动结束时间必须大于起始时间！"});
+        });
+    });
+</script>

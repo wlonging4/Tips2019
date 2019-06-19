@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><title>星火后台管理系统</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script>
+
+    // window.ajaxUrl = 'http://10.100.140.23:9191/';
+    window.ajaxUrl = 'http://xh.creditease.corp/';
+	jQuery(document).ready(function() {
+        if(!jQuery.ajaxSettings.xhrFields){
+            jQuery.ajaxSettings.xhrFields = {withCredentials: true};
+        }
+        var param = location.search;
+        if(param.indexOf("?")>-1){
+            param = param.split("?")[1].split("=")[1];
+            $.cookie("xinghuoadmin_uid",param);
+            if(param && !$.cookie("xinghuoadmin_uid")){
+                $.cookie("xinghuoadmin_token",param);
+            }
+            setTimeout(function(){
+                if(param){
+                    $.ajax({
+                        url: window.ajaxUrl+'xinghuo/getMenu.json',
+                        method: 'post',
+                        crossDomain: true,
+                    }).then(function(data){
+                        if(data.result == "SUCCESS"){
+                            localStorage.menuinfo = JSON.stringify(data.appResData.menuinfo);
+                            $.cookie("realname",data.appResData.realname,{ expires: 7 });
+                            location.href = "index.html";
+                        }else{
+                            alert(data.errMsg);
+                        }
+                    })
+                }
+            },100)
+        }
+	});
+</script>
+</body>
+</html>

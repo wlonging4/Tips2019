@@ -1,0 +1,294 @@
+<div ng-controller="xinghuohuodongAddhuodongController">
+    <h3 class="page-title">
+        活动管理
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">新建活动</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                        <a href="#/xinghuohuodong-huodong.html" class="btn btn-warning btn-sm">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="panel-body" id="js_add_or_edit_body">
+                    <form class="form-horizontal" id="js_add_huodong_form">
+                        <input type="hidden" name="awardtype" value="1">
+                        <input type="hidden" name="activityid" disabled value="">
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">活动对象<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <div class="radio-list">
+                                    <label class="radio-inline" ng-repeat="item in select.activityobject" ng-hide="(addNormal && item.key<2)">
+                                        <input type="radio" ng-model="form.activityobject" name="activityobject" value="{{item.key}}" ng-change="action.activityobject()">{{item.value}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">活动名称<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="form.activityname" name="activityname" class="form-control" placeholder="活动名称" data-original-title="" title="">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">活动时间<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-4">
+                                <div class="input-group date form_datetime">
+                                    <input type="text" size="16" ng-model="form.starttimestr" name="starttimestr" readonly class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+                                        <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-1 ui_center">
+                                <label for="" class=" control-label">至</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group date form_datetime">
+                                    <input type="text" size="16" ng-model="form.endtimestr" name="endtimestr" readonly class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn default date-reset" type="button"><i class="fa fa-times"></i></button>
+                                        <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">活动说明：</label>
+                            <div class="col-sm-9">
+                                <textarea name="introducer" ng-model="form.introducer" class="form-control" rows="3" data-original-title="" title=""></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">条件说明：</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="form.conditionsdesc" name="conditionsdesc" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">活动编码：</label>
+                            <div class="col-sm-9">
+                                <input type="text" ng-model="form.activitycode" name="activitycode" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">业务系统：</label>
+                            <div class="col-sm-9">
+                                <select ng-model="form.bizSysRoute" name="bizSysRoute" id="js_biz_sys_route" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.key}}" ng-repeat="item in select.bizSysRoute" ng-selected="item.key == form.bizSysRoute">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">活动渠道：</label>
+                            <div class="col-sm-9">
+                                <div class="checkbox-list">
+                                    <label class="checkbox-inline" ng-repeat="item in select.activitychannel">
+                                        <input type="checkbox" name="activitychannelch" value="{{item.key}}">{{item.value}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <input type="hidden" name="participantway" value="{{participantway}}">
+                            <label for="" class="col-sm-3 control-label ui_right">参与方式：</label>
+                            <div class="col-sm-9">
+                                <label for="" class="control-label fn-ms">{{participantwaystr}}</label>
+                            </div>
+                        </div>
+                        <div ng-if="isShow">
+                            <div class="form-group col-lg-10">
+                                <label for="" class="col-sm-3 control-label ui_right">参与用户：</label>
+                                <div class="col-sm-9">
+                                    <div class="checkbox-list" ng-if="!addNormal">
+                                        <label class="checkbox-inline" ng-repeat="item in select.participant">
+                                            <input type="checkbox" name="participantch" value="{{item.key}}">{{item.value}}
+                                        </label>
+                                    </div>
+                                    <div class="checkbox-list" ng-if="addNormal">
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="participantch" value="ALL">不限
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="participantch" value="IS_MANAGER_ONE">合作理财经理
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="participantch" value="IS_MANAGER_TWO">普通理财经理
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="participantch" value="IS_MANAGER_THREE">离职理财经理
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label for="" class="col-sm-3 control-label ui_right">参与条件：</label>
+                                <div ng-if="!addNormal">
+                                    <div class="col-sm-9" style="min-height: 40px;">
+                                        <div class="checkbox-list" ng-hide="action.condition">
+                                            <label class="checkbox-inline js_condition_lender">
+                                                <input name="conditionsch" type="checkbox" value="USER_REGISTER-注册成功">注册成功
+                                            </label>
+                                            <label class="checkbox-inline js_condition_lender">
+                                                <input name="conditionsch" type="checkbox" value="USER_CERTIFICATION-实名认证成功">实名认证成功</label>
+                                            <label class="checkbox-inline js_condition_lender">
+                                                <input name="conditionsch" type="checkbox" value="USER_BIND_CARD-银行卡绑定成功">银行卡绑定成功
+                                            </label>
+                                            <label class="checkbox-inline js_condition_lender">
+                                                <input name="conditionsch" type="checkbox" value="FIRST_DEAL-首次交易成功">首次交易成功
+                                            </label>
+                                        </div>
+                                        <div class="checkbox-list" ng-show="action.condition">
+                                            <label class="checkbox-inline js_condition_manager">
+                                                <input name="conditionsch" type="checkbox" value="STORE_OPEN_SUCCESS-入驻成功">入驻成功
+                                            </label>
+                                            <label class="checkbox-inline js_condition_manager">
+                                                <input name="conditionsch" type="checkbox" value="STORE_USER_REGISTER-推荐用户注册">推荐用户注册
+                                            </label>
+                                            <label class="checkbox-inline js_condition_manager">
+                                                <input name="conditionsch js_condition_lender" type="checkbox" value="STORE_USER_CERTIFICATION-推荐用户实名">推荐用户实名
+                                            </label>
+                                            <label class="checkbox-inline js_condition_manager">
+                                                <input name="conditionsch" type="checkbox" value="STORE_USER_BIND_CARD-推荐用户绑卡">推荐用户绑卡
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">&nbsp;</label>
+                                    <div class="col-sm-2">
+                                        <label class="checkbox-inline">
+                                            <input id="js_valid_product" name="conditionsch" value="DEAL_BUY_SOME_SUBPRODUCTID-指定产品" type="checkbox">指定产品
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-7" style="margin-bottom:15px;">
+                                        <div id="multi_select" selectstatus="" style="position:relative;" productinfo="{{select.productinfo}}"></div>
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">&nbsp;</label>
+                                    <div class="col-sm-2">
+                                        <label class="checkbox-inline">
+                                            <input id="js_valid_deal_count" name="conditionsch" value="SUCC_DEAL_COUNT_COMPARE-成功交易笔数" type="checkbox">成功交易笔数
+                                        </label>
+                                    </div>
+                                    <div class="input-group col-sm-7" style="padding: 0 15px; margin-bottom:15px;">
+                                        <div class="input-group-addon" style="padding:0;width:auto;">
+                                            <select ng-model="form.SUCC_DEAL_COUNT_COMPARE_SIGN" name="SUCC_DEAL_COUNT_COMPARE_SIGN" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                                <option value="">请选择</option>
+                                                <option value="0">&gt;=</option>
+                                                <option value="1">&lt;=</option>
+                                                <option value="2">=</option>
+                                            </select>
+                                        </div>
+                                        <input ng-model="form.SUCC_DEAL_COUNT_COMPARE_NUM" name="SUCC_DEAL_COUNT_COMPARE_NUM" class="form-control" placeholder="请输入成功交易笔数" data-original-title="" title="">
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">&nbsp;</label>
+                                    <div class="col-sm-3">
+                                        <label class="checkbox-inline">
+                                            <input id="js_valid_deal_amount" name="conditionsch" value="SINGLE_DEAL_AMOUNT_COMPARE-单笔交易金额满" type="checkbox">单笔交易金额满(元)
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-bottom:15px;">
+                                        <input ng-model="form.SINGLE_DEAL_AMOUNT_COMPARE_NUM" name="SINGLE_DEAL_AMOUNT_COMPARE_NUM" type="text" class="form-control" id="" placeholder="请输入单笔交易金额满" data-original-title="" title="">
+                                    </div>
+                                </div>
+                                <div ng-if="addNormal">
+                                    <div class="col-sm-9" style="margin-bottom:15px;" id="js_add_huodong_condition">
+                                        <label class="checkbox-inline js_condition_lender">
+                                            <input name="conditionsch" type="checkbox" value="ALL-全部">全部
+                                        </label>
+                                        <label class="checkbox-inline js_condition_lender">
+                                            <input name="conditionsch" type="checkbox" value="HAVE_TRADE-有交易理财经理">有交易理财经理
+                                        </label>
+                                        <label class="checkbox-inline js_condition_lender">
+                                            <input name="conditionsch" type="checkbox" value="NON_TRADE-无交易理财经理">无交易理财经理
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-10">
+                                <label for="" class="col-sm-3 control-label ui_right">参与次数：</label>
+                                <div class="col-sm-9">
+                                    <div class="form-group col-sm-9">
+                                        <div class="radio-list">
+                                            <label class="radio-inline">
+                                                <input type="radio" ng-model="form.times" name="times" value="ALL">不限
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">&nbsp;</div>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <div class="col-sm-3" style="padding-right:0; width:100px;">
+                                            <div class="radio-list">
+                                                <label class="radio-inline">
+                                                    <input id="js_valid_perday" ng-model="form.times" type="radio" name="times" value="PERDAY">每个ID
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="text" ng-model="form.PERDAY_NUM" name="PERDAY_NUM" class="form-control" placeholder="请输入次/天" data-original-title="" title="">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="" class="control-label">次/天</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">&nbsp;</div>
+                                <div class="col-sm-9">
+                                    <div class="form-group">
+                                        <div class="col-sm-3" style="padding-right:0; width:100px;">
+                                            <div class="radio-list">
+                                                <label class="radio-inline">
+                                                    <input id="js_valid_period" ng-model="form.times" type="radio" name="times" value="PERIOD">活动期间
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input ng-model="form.PERIOD_NUM" name="PERIOD_NUM" type="text" class="form-control" placeholder="请输入次/天" data-original-title="" title="">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="" class="control-label">次</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10" ng-if="isShow && addNormal">
+                            <label for="" class="col-sm-3 control-label ui_right">申请数量：</label>
+                            <div class="col-sm-9">
+                                <div class="col-sm-2" style="padding-right:0; width: 100px;">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="applylimitednumch" id="js_valid_applylimitednum" value="" checked="">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </label>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control js_validator_int" ng-model="form.applylimitednum" name="applylimitednum" placeholder="申请数量">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label for="" class="col-sm-3 control-label ui_right">状态：</label>
+                            <div class="col-sm-9">
+                                <div class="radio-list">
+                                    <label class="radio-inline" ng-if="action.edit">
+                                        <input type="radio" value="1" ng-model="form.status" name="status">启用
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" value="0" ng-model="form.status" name="status" checked="checked">禁用
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="action.load()"></div>
+</div>

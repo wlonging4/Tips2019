@@ -1,0 +1,65 @@
+<div ng-controller="bxdDuizhang as showCase">
+    <h3 class="page-title">
+        变现贷——对账
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">变现贷——对账</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>交易单号</label>
+                            <input name="no" ng-model="form.no" class="form-control" placeholder="请输入交易单号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否有误</label>
+                            <select name="ifRight" ng-model="form.ifRight" ng-change="isError()" class="form-control">
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                                <option value="2">全部</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4" ng-if="form.ifRight == 0">
+                            <label>是否已确认</label>
+                            <select name="confirm" ng-model="form.confirm" class="form-control">
+                                <option value="1">否</option>
+                                <option value="0">是</option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_trade_form" method="post">
+                        <a id="js_confirm_deal" action="/bxdduizhang/confirmDeal.shtml" href="javascript:;" class="btn btn-warning btn-sm">确认选中交易单</a>
+                        <a id="js_trade_bxdduizhang_export" action="/bxdduizhang/exportDeal.shtml" href="javascript:;" class="btn btn-success btn-sm">导出交易</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

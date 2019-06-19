@@ -1,0 +1,211 @@
+<div ng-controller="editActivitiesAssociated as showCase">
+    <h3 class="page-title">
+        活动管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageTitle}}活动-{{form.activityModeStr}}-关联红包</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="lastStep()">上一步：配置参与对象</a><a  class="btn btn-warning btn-sm" ng-click="save()">提交</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal">
+
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">活动名称：</label>
+                            <div class="col-sm-9">
+                                <input name="activityName" type="text" value="{{'【' + form.activityModeStr + '】' +form.activityName}}" class="form-control" placeholder="请输入活动名称"  readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">关联红包<span class="text-red">*</span>：</label>
+                            <div class="col-sm-9">
+                                <div class="text-right" style="margin-bottom: 10px;">
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-success" ng-click="associate()">添加关联红包</a>
+                                </div>
+                                <table class="width-100 table table-striped row-border table-hover table-bordered">
+                                    <tr>
+                                        <th>红包名称</th>
+                                        <th>单笔红包金额（元）</th>
+                                        <th>使用条件</th>
+                                        <th ng-if="form.activityMode != 3">理财经理可得数</th>
+                                        <th>出借人可得数</th>
+                                        <th ng-if="form.activityMode == 2">发放红包计划</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    <tr ng-repeat="item in list">
+                                        <td>{{item.redName}}</td>
+                                        <td>{{item.redAmount}}</td>
+                                        <td>{{item.fullCutAmount ? '满' + item.fullCutAmount + '元可用' :'不限'}}</td>
+                                        <td ng-if="form.activityMode != 3">{{item.managerCanGetCount}}</td>
+                                        <td>{{item.lenderCanGetCount}}</td>
+                                        <td ng-if="form.activityMode == 2"><a href='javascript:void(0)' ng-click="showDetails(item.activityRepeatTimeResponseList)" ng-show="item.activityRepeatTimeResponseList && item.activityRepeatTimeResponseList.length > 0">是</a><span ng-show="!item.activityRepeatTimeResponseList">否</span></td>
+                                        <td><a href="javascript:void(0)" ng-click="delete(item.activityId, item.redTemplateId)">删除</a></td>
+                                    </tr>
+                                    <tr ng-show="list.length == 0">
+                                        <td colspan="7" class="text-center">空</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="infoModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">可抢红包计划</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="form-group col-lg-12">
+                    <table class="width-100 table table-striped row-border table-hover table-bordered">
+                        <tr>
+                            <th>重复次序</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>本次可抢总数</th>
+                            <th>理财经理单次可抢数</th>
+                        </tr>
+                        <tr ng-repeat="item in list">
+                            <td>第{{$index + 1}}次</td>
+                            <td>{{item.effectiveStartTime}}</td>
+                            <td>{{item.effectiveEndTime	}}</td>
+                            <td>{{item.redCount}}</td>
+                            <td>{{item.managerCanGetCount}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" ng-click="close()" >确定</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="associatedModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">添加关联红包：【{{info.activityModeStr}}】{{info.activityName}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">关联红包名称<span class="text-red">*</span>:</label>
+                        <div class="col-sm-8">
+                            <select name="redTemplateId" ng-model="form.redTemplateId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.id}}" ng-repeat="item in list">{{item.redName}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-12" ng-if="info.activityMode != 3">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">理财经理可得数<span class="text-red">*</span>:</label>
+                        <div class="col-sm-8">
+                            <input name="managerCanGetCount" ng-model="form.managerCanGetCount" type="text" oninput="value = value.replace(/\D/g, '');if(value[0] === '0'){value = value.slice(1)};if(value > 5000) {value = 5000}" maxlength="4" class="form-control" placeholder="理财经理店铺可得该红包最大数">
+                        </div>
+                        <div class="col-sm-2" style="padding-top: 7px;">
+                            (个/理财经理)
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-12" ng-if="info.activityMode == 2">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">可抢红包计划<span class="text-red">*</span>:</label>
+                        <div class="col-sm-10">
+                            <div class="text-right" style="margin-bottom: 10px;">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-success" ng-click="add()">新增</a>
+                            </div>
+                            <table class="width-100 table table-striped row-border table-hover table-bordered">
+                                <tr>
+                                    <th style="width: 56px;">次序</th>
+                                    <th width="30%">开始时间</th>
+                                    <th width="30%">结束时间</th>
+                                    <th>本次可抢总数量</th>
+                                    <th>理财经理单次可抢数</th>
+                                    <th>编辑</th>
+                                </tr>
+                                <tr ng-repeat="item in form.activityRepeatTimeRequstList">
+                                    <td>第{{$index + 1}}次</td>
+                                    <td>{{item.effectiveStartTime}}</td>
+                                    <!--<td>-->
+                                        <!--<div class="input-group date form_exact_datetime">-->
+                                            <!--<input type="text" size="16" name="effectiveStartTime" class="form-control" ng-model="item.effectiveStartTime">-->
+                                            <!--<span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                    <td>{{item.effectiveEndTime}}</td>
+                                    <!--<td>-->
+                                        <!--<div class="input-group date form_exact_datetime">-->
+                                            <!---->
+                                            <!--<input type="text" size="16" name="effectiveStartTime" class="form-control" ng-model="item.effectiveEndTime">-->
+                                            <!--<span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                    <td>{{item.redCount}}</td>
+                                    <td>{{item.managerCanGetCount}}</td>
+                                    <td><a href="javascript:void(0)" class="btn btn-primary btn-sm" ng-click="delete($index)">删除</a></td>
+                                </tr>
+                                <tr ng-show="form.activityRepeatTimeRequstList.length == 0 && !isAdd">
+                                    <td colspan="6" class="text-center">空</td>
+                                </tr>
+                                <tr ng-show="isAdd">
+                                    <td>第{{form.activityRepeatTimeRequstList.length + 1}}次</td>
+                                    <td>
+                                        <div class="input-group date form_exact_datetime">
+                                            <input type="text" size="16" name="effectiveStartTime" class="form-control" ng-model="planItem.effectiveStartTime">
+                                            <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group date form_exact_datetime">
+                                            <input type="text" size="16" name="effectiveEndTime" class="form-control" ng-model="planItem.effectiveEndTime">
+                                            <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                                        </div>
+                                    </td>
+                                    <td><input type="text" name="redCount" oninput="value = value.replace(/\D/g, '');if(value[0] === '0'){value = value.slice(1)};" maxlength="9" class="form-control" ng-model="planItem.redCount"></td>
+                                    <td><input type="text" name="managerCanGetCount"oninput="value = value.replace(/\D/g, '');if(value[0] === '0'){value = value.slice(1)};" maxlength="4" class="form-control" ng-model="planItem.managerCanGetCount"></td>
+                                    <td><a href="javascript:void(0)" class="btn btn-primary btn-sm" ng-click="newPlan()">保存</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">出借人可得数<span class="text-red">*</span>:</label>
+                        <div class="col-sm-8">
+                            <input name="lenderCanGetCount" ng-model="form.lenderCanGetCount" type="text" oninput="value = value.replace(/\D/g, '');if(value[0] === '0'){value = value.slice(1)};if(value > 50) {value = 50}" maxlength="2" class="form-control" placeholder="{{info.activityMode != 3 ? '理财经理向每位出借人发放的最多红包数':'出借人最多可得当前红包数'}}">
+                        </div>
+                        <div class="col-sm-2" style="padding-top: 7px;">
+                            (个/出借人)
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fn-ms" ng-click="save()" >提交</button>
+            <button type="button" class="btn btn-primary fn-ms" ng-click="close()" >取消</button>
+
+        </div>
+    </script>
+</div>

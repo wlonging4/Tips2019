@@ -1,0 +1,108 @@
+<div ng-controller="editActivitiesBasicInfo as showCase">
+    <h3 class="page-title">
+        活动管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageTitle}}活动-活动基本信息</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save()">{{btnTxt}}</a><a href="#/redEnvelopes-conventionalActivity.html" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <form class="form-horizontal">
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">活动方式<span class="text-red">*</span>：</label>
+                            <div class="col-sm-9">
+                                <select name="activityMode" ng-model="form.activityMode" class="form-control" ng-if="form.activityStatus != 2">
+                                    <option value="{{item.key}}" ng-repeat="item in select.activity_mode" ng-selected="item.key == form.activityMode">{{item.value}}</option>
+                                </select>
+                                <input name="activityMode" type="text" ng-model="form.activityModeStr" class="form-control" readonly ng-if="form.activityStatus == 2">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" >
+                        <div class="row">
+                            <label class="col-sm-2 control-label">活动名称<span class="text-red">*</span>：</label>
+                            <div class="col-sm-9">
+                                <input name="activityName" type="text" ng-model="form.activityName" class="form-control" placeholder="请输入活动名称" maxlength="100" ng-if="form.activityStatus != 2">
+                                <input name="activityName" type="text" ng-model="form.activityName" class="form-control" readonly ng-if="form.activityStatus == 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">活动有效期<span class="text-red">*</span>：</label>
+                            <div class="col-sm-9" ng-if="form.activityStatus != 2">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="input-group date form_exact_datetime" id="startTime">
+                                            <input type="text" size="16" name="activityEffectiveStartTime" ng-model="form.activityEffectiveStartTime" class="form-control">
+                                            <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 text-center">
+                                        <label class=" control-label">至</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group date form_exact_datetime" id="endTime">
+                                            <input type="text" size="16" name="activityEffectiveEndTime" ng-model="form.activityEffectiveEndTime" class="form-control">
+                                            <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9" ng-if="form.activityStatus == 2">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input type="text" size="16" name="activityEffectiveStartTime" ng-model="form.activityEffectiveStartTime" class="form-control" readonly>
+                                            <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1 text-center">
+                                        <label class=" control-label">至</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input type="text" size="16" name="activityEffectiveEndTime" ng-model="form.activityEffectiveEndTime" class="form-control" readonly>
+                                            <span class="input-group-btn"><button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">活动说明：</label>
+                            <div class="col-sm-9">
+                                <textarea name="activityExplain" ng-model="form.activityExplain" class="form-control" placeholder="请输入活动说明" maxlength="100" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="row">
+                            <label class="col-sm-2 control-label">活动备注：</label>
+                            <div class="col-sm-9">
+                                <textarea name="remark" ng-model="form.remark" class="form-control" placeholder="请输入活动备注" maxlength="100" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

@@ -1,0 +1,98 @@
+<div ng-controller="xinghuodataStoreredController as showCase">
+    <h3 class="page-title">
+        店铺红包明细
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">店铺红包明细</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>注册日期：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_starttime" ng-model="form.p_starttime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_endtime" ng-model="form.p_endtime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>用户ID：</label>
+                            <input name="p_userid" ng-model="form.p_userid" class="form-control" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财经理ID：</label>
+                            <input name="p_storeuserid" ng-model="form.p_storeuserid" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>实名认证日期：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_start_docvaltime" ng-model="form.p_start_docvaltime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_end_docvaltime" ng-model="form.p_end_docvaltime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>部门关键字：</label>
+                            <input name="p_department" ng-model="form.p_department" class="form-control" placeholder="请输入部门关键字">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>支行名称：</label>
+                            <select name="p_bankname" ng-model="form.p_bankname" class="form-control" autocomplete="off">
+                                <option value="">全部</option>
+                                <option value="0">支行名称为空</option>
+                                <option value="1">支行名称不为空</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>结算日期：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_start_mstime" ng-model="form.p_start_mstime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_end_mstime" ng-model="form.p_end_mstime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否结算：</label>
+                            <select name="p_msstatus" ng-model="form.p_msstatus" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="0">未结算</option>
+                                <option value="1">结算中</option>
+                                <option value="2">已结算</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-10 col-xs-10">
+                    <span class="panel-heading-title">店铺红包明细：</span>
+                </div>
+                <div class="col-lg-2 col-xs-2 ui_right">
+                    <form id="js_data_storered_btns_form" method="post" enctype="multipart/form-data">
+                        <a id="js_data_storered_export_btn" action="/xinghuodata/exportStoreRedExcel.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="action.load();"></div>
+</div>

@@ -1,0 +1,92 @@
+<div ng-controller="xinghuohuodongRedController as showCase">
+    <h3 class="page-title">
+        红包记录
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">红包记录查询</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" id="js_form">
+                            <div class="form-group col-lg-4">
+                                <label>红包名称：</label>
+                                <input name="prizename" ng-model="form.prizename" class="form-control" placeholder="请输入红包名称">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>用户ID：</label>
+                                <input name="userid" ng-model="form.userid" class="form-control" placeholder="请输入用户ID">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>手机号：</label>
+                                <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入手机号">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>来源：</label>
+                                <input name="activityname" ng-model="form.activityname" class="form-control" placeholder="请输入来源">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>红包状态：</label>
+                                <select class="form-control" name="status" ng-model="form.status">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.status" value="{{item.key}}" ng-selected="item.key == form.status">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>创建时间：</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="p_startownedtime" ng-model="form.p_startownedtime">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="p_endownedtime" ng-model="form.p_endownedtime">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>业务系统来源：</label>
+                                <select class="form-control" id="biz_sys_route" name="bizSysRoute" ng-model="form.bizSysRoute">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.bizSysRoute" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <span class="panel-heading-title">红包记录</span>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 ui_right">
+                        <form id="js_reds_btns_form"  method="post" enctype="multipart/form-data">
+                            <a id="js_red_import" href="javascript:;" action="/xinghuohuodong/toImportReds.shtml" class="btn btn-success btn-sm">导入红包</a>
+                            <a id="js_red_template_download" action="/xinghuouser/downloadTemplate.shtml?template=drhb" href="javascript:;" class="btn btn-danger btn-sm">下载模板</a>
+                            <a id="js_red_export" action="/xinghuohuodong/exportRedXls.shtml" href="javascript:;" class="btn btn-warning btn-sm">导出红包</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper table-responsive">
+                    <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

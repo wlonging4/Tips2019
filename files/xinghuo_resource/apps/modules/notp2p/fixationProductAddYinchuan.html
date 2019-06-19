@@ -1,0 +1,378 @@
+<div ng-controller="fixationProductAddYinchuan">
+    <style>
+        .control-label{padding-top: 5px;}
+        .confirmTable td span{color: red;}
+    </style>
+    <h3 class="page-title">
+        类固收交易管理-新增交易单
+    </h3>
+    <form role="form" id="js_form">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">类固收交易管理-新增交易单</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">提交</a>
+                        <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.cancel()">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-bottom: -30px">
+                <ul class="list-group" style="color:red;">
+                    <li class="list-group-item" style="border:none;margin-bottom: -10px">注:使用此功能录入交易单，须保证先签约后打款。</li>
+                    <li class="list-group-item" style="border:none">录单时，按已签署合同仔细核对用户信息，绑定理财师是否正确，并确认已存在ECIFID,否则无法生成订单。</li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">合同编号<em class="text-danger">*</em>：</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" id="contractno" name="contractno" ng-model="form.contractno" class="form-control" placeholder="请输入合同编号" maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">合同日期<em class="text-danger">*</em>：</label>
+                            <div class="input-group col-sm-10 date form_exact_datetime">
+                                <input type="text" size="16" name="contractSignDateOrigin" ng-model="form.contractSignDateOrigin" readonly class="form-control" placeholder="请录入合同签署日期">
+                                <span class="input-group-btn">
+                                    <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">用户姓名<em class="text-danger">*</em>：</label>
+                            <div class="input-group col-sm-10">
+                                <input id="lenderid" type="hidden" name="lenderid" ng-model="form.lenderid">
+                                <input id="mobile" type="hidden" name="mobile" ng-model="form.mobile">
+                                <input type="text" id="realName" name="realName" ng-model="form.realName" class="form-control" placeholder="请输入用户姓名" readonly>
+                                <span ng-click="action.getUser()" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">理财经理：</label>
+                            <div class="input-group col-sm-10">
+                                <input id="userid" type="hidden" name="userid" ng-model="form.userid">
+                                <input id="managerMobile" type="hidden" name="managerMobile" ng-model="form.managerMobile">
+                                <input type="text" id="managerName" name="managerName" ng-model="form.managerName" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">用户ECIFID：</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" id="ecifid" name="ecifid" ng-model="form.ecifid" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">产品名称<em class="text-danger">*</em>：</label>
+                            <div class="input-group col-sm-10">
+                                <input id="sesameCode" type="hidden" name="sesameCode">
+                                <input id="minSubscribeAmt2" type="hidden" name="minSubscribeAmt2">
+                                <input id="productRate" type="hidden" name="productRate">
+                                <input id="term" type="hidden" name="term">
+                                <input id="surplusQuota" type="hidden" name="surplusQuota">
+                                <input id="sesameSourceStr" type="hidden" name="sesameSourceStr">
+                                <input id="sesameStatusStr" type="hidden" name="sesameStatusStr">
+                                <input id="sesameTypeStr" type="hidden" name="sesameTypeStr">
+                                <input type="text" id="sesameName" name="sesameName" ng-model="form.sesameName" class="form-control" placeholder="请输入产品名称" readonly>
+                                <span ng-click="action.getSesame()" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">投资金额<em class="text-danger">*</em>：</label>
+                            <div class="input-group col-sm-10">
+                                <input id="minSubscribeAmt" name="minSubscribeAmt" type="hidden">
+                                <input id="incSubscribeAmt" name="incSubscribeAmt" type="hidden">
+                                <input type="text" id="amount" name="amount" ng-model="form.amount" class="form-control js_validator_int" placeholder="请输入合同金额" maxlength="9" ng-blur="checkAmount()" ng-focus="checkPro()">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-9" style="margin-top: -12px">
+                            <label class="col-sm-2 ui_right control-label" style="margin-top: -5px;font-weight: normal;font-size: 13px;">大写金额：</label>
+                            <div class="input-group col-sm-10">
+                                <input type="text" id="upperMoney" ng-init='' disabled  style='border:none;width:100%;outline:none;background:#fff' class="inline-block" ng-model="upperMoney" name="upperMoney" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-9">
+                            <label class="col-sm-2 ui_right control-label">打款银行卡<em class="text-danger">*</em>：</label>
+                            <div class="col-sm-10 input-group">
+                                <input id="unionCode" name="unionCode" type="hidden">
+                                <input id="cardid" name="cardid" type="hidden">
+                                <select id="usercardid" class="form-control" ng-change="personalBankInfo(form.usercardid)" name="usercardid" ng-model="form.usercardid">
+                                    <option id="selectDefault" selected value="">请选择</option>
+                                    <option ng-repeat="item in select.cardList" value="{{item.id}}">{{item.provinceName}}/{{item.cityName}}/{{item.bankName}}/{{item.branchName}}/{{item.userName}}/{{item.cardNo}}</option>
+                                </select>
+                                <span ng-click="action.getBank()" class="input-group-addon" style="border:1px solid #d9534f;"><i class="glyphicon glyphicon-plus" style="color:#d9534f;"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- 用户信息-->
+    <script type="text/ng-template" id="getUserModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">用户查询</h4>
+        </div>
+        <div class="modal-body clearfix row">
+            <form id="js-formBox" class="form-inline">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-5">
+                        <label>用户姓名：</label>
+                        <input name="name" ng-model="submitForm.name" class="form-control" placeholder="请输入用户姓名">
+                    </div>
+                    <div class="form-group col-lg-5">
+                        <label>用户手机号：</label>
+                        <input name="mobile" ng-model="submitForm.mobile" class="form-control" placeholder="请输入用户手机号">
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <button type="button" class="btn btn-primary" ng-click="searchFun($event)">查询</button>
+                    </div>
+                    <div class="col-lg-12 js-getUserList" style="padding-top: 30px;display: none;">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="success">
+                                <th></th>
+                                <th>用户姓名</th>
+                                <th>用户手机号</th>
+                                <th>身份证号</th>
+                                <th>ECIFID</th>
+                                <th>理财师姓名</th>
+                                <th>理财师手机号</th>
+                            </tr>
+                            <tr ng-repeat="(key, value)  in search">
+                                <td>
+                                    <input class="radilBox" type="radio" name="optionsRadios" value="{{key}}">
+                                </td>
+                                <td>{{search[key].realName}}</td>
+                                <td>{{search[key].mobile}}</td>
+                                <td>{{search[key].documentNo}}</td>
+                                <td>{{search[key].ecifId}}</td>
+                                <td>{{search[key].managerName}}</td>
+                                <td>{{search[key].managerMobile}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer js-getUserList" style="display: none;text-align: left">
+            <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+        </div>
+    </script>
+    <!--私募产品信息-->
+    <script type="text/ng-template" id="getSesameModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">产品查询</h4>
+        </div>
+        <div class="modal-body clearfix row">
+            <form id="js-formBox2" class="form-inline">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-5">
+                        <label>项目编码：</label>
+                        <input name="sesameCode" ng-model="submitForm.sesameCode" class="form-control" placeholder="请输入项目编码">
+                    </div>
+                    <div class="form-group col-lg-5">
+                        <label>项目名称：</label>
+                        <input name="sesameName" ng-model="submitForm.sesameName" class="form-control" placeholder="请输入项目名称">
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <button type="button" class="btn btn-primary" ng-click="searchFun($event)">查询</button>
+                    </div>
+                    <div class="col-lg-12 js-getSesameList" style="padding-top: 30px;display: none;">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="success">
+                                <th></th>
+                                <th>项目编码</th>
+                                <th>项目名称</th>
+                                <th>起投金额(元)</th>
+                                <th>预计年化收益率(%)</th>
+                                <th>存续期限</th>
+                                <th>剩余额度</th>
+                                <th>项目来源</th>
+                                <th>募集状态</th>
+                            </tr>
+                            <tr ng-repeat="(key, value)  in search">
+                                <td>
+                                    <input class="radilBox" type="radio" name="optionsRadios" value="{{key}}">
+                                </td>
+                                <td>{{search[key].sesameCode}}</td>
+                                <td>{{search[key].sesameName}}</td>
+                                <td>{{search[key].minSubscribeAmt2}}</td>
+                                <td>{{search[key].productRate}}</td>
+                                <td>{{search[key].term}}</td>
+                                <td>{{search[key].surplusQuota}}</td>
+                                <td>{{search[key].sesameSourceStr}}</td>
+                                <td>{{search[key].sesameStatusStr}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer js-getSesameList" style="display: none;text-align: left">
+            <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>
+        </div>
+    </script>
+    <!-- 打款银行卡 -->
+    <script type="text/ng-template" id="getBankModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">添加银行卡</h4>
+        </div>
+        <div class="modal-body clearfix row" id="id-bankForm">
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">持卡人<em class="text-danger">* </em>:</label>
+                <div class="input-group col-sm-9">
+                    <input name="userName" ng-model="form.userName" class="form-control col-sm-8" placeholder="请输入持卡人姓名" readonly>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">银行卡号<em class="text-danger">* </em>:</label>
+                <div class="input-group col-sm-9">
+                    <input name="cardNo" id="cardNo" ng-model="form.cardNo" class="form-control" placeholder="请输入银行卡号">
+                </div>
+            </div>
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">确认卡号<em class="text-danger">* </em>:</label>
+                <div class="input-group col-sm-9" style="position: relative;">
+                    <input name="reCardNo" ng-blur="sameCard()" id="reCardNo" ng-model="form.reCardNo" class="form-control" placeholder="请输入确认卡号">
+                    <p id="notSameCard" style="color: red;font-size: 12px;margin-bottom:-4px;display: none;">银行卡号两次输入不一致，请重新输入！</p>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">银行名称<em class="text-danger">* </em>:</label>
+                <input type="hidden" name="bankName" value="{{form.bankName}}">
+                <div class="input-group col-sm-9">
+                    <select id="bankCode" ng-change="bankNameFun(form.bankCode)" name="bankCode" ng-model="form.bankCode" class="form-control" ng-disabled="check.checkBank" ng-if="bankExist">
+                        <option value="">请选择</option>
+                        <option ng-repeat="item in bank" value="{{item.bankCodeEx}}">{{item.bankName}}</option>
+                    </select>
+                    <input type="text" name="bankNotExistShow" class="form-control"  ng-disabled="true" ng-model="bankNotExistShow" ng-if="!bankExist">
+                </div>
+            </div>
+
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">开户行所属地区<em class="text-danger">* </em>:</label>
+                <div class="input-group col-sm-9" style="margin-top: 5px">
+                    <label class="radio-inline" style="padding-left: 30px;">
+                        <input type="radio" name="inlineRadioOptions" checked="checked">境内
+                    </label>
+                    <label class="radio-inline disabled" style="padding-left: 30px;">
+                        <input type="radio" name="inlineRadioOptions" disabled> 境外
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">开户行所在省市 <em class="text-danger">* </em>:</label>
+                <div class="input-group col-sm-9 clearfix">
+                    <select id="id-province" ng-change="provinceFun(form.provinceCode)" name="provinceCode" ng-model="form.provinceCode" class="form-control" style="width: 50%; float: left;">
+                        <option value="">请选择省份</option>
+                        <option ng-repeat="(key,item) in province" value="{{item.code}}">{{item.name}}</option>
+                    </select>
+                    <select id="id-city" ng-change="cityFun(form.cityCode)" name="cityCode" ng-model="form.cityCode" class="form-control" style="width: 50%; float: right;">
+                        <option ng-repeat="item in city" value="{{item.code}}">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-12 form-group">
+                <label class="col-sm-3 ui_right control-label">支行名称<em class="text-danger">* </em>:</label>
+                <div class="input-group dropup col-sm-9 ">
+                    <input id="branch" name="branchName" ng-model="form.branchName" class="form-control" placeholder="请输入支行名称">
+                    <span class="input-group-addon" ng-click="bankFun()">查询</span>
+                    <ul class="dropdown-menu" id="branchDown">
+                        <li ng-click="branchFun(item.branchName,item.unionCode)" ng-repeat="item in bankList"><a href="javascript:;">{{item.branchName}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" ng-click="ok($event)">确认</button>
+            <button type="button" class="btn btn-success" ng-click="close()">取消</button>
+        </div>
+    </script>
+    <!-- 保存信息对照 -->
+    <script type="text/ng-template" id="viewSaveInfo.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">类固收交易管理-新增交易单确认</h4>
+        </div>
+        <div class="modal-body clearfix row">
+            <form class="form-inline">
+                <div class="col-lg-12">
+                    <table class="table confirmTable table-bordered">
+                        <tbody>
+                        <tr>
+                            <td><span>合同编号</span>：{{info.contractno}}</td>
+                            <td><span>合同日期</span>：{{info.contractSignDateOrigin}}</td>
+                        </tr>
+                        <tr>
+                            <td>用户ID：{{info.userid}}</td>
+                            <td><span>用户姓名</span>：{{info.realName}}</td>
+                        </tr>
+                        <tr>
+                            <td><span>用户手机号</span>：{{info.mobile}}</td>
+                            <td>ECIFID：{{info.ecifid}}</td>
+                        </tr>
+                        <tr>
+                            <td><span>理财师姓名</span>：{{info.managerName}}</td>
+                            <td><span>理财师手机号</span>：{{info.managerMobile}}</td>
+                        </tr>
+                        <tr>
+                            <td>项目编号：{{info.sesameCode}}</td>
+                            <td><span>项目名称</span>：{{info.sesameName}}</td>
+                        </tr>
+                        <tr>
+                            <td>项目类型：{{info.sesameTypeStr}}</td>
+                            <td>项目来源：{{info.sesameSourceStr}}</td>
+                        </tr>
+                        <tr>
+                            <td><span>起投金额</span>：{{info.minSubscribeAmt2}}元</td>
+                            <td>预计年化收益率：{{info.productRate}}</td>
+                        </tr>
+                        <tr>
+                            <td>续存期限：{{info.term}}</td>
+                            <td>募集状态：{{info.sesameStatusStr}}</td>
+                        </tr>
+                        <tr>
+                            <td><span>投资金额</span>：{{info.amount2}}元</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><span>打款银行卡</span>：{{info.userAccountDetailGloble}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-primary" ng-click="save($event)">保存</button>
+        </div>
+    </script>
+</div>
+<script>
+    ComponentsPickers.init();
+    $(".form_exact_datetime").datetimepicker({
+        isRTL: Metronic.isRTL(),
+        format: "yyyy-mm-dd hh:ii:ss",
+        autoclose: true,
+        todayBtn: false,
+        pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+        minuteStep: 1,
+        language:"zh-CN"
+    });
+</script>

@@ -1,0 +1,67 @@
+<div ng-controller="editCategoryList as showCase">
+    <h3 class="page-title">
+        分类管理-{{subName}}
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{subTitle}}</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save()" id="saveBtn">保存</a><a href="javascript:;" ng-click="cancel()" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="js_category_add_form">
+                    <input type="hidden" name="id" ng-model="form.id">
+                    <input type="hidden" id="parentId" ng-model="form.parentId" name="parentId">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">分类标题：</label>
+                        <div class="col-sm-9">
+                            <input name="name" ng-model="form.name" type="text" class="form-control" placeholder="请输入分类标题">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">理财经理级别：</label>
+                        <div class="col-sm-9">
+                            <select name="levelId" ng-model="form.levelId" id="js_webcms_levelid" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.id}}" ng-repeat="item in select.levelId" ng-selected="item.id == form.levelId">{{item.levelname}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">状态：</label>
+                        <div class="col-sm-9">
+                            <label class="radio-inline editCategoryList">
+                                <input type="radio" name="status" ng-checked="status(0)" value="0">有效
+                            </label>
+                            <label class="radio-inline editCategoryList">
+                                <input type="radio" name="status" ng-checked="status(1)" value="1">无效
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">序列号：</label>
+                        <div class="col-sm-9">
+                            <input name="sortNum" ng-model="form.sortNum" type="text" class="form-control" placeholder="请输入序列号，序列号小的在前" maxlength="10">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12" id="js_category_icon" ng-show="isShow == true">
+                        <label class="col-sm-2 control-label">分类图标：</label>
+                        <div class="col-sm-4">
+                            <input name="imageFile" type="file" fileread="form.imageFile" style="height: 34px;padding-top:5px;">
+                        </div>
+                        <div class="col-sm-3" ng-if="img.href">
+                            <a id="viewImage" href="{{img.href}}">查看图标</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

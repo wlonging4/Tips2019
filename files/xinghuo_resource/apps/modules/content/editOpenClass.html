@@ -1,0 +1,204 @@
+<div ng-controller="editOpenClass as showCase">
+    <h3 class="page-title">
+        星火公开课管理
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title" id="pageTitle">新增公开课</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                        <a href="javascript:history.back(-1)" class="btn btn-warning btn-sm">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" id="js_openClassEdit">
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">主标题<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="title" ng-model="form.title" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入主标题" maxlength="20">
+                                    <input name="classId" type="hidden" ng-model="form.classId" value="{{form.classId}}">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">副标题<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="subTitle" ng-model="form.subTitle" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入副标题" maxlength="20">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ">广告图<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-3">
+                                    <input name="adFile" ng-model="form.adFile" fileread="form.adFile" type="file" onchange="angular.element(this).scope().checkSize(this)" style="width:100%;height: 34px;padding-top:5px;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                </div>
+                                <div class="col-lg-2">
+                                    <a style="display: block;padding-top: 8px" ng-if="img.adUrl" href="{{img.adUrl}}" target="_blank">查看</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">讲师<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="teacher" ng-model="form.teacher" required value="" type="text" class="form-control" maxlength="20" placeholder="请输入讲师">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ">讲师头像<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-3">
+                                    <input name="headFile" ng-model="form.headFile" fileread="form.headFile" type="file" onchange="angular.element(this).scope().checkSize(this)" style="width:100%;height: 34px;padding-top:5px;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                                </div>
+                                <div class="col-lg-2">
+                                    <a style="display: block;padding-top: 8px" ng-if="img.teacherHead" href="{{img.teacherHead}}" target="_blank">查看</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label">讲师介绍<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <textarea name="teacherInfo" ng-model="form.teacherInfo" id="teacherInfo" class="form-control" rows="4" maxlength="150" style="resize: none;"></textarea>
+                                </div>
+                                <div class="col-lg-2"><span>{{count.teacherInfoNum||0}}</span>/150</div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label">课程简介<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <textarea name="classInfo " ng-model="form.classInfo" id="classInfo" class="form-control" rows="4" maxlength="150" style="resize: none;"></textarea>
+                                </div>
+                                <div class="col-lg-2"><span>{{count.classInfoNum||0}}</span>/150</div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">开讲时间<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="startTime" ng-model="form.startTime" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入开讲时间" maxlength="20">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">课件时长<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="duration" ng-model="form.duration" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入课件时长" maxlength="20">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">播放密码：</label>
+                                <div class="col-lg-6">
+                                    <input name="playPassword" ng-model="form.playPassword" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入播放密码" maxlength="10">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">播放URL<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="playUrl" ng-model="form.playUrl" value="" type="text" class="form-control  ng-pristine ng-untouched ng-valid" placeholder="请输入播放URL" maxlength="255">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">URL类型：</label>
+                                <div class="col-lg-9">
+                                    <div class="radio-list">
+                                        <label class="radio-inline">
+                                            <input type="radio" class="playUrlType"  name="playUrlType" ng-model="form.playUrlType" value="1">页面
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="playUrlType"  name="playUrlType" ng-model="form.playUrlType" value="2">视频
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="playUrlType"  name="playUrlType" ng-model="form.playUrlType" value="3">图片
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="playUrlType"  name="playUrlType" ng-model="form.playUrlType" value="4">文件
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">推荐至首页：</label>
+                                <div class="col-lg-9">
+                                    <div class="radio-list">
+                                        <label class="radio-inline">
+                                            <input type="radio" class="recommond"  name="recommend" ng-model="form.recommend" value="1">是&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="recommond"  name="recommend" ng-model="form.recommend" value="0">否&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">课程状态<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-3">
+                                    <select name="classType" ng-model="form.classType" class="form-control">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-selected="item.key == form.classType" ng-repeat="item in select.classType" ng-disabled="item.key < form.classType">{{item.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">是否置顶：</label>
+                                <div class="col-lg-9">
+                                    <div class="radio-list">
+                                        <label class="radio-inline">
+                                            <input type="radio" class="isTop"  name="isTop" ng-model="form.isTop" value="1">是&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="isTop"  name="isTop" ng-model="form.isTop" value="0">否&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">状态：</label>
+                                <div class="col-lg-9">
+                                    <div class="radio-list">
+                                        <label class="radio-inline">
+                                            <input type="radio" class="status"  name="status" ng-model="form.status" value="1">有效
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="status"  name="status" ng-model="form.status" value="0">无效
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        setTimeout(function(){
+            Metronic.initComponents();
+            ComponentsPickers.init();
+        },300);
+
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: false,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

@@ -1,0 +1,171 @@
+<div ng-controller="openClassController as showCase">
+    <h3 class="page-title">
+        星火公开课管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">星火公开课管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                    <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a>
+                    <span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>标题:</label>
+                            <input class="form-control" maxlength="20" name="title" ng-model="form.title" placeholder="请输入标题">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>讲师:</label>
+                            <input class="form-control" maxlength="20" name="teacher" ng-model="form.teacher" placeholder="请输入讲师">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>课程状态:</label>
+                            <select class="form-control" name="classType" ng-model="form.classType">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.classType" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>状态:</label>
+                            <select class="form-control" name="status" ng-model="form.status">
+                                <option value="">请选择</option>
+                                <option value="1">有效</option>
+                                <option value="0">无效</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-8 col-xs-8">
+                    <span class="panel-heading-title"></span>
+                </div>
+                <div class="col-lg-4 col-xs-4 ui_right">
+                    <a href="#/editOpenClass.html" class="btn btn-primary btn-sm">新增</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper" style="font-size: 13px;">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--课程状态-->
+<script type="text/ng-template" id="changeStatus.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">更改课程状态</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <label class="col-lg-3 control-label ui_right" style="line-height: 30px">更改课程状态：</label>
+            <div class="col-lg-9">
+                <select class="form-control" name="newStatus" ng-model="infos.newStatus">
+                    <option value="">请选择</option>
+                    <option value="1" ng-disabled="{{infoStatus.classType>1}}" ng-selected="infoStatus.classType==1">预热</option>
+                    <option value="2" ng-disabled="{{infoStatus.classType>2}}" ng-selected="infoStatus.classType==2">直播中</option>
+                    <option value="3">已结束</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary fn-ms"  style="width:25%;height:30px;line-height: 15px;" ng-click="close()" >取消</button>
+        <button type="button" class="btn btn-success fn-ms" style="width:25%;height:30px;line-height: 15px;" id="confirmType" ng-click="ok()">确认</button>
+    </div>
+</script>
+<!--课程详情-->
+<script type="text/ng-template" id="titleOpenClass.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">公开课详情</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="width: 20%;text-align: right">主标题：</td>
+                    <td>{{info.title}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">副标题：</td>
+                    <td>{{info.subTitle}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">广告图：</td>
+                    <td><a href="{{info.adUrl}}" target="_blank">查看</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">讲师：</td>
+                    <td>{{info.teacher}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">讲师头像：</td>
+                    <td><a href="{{info.teacherHead}}" target="_blank">查看</a>
+                </tr>
+                <tr>
+                    <td style="text-align: right">讲师介绍：</td>
+                    <td>{{info.teacherInfo}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">课程介绍：</td>
+                    <td>{{info.classInfo}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">开讲时间：</td>
+                    <td>{{info.startTime}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">课讲时长：</td>
+                    <td>{{info.duration}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">播放密码：</td>
+                    <td>{{info.playPassword}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">播放URL：</td>
+                    <td>{{info.playUrl}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">URL类型：</td>
+                    <td>{{info.playUrlTypeStr}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">推荐至首页：</td>
+                    <td>{{!info.recommend?'否':'是'}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">课程状态：</td>
+                    <td>{{info.classTypeStr}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">是否置顶：</td>
+                    <td>{{!info.isTop?'否':'是'}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right">状态：</td>
+                    <td>{{!info.status?'无效':'有效'}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>

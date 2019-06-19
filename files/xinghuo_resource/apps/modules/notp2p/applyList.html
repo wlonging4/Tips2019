@@ -1,0 +1,333 @@
+<div ng-controller="applyList as showCase">
+    <h3 class="page-title">
+        非P2P项目预约订单
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">非P2P项目预约订单</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>预约订单号</label>
+                            <input name="applyId" ng-model="form.applyId" class="form-control" placeholder="请输入预约订单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>项目类型</label>
+                            <select id="productType" name="productType" ng-model="form.productType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">类固定收益</option>
+                                <option value="2">资本市场</option>
+                                <option value="3">私募股权</option>
+                                <option value="4">地产投资</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>项目名称</label>
+                            <input name="productName" ng-model="form.productName" class="form-control" placeholder="请输入项目名称">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>项目编码</label>
+                            <input name="productCode" ng-model="form.productCode" class="form-control" placeholder="请输入项目编码">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户手机号</label>
+                            <input name="userPhone" ng-model="form.userPhone" class="form-control" placeholder="请输入用户手机号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户姓名</label>
+                            <input name="userName" ng-model="form.userName" class="form-control" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="financialUserId" ng-model="form.financialUserId" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名</label>
+                            <input name="financialUserName" ng-model="form.financialUserName" class="form-control" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>预约时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="applyTimeStart" ng-model="form.applyTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="applyTimeEnd" ng-model="form.applyTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>状态</label>
+                            <select id="applyStatus" name="applyStatus" ng-model="form.applyStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.applystatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                        <label>取消原因</label>
+                        <select name="cancelType" ng-model="form.cancelType" class="form-control">
+                            <option value="">请选择</option>
+                            <option value="{{item.key}}" ng-repeat="item in select.cancletype">{{item.value}}</option>
+                        </select>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a id="exportBtn" action="/sesameapply/exportSesameApply.shtml" class="btn btn-success btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <!-- 预约订单号详情 -->
+    <script type="text/ng-template" id="applyListTemplate.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">预约订单详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td colspan="2" class="ui_table_head">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%">预约订单号：{{info.applyId}}</td>
+                        <td>用户手机号：{{info.userPhone}}</td>
+                    </tr>
+                    <tr>
+                        <td>用户ID：{{info.userId}}</td>
+                        <td>用户姓名：{{info.userName}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>项目编号：{{info.productCode}}</td>
+                        <td>项目名称：{{info.productName}}</td>
+                    </tr>
+                    <tr>
+                        <td>项目类型：{{info.productTypeDesc}}</td>
+                        <td>续存期限：{{info.term}}</td>
+                    </tr>
+                    <tr>
+                        <td>预期年化收益率：{{info.productRate}}</td>
+                        <td>募集状态：{{info.raiseStatusDesc}}</td>
+                    </tr>
+                    <tr>
+                        <td>订单状态：{{info.applyStatusDesc}}</td>
+                        <td>理财经理ID：{{info.financialUserId}}</td>
+                    </tr>
+                    <tr>
+                        <td>理财经理姓名：{{info.financialUserName}}</td>
+                        <td>理财经理手机号：{{info.financialUserPhone}}</td>
+                    </tr>
+                    <tr>
+                        <td>预约时间：{{info.applyTimeFormat}}</td>
+                        <td>受理时间：{{info.disposeTimeFormat}}</td>
+                    </tr>
+                    <tr>
+                        <td>确认时间：{{info.confirmTimeFormat}}</td>
+                        <td>取消时间：{{info.cancelTimeFormat}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">取消原因：{{info.cancelTypeDesc}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+    <!-- 项目名称详情 -->
+    <script type="text/ng-template" id="infoDetailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">项目详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">项目详情-页面展示详情</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%">项目编码：{{info.sesameCode}}</td>
+                        <td>项目名称：{{info.sesameName}}</td>
+                    </tr>
+                    <tr>
+                        <td>项目类型：{{info.sesameTypeStr}}</td>
+                        <td>基金类型：{{info.organFormName}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>项目状态：{{info.sesameStatusStr}}</td>
+                        <td>起投金额：{{info.minSubscribeAmt}}{{info.currencyUnit}}</td>
+                    </tr>
+                    <tr>
+                        <td>递增金额：{{info.incSubscribeAmt}}{{info.currencyUnit}}</td>
+                        <td>存续期限：{{info.holdTerm}}</td>
+                    </tr>
+                    <tr>
+                        <td>募集规模：{{info.planRaiseAmt}}{{info.currencyUnit}}</td>
+                        <td>募集期限：{{info.raiseTerm}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">成立日：{{info.establishDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>收益类型：{{info.profitTypeName}}</td>
+                        <td>预期年化收益率：{{info.expectedRate}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">收益率说明：</td>
+                                    <td>{{info.expectedRateDesc}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">项目亮点：</td>
+                                    <td>{{info.programPoint}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">收益分配：</td>
+                                    <td>{{info.incomeDistribute}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>发行方：{{info.issuer}}</td>
+                        <td>转让方：{{info.transfer}}</td>
+                    </tr>
+                    <tr>
+                        <td>承销方：{{info.underwriter}}</td>
+                        <td>交易平台：{{info.dealPlatform}}</td>
+                    </tr>
+                    <tr>
+                        <td>基金管理人：{{info.pfundAdminOrg1Name + ' ' + info.pfundAdminOrg2Name}}</td>
+                        <td>风险等级：{{info.productRiskLevel}}</td>
+                    </tr>
+                    <tr>
+                        <td>所属地区：{{info.regionStr}}</td>
+                        <td>投资币种：{{info.currencyName}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购费是否收取：{{info.isSubfee == 1 ? "是" : "否"}}</td>
+                        <td>认购费收取方式：{{info.subfeeTypeName}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购费收取比率：{{info.subfeeRate}}</td>
+                        <td>认购费折扣：{{info.subfeeTotalDiscount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">风险揭示：</td>
+                                    <td>{{info.riskTip}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>产品当前募集期：{{info.raiseNum}}</td>
+                        <td>是否贴息：{{info.isPayInterest == 1 ? "贴息" : "不贴息"}}</td>
+                    </tr>
+                    <tr>
+                        <!--<td>募集账户：{{info.raiseAccount}}</td>-->
+                        <td colspan="2">产品发行分类：{{info.productSourceName}}</td>
+                    </tr>
+                    <tr>
+                        <td>上下架状态：{{info.upAndDown == 0 ? "上架" : "下架"}}</td>
+                        <td>是否推荐：{{info.canRecommend == 0 ? "否" : "是"}}</td>
+                    </tr>
+                    <tr>
+                        <td>推荐位：{{info.showPositionStr}}</td>
+                        <td>资产来源：{{info.canPrivateStr}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2">募集账户信息</td>
+                    </tr>
+                    <tr>
+                        <td>账号名称：{{info.raiseAccounts[0].accountName}}</td>
+                        <td>所属银行名称：{{info.raiseAccounts[0].accoutBankName}}</td>
+                    </tr>
+                    <tr>
+                        <td>开户行：{{info.raiseAccounts[0].bankDetail}}</td>
+                        <td>账号：{{info.raiseAccounts[0].account}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">内部参考详情</td>
+                    </tr>
+                    <tr>
+                        <td>项目来源：{{info.sesameSourceStr}}</td>
+                        <td>顾问费率：{{info.adviserRate}}%</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">点评：</td>
+                                    <td>{{info.remark}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>

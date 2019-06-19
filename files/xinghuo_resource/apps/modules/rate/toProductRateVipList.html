@@ -1,0 +1,60 @@
+<div ng-controller="toProductRateVipList as showCase">
+    <h3 class="page-title">
+        VIP用户列表
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">VIP用户列表</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>用户ID</label>
+                            <input name="userid" ng-model="form.userid" class="form-control" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财师ID</label>
+                            <input name="managerid" ng-model="form.managerid" class="form-control" placeholder="请输入理财师ID">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>导入时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_startcreatetime" ng-model="form.p_startcreatetime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_endcreatetime" ng-model="form.p_endcreatetime">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">参与用户</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

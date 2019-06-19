@@ -1,0 +1,250 @@
+<div ng-controller="intoProductRatePage as showCase">
+    <h3 class="page-title">
+        {{productname}}-{{name}}
+    </h3>
+    <form role="form" id="js_form">
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">销售配置-费率管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.goback()" id="rate_gobackBtn">返回</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.save()" id="js_goodRate_save">保存</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <input type="hidden" name="subProduct.productid" value="{{productid}}" ng-if="isEdit"/>
+            <input type="hidden" name="subProduct.id" value="{{subproductId}}" ng-if="isEdit" />
+            <input type="hidden" name="subStatus" value="{{subStatus}}" ng-if="isEdit" />
+            <input name="bizSysRoute" value="0" type="hidden">
+            <div class="row">
+                <div class="col-lg-12">
+                        <div class="form-group col-lg-3">
+                            <label>购买用户</label>
+                            <input type="text" readonly class="form-control" value="新手专享" placeholder="新手专享" ng-if="isNew">
+                            <input type="hidden" name="rateTypeIndex" ng-model="form.rateTypeIndex" value="1" ng-if="isNew">
+                            <select name="rateTypeIndex" ng-model="form.rateTypeIndex" id="rateTypeIndex" class="form-control" ng-change="chooseUserType()" ng-if="!isNew">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.buyuser">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>销售状态</label>
+                            <select name="subProduct.xhStatus" ng-model="form.subProduct.xhStatus" class="form-control">
+                                <option value="{{item.key}}" ng-repeat="item in select.productsalestatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>发布渠道</label>
+                            <select name="subProduct.bizSysRoute" ng-model="form.subProduct.bizSysRoute" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.biz_sys_route | filter:filerSource">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>佣金结算方式</label>
+                            <select name="settleTypeIndex" ng-model="form.settleTypeIndex" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.settleList" ng-selected="item.key == form.settleTypeIndex">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>费率系数</label>
+                            <input type="text" name="ratio" ng-model="form.ratio" class="form-control" placeholder="请输入费率系数" maxlength="10">
+                        </div>
+                        <div class="form-group col-lg-3" >
+                            <label>是否加息</label>
+                            <select ng-model="form.outVar" class="form-control" id="outVar">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3" >
+                            <label>是否允许线下大额入金支付</label>
+                            <select ng-model="form.subProduct.isRemittance" name="subProduct.isRemittance" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6" ng-show="form.outVar != 0">
+                            
+                            <div class="col-lg-12" style="padding:25px 0px 0px 0px;">
+                            <div class="col-lg-2" style="padding:7px 0px 0px 0px;">加息费率
+                            </div>
+                            <div class="col-lg-3" style="padding:0;">
+                                <input type="number" ng-blur="count();" name="subProduct.variableAnnualRate" ng-model="form.subProduct.variableAnnualRate" class="form-control "  placeholder="请输入加息费率" maxlength="10" autocomplete="off" disableautocomplete required>
+                            </div>
+                           
+                            <div class="col-lg-1" style="padding-top:7px; ">%</div>
+                            
+                            <div class="col-lg-5" style="padding-top:7px; ">
+                            基础收益率<span style="color:#428bca; padding:0px 5px;">{{form.baseAnnua}}</span>%
+                            </div>
+                        
+                        </div>
+                        </div>
+                        <div class="form-group col-lg-8" style="margin-left: 0; margin-right: 0;" ng-if="isYXB">
+                            <label>咨询服务费率:</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="serviceRate" ng-model="form.serviceRate" checked="checked" value="YXB_zixunfuwufeilv_def" /> 默认服务费率 0.24%
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="serviceRate" ng-model="form.serviceRate" value="other" />其他服务费率
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="text" id="rateAlias" name='rateAlias' ng-model="form.rateAlias" class="form-control" placeholder="请输入其他服务费率" />
+                                </label>
+
+                                <label class="radio-inline">（服务协议：咨询服务费率别名）</label>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default" id="divRateProductVIP" ng-show="showVip">
+        <div class="panel-heading fn-ms clearfix panel-heading-func">
+            <div class="col-lg-6 col-xs-6">
+                <span class="panel-heading-title">参与用户</span>
+            </div>
+
+            <div class="col-lg-6 col-xs-6 ui_right">
+                <a href="/xinghuoproduct/downloadVIP.shtml" target="_blank" class="btn btn-success btn-sm addServerUrl" >下载导入模板</a>
+                <a href="javascript:;" class="btn btn-success btn-sm" id="js_goodRate_vip_import_btn" >导入</a>
+                <a href="/xinghuoproductrate/exportRateProductVIP.shtml?subproductid={{subproductId}}" target="_blank" class="btn btn-primary btn-sm addServerUrl">导出</a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table id="tblRateProductVIP" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>可购买人数</th>
+                        <th>限额（元）</th>
+                        <th>明细</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="">{{vipUserInfo.limitcount}}</td>
+                        <td>{{vipUserInfo.limitamount}}</td>
+                        <td><a href="#xinghuodefaultrate-toProductRateVipList.html?subproductid={{subproductId}}" target="_blank" class="btn btn-success btn-xs">查看</a></td>
+                        <td><a href="javascript:void(0);" data-href="/xinghuoproductrate/deleteProductRateVip.shtml?subproductid={{subproductId}}" id="delRateProductVIP" class="btn btn-success btn-xs">删除</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading fn-ms clearfix panel-heading-func">
+            <div class="col-lg-6 col-xs-6">
+                <div class="checkbox" style="padding-top:0px;">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="consultationSubtype_" value="1" ng-model="levelShow" ng-checked="levelShow" id="js_goodRate_config_level">分配销售店铺__按级别分配
+                        <input type="hidden" value="{{form.levelCheckbox}}" name="levelCheckbox">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="js_goodRate_level_table" ng-show="levelShow">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" ng-click="allLevel()" id="js_goodRate_level_all"></th>
+                            <th>级别</th>
+                            <th>当前费率模板</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in allUserLevelRateTempList">
+                            <td><input type="checkbox" ng-checked="userLevelRateTemplateRelMap[item.userLevel.id]"></td>
+                            <td>{{item.userLevel.levelname}}</td>
+                            <td ng-if="!!userLevelRateTemplateRelMap[item.userLevel.id]">
+                                <a href="javascript:void(0);" class="ui_ellipsis js_rateTemplate_info" ng-if="item.rate" data-original-title="{{userLevelRateTemplateRelMap[item.userLevel.id].rate.rateTemplate.name}}" data-content="{{$parent.popContent(userLevelRateTemplateRelMap[item.userLevel.id].rate.rateRanges)}}">{{userLevelRateTemplateRelMap[item.userLevel.id].rate.rateTemplate.name}}</a>
+                                <input type="hidden" name="userLevelRateTemplateRelList[{{$index}}].rate.rateTemplate.id" value="{{userLevelRateTemplateRelMap[item.userLevel.id].rate.rateTemplate.id}}">
+                                <input type="hidden" name="userLevelRateTemplateRelList[{{$index}}].userLevel.id" value="{{userLevelRateTemplateRelMap[item.userLevel.id].userLevel.id}}" />
+                            </td>
+                            <td ng-if="!userLevelRateTemplateRelMap[item.userLevel.id]">
+                                <a href="javascript:void(0);" class="ui_ellipsis js_rateTemplate_info" ng-if="item.rate" data-original-title="{{item.rate.rateTemplate.name}}" data-content="{{$parent.popContent(item.rate.rateRanges)}}">{{item.rate.rateTemplate.name}}</a>
+                                <input type="hidden" name="userLevelRateTemplateRelList[{{$index}}].rate.rateTemplate.id" value="{{item.rate.rateTemplate.id}}">
+                                <input type="hidden" name="userLevelRateTemplateRelList[{{$index}}].userLevel.id" value="{{item.userLevel.id}}" />
+                            </td>
+                            <td><a href="javascript:void(0);" class="btn btn-success btn-xs js_update">修改</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading fn-ms clearfix panel-heading-func">
+            <div class="col-lg-6 col-xs-6">
+                <div class="checkbox" style="padding-top:0px;">
+                    <label class="checkbox-inline">
+                        <input type="checkbox"  name="consultationSubtype_" value="1" ng-model="personShow" ng-checked="personShow" id="js_goodRate_config_person">分配销售店铺__按个别分配
+                        <input type="hidden" value="{{form.personCheckbox}}" name="personCheckbox">
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xs-6 ui_right">
+                <a href="/xinghuoproduct/download.shtml" target="_blank" class="btn btn-success btn-sm addServerUrl">下载导入模板</a>
+                <a href="javascript:;" class="btn btn-success btn-sm" id="js_goodRate_person_import_btn">导入</a>
+                <a href="javascript:;" class="btn btn-primary btn-sm" id="js_goodRate_person_add">新增</a>
+                <a href="javascript:;" class="btn btn-danger btn-sm" id="js_goodRate_person_delete">批量删除</a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row form-group" ng-if="ul.length > 0" ng-show="personShow">
+                <input type="text" class="uP_search  form-control " style="width: 200px;display: inline-block;margin-left: 15px;" value="" placeholder="输入手机号查询" id="searchMobile">
+                <a href="javascript:;" class="btn btn-danger btn-sm" id="js_mobile_search">搜索</a>
+            </div>
+            <div class="dataTable_wrapper">
+                <table class="table table-striped table-bordered table-hover" id="js_goodRate_person_table" ng-show="personShow">
+                    <thead>
+                        <tr>
+                            <th width="80"><label for="chooseAll" id="chooseAllLabel" style="font-weight: 600;margin: 0;cursor: pointer">全选<input id="chooseAll" type="checkbox" /></label></th>
+                            <th>理财经理ID</th>
+                            <th>理财经理姓名</th>
+                            <th>手机号</th>
+                            <th>身份证号</th>
+                            <th>费率（点击费率可修改）</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr key_i="{{$index}}" key_rateid="{{item.id}}" userid="{{item.userid}}" ng-repeat="item in ::ul">
+                            <td><label><input type="checkbox" name="rateId" value="{{item.id}}"><i></i></label></td>
+                            <td>
+                                <span name="managerIdName">{{item.userid}}</span>
+                                <!--<input type="hidden" value="{{item.userid}}" name="ul[{{$index}}].userid" />-->
+                            </td>
+                            <td>{{item.realname}}</td>
+                            <td>{{item.mobile}}</td>
+                            <td>{{item.documentno}}</td>
+                            <td>
+                                <a href="javascript:void(0);" class="ui_ellipsis js_rateTemplate_info" data-original-title="{{item.rateTemplate.name}}" data-content="{{$parent.popContent(item.rateTemplate.rateRangeList)}}">{{item.rateTemplate.name}}</a>
+                                <!--<input type="hidden" value="{{item.rateTemplate.id}}" name="ul[{{$index}}].rateTemplate.id" />-->
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" removeRateId="{{item.id}}" class='btn btn-danger btn-xs js_delete'>删除</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

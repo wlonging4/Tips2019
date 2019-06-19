@@ -1,0 +1,101 @@
+<div ng-controller="subjectApply as showCase">
+    <h3 class="page-title">
+        非P2P项目申请单
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">非P2P项目申请单</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>申请单状态</label>
+                            <select name="applyStatusForQuery" ng-model="form.applyStatusForQuery" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.applyStatusForQuery">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>申请单号</label>
+                            <input name="applyCode" ng-model="form.applyCode" class="form-control" placeholder="请输入申请单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>申请人电话</label>
+                            <input name="applyMobile" ng-model="form.applyMobile" class="form-control" placeholder="请输入申请人电话">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名</label>
+                            <input name="managerName" ng-model="form.managerName" class="form-control" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>申请时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="applyStartTime" ng-model="form.applyStartTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="applyEndTime" ng-model="form.applyEndTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>选择类别：</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="p_type" ng-model="form.p_type" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.gold_rainbow_type">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="p_subtype" ng-model="form.p_subtype" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.p_subtype">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="subjectId" ng-model="form.subjectId" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.id}}" ng-repeat="item in select.ids">{{item.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理手机号</label>
+                            <input name="managerMobile" ng-model="form.managerMobile" class="form-control" placeholder="请输入理财经理手机号">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a id="js_apply_export" action="/xinghuogoldrainbow/exportApply.shtml" href="javascript:;" class="btn btn-success btn-sm">导出excel</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

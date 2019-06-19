@@ -1,0 +1,122 @@
+<div ng-controller="otherQuota as showCase">
+    <h3 class="page-title">
+        银行限额表管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">银行限额表管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>限额类型</label>
+                            <select name="accessMode" ng-model="form.accessMode" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.value}}" ng-repeat="item in select.accessmode" ng-selected="item.value == form.accessMode">{{item.value2}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>银行名称</label>
+                            <input name="name" ng-model="form.name" class="form-control" placeholder="请输入银行名称">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a id="export" action="/payBankManager/exportPayBankInfo.json" href="javascript:void(0);" class="btn btn-primary btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="editModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">修改银行限额</h4>
+        </div>
+        <div class="modal-body clearfix" ng-init="init()">
+            <div class="col-lg-12">
+                <form role="form" id="editFrom">
+                    <input type="hidden" name="id" value="{{form.id}}">
+                    <input type="hidden" name="accessMode" value="{{form.accessMode}}">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">限额类型:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="accessModeStr" ng-model="accessMode[form.accessMode]" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">银行名称:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" ng-model="form.name" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">首次限额:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="upperLimit" ng-model="form.upperLimit" ng-change="check(form.upperLimit, 'upperLimit')" placeholder="请输入首次限额" ng-hide="form.upperLimit == -1">
+                            <input type="text" class="form-control" value="-1" readonly ng-show="form.upperLimit == -1">
+                            <p><span>{{form.upperLimit == -1 ? "无限额" : (!form.upperLimit ? "" : compute(form.upperLimit) + "万")}}</span>&nbsp;</p>
+                        </div>
+                        <div class="col-sm-3" style="padding-top: 6px;">
+                            <label class="radio-inline" style="vertical-align: text-bottom">
+                                <input type="checkbox" name="isUpperLimit" ng-model="isUpperLimit" id="upperLimitCheckbox" ng-change="limit('upperLimit')" /> 无限额
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">二次限额:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="upperLimitSecond" ng-model="form.upperLimitSecond" ng-change="check(form.upperLimitSecond, 'upperLimitSecond')" placeholder="请输入二次限额" ng-hide="form.upperLimitSecond == -1">
+                            <input type="text" class="form-control" value="-1" readonly ng-show="form.upperLimitSecond == -1">
+                            <p><span>{{form.upperLimitSecond == -1 ? "无限额" : (!form.upperLimitSecond ? "" : compute(form.upperLimitSecond) + "万")}}</span>&nbsp;</p>
+                        </div>
+                        <div class="col-sm-3" style="padding-top: 6px;">
+                            <label class="radio-inline" style="vertical-align: text-bottom" >
+                                <input type="checkbox" name="isUpperLimitSecond" ng-model="isUpperLimitSecond" id="upperLimitSecondCheckbox" ng-change="limit('upperLimitSecond')" /> 无限额
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">单日限额:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="singleDayLimit" ng-model="form.singleDayLimit" ng-change="check(form.singleDayLimit, 'singleDayLimit')" placeholder="请输入单次限额" ng-hide="form.singleDayLimit == -1">
+                            <input type="text" class="form-control" value="-1" readonly ng-show="form.singleDayLimit == -1">
+                            <p><span>{{form.singleDayLimit == -1 ? "无限额" : (!form.singleDayLimit ? "" : compute(form.singleDayLimit) + "万")}}</span>&nbsp;</p>
+                        </div>
+                        <div class="col-sm-3" style="padding-top: 6px;">
+                            <label class="radio-inline" style="vertical-align: text-bottom">
+                                <input type="checkbox" name="isSingleDayLimit" ng-model="isSingleDayLimit" id="singleDayLimitCheckbox" ng-change="limit('singleDayLimit')"  /> 无限额
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="saveBtn" ng-click="ok()" >保存</button>
+        </div>
+    </script>
+</div>

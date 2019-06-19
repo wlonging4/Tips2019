@@ -1,0 +1,128 @@
+<div ng-controller="structureEdit as showCase">
+    <h3 class="page-title">
+        结构性活动配置
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageName}}</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save()" id="saveBtn">保存</a><a href="#xinghuosite-structure.html" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="js_add_huodong_form">
+                    <input type="hidden" name="id" value="">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">活动名称：</label>
+                        <div class="col-sm-6">
+                            <input name="structurename" ng-model="form.structurename" type="text" class="form-control"  placeholder="活动名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">活动时间：</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_exact_datetime">
+                                        <input type="text" size="16" name="starttimestr" ng-model="form.starttimestr" readonly class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 ui_center">
+                                    <label class=" control-label">至</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group date form_exact_datetime">
+                                        <input type="text" size="16" name="endtimestr" ng-model="form.endtimestr" readonly class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">活动地址：</label>
+                        <div class="col-sm-6">
+                            <input name="promotionurl" ng-model="form.promotionurl" type="text" class="form-control"  placeholder="活动地址">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">浮动收益率：</label>
+                        <div class="col-sm-6">
+                            <input name="floatingannualrate" ng-model="form.floatingannualrate" type="text" class="form-control"  placeholder="浮动收益率">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">活动说明：</label>
+                        <div class="col-sm-6">
+                            <textarea name="structureremark" ng-model="form.structureremark" class="form-control" rows="3">1</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">产品编码：</label>
+                        <div class="col-sm-6">
+                            <input name="subproductcode" ng-model="form.subproductcode" type="text" class="form-control"  placeholder="产品编码">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">来源：</label>
+                        <div class="col-sm-6">
+                            <select name="source" ng-model="form.source" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.value}}" ng-repeat="item in select.source | filter:filerSource" ng-selected="item.key == form.source">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">结果公布时间：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group date form_exact_datetime input-medium">
+                                <input type="text" size="16" name="publishtimestr" ng-model="form.publishtimestr" readonly class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">活动结果文字：</label>
+                        <div class="col-sm-6">
+                            <textarea name="resulttext" ng-model="form.resulttext" class="form-control" rows="3">1</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label">广告名称：</label>
+                        <div class="col-sm-6">
+                            <input name="uploadImg" type="file" style="height: 34px;padding-top:5px;">
+                            <input type="hidden" name="resultimage" value="">
+                            <a target="_blank" href="{{img.href}}" ng-bind="img.name" ng-if="img.show"></a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:mm:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

@@ -1,0 +1,60 @@
+<div ng-controller="dealPay as showCase">
+    <h3 class="page-title">
+        更新交易单状态
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">更新交易单状态</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="#/xinghuosite-dealPayEdit.html" class="btn btn-success btn-sm">修改交易单状态</a><a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>交易单号</label>
+                            <input name="no" ng-model="form.no" class="form-control" placeholder="请输入交易单号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>出借人ID</label>
+                            <input name="lenderid" ng-model="form.lenderid" class="form-control" placeholder="请输入出借人ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>修改时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="begUpdateStatusTime" ng-model="form.begUpdateStatusTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endUpdateStatusTime" ng-model="form.endUpdateStatusTime">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

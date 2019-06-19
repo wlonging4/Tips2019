@@ -1,0 +1,134 @@
+<div ng-controller="statistics as showCase">
+    <h3 class="page-title">
+        邀请活动统计
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">邀请活动统计查询</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>邀请理财师ID</label>
+                            <input name="userId" ng-model="form.userId" class="form-control" placeholder="请输入邀请理财师ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>邀请人手机号</label>
+                            <input name="userMobile" ng-model="form.userMobile" class="form-control" placeholder="请输入邀请人手机号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>奖励金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="startRewardAmount" ng-model="form.startRewardAmount" class="form-control js_validator_int" placeholder="请输入奖励金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="endRewardAmount" ng-model="form.endRewardAmount" class="form-control js_validator_int" placeholder="请输入奖励金额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>月份</label>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="padding:0;">
+                                            <select ng-model="date.startYear" class="form-control" style="height:32px;padding: 0px 2px;">
+                                                <option value="">请选择</option>
+                                                <option value="{{item}}" ng-repeat="item in select.years">{{item}}年</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group-addon" style="padding:0;">
+                                            <select ng-model="date.startMonth" class="form-control" style="height:32px;padding: 0px 2px;">
+                                                <option value="">请选择</option>
+                                                <option value="{{item}}" ng-repeat="item in select.months">{{item}}月</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                    <span>—</span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="padding:0;">
+                                            <select ng-model="date.endYear" class="form-control" style="height:32px;padding: 0px 2px;">
+                                                <option value="">请选择</option>
+                                                <option value="{{item}}" ng-repeat="item in select.years">{{item}}年</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group-addon" style="padding:0;">
+                                            <select ng-model="date.endMonth" class="form-control" style="height:32px;padding: 0px 2px;">
+                                                <option value="">请选择</option>
+                                                <option value="{{item}}" ng-repeat="item in select.months">{{item}}月</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>本月邀请额</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="startInviteNumber" ng-model="form.startInviteNumber" class="form-control js_validator_int" placeholder="请输入邀请额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="endInviteNumber" ng-model="form.endInviteNumber" class="form-control js_validator_int" placeholder="请输入邀请额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>销售金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="startDealAmount" ng-model="form.startDealAmount" class="form-control js_validator_int" placeholder="请输入销售额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="endDealAmount" ng-model="form.endDealAmount" class="form-control js_validator_int" placeholder="请输入销售额" maxlength="10">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">红包记录</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_reds_btns_form" method="post" enctype="multipart/form-data">
+                        <a action="/xinghuoinviteuser/exportStatistics.shtml" href="javascript:;" class="btn btn-success btn-sm js_export" id="js_red_export">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

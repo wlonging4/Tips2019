@@ -1,0 +1,584 @@
+<div ng-controller="subjectList as showCase">
+    <h3 class="page-title">
+        非P2P项目
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">非P2P项目</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>项目编码</label>
+                            <input name="sesameCode" ng-model="form.sesameCode" class="form-control" placeholder="请输入项目编码">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>项目名称</label>
+                            <input name="sesameName" ng-model="form.sesameName" class="form-control" placeholder="请输入项目名称">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>募集状态</label>
+                            <select name="sesameStatus" ng-model="form.sesameStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.sesameStatusEnum">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>顾问费率（%）</label>
+                            <input name="adviserRate" ng-model="form.adviserRate" class="form-control" placeholder="请输入顾问费率">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>项目类型</label>
+                            <select name="sesameType" ng-model="form.sesameType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.sesametypeenum">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>上下架状态</label>
+                            <select name="upAndDown" ng-model="form.upAndDown" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">已上架</option>
+                                <option value="1">已下架</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否推荐</label>
+                            <select name="canRecommend" ng-model="form.canRecommend" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>推荐位：</label>
+                            <div class="prior_type_select" id="multi_select" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>所属地区</label>
+                            <select name="region" ng-model="form.region" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.regionEnum">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>资源来源</label>
+                            <select name="canPrivate" ng-model="form.canPrivate" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.sesameCanPrivateEnum">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否自营</label>
+                            <select name="selfSupport" ng-model="form.selfSupport" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">否</option>
+                                <option value="2">是</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a id="exportBtn" action="/sesameproduct/exportSesameProduct.shtml"  class="btn btn-success btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/ng-template" id="editModal.html">
+        <div class="modalWindow1" ng-show="modalWindowShow">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="modal-title fn-ms">项目编辑</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="col-lg-12">
+                    <form id="editModalForm" role="form" class="form-horizontal" action="/xinghuosettle/importAndSettle.shtml">
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">项目名称:</label>
+                            <div class="col-sm-9" style="padding-top: 7px;">
+                                {{form.sesameName}}
+                                <input type="hidden"  name="sesameCode" value="{{form.sesameCode}}">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">项目编码:</label>
+                            <div class="col-sm-9" style="padding-top: 7px;">
+                                {{form.sesameCode}}
+                                <input type="hidden"  name="sesameCode" value="{{form.sesameCode}}">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12" ng-if="form.sesameType == 2 || form.sesameType == 3 || form.sesameType == 4">
+                            <label class="col-sm-3 control-label text-right">项目类型:</label>
+                            <div class="col-sm-9">
+                                <select name="sesameType" ng-model="form.sesameType" class="form-control">
+                                    <option value="{{item.key}}" ng-repeat="item in select.sesametypeenum" ng-selected="form.sesameType == item.key">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">项目来源<span class="text-red">*</span>:</label>
+                            <div class="col-sm-9">
+                                <select id="sesameSource" name="sesameSource" ng-model="form.sesameSource" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.id}}" ng-repeat="item in select.sourceData" ng-selected="form.sesameSource == item.id">{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">顾问费率<span class="text-red">*</span>:</label>
+                            <div class="col-sm-4" id="base">
+                                <div class="input-group">
+                                    <input type="text" class="form-control js_need_validator" name="baseAdviserRate" ng-model="form.baseAdviserRate" placeholder="请输入基础顾问费率" required>
+                                    <span class="input-group-addon ">%</span>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-1">+</div>
+                            <div class="col-sm-4 " id="floatAdviserRate">
+                                <div class="input-group">
+                                    <input type="text" class="form-control js_need_validator" name="floatAdviserRate" ng-model="form.floatAdviserRate" placeholder="请输入浮动顾问费率" required>
+                                    <span class="input-group-addon">%</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12" ng-if="editShow">
+                            <label class="col-sm-3 control-label text-right">投资期限(月):<span class="text-red">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control js_need_validator" name="sesameMonth" ng-model="form.sesameMonth" ng-blur="checkSesameMonth()" placeholder="请输入正整数" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right" style="padding-left: 0;">顾问费结算方式:<span class="text-red">*</span></label>
+                            <div class="col-sm-9">
+                                <div class="col-sm-9" style="padding-top: 7px; margin-left: -15px;">
+                                    单笔一次性结算
+                                    <input type="hidden" ng-model="form.settletype" name="settletype" value="91">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">是否返现:<span class="text-red">*</span></label>
+                            <div class="col-sm-9">
+                                <select name="isCashBack" ng-model="form.isCashBack" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12" ng-show="form.isCashBack != 0">
+                            <label class="col-sm-3 control-label text-right">返现规则:<span class="text-red">*</span></label>
+                            <div class="col-sm-9">
+                                <textarea type="text" class="form-control" name="cashBackRule" maxlength="150" ng-model="form.cashBackRule" placeholder="请输入返现规则，限100字以内"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">是否自营<span class="text-red">*</span>:</label>
+                            <div class="col-sm-9">
+
+                                <select name="selfSupport" ng-model="form.selfSupport" class="form-control" >
+                                    <option value="">请选择</option>
+                                    <option value="2">是</option>
+                                    <option value="1">否</option>
+
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12" ng-if="form.selfSupport == 2">
+                            <label class="col-sm-3 control-label text-right">自营募集规模:<span class="text-red">*</span></label>
+                            <div class="col-sm-9" style="margin-left:-13px">
+
+                                <span class="col-sm-11" ><input style="margin:0"  name="supportQuota" maxlength="12" ng-change="chooseUserType()" ng-model="form.supportQuota" class="form-control " placeholder="请输入自营募集规模" ng-disabled="isUpAndDown" autocomplete="off" disableautocomplete ></span><span class="col-sm-1" style="line-height:30px">元</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12" ng-if="form.selfSupport == 2">
+                            <label class="col-sm-3 control-label text-right">大写金额:</label>
+                            <div class="col-sm-9" style="padding-top:8px;color:#f13e46" >
+                                {{Capital_amount}}
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12" ng-if="editShow">
+                            <label class="col-sm-3 control-label text-right">起息日:<span class="text-red">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" maxlength="100" ng-model="form.valueDate"  name="valueDate"
+                                       value="">
+                            </div>
+                            <div class="col-sm-9 small col-sm-offset-3">
+                                <p style="margin-bottom: 0;margin-top: 5px;">注:用于前端展示</p>
+                                <p>格式:到账日/到账后次日/到账后次工作日</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12" ng-if="editShow">
+                            <label class="col-sm-3 control-label text-right">合同编号前缀<span class="text-red">*</span>:</label>
+                            <div class="col-sm-9" style="">
+                                <input type="text" class="form-control" maxlength="30" ng-model="form.protocolPrefix" ng-disabled="isEditPro"  name="protocolPrefix"
+                                       value="{{form.protocolPrefix}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 channelBox">
+                            <label class="col-sm-3 control-label text-right">选择上架渠道<span class="text-red">*</span>:</label>
+                            <div class="col-sm-9">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="channelUp" class="channelUp channelUp1" value="2"  ng-checked="channelUp.channelUp1">理财师APP
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="channelUp" class="channelUp channelUp2" value="1" ng-disabled="form.sesameSource!=1" ng-checked="channelUp.channelUp2">投资人APP
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <label class="col-sm-3 control-label text-right">点评:</label>
+                            <div class="col-sm-9">
+                                <textarea type="text"  class="form-control" name="remark" maxlength="150" ng-model="form.remark" placeholder="请输入点评，建议150字以内"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+                <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="editConfirmBtn" ng-click="ok()" >保存</button>
+            </div>
+        </div>
+        <div class="modalWindow2" ng-show="!modalWindowShow">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="closeConfirm()">×</button>
+                <h4 class="modal-title fn-ms">请确认以下补录项是否正确?</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="col-lg-12">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr class="success">
+                            <td colspan="2" class="ui_table_head">项目详情-页面展示详情</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">项目类型:</td>
+                            <td>{{form.sesameTypeStr}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">项目来源:</td>
+                            <td>{{form.sesameSourceWhere}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">顾问费率:</td>
+                            <td>{{form.baseAdviserRate}}%+{{form.floatAdviserRate}}%</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">是否返现:</td>
+                            <td>{{form.isCashBackOrNot}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">是否自营:</td>
+                            <td>{{form.selfSupportOrNot}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">自营募集规模:</td>
+                            <td>{{form.supportQuota}}</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">大写金额:</td>
+                            <td>{{form.Capital_amount}}</td>
+                        </tr>
+                        <tr ng-if="editShow">
+                            <td width="30%">起息日:</td>
+                            <td>{{form.valueDate}}</td>
+                        </tr>
+                        <tr ng-if="editShow">
+                            <td width="30%">合同编号前缀:</td>
+                            <td>{{form.protocolPrefix}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="closeConfirm()" >取消</button>
+                <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="infoEditConfirmBtn" ng-click="okConfirm()" >保存</button>
+            </div>
+        </div>
+
+    </script>
+    <script type="text/ng-template" id="recommendModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">产品推荐</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form id="recommendForm" role="form" class="form-horizontal" action="/xinghuosettle/importAndSettle.shtml">
+                    <div class="form-group col-lg-12">
+                        <input type="hidden" name="sesameCode" value="{{form.sesameCode}}">
+                        <label class="col-sm-3 control-label text-right">是否推荐:</label>
+                        <div class="col-sm-9">
+                            <select name="canRecommend" ng-model="form.canRecommend" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">推荐位:</label>
+                        <div class="col-sm-9">
+                            <div class="showPosition" style="position:relative;"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="recommendConfirmBtn" ng-click="ok()" >保存</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="sortModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">调整排序</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <form id="sortForm" role="form" class="form-horizontal" action="/xinghuosettle/importAndSettle.shtml">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">序号:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="showSequence" ng-model="form.showSequence" maxlength="5" placeholder="请输入序号">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="sortConfirmBtn" ng-click="ok()" >保存</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="infoDetailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">项目详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">项目详情-页面展示详情</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%">项目编码：{{info.sesameCode}}</td>
+                        <td>项目名称：{{info.sesameName}}</td>
+                    </tr>
+                    <tr>
+                        <td>项目类型：{{info.sesameTypeStr}}</td>
+                        <td>基金类型：{{info.organFormName}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>项目状态：{{info.sesameStatusStr}}</td>
+                        <td>起投金额：{{info.minSubscribeAmt}}{{info.currencyUnit}}</td>
+                    </tr>
+                    <tr>
+                        <td>递增金额：{{info.incSubscribeAmt}}{{info.currencyUnit}}</td>
+                        <td>存续期限：{{info.holdTerm}}</td>
+                    </tr>
+                    <tr>
+                        <td>募集规模：{{info.planRaiseAmt}}{{info.currencyUnit}}</td>
+                        <td>募集期限：{{info.raiseTerm}}</td>
+                    </tr>
+                    <tr>
+                        <td>成立日：{{info.establishDate}}</td>
+                        <td>起息日：{{info.valueDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>收益类型：{{info.profitTypeName}}</td>
+                        <td>预期年化收益率：{{info.expectedRate}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">收益率说明：</td>
+                                    <td>{{info.expectedRateDesc}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">项目亮点：</td>
+                                    <td>{{info.programPoint}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">收益分配：</td>
+                                    <td>{{info.incomeDistribute}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>发行方：{{info.issuer}}</td>
+                        <td>转让方：{{info.transfer}}</td>
+                    </tr>
+                    <tr>
+                        <td>承销方：{{info.underwriter}}</td>
+                        <td>交易平台：{{info.dealPlatform}}</td>
+                    </tr>
+                    <tr>
+                        <td>基金管理人：{{info.pfundAdminOrg1Name + ' ' + info.pfundAdminOrg2Name}}</td>
+                        <td>风险等级：{{info.productRiskLevel}}</td>
+                    </tr>
+                    <tr>
+                        <td>所属地区：{{info.regionStr}}</td>
+                        <td>投资币种：{{info.currencyName}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购费是否收取：{{info.isSubfee == 1 ? "是" : "否"}}</td>
+                        <td>认购费收取方式：{{info.subfeeTypeName}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购费收取比率：{{info.subfeeRate}}</td>
+                        <td>认购费折扣：{{info.subfeeTotalDiscount}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">风险揭示：</td>
+                                    <td>{{info.riskTip}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>产品当前募集期：{{info.raiseNum}}</td>
+                        <td>是否贴息：{{info.isPayInterest == 1 ? "贴息" : "不贴息"}}</td>
+                    </tr>
+                    <tr>
+                        <td>产品发行分类：{{info.productSourceName}}</td>
+                        <td>上下架渠道：{{info.channelStr}}</td>
+                    </tr>
+                    <tr>
+                        <td>上下架状态：{{info.upAndDown == 0 ? "上架" : "下架"}}</td>
+                        <td>是否推荐：{{info.canRecommend == 0 ? "否" : "是"}}</td>
+                    </tr>
+                    <tr>
+                        <td>推荐位：{{info.showPositionStr}}</td>
+                        <td>资产来源：{{info.canPrivateStr}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2">募集账户信息</td>
+                    </tr>
+                    <tr>
+                        <td>账号名称：{{info.raiseAccounts[0].accountName}}</td>
+                        <td>所属银行名称：{{info.raiseAccounts[0].accoutBankName}}</td>
+                    </tr>
+                    <tr>
+                        <td>开户行：{{info.raiseAccounts[0].bankDetail}}</td>
+                        <td>账号：{{info.raiseAccounts[0].account}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">内部参考详情</td>
+                    </tr>
+                    <tr>
+                        <td>项目来源：{{info.sesameSourceStr}}</td>
+                        <td>顾问费率：{{info.adviserRate}}%</td>
+                    </tr>
+                    <tr>
+                        <td>投资期限：{{info.sesameMonth }}个月</td>
+                        <td>顾问费结算方式：单笔一次性结算</td>
+                    </tr>
+                    <tr>
+                        <td>是否自营：{{info.selfSupport == 2 ? "是":"否"}}</td>
+                        <td>自营募集规模：{{info.supportQuota}}元</td>
+                    </tr>
+                    <tr>
+                        <td>协议模板编号：{{info.contractTemplateno}}</td>
+                        <td>合同编号前缀：{{info.protocolPrefix}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="padding: 0;">
+                            <table class="table table-bordered" style="margin: -1px;border-right: none;">
+                                <tbody>
+                                <tr>
+                                    <td style="width: 150px;">点评：</td>
+                                    <td>{{info.remark}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        $('.prior_type_select').multiSel({
+            'data': [
+                {"text": "APP端", "value": "0", "default": false},
+                {"text": "WAP端", "value": "1", "default": false}
+            ],
+            "name" : "showPosition"
+        });
+    });
+</script>

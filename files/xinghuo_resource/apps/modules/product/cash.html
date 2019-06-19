@@ -1,0 +1,99 @@
+<div ng-controller="cash as showCase">
+    <h3 class="page-title">
+        产品管理-变现贷
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">变现贷</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>产品编号</label>
+                            <input name="code" ng-model="form.code" class="form-control" placeholder="请输入产品编号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>产品名称</label>
+                            <input name="name" ng-model="form.name" class="form-control" placeholder="请输入产品名称">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>年化收益率(%)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="queryAnnualrateLower" ng-model="form.queryAnnualrateLower" class="form-control js_validator_int" placeholder="请输入预计年化率" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="queryAnnualrateUpper" ng-model="form.queryAnnualrateUpper" class="form-control js_validator_int" placeholder="请输入预计年化率" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>变现状态</label>
+                            <div id="cashStatus" name="queryCashStatus" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>申请日期</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="queryApplyStart" ng-model="form.queryApplyStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="queryApplyEnd" ng-model="form.queryApplyEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>交易单号</label>
+                            <input name="parentNo" ng-model="form.parentNo" class="form-control" placeholder="请输入交易单号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否全部变现</label>
+                            <select name="cashAll" ng-model="form.cashAll" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>发起人ID</label>
+                            <input name="userid" ng-model="form.userid" class="form-control" placeholder="请输入发起人ID">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_subproduct_form" method="post">
+                        <a id="js_subproduct_export" action="/xinghuoproduct/exportCashSubproduct.shtml" href="javascript:;" class="btn btn-primary btn-sm">导出产品列表</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

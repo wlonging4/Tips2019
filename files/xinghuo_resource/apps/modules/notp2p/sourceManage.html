@@ -1,0 +1,41 @@
+<div ng-controller="sourceManageController as showCase">
+    <h3 class="page-title">
+        项目来源管理
+    </h3>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm addSource">添加</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper" style="font-size: 13px;">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--课程状态-->
+<script type="text/ng-template" id="changeStatus.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">项目来源</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <label class="col-lg-3 control-label ui_right" style="line-height: 30px"> 项目来源<span class="ui_red">*</span>：</label>
+            <div class="col-lg-9">
+                <input class="form-control" maxlength="20" name="sourceName" ng-model="form.sourceName" placeholder="请输入项目来源(交易所名称)">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary fn-ms"  style="width:25%;height:30px;line-height: 15px;" ng-click="close()" >取消</button>
+        <button type="button" class="btn btn-success fn-ms" style="width:25%;height:30px;line-height: 15px;" id="confirmType" ng-click="ok()">保存</button>
+    </div>
+</script>

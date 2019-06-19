@@ -1,0 +1,164 @@
+<div ng-controller="fixationNoBuyRefund as showCase">
+    <h3 class="page-title">
+        无认购退款管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">无认购退款管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>退款申请单号</label>
+                            <input name="refundApplyId" ng-model="form.refundApplyId" class="form-control" placeholder="请输入退款申请单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户姓名</label>
+                            <input name="userName" ng-model="form.userName" class="form-control" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>退款金额</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="refundAmtMin" ng-model="form.refundAmtMin" type="text" class="form-control js_validator_int ng-pristine ng-untouched ng-valid ng-valid-maxlength" placeholder="请输入投资金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="refundAmtMax" ng-model="form.refundAmtMax" type="text" class="form-control js_validator_int ng-pristine ng-untouched ng-valid ng-valid-maxlength" placeholder="请输入投资金额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>退款状态</label>
+                            <select name="refundStatus" ng-model="form.refundStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="-1">审核中</option>
+                                <option value="0">审核成功</option>
+                                <option value="1">审核拒绝</option>
+                                <option value="4">退款成功</option>
+                                <option value="3">退款失败</option>
+                                <option value="5">退票</option>
+                                <option value="2">已取消</option>
+                            </select>
+                        </div>
+                        <!--<div class="form-group col-lg-3">-->
+                            <!--<label>协议编号</label>-->
+                            <!--<input name="contractNo" ng-model="form.contractNo" class="form-control" placeholder="请输入协议编号">-->
+                        <!--</div>-->
+                        <div class="form-group col-lg-6">
+                            <label>申请日期</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input name="applyTimeStart" ng-model="form.applyTimeStart" type="text" class="form-control">
+                                <span class="input-group-addon">to </span>
+                                <input name="applyTimeEnd" ng-model="form.applyTimeEnd" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="#/xinghuogoldrainbow-addNoBuyRefund.html" class="btn btn-primary btn-sm">新增退款申请</a>
+                    <a ng-click="action.export($event)" href="javascript:;" action="/sesamerefund/exportSesameFlowRefund.shtml"  class="btn btn-success btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <!--退款申请单号-->
+    <script type="text/ng-template" id="refundDetailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">无认购退款管理-无认购退款详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2">退款申请单号：{{info.refundNo}}</td>
+                    </tr>
+                    <tr>
+                        <td>用户姓名 ：{{info.userName}}</td>
+                        <td>身份证号： {{info.documentNo}}</td>
+                    </tr>
+                    <tr>
+                        <td>ECIFID： {{info.ecifid}}</td>
+                        <td>退款原因： {{info.refundReasonDes}}</td>
+                    </tr>
+                    <tr>
+                        <td>退款金额： {{info.refundAmt}}</td>
+                        <td>币种： 人民币</td>
+                    </tr>
+                    <tr>
+                        <td>募集账号： {{info.cardno}}</td>
+                        <td>退款状态： {{info.refundStatusType}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">打款银行卡 ： {{info.provincename}}/{{info.cityname}}/{{info.bankname}}/{{info.branchname}}/{{info.bankUserName?info.bankUserName:info.userName}}/{{info.bankCardno}} </td>
+                    </tr>
+                    <tr>
+                        <td>开户行所属地区：境内</td>
+                        <td>联行号： {{info.unioncode}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">退款说明：{{info.description}}</td>
+                    </tr>
+                    <tr>
+                        <td>申请日期：{{info.applyTime}}</td>
+                        <td>申请提交日期：{{info.applySubmittime}}</td>
+                    </tr>
+                    <tr>
+                        <td>提交人：{{info.adminname}}</td>
+                        <td>退款完成日期：{{info.completeTime}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">退款失败原因：{{info.failedReason}}</td>
+                    </tr>
+                    <tr>
+                        <td>汇款凭证 ：<a target="_blank" href="{{info.payFilePath}}">{{info.payFilePath?"查看":""}}</a></td>
+                        <td>退款申请书 ：<a target="_blank" href="{{info.applyFilePath}}">{{info.applyFilePath?"查看":""}}</a> </td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">芝麻审核信息</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">审核日期：{{info.auditTime}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">审核意见：{{info.auditOpinion}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

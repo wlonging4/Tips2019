@@ -1,0 +1,396 @@
+<div ng-controller="xinghuoDirectorController as showCase">
+    <h3 class="page-title">
+        理财经理管理
+    </h3>
+    <div class="js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">理财经理管理</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" id="js_form">
+                            <div class="form-group col-lg-4">
+                                <label>理财经理ID</label>
+                                <input name="id" ng-model="form.id" class="form-control" placeholder="请输入理财经理ID">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>理财经理姓名</label>
+                                <input name="username" ng-model="form.username" class="form-control" placeholder="请输入理财经理姓名">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>手机号</label>
+                                <input name="mobile" ng-model="form.mobile" class="form-control" placeholder="请输入查询手机号">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>证件类型&号码</label>
+                                <div class="input-group col-lg-12 col-xs-12">
+                                    <div class="input-group-addon" style="padding:0;width:auto;">
+                                        <select class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;" name="documenttype" ng-model="form.documenttype">
+                                            <option value="">请选择</option>
+                                            <option ng-repeat="item in select.documenttype" value="{{item.key}}">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <input class="form-control" name="documentno" ng-model="form.documentno" placeholder="请输入证件号码">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>审核时间</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="startaudittime" ng-model="form.startaudittime">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="audittime" ng-model="form.audittime">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否宜信员工</label>
+                                <div class="input-group col-lg-12 col-xs-12">
+                                    <div class="input-group-addon" style="padding:0;width:auto;">
+                                        <select name="yixinstatus" ng-model="form.yixinstatus" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                            <option value="">请选择</option>
+                                            <option ng-repeat="item in select.yixinstatus" value="{{item.key}}">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group-addon" style="padding:0;width:auto;">
+                                        <select name="yixintype"  ng-model="form.yixintype" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                            <option value="">请选择</option>
+                                            <option ng-repeat="item in select.yixintype" value="{{item.key}}">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                    <input name="yixinno" ng-model="form.yixinno" class="form-control" placeholder="请输入员工号码">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>级别：</label>
+                                <select name="levelid" ng-model="form.levelid" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.levelid" value="{{item.id}}">{{item.levelname}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>类型</label>
+                                <select name="yixinusertype" ng-model="form.yixinusertype" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.yixinusertype" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>销售日期</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="createtimeStart" ng-model="form.createtimeStart">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="createtimeEnd" ng-model="form.createtimeEnd">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <div class="col-lg-12" style="padding:0;">
+                                    <label>返佣总额(元)</label>
+                                </div>
+                                <div class="col-lg-5" style="padding:0;">
+                                    <input name="startsumcommissionfee" ng-model="form.startsumcommissionfee" class="form-control js_validator_int" placeholder="请输入返佣总额">
+                                </div>
+                                <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                    <span>—</span>
+                                </div>
+                                <div class="col-lg-5" style="padding:0;">
+                                    <input name="sumcommissionfee" ng-model="form.sumcommissionfee" class="form-control js_validator_int" placeholder="请输入返佣总额">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <div class="col-lg-12" style="padding:0;">
+                                    <label>销售金额(元)</label>
+                                </div>
+                                <div class="col-lg-5" style="padding:0;">
+                                    <input name="sumamountLower" ng-model="form.sumamountLower" class="form-control js_validator_int" placeholder="请输入销售金额">
+                                </div>
+                                <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                    <span>—</span>
+                                </div>
+                                <div class="col-lg-5" style="padding:0;">
+                                    <input name="sumamountUpper" ng-model="form.sumamountUpper" class="form-control js_validator_int" placeholder="请输入销售金额">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>店铺ID</label>
+                                <input name="storecode" ng-model="form.storecode" class="form-control" placeholder="请输入店铺ID">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>店铺名称</label>
+                                <input name="storename" ng-model="form.storename" class="form-control" placeholder="请输入店铺名称">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>城市</label>
+                                <input name="district" ng-model="form.district" class="form-control" placeholder="请输入城市">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否有证书</label>
+                                <select name="p_hasattchment" ng-model="form.p_hasattchment" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>部门关键字</label>
+                                <input name="department" ng-model="form.department" class="form-control" placeholder="部门关键字">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>业务系统来源：</label>
+                                <select name="bizSysRoute" id="biz_sys_route" ng-model="form.bizSysRoute" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.biz_sys_route" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>星火认证编号</label>
+                                <input name="xhno" class="form-control" placeholder="星火认证编号">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>认证方式</label>
+                                <select name="auditmethod" ng-model="form.auditmethod" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.auditmethod" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>业务类型</label>
+                                <select name="businessType" ng-model="form.businessType" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="(key,value) in select.buyType" value="{{key}}">{{value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否理财经理发放红包 生效结果</label>
+                                <select name="redpacketSendEffection" ng-model="form.redpacketSendEffection" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否理财经理发放红包 更新时间</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="redpacketSendUpdatetimeStart " ng-model="form.redpacketSendUpdatetimeStart ">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="redpacketSendUpdatetimeEnd" ng-model="form.redpacketSendUpdatetimeEnd">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否理财经理发放红包 当前结果</label>
+                                <select name="redpacketSendSelection" ng-model="form.redpacketSendSelection" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>积分通道电签状态：</label>
+                                <select name="signScoreChannelStatus" ng-model="form.signScoreChannelStatus" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.protocol_status" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>积分通道协议签约时间</label>
+                                <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                    <input type="text" class="form-control" name="signtimestart" ng-model="form.signtimestart">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="signtimeend" ng-model="form.signtimeend">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>是否填写邮寄地址</label>
+                                <select name="isMailAddress" ng-model="form.isMailAddress" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>证件照片状态：</label>
+                                <select name="idphotoauditstatus" ng-model="form.idphotoauditstatus" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.idphotoauditstatus" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>支持人员姓名</label>
+                                <input name="supportName" ng-model="form.supportName" class="form-control" placeholder="请输入支持人员姓名">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>支持人员手机号</label>
+                                <input name="supportMobile" ng-model="form.supportMobile" class="form-control" placeholder="请输入支持人员手机号">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-4 col-xs-6">
+                        <span class="panel-heading-title">搜索结果</span>
+                    </div>
+                    <div class="col-lg-8 col-xs-6 ui_right">
+                        <form id="director_form" method="post">
+                            <a id="photosDownload" href="javascript:;" class="btn btn-warning btn-sm">证件照片批量下载</a>
+                            <a action="/xinghuouser/todirector.shtml" href="javascript:;" class="btn btn-success btn-sm js_edit_add">理财经理录入</a>
+                            <a id="js_director_export" action="/xinghuouser/exportDirector.shtml" href="javascript:;" class="btn btn-primary btn-sm">导出理财经理</a>
+                            <a id="js_director_certificate_export" action="/xinghuouser/exportDirectorCertificate.shtml" href="javascript:;" class="btn btn-success btn-sm">导出理财经理证书</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="font-size: 13px">
+                <div class="dataTable_wrapper table-responsive">
+                    <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="js_add_show">
+        <div class="panel panel-default">
+            <div class="panel-heading fn-ms clearfix panel-heading-func">
+                <div class="col-lg-10 col-xs-6">
+                    <span class="panel-heading-title">理财经理录入</span>
+                </div>
+                <div class="col-lg-2 col-xs-6">
+                    <a href="javascript:;" class="btn btn-success btn-sm" id="js_addDirector_save" style="width:45%">提交</a>
+                    <a href="javascript:;" class="btn btn-primary btn-sm js_add_cancel" style="width:45%">取消</a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form id="js_addDirector_form" class="form-horizontal" action="/xinghuouser/addDirector.shtml" method="post">
+                    <input name="bizSysRoute" value="0" type="hidden" class="form-control" placeholder="手机号码">
+                    <div class="panel panel-default">
+                        <div class="panel-heading fn-ms">
+                            账户信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">手机号码：</label>
+                                <div class="col-sm-8">
+                                    <input name="cellphone" type="text" class="form-control" placeholder="手机号码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading fn-ms">
+                            理财经理
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">理财经理级别：</label>
+                                <div class="col-sm-8">
+                                    <select name="levelid" ng-model="add.levelid" class="form-control" ng-options="item.id as item.levelname for item in select.levelid">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">业务系统来源：</label>
+                                <div class="col-sm-8">
+                                    <select name="bizSysRoute" ng-model="add.bizSysRoute" id="biz_sys_route" class="form-control" ng-options="item.key as item.value for item in select.biz_sys_route">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <div class="col-lg-7" style="padding:0;">
+                                    <label class="col-sm-3 control-label" style="padding-right: 19px;">业务类型：</label>
+                                    <div class="col-sm-8" style="padding: 0 26px 0 12px;">
+                                        <!--<input class="form-control" name="businessType" value="独立个人" readonly>-->
+                                        <select name="businessType" ng-model="add.businessType" class="form-control" disabled="disabled">
+                                            <option value="">请选择</option>
+                                            <option ng-repeat="(key,value) in select.buyType" ng-selected="'独立个人'==value" value="{{key}}">{{value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4" style="padding:0;">
+                                    <span style="color: red; padding-top: 5px;display: block;">可在理财师团队管理中更改业务类型</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading fn-ms">
+                            个人信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">真实姓名：</label>
+                                <div class="col-sm-8">
+                                    <input name="realName" type="text" class="form-control" placeholder="真实姓名">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">身份证号码：</label>
+                                <div class="col-sm-8">
+                                    <input name="documentno" type="text" class="form-control" placeholder="身份证号码">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">QQ号码：</label>
+                                <div class="col-sm-8">
+                                    <input name="qq" type="text" class="form-control" placeholder="QQ号码">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">个人简介：</label>
+                                <div class="col-sm-8">
+                                    <textarea name="introduction" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading fn-ms">
+                            店铺信息
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">店铺名称：</label>
+                                <div class="col-sm-8">
+                                    <input name="shopName" type="text" class="form-control" placeholder="店铺名称">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">店铺URL：</label>
+                                <div class="col-sm-4 col-lg-4 col-md-4">
+                                    <label class="control-label">http://10.100.140.24:9090/</label>
+                                </div>
+                                <div class="col-sm-4 col-lg-4 col-md-4">
+                                    <input name="shopCode" type="text" class="form-control" placeholder="店铺URL">
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-7">
+                                <label class="col-sm-3 control-label">店铺地址：</label>
+                                <div class="col-sm-8">
+                                    <input name="address" type="text" class="form-control" placeholder="店铺地址">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    })
+</script>

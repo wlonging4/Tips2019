@@ -1,0 +1,277 @@
+<div ng-controller="editActivitiesParticipants as showCase">
+    <h3 class="page-title">
+        活动管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageTitle}}活动-{{form.activityModeStr}}-参与对象</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="lastStep()">上一步：活动基本信息</a><a ng-click="save()" class="btn btn-warning btn-sm">下一步：配置关联红包</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <form class="form-horizontal" id="ParticipantsForm">
+                    <div class="form-group col-lg-12">
+                            <label class="col-sm-2 control-label">活动名称<span class="text-red">*</span>：</label>
+                            <div class="col-sm-9">
+                                <input name="title" type="text" ng-model="form.activityName" class="form-control" placeholder="请输入活动名称" maxlength="100" readonly>
+                            </div>
+                    </div>
+                    <div class="form-group col-lg-12" ng-if="form.activityMode == 1 || form.activityMode == 2">
+                            <label class="col-sm-2 control-label">参与对象<span class="text-red">*</span>：</label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <div class="col-sm-9">
+                                            <label class="radio-inline content-radio">
+                                                <input type="radio" name="participate" value="1" ng-model="form.participate">筛选理财经理
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="well">
+                                    备注：理财经理等级、级别、是否自主发放红包、店铺交易、排除个人<strong class="text-red">以上项均为并且的关系</strong>。默认不做任何筛选，<strong class="text-red">即默认为全部理财经理</strong>。<br/>
+                                    使用场景：理财经理群体A：等级为星钻理财经理并且级别为非财二理财经理，并且自主发放红包为是，并且店铺有交易，并且不在黑名单内。<br/>
+                                    补充个人：即白名单用户使用场景：个例特殊用户补充此活动红包。
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="col-sm-3 control-label">理财经理等级：</label>
+                                        <div class="col-sm-9" >
+                                            <label class="checkbox-inline" ng-repeat="item in select.manager_star_level">
+                                                <input type="checkbox" name="starLevel" value="{{item.key}}" ng-checked="form.starLevel && form.starLevel.split(',').indexOf(item.key) > -1" ng-model="item.v" ng-change="getStarLevel()" ng-true-value="{{item.key}}" ng-false-value="''">{{item.value}}<small ng-if="item.key== 3">（既非星钻金星理财经理）</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="col-sm-3 control-label">理财经理级别：</label>
+                                        <div class="col-sm-9">
+                                            <div id="managerLevel" style="position:relative;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="col-sm-3 control-label">自主发放红包：</label>
+                                        <div class="col-sm-9">
+                                            <select name="autonomy" ng-model="form.autonomy" class="form-control">
+                                                <option value="">请选择</option>
+                                                <option value="{{item.key}}" ng-repeat="item in select.autonomy" >{{item.value}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="col-sm-3 control-label">店铺交易：</label>
+                                        <div class="col-sm-9">
+                                            <select name="storeHaveDeal" ng-model="form.storeHaveDeal" class="form-control">
+                                                <option value="">请选择</option>
+                                                <option value="{{item.key}}" ng-repeat="item in select.store_have_deal">{{item.value}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="col-sm-3 control-label">排除个人：</label>
+                                        <div class="col-sm-9">
+                                            <a href="javascript:void (0)" class="btn btn-danger btn-sm" ng-click="import(2)">导入黑名单</a>
+                                            <div class="export-list">
+                                                <div class="export-list" ng-if="form.blackList && form.blackList.length > 0">
+                                                    <span>已导入文件：</span><span ng-repeat="item in form.blackList"><a href="javascript:void(0)" ng-click="downloadFile(item.activityId, item.batchNo)">{{item.batchNo}}</a><i ng-click="deleteFile(item.activityId, item.batchNo, $index, 2)">x</i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="col-sm-3 control-label">补充个人：</label>
+                                        <div class="col-sm-9">
+                                            <a href="javascript:void (0)" class="btn btn-success btn-sm" ng-click="import(1)">导入白名单</a>
+                                            <div class="export-list" ng-if="form.whiteList && form.whiteList.length > 0">
+                                                <span>已导入文件：</span><span ng-repeat="item in form.whiteList"><a href="javascript:void(0)" ng-click="downloadFile(item.activityId, item.batchNo)">{{item.batchNo}}</a><i ng-click="deleteFile(item.activityId, item.batchNo, $index, 1)">x</i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="form-group col-lg-12" ng-if="form.activityMode == 3">
+                        <label class="col-sm-2 control-label">参与对象<span class="text-red">*</span>：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <div class="col-sm-9">
+                                        <label class="radio-inline content-radio">
+                                            <input type="radio" name="participate" value="2" ng-model="form.participate">筛选出借人
+                                        </label>
+                                        <label class="radio-inline content-radio">
+                                            <input type="radio" name="participate" value="1" ng-model="form.participate">筛选理财经理的客户
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-2" ng-show="form.participate == 2">
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">出借人交易：</label>
+                                    <div class="col-sm-9">
+                                        <select name="lenderHaveDeal" ng-model="form.lenderHaveDeal" class="form-control">
+                                            <option value="">请选择</option>
+                                            <option value="{{item.key}}" ng-repeat="item in select.lender_have_deal">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">排除个人：</label>
+                                    <div class="col-sm-9">
+                                        <a href="javascript:void (0)" class="btn btn-danger btn-sm" ng-click="import(2)">导入黑名单</a>
+                                        <div class="export-list" ng-if="form.blackList && form.blackList.length > 0">
+                                            <span>已导入文件：</span><span ng-repeat="item in form.blackList"><a href="javascript:void(0)" ng-click="downloadFile(item.activityId, item.batchNo)">{{item.batchNo}}</a><i ng-click="deleteFile(item.activityId, item.batchNo, $index, 2)">x</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">补充个人：</label>
+                                    <div class="col-sm-9">
+                                        <a href="javascript:void (0)" class="btn btn-success btn-sm" ng-click="import(1)">导入白名单</a>
+                                        <div class="export-list" ng-if="form.whiteList && form.whiteList.length > 0">
+                                            <span>已导入文件：</span><span ng-repeat="item in form.whiteList"><a href="javascript:void(0)" ng-click="downloadFile(item.activityId, item.batchNo)">{{item.batchNo}}</a><i ng-click="deleteFile(item.activityId, item.batchNo, $index, 1)">x</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-2" ng-show="form.participate == 1">
+                            <div class="well">
+                                备注：理财经理等级、级别、是否自主发放红包、店铺交易、排除个人<strong class="text-red">以上项均为并且的关系</strong>。默认不做任何筛选，<strong class="text-red">即默认为全部理财经理</strong>。<br/>
+                                使用场景：理财经理群体A：等级为星钻理财经理并且级别为非财二理财经理，并且自主发放红包为是，并且店铺有交易，并且不在黑名单内。<br/>
+                                补充个人：即白名单用户使用场景：个例特殊用户补充此活动红包。
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">理财经理等级：</label>
+                                    <div class="col-sm-9" >
+                                        <label class="checkbox-inline" ng-repeat="item in select.manager_star_level">
+                                            <input type="checkbox" name="starLevel" value="{{item.key}}" ng-checked="form.starLevel && form.starLevel.split(',').indexOf(item.key) > -1" ng-model="item.v" ng-change="getStarLevel()" ng-true-value="{{item.key}}" ng-false-value="''">{{item.value}}<small ng-if="item.key== 3">（既非星钻金星理财经理）</small>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">理财经理级别：</label>
+                                    <div class="col-sm-9">
+                                        <div id="managerLevel" style="position:relative;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">自主发放红包：</label>
+                                    <div class="col-sm-9">
+                                        <select name="autonomy" ng-model="form.autonomy" class="form-control" onmousedown="return false;" readonly>
+                                            <option value="">请选择</option>
+                                            <option value="{{item.key}}" ng-repeat="item in select.autonomy">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">店铺交易：</label>
+                                    <div class="col-sm-9">
+                                        <select name="storeHaveDeal" ng-model="form.storeHaveDeal" class="form-control">
+                                            <option value="">请选择</option>
+                                            <option value="{{item.key}}" ng-repeat="item in select.store_have_deal">{{item.value}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">排除个人：</label>
+                                    <div class="col-sm-9">
+                                        <a href="javascript:void (0)" class="btn btn-danger btn-sm" ng-click="import(2)">导入黑名单</a>
+                                        <div class="export-list" ng-if="form.blackList && form.blackList.length > 0">
+                                            <span>已导入文件：</span><span ng-repeat="item in form.blackList"><a href="javascript:void(0)" ng-click="downloadFile(item.activityId, item.batchNo)">{{item.batchNo}}</a><i ng-click="deleteFile(item.activityId, item.batchNo, $index, 2)">x</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label class="col-sm-3 control-label">补充个人：</label>
+                                    <div class="col-sm-9">
+                                        <a href="javascript:void (0)" class="btn btn-success btn-sm" ng-click="import(1)">导入白名单</a>
+                                        <div class="export-list" ng-if="form.whiteList && form.whiteList.length > 0">
+                                            <span>已导入文件：</span><span ng-repeat="item in form.whiteList"><a href="javascript:void(0)" ng-click="downloadFile(item.activityId, item.batchNo)">{{item.batchNo}}</a><i ng-click="deleteFile(item.activityId, item.batchNo, $index, 1)">x</i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="importModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms" ng-show="!showResult">{{title}}<small style="margin-left: 20px;"><a href="javascript:void(0)" ng-click="down(type)">下载模板</a></small></h4>
+            <h4 class="modal-title fn-ms" ng-show="showResult">{{title}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <form id="importForm">
+                <input type="hidden" name="type" value="{{type}}">
+                <input type="hidden" name="activityId" value="{{activityId}}">
+                <div class="col-lg-12" ng-show="!showResult">
+                    <div class="form-group col-lg-12" >
+                        <label class="col-sm-3 control-label text-right">上传导入文件:</label>
+                        <div class="col-sm-9">
+                            <input name="importFile" fileread="importFile" type="file" style="height: 34px;padding-top:5px;display: inline;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12" ng-show="showResult">
+                    <div class="form-group col-lg-12 text-center" >
+                        <p class="icon-warpper"><i class="fa fa-check-circle success-icon" ng-show="!info.failedCount"></i><i class="fa fa-exclamation-circle error-icon" ng-show="info.failedCount"></i></p>
+                        <p ng-show="!info.failedCount">导入总数：{{info.importCount || 0}}条；成功导入：{{info.sussesCount || 0}}条</p>
+                        <p ng-if="info.failedCount">{{info.imgTypeText}}</p>
+                        <ul ng-if="info.failedCount" style="list-style: none;">
+                            <li ng-repeat="item in info.failedList"> {{item.id ? 'ID：' + item.id : ''}}导入失败，失败原因：{{item.failedMsg}}；</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer" ng-show="!showResult">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" ng-click="save()" >保存</button>
+        </div>
+    </script>
+</div>

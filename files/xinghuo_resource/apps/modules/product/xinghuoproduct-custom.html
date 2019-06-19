@@ -1,0 +1,193 @@
+<div ng-controller="xinghuoproductCustomController as showCase">
+    <h3 class="page-title">
+        产品管理_私人定制
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">私人定制产品</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm searchBtn">查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>产品状态</label>
+                            <select name="upStatus" ng-model="form.upStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.upStatus" value="{{item.key}}" ng-selected="item.key == form.upStatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>定制产品名称</label>
+                            <input name="customName" ng-model="form.customName" class="form-control" placeholder="请输入定制产品名称">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="managerId" ng-model="form.managerId" class="form-control" placeholder="">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>关联基础产品</label>
+                            <div class="prior_type_select" id="multi_select" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>上架时间</label>
+                            
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="upTimeStart" ng-model="form.upTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="upTimeEnd" ng-model="form.upTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>定制金额</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="customAmountStart" ng-model="form.customAmountStart" class="form-control js_validator_int ng-pristine ng-valid ng-touched" placeholder="">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input name="customAmountEnd" ng-model="form.customAmountEnd" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>定制期限</label>
+                            <select name="periodList" ng-model="form.periodList" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.periodList" valueKey="{{item.periodKey}}" valuePeriod="{{item.productPeriod}}"
+                                        valuePeriodUnit="{{item.productPeriodUnit}}" value="{{item.periodKey}},{{item.productPeriod}},{{item.productPeriodUnit}}">{{item.productPeriodShowName}}</option>
+                            </select>
+                            <input type="hidden" name="periodKey" value="{{form.periodKey}}">
+                            <input type="hidden" name="productPeriod" value="{{form.productPeriod}}">
+                            <input type="hidden" name="productPeriodUnit" value="{{form.productPeriodUnit}}">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>关联交易单</label>
+                            <select name="customDealStatus" ng-model="form.customDealStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.customDealStatus" value="{{item.key}}" ng-selected="item.key == form.customDealStatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-8 col-xs-8">
+                    <span class="panel-heading-title">定制总金额: <span class="ui_red">{{sumMoney}}</span>(元) </span>  <span class="panel-heading-title">&nbsp;&nbsp;已付款金额: <span
+                        class="ui_red">{{sumMoney2}}</span>(元)</span>
+                </div>
+                <div class="col-lg-4 col-xs-4 ui_right">
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.submitProductDown()" id="">下架产品</a>
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.submitProductOn()">上架产品</a>
+                    <a id="js_export" action="/xinghuoproductcustom/exportProductCustom.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--弹窗模板上架-->
+<script type="text/ng-template" id="xinghuoproductCustomSubmitOn.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">确认上架信息</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <label style="width: 20%">确认上架选中产品?</label>
+        <div style="text-align:center;margin-top: 30px;">
+            <button style="" ng-click="customProductConfirmBtnOn()" class="btn btn-primary" id="customProductConfirmBtnOn">确认</button>
+            <button style="" class="btn btn-warning" ng-click="close()">取消</button>
+        </div>
+    </div>
+</script>
+<!--弹窗模板下架-->
+<script type="text/ng-template" id="xinghuoproductCustomSubmitDown.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">确认下架信息</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <label style="width: 20%">确认下架选中产品?</label>
+        <div style="text-align:center;margin-top: 30px;">
+            <button style="" ng-click="customProductConfirmBtnDown()" class="btn btn-primary" id="customProductConfirmBtnDown">确认</button>
+            <button style="" class="btn btn-warning" ng-click="close()">取消</button>
+        </div>
+    </div>
+</script>
+<!--产品详情信息弹窗-->
+<script type="text/ng-template" id="productDetail.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">私人定制_产品详情页</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <tbody>
+                <!--<tr>
+                    <td style="width: 50%;border: none;"><h4 class="ui_red">基本信息</h4></td>
+                </tr>-->
+                <tr>
+                    <td style="width: 50%">产品编号：{{info.customCode}}</td>
+                    <td>预期年化收益率：{{info.customAnnaulRate}} %</td>
+                </tr>
+                <tr>
+                    <td>产品名称：{{info.customName}}</td>
+                    <td>佣金比例：{{info.customRate}} %</td>
+                </tr>
+                <tr>
+                    <td>投资期限：{{info.customPeriodShowName}}</td>
+                    <td>关联基础产品编号：{{info.productCode}}</td>
+                </tr>
+                <tr>
+                    <td>定制金额：{{info.customAmount}}</td>
+                    <td>关联基础产品名称：{{info.productName}}</td>
+                </tr>
+                <tr>
+                    <td>产品状态：{{info.upStatusStr}}</td>
+                    <td>理财经理ID：{{info.managerId}} 理财经理姓名：{{info.managerName}}</td>
+                </tr>
+                <tr>
+                    <td>上架时间：{{info.upTime}}</td>
+                    <td>出借人ID：{{info.lenderId}} 出借人姓名：{{info.lenderName}}</td>
+                </tr>
+                <tr>
+                    <td>下架时间：{{info.downTime}}</td>
+                    <td>关联交易单：{{info.customDealStatusStr}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: false,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

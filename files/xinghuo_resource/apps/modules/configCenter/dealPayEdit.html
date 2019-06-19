@@ -1,0 +1,86 @@
+<div ng-controller="dealPayEdit as showCase">
+    <h3 class="page-title">
+        更新交易单状态
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">更新交易单状态</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:void(0);" class="btn btn-success btn-sm" id="updateBtn" ng-click="update()">更新为已付款</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="js_upload_add_form">
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">交易单类型：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="updateStatusType" ng-model="form.updateStatusType">
+                                <option value="0">划扣</option>
+                                <option value="1">扫单</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">交易单号：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="交易单号" name="dealNO"  ng-model="form.dealNO">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">出借人ID：</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="出借人ID"  name="lenderId"  ng-model="form.lenderId">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-8">
+                        <label class="col-sm-3 control-label">付款时间：</label>
+                        <div class="col-sm-8">
+                            <div class="input-group date form_exact_datetime input-medium">
+                                <input type="text" size="16" name="payTime" ng-model="form.payTime" readonly class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">×</button>
+            <h4 class="modal-title fn-ms">更新交易单状态</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div><span ng-bind="amount"></span>元</div>
+                <div>出借人姓名：<span ng-bind="lendername"></span></div>
+                <div>确认更新交易状态为已付款！</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms" style="width:25%;" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()">保存</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:mm:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

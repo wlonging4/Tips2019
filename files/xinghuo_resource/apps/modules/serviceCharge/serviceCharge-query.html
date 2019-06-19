@@ -1,0 +1,84 @@
+<div ng-controller="serviceChargeQueryController">
+    <h3 class="page-title">
+        服务费
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">服务费</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search($event)">查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>渠道业务编号</label>
+                            <input class="form-control" name="appBussinessId" ng-model="form.appBussinessId" placeholder="请输入渠道业务编号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>费用类型</label>
+                            <select class="form-control" name="feeType" ng-model="form.feeType">
+                                <option value="">请选择</option>
+                                <option value="1">红包(产品中心代发)</option>
+                                <option value="2">返现</option>
+                                <option value="3">体验金</option>
+                                <option value="4">渠道补偿客户</option>
+                                <option value="5">客户补偿渠道</option>
+                                <option value="6">退款(服务费入金)</option>
+                                <option value="101">其他(服务费出金)</option>
+                                <option value="102">其他(服务费入金)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-3 col-xs-3">
+                    <span class="panel-heading-title">查询结果：</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table class="table table-striped row-border table-hover" style="width: 1400px">
+                    <tr>
+                        <th width="140">渠道业务编号</th>
+                        <th width="100">转出用户</th>
+                        <th width="140">渠道投资编号</th>
+                        <th width="100">产品编号</th>
+                        <th width="180">结算平台订单号</th>
+                        <th width="100">状态</th>
+                        <th width="160">结算平台处理时间</th>
+                        <th width="160">结算平台清算日期</th>
+                        <th width="160">原始提交渠道编号</th>
+                        <th width="160">费用类型</th>
+                    </tr>
+                    <tr ng-if="!isEmptyResult">
+                        <td>{{result.appBussinessId}}</td>
+                        <td>{{result.fromUserId}}</td>
+                        <td>{{result.dealNo}}</td>
+                        <td>{{result.productId}}</td>
+                        <td>{{result.settleTxId}}</td>
+                        <td>{{result.settleState}}</td>
+                        <td>{{result.settleCompleteTime}}</td>
+                        <td>{{result.settleDate}}</td>
+                        <td>{{result.originSource}}</td>
+                        <td>{{result.feeType}}</td>
+                    </tr>
+                    <tr class="odd" ng-if="isEmptyResult"><td valign="top" colspan="10" class="dataTables_empty">没有任何数据</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

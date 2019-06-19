@@ -1,0 +1,451 @@
+<div ng-controller="xinghuoOtherActivityController as showCase">
+    <h3 class="page-title">
+        其他活动管理
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <span class="panel-heading-title">其他活动管理</span>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.addAutoActivity()">新建自动触发活动</a>
+                        <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.addActiveCode()">新建激活码活动</a>
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" id="js_form">
+                            <div class="form-group col-lg-4">
+                                <label>活动方式：</label>
+                                <select class="form-control" name="activitymode" ng-model="form.activityMode">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.activityMode" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动名称：</label>
+                                <input name="activityname" ng-model="form.activityName" class="form-control" placeholder="请输入活动名称">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动状态：</label>
+                                <select class="form-control" name="status" ng-model="form.status">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.status" value="{{item.key}}">{{item.value}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>启用时间：</label>
+                                <div class="input-group input-daterange" >
+                                    <input type="text" class="form-control form_datetimepicker start_begin" name="start_begin" ng-model="form.startTimeBegin" ng-change="action.setEndDate('time_end',form.startTimeBegin,'date_only')">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control form_datetimepicker time_end" name="start_end" ng-model="form.startTimeEnd" ng-change="action.setEndDate('start_begin',form.startTimeEnd,'date_only')">
+                                </div>
+                                
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>活动有效期：</label>
+                                <div class="input-group input-daterange" >
+                                    <input type="text" class="form-control form_datetimepicker effective_start" name="effective_start" ng-model="form.activityEffectiveTimeBegin" ng-change="action.setEndDate('effective_end',form.activityEffectiveTimeBegin,'date_only')">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control form_datetimepicker effective_end" name="effective_end" ng-model="form.activityEffectiveTimeEnd" ng-change="action.setEndDate('effective_start',form.activityEffectiveTimeEnd,'date_only')">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <span class="panel-heading-title">搜索结果</span>
+                    </div>
+                    <div class="col-lg-6 col-xs-6 ui_right">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="dataTable_wrapper table-responsive">
+                    <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--自动触发弹窗1-->
+    <script type="text/ng-template" id="addAutoActivity.html">
+        <div class="modal-header" data-ng-init="load()">
+            <h4 style="display: inline-block" class="modal-title fn-ms">{{title1}}自动触发活动</h4>
+            <div style="width: 50%;float: right">
+                <button type="button" class="btn btn-primary fn-ms"  style="width:45%;height: 22px;line-height: 8px;" ng-click="close()">取消</button>
+                <button type="button" class="btn btn-success fn-ms" style="width:45%;height: 22px;line-height: 8px;"  ng-click="submit()">下一步:关联红包</button>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">发红包至<span class="text-red">*</span>:</label>
+                <div class="col-sm-8" style="margin-left: 20px">
+                    <label class="radio-inline col-sm-3">
+                        <input type="radio" name="roleChoice" ng-model="roleChoice"  ng-disabled="autoForm.activityStatus === 2" class="roleChoiceRadio roleChoiceRadio1" value="1">出借人
+                    </label>
+                    <!--<label class="radio-inline col-sm-4">
+                        <input type="radio" name="roleChoice" ng-model="roleChoice"  ng-disabled="autoForm.activityStatus === 2" class="roleChoiceRadio roleChoiceRadio2" value="2">理财经理店铺
+                    </label>-->
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">触发条件<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <select name="scene" ng-model="autoForm.scene" class="form-control" ng-init="" ng-disabled="autoForm.activityStatus === 2">
+                        <option value="" >请选择</option>
+                        <option ng-repeat="item in select.activityScene" value="{{item.key}}" ng-selected="item.key == autoForm.scene">{{item.value}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">活动名称<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="activityName" ng-model="autoForm.activityName" placeholder="请输入活动名称" maxlength="20" ng-disabled="autoForm.activityStatus === 2">
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">活动有效期<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <div class="input-group input-daterange">
+                        <input name="activityEffectiveStartTime" type="text" ng-model="autoForm.activityEffectiveStartTime" type="text" class="form-control form_datetimepicker" ng-change="setEndDate('effective_end',autoForm.activityEffectiveStartTime)" ng-disabled="autoForm.activityStatus === 2">
+                        <span class="input-group-addon">to </span>
+                        <input name="activityEffectiveEndTime" ng-model="autoForm.activityEffectiveEndTime" type="text" class="form-control form_datetimepicker effective_end" ng-change="getRedPacket(autoForm.activityEffectiveEndTime)" ng-disabled="autoForm.activityStatus === 2">
+                    </div>
+                </div>
+            </div>
+            <!--关联红包变为下一步关联多个红包-->
+            <!--<div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">关联红包名称<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <select name="redPacketTemplateId" ng-model="autoForm.redPacketTemplateId" class="form-control" ng-init="" ng-disabled="autoForm.activityStatus === 2">
+                        <option value="">请先选择活动有效期</option>
+                        <option ng-if="!autoForm.activityMode && select.redPacket.length === 0" value="">无可关联红包</option>
+                        <option ng-if="autoForm.activityMode" ng-selected="autoForm.activityMode" value="{{autoForm.tmpId}}">{{autoForm.redPacketName}}</option>
+                        <option ng-if="select.redPacket.length !== 0" ng-repeat="item in select.redPacket" value="{{item.id}}">{{item.redName}}</option>
+                    </select>
+                </div>
+            </div>-->
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">备注:</label>
+                <div class="col-sm-9">
+                    <textarea type="text" class="form-control" name="remark" maxlength="200" ng-model="autoForm.remark" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--自动触发弹窗2-->
+    <script type="text/ng-template" id="stepAddRed.html">
+        <div class="modal-header" data-ng-init="load()">
+            <h4 style="display: inline-block" class="modal-title fn-ms">编辑自动触发活动---关联红包</h4>
+            <div style="width: 50%;float: right">
+                <button type="button" class="btn btn-success fn-ms" style="width:60%;height: 22px;line-height: 8px;" id="stepBefore" ng-click="stepBefore()">上一步:活动基本信息</button>
+                <button type="button" class="btn btn-success fn-ms"  style="width:30%;height: 22px;line-height: 8px;" ng-click="submitFinal()">提交</button>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <div class="row">
+                    <label class="col-sm-2 control-label text-right">活动名称：</label>
+                    <div class="col-sm-10">
+                        <input name="activityName" type="text" value="{{'【' + form.activityModeStr + '】' +form.activityName}}" class="form-control" placeholder="请输入活动名称" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <div class="row">
+                    <label class="col-sm-2 control-label text-right">关联红包<span class="text-red">*</span>：</label>
+                    <div class="col-sm-10">
+                        <div class="text-right" style="margin-bottom: 10px;">
+                            <a href="javascript:void(0)" class="btn btn-sm btn-success" ng-click="redListChoice()">添加关联红包</a>
+                        </div>
+                        <table class="width-100 table table-striped row-border table-hover table-bordered">
+                            <tr>
+                                <th>红包名称</th>
+                                <th>红包金额（元）</th>
+                                <th>使用条件</th>
+                                <th>每人可得数</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr ng-repeat="item in list">
+                                <td>{{item.redName}}</td>
+                                <td>{{item.redAmount}}</td>
+                                <td>{{item.fullCutAmount ? '满' + item.fullCutAmount + '元可用' :'不限'}}</td>
+                                <td>{{item.lenderCanGetCount}}</td>
+                                <td><a href="javascript:void(0)" ng-click="delete(item.activityId, item.redTemplateId)">删除</a></td>
+                            </tr>
+                            <tr ng-show="list.length == 0">
+                                <td colspan="7" class="text-center">空</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--自动触发弹窗3-->
+    <script type="text/ng-template" id="redListChoice.html">
+        <div class="modal-header">
+            <h4 style="display: inline-block" class="modal-title fn-ms">添加关联红包：【{{info.activityModeStr}}】{{info.activityName}}</h4>
+            <div style="width: 50%;float: right">
+                <button type="button" class="btn btn-success fn-ms"  style="width:45%;height: 22px;line-height: 8px;" ng-click="save()">保存</button>
+                <button type="button" class="btn btn-primary fn-ms" style="width:45%;height: 22px;line-height: 8px;" ng-click="close()">取消</button>
+            </div>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">关联红包名称<span class="text-red">*</span>:</label>
+                        <div class="col-sm-8">
+                            <select name="redTemplateId" ng-model="form.redTemplateId" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.id}}" ng-repeat="item in list">{{item.redName}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="row">
+                        <label class="col-sm-2 control-label text-right">每人可得数<span class="text-red">*</span>:</label>
+                        <div class="col-sm-8">
+                            <input name="lenderCanGetCount" ng-model="form.lenderCanGetCount" type="text" oninput="value = value.replace(/\D/g, '');if(value[0] === '0'){value =value.slice(1)};if(value > 50) {value = 50}" maxlength="2" class="form-control" placeholder="输入1-50正整数">
+                        </div>
+                        <div class="col-sm-2" style="padding-top: 7px;">
+                            (个/人)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--激活码弹窗-->
+    <script type="text/ng-template" id="addActiveCode.html">
+        <div class="modal-header" data-ng-init="load()">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">{{title1}}激活码活动</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">活动名称<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="activityName" ng-model="activeForm.activityName" placeholder="请输入活动名称" maxlength="20" ng-disabled="activeForm.activityStatus === 2">
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">活动有效期<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <div class="input-group input-daterange">
+                        <input name="activityEffectiveStartTime" ng-model="activeForm.activityEffectiveStartTime" type="text" class="form-control form_datetimepicker" ng-change="setEndDate('effective_end',activeForm.activityEffectiveStartTime)"  ng-disabled="activeForm.activityStatus === 2">
+                        <span class="input-group-addon">to </span>
+                        <input name="activityEffectiveEndTime" ng-model="activeForm.activityEffectiveEndTime" type="text" class="form-control form_datetimepicker effective_end" ng-change="getRedPacket(activeForm.activityEffectiveEndTime)"  ng-disabled="activeForm.activityStatus === 2">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">关联红包名称<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <select name="redPacketTemplateId" ng-model="activeForm.redPacketTemplateId" class="form-control" ng-init="" ng-disabled="activeForm.activityStatus === 2">
+                        <option value="">请先选择活动有效期</option>
+                        <option ng-if="!activeForm.activityMode && select.redPacket.length === 0" value="">无可关联红包</option>
+                        <option ng-if="activeForm.activityMode" ng-selected="activeForm.activityMode" value="{{activeForm.tmpId}}">{{activeForm.redPacketName}}</option>
+                        <option ng-if="select.redPacket.length !== 0" ng-repeat="item in select.redPacket" value="{{item.id}}">{{item.redName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">激活码总数<span class="text-red">*</span>:</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="redPacketCodeCount" ng-model="activeForm.redPacketCodeCount" placeholder="请输入正整数（个）" ng-disabled="activeForm.activityStatus === 2">
+                </div>
+            </div>
+            
+            <div class="form-group col-lg-12">
+                <label class="col-sm-3 control-label text-right">备注:</label>
+                <div class="col-sm-9">
+                    <textarea type="text" class="form-control" name="remark" maxlength="200" ng-model="activeForm.remark" placeholder="激活码有效期，当前仅当激活码活动有效期内，可激活此激活码红包，有效期结束，则激活失败。"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="cancel()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" ng-click="submit()">确认</button>
+        </div>
+    </script>
+    <!--点击活动名称弹窗-->
+    <script type="text/ng-template" id="infoModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">【{{info.activityModeStr}}】活动详情----{{info.activityName}}</h4>
+        </div>
+        <h4 class="modal-header" style="background: #e5e5e5;margin: 10px 10px 0">基本信息</h4>
+        <div class="modal-body clearfix">
+            <!--自动触发类型活动-->
+            <div ng-show="info.activityMode === 4">
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">发红包至:</label>
+                    <div class="col-sm-9">
+                        {{info.sendToStr}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">触发条件:</label>
+                    <div class="col-sm-9">
+                        <!--{{ scene[info.scene -1] }}-->
+                        {{info.activityModeStr}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">活动名称:</label>
+                    <div class="col-sm-9">
+                        {{info.activityName}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">活动有效期:</label>
+                    <div class="col-sm-9">
+                        {{info.activityEffectiveStartTime + ' - ' + info.activityEffectiveEndTime}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">活动备注:</label>
+                    <div class="col-sm-9 breakWord">
+                        {{info.remark}}
+                    </div>
+                </div>
+            </div>
+            <!--激活码类型活动-->
+            <div ng-show="info.activityMode === 5">
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">活动名称:</label>
+                    <div class="col-sm-9 breakWord">
+                        {{info.activityName}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">活动有效期:</label>
+                    <div class="col-sm-9">
+                        {{info.activityEffectiveStartTime + ' - ' + info.activityEffectiveEndTime}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">激活码总数:</label>
+                    <div class="col-sm-9 breakWord">
+                        {{info.redPacketCodeCount}}
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 control-label text-right">活动备注:</label>
+                    <div class="col-sm-9 breakWord">
+                        {{info.remark}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="modal-header" style="background: #e5e5e5;margin: 10px 10px 0">关联红包</h4>
+        <div class="modal-body clearfix" ng-if="info.listObj.length!=0">
+            <table class="width-96 table table-striped row-border table-hover table-bordered">
+                <tr>
+                    <th>红包名称</th>
+                    <th>红包金额（元）</th>
+                    <th>使用条件</th>
+                    <th>每人可得数</th>
+                </tr>
+                <tr ng-repeat="item in info.listObj">
+                    <td>{{item.redName}}</td>
+                    <td>{{item.redAmount}}</td>
+                    <td>{{item.fullCutAmount ? '满' + item.fullCutAmount + '元可用' :'不限'}}</td>
+                    <td>{{item.lenderCanGetCount}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-body clearfix" ng-if="!info.listObj.length">
+            <table class="width-100 table table-striped row-border table-hover table-bordered">
+                <tr>
+                    <td class="text-center">暂无关联红包</td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <!--关联红包个数弹窗-->
+    <script type="text/ng-template" id="associatedModal.html">
+        <div ng-click="closeList(data)">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="modal-title fn-ms">关联红包详情</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="col-lg-12" ng-if="data && data.length > 0">
+                    <table class="width-100 table table-striped row-border table-hover table-bordered" ng-repeat="item in data">
+                        <tr>
+                            <th colspan="2">{{$index + 1}}、红包名称：{{item.redName}}</th>
+                        </tr>
+                        <tr>
+                            <td>红包金额：<span>{{item.redAmount + '元'}}</span></td>
+                            <td>红包总数量：<span>{{item.redCount + '个'}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>有效期：{{item.effectiveType==1?item.effectiveStartTime+' 至 '+item.effectiveEndTime:'进入账户 '+item.effectiveDays+' 天有效'}}</td>
+                            <!--<td><span ng-if="activityMode != 1">已抢总数：</span><span ng-if="activityMode == 1">进入店铺总数：</span>{{(item.redGrapCount === null) ? '' : item.redGrapCount + '个'}}</td>-->
+                            <td><span>已发放总数：{{(item.redPutCount === null) ? '' : item.redPutCount + '个'}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>使用条件：<span>{{item.fullCutAmount ? ('满' + item.fullCutAmount + '元可用') : '不限金额'}}</span></td>
+                            <td>已使用总数：{{item.redUseCount + '个'}}</td>
+                        </tr>
+                        <tr>
+                            <td>新建日期：{{item.createTime}}</td>
+                            <td>剩余红包总数：{{item.redRemainCount + '个'}}</td>
+                        </tr>
+                        <tr>
+                            <td style="position: relative;">指定产品：
+                                <a href="javascript:void(0);"  ng-click="showDetails($event, item, data)">查看列表</a>
+                                <div ng-show="item.showList && showFlag" class="associatedModal">
+                                    <div>已指定产品总数:{{item.productList.length}}</div>
+                                    <ul>
+                                        <li ng-repeat="subItem in item.productList" ng-if="item.applyProductFlag == 1">{{subItem.productName}}</li>
+                                        <li ng-if="item.applyProductFlag == 2">不限产品</li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="col-lg-12" ng-if="!data || (data && data.length == 0)">
+                    <table class="width-100 table table-striped row-border table-hover table-bordered">
+                        <tr>
+                            <td class="text-center">暂无关联红包</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+<script type="text/javascript">
+    $(function(){
+        ComponentsPickers.init();
+        $(".form_datetimepicker").datepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            // minuteStep: 1,
+            language:"zh-CN"
+        })
+    });
+</script>

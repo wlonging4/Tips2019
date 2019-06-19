@@ -1,0 +1,72 @@
+<div ng-controller="xinghuodataHourController as showCase">
+    <h3 class="page-title">
+        小时统计
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">小时统计</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-success btn-sm" ng-click="action.changeView()">切换视图</a><a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>数据日期</label>
+                            <div class="input-group date-picker input-daterange" id="js_data_hour_date_notnull" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="querydate" ng-model="form.querydate">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-if="isShow">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading fn-ms">
+                    当天交易统计
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="flot-chart" style="height:300px;">
+                        <div class="flot-chart-content" id="multi-chart4" style="width: 100%;height: 300px;" data-ng-init="action.load()"></div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="panel panel-info" ng-if="!isShow">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">小时统计</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_hour_export_form" method="post" enctype="multipart/form">
+                        <a id="js_data_hour_export" action="/xinghuodata/exportHourExcel.shtml" href="javascript:;" class="btn btn-success btn-sm">导出小时统计</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

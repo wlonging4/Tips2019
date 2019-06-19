@@ -1,0 +1,119 @@
+<div ng-controller="xinghuodataStoreregdetailController as showCase">
+    <h3 class="page-title">
+        用户注册明细
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">搜索表单</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>注册日期：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_starttime" ng-model="form.p_starttime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_endtime" ng-model="form.p_endtime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>用户ID：</label>
+                            <input name="p_userid" ng-model="form.p_userid" class="form-control" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>真实姓名：</label>
+                            <input name="p_realname" ng-model="form.p_realname" class="form-control" placeholder="请输入真实姓名">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>实名认证日期：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_start_docvaltime" ng-model="form.p_start_docvaltime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_end_docvaltime" ng-model="form.p_end_docvaltime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财经理ID：</label>
+                            <input name="p_storeuserid" ng-model="form.p_storeuserid" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否结算：</label>
+                            <select name="p_msstatus" ng-model="form.p_msstatus" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option value="0">未结算</option>
+                                <option value="1">结算中</option>
+                                <option value="2">已结算</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>结算月份：</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="p_msyear" ng-model="form.p_msyear" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;" autocomplete="off">
+                                        <option value="">请选择</option>
+                                        <option value="2014">2014年</option>
+                                        <option value="2015">2015年</option>
+                                        <option value="2016">2016年</option>
+                                        <option value="2017">2017年</option>
+                                        <option value="2018">2018年</option>
+                                    </select>
+                                </div>
+                                <select name="p_msmonth" ng-model="form.p_msmonth" class="form-control" autocomplete="off">
+                                    <option value="">全年</option>
+                                    <option value="01">1月</option>
+                                    <option value="02">2月</option>
+                                    <option value="03">3月</option>
+                                    <option value="04">4月</option>
+                                    <option value="05">5月</option>
+                                    <option value="06">6月</option>
+                                    <option value="07">7月</option>
+                                    <option value="08">8月</option>
+                                    <option value="09">9月</option>
+                                    <option value="10">10月</option>
+                                    <option value="11">11月</option>
+                                    <option value="12">12月</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>是否实名认证：</label>
+                            <select name="p_isrealnamevalidate" ng-model="form.p_isrealnamevalidate" class="form-control" autocomplete="off">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.p_isrealnamevalidate" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-10 col-xs-10">
+                    <span class="panel-heading-title">用户注册明细：</span>
+                </div>
+                <div class="col-lg-2 col-xs-2 ui_right">
+                    <form id="js_data_user_register_btns_form" method="post" enctype="multipart/form-data">
+                        <a id="js_data_user_register_export_btn" action="/xinghuodata/exportUserInfoList.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="load();"></div>
+</div>

@@ -1,0 +1,119 @@
+<div ng-controller="serviceChargeController as showCase">
+    <h3 class="page-title">
+        服务费记录
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">服务费记录</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>渠道业务编号</label>
+                            <input class="form-control" name="appBussinessId" ng-model="form.appBussinessId" placeholder="请输入渠道业务编号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>原结算单系统任务号</label>
+                            <input class="form-control" name="appOrderId" ng-model="form.appOrderId" placeholder="请输入原结算单系统任务号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户ID</label>
+                            <input class="form-control" name="lenderId" ng-model="form.lenderId" placeholder="请输入用户ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户姓名</label>
+                            <input class="form-control" name="lenderName" ng-model="form.lenderName" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>证件类型&号码</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;" name="idCardType" ng-model="form.idCardType">
+                                        <option value="">请选择</option>
+                                        <option value="1">身份证</option>
+                                        <option value="6">台胞证</option>
+                                        <option value="7">普通护照</option>
+                                        <option value="9">港澳居民来往内地通行证</option>
+                                        <option value="101">学生证</option>
+                                        <option value="2">工作证</option>
+                                        <option value="3">军官证</option>
+                                        <option value="4">其他证书</option>
+                                        <option value="8">营业执照</option>
+                                    </select>
+                                </div>
+                                <input class="form-control" name="idCardNo" ng-model="form.idCardNo" placeholder="请输入证件号码">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>金额</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="limitAmount" ng-model="form.limitAmount" class="form-control js_validator_int" placeholder="请输入金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="upperAmount" ng-model="form.upperAmount" class="form-control js_validator_int" placeholder="请输入金额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>支付状态</label>
+                            <select class="form-control" name="settleState" ng-model="form.settleState">
+                                <option value="">请选择</option>
+                                <option value="1">未提交成功</option>
+                                <option value="2">订单不存在</option>
+                                <option value="3">订单重复</option>
+                                <option value="01">订单接收成功</option>
+                                <option value="02">交易成功</option>
+                                <option value="03">交易失败</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>费用类型</label>
+                            <select class="form-control" name="feeType" ng-model="form.feeType">
+                                <option value="">请选择</option>
+                                <option value="2">返现</option>
+                                <option value="3">体验金</option>
+                                <option value="4">渠道补偿客户</option>
+                                <option value="5">客户补偿渠道</option>
+                                <option value="6">退款(服务费入金)</option>
+                                <option value="101">其他(服务费出金)</option>
+                                <option value="102">其他(服务费入金)</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.col-lg-6 (nested) -->
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-3 col-xs-3">
+                    <span class="panel-heading-title">费用：<span class="ui_red">{{tableinfo}}</span>元</span>
+                </div>
+                <div class="col-lg-9 col-xs-9 ui_right">
+                    <a href="#/serviceCharge-create.html" class="btn btn-success btn-sm">新建</a>
+                    <a href="#/serviceCharge-query.html" class="btn btn-success btn-sm">服务费查询</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

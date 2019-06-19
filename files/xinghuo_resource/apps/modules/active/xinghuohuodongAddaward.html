@@ -1,0 +1,145 @@
+<div ng-controller="xinghuohuodongAddawardController">
+    <h3 class="page-title">
+        活动管理 -> 奖项设置
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">新建奖项</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">保存</a>
+                        <a href="javascript:history.back(-1);" class="btn btn-warning btn-sm">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="panel-body" id="js_add_or_edit_body">
+                    <form id="js_award_add_form" class="form-horizontal">
+                        <input type="hidden" name="activityid" value="{{activityid}}">
+                        <input type="hidden" name="awardid" value="{{awardid}}">
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">奖项名称<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-9">
+                                <input name="awardname" ng-model="form.awardname" value="" type="text" class="form-control" placeholder="奖项名称" data-original-title="" title="">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">业务系统：</label>
+                            <div class="col-sm-9">
+                                <select ng-model="form.bizSysRoute" name="bizSysRoute" id="js_biz_sys_route" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option value="{{item.key}}" ng-repeat="item in select.bizSysRoute" ng-selected="item.key == form.bizSysRoute">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">指定产品：</label>
+                            <div class="col-sm-2">
+                                <div class="radio-list">
+                                    <label class="radio-inline">
+                                        <input type="radio" ng-model="form.subproductid" name="subproductid" checked="" value="ALL">全部
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="col-sm-3 col-xs-3 radio-list form-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" id="js_productid_some" checked="" ng-model="form.subproductid" name="subproductid" value="SOME">指定
+                                    </label>
+                                </div>
+                                <div class="col-sm-9 col-xs-9">
+                                    <div id="multi_select" selectstatus="" style="position:relative;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">活动说明：</label>
+                            <div class="col-sm-9">
+                                <textarea ng-model="form.introducer" name="introducer" class="form-control" rows="3" data-original-title="" title=""></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">奖品类型：</label>
+                            <div class="col-sm-9">
+                                <select ng-model="form.awardtype" name="awardtype" class="form-control">
+                                    <option value="1" selected>红包</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">奖品：</label>
+                            <div class="col-sm-9">
+                                <select name="prizeid" ng-model="form.prizeid" class="form-control">
+                                    <option value="">请选择</option>
+                                    <option ng-repeat="item in select.prizeid" value="{{item.key}}" ng-selected="item.key == form.prizeid">{{item.value}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">发放奖品总数<em class="ui_red">*</em>：</label>
+                            <div class="col-sm-8">
+                                <input type="text" value="" ng-model="form.totalnumber" name="totalnumber" class="form-control" placeholder="发放奖品总数" data-original-title="" title="">
+                            </div>
+                            <label class="col-sm-1 control-label ui_right">(个)</label>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">获取次数：</label>
+                            <div class="col-sm-8">
+                                <input type="text" value="" name="ownedlimitednum" ng-model="form.ownedlimitednum" class="form-control" placeholder="获取次数">
+                            </div>
+                            <label class="col-sm-1 control-label ui_right">(次)</label>
+                        </div>
+
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">使用渠道：</label>
+                            <div class="col-sm-9">
+                                <div class="checkbox-list">
+                                    <label class="checkbox-inline" ng-repeat="item in select.activitychannel">
+                                        <input type="checkbox" name="usechannelch" value="{{item.key}}">{{item.value}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">适用范围：</label>
+                            <div class="col-sm-9">
+                                <div class="radio-list">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="usescope" ng-model="form.usescope" checked="" value="ALL">不限
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="usescope" ng-model="form.usescope" value="FROMSTORE">仅限在红包发放的理财经理店中使用
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-10">
+                            <label class="col-sm-3 control-label ui_right">使用金额：</label>
+                            <div class="col-sm-2">
+                                <div class="radio-list">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="fullcutamountck" ng-model="form.fullcutamountck" ng-checked="form.fullcutamountck == 'ALL'" value="ALL">不限
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="col-md-3 col-sm-3 col-xs-3 radio-list form-group text-right">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="fullcutamountck" ng-model="form.fullcutamountck" ng-checked="form.fullcutamountck == ''" value="">满
+                                    </label>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9" style="padding-top:6px"><input type="text" value="" name="fullcutamount" ng-model="form.fullcutamount" placeholder="满减金额">元可用</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-ng-init="action.load()"></div>
+</div>

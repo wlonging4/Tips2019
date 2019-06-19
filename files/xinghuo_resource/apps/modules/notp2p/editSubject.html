@@ -1,0 +1,201 @@
+<div ng-controller="editSubject as showCase">
+    <h3 class="page-title">
+        {{pageTitle}}
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">{{pageTitle}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <form class="form-horizontal" id="subjectAddFM" method="post" action="/xinghuogoldrainbow/saveSubject.shtml">
+                    <input type="hidden" name="id" value="{{form.id}}" ng-if="!flag">
+                    <div class="form-group col-lg-12" ng-if="flag">
+                        <label class="col-sm-2 control-label">项目编码：</label>
+                        <div class="col-sm-9">
+                            <input name="code" type="text" ng-model="form.code" class="form-control" placeholder="请输入项目编码">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">项目名称：</label>
+                        <div class="col-sm-9">
+                            <input name="name" type="text" ng-model="form.name" class="form-control" placeholder="请输入项目名称">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">项目类别：</label>
+                        <div class="col-sm-9">
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="type" ng-model="form.type" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.gold_rainbow_type" ng-selected="form.type == item.key">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="subtype" ng-model="form.subtype" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.subtype" ng-selected="form.subtype == item.key">{{item.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">开放日期：</label>
+                        <div class="col-sm-4">
+                            <div class="input-group date form_exact_datetime">
+                                <input type="text" size="16" name="p_startopentime" ng-model="form.p_startopentime" readonly class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">项目标签：</label>
+                        <div class="col-sm-9">
+                            <div class="checkbox-list pull-left" ng-repeat="item in labels">
+                                <label>
+                                    <input type="checkbox" name="labelsch" ng-checked="check(item.key)" value="{{item.key}}">{{item.value}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">起投金额：</label>
+                        <div class="col-sm-3">
+                            <div style="width: 60%;" class="pull-left"><input name="minlimit" ng-model="form.minlimit" placeholder="金额"  type="text" class="form-control"></div><div style="width: 36%;" class="pull-right"><input name="minlimitunit" ng-model="form.minlimitunit" placeholder="单位" value="万元" type="text" class="form-control"></div>
+                        </div>
+                        <label class="control-label col-sm-2 col-sm-offset-1">续存期限:</label>
+                        <div class="col-sm-3">
+                            <input name="renewperiod" type="text" ng-model="form.renewperiod" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">募集规模：</label>
+                        <div class="col-sm-3">
+                            <input name="collectscope" type="text" ng-model="form.collectscope" class="form-control">
+                        </div>
+                        <label class="control-label col-sm-2 col-sm-offset-1">募集期限:</label>
+                        <div class="col-sm-3">
+                            <input name="collectperiod" type="text" ng-model="form.collectperiod" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">认购费：</label>
+                        <div class="col-sm-3">
+                            <input name="emptioncost" type="text" ng-model="form.emptioncost" class="form-control">
+                        </div>
+                        <label class="control-label col-sm-2 col-sm-offset-1">管理费:</label>
+                        <div class="col-sm-3">
+                            <input name="managementcost" type="text" ng-model="form.managementcost" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">基金类型：</label>
+                        <div class="col-sm-3">
+                            <input name="capitaltype" type="text" ng-model="form.capitaltype" class="form-control">
+                        </div>
+                        <label class="control-label col-sm-2 col-sm-offset-1">收益:</label>
+                        <div class="col-sm-3">
+                            <input name="profit" type="text" ng-model="form.profit" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">项目亮点：</label>
+                        <div class="col-sm-9">
+                            <textarea name="highlights" type="text" ng-model="form.highlights" class="form-control" cols="30" rows="4" placeholder="请输入项目亮点"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">收益分配：</label>
+                        <div class="col-sm-9">
+                            <textarea name="profitassign" type="text" ng-model="form.profitassign" class="form-control" cols="30" rows="4" placeholder="请输入收益分配"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">基金管理人：</label>
+                        <div class="col-sm-9">
+                            <input name="trustee" type="text" ng-model="form.trustee" class="form-control" placeholder="请输入基金管理人">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">资金账户：</label>
+                        <div class="col-sm-3">
+                            <input name="assetsaccount" type="text" ng-model="form.assetsaccount" class="form-control">
+                        </div>
+                        <label class="control-label col-sm-2 col-sm-offset-1">风险等级:</label>
+                        <div class="col-sm-3">
+                            <input name="risklevel" type="text" ng-model="form.risklevel" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">投资方向：</label>
+                        <div class="col-sm-9">
+                            <input name="investscope" type="text" ng-model="form.investscope" class="form-control" placeholder="请输入投资方向">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">上传附件：</label>
+                        <div class="col-sm-9">
+                            <input name="uploadImg" type="file" style="height: 34px;padding-top:5px;" accept="image/jpeg,image/jpg,image/x-png,image/x-ms-bmp">
+                            <a href="/xinghuogoldrainbow/download.shtml?name={{img.name}}" target="_blank" ng-if="!!img.name">{{img.name}}</a>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">顾问费率：</label>
+                        <div class="col-sm-9">
+                            <input name="commissionassign" type="text" ng-model="form.commissionassign" class="form-control"  placeholder="请输入顾问费率">
+                            <p ng-bind="tips" class="text-right text-red">此类产品顾问费率需输入数字及%符号</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">基金管理人介绍：</label>
+                        <div class="col-sm-9">
+                            <textarea name="introduction" type="text" ng-model="form.introduction" class="form-control" cols="30" rows="4" placeholder="请输入基金管理人介绍"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">其他备注：</label>
+                        <div class="col-sm-9">
+                            <textarea name="remark" type="text" ng-model="form.remark" class="form-control" cols="30" rows="4" placeholder="请输入其他备注"></textarea>
+                            <p class="text-right text-red">最多不超过1000字节</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <div class="col-sm-9 col-sm-offset-2 text-right">
+                            <input type="hidden" name="submitType" value="0">
+                            <input type="hidden" name="id">
+                            <a href="javascript:;" id="saveBtn" class="btn btn-warning">保存</a>
+                            <a href="javascript:;" id="publishBtn" class="btn btn-success">发布</a>
+                            <a href="#xinghuogoldrainbow-subject.html" id="backBtn" class="btn btn-primary">返回</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:mm:ss",
+            autoclose: true,
+            todayBtn: true,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

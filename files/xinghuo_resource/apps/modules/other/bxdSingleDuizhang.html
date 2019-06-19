@@ -1,0 +1,21 @@
+<div ng-controller="bxdSingleDuizhang as showCase">
+    <h3 class="page-title">
+        变现贷——对账单条查询结果
+    </h3>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6 ui_right pull-right">
+                    <form id="js_trade_form" method="post">
+                        <a id="js_trade_export" action="/bxdduizhang/exportSingleDeal.shtml" href="javascript:;" class="btn btn-warning btn-sm">确认选中交易单</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>

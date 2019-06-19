@@ -1,0 +1,238 @@
+<div ng-controller="redEnvelopesCreate as showCase">
+    <h3 class="page-title">
+        红包管理
+    </h3>
+    <div class="row js_add_hide">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title" id="pageTitle">新建红包</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">提交</a><a href="javascript:history.back(-1);" class="btn btn-warning btn-sm">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" id="form-cot">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="form-horizontal" id="redCreate">
+                            <input type="hidden" value="" name="prizeid" ng-model="form.prizeid">
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">红包名称<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="redName" ng-disabled="form.statusAct" ng-model="form.redName" value="" type="text"
+                                           class="form-control  ng-pristine ng-untouched ng-valid"
+                                           placeholder="请输入红包名称">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">单个红包金额<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="redAmount" ng-disabled="form.statusAct" ng-model="form.redAmount" required value="" type="text" class="form-control js_validator_int" id="redAmount" maxlength="9" placeholder="请输入单个红包金额">
+                                </div>
+                                <div class="col-lg-1 text-left small" style="padding-top: 15px">(元)</div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-lg-3 control-label ui_right">红包总数量<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-6">
+                                    <input name="redCount" ng-model="form.redCount" ng-change="" value="" required type="text" class="form-control js_validator_int"
+                                           id="redCount" maxlength="9" placeholder="请输入红包总数量">
+                                </div>
+                                <div class="col-lg-1 small" style="padding-top: 15px">(个)</div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <div class="col-lg-9 col-lg-offset-3">
+                                    <div  class="small" id="redSum" style="margin-top: -5px;">红包总金额: <span ng-init='' >{{(form.redAmount*form.redCount||0)|currency:''}}</span>(元)&nbsp;&nbsp;大写：<input
+                                            ng-init='' disabled  style='width:300px;border:none;outline:none;background:#fff' class="inline-block" ng-model="upperMoney">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                    <label class="col-lg-3 control-label ui_right">红包有效期<em class="ui_red">*</em>：</label>
+                                    <div class="col-lg-9 row">
+                                        <div class="radio-list">
+                                            <div class="col-lg-8 small">
+                                                <label class="radio-inline">
+                                                    <input type="radio" ng-model="form.effectiveType" name="effectiveType"  value="1"
+                                                           ng-disabled="form.statusAct"  class="timeFlagRadio1"
+                                                           checked="checked"> 区间1 <span
+                                                        class="small">(适用于时效性常规活动)
+                                                </span>
+                                                </label>
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <div class="col-sm-4">
+                                                    <div class="input-group date form_exact_datetime">
+                                                        <input type="text" size="16" name="effectiveStartTime" ng-model="form.effectiveStartTime" readonly class="form-control"
+                                                               ng-disabled="form.statusAct">
+                                                        <span class="input-group-btn" data-disable="{{form.statusAct}}">
+                                    <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                </span> </div> </div>
+                                                <div class="col-sm-1 ui_center" style="text-align:center">
+                                                    <label class=" control-label">至</label>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group date form_exact_datetime">
+                                                        <input type="text" size="16" name="effectiveEndTime" ng-model="form.effectiveEndTime" readonly class="form-control"  ng-disabled="form.statusAct">
+                                                        <span class="input-group-btn" data-disable="{{form.statusAct}}">
+                                    <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="radio-list">
+                                            <div class="col-lg-8 small">
+                                                <label class="radio-inline">
+                                                    <input type="radio"  ng-model="form.effectiveType" name="effectiveType"  value="2"
+                                                           ng-disabled="form.statusAct" class="timeFlagRadio2"> 区间2 <span
+                                                        class="small">(适用于系统自动触发红包)</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-12" style="margin-left:15px;">
+                                                <div class="form-group row">
+                                                    进入出借人账号后
+                                                    <label>
+                                                        <input ng-model="form.effectiveDays" type="text" style="width:140px" class="form-control js_validator_int"  ng-disabled="form.statusAct"
+                                                               placeholder="请输入1~100整数"
+                                                               maxlength="3">
+                                                    </label>
+                                                    (天)内有效
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div >
+                                </div>
+                                    </div>
+                            </div>
+
+                            <div class="form-group lg-col-12">
+
+                                <label class="col-lg-3 control-label ui_right">指定产品<em class="ui_red">*</em>：</label>
+                                <div class="col-lg-9">
+                                    <div class="radio-list">
+                                        <label class="radio-inline">
+                                            <input type="radio" ng-disabled="form.statusAct" class="proFlagRadio1"  name="applyProductFlag" ng-model="form.applyProductFlag"
+                                                   value="2">不限产品
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" ng-disabled="form.statusAct" class="proFlagRadio2"  name="applyProductFlag" ng-model="form.applyProductFlag"
+                                                   value="1">选择产品
+                                        </label>
+                                    </div>
+                                    <div class="col-lg-8" ng-show="(form.applyProductFlag==1)" style="margin-left: -20px">
+                                        <!--angular版多选框带搜索-->
+                                        <div id="multi_select" style="position:relative;" class="">
+                                            <input id="multiIpt"type="text" name="productListName" readonly="" value="" class="form-control">
+                                            <input id="multiIpthId" type="hidden" name="productListId" value="">
+                                            <input id="multiIpthCode" type="hidden" name="productListCode" value="">
+                                            <div class="panel panel-default" id="multiBox" style="position: absolute; z-index: 3; width: 100%;">
+                                                    <div class="panel-heading clearfix" id="multiTop" style="padding:5px 0;">
+                                                        <div  style="text-align: center">
+                                                            <label class="" style="display: inline-block;width:80%;">
+                                                                <input type="search" class="form-control" id="multiSearch" style="height:28px">
+                                                            </label>
+                                                            <span class="input-group-addon" id="multiSearchBtn"
+                                                                  style="display:inline-block;width:15%;cursor:pointer;height:28px;margin:-4px 0 0 -8px;">
+                                                                <i class="fa fa-search" style="font-size:20px;line-height:15px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-lg-8 checkbox" id="" style="margin:0;padding: 0 7px;">
+                                                            <label id="multiAll">
+                                                            <div class="checker">
+                                                                <span>
+                                                                    <input type="checkbox" class="select_all">
+                                                                </span>
+                                                            </div>全选
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <a id="multiConfirm" class="btn btn-success btn-xs" style="width:100%">确定</a>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" id="multiContent" style="overflow-y: scroll; margin: 0px; height: 152px;">
+                                                    <ul style="padding: 0">
+                                                        <li ng-repeat="x in jsonDataOrigin1"  ng-show="x.show" class="checkbox checkListLi">
+                                                            <label class="multiLabel" style="width:100%;padding: 0 7px;">
+                                                                <div class="checker">
+                                                                    <span ng-class="{true:'checked',false:'' }[x.checked]">
+                                                                        <input class="multiSel_unit" type="checkbox" data-id={{x.productId}} data-code={{x.productCode}}
+                                                                               data-name={{x.productName}} data-status={{x.checked}}
+                                                                               ng-disabled="{true:'true',false:'' }[x.onlyRead]">
+                                                                    </span>
+                                                                </div>
+                                                        {{x.productName}}</label>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12" style="margin-bottom:45px;">
+                                <label class="col-sm-3 control-label ui_right">使用条件<em class="ui_red">*</em>：</label>
+                                <div class="col-sm-9">
+                                    <div class="radio-list">
+                                        <label class="radio-inline" style="position:relative">
+                                            <input type="radio"  ng-disabled="form.statusAct" checked="checked" name="fullCutOrNot" ng-model="fullCutOrNot" class="cutFlagRadio1" value="1">满
+                                            <input style="width: 130px;display: inline;" type="text" name="fullCutAmount" ng-model="form.fullCutAmount" maxlength="9" ng-disabled="form.statusAct" class="js_validator_int form-control"  placeholder="请输入正整数"  checked="checked">(元)可用 <span ng-model="upperMoney2" class="small" style="display:inline-block;position:absolute;left:50px;top: 45px;">大写:{{upperMoney2}}</span>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="fullCutOrNot" ng-model="fullCutOrNot"  ng-disabled="form.statusAct" class="cutFlagRadio2" value="2">不限
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-12">
+                                <label class="col-sm-3 control-label ui_right">红包备注：</label>
+                                <div class="col-sm-6">
+                                    <textarea name="remark" maxlength="100" ng-model="form.remark" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="confirmNoLimit.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">×</button>
+        <h4 class="modal-title fn-ms">确定使用条件不限？</h4>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary fn-ms"  style="width:25%;" ng-click="close()" >取消</button>
+        <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmChoice" ng-click="ok()" >确认</button>
+    </div>
+</script>
+<script>
+    $(function(){
+        setTimeout(function(){
+            Metronic.initComponents();
+            ComponentsPickers.init();
+        },300);
+
+        ComponentsPickers.init();
+        $(".form_exact_datetime").datetimepicker({
+            isRTL: Metronic.isRTL(),
+            format: "yyyy-mm-dd hh:ii:ss",
+            autoclose: true,
+            todayBtn: false,
+            pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
+            minuteStep: 1,
+            language:"zh-CN"
+        });
+    });
+</script>

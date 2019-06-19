@@ -1,0 +1,187 @@
+<div ng-controller="caiyiTradeControllerr as showCase">
+    <h3 class="page-title">
+        交易管理-宜信卓越财富
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">交易管理-宜信卓越财富</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>交易状态</label>
+                            <div id="multi_select" selectstatus="" style="position:relative;"></div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>交易单号</label>
+                            <input name="no" ng-model="form.no" class="form-control" placeholder="请输入交易单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>出借人ID</label>
+                            <input name="lenderid" ng-model="form.lenderid" class="form-control" value="" placeholder="请输入出借人ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理ID</label>
+                            <input name="userid" value="" ng-model="form.userid" class="form-control" placeholder="请输入理财经理ID">
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label>下单时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_startcreatetime" ng-model="form.p_startcreatetime">
+								<span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_endcreatetime" ng-model="form.p_endcreatetime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>交易金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="startamount" ng-model="form.startamount" class="form-control js_validator_int" placeholder="请输入交易金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="amount" ng-model="form.amount" class="form-control js_validator_int" placeholder="请输入交易金额" maxlength="10">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>店铺ID</label>
+                            <input name="storecode" ng-model="form.storecode" value="" class="form-control" placeholder="请输入店铺ID">
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label>产品到期日</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_startenddate" ng-model="form.p_startenddate">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_endenddate" ng-model="form.p_endenddate">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>付款方式</label>
+                            <select name="paytype" ng-model="form.paytype" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.paytype">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>退出状态</label>
+                            <select name="endstatus" ng-model="form.endstatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.end_status">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>申请赎回时间：</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="p_startpaytime" ng-model="form.p_startpaytime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="p_endpaytime" ng-model="form.p_endpaytime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>赎回单状态：</label>
+                            <select name="redeemStatus" ng-model="form.redeemStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.redeem_status">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>认购渠道：</label>
+                            <select name="saleTerminal" ng-model="form.saleTerminal" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.sale_terminal">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>选择产品：</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="category" ng-model="form.category" id="js_category" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option ng-repeat="item in select.proFirstList" value="{{item.key}}" source="{{item.value2}}">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="series" ng-model="form.series" ng-change="action.chooseThirdPro()" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.series">{{item.value}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-group-addon" style="padding:0;width:auto;">
+                                    <select name="productNameCode" ng-model="form.productNameCode" class="form-control" style="height:32px;padding: 0px 2px; min-width:70px;">
+                                        <option value="">请选择</option>
+                                        <option value="{{item.key}}" ng-repeat="item in select.productNameCode">{{item.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否红包支付：</label>
+                            <select name="ispaperpay" ng-model="form.ispaperpay" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理部门</label>
+                            <input name="department" value="" class="form-control" placeholder="请输入理财经理部门">
+                        </div>
+                        <input type="hidden" name="bizSysRoute" value="1"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">交易总额：<span class="ui_red" ng-bind="tableinfo.totalTradeAmount"></span> 佣金总额：<span class="ui_red" ng-bind="tableinfo.totalFeeAmount"></span></span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form id="js_trade_form" method="post">
+                        <a id="js_trade_syn_status" action="/xinghuodeal/synOrderStatus.shtml" href="javascript:;" class="btn btn-danger btn-sm">交易单状态同步</a>
+                        <a id="js_trade_export" action="/xinghuodeal/exportDeal.shtml" href="javascript:;" class="btn btn-success btn-sm">导出交易</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $('#multi_select').multiSel({
+            'data': [
+                {"text": "待付款", "value": "0", "default": false},
+                {"text": "已付款", "value": "1", "default": false},
+                {"text": "认购中", "value": "2", "default": false},
+                {"text": "认购成功", "value": "3", "default": false},
+                {"text": "赎回中", "value": "4", "default": false},
+                {"text": "赎回成功", "value": "5", "default": false},
+                {"text": "交易结束", "value": "6", "default": false},
+                {"text": "待取消", "value": "9", "default": false}
+            ]
+        });
+    })
+</script>

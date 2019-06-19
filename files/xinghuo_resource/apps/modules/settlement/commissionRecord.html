@@ -1,0 +1,116 @@
+<div ng-controller="commissionRecord as showCase">
+    <h3 class="page-title">
+        佣金修改记录
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">佣金修改记录</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                   <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-4">
+                            <label>理财师ID</label>
+                            <input name="userId" ng-model="form.userId" class="form-control" placeholder="请输入理财师ID">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>员工编号</label>
+                            <input name="yixinno" ng-model="form.yixinno" class="form-control" placeholder="请输入员工编号">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>理财师姓名</label>
+                            <input name="userame" ng-model="form.userame" class="form-control" placeholder="请输入理财师姓名">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>修改人</label>
+                            <input name="modifyName" ng-model="form.modifyName" class="form-control" placeholder="请输入修改人">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>修改时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="startUpdataTime" ng-model="form.startUpdataTime">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="endUpdataTime" ng-model="form.endUpdataTime">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>修改金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="number" name="startAmount" ng-model="form.startAmount" class="form-control" placeholder="请输入金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="number" name="endAmount" ng-model="form.endAmount" class="form-control" placeholder="请输入金额" maxlength="10">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label>修改佣金月份</label>
+                            <div class="input-group col-lg-12 col-xs-12">
+                                <div class="input-group input-daterange dateChangeMonth" data-date-format="yyyymm">
+                                    <input type="text" class="form-control" name="startYm" ng-model="form.startYm">
+                                    <span class="input-group-addon">to </span>
+                                    <input type="text" class="form-control" name="endYm" ng-model="form.endYm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4">
+                            <label>是否为宜信员工</label>
+                            <select name="isYiXinStaff" ng-model="form.isYiXinStaff" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a id="js_record_export" action="/xinghuosettle/exportUserCommissionSettle.shtml" href="javascript:;" class="btn btn-success btn-sm">导出EXCEL</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+        $('.dateChangeMonth').datepicker( {
+            autoclose: true,
+            todayBtn: true,
+//            startView: 'year',
+//            minView:'year',
+//            maxView:'decade',
+            startView: 2,
+            maxViewMode: 1,
+            minViewMode:1,
+            language:"zh-CN",
+            dateFmt:'yyyymm'
+        });
+    })
+</script>

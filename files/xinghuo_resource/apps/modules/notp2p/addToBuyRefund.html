@@ -1,0 +1,151 @@
+<div ng-controller="addToBuyRefund">
+    <h3 class="page-title">
+        认购退款管理-新增退款申请
+    </h3>
+    <form role="form" id="js_form" name="formName">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">交易信息</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save($event)">提交</a>
+                    <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.cancel()">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-12" style="padding-left: 0;">
+                        <div class="form-group col-lg-6">
+                            <label>交易订单号<em class="text-danger">*</em></label>
+                            <input type="text" name="applyNo" ng-model="applyNo" class="form-control" placeholder="请输入交易订单号">
+                            <input name="applyId" type="hidden" value="{{form.applyNo}}">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label style="padding-bottom:40px;"></label>
+                            <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.confirm($event)">确定</a>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>协议编号<em class="text-danger">*</em></label>
+                        <input type="text" name="contractNo" ng-model="form.contractNo" class="form-control" placeholder="请输入协议编号" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>项目名称<em class="text-danger">*</em></label>
+                        <input type="text" name="sasameName" ng-model="form.sasameName" class="form-control" placeholder="请输入项目名称" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>用户姓名<em class="text-danger">*</em></label>
+                        <input type="text" name="userName" ng-model="form.userName" class="form-control" placeholder="请输入用户姓名" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>用户手机号<em class="text-danger">*</em></label>
+                        <input type="text" name="userPhone" ng-model="form.userPhone" class="form-control" placeholder="请输入用户手机号" readonly>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label>募集账户<em class="text-danger">*</em></label>
+                        <input type="text" name="sesameAccountDetail" ng-model="form.sesameAccountDetail" class="form-control" placeholder="请输入募集账户" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>理财经理姓名<em class="text-danger">*</em></label>
+                        <input type="text" name="managerName" ng-model="form.managerName" class="form-control" placeholder="请输入理财经理姓名" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>理财经理手机号<em class="text-danger">*</em></label>
+                        <input type="text" name="managerPhone" ng-model="form.managerPhone" class="form-control" placeholder="请输入理财经理手机号" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>到账金额<em class="text-danger">*</em></label>
+                        <input type="text" name="payAmt" ng-model="form.payAmt" class="form-control" placeholder="请输入到账金额" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>到账时间<em class="text-danger">*</em></label>
+                        <input type="text" name="transTime" ng-model="form.transTime" class="form-control" placeholder="请输入到账时间" readonly>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label>订单状态<em class="text-danger">*</em></label>
+                        <input type="text" name="tradeStatue" ng-model="form.tradeStatue" class="form-control" placeholder="请输入订单状态" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-heading">退款信息</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="hidden" name="subscribeId"  value="{{form.subscribeId}}">
+                    <div class="form-group col-lg-9">
+                        <label>退款类型<em class="text-danger">*</em></label>
+                        <label class="radio-inline disabled">
+                            <input id="radioBox1" type="radio" name="refundType" value="1" disabled>认购费优惠
+                        </label>
+                        <label class="radio-inline">
+                            <input id="radioBox2" type="radio" name="refundType" value="2" checked="checked">合同退款
+                        </label>
+                        <label class="radio-inline">
+                            <input id="radioBox3" type="radio" name="refundType" value="3" >超额退款
+                        </label>
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>打款银行卡信息<em class="text-danger">*</em></label>
+                        <input name="userAccountDetail" ng-model="form.userAccountDetail" class="form-control" type="text" placeholder="请输入打款银行卡信息" readonly/>
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>申请日期<em class="text-danger">*</em></label>
+                        <!--input-medium 控制width data-date-start-date="+0d" 今天之后-->
+                        <div class="input-group date date-picker" data-date-format="yyyy-mm-dd" >
+                            <input name="applyTime" ng-model="form.applyTime" type="text" class="form-control" readonly>
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-9" style="text-align: right; color: #999;">
+                        注：以退款申请书中客户签署日期为准
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>退款方式<em class="text-danger">*</em></label>
+                        <input id="refundWay" name="refundWay" class="form-control" type="text" placeholder="请输入退款方式" readonly/>
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>退款原因 <em class="text-danger">*</em></label>
+                        <select id="refund-select" class="form-control" name="refundReason" ng-model="form.refundReason"></select>
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>退款金额<em class="text-danger">*</em></label>
+                        <div class="input-group">
+                            <input id="money" data-pay="{{form.payAmt}}" data-money="{{form.balanceAmt}}" name="payAmt" ng-model="form.payAmt" type="text" class="form-control" placeholder="请输入退款金额" readonly>
+                            <span class="input-group-addon">{{form.currency==0?"人民币":"美元"}}</span>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12" style="padding: 0">
+                        <div class="form-group col-lg-9">
+                            <label>退款说明</label>
+                            <textarea rows="4" maxlength="200" name="description" ng-model="form.description" class="form-control"></textarea>
+                        </div>
+                        <div class="col-lg-3" style="line-height: 34px; padding-left: 0;padding-top: 15px;">{{form.description.length || 0}}/200</div>
+                    </div>
+
+                    <div class="form-group col-lg-9">
+                        <label>退款申请书<em class="text-danger">*</em></label>
+                        <input name="refundApplyFile" ng-model="form.refundApplyFile" type="file"/>
+                    </div>
+                    <div class="form-group col-lg-9">
+                        <label>其他</label>
+                        <input name="otherFile" ng-model="form.otherFile" type="file"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

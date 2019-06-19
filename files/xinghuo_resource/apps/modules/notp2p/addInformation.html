@@ -1,0 +1,94 @@
+<div ng-controller="addInformation">
+    <style>
+        .control-label span{color: red;}
+    </style>
+    <h3 class="page-title">
+        项目资料管理-新增资料
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">项目资料管理-新增资料</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="save($event)">保存</a><a ng-click="cancel()" class="btn btn-warning btn-sm">取消</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <form class="form-horizontal" name="materialForm" id="js_form">
+                    <input type="hidden" name="productId" value="{{form.productId}}">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">项目编码 <span>*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="sesameCode" ng-model="form.sesameCode" type="text" class="form-control" placeholder="请输入项目编码" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">项目名称 <span>*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="sesameName" ng-model="form.sesameName" type="text" class="form-control" placeholder="请输入项目名称" readonly>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">文件名称 <span>*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="materialName" ng-model="form.materialName" type="text" class="form-control" placeholder="请输入文件名称">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">文件类型 <span>*</span>：</label>
+                        <div class="col-sm-9">
+                            <select name="materialType" ng-model="form.materialType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.fileType" ng-selected="item.key == form.materialType">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">排序 <span>*</span>：</label>
+                        <div class="col-sm-9">
+                            <input name="materialSort" ng-model="form.materialSort" type="text" class="form-control" placeholder="序号小的显示在前" maxlength="5">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group col-lg-12" >
+                        <label class="col-sm-2 control-label">使用外部URL：</label>
+                        <div class="col-sm-1">
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="useUrl" name="useUrl"  ng-model="form.useUrl" ng-click="showSummernote(form.materialContent);" ng-checked="form.useUrl">是
+                            </label>
+                        </div>
+                        <div class="col-sm-8" ng-if="form.useUrl">
+                            <input type="text" class="form-control" name="materialUrl" ng-model="form.materialUrl" placeholder="请输入外部URL(确认输入地址带有http://或https://)">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-2 control-label">内容：</label>
+                        <div class="col-sm-9">
+                            <div id="summernote" name="materialContent"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="materialContent" ng-model="form.materialContent">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+    <!--$(function(){-->
+        <!--ComponentsPickers.init();-->
+    <!--});-->
+<!--</script>-->

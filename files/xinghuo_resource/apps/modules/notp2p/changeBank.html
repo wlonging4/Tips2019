@@ -1,0 +1,354 @@
+<div ng-controller="changeBank as showCase">
+    <h3 class="page-title">
+        银行卡变更管理
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">银行卡变更管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <div class="form-group col-lg-3">
+                            <label>变更申请单号</label>
+                            <input name="changeApplyNo" ng-model="form.changeApplyNo" class="form-control" placeholder="请输入变更申请单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>用户姓名</label>
+                            <input name="userName" ng-model="form.userName" class="form-control" placeholder="请输入用户姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>理财经理姓名</label>
+                            <input name="financialUserName" ng-model="form.financialUserName" class="form-control" placeholder="请输入理财经理姓名">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>交易订单号</label>
+                            <input name="tradeApplyNo" ng-model="form.tradeApplyNo" class="form-control" placeholder="请输入交易订单号">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>申请时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="applyTimeStart" ng-model="form.applyTimeStart">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="applyTimeEnd" ng-model="form.applyTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>申请状态</label>
+                            <select name="applyStatus" ng-model="form.applyStatus" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.applyStatus">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">搜索结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a href="#/sesame-newChangeBank.html"  class="btn btn-primary btn-sm">新增变更申请</a>
+                    <a href="javascript:void(0)" action="/sesameCardChange/exportSesameTrade.shtml" id="export" class="btn btn-success btn-sm">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="changeInfoModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">银行卡变更详情</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-6 form-group">
+                    <strong>变更申请单号：{{info.changeApplyNo}}</strong>
+                </div>
+                <div class="col-lg-6 form-group">
+                    <strong>申请状态：{{info.applyStatusStr}}</strong>
+                </div>
+                <div class="col-lg-12">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr class="success">
+                            <td colspan="2">详情</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 50%">用户姓名：{{info.userName}}</td>
+                            <td>ECIFID：{{info.ecifid}}</td>
+                        </tr>
+                        <tr>
+                            <td>协议编号：{{info.contractno}}</td>
+                            <td>交易订单号：{{info.tradeApplyNo}}</td>
+                        </tr>
+                        <tr>
+                            <td>项目名称：{{info.productName}}</td>
+                            <td>理财经理姓名：{{info.financialUserName}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">变更前打款银行卡：{{info.originCardMsg}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">变更后打款银行卡：{{info.cardMsg}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">变更原因：{{info.changeApplyReason}}</td>
+                        </tr>
+                        <tr>
+                            <td>申请时间：{{info.applyTime}}</td>
+                            <td>申请提交时间：{{info.createTime}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">提交人：{{info.createUserName}}</td>
+                        </tr>
+                        <tr>
+                            <td>用户证件：<a href="{{info.userCertificates}}" ng-if="info.userCertificates" target="_blank">用户证件</a></td>
+                            <td>变更协议：<a href="{{info.changeProtocol}}" ng-if="info.changeProtocol" target="_blank">变更协议</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">银行卡复印件或开户行证明：<a href="{{info.bankCardCertify}}" ng-if="info.bankCardCertify" target="_blank">银行卡复印件或开户行证明</a></td>
+                        </tr>
+                        <tr class="success">
+                            <td colspan="2">芝麻审核信息</td>
+                        </tr>
+                        <tr>
+                            <td>审核时间：{{info.auditTime}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">审核意见：{{info.auditOption}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">审核拒绝原因：{{info.auditRefuseReason}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- 交易订单号 详情模板 -->
+    <script type="text/ng-template" id="infoDetailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">订单详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td>交易订单号：{{info.applyid}}</td>
+                        <td>用户手机号：{{info.userPhone}} </td>
+                    </tr>
+                    <tr>
+                        <td>用户ID：{{info.userId}}</td>
+                        <td>用户姓名：{{info.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td>项目编号：{{info.productCode}}</td>
+                        <td>项目名称：{{info.productName}}</td>
+                    </tr>
+                    <tr>
+                        <td>项目类型：{{info.productTypeDesc}}</td>
+                        <td>续存期限：{{info.term}}</td>
+                    </tr>
+                    <tr>
+                        <td>预期年化收益率：{{info.productRate}}</td>
+                        <td>募集状态：{{info.sesameStatusDesc}}</td>
+                    </tr>
+                    <tr>
+                        <td>订单状态：{{info.stateDesc}}</td>
+                        <td>理财经理ID：{{info.financialUserId}}</td>
+                    </tr>
+                    <tr>
+                        <td>理财经理姓名：{{info.financialUserName}}</td>
+                        <td>理财经理手机号：{{info.financialUserPhone}}</td>
+                    </tr>
+                    <tr ng-if="info.selfSupport != 2">
+                        <td>预约时间：{{info.applyTimeFormat}}</td>
+                        <td>受理时间：{{info.disposeTimeFormat}}</td>
+                    </tr>
+                    <tr>
+                        <td ng-if="info.selfSupport != 2">确认时间：{{info.confirmTimeFormat}}</td>
+                        <td>取消时间：{{info.cancelTimeFormat}}</td>
+                        <td ng-if="info.selfSupport == 2">是否自营：是</td>
+
+                    </tr>
+                    <tr>
+                        <td >取消原因：<span ng-bind-html="info.cancelTypeDesc"></span></td>
+                        <td ng-if="info.selfSupport != 2">是否自营：否</td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">投资及合同信息</td>
+                    </tr>
+                    <tr>
+                        <td>投资金额：{{info.contractAmt}}</td>
+                        <td>应打款金额：{{info.payAmt}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购金额：{{info.buyAmt}}</td>
+                        <td>净认购金额：{{info.netAmt}}</td>
+                    </tr>
+                    <tr>
+                        <td>币种： {{info.currencyName}}</td>
+                        <td>ECIFID：{{info.ecifid}}</td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">募集账户信息</td>
+                    </tr>
+                    <tr>
+                        <td>账号名称：{{info.accountname}}</td>
+                        <td>所属银行名称：{{info.accountBankname}}</td>
+                    </tr>
+                    <tr>
+                        <td>开户行：{{info.bankdetail}}</td>
+                        <td>账号：{{info.cardno}}</td>
+                    </tr>
+                    <tr>
+                        <td>协议编号：{{info.contractno}}</td>
+                        <td>签约时间：{{info.contractSignDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>协议签署方式：{{info.contractSignTypeDesc}}</td>
+                        <td>协议附件：<a href="javascript:;" ng-click="action.dealFile($event)">《查看协议》</a> </td>
+                    </tr>
+                    <tr>
+                        <td>认购成功时间：{{info.subscribeSuccessDate}}</td>
+                        <td>产品当前募集期：{{info.raiseNum}}</td>
+                    </tr>
+                    <tr>
+                        <td>基金期限id：{{info.fundTimeId}}</td>
+                        <td>认购费：{{info.subfee}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购费折扣方式：{{info.subfeeDistypeDesc}}</td>
+                        <td>认购费折扣率： {{info.subfeeDisrate}}</td>
+                    </tr>
+                    <tr>
+                        <td>认购费优惠金额：{{info.subfeeDisamt}}</td>
+                        <td>贴息金额：{{info.subSidyAmt}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">描述：<span ng-bind-html="info.remarks"></span></td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">支付信息</td>
+                    </tr>
+                    <tr>
+                        <td>付款方式：{{info.paytypeDesc}}</td>
+                        <td>到账时间：{{info.transtimeFormat}}</td>
+                    </tr>
+                    <tr>
+                        <td>到账金额：{{info.transAmt}}</td>
+                        <td>是否违规：{{info.violation}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">违规原因：{{info.violationReason}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">到账状态附言：{{info.stateRemark}}</td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">指定银行卡信息</td>
+                    </tr>
+                    <tr>
+                        <td>打款账户名：{{info.bankUserName}}</td>
+                        <td>打款银行账号：{{info.bankCardno}}</td>
+                    </tr>
+                    <tr>
+                        <td>打款银行名称：{{info.bankname}}</td>
+                        <td>打款开户行：{{info.branchname}}</td>
+                    </tr>
+                    <tr>
+                        <td>联行行号：{{info.unioncode}}</td>
+                        <td>打款开户行所在省市：{{info.provincename}}</td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">档案信息</td>
+                    </tr>
+                    <tr>
+                        <td>档案寄出时间：{{info.sendtimeFormat}}</td>
+                        <td>档案部接收时间：{{info.receivetimeFormat}}</td>
+                    </tr>
+                    <tr>
+                        <td>档案签回时间：{{info.backtimeFormat}}</td>
+                        <td>档案状态：{{info.archiveState}}</td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">份额登记及收益信息</td>
+                    </tr>
+                    <tr>
+                        <td>确认份额：{{info.confirmShare}}</td>
+                        <td>单位净值：{{info.netValue}}</td>
+                    </tr>
+                    <tr>
+                        <td>确认金额：{{info.confirmAmount}}</td>
+                        <td>计划到期日：{{info.planInvestEndDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>起息日：{{info.valueDate}}</td>
+                        <td>已完成收益(元)：{{info.cmpletedEarnings}} <a href="#/notp2p-incomeDistribution.html?info={{encodeInfo}}" target="_blank">查看收益分配明细</a></td>
+                    </tr>
+                    <tr>
+
+                        <td>已赎回总金额(元)：{{info.redeemAmount}}</td>
+                        <td></td>
+                    </tr>
+                    <tr class="success">
+                        <td colspan="2" class="ui_table_head">电签及芝麻审核信息</td>
+                    </tr>
+                    <tr>
+                        <td>认购编号：{{info.investApplyno}}</td>
+                        <td>认购id：{{info.subscribeid}}</td>
+                    </tr>
+                    <tr>
+                        <td>电签及认购审核状态：{{info.auditstateDesc}}</td>
+                        <td>审核时间：{{info.audittimeFormat}}</td>
+                    </tr>
+                    <tr>
+                        <td>审核拒绝原因一级：{{info.refuseReason}}</td>
+                        <td>审核拒绝原因二级：{{info.refuseSubReason}}</td>
+                    </tr>
+                    <tr>
+                        <td>芝麻取消状态：{{info.cancelStateDesc}}</td>
+                        <td>芝麻取消失败原因：{{info.cancelFailReason}}</td>
+                    </tr>
+                    <tr>
+                        <td>芝麻取消结果：{{info.cancelResult}}</td>
+                        <td>芝麻取消时间：{{info.cancelCreateTime}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">审核意见：<span ng-bind-html="info.auditOpinion"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

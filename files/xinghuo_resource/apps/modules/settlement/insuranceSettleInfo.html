@@ -1,0 +1,52 @@
+<div ng-controller="insuranceSettleInfo as showCase">
+    <h3 class="page-title">
+        理财经理ID:{{managerId}} 理财经理姓名：{{managersName}}
+    </h3>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">{{managersName}}{{month}} 保险佣金明细 投保总额：<span class="ui_red">{{totalTradeAmount}}元</span> 佣金金额：<span class="ui_red">{{totalFeeAmount}}元</span></span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <form action="" id="js_form">
+                        <input type="hidden" name="userId" value="{{managerId}}">
+                        <input type="hidden" name="settleStatus" value="{{status}}">
+                        <input type="hidden" name="commMonth" value="{{form.month}}">
+                        <input type="hidden" name="settleType" value="{{settleType}}">
+                        <a id="js_settled_export" action="/xinghuosettle/exportInsuranceSettle.shtml" href="javascript:;" class="btn btn-success btn-sm">导出</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">×</button>
+            <h4 class="modal-title fn-ms">佣金明细</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-6">
+                                <span class="panel-heading-title">佣金明细</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dataTable_wrapper table-responsive">
+                            <table datatable dt-options="ModalCtrl.dtOptions" dt-columns="ModalCtrl.dtColumns" dt-instance="ModalCtrl.dtInstance" dt-disable-deep-watchers="true" class="width-100 table table-striped row-border table-hover"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

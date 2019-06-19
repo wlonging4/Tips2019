@@ -1,0 +1,296 @@
+<div ng-controller="walletController as showCase">
+    <h3 class="page-title">
+        回款结算单管理-星火钱包<span style="font-size:14px;margin-left: 16px;">交易单到期/提前赎回，赎回付款支付单管理，月息通月收益付款</span>
+    </h3>
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="row">
+                <div class="col-lg-9 col-xs-6">
+                    <span class="panel-heading-title">回款单管理</span>
+                </div>
+                <div class="col-lg-3 col-xs-6 ui_right">
+                    <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.search()">查询</a><a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.reset()">重置</a><span ng-if="form.isShow" form-show="{{form.isShow}}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body" id="form-cot">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form role="form" id="js_form">
+                        <input type="hidden" name="payChannel" value="1">
+                        <div class="form-group col-lg-3">
+                            <label>赎回单ID</label>
+                            <input name="appRedeemNo" ng-model="form.appRedeemNo" class="form-control" placeholder="请输入赎回单ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>交易单号</label>
+                            <input name="dealNO" ng-model="form.dealNO" class="form-control" value="" placeholder="请输入交易单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>出借人ID</label>
+                            <input name="userId" value="" ng-model="form.userId" class="form-control" placeholder="请输入出借人ID">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <div class="col-lg-12" style="padding:0;">
+                                <label>结算金额(元)</label>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="amountBeg" ng-model="form.amountBeg" class="form-control js_validator_int" placeholder="请输入结算金额" maxlength="10">
+                            </div>
+                            <div class="col-lg-2" style="padding:0; text-align:center;line-height:28px;">
+                                <span>—</span>
+                            </div>
+                            <div class="col-lg-5" style="padding:0;">
+                                <input type="text" name="amountEnd" ng-model="form.amountEnd" class="form-control js_validator_int" placeholder="请输入结算金额" maxlength="10">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>创建时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="createTimeBeg" ng-model="form.createTimeBeg">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="createTimeEnd" ng-model="form.createTimeEnd">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-3">
+                            <label>星火付款单号</label>
+                            <input name="bizId" ng-model="form.bizId" class="form-control" placeholder="请输入星火付款单号">
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>平台付款单号</label>
+                            <input name="txId" ng-model="form.txId" class="form-control" placeholder="请输入平台付款单号">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>完成时间</label>
+                            <div class="input-group date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control" name="completeTimeBeg" ng-model="form.completeTimeBeg">
+                                <span class="input-group-addon">to </span>
+                                <input type="text" class="form-control" name="completeTimeEnd" ng-model="form.completeTimeEnd">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>结算单状态</label>
+                            <select name="state" ng-model="form.state" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.sp_status">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>是否托管</label>
+                            <select name="isTrusteeship" ng-model="form.isTrusteeship" class="form-control">
+                                <option value="">全部</option>
+                                <option value="0">是</option>
+                                <option value="1">否</option>
+                                <!--<option value="{{item.key}}" ng-repeat="item in select.sp_status">{{item.value}}</option>-->
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <label>钱包结算类型</label>
+                            <select name="walletSettleType" ng-model="form.walletSettleType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="{{item.key}}" ng-repeat="item in select.walletSettleType">{{item.value}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                    <span class="panel-heading-title">查询结果</span>
+                </div>
+                <div class="col-lg-6 col-xs-6 ui_right">
+                    <a ng-click="action.apply()" href="javascript:;" class="btn btn-danger btn-sm">提交返现申请</a>
+                    <a ng-click="action.settleAndDetele($event)" href="javascript:;" class="btn btn-warning btn-sm" id="settlementBtn">结算搜索返现申请单</a>
+                    <a ng-click="action.settleAndDetele($event)" href="javascript:;" class="btn btn-primary btn-sm" id="batchDeleteBtn">批量删除</a>
+                    <a action="/singlepayment/exportSinglePayMent.shtml" href="javascript:;" class="btn btn-success btn-sm js_export">导出</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTable_wrapper table-responsive">
+                <table datatable dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" dt-instance="showCase.dtInstance" dt-disable-deep-watchers="true" class="table table-striped row-border table-hover" id="dataTables"></table>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">{{modalTitle}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="row">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right"><span class="text-red">*</span>提交方式:</label>
+                    <div class="col-sm-9">
+                        <div class="radio-list" id="radioList">
+                            <label class="radio-inline">
+                                <input type="radio" value="0" ng-model="submitType" name="submitType" ng-checked="submitType == 0">单笔录入
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="1" ng-model="submitType" name="submitType" ng-checked="submitType == 1">批量提交
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" ng-show="showFlag && submitType == 0">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right"><span class="text-red">*</span>星火用户ID:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="userId" ng-model="form.userId" placeholder="请输入星火用户ID" ng-blur="getUserInfo()">
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">用户姓名:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="username" ng-model="form.username" readonly>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right"><span class="text-red">*</span>产品名称:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="productName" ng-model="form.productName" placeholder="请输入产品名称" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right"><span class="text-red">*</span>返现金额（元）:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="amount" ng-model="form.amount" placeholder="请输入返现金额">
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right"><span class="text-red">*</span>备注:</label>
+                    <div class="col-sm-9">
+                        <textarea type="text" class="form-control" name="remark" ng-model="form.remark" placeholder="请输入备注" rows="4" maxlength="50"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="!showFlag && submitType == 0">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">星火用户ID:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        {{form.userId}}
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">用户姓名:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        {{form.username}}
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">产品名称:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        <span class="text-red">{{form.productName}}</span>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">返现金额（元）:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        <span class="text-red">{{form.amount}}</span>
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">备注:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        {{form.remark}}
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="submitType == 1">
+                <form enctype="multipart/form-data" id="confirmInfoBatchForm">
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">导入返现excel:</label>
+                        <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                            <input type="file" name="mfile">
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label class="col-sm-3 control-label text-right">模板:</label>
+                        <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                            <a href="{{host}}/export/template/applyCashBackTemplate.xlsx" id="downBatchTemplate">下载返现批量导入模板</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmBtn" ng-click="ok()" ng-show="!showFlag && submitType == 0">确认提交</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmInfo" ng-click="confirmInfo()" ng-show="showFlag && submitType == 0">提交</button>
+            <button type="button" class="btn btn-danger fn-ms" style="width:25%;" ng-click="close()" ng-show="submitType == 1">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="confirmInfoBatch" ng-click="confirmInfoBatch()" ng-show="submitType == 1">提交</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="infoDetailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">返现详情</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td colspan="2" class="ui_table_head ui_red">基本信息</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%">返现申请单ID：{{info.appRedeemNo}}</td>
+                        <td>返现金额：{{info.amount}}元</td>
+                    </tr>
+                    <tr>
+                        <td><span style="display: inline-block;width: 50%">返现用户ID: {{info.userId}}</span><span style="display: inline-block;width: 50%">返现用户姓名：{{info.userName}}</span></td>
+                        <td>申请时间：{{info.createTime}}</td>
+                    </tr>
+                    <tr>
+
+                        <td>钱包结算类型：{{info.walletSettleType}}</td>
+                        <td>产品名称：{{info.productName}}</td>
+                    </tr>
+                    <tr>
+                        <td>备注：{{info.remark}}</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="detailModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">{{modalTitle}}</h4>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="row">
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">结算总笔数:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        <strong class="text-red">{{info.total}}</strong>笔
+                    </div>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="col-sm-3 control-label text-right">结算总金额:</label>
+                    <div class="col-sm-9" style="margin-top: 1px;line-height: 20px;">
+                        <strong class="text-red">{{info.amount}}</strong>元
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger fn-ms" style="width:25%;" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-success fn-ms" style="width:25%;" id="detailSubmitBtn" ng-click="detailSubmitBtn()">提交</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>

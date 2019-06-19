@@ -1,0 +1,295 @@
+<div ng-controller="addNoBuyRefund">
+    <h3 class="page-title">
+        无认购退款管理-新增退款申请
+    </h3>
+    <form role="form" id="js_form">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-9 col-xs-6">
+                        <span class="panel-heading-title">无认购退款管理-新增退款申请</span>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 ui_right">
+                        <a href="javascript:;" class="btn btn-primary btn-sm" ng-click="action.save()">提交</a>
+                        <a href="javascript:;" class="btn btn-warning btn-sm" ng-click="action.cancel()">取消</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item active">无认购退款即流水退款，此退款申请适用于以下场景：</li>
+                    <li class="list-group-item">1、超时打款情况：客户原订单已取消、但客户已打款，需要进行退款；</li>
+                    <li class="list-group-item">2、客户AB卡打款，需要进行退款；</li>
+                    <li class="list-group-item">3、客户没有认申购申请记录但已打款，需要进行退款；</li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group col-lg-9">
+                            <label>用户姓名<em class="text-danger">*</em></label>
+                            <div class="input-group">
+                                <input id="userid" type="hidden" name="userid">
+                                <input type="text" id="realName" name="realName" ng-model="form.realName" class="form-control" placeholder="请输入用户姓名" readonly>
+                                <span ng-click="action.getUser()" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>用户身份证号<em class="text-danger">*</em></label>
+                            <input type="text" id="documentNo" name="documentNo" ng-model="form.documentNo" class="form-control" readonly>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>用户ECIFID<em class="text-danger">*</em></label>
+                            <input type="text" id="ecifid" name="ecifid" ng-model="form.ecifid" class="form-control" readonly>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>退款原因<em class="text-danger">*</em></label>
+                            <select name="refundReason" ng-model="form.refundReason" class="form-control">
+                                <option value="">请选择</option>
+                                <option ng-repeat="item in select.refund" value="{{item.key}}">{{item.value}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>退款金额<em class="text-danger">*</em></label>
+                            <input type="text" name="refundAmt" ng-model="form.refundAmt" class="form-control">
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>币种<em class="text-danger">*</em></label>
+                            <!--<input name="currency" ng-model="form.currency" value="人民币" class="form-control" readonly>-->
+                            <select name="currencyType" ng-model="form.currencyType" class="form-control">
+                                <option value="">请选择</option>
+                                <option value="0" selected="selected">人民币</option>
+                                <option value="1" disabled>美元</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>打款银行卡<em class="text-danger">*</em></label>
+                            <div class="input-group">
+                                <input id="unionCode" name="unionCode" type="hidden">
+                                <input id="cardid" name="cardid" type="hidden">
+                                <input type="text" id="userAccountDetail" name="userAccountDetail" ng-model="form.userAccountDetail" class="form-control" placeholder="请输入打款银行卡" readonly/>
+                                <span ng-click="action.getBank()" class="input-group-addon" style="border:1px solid #d9534f;"><i class="glyphicon glyphicon-plus" style="color:#d9534f;"></i></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>募集账号<em class="text-danger">*</em></label>
+                            <input type="text" name="sesameCardno" ng-model="form.sesameCardno" class="form-control" placeholder="请输入募集账号">
+                        </div>
+                        <div class="col-lg-9" style="text-align: right;color: #999;">注：请输入与客户汇款凭证上收款账户一致的募集账户</div>
+                        <!--<div class="form-group col-lg-9">-->
+                            <!--<label>退款说明</label>-->
+                            <!--<textarea name="refundDescription" ng-model="form.refundDescription" class="form-control"></textarea>-->
+                        <!--</div>-->
+                        <div class="col-lg-12" style="padding: 0">
+                            <div class="form-group col-lg-9">
+                                <label>退款说明</label>
+                                <textarea rows="4" maxlength="200" name="refundDescription" ng-model="form.refundDescription" class="form-control"></textarea>
+                            </div>
+                            <div class="col-lg-3" style="line-height: 34px; padding-left: 0;padding-top: 15px;">{{form.refundDescription.length || 0}}/200</div>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>申请日期<em class="text-danger">*</em></label>
+                            <!--input-medium 控制width-->
+                            <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                <input name="applyTime" ng-model="form.applyTime" type="text" class="form-control" readonly>
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                            <!--<input class="form-control" readonly>-->
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>汇款凭证<em class="text-danger">*</em></label>
+                            <input name="payFile" ng-model="form.payFile" type="file"/>
+                        </div>
+                        <div class="form-group col-lg-9">
+                            <label>退款申请书</label>
+                            <input name="refundApplyFile" ng-model="form.refundApplyFile" type="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- 用户交易单-->
+    <script type="text/ng-template" id="getUserModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">用户查询</h4>
+        </div>
+        <div class="modal-body clearfix row">
+            <form id="js-formBox" class="form-inline">
+                <div class="col-lg-12">
+                    <div class="form-group col-lg-5">
+                        <label>用户姓名</label>
+                        <input name="name" ng-model="submitForm.name" class="form-control" placeholder="请输入用户姓名">
+                    </div>
+                    <div class="form-group col-lg-5">
+                        <label>用户手机号</label>
+                        <input name="mobile" ng-model="submitForm.mobile" class="form-control" placeholder="请输入用户手机号">
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label style="padding-bottom: 40px;"></label>
+                        <button type="button" class="btn btn-primary" ng-click="searchFun($event)">查询</button>
+                    </div>
+                    <div class="col-lg-12 js-getUserList" style="padding-top: 30px;display: none;">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr class="success">
+                                <th></th>
+                                <th>用户姓名</th>
+                                <th>用户手机号</th>
+                                <th>身份证号</th>
+                                <th>ECIFID</th>
+                            </tr>
+                            <tr ng-repeat="(key, value)  in search">
+                                <td>
+                                    <input class="radilBox" type="radio" name="optionsRadios" value="{{key}}">
+                                </td>
+                                <td>{{search[key].realName}}</td>
+                                <td>{{search[key].mobile}}</td>
+                                <td>{{search[key].documentNo}}</td>
+                                <td>{{search[key].ecifId}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer js-getUserList" style="display: none;">
+            <button type="button" class="btn btn-default" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-primary" ng-click="ok()">保存</button>
+        </div>
+    </script>
+    <!-- 打款银行卡 -->
+    <script type="text/ng-template" id="getBankModal.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">添加银行卡</h4>
+        </div>
+        <div class="modal-body clearfix row" id="id-bankForm">
+            <div class="col-lg-12 form-group">
+                <label>持卡人<em class="text-danger">*</em></label>
+                <input name="userName" ng-model="form.userName" class="form-control" placeholder="请输入持卡人姓名">
+            </div>
+            <div class="col-lg-12 form-group">
+                <label>银行名称 <em class="text-danger">*</em></label>
+                <input type="hidden" name="bankName" value="{{form.bankName}}">
+                <select id="bankCode" ng-change="bankNameFun(form.bankCode)" name="bankCode" ng-model="form.bankCode" class="form-control">
+                    <option value="">请选择</option>
+                    <option ng-repeat="item in bank" value="{{item.bankCodeEx}}">{{item.bankName}}</option>
+                </select>
+            </div>
+            <div class="col-lg-12 form-group">
+                <label>银行卡号<em class="text-danger">*</em></label>
+                <input name="cardNo" ng-model="form.cardNo" class="form-control" placeholder="请输入银行卡号">
+            </div>
+            <div class="col-lg-12 form-group">
+                <label>确认卡号<em class="text-danger">*</em></label>
+                <input name="reCardNo" ng-model="form.reCardNo" class="form-control" placeholder="请输入确认卡号">
+            </div>
+            <div class="col-lg-12 form-group">
+                <label>开户行所属地区<em class="text-danger">*</em></label>
+                <label class="radio-inline" style="padding-left: 30px;">
+                    <input type="radio" name="inlineRadioOptions" checked="checked">境内
+                </label>
+                <label class="radio-inline disabled" style="padding-left: 30px;">
+                    <input type="radio" name="inlineRadioOptions" disabled> 境外
+                </label>
+
+            </div>
+            <div class="col-lg-12 form-group">
+                <label>开户行所在省市 <em class="text-danger">*</em></label>
+                <div class="clearfix">
+                    <select id="id-province" ng-change="provinceFun(form.provinceCode)" name="provinceCode" ng-model="form.provinceCode" class="form-control" style="width: 50%; float: left;">
+                        <option value="">请选择省份</option>
+                        <option ng-repeat="(key,item) in province" value="{{item.code}}">{{item.name}}</option>
+                    </select>
+                    <select id="id-city" ng-change="cityFun(form.cityCode)" name="cityCode" ng-model="form.cityCode" class="form-control" style="width: 50%; float: right;">
+                        <option ng-repeat="item in city" value="{{item.code}}">{{item.name}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-lg-12 form-group">
+                <label>支行名称<em class="text-danger">*</em></label>
+                <div class="input-group dropup">
+                    <input id="branch" name="branchName" ng-model="form.branchName" class="form-control" placeholder="请输入支行名称">
+                    <span class="input-group-addon" ng-click="bankFun()">查询</span>
+                    <ul class="dropdown-menu" id="branchDown">
+                        <li ng-click="branchFun(item.branchName,item.unionCode)" ng-repeat="item in bankList"><a href="javascript:;">{{item.branchName}}</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" ng-click="ok($event)">确认</button>
+            <button type="button" class="btn btn-success" ng-click="close()">取消</button>
+        </div>
+    </script>
+    <!-- 保存信息对照 -->
+    <script type="text/ng-template" id="viewSaveInfo.html">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="close()">×</button>
+            <h4 class="modal-title fn-ms">认购退款管理-无认购退款提交确认</h4>
+        </div>
+        <div class="modal-body clearfix row">
+            <form class="form-inline">
+                <div class="col-lg-12">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <!--<tr class="success">-->
+                            <!--<th colspan="2">退款申请单号</th>-->
+                        <!--</tr>-->
+                        <tr>
+                            <td>用户姓名：{{info.realName}}</td>
+                            <td>身份证号：{{info.documentNo}}</td>
+                        </tr>
+                        <tr>
+                            <td>ECIFID：{{info.ecifid}}</td>
+                            <td>退款原因：{{info.refundReasonType}}</td>
+                        </tr>
+                        <tr>
+                            <td>退款金额 ：{{info.refundAmt}}</td>
+                            <td>币种：{{info.currencyType==0?"人民币":"美元"}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">募集账号：{{info.sesameCardno}}</td>
+                            <!--<td>退款状态：{{info.refundStatus}}</td>-->
+                        </tr>
+                        <tr>
+                            <td colspan="2">打款银行卡：{{info.userAccountDetail}} </td>
+                        </tr>
+                        <tr>
+                            <td>开户行所属地区：境内</td>
+                            <td>联行号：{{info.unionCode}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">退款说明：{{info.refundDescription}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">申请日期 ：{{info.applyTime}}</td>
+                        </tr>
+                        <tr>
+                            <td>汇款凭证 ：{{info.payFile}}</td>
+                            <td>退款申请书 ：{{info.refundApplyFile}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="close()">取消</button>
+            <button type="button" class="btn btn-primary" ng-click="save($event)">保存</button>
+        </div>
+    </script>
+</div>
+<script>
+    $(function(){
+        ComponentsPickers.init();
+    });
+</script>
